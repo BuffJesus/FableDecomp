@@ -1,0 +1,135 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index b6d8c84..62928e2 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ #include "retail_barrel_watch_snapshot.h"
+ #include "retail_thing_position_list.h"
++#include "retail_float_math.h"
+ #include "retail_theresa_guard_vector.h"
+ #include "retail_villager_speech_lists.h"
+ #include "retail_owned_timer.h"
+@@ -981,6 +982,35 @@ void DestroyText(unsigned id) { Release(id, Kind::Text); }
+         } catch(...) {cleanup();throw;}
+     }
+ 
++    sol::table NormalizeVector3(sol::table value, sol::this_state state) {
++        CheckOpen();
++        C3DVector input = ReadFloatVector3(value);
++        auto result = RetailFloatMath{}.Normalize(input);
++        return sol::state_view(state).create_table_with("x", result.x, "y", result.y, "z", result.z);
++    }
++    sol::table RotateVector3(sol::table value, sol::table axis, float turns, sol::this_state state) {
++        CheckOpen();
++        C3DVector input = ReadFloatVector3(value);
++        C3DVector direction = ReadFloatVector3(axis);
++        auto result = RetailFloatMath{}.Rotate(input, direction, turns);
++        return sol::state_view(state).create_table_with("x", result.x, "y", result.y, "z", result.z);
++    }
++    float ArcCosTurns(float value, float fraction) {
++        CheckOpen();
++        return RetailFloatMath{}.ArcCosTurns(value, fraction);
++    }
++    bool CosTurnsLessThan(float turns, double threshold) {
++        CheckOpen();
++        return RetailFloatMath{}.CosTurnsLessThan(turns, threshold);
++    }
++
++    static C3DVector ReadFloatVector3(sol::table value) {
++        sol::object x = value["x"], y = value["y"], z = value["z"];
++        if (x.get_type() != sol::type::number || y.get_type() != sol::type::number || z.get_type() != sol::type::number)
++            throw std::runtime_error("Retail vector requires numeric x, y and z");
++        return {x.as<float>(), y.as<float>(), z.as<float>()};
++    }
++
+     std::shared_ptr<RetailThingPositionList> NewThingPositionList() {
+         auto& entry=Add(Kind::ThingPositionList);
+         entry.positionList=std::make_shared<RetailThingPositionList>(m_game);
+@@ -2272,6 +2302,10 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["NewBarrelThugRemarkConversation"] = &LuaRetailResources::NewBarrelThugRemarkConversation;
+     type["AddBarrelThugRemark"] = &LuaRetailResources::AddBarrelThugRemark;
+     type["NewBarrelWatchSnapshot"] = &LuaRetailResources::NewBarrelWatchSnapshot;
++    type["NormalizeVector3"] = &LuaRetailResources::NormalizeVector3;
++    type["RotateVector3"] = &LuaRetailResources::RotateVector3;
++    type["ArcCosTurns"] = &LuaRetailResources::ArcCosTurns;
++    type["CosTurnsLessThan"] = &LuaRetailResources::CosTurnsLessThan;
+     type["NewThingPositionList"] = &LuaRetailResources::NewThingPositionList;
+     type["RewardRemainingBarrel"] = &LuaRetailResources::RewardRemainingBarrel;
+     type["SpawnBarrelBeetle"] = &LuaRetailResources::SpawnBarrelBeetle;
+diff --git a/FableScriptExtender/retail_float_math.h b/FableScriptExtender/retail_float_math.h
+new file mode 100644
+index 0000000..954f52e
+--- /dev/null
++++ b/FableScriptExtender/retail_float_math.h
+@@ -0,0 +1,70 @@
++#pragma once
++#include "FableAPI.h"
++#include "EntityScriptingAPI.h"
++#include <stdexcept>
++
++// Retail float-vector operations and x87 angle boundaries. These preserve the
++// caller's FPU control word; they do not promise equivalence under a changed mode.
++class RetailFloatMath {
++public:
++    using NormalizeFunction = void(__thiscall*)(C3DVector*);
++    using RotateFunction = void(__thiscall*)(C3DVector*, const C3DVector*, float);
++    // _CIacos receives and returns its operand on the x87 stack.
++    using ArcCosFunction = void(__cdecl*)();
++    struct APIs {
++        NormalizeFunction normalize;
++        RotateFunction rotate;
++        ArcCosFunction arcCos;
++    };
++    static APIs NativeAPIs() {
++        return {ASLR<NormalizeFunction>(0x00A14440),
++                ASLR<RotateFunction>(0x00A13C60),
++                ASLR<ArcCosFunction>(0x00BFEBA2)};
++    }
++    explicit RetailFloatMath(APIs apis = NativeAPIs()) : apis(apis) {}
++    C3DVector Normalize(C3DVector value) const {
++        if (!apis.normalize) throw std::runtime_error("Retail vector normalization unavailable");
++        apis.normalize(&value);
++        return value;
++    }
++    C3DVector Rotate(C3DVector value, const C3DVector& axis, float turns) const {
++        if (!apis.rotate) throw std::runtime_error("Retail vector rotation unavailable");
++        apis.rotate(&value, &axis, turns);
++        return value;
++    }
++    float ArcCosTurns(float value, float fraction) const {
++        if (!apis.arcCos) throw std::runtime_error("Retail arc cosine unavailable");
++        auto nativeArcCos = apis.arcCos;
++        // Original retail float reciprocal of 2*pi, followed by the requested
++        // fraction, with a single float store after both multiplications.
++        const float turnsPerRadian = 0.15915493667125702f;
++        float result;
++        __asm {
++            fld value
++            call nativeArcCos
++            fmul turnsPerRadian
++            fmul fraction
++            fstp result
++        }
++        return result;
++    }
++    bool CosTurnsLessThan(float turns, double threshold) const {
++        const double radiansPerTurn = 6.2831854820251465;
++        bool result;
++        // Compare before narrowing the transcendental result to a Lua double.
++        // TEST AH,5 / SETNP accepts strictly less; equal and unordered are false.
++        __asm {
++            fld threshold
++            fld turns
++            fmul radiansPerTurn
++            fcos
++            fcompp
++            fnstsw ax
++            test ah, 5
++            setnp result
++        }
++        return result;
++    }
++private:
++    APIs apis;
++};

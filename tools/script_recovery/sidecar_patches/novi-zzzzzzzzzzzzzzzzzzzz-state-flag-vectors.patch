@@ -1,0 +1,174 @@
+diff --git a/FableScriptExtender/NoviNativeFlagVector.h b/FableScriptExtender/NoviNativeFlagVector.h
+new file mode 100644
+index 0000000..4e725a0
+--- /dev/null
++++ b/FableScriptExtender/NoviNativeFlagVector.h
+@@ -0,0 +1,41 @@
++#pragma once
++#include <cstring>
++#include <new>
++#include <vector>
++
++// Retail STLport vector<bool> uses one byte per element, not packed bits.
++// Transfer 0xCDCF80 may resize/reallocate with MSVCR71 malloc/free. Never
++// pass a modern std::vector's storage to that routine.
++class NoviNativeFlagVector {
++public:
++    struct Storage {
++        unsigned char* first = nullptr;
++        unsigned char* last = nullptr;
++        unsigned char* limit = nullptr;
++    } storage;
++    using Allocate = void* (*)(std::size_t);
++    using Release = void (*)(void*);
++
++    NoviNativeFlagVector(const std::vector<unsigned char>& values, Allocate allocate, Release release)
++        : release_(release) {
++        if (values.empty()) return;
++        storage.first = static_cast<unsigned char*>(allocate(values.size()));
++        if (!storage.first) throw std::bad_alloc();
++        storage.last = storage.limit = storage.first + values.size();
++        std::memcpy(storage.first, values.data(), values.size());
++    }
++    ~NoviNativeFlagVector() {
++        if (storage.first) release_(storage.first);
++    }
++    NoviNativeFlagVector(const NoviNativeFlagVector&) = delete;
++    NoviNativeFlagVector& operator=(const NoviNativeFlagVector&) = delete;
++
++    std::vector<unsigned char> CopyFlags() const {
++        if (!storage.first) return {};
++        std::vector<unsigned char> result(storage.first, storage.last);
++        for (auto& value : result) value = value != 0;
++        return result;
++    }
++private:
++    Release release_;
++};
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 2b5f4cc..419ce6b 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -27,12 +27,15 @@
+ #include "EntityScriptingAPI.h"
+ #include "LuaQuestState.h"
+ #include "LuaRetailResources.h"
++#include "NoviNativeFlagVector.h"
++#include <stdexcept>
+ #include <map>
+ #include <memory>
+ #include <string>
+ #include <vector>
+ 
+ struct NoviUnitQuestData {
++    std::map<std::string, std::vector<unsigned char>> flagVectors;
+     std::map<std::string, std::vector<std::shared_ptr<CScriptThing>>> lists;
+     std::shared_ptr<LuaRetailResources> resources;
+ };
+@@ -160,6 +163,31 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         if (it == lists.end() || index < 0 || index >= static_cast<int>(it->second.size())) return;
+         it->second.erase(it->second.begin() + index);
+     };
++    // Byte-per-flag vectors: 0x467686 resize, byte reads/stores, and
++    // CPersistContext::TransferVector 0xCDCF80 (BookDonated/BookOwned).
++    quest["StateFlagVectorResize"] = [](LuaQuestState& self, const std::string& name, int count) {
++        if (count < 0) throw std::out_of_range("negative flag vector size");
++        NoviUnitData(self).flagVectors[name].resize(static_cast<std::size_t>(count), 0);
++    };
++    quest["GetStateFlagVectorCount"] = [](LuaQuestState& self, const std::string& name) -> int {
++        return static_cast<int>(NoviUnitData(self).flagVectors[name].size());
++    };
++    quest["GetStateFlagVectorAt"] = [](LuaQuestState& self, const std::string& name, int index) -> bool {
++        return NoviUnitData(self).flagVectors[name].at(static_cast<std::size_t>(index)) != 0;
++    };
++    quest["SetStateFlagVectorAt"] = [](LuaQuestState& self, const std::string& name, int index, bool value) {
++        NoviUnitData(self).flagVectors[name].at(static_cast<std::size_t>(index)) = value ? 1 : 0;
++    };
++    quest["PersistStateFlagVector"] = [](LuaQuestState& self, void* context, const std::string& name) {
++        if (!context || !Game_malloc || !Game_free)
++            throw std::runtime_error("flag vector persistence requires context and game allocator");
++        static_assert(sizeof(NoviNativeFlagVector::Storage) == 12, "retail vector ABI is x86");
++        auto& values = NoviUnitData(self).flagVectors[name];
++        NoviNativeFlagVector native(values, Game_malloc, Game_free);
++        using Transfer = void(__thiscall*)(void*, const char*, NoviNativeFlagVector::Storage*);
++        ASLR<Transfer>(0x00CDCF80)(context, name.c_str(), &native.storage);
++        values = native.CopyFlags();
++    };
+     quest["StateListClear"] = [](LuaQuestState& self, const std::string& name) { NoviUnitData(self).lists[name].clear(); };
+     // std::vector<CScriptThing>::resize(n, CScriptThing()) 0xD34AC0: truncate, or pad with empty things
+     // (CS_OakValeRevisited OakValeFire sizes Fires to the fire-point count before filling it)
+diff --git a/tests/native_flag_vector.cpp b/tests/native_flag_vector.cpp
+new file mode 100644
+index 0000000..db2d456
+--- /dev/null
++++ b/tests/native_flag_vector.cpp
+@@ -0,0 +1,69 @@
++#include "../FableScriptExtender/NoviNativeFlagVector.h"
++#include <cassert>
++#include <cstdlib>
++#include <map>
++#include <stdexcept>
++#include <type_traits>
++
++static std::map<void*, std::size_t> live;
++static bool fail = false;
++static int allocations = 0, releases = 0;
++static void* allocate(std::size_t size) {
++    ++allocations;
++    if (fail) return nullptr;
++    void* p = std::malloc(size);
++    assert(p && live.emplace(p, size).second);
++    return p;
++}
++static void release(void* p) {
++    assert(live.erase(p) == 1);
++    ++releases;
++    std::free(p);
++}
++int main() {
++    static_assert(!std::is_copy_constructible<NoviNativeFlagVector>::value, "no shared ownership");
++    static_assert(sizeof(NoviNativeFlagVector::Storage) == 3 * sizeof(void*), "three pointers");
++    {
++        NoviNativeFlagVector empty({}, allocate, release);
++        assert(!empty.storage.first && !empty.storage.last && !empty.storage.limit);
++        assert(empty.CopyFlags().empty() && allocations == 0);
++    }
++    const std::vector<unsigned char> original{0, 1, 2, 255};
++    {
++        NoviNativeFlagVector value(original, allocate, release);
++        assert(value.storage.first != original.data());
++        assert(value.storage.last - value.storage.first == 4);
++        assert(value.storage.limit == value.storage.last);
++        assert(value.CopyFlags() == (std::vector<unsigned char>{0, 1, 1, 1}));
++        value.storage.first[0] = 1;
++        assert(original[0] == 0);
++        // Retail defaults clears length while retaining the allocation.
++        value.storage.last = value.storage.first;
++        assert(value.CopyFlags().empty() && live.size() == 1);
++    }
++    assert(live.empty() && allocations == releases);
++    {
++        NoviNativeFlagVector value(original, allocate, release);
++        // Model the allocation replacement verified by the retail execution
++        // harness: the caller must free the new pointer, never the old one twice.
++        auto* replacement = static_cast<unsigned char*>(allocate(8));
++        replacement[0] = 0; replacement[1] = 7;
++        release(value.storage.first);
++        value.storage.first = replacement;
++        value.storage.last = replacement + 2;
++        value.storage.limit = replacement + 8;
++        assert(value.CopyFlags() == (std::vector<unsigned char>{0, 1}));
++    }
++    assert(live.empty() && allocations == releases);
++    try {
++        NoviNativeFlagVector value(original, allocate, release);
++        throw std::runtime_error("transfer interrupted");
++    } catch (const std::runtime_error&) {}
++    assert(live.empty() && allocations == releases);
++    fail = true;
++    try {
++        NoviNativeFlagVector value(original, allocate, release);
++        assert(false);
++    } catch (const std::bad_alloc&) {}
++    assert(live.empty() && allocations == releases + 1);
++}

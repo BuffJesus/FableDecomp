@@ -13,13 +13,13 @@ local SCRIPT_DEF = {
 
 -- WaspVictim.Main (retail 0x00e11670)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local timerId
     if not quest:NewScriptFrame(me) then return end
     while not quest:GetStateBool("QuestStartScreened") do
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -30,7 +30,8 @@ function Main(quest, me)
         end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    quest:ModifyThingHealth(me, 6.0 - quest:GetHealth(me), false)
+    local fret_0 = quest:GetHealth(me)
+    quest:ModifyThingHealth(me, string.unpack("<f", string.pack("<f", 6.0 - fret_0)), false)
     if quest:GetStateBool("QueenHornetAttacks") then
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         quest:RemoveThing(me, false, true)
@@ -43,31 +44,38 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
         if quest:GetTimer(timerId) == 0 then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-            if quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerScreamsDistance)) then
+            local dist = quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerScreamsDistance)
+            local hero = quest:GetHero()
+            if quest:IsDistanceBetweenThingsUnder(me, hero, dist) then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                 quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.WB_WaspChaseWomanPanicTime))
                 local conversationId = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId, hero)
-                quest:AddLineToConversation(conversationId, "TEXT_QST_072_VILLAGER_MALE_SCREAMS_10", me, hero, false)
+                local hero2 = quest:GetHero()
+                quest:AddPersonToConversation(conversationId, hero2)
+                local hero3 = quest:GetHero()
+                quest:AddLineToConversation(conversationId, "TEXT_QST_072_VILLAGER_MALE_SCREAMS_10", me, hero3, false)
                 timerId = timerId2
             end
         end
     end
     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
     local conversationId2 = quest:AddNewConversation(me, false, false)
-    quest:AddPersonToConversation(conversationId2, hero)
-    quest:AddLineToConversation(conversationId2, "TEXT_QST_072_VILLAGER_MALE_ON_SAVED_10", me, hero, false)
+    local hero4 = quest:GetHero()
+    quest:AddPersonToConversation(conversationId2, hero4)
+    local hero5 = quest:GetHero()
+    quest:AddLineToConversation(conversationId2, "TEXT_QST_072_VILLAGER_MALE_ON_SAVED_10", me, hero5, false)
     quest:EntitySetAsScared(me, false)
     local villagerEscapePos = quest:GetThingWithScriptName("VillagerEscapePos")
-    if quest:GetStateInt("SavedVillagerCount") >= 2 then goto LAB_00e11a0a end
-    if not quest:IsActiveThreadTerminating() then
-        quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.WB_MoralityGain))
-        quest:SetStateInt("SavedVillagerCount", quest:GetStateInt("SavedVillagerCount") + 1)
-        goto LAB_00e11a0a
+    if not (not (quest:GetStateInt("SavedVillagerCount") < 2)) then
+        if not quest:IsActiveThreadTerminating() then
+            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.WB_MoralityGain))
+            quest:SetStateInt("SavedVillagerCount", quest:GetStateInt("SavedVillagerCount") + 1)
+            goto LAB_00e11a0a
+        end
+        quest:DeregisterTimer(timerId2)
+        resources:ReleaseResource(resource)
+        do return end
     end
-    quest:DeregisterTimer(timerId2)
-    resources:ReleaseResource(resource)
-    do return end
     ::LAB_00e11a0a::
     while quest:IsDistanceBetweenThingsOver(me, villagerEscapePos, 2.0) do
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end

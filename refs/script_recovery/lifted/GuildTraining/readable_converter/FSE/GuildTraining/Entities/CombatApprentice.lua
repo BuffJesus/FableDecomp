@@ -1,8 +1,6 @@
 -- Readable native conversion: CombatApprentice. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
-
 local HERO_ABILITY_LIGHTNING_SPELL = 11  -- EHeroAbility (Ego_r.pdb)
 local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 
@@ -17,11 +15,11 @@ local waitingForFight
 
 -- CombatApprentice.Main (retail 0x00d4a270)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult3, predicateResult, fightFinished, msgIsHitByHeroSpecialAbility
-    local msgIsHitByHero, scratchValue, scratchValue15, scratchValue16, getHealth, scratchValue22
-    local addNewConversation, index, p0, meleeApprentice, this_00
+    local predicateResult3, predicateResult, predicateResult41, fightFinished
+    local msgIsHitByHeroSpecialAbility, msgIsHitByHero, scratchValue, scratchValue15, scratchValue16
+    local getHealth, scratchValue22, addNewConversation, index, p0, thing, hero, line, healthBar
+    local combatApprenticeTargetMarker, meleeApprentice, this_00, addQuestInfoBarHealth
     local resource4 = resources:NewResource()
     resources:PrepareResource(resource4)
     while not resources:TryAcquire(resource4, me, 4) do
@@ -39,66 +37,77 @@ function Main(quest, me)
     me:SetFriendsWithEverythingFlag(true)
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 10)
-    local combatApprenticeTargetMarker = quest:GetThingWithScriptName("CombatApprenticeTargetMarker")
+    combatApprenticeTargetMarker = quest:GetThingWithScriptName("CombatApprenticeTargetMarker")
     scratchValue15 = 0
     predicateResult3 = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult3 then
+            combatApprenticeTargetMarker = nil
             quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return
         end
-        if not quest:IsQuestActive("Q_GuildTrainingDeparture") then goto LAB_00d4a512 end
-        if quest:IsActiveThreadTerminating() then
-            quest:DeregisterTimer(timerId)
-            resources:ReleaseResource(resource4)
-            return
-        end
-        if ((quest:GetMasterGameState("GlobalMeleeGrade") < 4) and (quest:GetMasterGameState("GlobalSkillGrade") < 4)) and quest:GetMasterGameState("GlobalWillGrade") < 4 then
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource4); return end
-            if scratchValue15 == 0 then
-                if quest:IsActiveThreadTerminating() then
-                    quest:DeregisterTimer(timerId)
-                    resources:ReleaseResource(resource4)
-                    return
-                end
-                quest:SetThingHasInformation(me, false, true, false)
-                scratchValue15 = 1
-            end
-            goto LAB_00d4a512
-            quest:DeregisterTimer(timerId)
-            resources:ReleaseResource(resource4)
-            return
-        end
-        if quest:IsActiveThreadTerminating() then
-            quest:DeregisterTimer(timerId)
-            resources:ReleaseResource(resource4)
-            return
-        end
-        if scratchValue15 ~= 0 then
+        if not (not quest:IsQuestActive("Q_GuildTrainingDeparture")) then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(timerId)
                 resources:ReleaseResource(resource4)
                 return
             end
-            quest:ClearThingHasInformation(me)
-            scratchValue15 = 0
+            if ((quest:GetMasterGameState("GlobalMeleeGrade") < 4) and (quest:GetMasterGameState("GlobalSkillGrade") < 4)) and quest:GetMasterGameState("GlobalWillGrade") < 4 then
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource4); return end
+                if scratchValue15 == 0 then
+                    if quest:IsActiveThreadTerminating() then
+                        quest:DeregisterTimer(timerId)
+                        resources:ReleaseResource(resource4)
+                        return
+                    end
+                    quest:SetThingHasInformation(me, false, true, false)
+                    scratchValue15 = 1
+                end
+                goto LAB_00d4a512
+            end
+            if quest:IsActiveThreadTerminating() then
+                quest:DeregisterTimer(timerId)
+                resources:ReleaseResource(resource4)
+                return
+            end
+            if scratchValue15 ~= 0 then
+                if quest:IsActiveThreadTerminating() then
+                    quest:DeregisterTimer(timerId)
+                    resources:ReleaseResource(resource4)
+                    return
+                end
+                quest:ClearThingHasInformation(me)
+                scratchValue15 = 0
+            end
         end
         ::LAB_00d4a512::
         if not quest:IsDistanceBetweenThingsOver(me, combatApprenticeTargetMarker, 4.0) or me:IsPerformingScriptTask() then
             if me:IsPerformingScriptTask() then goto LAB_00d4a71c end
+            hero = quest:GetHero()
             if not quest:IsDistanceBetweenThingsUnder(me, hero, 10.0) or 0 < quest:GetTimer(timerId) then goto LAB_00d4a71c end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource4); return end
+            hero = quest:GetHero()
             quest:EntitySetFacingAngleTowardsThing(me, hero, false)
             quest:SetTimer(timerId, 20)
             addNewConversation = quest:AddNewConversation(me, false, false)
+            hero = quest:GetHero()
             quest:AddPersonToConversation(addNewConversation, hero)
             scratchValue22 = quest:GetMasterGameState("GlobalMeleeGrade")
             if scratchValue22 == 0 then
-                if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_APPRENTICE_MELEE_APPRENTICE_COMMENT", me, hero, false); goto LAB_00d4a717 end
+                if not quest:IsActiveThreadTerminating() then
+                    hero = quest:GetHero()
+                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_APPRENTICE_MELEE_APPRENTICE_COMMENT", me, hero, false)
+                    goto LAB_00d4a717
+                end
             elseif scratchValue22 == 7 then
-                if not quest:IsActiveThreadTerminating() then quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_APPRENTICE_MELEE_APLUS_COMMENT", me, hero, false); goto LAB_00d4a717 end
+                if not quest:IsActiveThreadTerminating() then
+                    hero = quest:GetHero()
+                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_APPRENTICE_MELEE_APLUS_COMMENT", me, hero, false)
+                    goto LAB_00d4a717
+                end
             elseif not quest:IsActiveThreadTerminating() then
+                hero = quest:GetHero()
                 quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_APPRENTICE_MELEE_NOT_APLUS_COMMENT", me, hero, false)
                 goto LAB_00d4a717
             end
@@ -139,76 +148,98 @@ function Main(quest, me)
                 return
             end
             if me:IsPerformingScriptTask() then
-                if quest:IsActiveThreadTerminating() then goto LAB_00d4c6da end
+                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c40d end
                 me:ClearCommands()
                 local movie6 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
-                    me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_APPRENTICE_EARLY", GROUP_SELECT_FIRST, false, true, false)
+                local scratchValue28 = resources:ScriptThing(resource4)
+                if 0.0 < quest:GetHealth(scratchValue28) then
+                    line = "TEXT_QST_028_APPRENTICE_MELEE_APPRENTICE_EARLY"
+                    thing = quest:GetHero()
+                    if not me:Speak(thing, line, 0, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie6)
+                        goto FLOW_past_lab_00d4c40d
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie6)
-                            goto LAB_00d4c6da
+                            goto FLOW_past_lab_00d4c40d
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie6)
-                        goto LAB_00d4c6da
+                        goto FLOW_past_lab_00d4c40d
                     end
                 end
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie6)
                 goto LAB_00d4c416
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00d4c6da end
+            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c40d end
             if quest:GetMasterGameState("HeroTakingGuildTest") then
                 if not quest:IsActiveThreadTerminating() then
                     local movie5 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
-                        me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_OTHER_MELEE_GRADE", GROUP_SELECT_FIRST, false, true, false)
+                    local scratchValue27 = resources:ScriptThing(resource4)
+                    if 0.0 < quest:GetHealth(scratchValue27) then
+                        line = "TEXT_QST_028_APPRENTICE_MELEE_OTHER_MELEE_GRADE"
+                        thing = quest:GetHero()
+                        if not me:Speak(thing, line, 0, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie5)
+                            goto FLOW_past_lab_00d4c40d
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie5)
-                                goto LAB_00d4c6da
+                                goto FLOW_past_lab_00d4c40d
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie5)
-                            goto LAB_00d4c6da
+                            goto FLOW_past_lab_00d4c40d
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie5)
                     goto LAB_00d4c416
                 end
-                goto LAB_00d4c6da
+                goto FLOW_past_lab_00d4c40d
             end
+            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c40d end
             meleeApprentice = quest:GetThingWithScriptName("MeleeApprentice")
             if not (meleeApprentice ~= nil and meleeApprentice:IsAlive()) then
                 if not quest:IsActiveThreadTerminating() then
                     local movie4 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
-                        me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_NO_WHISPER", GROUP_SELECT_FIRST, false, true, false)
+                    local scratchValue32 = resources:ScriptThing(resource4)
+                    if 0.0 < quest:GetHealth(scratchValue32) then
+                        line = "TEXT_QST_028_APPRENTICE_MELEE_NO_WHISPER"
+                        thing = quest:GetHero()
+                        if not me:Speak(thing, line, 0, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie4)
+                            goto FLOW_past_lab_00d4c40d
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
-                                goto LAB_00d4c6d1
+                                goto FLOW_past_lab_00d4c40d
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie4)
-                            goto LAB_00d4c6d1
+                            goto FLOW_past_lab_00d4c40d
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
@@ -216,15 +247,26 @@ function Main(quest, me)
                     goto LAB_00d4c40d
                 end
             else
+                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c40d end
                 local movie = resources:StartMovie("")
+                addQuestInfoBarHealth = healthBar
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
-                    if not (me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_DEPARTURE_HELLO", GROUP_SELECT_FIRST, false, true, false) and not quest:IsActiveThreadTerminating()) then
-                        quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie)
-                        goto LAB_00d4c6d1
+                local scratchValue30 = resources:ScriptThing(resource4)
+                if 0.0 < quest:GetHealth(scratchValue30) then
+                    line = "TEXT_QST_028_APPRENTICE_MELEE_DEPARTURE_HELLO"
+                    thing = quest:GetHero()
+                    if me:Speak(thing, line, 0, false, true, false) then
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00d4c5ff end
+                        end
+                        if not quest:IsActiveThreadTerminating() then goto LAB_00d4ac95 end
                     end
+                    ::LAB_00d4c5ff::
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    goto FLOW_past_lab_00d4c40d
                 end
+                ::LAB_00d4ac95::
                 quest:GiveHeroYesNoQuestion("TEXT_QST_028_APPRENTICE_MELEE_DEPARTURE_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                 scratchValue22 = quest:MsgIsQuestionAnsweredYesOrNo()
                 while scratchValue22 < 0 do
@@ -234,97 +276,123 @@ function Main(quest, me)
                     else
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
-                        goto LAB_00d4c6d1
+                        goto FLOW_past_lab_00d4c40d
                         scratchValue22 = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie)
-                    goto LAB_00d4c6d1
+                    goto FLOW_past_lab_00d4c40d
                 end
                 if scratchValue22 == 0 then
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
-                        goto LAB_00d4c6d1
+                        goto FLOW_past_lab_00d4c40d
                     end
+                    thing = resources:ScriptThing(resource4)
                     scratchValue16 = 1
-                    if quest:GetHealth(resources:ScriptThing(resource4)) <= 0.0 then
+                    if quest:GetHealth(thing) <= 0.0 then
                         scratchValue16 = scratchValue22
                     end
                     if scratchValue16 ~= 0 then
-                        me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_RETURN", GROUP_SELECT_FIRST, false, true, false)
+                        line = "TEXT_QST_028_APPRENTICE_MELEE_RETURN"
+                        thing = quest:GetHero()
+                        if not me:Speak(thing, line, 0, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie)
+                            goto FLOW_past_lab_00d4c40d
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
-                                goto LAB_00d4c6d1
+                                goto FLOW_past_lab_00d4c40d
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
-                            goto LAB_00d4c6d1
+                            goto FLOW_past_lab_00d4c40d
                         end
                     end
                 elseif scratchValue22 == 1 then
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie)
-                        goto LAB_00d4c6d1
+                        goto FLOW_past_lab_00d4c40d
                     end
-                    if scratchValue22 ~= 0 and quest:GetHealth(resources:ScriptThing(resource4)) > 0.0 then
-                        me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_START", GROUP_SELECT_FIRST, false, true, false)
+                    thing = resources:ScriptThing(resource4)
+                    if scratchValue22 ~= 0 and not (quest:GetHealth(thing) <= 0.0) then
+                        line = "TEXT_QST_028_APPRENTICE_MELEE_START"
+                        thing = quest:GetHero()
+                        if not me:Speak(thing, line, 0, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie)
+                            goto FLOW_past_lab_00d4c40d
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
-                                goto LAB_00d4c6d1
+                                goto FLOW_past_lab_00d4c40d
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
-                            goto LAB_00d4c6d1
+                            goto FLOW_past_lab_00d4c40d
                         end
                     end
                     if quest:GetMasterGameState("GlobalMeleeGrade") ~= 7 then
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie)
-                            goto LAB_00d4c6d1
+                            goto FLOW_past_lab_00d4c40d
                         end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
-                            me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_START_APLUS", GROUP_SELECT_FIRST, false, true, false)
+                        local scratchValue29 = resources:ScriptThing(resource4)
+                        if not not (0.0 < quest:GetHealth(scratchValue29)) then
+                            line = "TEXT_QST_028_APPRENTICE_MELEE_START_APLUS"
+                            thing = quest:GetHero()
+                            if not me:Speak(thing, line, 0, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie)
+                                goto FLOW_past_lab_00d4c40d
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie)
-                                    goto LAB_00d4c6d1
+                                    goto FLOW_past_lab_00d4c40d
                                 end
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie)
-                                goto LAB_00d4c6d1
+                                goto FLOW_past_lab_00d4c40d
                             end
                         end
                     end
                     quest:FadeScreenOut(0.5, 0.5)
                     quest:Pause(1.0)
-                    quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("HeroMeleeStart"), false)
-                    quest:EntityTeleportToThing(meleeApprentice, quest:GetThingWithScriptName("WhisperMeleeStart"), false)
-                    quest:EntityUnsheatheMeleeWeapon(hero, false)
+                    thing = quest:GetThingWithScriptName("HeroMeleeStart")
+                    hero = quest:GetHero()
+                    quest:EntityTeleportToThing(hero, thing, false)
+                    thing = quest:GetThingWithScriptName("WhisperMeleeStart")
+                    quest:EntityTeleportToThing(meleeApprentice, thing, false)
+                    thing = quest:GetHero()
+                    quest:EntityUnsheatheMeleeWeapon(thing, false)
                     quest:EntityUnsheatheWeapons(meleeApprentice, false)
+                    healthBar = addQuestInfoBarHealth
                 end
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
                 if scratchValue22 ~= 1 then goto LAB_00d4c40d end
-                if quest:IsActiveThreadTerminating() then goto LAB_00d4c6d1 end
+                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c40d end
                 quest:FadeScreenIn()
                 quest:SetPlayerCreatureOnlyTarget(meleeApprentice)
                 quest:SetMasterGameState("HeroTakingGuildTest", true)
@@ -338,21 +406,24 @@ function Main(quest, me)
                 if meleeApprentice ~= nil and not meleeApprentice:IsNull() then
                     meleeApprentice:SetFriendsWithEverythingFlag(false)
                 end
-                quest:GiveThingBestEnemyTarget(meleeApprentice, hero)
+                thing = quest:GetHero()
+                quest:GiveThingBestEnemyTarget(meleeApprentice, thing)
                 quest:SetStateBool("FightFinished", false)
                 local timerId2 = quest:RegisterTimer()
                 addNewConversation = timerId2
                 quest:SetTimer(timerId2, 15)
                 quest:DisplayQuestInfo(true)
-                local addQuestInfoBarHealth = quest:AddQuestInfoBarHealth(meleeApprentice, {R = 255, G = 255, B = 255, A = 255}, "HUD_WHISPER_ICON", 1.0)
-                getHealth = quest:GetHealth(hero)
+                addQuestInfoBarHealth = quest:AddQuestInfoBarHealth(meleeApprentice, {R = 255, G = 255, B = 255, A = 255}, "HUD_WHISPER_ICON", 1.0)
+                thing = quest:GetHero()
+                getHealth = quest:GetHealth(thing)
                 local health = quest:GetHealth(meleeApprentice)
                 fightFinished = quest:GetStateBool("FightFinished")
                 scratchValue16 = 0
                 scratchValue = 0
                 while not fightFinished do
-                    if not quest:NewScriptFrame(me) then goto LAB_00d4c6c8 end
+                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00d4c3f3 end
                     if quest:GetMasterGameState("GuildWarningOccuring") then
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                         scratchValue = 1
                         scratchValue16 = 1
                         quest:SetStateBool("FightFinished", true)
@@ -364,26 +435,34 @@ function Main(quest, me)
                             msgIsHitByHeroSpecialAbility = meleeApprentice:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_LIGHTNING_SPELL)
                         end
                         if msgIsHitByHeroSpecialAbility then
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                             quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
                             if meleeApprentice ~= nil and not meleeApprentice:IsNull() then
                                 meleeApprentice:SetFriendsWithEverythingFlag(true)
                             end
                             local movie3 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
-                                me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_NO_LIGHTNING", GROUP_SELECT_FIRST, false, true, false)
+                            local scratchValue33 = resources:ScriptThing(resource4)
+                            if 0.0 < quest:GetHealth(scratchValue33) then
+                                line = "TEXT_QST_028_APPRENTICE_MELEE_NO_LIGHTNING"
+                                thing = quest:GetHero()
+                                if not me:Speak(thing, line, 0, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(movie3)
+                                    goto FLOW_past_lab_00d4c3f3
+                                end
                                 while me:IsPerformingScriptTask() do
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then
                                         quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyMovie(movie3)
-                                        goto LAB_00d4c6c8
+                                        goto FLOW_past_lab_00d4c3f3
                                     end
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie3)
-                                    goto LAB_00d4c6c8
+                                    goto FLOW_past_lab_00d4c3f3
                                 end
                             end
                             quest:SetStateBool("FightFinished", true)
@@ -393,26 +472,34 @@ function Main(quest, me)
                             goto LAB_00d4b6f6
                         end
                     else
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                         quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
                         if meleeApprentice ~= nil and not meleeApprentice:IsNull() then
                             meleeApprentice:SetFriendsWithEverythingFlag(true)
                         end
                         local movie2 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource4)) then
-                            me:Speak(hero, "TEXT_QST_028_APPRENTICE_MELEE_NO_BOW", GROUP_SELECT_FIRST, false, true, false)
+                        local scratchValue26 = resources:ScriptThing(resource4)
+                        if 0.0 < quest:GetHealth(scratchValue26) then
+                            line = "TEXT_QST_028_APPRENTICE_MELEE_NO_BOW"
+                            thing = quest:GetHero()
+                            if not me:Speak(thing, line, 0, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie2)
+                                goto FLOW_past_lab_00d4c3f3
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie2)
-                                    goto LAB_00d4c6c8
+                                    goto FLOW_past_lab_00d4c3f3
                                 end
                             end
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie2)
-                                goto LAB_00d4c6c8
+                                goto FLOW_past_lab_00d4c3f3
                             end
                         end
                         quest:SetStateBool("FightFinished", true)
@@ -425,14 +512,15 @@ function Main(quest, me)
                     ::LAB_00d4b6f6::
                     resources:DestroyMovie(this_00)
                     ::FLOW_past_lab_00d4b6f6::
-                    local fret_10 = quest:GetHealth(hero)
+                    thing = quest:GetHero()
+                    local fret_10 = quest:GetHealth(thing)
                     if quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) <= fret_10 then
                         if quest:GetHealth(meleeApprentice) < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                             quest:SetStateBool("FightFinished", true)
                         end
                     else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                         quest:SetStateBool("FightFinished", true)
                     end
                     if not (meleeApprentice ~= nil and not meleeApprentice:IsNull()) then
@@ -441,32 +529,52 @@ function Main(quest, me)
                         msgIsHitByHero = meleeApprentice:MsgIsHitByHero()
                     end
                     if not msgIsHitByHero then
-                        if not ((not quest:IsPlayerCreatureBlocking()) or (not (hero ~= nil and hero:MsgIsHitBy("MeleeOpponent")))) then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                        if not (not quest:IsPlayerCreatureBlocking()) then
+                            thing = quest:GetHero()
+                            if not (thing ~= nil and thing:MsgIsHitBy("MeleeOpponent")) then goto LAB_00d4b8c5 end
+                            predicateResult41 = true
+                            goto FLOW_past_lab_00d4b8c5
+                        end
+                        ::LAB_00d4b8c5::
+                        predicateResult41 = false
+                        ::FLOW_past_lab_00d4b8c5::
+                        if predicateResult41 then
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                             if quest:GetTimer(addNewConversation) < 1 then
                                 if not quest:IsActiveThreadTerminating() then
                                     addNewConversation = quest:AddNewConversation(meleeApprentice, false, false)
-                                    quest:AddPersonToConversation(addNewConversation, hero)
-                                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", meleeApprentice, hero, false)
+                                    thing = quest:GetHero()
+                                    quest:AddPersonToConversation(addNewConversation, thing)
+                                    thing = quest:GetHero()
+                                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BLOCK_HIT_INSULT", meleeApprentice, thing, false)
                                     goto LAB_00d4b857
                                 end
-                                goto LAB_00d4c6c8
+                                goto FLOW_past_lab_00d4c3f3
                             end
-                        elseif hero ~= nil and hero:MsgIsHitBy("MeleeOpponent") then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
-                            if quest:GetTimer(timerId2) < 1 then
-                                addNewConversation = quest:AddNewConversation(meleeApprentice, false, false)
-                                quest:AddPersonToConversation(addNewConversation, hero)
-                                quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BATTLE_HIT_INSULT", meleeApprentice, hero, false)
-                                quest:SetTimer(timerId2, 15)
+                        else
+                            thing = quest:GetHero()
+                            if thing ~= nil and thing:MsgIsHitBy("MeleeOpponent") then
+                                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
+                                if quest:GetTimer(timerId2) < 1 then
+                                    if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
+                                    addNewConversation = quest:AddNewConversation(meleeApprentice, false, false)
+                                    thing = quest:GetHero()
+                                    quest:AddPersonToConversation(addNewConversation, thing)
+                                    thing = quest:GetHero()
+                                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_BATTLE_HIT_INSULT", meleeApprentice, thing, false)
+                                    quest:SetTimer(timerId2, 15)
+                                end
                             end
                         end
                     else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                         if quest:GetTimer(addNewConversation) < 9 then
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                             addNewConversation = quest:AddNewConversation(meleeApprentice, false, false)
-                            quest:AddPersonToConversation(addNewConversation, hero)
-                            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_MELEE_HIT_INSULT", meleeApprentice, hero, false)
+                            thing = quest:GetHero()
+                            quest:AddPersonToConversation(addNewConversation, thing)
+                            thing = quest:GetHero()
+                            quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_WHISPER_MELEE_HIT_INSULT", meleeApprentice, thing, false)
                             goto LAB_00d4b857
                         end
                     end
@@ -477,7 +585,7 @@ function Main(quest, me)
                     addNewConversation = timerId2
                     fightFinished = quest:GetStateBool("FightFinished")
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                 quest:ResetPlayerCreatureOnlyTarget()
                 quest:RemoveQuestInfoElement(addQuestInfoBarHealth)
                 quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
@@ -488,10 +596,10 @@ function Main(quest, me)
                 if scratchValue16 == 1 then
                     if not quest:IsActiveThreadTerminating() then
                         if scratchValue ~= 1 then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                             quest:FadeScreenOut(0.5, 0.5)
                         else
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                             quest:Pause(1.0)
                             quest:FadeScreenOut(0.5, 0.5)
                             quest:SheatheHeroWeapons()
@@ -500,22 +608,28 @@ function Main(quest, me)
                         end
                         quest:ChangeHeroHealthBy(1000.0, true, false)
                         quest:ModifyThingHealth(meleeApprentice, 1000.0, false)
-                        quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("M_MeleeHeroStand"), false)
-                        quest:EntityTeleportToThing(meleeApprentice, quest:GetThingWithScriptName("M_MeleeOpponentStand"), false)
+                        thing = quest:GetThingWithScriptName("M_MeleeHeroStand")
+                        hero = quest:GetHero()
+                        quest:EntityTeleportToThing(hero, thing, false)
+                        thing = quest:GetThingWithScriptName("M_MeleeOpponentStand")
+                        quest:EntityTeleportToThing(meleeApprentice, thing, false)
                         quest:EntitySetInFaction(meleeApprentice, "FACTION_HERO")
                         quest:FadeScreenIn()
                         waitingForFight = true
                         goto LAB_00d4c3f3
                     end
                 else
-                    if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                    if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
+                    thing = quest:GetHero()
+                    addQuestInfoBarHealth = quest:GetHealth(thing)
+                    local fret_13 = quest:GetHealth(meleeApprentice)
                     index = 0
-                    getHealth = (health - quest:GetHealth(meleeApprentice)) - (getHealth - quest:GetHealth(hero))
+                    getHealth = string.unpack("<f", string.pack("<f", (health - fret_13) - (getHealth - addQuestInfoBarHealth)))
                     scratchValue22 = 0
                     repeat
                         addNewConversation = scratchValue22
                         if quest:ReadGlobalGameDataFloatAt(SCRIPT_DEF.GUI_MeleeGrades, index) <= getHealth then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d4c6c8 end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d4c3f3 end
                             break
                         end
                         index = index + 1
@@ -529,7 +643,7 @@ function Main(quest, me)
                     if not quest:IsActiveThreadTerminating() then
                         local resource = resources:NewResource()
                         resources:PrepareResource(resource)
-                        while not resources:TryAcquire(resource, hero, 4) do
+                        while not resources:TryAcquire(resource, quest:GetHero(), 4) do
                             if not quest:NewScriptFrame(me) then goto LAB_00d4c6b3 end
                         end
                         if not quest:IsActiveThreadTerminating() then
@@ -621,15 +735,12 @@ function Main(quest, me)
                 quest:DeregisterTimer(timerId2)
                 goto LAB_00d4c40d
                 ::FLOW_past_lab_00d4c3f3::
-                ::LAB_00d4c6c8::
                 quest:DeregisterTimer(timerId2)
             end
             goto FLOW_past_lab_00d4c40d
             ::LAB_00d4c40d::
             goto LAB_00d4c416
             ::FLOW_past_lab_00d4c40d::
-            ::LAB_00d4c6d1::
-            ::LAB_00d4c6da::
             quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource4)
             return

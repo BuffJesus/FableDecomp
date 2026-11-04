@@ -308,6 +308,9 @@ function Main(quest, me)
         pcVar7 = "TEXT_QST_009_GAMES_MASTER_WON"
         pCVar6 = quest:GetHero()
         r3 = me:Speak(pCVar6, pcVar7, iVar8, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+        if not r3 then
+            goto LAB_00d06bc5
+        end
         iVar8 = me:IsPerformingScriptTask()
         cVar4 = iVar8
         while cVar4 do

@@ -19,7 +19,8 @@ end
 
 -- KillBird.Init (retail 0x00d430f0)
 function Init(quest, me)
-    quest:EntitySetThingAsEnemyOfThing(me, quest:GetHero())
+    local pThing = quest:GetHero()
+    quest:EntitySetThingAsEnemyOfThing(me, pThing)
 end
 
 -- KillBird.OnPersist (retail 0x00cdebc0)

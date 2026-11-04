@@ -1,5 +1,7 @@
 # Script converter resume checklist
 
+> Historical resume checklist; no current authorization to resume recovery.
+
 Active [marathon checkpoint](../journal/2026-09/NEW_OAKVALE_MARATHON_2026-09-14.md).
 User requested sustained marathon work. Continue through the remaining gates.
 

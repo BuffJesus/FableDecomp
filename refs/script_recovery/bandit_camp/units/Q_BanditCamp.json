@@ -753,5 +753,34 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedListCapacityInit": {
+    "0x00d032f0": {
+      "nativeSha256": "f392af6c69a2392975620a52c2806793f99d2e2ea02a580b9de543ea0d801033",
+      "sourceSha256": "bccb520fd32a70adb24d6547e79a26129a7f5049aedb0a8ec8d4f59e0d7a9d31",
+      "loweredSha256": "e11cc2f8a0642fa17f3d410c18bbbac24bd775b40bcf5fe71e1aa46ea3ef4acc",
+      "callSite": "0x00d03429",
+      "vector": "iStack_c",
+      "statement": "::__EH_epilog3(auStack_4,(int)&uStack_15,0);",
+      "nativeInstructions": {
+        "0xd032fb": "33ed",
+        "0xd03417": "55",
+        "0xd03418": "8d4c2417",
+        "0xd0341c": "51",
+        "0xd0341d": "8d4c242c",
+        "0xd03421": "896c2424",
+        "0xd03425": "896c2428",
+        "0xd03429": "e8bdce74ff",
+        "0xd0342e": "8b4e40",
+        "0xd03431": "8b11",
+        "0xd03433": "ff9218010000",
+        "0xd03439": "8b10",
+        "0xd0343b": "8d4c241c",
+        "0xd0343f": "51",
+        "0xd03440": "8bc8",
+        "0xd03442": "ff92dc000000"
+      },
+      "review": "D03429 receiver is capacity at balanced ESP+24; adjacent begin/end at ESP+1c/+20 are zero. Callee4502EB writes second argument zero and ignores allocator, returns receiver, ret8. Header base passed to hero messageDC. EBP zero reaches the call across the loop. Lua list lowering owns storage; capacity/allocator have no other source uses."
+    }
   }
 }

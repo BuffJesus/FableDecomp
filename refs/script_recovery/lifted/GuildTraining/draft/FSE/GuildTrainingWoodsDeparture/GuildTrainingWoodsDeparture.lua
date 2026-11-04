@@ -19,16 +19,13 @@ function Main(quest)
                 quest:AddEntityBinding("ScorpionHome", "GuildTrainingWoodsDeparture/Entities/ScorpionHome", 1)
                 quest:FinalizeEntityBindings()
                 quest:CreateThread("WatchForTermination")  -- native thread body Quest_GuildTrainingWoods_Departure_Init: lift it as function WatchForTermination(quest)
-                if (CVar5 & 8) ~= 0 then
-                    CVar5 = CVar5 & 0xfffffff7
-                end
                 quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
                 quest:SetStateInt("DepartureMissionPoint", 0)
                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
                 this_00 = quest:GetThingWithScriptName("MazeCreationMarker")
                 bVar2 = false
                 pPosition = this_00:GetPos()
-                r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_TUTORIAL", pPosition, "FinalMaze")
+                r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_TUTORIAL", pPosition, "FinalMaze", bVar2)
             end
             return
         end

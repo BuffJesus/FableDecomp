@@ -17,10 +17,19 @@ local SCRIPT_DEF = {
 
 -- GameflowAssistance.Main (retail 0x00cefac0)
 function Main(quest)
+    local scratchValue
     quest:CreateThread("Tutorial_CombatMultiplier")  -- native thread body NScript::CGameflowAssistanceScript::Tutorial_LowHealth: lift it as function Tutorial_CombatMultiplier(quest)
+    if not scratchValue then
+    end
     quest:CreateThread("Tutorial_LowHealth")  -- native thread body NScript::CGameflowAssistanceScript::Tutorial_LowHealth: lift it as function Tutorial_LowHealth(quest)
+    if not scratchValue then
+    end
     quest:CreateThread("Tutorial_LowMagic")  -- native thread body NScript::CGameflowAssistanceScript::Tutorial_LowHealth: lift it as function Tutorial_LowMagic(quest)
+    if not scratchValue then
+    end
     quest:CreateThread("Tutorial_RenownLevelIncrease")  -- native thread body NScript::CGameflowAssistanceScript::Tutorial_RenownLevelIncrease: lift it as function Tutorial_RenownLevelIncrease(quest)
+    if not scratchValue then
+    end
 end
 
 -- GameflowAssistance.Init (retail 0x00cefa00)
@@ -37,14 +46,30 @@ end
 
 -- GameflowAssistance.OnPersist (retail 0x00cf0560)
 function OnPersist(quest, context)
-    quest:SetStateInt("FlourishesOffered", quest:PersistTransferInt(context, "FlourishesOffered", quest:GetStateInt("FlourishesOffered") or 0))
-    quest:SetStateInt("FlourishesPerformed", quest:PersistTransferInt(context, "FlourishesPerformed", quest:GetStateInt("FlourishesPerformed") or 0))
-    quest:SetStateInt("CombatMultHighestLevel", quest:PersistTransferInt(context, "CombatMultHighestLevel", quest:GetStateInt("CombatMultHighestLevel") or 0))
-    quest:SetStateInt("CombatMultFramesSinceChange", quest:PersistTransferInt(context, "CombatMultFramesSinceChange", quest:GetStateInt("CombatMultFramesSinceChange") or 0))
-    quest:SetStateInt("HealthWarningsGiven", quest:PersistTransferInt(context, "HealthWarningsGiven", quest:GetStateInt("HealthWarningsGiven") or 0))
-    quest:SetStateInt("WillEnergyWarningsGiven", quest:PersistTransferInt(context, "WillEnergyWarningsGiven", quest:GetStateInt("WillEnergyWarningsGiven") or 0))
-    quest:SetStateInt("SaveWarningsGiven", quest:PersistTransferInt(context, "SaveWarningsGiven", quest:GetStateInt("SaveWarningsGiven") or 0))
-    quest:SetStateInt("SavedRenownLevel", quest:PersistTransferInt(context, "SavedRenownLevel", quest:GetStateInt("SavedRenownLevel") or 0))
+    local flourishesOffered = quest:GetStateInt("FlourishesOffered") or 0
+    flourishesOffered = quest:PersistTransferInt(context, "FlourishesOffered", flourishesOffered)
+    quest:SetStateInt("FlourishesOffered", flourishesOffered)
+    local flourishesPerformed = quest:GetStateInt("FlourishesPerformed") or 0
+    flourishesPerformed = quest:PersistTransferInt(context, "FlourishesPerformed", flourishesPerformed)
+    quest:SetStateInt("FlourishesPerformed", flourishesPerformed)
+    local combatMultHighestLevel = quest:GetStateInt("CombatMultHighestLevel") or 0
+    combatMultHighestLevel = quest:PersistTransferInt(context, "CombatMultHighestLevel", combatMultHighestLevel)
+    quest:SetStateInt("CombatMultHighestLevel", combatMultHighestLevel)
+    local combatMultFramesSinceChange = quest:GetStateInt("CombatMultFramesSinceChange") or 0
+    combatMultFramesSinceChange = quest:PersistTransferInt(context, "CombatMultFramesSinceChange", combatMultFramesSinceChange)
+    quest:SetStateInt("CombatMultFramesSinceChange", combatMultFramesSinceChange)
+    local healthWarningsGiven = quest:GetStateInt("HealthWarningsGiven") or 0
+    healthWarningsGiven = quest:PersistTransferInt(context, "HealthWarningsGiven", healthWarningsGiven)
+    quest:SetStateInt("HealthWarningsGiven", healthWarningsGiven)
+    local willEnergyWarningsGiven = quest:GetStateInt("WillEnergyWarningsGiven") or 0
+    willEnergyWarningsGiven = quest:PersistTransferInt(context, "WillEnergyWarningsGiven", willEnergyWarningsGiven)
+    quest:SetStateInt("WillEnergyWarningsGiven", willEnergyWarningsGiven)
+    local saveWarningsGiven = quest:GetStateInt("SaveWarningsGiven") or 0
+    saveWarningsGiven = quest:PersistTransferInt(context, "SaveWarningsGiven", saveWarningsGiven)
+    quest:SetStateInt("SaveWarningsGiven", saveWarningsGiven)
+    local savedRenownLevel = quest:GetStateInt("SavedRenownLevel") or 0
+    savedRenownLevel = quest:PersistTransferInt(context, "SavedRenownLevel", savedRenownLevel)
+    quest:SetStateInt("SavedRenownLevel", savedRenownLevel)
 end
 
 -- GameflowAssistance.Tutorial_CombatMultiplier (retail 0x00cefcc0)
@@ -56,26 +81,35 @@ function Tutorial_CombatMultiplier(quest)
         end
         local isPlayerWieldingWeapon = quest:IsPlayerWieldingWeapon() and quest:IsHeroControlledByPlayer()
         if isPlayerWieldingWeapon then
+            if quest:IsActiveThreadTerminating() then return end
             local getPlayerCreatureCombatMultiplier = quest:GetPlayerCreatureCombatMultiplier()
             if quest:GetStateInt("CombatMultHighestLevel") < getPlayerCreatureCombatMultiplier then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateInt("CombatMultHighestLevel", getPlayerCreatureCombatMultiplier)
                 quest:SetStateInt("CombatMultFramesSinceChange", 0)
                 if quest:ReadGlobalGameData(SCRIPT_DEF.CombatMultStopBotheringAfter) < getPlayerCreatureCombatMultiplier then
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_MASTER", "", true, false)
                     return
                 end
+                if quest:IsActiveThreadTerminating() then return end
                 local combatMultHighestLevel = quest:GetStateInt("CombatMultHighestLevel")
                 if combatMultHighestLevel == 15 then
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_EXCELLENT", "", true, false)
                 elseif combatMultHighestLevel == 10 then
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_ADEPT", "", true, false)
                 elseif combatMultHighestLevel == 5 then
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_PROGRESS", "", true, false)
                 end
             else
+                if quest:IsActiveThreadTerminating() then return end
                 local combatMultFramesSinceChange = quest:GetStateInt("CombatMultFramesSinceChange")
                 quest:SetStateInt("CombatMultFramesSinceChange", combatMultFramesSinceChange + 1)
                 if quest:ReadGlobalGameData(SCRIPT_DEF.CombatMultTooLongUnchanged) * quest:GetStateInt("CombatMultHighestLevel") < combatMultFramesSinceChange + 1 then
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_MULT_TRY", "", true, false)
                     quest:SetStateInt("CombatMultFramesSinceChange", 0)
                 end
@@ -94,28 +128,36 @@ function Tutorial_LowHealth(quest)
         if not quest:NewScriptFrame() then return end
         if quest:GetMasterGameState("KilledGM") then break end
         if not quest:IsHeroControlledByPlayer() then goto continue_1 end
+        if quest:IsActiveThreadTerminating() then return end
         fret_0 = quest:GetHeroHealth()
         if quest:ReadGlobalGameData(SCRIPT_DEF.VeryLowHealthWarning) <= fret_0 then
             if quest:GetHeroHealth() < quest:ReadGlobalGameData(SCRIPT_DEF.LowHealthWarning) then
+                if quest:IsActiveThreadTerminating() then return end
                 if readGlobalGameData2 < 1 then
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_HEALTH_LOW", "", true, false)
                     readGlobalGameData2 = quest:ReadGlobalGameData(SCRIPT_DEF.LowHealthMessageInterval)
                     goto LAB_00cf0155
                 end
             end
-        elseif readGlobalGameData < 1 then
-            quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_HEALTH_CRIT", "", true, false)
-            readGlobalGameData = quest:ReadGlobalGameData(SCRIPT_DEF.VeryLowHealthMessageInterval)
-            goto LAB_00cf0155
+        else
+            if quest:IsActiveThreadTerminating() then return end
+            if readGlobalGameData < 1 then
+                if quest:IsActiveThreadTerminating() then return end
+                quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_HEALTH_CRIT", "", true, false)
+                readGlobalGameData = quest:ReadGlobalGameData(SCRIPT_DEF.VeryLowHealthMessageInterval)
+                goto LAB_00cf0155
+            end
         end
         goto FLOW_past_lab_00cf0155
         ::LAB_00cf0155::
-        quest:SetStateInt("HealthWarningsGiven", quest:GetStateInt("HealthWarningsGiven") + 1)
+        quest:SetStateInt("HealthWarningsGiven", (quest:GetStateInt("HealthWarningsGiven") + 1 + 2147483648) % 4294967296 - 2147483648)
         ::FLOW_past_lab_00cf0155::
         readGlobalGameData = readGlobalGameData - 1
         readGlobalGameData2 = readGlobalGameData2 - 1
         ::continue_1::
     end
+    quest:IsActiveThreadTerminating()
 end
 
 -- GameflowAssistance.Tutorial_LowMagic (retail 0x00cf0180)
@@ -125,8 +167,10 @@ function Tutorial_LowMagic(quest)
         if not quest:NewScriptFrame() then return end
         if quest:GetMasterGameState("KilledGM") then break end
         if quest:IsHeroControlledByPlayer() then
+            if quest:IsActiveThreadTerminating() then return end
             local scratchValue = readGlobalGameData < 1 and quest:GetHeroWillEnergyLevel() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.LowWillEnergyWarningLevel)
             if scratchValue then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_080_WILL_LOW", "", true, false)
                 readGlobalGameData = quest:ReadGlobalGameData(SCRIPT_DEF.LowWillEnergyMessageInterval)
                 quest:SetStateInt("WillEnergyWarningsGiven", quest:GetStateInt("WillEnergyWarningsGiven") + 1)
@@ -134,66 +178,51 @@ function Tutorial_LowMagic(quest)
             readGlobalGameData = readGlobalGameData - 1
         end
     end
+    quest:IsActiveThreadTerminating()
 end
 
 -- GameflowAssistance.Tutorial_RenownLevelIncrease (retail 0x00cf02a0)
 function Tutorial_RenownLevelIncrease(quest)
-    local scratchValue, scratchValue2, scratchValue3
-    local isHeroControlledByPlayer = quest:IsActiveThreadTerminating()
+    local renownMessages = {
+        [1] = "TEXT_QST_080_RENOWN_LEVEL_ONE",
+        [2] = "TEXT_QST_080_RENOWN_LEVEL_TWO",
+        [3] = "TEXT_QST_080_RENOWN_LEVEL_THREE",
+        [4] = "TEXT_QST_080_RENOWN_LEVEL_FOUR",
+        [5] = "TEXT_QST_080_RENOWN_LEVEL_FIVE",
+        [6] = "TEXT_QST_080_RENOWN_LEVEL_SIX",
+        [7] = "TEXT_QST_080_RENOWN_LEVEL_SEVEN",
+    }
+    local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
     while true do
-        if isHeroControlledByPlayer then
-            scratchValue = 8
-            repeat
-                scratchValue = scratchValue - 1
-            until scratchValue == 0
+        if isActiveThreadTerminating then
             return
         end
         if quest:GetMasterGameState("KilledGM") then break end
         local getHeroRenownLevel = quest:GetHeroRenownLevel()
-        if not quest:IsHeroControlledByPlayer() then quest:NewScriptFrame(); isHeroControlledByPlayer = quest:IsActiveThreadTerminating(); goto continue_1 end
-        if quest:IsActiveThreadTerminating() then
-            scratchValue2 = 8
-            repeat
-                scratchValue2 = scratchValue2 - 1
-            until scratchValue2 == 0
-            return
-        end
-        if quest:GetStateInt("SavedRenownLevel") < getHeroRenownLevel then
-            if quest:IsActiveThreadTerminating() then
-                -- TODO(native): _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);
-                return
-            end
-            quest:SetStateInt("SavedRenownLevel", getHeroRenownLevel)
-            if getHeroRenownLevel < 8 then
-                if quest:IsActiveThreadTerminating() then
-                    -- TODO(native): _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);
-                    return
+        if not quest:IsHeroControlledByPlayer() then
+            quest:NewScriptFrame();
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating();
+        else
+            if quest:IsActiveThreadTerminating() then return end
+            if quest:GetStateInt("SavedRenownLevel") < getHeroRenownLevel then
+                if quest:IsActiveThreadTerminating() then return end
+                quest:SetStateInt("SavedRenownLevel", getHeroRenownLevel)
+                if getHeroRenownLevel < 8 then
+                    if quest:IsActiveThreadTerminating() then return end
+                    quest:HeroReceiveMessageFromGuildMaster("", renownMessages[getHeroRenownLevel] or "TEXT_QST_080_RENOWN_LEVEL_SEVEN", true, true)
                 end
-                quest:HeroReceiveMessageFromGuildMaster("", "TEXT_QST_080_RENOWN_LEVEL_SEVEN", true, true)
-            end
-            if 1 < getHeroRenownLevel then
-                if quest:IsActiveThreadTerminating() then
-                    -- TODO(native): _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);
-                    return
+                if 1 < getHeroRenownLevel then
+                    if quest:IsActiveThreadTerminating() then return end
+                    quest:RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT")
+                    quest:RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT")
+                    quest:RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT")
                 end
-                quest:RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT")
-                quest:RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT")
-                quest:RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT")
             end
+            quest:NewScriptFrame()
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         end
-        quest:NewScriptFrame()
-        isHeroControlledByPlayer = quest:IsActiveThreadTerminating()
         ::continue_1::
     end
-    scratchValue3 = 8
-    if quest:IsActiveThreadTerminating() then
-        repeat
-            scratchValue3 = scratchValue3 - 1
-        until scratchValue3 == 0
-        return
-    end
-    repeat
-        scratchValue3 = scratchValue3 - 1
-    until scratchValue3 == 0
+    if quest:IsActiveThreadTerminating() then return end
 end
 

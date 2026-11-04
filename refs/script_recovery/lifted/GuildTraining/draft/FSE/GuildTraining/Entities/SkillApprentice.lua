@@ -215,6 +215,11 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TEST_ALREADY"
                             pCVar8 = quest:GetHero()
                             r3 = me:Speak(pCVar8, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                            if not r3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_74)
+                                __cleanup_LAB_00d4de46(); return
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar5 = iVar6
                             while cVar5 do
@@ -261,6 +266,11 @@ function Main(quest, me)
                     pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_HELLO"
                     pCVar9 = quest:GetHero()
                     r4 = me:Speak(pCVar9, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                    if not r4 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_128)
+                        __cleanup_LAB_00d4de46(); return
+                    end
                     iVar6 = me:IsPerformingScriptTask()
                     cVar5 = iVar6
                     while cVar5 do
@@ -328,6 +338,9 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT_APLUS"
                                 pCVar9 = quest:GetHero()
                                 r5 = me:Speak(pCVar9, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                                if not r5 then
+                                    goto LAB_00d4dded
+                                end
                                 iVar7 = me:IsPerformingScriptTask()
                                 cVar5 = iVar7
                                 while cVar5 do
@@ -359,6 +372,9 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_TIME_LIMIT"
                             pCVar8 = quest:GetHero()
                             r6 = me:Speak(pCVar8, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                            if not r6 then
+                                goto LAB_00d4dded
+                            end
                             iVar7 = me:IsPerformingScriptTask()
                             cVar5 = iVar7
                             while cVar5 do
@@ -401,6 +417,11 @@ function Main(quest, me)
                     pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_RETURN"
                     pCVar8 = quest:GetHero()
                     r7 = me:Speak(pCVar8, pcVar13, iVar7, (iVar14 ~= 0), (iVar17 ~= 0), (iVar15 ~= 0))
+                    if not r7 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_128)
+                        __cleanup_LAB_00d4de46(); return
+                    end
                     iVar7 = me:IsPerformingScriptTask()
                     cVar5 = iVar7
                     while cVar5 do
@@ -683,6 +704,11 @@ function Main(quest, me)
                         pcVar13 = "TEXT_QST_028_APPRENTICE_SKILL_EARLY"
                         pCVar8 = quest:GetHero()
                         r8 = me:Speak(pCVar8, pcVar13, iVar6, (iVar7 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                        if not r8 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_64)
+                            __cleanup_LAB_00d4de46(); return
+                        end
                         iVar6 = me:IsPerformingScriptTask()
                         cVar5 = iVar6
                         while cVar5 do

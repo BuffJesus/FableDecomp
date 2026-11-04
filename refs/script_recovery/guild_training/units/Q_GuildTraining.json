@@ -1310,5 +1310,108 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedStackScalarAliases": {
+    "0x00d4dea0": {
+      "nativeSha256": "c8e74491dad262d2a39830c6bfc4d5967b271e631e9f8629e7b1d4e941297139",
+      "sourceSha256": "da0745b1fa23b2534a3c7c7adab536cb14f75b10c2ff3e204cd828f86a73193f",
+      "alias": "birdTimerId",
+      "nativeInstructions": {
+        "0x00D4DEA0": "81ec90000000",
+        "0x00D4DEA6": "53",
+        "0x00D4DEA7": "56",
+        "0x00D4DEAA": "57",
+        "0x00D4DF85": "55",
+        "0x00D4E125": "8b0df8e84301",
+        "0x00D4E12B": "8b11",
+        "0x00D4E12D": "ff925c010000",
+        "0x00D4E139": "8bd8",
+        "0x00D4E13D": "6a0f",
+        "0x00D4E13F": "53",
+        "0x00D4E140": "895c2418",
+        "0x00D4E144": "ff9064010000",
+        "0x00D4E8C4": "8b542410",
+        "0x00D4E8CA": "52",
+        "0x00D4E8CB": "ff9060010000",
+        "0x00D4E94C": "8b542410",
+        "0x00D4E952": "52",
+        "0x00D4E953": "ff9060010000",
+        "0x00D4E9BE": "8b442410",
+        "0x00D4E9C4": "50",
+        "0x00D4E9C5": "ff9260010000",
+        "0x00D4EF87": "8d4c2410",
+        "0x00D4EF8B": "e8e054f8ff",
+        "0x00D4EF99": "5d",
+        "0x00D4EF9A": "5f",
+        "0x00D4EF9B": "5e",
+        "0x00D4EF9C": "5b",
+        "0x00D4EF9D": "81c490000000",
+        "0x00D4EFA3": "c3"
+      },
+      "edits": [
+        [
+          "timerId",
+          "birdTimerId"
+        ],
+        [
+          "(**(code **)(*DAT_0143e8f8 + 0x160))(DAT_0143e8f8,xStack_8c);",
+          "(**(code **)(*DAT_0143e8f8 + 0x160))(DAT_0143e8f8,birdTimerId);"
+        ]
+      ],
+      "editCounts": [
+        6,
+        3
+      ]
+    }
+  },
+  "reviewedMovieMembers": {
+    "0x00d4dea0": {
+      "nativeSha256": "c8e74491dad262d2a39830c6bfc4d5967b271e631e9f8629e7b1d4e941297139",
+      "sourceSha256": "da0745b1fa23b2534a3c7c7adab536cb14f75b10c2ff3e204cd828f86a73193f",
+      "nativeInstructions": {
+        "0x00D4DEA0": "81ec90000000",
+        "0x00D4DEA6": "53",
+        "0x00D4DEA7": "56",
+        "0x00D4DEAA": "57",
+        "0x00D4DF85": "55",
+        "0x00D4E360": "8d4c2428",
+        "0x00D4E364": "e817c0c4ff",
+        "0x00D4E379": "c7442430f40e2601",
+        "0x00D4E393": "8d442428",
+        "0x00D4E397": "50",
+        "0x00D4E398": "8d842484000000",
+        "0x00D4E39F": "50",
+        "0x00D4E3A0": "ff92c8050000",
+        "0x00D4E983": "8d4c2428",
+        "0x00D4E987": "e8f49199ff",
+        "0x00D4E9DF": "6a00",
+        "0x00D4E9E6": "ff92ec050000",
+        "0x00D4E9EC": "8d4c2428",
+        "0x00D4E9F0": "e88b9199ff",
+        "0x00D4E9F5": "e98d050000",
+        "0x00D4EF99": "5d",
+        "0x00D4EF9A": "5f",
+        "0x00D4EF9B": "5e",
+        "0x00D4EF9C": "5b",
+        "0x00D4EF9D": "81c490000000",
+        "0x00D4EFA3": "c3"
+      },
+      "stackReceiverAliases": [
+        {
+          "old": "xStack_7c",
+          "new": "xStack_78",
+          "entrySlot": -120,
+          "frameBytes": 160,
+          "receiverLeas": [
+            "0x00D4E360",
+            "0x00D4E983",
+            "0x00D4E9EC"
+          ],
+          "constructorSite": "0x00D4E364",
+          "constructorTarget": "0x0099a380",
+          "count": 1
+        }
+      ]
+    }
   }
 }

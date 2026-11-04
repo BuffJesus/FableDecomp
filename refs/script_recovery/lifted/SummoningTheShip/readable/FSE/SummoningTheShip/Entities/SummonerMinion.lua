@@ -6,20 +6,22 @@ local waveID
 
 -- SummonerMinion.Main (retail 0x00df2ab0)
 function Main(quest, me)
+    local waveId = waveID
     quest:NewScriptFrame(me)
     if quest:IsActiveThreadTerminating() then return end
     quest:EntitySetAlpha(me, 0.0, true)
     quest:EntitySetInLimbo(me, true, true)
-    while not quest:GetStateBool("SummonerAttacksStarted") or quest:GetStateInt("CurrentAttackWave") ~= waveID do
+    while not quest:GetStateBool("SummonerAttacksStarted") or quest:GetStateInt("CurrentAttackWave") ~= waveId do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    if waveID == 1 then
+    if waveId == 1 then
         if quest:IsActiveThreadTerminating() then return end
-        quest:GiveThingBestEnemyTarget(me, quest:GetHero())
+        local pTarget = quest:GetHero()
+        quest:GiveThingBestEnemyTarget(me, pTarget)
     end
     quest:EntitySetInLimbo(me, false, true)
-    -- TODO(native): FadeInThing(p0,0x40000000);
+    me:FadeInThing(2.0)
     while quest:GetStateInt("SummonersAlive") ~= 0 do
         if not quest:NewScriptFrame(me) then return end
     end

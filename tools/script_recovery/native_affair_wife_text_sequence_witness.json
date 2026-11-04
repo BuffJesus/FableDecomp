@@ -44,5 +44,9 @@
       "new": "GSI->AddLineToConversation(ppVar15,native_arg_wife_line_key,0,me,local_native_cached_husband);"
     }
   ],
-  "review": "Counterstack60 initializes0 atDB35B3(after2pushes ESP44), loads3B90/add10/store3B9E, resets10 at3C04(afterpush ESP40). Independent ofmaskEBX. GFIntToCharString99F830 uses%d; prefix12D8D00 concat3BBE outputstack36. TextEntryExists3BE2 checkskey. PinnedEnglishbank hasexact10/20/30/40,50absent; reachablecountercycles10..50, so >40 equivalent tomissing. Preserve missingkeyterminationcheck andjump3C11; fallbackcounter10/key_10. Native wifeLine3C24 ID EBX,textstack36,false,selfEDI,cachedhusbandstack48. Removeonlytemporarystringconstruction/destructors inprefix; no ownedactorcleanup removed. Otherbanks/mods reject this specialization."
+  "review": "Counterstack60 initializes0 atDB35B3(after2pushes ESP44), loads3B90/add10/store3B9E, resets10 at3C04(afterpush ESP40). Independent ofmaskEBX. GFIntToCharString99F830 uses%d; prefix12D8D00 concat3BBE outputstack36. TextEntryExists3BE2 checkskey. PinnedEnglishbank hasexact10/20/30/40,50absent; reachablecountercycles10..50, so >40 equivalent tomissing. Preserve missingkeyterminationcheck andjump3C11; fallbackcounter10/key_10. Native wifeLine3C24 ID EBX,textstack36,false,selfEDI,cachedhusbandstack48. Removeonlytemporarystringconstruction/destructors inprefix; no ownedactorcleanup removed. Otherbanks/mods reject this specialization.",
+  "compatibleTextBankSha256": [
+    "f1b76255aaf469a00cdb484cac5bcf68a65f5a370cc011d185985dd1def26f0c"
+  ],
+  "compatibleTextBankReview": "2026-10-01: TextBank inventory of the entire TEXT_QST_048_AFFAIR_WIFE_WHATS_THIS_ prefix contains exactly the same four type-0 keys 10/20/30/40; 50 is absent. Native selection depends on existence. Original bank pin and every native/source pin retained."
 }

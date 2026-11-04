@@ -7,21 +7,30 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local predicateResult, getStateInt
     local globalCrowdTimer = quest:GetStateInt("GlobalCrowdTimer")
-    local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     quest:SetStateInt("TotalCreatures_0", quest:GetStateInt("TotalCreatures_0") + 1)
     quest:SetStateInt("ExtraCreatures", quest:GetStateInt("ExtraCreatures") + 1)
     while not quest:IsActiveThreadTerminating() do
         if me:MsgIsHitByHeroWithFlourish() then
+            if quest:IsActiveThreadTerminating() then return end
             if quest:GetTimer(globalCrowdTimer) < 1 then
-                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
+                if quest:IsActiveThreadTerminating() then return end
+                local getStateString = quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3)
+                local hero = quest:GetHero()
+                local arenaSpawn = quest:GetNearestWithScriptName(hero, "ArenaSpawn")
+                quest:PlayCriteriaSoundOnThing(arenaSpawn, getStateString)
                 quest:SetTimer(globalCrowdTimer, 10)
                 getStateInt = quest:GetStateInt("NewCrowdPoints") + 5
                 goto LAB_00f1b586
             end
         elseif me:MsgIsHitByHeroWithDecapitate() then
+            if quest:IsActiveThreadTerminating() then return end
             if quest:GetTimer(globalCrowdTimer) < 9 then
-                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
+                if quest:IsActiveThreadTerminating() then return end
+                local getStateString2 = quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3)
+                local hero2 = quest:GetHero()
+                local arenaSpawn2 = quest:GetNearestWithScriptName(hero2, "ArenaSpawn")
+                quest:PlayCriteriaSoundOnThing(arenaSpawn2, getStateString2)
                 quest:SetTimer(globalCrowdTimer, 10)
                 getStateInt = quest:GetStateInt("NewCrowdPoints") + 7
                 goto LAB_00f1b586
@@ -38,6 +47,7 @@ function Main(quest, me)
             predicateResult = true
             ::FLOW_past_lab_00f1b523::
             if predicateResult then
+                if quest:IsActiveThreadTerminating() then return end
                 getStateInt = quest:GetStateInt("NewCrowdPoints") + 2
                 goto LAB_00f1b586
             end

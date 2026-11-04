@@ -114,9 +114,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "SetQuestWorldMapOffset: missing y (2 args for 3 params)"
-          ],
+          "todo": [],
           "calls": [
             "AddQuestRegion",
             "SetQuestWorldMapOffset",
@@ -1514,9 +1512,9 @@
             "ENGINE_IsDistanceBetweenThingsUnder",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "GetHero",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
@@ -1564,14 +1562,14 @@
             "AddPersonToConversation",
             "GetHero",
             "AddLineToConversation",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "Pause",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1597,7 +1595,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1609,7 +1607,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1651,7 +1649,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1663,7 +1661,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1943,7 +1941,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "PlayLoopingAnimation",
             "IsActiveThreadTerminating",
             "IsAwareOfHero",
@@ -1956,7 +1954,7 @@
             "IsActiveThreadTerminating",
             "ClearCommands",
             "ClearAllActionsIncludingLoopingAnimations",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -2007,7 +2005,7 @@
           },
           "todo": [],
           "calls": [
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "SetStateInt"
           ],
           "lines": 2,
@@ -2090,6 +2088,26 @@
         "QueenHornet": "WaspBoss/Entities/QueenHornet",
         "HornetDrone": "WaspBoss/Entities/HornetDrone"
       },
+      "blockingSpeechCancellation": {
+        "FSE/WaspBoss/Entities/WaspHelper.lua": [
+          {
+            "line": 98,
+            "actor": "me",
+            "query": "iVar13",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e0fd75",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 142,
+            "actor": "me",
+            "query": "iVar13",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e0fd75",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 10,
         "functions": 46,
@@ -2097,7 +2115,7 @@
         "functionSyntaxPassed": 46,
         "fileSyntaxPassed": 10,
         "fileSyntaxChecked": 10,
-        "todo": 4
+        "todo": 3
       }
     }
   ],
@@ -2108,6 +2126,6 @@
     "functionSyntaxPassed": 46,
     "fileSyntaxPassed": 10,
     "fileSyntaxChecked": 10,
-    "todo": 4
+    "todo": 3
   }
 }

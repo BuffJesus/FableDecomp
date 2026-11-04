@@ -5,7 +5,8 @@
 function Main(quest)
     quest:AddEntityBinding("MazeAtTavern", "QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern")
     quest:FinalizeEntityBindings()
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_GUARDIAN_SISTER_INFO_SECOND_OBJECTIVE_01", "", "OakBay")
+    local pQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_GUARDIAN_SISTER_INFO_SECOND_OBJECTIVE_01", "", "OakBay")
     while not quest:GetStateBool("GuardianSpokeToHero") do
         if not quest:NewScriptFrame() then return end
     end
@@ -14,8 +15,11 @@ function Main(quest)
     while mazeAtTavern ~= nil and mazeAtTavern:IsAlive() do
         if not quest:NewScriptFrame() then return end
     end
-    quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+    if quest:IsActiveThreadTerminating() then return end
+    local getActiveQuestName = quest:GetActiveQuestName()
+    quest:SetQuestAsCompleted(getActiveQuestName, false, false, false)
+    local getActiveQuestName2 = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(getActiveQuestName2, 0)
 end
 
 -- QS_GuardianSisterInfo2_SisterInBanditCamp.Init (retail 0x00e26810)
@@ -25,6 +29,8 @@ end
 
 -- QS_GuardianSisterInfo2_SisterInBanditCamp.OnPersist (retail 0x00e26e00)
 function OnPersist(quest, context)
-    quest:SetStateBool("GuardianSpokeToHero", quest:PersistTransferBool(context, "GuardianSpokeToHero", quest:GetStateBool("GuardianSpokeToHero")))
+    local guardianSpokeToHero = quest:GetStateBool("GuardianSpokeToHero") or false
+    guardianSpokeToHero = quest:PersistTransferBool(context, "GuardianSpokeToHero", guardianSpokeToHero)
+    quest:SetStateBool("GuardianSpokeToHero", guardianSpokeToHero)
 end
 

@@ -8,7 +8,6 @@ local SCRIPT_DEF = {
 
 -- Q_GuildTrainingWoodsWill.Main (retail 0x00d67890)
 function Main(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local scratchValue, ctr_84, ctr_88, scratchValue2, addNewConversation, scratchValue3, getHero
     local pppuVar, scratchValue4, movie, actorMap, resource2, willBandit
@@ -60,14 +59,14 @@ function Main(quest)
             ctr_84 = ctr_84 + 1
             scratchValue4 = scratchValue4 + 1
             scratchValue2 = scratchValue2 + 16
-        until scratchValue4 >= #willBandit
+        until not (scratchValue4 < (#willBandit))
     end
     scratchValue2 = 0
     resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
     scratchValue3 = 4
     pppuVar = resource2
-    getHero = hero
+    getHero = quest:GetHero()
     scratchValue = resources:TryAcquire(pppuVar, getHero, scratchValue3)
     while not scratchValue do
         quest:NewScriptFrame()
@@ -75,7 +74,7 @@ function Main(quest)
         if scratchValue then goto LAB_00d67db1 end
         scratchValue3 = 4
         pppuVar = resource2
-        getHero = hero
+        getHero = quest:GetHero()
         scratchValue = resources:TryAcquire(pppuVar, getHero, scratchValue3)
     end
     scratchValue = quest:IsActiveThreadTerminating()
@@ -104,16 +103,16 @@ function Main(quest)
                 scratchValue = quest:IsActiveThreadTerminating()
                 if scratchValue then resources:ReleaseResource(resource3); return end
                 getHero = willBandit[scratchValue2 / 12 + 1]
-                local pTarget = hero
+                local pTarget = quest:GetHero()
                 quest:GiveThingBestEnemyTarget(getHero, pTarget)
                 getHero = willBandit[scratchValue2 / 12 + 1]
                 scratchValue = false
                 local fret_0 = quest:GetHealth(getHero)
-                quest:ModifyThingHealth(getHero, 15.0 - fret_0, scratchValue)
+                quest:ModifyThingHealth(getHero, string.unpack("<f", string.pack("<f", 15.0 - fret_0)), scratchValue)
                 willBandit[scratchValue2 / 12 + 1]:SetToKillOnLevelUnload(false)
                 ctr_88 = ctr_88 + 1
                 scratchValue2 = scratchValue2 + 12
-            until ctr_88 >= #willBandit
+            until not (ctr_88 < (#willBandit))
         end
         scratchValue = quest:IsActiveThreadTerminating()
         if not scratchValue then
@@ -142,15 +141,15 @@ function Main(quest)
                     if scratchValue then resources:ReleaseResource(resource3); return end
                     quest:SetStateBool("BanditsAlive", false)
                 end
-                getHero = hero
+                getHero = quest:GetHero()
                 local fret_00 = quest:GetHealth(getHero)
                 if fret_00 < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MinHealth) then
                     scratchValue = quest:IsActiveThreadTerminating()
                     if scratchValue then resources:ReleaseResource(resource3); return end
                     addNewConversation = quest:AddNewConversation(willWhisper, false, false)
-                    getHero = hero
+                    getHero = quest:GetHero()
                     quest:AddPersonToConversation(addNewConversation, getHero)
-                    getHero = hero
+                    getHero = quest:GetHero()
                     quest:AddLineToConversation(addNewConversation, "TEXT_QST_028_TEEN_WHISPER_SKILL_WOODS_HEALTH", willWhisper, getHero, false)
                     scratchValue = quest:IsXbox()
                     if scratchValue then
@@ -198,7 +197,7 @@ function Main(quest)
                     resources:PrepareResource(resource2)
                     addNewConversation = 4
                     pppuVar = resource2
-                    getHero = hero
+                    getHero = quest:GetHero()
                     scratchValue = resources:TryAcquire(pppuVar, getHero, addNewConversation)
                     while not scratchValue do
                         quest:NewScriptFrame()
@@ -206,7 +205,7 @@ function Main(quest)
                         if scratchValue then goto LAB_00d6849b end
                         addNewConversation = 4
                         pppuVar = resource2
-                        getHero = hero
+                        getHero = quest:GetHero()
                         scratchValue = resources:TryAcquire(pppuVar, getHero, addNewConversation)
                     end
                     scratchValue = quest:IsActiveThreadTerminating()
@@ -250,9 +249,13 @@ function WatchForTermination(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     if not quest:GetStateBool("MissionFailed") then
-        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, true, false)
+        if quest:IsActiveThreadTerminating() then return end
+        local getActiveQuestName = quest:GetActiveQuestName()
+        quest:SetQuestAsCompleted(getActiveQuestName, false, true, false)
     else
-        quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
+        if quest:IsActiveThreadTerminating() then return end
+        local getActiveQuestName2 = quest:GetActiveQuestName()
+        quest:SetQuestAsFailed(getActiveQuestName2, true, "", true)
     end
     quest:DeactivateQuestLater("Q_GuildTrainingWoodsWill", 0)
 end
@@ -282,6 +285,7 @@ function WatchForLeaving(quest)
     while hero ~= nil and hero:IsAlive() do
         if quest:GetStateBool("MissionFailed") or quest:GetStateBool("MissionSucceeded") then break end
         if not quest:NewScriptFrame() then return end
+        hero = quest:GetHero()
     end
     if not quest:IsActiveThreadTerminating() and not quest:GetStateBool("MissionSucceeded") then
         quest:SetStateBool("MissionFailed", true)

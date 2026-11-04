@@ -102,8 +102,7 @@ Still different from Aeon's hand style, in payoff order:
 
 ## Measuring it
 Add to READABLE_REPORT.json per function: lines, temps, labels, `IsActiveThreadTerminating` count, `require(` count, gotos.
-Drive them down; semantics stay honest through `smoke_run_unit.py --stage readable` (0 problems) and the byte-identical
-draft gate (`gate.sh` → `OAKVALE GATE: identical`). Aeon's Fisherman / Orchard ports are the style target (audit table in
+Drive them down while preserving behavior with candidate-bound transformation tests, native comparisons where available, negative controls, and unrelated-unit comparisons. A zero-problem `smoke_run_unit.py --stage readable` run is a smoke diagnostic; an unchanged draft (`gate.sh` → `OAKVALE GATE: identical`) protects the draft, not the semantics of the changed readable output. Aeon's Fisherman / Orchard ports are the style target (audit table in
 `docs/scripts/AEON_LUA_PORTS.md`).
 
 ## Resume commands
@@ -112,3 +111,14 @@ python tools/script_recovery/build_readable_unit.py --unit orchard_farm
 python tools/script_recovery/smoke_run_unit.py --unit orchard_farm --stage readable
 python tools/script_recovery/build_unit_playtest_package.py        # -> local-candidate-v5 (then local_test.py preflight)
 ```
+
+Smoke uses the historical sidecar source profile by default. To check against
+the source paired with a candidate DLL, pass `--sidecar-source-dir` pointing to
+the directory containing `LuaManager.cpp`, `NoviUnitBindings.h` and
+`LuaRetailResources.h`. An incomplete explicit profile is rejected. This checks
+static registrations and mock execution; verify the DLL/source provenance
+separately before treating the result as candidate compatibility evidence.
+
+Without `--stage`, smoke selects the generated readable stage used by packaging
+(`readable_converter` where available). Use an explicit stage to inspect older
+reviewed artifacts; Guild Training's `readable` tree is deliberately disabled.

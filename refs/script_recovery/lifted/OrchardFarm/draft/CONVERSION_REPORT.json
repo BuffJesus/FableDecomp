@@ -244,9 +244,9 @@
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "GetHero",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "IsActiveThreadTerminating",
             "RESOURCE_RunMacro",
             "IsActiveThreadTerminating",
@@ -398,9 +398,9 @@
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "GetHero",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "IsActiveThreadTerminating",
             "RESOURCE_RunMacro",
             "IsActiveThreadTerminating",
@@ -1601,7 +1601,7 @@
               {
                 "native": "thing",
                 "lua": "native_arg_thing",
-                "type": "int"
+                "type": "CScriptThing *"
               }
             ],
             "returnKind": "bool",
@@ -1646,8 +1646,9 @@
           "todo": [],
           "calls": [
             "QUESTTHING_Empty",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "QUESTLIST_BeginValue",
+            "ENGINE_DistanceFloatStore",
             "QUESTLIST_At_CrateList",
             "QUESTTHING_Empty"
           ],

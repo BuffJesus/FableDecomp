@@ -632,5 +632,140 @@
     "pdbMembersUnused": [],
     "nestedPdbMembers": {}
   },
-  "entities": {}
+  "entities": {},
+  "reviewedThingOutputScopes": {
+    "0x00eeaef0": {
+      "address": "0x00EEAEF0",
+      "end": "0x00EEB662",
+      "sourceSha256": "25ca5bd946792b291869dca52cb2fa07ab5988a96980b8056cb84da53e68a31c",
+      "nativeSha256": "2b8f9fe2908c16abd0b5b778849fba574647bd1e87c8ca956f259a00d4b25131",
+      "anchors": {
+        "0xeeb27f": "8d44243c50ff921c0100008b58088b780483c0048b4424383bc3743085c0741eff088b44243883380075138b4808ff50048b4c243851e80237d1ff83c40485db897c2434895c24387402ff038b44244485c0c744243c8c8c2301741eff088b44244483380075138b4808ff50048b54244452e8c636d1ff83c40433ff8d4c243c897c2440897c2444e8d4efaaff",
+        "0xeeafc7": "8d4c242ce870f85bff5b5f5e83c448c3",
+        "0xeeaff1": "8d4c242ce846f85bff5b5f5e83c448c3",
+        "0xeeb507": "8d4c2448e870c67fff8d4c2430e827f35bff5d5b5f5e83c448c3",
+        "0xeeb52d": "8d4c2448e84ac67fff8d4c2430e801f35bff5d5b5f5e83c448c3",
+        "0xeeb58e": "8d4c2448e8e9c57fff8d4c2430e8a0f25bff5d5b5f5e83c448c3",
+        "0xeeb5e8": "8d4c2448e88fc57fff8d4c2430e846f25bff5d5b5f5e83c448c3",
+        "0xeeb648": "8d4c242ce88f34abff8d4c2430e8e6f15bff5d5b5f5e83c448c3",
+        "0xeeaf75": "8d44242c50ff921c010000"
+      },
+      "dependencies": {
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "0x8ab980": {
+          "length": 73,
+          "sha256": "3059c1458ce5fbca614ac7b3ffc35b4b564a4310c6a9de5a62f982ada1f04e15"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "83d924f226af312090e032cc18ecffc5e767bd13fd633ba9dae1c9adc2c5c0dd"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "76215ab1c8f75af889f974a5be9aa61c1c6f872d07fe5052d7bb4b21dbc09620"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "66d53e1840ff560f6b221738ae99f55507db0ce0e5c0f0cc85908d205e9c22dc",
+      "recoveredSha256": "7bf45f1ad36ddcfe7e8b9fa554a4d16814c1718df64a8f41f60589bd15fdddb2",
+      "operations": [
+        {
+          "before": "    local resources = quest:RetailResources()",
+          "after": "    return quest:WithRetailResources(function(resources)\n    local pickpocketTargetOwner = 0\n    local pickpocketTemporaryOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "    r1 = quest:GetHeroTargetedThing()",
+          "after": "    r1 = quest:GetHeroTargetedThing()\n    pickpocketTargetOwner = resources:TrackThingOutput(r1)",
+          "count": 1
+        },
+        {
+          "before": "                pCVar11 = quest:GetHeroTargetedThing()\n                r1 = pCVar11",
+          "after": "                pCVar11 = quest:GetHeroTargetedThing()\n                pickpocketTemporaryOwner = resources:TrackThingOutput(pCVar11)\n                resources:AssignThingOutput(pickpocketTargetOwner, pCVar11)\n                resources:RetireThingOutput(pickpocketTemporaryOwner); pickpocketTemporaryOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "\n        return\n",
+          "after": "\n        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0\n        return\n",
+          "count": 1
+        },
+        {
+          "before": "\n            return\n",
+          "after": "\n            resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0\n            return\n",
+          "count": 2
+        },
+        {
+          "before": "\n                    return\n",
+          "after": "\n                    resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0\n                    return\n",
+          "count": 2
+        },
+        {
+          "before": "\n                        return\n",
+          "after": "\n                        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0\n                        return\n",
+          "count": 5
+        },
+        {
+          "before": "\n                            return\n",
+          "after": "\n                            resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0\n                            return\n",
+          "count": 3
+        },
+        {
+          "before": "\n                                return\n",
+          "after": "\n                                resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0\n                                return\n",
+          "count": 2
+        },
+        {
+          "before": "    ::LAB_00eeafc7::\nend\n",
+          "after": "    ::LAB_00eeafc7::\n    resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "TrackThingOutput",
+        "AssignThingOutput",
+        "RetireThingOutput"
+      ]
+    }
+  },
+  "reviewedQuestConsciousConditions": {
+    "0x00eeaef0": {
+      "schema": "reviewed-quest-conscious-condition/1",
+      "address": "0x00eeaef0",
+      "role": "Main",
+      "sourceSha256": "25ca5bd946792b291869dca52cb2fa07ab5988a96980b8056cb84da53e68a31c",
+      "nativeSha256": "2b8f9fe2908c16abd0b5b778849fba574647bd1e87c8ca956f259a00d4b25131",
+      "operation": "RegisterQuestConsciousCondition",
+      "nativeThreadOffset": "0x2c",
+      "nativeVTable": "0x012c2fe8",
+      "contract": "Native16-byte conscious condition, clone retains counted Thing; caller local destroyed before first frame. No Lua polling.",
+      "sdkMethodSha256": "72a8314f9e5727faae53be26db7075582fa6cdd6c8cdc54f9d6b4b42b771198e",
+      "sdkBindingSha256": "f534880bb9a740bc59d51afd3a029bc508c831f5af321e46989b9c1521f3cad7",
+      "temporaryReuse": {
+        "inputSha256": "b7da42968acff26b4869a793ea4fd47ba7f9c9912788c17bad37198de87eb3fe",
+        "sourceAssignment": "xStack_10 = RESOURCE_StartMovie(\"\");",
+        "nativeSite": "0x00EEB03A",
+        "pushedStack": [
+          -16,
+          -56
+        ],
+        "contract": "Native condition at header-16/Thing-12 destroyed before first frame; later movie overwrites header-16. Export coalesces both under xStack_10. Preserve later movie assignment."
+      }
+    }
+  }
 }

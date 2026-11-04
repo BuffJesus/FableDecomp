@@ -24,11 +24,16 @@ Quest file (JSON):
   clear      false: no reflex clearing of hostiles near the hero (a disguise quest: Bandit Camp's gate guard is a
              hostile until the disguise is worn, and clearing him ended his entity script)
   answer     "yes" | "no": the default answer to a yes/no question (frames pause while it is up)
-  steps      optional [{name, travel, do, fight, talk, talkLabel, until, stateHost, timeout, tries, pauseSteps}, ...]
+  steps      optional [{name, travel, do, fight, talk, talkData, talkLabel, talkTarget, talkStarted, until, stateHost, timeout, tries, pauseSteps}, ...]
+             talkData selects an actor by its script data when several share a script name.
+             talkTarget is an optional Lua predicate in host; only explicit true permits TAB on that approach.
              after the start: cross to `travel` ([slot, x, y, z, region] like start.travel), run the `do` Lua
              statements in `host` (assistance, logged), fight the `fight`
              script names for the step's duration, talk to the script-named NPC, then wait until the Lua expression
-             is true (a step's pauseSteps answers its own yes/no questions); still false after `tries` fails the run
+             is true (a step's pauseSteps answers its own yes/no questions); failed targeting retries before
+             testing that expression. Failed targeting or a false expression after `tries` fails the run.
+             talkStarted optionally checks a Lua expression in the host for up to10seconds after TAB;
+             without acknowledgement, try the next approach position before accepting the interaction.
   pauseSteps optional input ladder for paused frames instead of [answer, clear, answer, ENTER] (e.g. ["clear"] where
              a scripted conversation pauses frames and a mouse answer would be an attack)
   done       Lua expression, evaluated in `host`, true when the test succeeded
@@ -103,6 +108,15 @@ def ocr_lines(png: Path) -> list[tuple[int, int, str]]:
 
 def norm(s: str) -> str:
     return re.sub(r'[^a-z0-9]', '', s.lower())
+
+
+def talk_selector(name, data=None):
+    script = json.dumps(name, ensure_ascii=False)
+    if data is None:
+        return f'quest:GetThingWithScriptName({script})'
+    value = json.dumps(data, ensure_ascii=False)
+    return (f'(function() for _, actor in ipairs(quest:GetAllThingsWithScriptName({script})) do '
+            f'if actor:GetDataString() == {value} then return actor end end end)()')
 
 
 def target_labels(png: Path, expected: str) -> list[str]:
@@ -367,20 +381,21 @@ def play(a, q) -> str:
         time.sleep(2.0)
         return wait_for(f"tostring(quest:IsQuestActive('{s['quest']}'))", 'true', 30)
 
-    def talk(name, label, sides=None):
+    def talk(name, label, sides=None, started=None, target_check=None, data=None):
         """start a conversation the quest waits for: stand beside the script-named NPC until the top-centre target
         label is theirs (OCR; TAB acts on whoever is targeted), then TAB"""
         wait_for("tostring(not quest:IsInCutscene() and not quest:IsInMovieSequence())", 'true', 180)
+        actor = talk_selector(name, data)
         # stand-offs: a config's `talkSides` for an NPC beside a wall (GTDI_Maze stands at a Guild pillar: the 1.5
         # stand-offs land inside geometry and the engine relocates the hero to another room; 1.0 in +x targets him)
         for dx, dy in (sides or CARD_SIDES):
-            send(f"{host}: local g = quest:GetThingWithScriptName('{name}'); local p = g:GetPos(); "
+            send(f"{host}: local g = {actor}; local p = g:GetPos(); "
                  f"p.x = p.x + {dx}; p.y = p.y + {dy}; p.z = p.z + 0.5; local h = quest:GetHero(); "
                  f"quest:EntityTeleportToPosition(h, p, 0, true, true)", 20)
             # Teleport is applied at an engine boundary and can overwrite facing
             # set in the same batch. Turn only after the hero has landed.
             time.sleep(1.0)
-            send(f"{host}: local g = quest:GetThingWithScriptName('{name}'); "
+            send(f"{host}: local g = {actor}; "
                  f"quest:EntitySetFacingAngleTowardsThing(quest:GetHero(), g, true); "
                  f"quest:CameraResetToViewBehindHero(0.1)", 20)
             time.sleep(1.5)
@@ -388,16 +403,21 @@ def play(a, q) -> str:
             game_input(f'capture {png}')
             target = target_labels(png, label)
             log('talk_side', side=[dx, dy], target=target)
-            if label and any(norm(label) == norm(t) for t in target):
+            if not label or any(norm(label) == norm(t) for t in target):
+                if target_check:
+                    targeted, _ = ev(f'tostring({target_check})', 6)
+                    log('talk_target_check', side=[dx, dy], value=targeted, expression=target_check)
+                    if targeted != 'true':
+                        continue
+                # Without a label or target guard, retain blind interaction.
+                # A movie-start acknowledgement alone cannot identify the actor.
+                if not label and not target_check:
+                    log('talk_blind', side=[dx, dy], target=target)
                 game_input('key TAB')
                 time.sleep(1.0)
-                return True
-            if not label:
-                # no known target label (a quest NPC whose on-screen name is unrecorded): the teleport faced
-                # them, so TAB acts on them; the quest's own state tells whether the conversation started
-                log('talk_blind', side=[dx, dy], target=target)
-                game_input('key TAB')
-                time.sleep(1.0)
+                if started and not wait_for(f'tostring({started})', 'true', 10):
+                    log('talk_unacknowledged', side=[dx, dy], expression=started)
+                    continue
                 return True
         return False
 
@@ -433,7 +453,7 @@ def play(a, q) -> str:
             if not travel(dest):
                 log('start_failed', quest=s['quest'], reason='travel failed')
                 return 'failed'
-        if s.get('talk') and not talk(s['talk'], s.get('talkLabel', ''), s.get('talkSides')):
+        if s.get('talk') and not talk(s['talk'], s.get('talkLabel', ''), s.get('talkSides'), s.get('talkStarted')):
             log('start_failed', quest=s['quest'], talk=s['talk'])
             return 'failed'
 
@@ -502,8 +522,13 @@ def play(a, q) -> str:
                     names = ', '.join(repr(n) for n in stp['fight'])
                     send(f'{host}: Runner.fightNames = {{{names}}}', 10)
                     step_fight = True
-                if stp.get('talk') and not talk(stp['talk'], stp.get('talkLabel', ''), stp.get('talkSides')):
+                if stp.get('talk') and not talk(stp['talk'], stp.get('talkLabel', ''), stp.get('talkSides'), stp.get('talkStarted'), stp.get('talkTarget'), stp.get('talkData')):
                     log('step_talk_failed', step=stp.get('name', step_i))
+                    if step_tries >= stp.get('tries', 2):
+                        result = 'failed'
+                        break
+                    step_started = None
+                    continue
                 for script, data in stp.get('hit', []):
                     # strike world objects in order (V_SingingStones: four `SingingStone`s told apart by their data
                     # string, hit D B A C). A retail-native quest's state is not readable from Lua, so each object
@@ -527,6 +552,10 @@ def play(a, q) -> str:
                     log('step_hit', script=script, data=data)
                     time.sleep(stp.get('hitPause', 3.0))         # the stone's line plays between hits
                     game_input(f"capture {out / f'{a.tag}_hit_{script}_{data}.png'}")
+                # Targeting and setup may block on UI screens. Give the action
+                # its full completion window once those operations have ended;
+                # otherwise a late successful TAB immediately starts a retry.
+                step_started = time.time()
             reply = send(f"eval {host_s}: tostring({stp['until']})", 6)
             val = next((r.rsplit(' = ', 1)[-1] for r in reply if '[Autopilot] eval ' in r), None)
             if val == 'true':

@@ -9,11 +9,11 @@ local wbCounter
 
 -- WB_WhiteBalverine.Main (retail 0x00e158f0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult2, predicateResult4, predicateResult, predicateResult17, predicateResult23
-    local predicateResult30, timeRemaining, timeRemaining2, scratchValue6, scratchValue8
-    local scratchValue, scratchValue12, runPoint, runPoint22, timerId, scratchValue16, timerId2
+    local predicateResult30, timeRemaining, timeRemaining2, scratchValue6, scratchValue8, hero2
+    local scratchValue, scratchValue12, hero5, runPoint, runPoint22, timerId, scratchValue16
+    local timerId2
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
@@ -31,10 +31,12 @@ function Main(quest, me)
         if quest:GetStateInt("BalverineState") == 4 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             quest:SetThingPersistent(me, true)
+            local hero = quest:GetHero()
             quest:GiveThingBestEnemyTarget(me, hero)
             quest:EntitySetCombatType(me, "WHITE_BALVERINE_ATTACK_STYLE")
             scratchValue6 = 0
-            wbCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 10, 1.0)
+            local infoCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 10, 1.0)
+            wbCounter = infoCounter
             quest:DisplayQuestInfo(true)
             repeat
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
@@ -49,10 +51,11 @@ function Main(quest, me)
                 predicateResult4 = true
                 ::FLOW_past_lab_00e16078::
                 if predicateResult4 then
+                    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                     scratchValue6 = scratchValue6 + 1
                     quest:UpdateQuestInfoCounter(wbCounter, scratchValue6, -1)
                 end
-            until scratchValue6 >= 10
+            until not (scratchValue6 < 10)
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             quest:RemoveQuestInfoElement(wbCounter)
             quest:DisplayQuestInfo(false)
@@ -78,21 +81,18 @@ function Main(quest, me)
                 until not (scratchValue8 ~= nil and scratchValue8:IsDistanceFromPositionOver(scratchValue16, 2.5))
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-            me:PlayAnimation("HOWL", false, false, false, true, true, false, false)
+            resources:PlayAnimationWithNativeArgument5(resource, "HOWL", false, false, false, true, false, false)
             while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-            me:PlayAnimation("ST_RUN_JUMP", false, false, false, true, true, false, false)
+            resources:PlayAnimationWithNativeArgument5(resource, "ST_RUN_JUMP", false, false, false, true, false, false)
             quest:Pause(1.0)
-            quest:CreateEffectAtPos("EFFECT_GRASS_CLUMPS", me:GetPos(), 0.0, false)
+            local position2 = me:GetPos()
+            quest:CreateEffectAtPos("EFFECT_GRASS_CLUMPS", position2, 0.0, false)
             quest:RemoveThing(me, false, true)
             quest:SetStateInt("BalverineState", 5)
-            goto LAB_00e1647d
-            resources:ReleaseResource(resource)
-            return
         end
-        ::LAB_00e1647d::
         if quest:GetStateInt("BalverineState") == 6 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             resources:PrepareResource(resource)
@@ -103,7 +103,8 @@ function Main(quest, me)
             quest:EntitySetCombatType(me, "WHITE_BALVERINE_ATTACK_STYLE")
             resources:PrepareResource(resource)
             quest:SetThingPersistent(me, true)
-            quest:GiveThingBestEnemyTarget(me, hero)
+            hero2 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(me, hero2)
             scratchValue6 = 0
             wbCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 5, 1.0)
             quest:DisplayQuestInfo(true)
@@ -120,10 +121,11 @@ function Main(quest, me)
                 predicateResult = true
                 ::FLOW_past_lab_00e16666::
                 if predicateResult then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00e16964 end
                     scratchValue6 = scratchValue6 + 1
                     quest:UpdateQuestInfoCounter(wbCounter, scratchValue6, -1)
                 end
-            until scratchValue6 >= 5
+            until not (scratchValue6 < 5)
             if quest:IsActiveThreadTerminating() then goto LAB_00e16964 end
             quest:RemoveQuestInfoElement(wbCounter)
             quest:DisplayQuestInfo(false)
@@ -140,9 +142,11 @@ function Main(quest, me)
             while 0 < timeRemaining do
                 if not quest:NewScriptFrame(me) then goto LAB_00e1694f end
                 if not me:IsPerformingScriptTask() then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00e1694f end
                     me:MoveToThing(runPoint, 0, ENTITY_MOVE_RUN)
                 end
-                if quest:IsCameraPosOnScreen(me:GetPos()) then
+                local position3 = me:GetPos()
+                if quest:IsCameraPosOnScreen(position3) then
                     if not me:IsPerformingScriptTask() then
                         if not quest:IsActiveThreadTerminating() then quest:SetStateInt("BalverineState", 7); goto LAB_00e1687b end
                         goto LAB_00e1694f
@@ -158,11 +162,12 @@ function Main(quest, me)
                 ::FLOW_past_lab_00e1687b::
                 timeRemaining = quest:GetTimer(timerId2)
             end
-            if quest:IsActiveThreadTerminating() then goto LAB_00e1694f end
-            quest:SetStateInt("BalverineState", 7)
-            quest:FadeOutAndKillEntity(me, true, 3.0, true)
-            quest:DeregisterTimer(timerId)
-            goto LAB_00e168ed
+            if not (quest:IsActiveThreadTerminating()) then
+                quest:SetStateInt("BalverineState", 7)
+                quest:FadeOutAndKillEntity(me, true, 3.0, true)
+                quest:DeregisterTimer(timerId)
+                goto LAB_00e168ed
+            end
             ::LAB_00e1694f::
             quest:DeregisterTimer(timerId)
             ::LAB_00e16964::
@@ -176,9 +181,11 @@ function Main(quest, me)
     ::FLOW_after_lab_00e15f22::
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:SetThingPersistent(me, true)
-    quest:GiveThingBestEnemyTarget(me, hero)
+    local hero3 = quest:GetHero()
+    quest:GiveThingBestEnemyTarget(me, hero3)
     scratchValue6 = 0
-    wbCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 10, 1.0)
+    local infoCounter3 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 10, 1.0)
+    wbCounter = infoCounter3
     quest:DisplayQuestInfo(true)
     repeat
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
@@ -193,10 +200,11 @@ function Main(quest, me)
         predicateResult17 = true
         ::FLOW_past_lab_00e15b1a::
         if predicateResult17 then
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             scratchValue6 = scratchValue6 + 1
             quest:UpdateQuestInfoCounter(wbCounter, scratchValue6, -1)
         end
-    until scratchValue6 >= 10
+    until not (scratchValue6 < 10)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:RemoveQuestInfoElement(wbCounter)
     quest:DisplayQuestInfo(false)
@@ -222,23 +230,26 @@ function Main(quest, me)
         until not (scratchValue ~= nil and scratchValue:IsDistanceFromPositionOver(scratchValue17, 2.5))
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    me:PlayAnimation("HOWL", false, false, false, true, true, false, false)
+    resources:PlayAnimationWithNativeArgument5(resource, "HOWL", false, false, false, true, false, false)
     while me:IsPerformingScriptTask() do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    me:PlayAnimation("ST_RUN_JUMP", false, false, false, true, true, false, false)
+    resources:PlayAnimationWithNativeArgument5(resource, "ST_RUN_JUMP", false, false, false, true, false, false)
     quest:Pause(1.0)
-    quest:CreateEffectAtPos("EFFECT_GRASS_CLUMPS", me:GetPos(), 0.0, false)
+    local position5 = me:GetPos()
+    quest:CreateEffectAtPos("EFFECT_GRASS_CLUMPS", position5, 0.0, false)
     quest:RemoveThing(me, false, true)
     quest:SetStateInt("BalverineState", 3)
     if quest:GetStateInt("BalverineState") == 4 then
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         quest:SetThingPersistent(me, true)
-        quest:GiveThingBestEnemyTarget(me, hero)
+        local hero4 = quest:GetHero()
+        quest:GiveThingBestEnemyTarget(me, hero4)
         quest:EntitySetCombatType(me, "WHITE_BALVERINE_ATTACK_STYLE")
         scratchValue6 = 0
-        wbCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 10, 1.0)
+        local infoCounter4 = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 10, 1.0)
+        wbCounter = infoCounter4
         quest:DisplayQuestInfo(true)
         repeat
             if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
@@ -253,10 +264,11 @@ function Main(quest, me)
             predicateResult23 = true
             ::FLOW_past_lab_00e16078_c1::
             if predicateResult23 then
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 scratchValue6 = scratchValue6 + 1
                 quest:UpdateQuestInfoCounter(wbCounter, scratchValue6, -1)
             end
-        until scratchValue6 >= 10
+        until not (scratchValue6 < 10)
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         quest:RemoveQuestInfoElement(wbCounter)
         quest:DisplayQuestInfo(false)
@@ -282,21 +294,18 @@ function Main(quest, me)
             until not (scratchValue12 ~= nil and scratchValue12:IsDistanceFromPositionOver(scratchValue16, 2.5))
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-        me:PlayAnimation("HOWL", false, false, false, true, true, false, false)
+        resources:PlayAnimationWithNativeArgument5(resource, "HOWL", false, false, false, true, false, false)
         while me:IsPerformingScriptTask() do
             if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-        me:PlayAnimation("ST_RUN_JUMP", false, false, false, true, true, false, false)
+        resources:PlayAnimationWithNativeArgument5(resource, "ST_RUN_JUMP", false, false, false, true, false, false)
         quest:Pause(1.0)
-        quest:CreateEffectAtPos("EFFECT_GRASS_CLUMPS", me:GetPos(), 0.0, false)
+        local position7 = me:GetPos()
+        quest:CreateEffectAtPos("EFFECT_GRASS_CLUMPS", position7, 0.0, false)
         quest:RemoveThing(me, false, true)
         quest:SetStateInt("BalverineState", 5)
-        goto LAB_00e1647d_c1
-        resources:ReleaseResource(resource)
-        return
     end
-    ::LAB_00e1647d_c1::
     if quest:GetStateInt("BalverineState") == 6 then
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         resources:PrepareResource(resource)
@@ -307,7 +316,8 @@ function Main(quest, me)
         quest:EntitySetCombatType(me, "WHITE_BALVERINE_ATTACK_STYLE")
         resources:PrepareResource(resource)
         quest:SetThingPersistent(me, true)
-        quest:GiveThingBestEnemyTarget(me, hero)
+        hero5 = quest:GetHero()
+        quest:GiveThingBestEnemyTarget(me, hero5)
         scratchValue6 = 0
         wbCounter = quest:AddQuestInfoCounter("HUD_QUEST_ICON_WHITE_BALVERINE", 5, 1.0)
         quest:DisplayQuestInfo(true)
@@ -324,10 +334,11 @@ function Main(quest, me)
             predicateResult30 = true
             ::FLOW_past_lab_00e16666_c1::
             if predicateResult30 then
+                if quest:IsActiveThreadTerminating() then goto LAB_00e16964_c1 end
                 scratchValue6 = scratchValue6 + 1
                 quest:UpdateQuestInfoCounter(wbCounter, scratchValue6, -1)
             end
-        until scratchValue6 >= 5
+        until not (scratchValue6 < 5)
         if quest:IsActiveThreadTerminating() then goto LAB_00e16964_c1 end
         quest:RemoveQuestInfoElement(wbCounter)
         quest:DisplayQuestInfo(false)
@@ -344,9 +355,11 @@ function Main(quest, me)
         while 0 < timeRemaining2 do
             if not quest:NewScriptFrame(me) then goto LAB_00e1694f_c1 end
             if not me:IsPerformingScriptTask() then
+                if quest:IsActiveThreadTerminating() then goto LAB_00e1694f_c1 end
                 me:MoveToThing(runPoint22, 0, ENTITY_MOVE_RUN)
             end
-            if quest:IsCameraPosOnScreen(me:GetPos()) then
+            local position8 = me:GetPos()
+            if quest:IsCameraPosOnScreen(position8) then
                 if not me:IsPerformingScriptTask() then
                     if not quest:IsActiveThreadTerminating() then quest:SetStateInt("BalverineState", 7); goto LAB_00e1687b_c1 end
                     goto LAB_00e1694f_c1
@@ -362,11 +375,12 @@ function Main(quest, me)
             ::FLOW_past_lab_00e1687b_c1::
             timeRemaining2 = quest:GetTimer(timerId2)
         end
-        if quest:IsActiveThreadTerminating() then goto LAB_00e1694f_c1 end
-        quest:SetStateInt("BalverineState", 7)
-        quest:FadeOutAndKillEntity(me, true, 3.0, true)
-        quest:DeregisterTimer(timerId)
-        goto LAB_00e168ed_c1
+        if not (quest:IsActiveThreadTerminating()) then
+            quest:SetStateInt("BalverineState", 7)
+            quest:FadeOutAndKillEntity(me, true, 3.0, true)
+            quest:DeregisterTimer(timerId)
+            goto LAB_00e168ed_c1
+        end
         ::LAB_00e1694f_c1::
         quest:DeregisterTimer(timerId)
         ::LAB_00e16964_c1::
@@ -376,13 +390,14 @@ function Main(quest, me)
     ::LAB_00e168ed_c1::
     quest:NewScriptFrame(me)
     goto FLOW_after_lab_00e15f22
-    resources:ReleaseResource(resource)
 end
 
 -- WB_WhiteBalverine.Init (retail 0x00e15830)
 function Init(quest, me)
-    quest:PlayCriteriaSoundOnThing(quest:GetThingWithScriptName("KG_Gate"), "KNG_HORN")
+    local gate = quest:GetThingWithScriptName("KG_Gate")
+    local scratchValue = quest:PlayCriteriaSoundOnThing(gate, "KNG_HORN")
     quest:OverrideMusic(23, false, false)
+    gate = nil
 end
 
 -- WB_WhiteBalverine.OnPersist (retail 0x00cdebc0)

@@ -23,8 +23,7 @@ function Main(quest, me)
     end
     goto FLOW_past_lab_00ed33d0
     ::LAB_00ed33d0::
-    -- TODO(native): if *(__native_entity_state:GetStateInt("self_0x14") + ctr_4c) ~= __native_entity_state:GetStateInt("MyStoneNumber") then goto LAB_00ed34e2 end
-    if false then goto LAB_00ed34e2 end
+    if quest:GetStateInt("YourPersonalPlayList_" .. ctr_40) ~= __native_entity_state:GetStateInt("MyStoneNumber") then goto LAB_00ed34e2 end
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
@@ -65,11 +64,11 @@ function Main(quest, me)
                 bVar2 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar2 then goto LAB_00ed3597 end
             end
-            -- TODO(native): xStack_4d = '\0';
+            xStack_4d = 0
         end
         goto FLOW_past_lab_00ed3597
         ::LAB_00ed3597::
-        -- TODO(native): xStack_4d = '\x01';
+        xStack_4d = 1
         ::FLOW_past_lab_00ed3597::
         if (CVar7 & 4) ~= 0 then
             CVar7 = CVar7 & 0xfffffffb
@@ -92,8 +91,7 @@ function Main(quest, me)
             if 0 < quest:GetStateInt("CurrentPlayListIndex") then
                 iVar8 = 0x6c
                 repeat
-                    -- TODO(native): if *(__native_entity_state:GetStateInt("self_0x14") + iVar8) == __native_entity_state:GetStateInt("MyStoneNumber") then
-                    if false then
+                    if quest:GetStateInt("YourPersonalPlayList_" .. iVar9) == __native_entity_state:GetStateInt("MyStoneNumber") then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if bVar2 then
@@ -147,28 +145,12 @@ function Main(quest, me)
                 end
             until not (false)
             ::FLOW_native_label_1::
-            -- TODO(native): *(undefined4 *) (*(int *)(this + 0x14) + 0x6c + *(int *)(*(int *)(this + 0x14) + 0x48) * 4) = *(undefined4 *)(this + 0x1c);
+            quest:SetStateInt("YourPersonalPlayList_" .. quest:GetStateInt("CurrentPlayListIndex"), __native_entity_state:GetStateInt("MyStoneNumber"))
             quest:SetStateInt("CurrentPlayListIndex", quest:GetStateInt("CurrentPlayListIndex") + 1)
             pCVar4 = me:GetPos()
             xStack_c = {x = pCVar4.x, y = pCVar4.y, z = pCVar4.z + 1.0}
-            pCVar3 = quest:CreateEffectAtPos("MARKTELEPORTER", xStack_c, 0.0, false)
-            -- TODO(native): p0 = *(__native_entity_state:GetStateInt("self_0x14") + 0x80)
-            p0 = nil --[[unresolved native value]]
-            -- TODO(native): if p0 == *(__native_entity_state:GetStateInt("self_0x14") + 0x84) then
-            if false then
-                -- TODO(native): std__vector_InsertRange((void *)(*(int *)(this + 0x14) + 0x7c),(int)p0,(int)pCVar3,(int)&xStack_4d,1,1);
-            else
-                if p0 ~= nil then
-                    -- TODO(native): p0[1] = *(undefined4 *)(pCVar3 + 0x4);
-                    -- TODO(native): piVar1 = *(pCVar3 + 0x8)
-                    piVar1 = nil --[[unresolved native value]]
-                    -- TODO(native): p0[2] = piVar1;
-                    if piVar1 ~= nil then
-                        -- TODO(native): *piVar1 = *piVar1 + 1;
-                    end
-                end
-                -- TODO(native): (quest:GetStateListCount("EffectList") * 0xc) = (quest:GetStateListCount("EffectList") * 0xc) + 0xc;
-            end
+            pCVar3 = quest:CreateEffectAtPos("MARKTELEPORTER", xStack_c, 0.0, false, false, "StonesEffect")
+            quest:StateListPush("EffectList", pCVar3)
             pCVar3 = nil
             CVar6 = ctr_4c
         end
@@ -177,16 +159,6 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
     end
-    r1 = nil
-    __native_condition_1 = r1 == nil
-    if not __native_condition_1 then
-        -- TODO(native): *xStack_24 = *xStack_24 + -1;
-        -- TODO(native): __native_condition_1 = *r1 ~= 0
-        __native_condition_1 = nil --[[unresolved native value]]
-    end
-    if __native_condition_1 then goto LAB_00ed3906 end
-    r1:GetName()
-    -- LAB_00ed38fe: (native jump target)
     ::LAB_00ed3906::
     do return end
     ::LAB_00ed344b::
@@ -197,10 +169,7 @@ function Main(quest, me)
         return
     end
     pCVar4 = me:GetPos()
-    -- TODO(native): xStack_18 = (int *)(pCVar4.z + 1.0);
-    -- TODO(native): xStack_18._4_4_ = pCVar4.y;
-    -- TODO(native): xStack_18._0_4_ = pCVar4.x;
-    pCVar3 = quest:CreateEffectAtPos("MARKTELEPORTER", pCVar4, 0.0, false, pCVar3)
+    pCVar3 = quest:CreateEffectAtPos("MARKTELEPORTER", {x = pCVar4.x, y = pCVar4.y, z = pCVar4.z + 1.0}, 0.0, false, false, "StonesEffect")
     quest:StateListPush("EffectList", pCVar3)
     ::LAB_00ed34e2::
     ctr_4c = ctr_4c + 4

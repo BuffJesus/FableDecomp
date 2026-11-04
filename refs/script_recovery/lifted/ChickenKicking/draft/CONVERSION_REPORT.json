@@ -294,50 +294,57 @@
           "address": "0x00e64fb0",
           "path": "FSE/V_ChickenKicking/Entities/ChickenMaster.lua",
           "evidence": null,
+          "parentScalarUpdateEvidence": [
+            {
+              "alias": "puVar1",
+              "field": "PrizesWon",
+              "offset": "0x5c",
+              "mask": 1,
+              "native": {
+                "site": "0xe687d2",
+                "load_site": "0xe687cf",
+                "bytes": "8b461483485c01"
+              },
+              "body_sha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+              "basis": "Non-escaping address alias; unique matching retail parent-load/OR store; ESI receiver preserved; parent field map"
+            },
+            {
+              "alias": "puVar1",
+              "field": "PrizesWon",
+              "offset": "0x5c",
+              "mask": 2,
+              "native": {
+                "site": "0xe685c5",
+                "load_site": "0xe685c2",
+                "bytes": "8b461483485c02"
+              },
+              "body_sha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+              "basis": "Non-escaping address alias; unique matching retail parent-load/OR store; ESI receiver preserved; parent field map"
+            },
+            {
+              "alias": "puVar1",
+              "field": "PrizesWon",
+              "offset": "0x5c",
+              "mask": 4,
+              "native": {
+                "site": "0xe683f1",
+                "load_site": "0xe683ee",
+                "bytes": "8b461483485c04"
+              },
+              "body_sha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+              "basis": "Non-escaping address alias; unique matching retail parent-load/OR store; ESI receiver preserved; parent field map"
+            }
+          ],
           "nativeSignature": {
             "parameters": [],
             "returnKind": null,
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_374 = xStack_374 | 1;",
             "label LAB_00e660d3",
             "label LAB_00e661a5",
-            "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,true);",
-            "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
-            "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
-            "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
-            "unlifted: (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);",
-            "unlifted: CCharString::operator=(&xStack_398,\"CS_CHICKING_LANDED\");",
-            "unlifted: CCharString::CCharString(&xStack_398_2,&xStack_398);",
-            "Game_InitializeArena: unproven parent helper receiver or arity",
-            "unlifted: CCharString__SetFromFormatV();",
-            "unlifted: CWideString::CWideString(xStack_208,(int)&xStack_354);",
-            "unlifted: Vector_PushBack(xStack_360,(int)xStack_208);",
-            "GetFormattedString: not in FSE manifest",
-            "unlifted: CWideString::operator=((CWideString *)&DAT_0143e908,(int)p0);",
-            "unlifted: *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;",
-            "unnamed field 0x14",
-            "unlifted: *puVar1 = *puVar1 | 1;",
-            "unlifted: *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;",
-            "unnamed field 0x14",
-            "unlifted: *puVar1 = *puVar1 | 2;",
-            "unlifted: *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;",
             "label LAB_00e6894f_c4",
-            "unlifted: *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;",
-            "unnamed field 0x14",
-            "unlifted: *puVar1 = *puVar1 | 4;",
-            "unlifted: *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;",
-            "label LAB_00e6894f_c5",
-            "unnamed field 0x18",
-            "UpdateOnlineScore_ChickenKick: not in FSE manifest",
-            "unlifted: CCharString::CCharString(&xStack_398_2,&xStack_398);",
-            "Game_InitializeArena: unproven parent helper receiver or arity",
-            "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
-            "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
-            "unlifted: (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);",
-            "unlifted: ctr_CVar19 = *(this + 4)",
-            "unlifted: if ctr_CVar19 == *(__native_entity_state:GetStateInt(\"self_0x18\") + 0xf8) then"
+            "label LAB_00e6894f_c5"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -609,6 +616,7 @@
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
+            "PauseAllNonScriptedEntities",
             "SetStateBool",
             "IsPerformingScriptTask",
             "ENGINE_IsDistanceBetweenThingsOver",
@@ -640,7 +648,9 @@
             "GetPos",
             "CreateCreature",
             "SetStateBool",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "GetThingWithScriptName",
             "GetPos",
@@ -671,6 +681,8 @@
             "GiveHeroGold",
             "SetStateBool",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
@@ -780,6 +792,7 @@
             "STRINGMAP_Set",
             "IsActiveThreadTerminating",
             "STRINGMAP_Set",
+            "SetStateInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "STRINGMAP_Set",
@@ -791,6 +804,7 @@
             "STRINGMAP_Set",
             "IsActiveThreadTerminating",
             "STRINGMAP_Set",
+            "SetStateInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "STRINGMAP_Set",
@@ -801,6 +815,7 @@
             "STRINGMAP_Set",
             "STRINGMAP_Set",
             "IsActiveThreadTerminating",
+            "SetStateInt",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "STRINGMAP_Set",
@@ -813,14 +828,20 @@
             "PauseAllNonScriptedEntities",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "DeregisterTimer",
-            "RESOURCE_ReleaseResource"
+            "RESOURCE_ReleaseResource",
+            "SetMasterGameState",
+            "SetMasterGameState",
+            "SetMasterGameState",
+            "SetMasterGameState",
+            "SetMasterGameState"
           ],
-          "lines": 1495,
+          "lines": 1502,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1206,48 +1227,33 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: fStack_24 = (float)xStack_c._0_4_ - pfVar6.x;",
-            "unlifted: C3DVector::GetScaled((C3DVector *)&fStack_24);",
-            "unlifted: Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);",
-            "unlifted: Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);",
-            "unlifted: Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);",
-            "unlifted: Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);",
-            "unlifted: fStack_48 = *pfVar7 - pfVar6.x;",
-            "unlifted: xStack_30 = (*pfVar7 - pfVar6.x);",
-            "unlifted: C3DVector::GetScaled((C3DVector *)&fStack_48);",
-            "unlifted: C3DVector::GetScaled((C3DVector *)xStack_30);",
-            "unlifted: xStack_18._8_4_ = 1.0;",
-            "unlifted: C3DVector::Rotate((C3DVector *)&fStack_48,(int)&xStack_18,(int)p1);",
-            "label LAB_00e64c61",
-            "verify cleanup at LAB_00e64c61 (lifted as early return)",
-            "verify cleanup at LAB_00e64c61 (lifted as early return)",
-            "unlifted: pfVar7 = (**(piVar8[-3] + 0x18))()"
+            "label LAB_00e64c61"
           ],
           "calls": [
             "GetThingWithScriptName",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "QUESTTHING_Empty",
             "GetThingWithScriptName",
             "GetPos",
@@ -1262,7 +1268,7 @@
             "IsActiveThreadTerminating",
             "MsgIsKicked",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "PlaySoundOnThing",
@@ -1286,7 +1292,6 @@
             "GetPos",
             "ENGINE_ZeroVector",
             "GetPos",
-            "IsXbox",
             "SetStateInt",
             "GetPos",
             "IsActiveThreadTerminating",
@@ -1305,9 +1310,24 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
-            "IsActiveThreadTerminating"
+            "IsActiveThreadTerminating",
+            "WithRetailResources",
+            "NewThingPositionList",
+            "AppendScriptName",
+            "DistanceFromThingToPosition",
+            "Count",
+            "GetPosPair",
+            "NormalizeVector3",
+            "ArcCosTurns",
+            "RotateVector3",
+            "CosTurnsLessThan",
+            "WithRetailResources",
+            "TrackThingOutput",
+            "TrackThingOutput",
+            "RetireThingOutput",
+            "GetThingPosition"
           ],
-          "lines": 218,
+          "lines": 228,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1418,13 +1438,10 @@
             "goto LAB_00e63fd8",
             "label LAB_00e63fba",
             "goto LAB_00e63fbf",
-            "unlifted: unaff_EBX = 0x10000;",
             "label LAB_00e63fdd",
             "goto LAB_00e63fea",
             "goto LAB_00e63fba",
-            "label LAB_00e63fd8",
-            "unlifted: xStack_64 = xStack_64 | 1;",
-            "unlifted: xStack_64 = CVar11 & 0xfffffffe;"
+            "label LAB_00e63fd8"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -1622,24 +1639,98 @@
         "KickedChicken": "V_ChickenKicking/Entities/KickedChicken",
         "Spectator": "V_ChickenKicking/Entities/Spectator"
       },
+      "blockingSpeechCancellation": {
+        "FSE/V_ChickenKicking/Entities/ChickenMaster.lua": [
+          {
+            "line": 286,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_32c)\n                                -- LAB_00e661a5: (native jump target)\n                                quest:DeregisterTimer(i_stk_3a0)\n                                quest:DeregisterTimer(i_stk_3a4)\n                                resources:ReleaseResource(xStack_394)\n                                return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 353,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_34c)\n                                quest:DeregisterTimer(i_stk_3a0)\n                                quest:DeregisterTimer(i_stk_3a4)\n                                resources:ReleaseResource(xStack_394)\n                                return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 587,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00e667c9",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 635,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00e667c9",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 670,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00e667c9",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 700,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00e66c23",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 757,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00e66c23",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 847,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00e68a59",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/V_ChickenKicking/Entities/Spectator.lua": [
+          {
+            "line": 101,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar6",
+            "exit": "__cleanup_LAB_00e63fd8(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 147,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar6",
+            "exit": "__cleanup_LAB_00e63fba(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "literalStringVectors": {
         "FSE/V_ChickenKicking/Entities/ChickenSign.lua": {
           "0x1c": {
             "name": "TextKeys",
             "count": 8
           }
-        }
-      },
-      "declaredFreeLocals": {
-        "FSE/V_ChickenKicking/Entities/KickedChicken.lua": {
-          "Main": [
-            "fStack_24",
-            "fStack_48",
-            "fret_0",
-            "pi_stk_38",
-            "xStack_3c",
-            "xStack_c"
-          ]
         }
       },
       "cleanupRegions": {
@@ -1688,7 +1779,7 @@
         "functionSyntaxPassed": 22,
         "fileSyntaxPassed": 6,
         "fileSyntaxChecked": 6,
-        "todo": 66
+        "todo": 14
       }
     }
   ],
@@ -1699,6 +1790,6 @@
     "functionSyntaxPassed": 22,
     "fileSyntaxPassed": 6,
     "fileSyntaxChecked": 6,
-    "todo": 66
+    "todo": 14
   }
 }

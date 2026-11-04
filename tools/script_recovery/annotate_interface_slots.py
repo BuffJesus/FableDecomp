@@ -327,6 +327,16 @@ def _is_gsi_alias_at(text: str, var: str, pos: int, depth: int = 0) -> bool:
     prev = None
     for m in re.finditer(r"^[ \t]*" + re.escape(var) + r" = ([^;\n]*);", text[:pos], re.M):
         prev = m
+    # A definition inside a condition/comma expression is not a hoisted GSI
+    # load. In KickedChicken E64A36, the iterator was initialized inside the
+    # preceding if; treating its Thing slot18 as GSI emitted IsXbox.
+    # Ignore quoted text/comments and fail closed until a later standalone
+    # definition independently establishes interface provenance again.
+    window = text[prev.end() if prev is not None else 0:pos]
+    window = re.sub(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|/\*.*?\*/|//[^\n]*',
+                    lambda m: ' ' * len(m[0]), window, flags=re.S)
+    if re.search(r'[(,]\s*' + re.escape(var) + r'\s*=(?!=)', window):
+        return False
     if prev is None:
         return True
     value = prev.group(1).strip()
@@ -361,6 +371,26 @@ def annotate(text: str, slots: dict[int, str], thing_slots: dict[int, tuple[str,
         if _is_gsi_alias_at(text, var, match.start()):
             return sub(match)
         return match.group(0)
+    # Typed exports sometimes cast the cached interface vtable to int. Prove the
+    # object from a local field load in the same straight-line sequence; neither
+    # the temporary's name nor a familiar vtable offset establishes its owner.
+    cast_head = re.compile(r"\(\*\*\(code \*\*\)\(\(int\)\*(?P<var>\w+) \+ (?P<off>" + OFFSET
+                           + r")\)\)(?=\(\s*(?P=var)\s*[,\)])")
+    direct_load = re.compile(r"\*\(int \*\*\)\((?:this|param_1) \+ (?:4|0x40)\)")
+    intervening_loads = re.compile(r"(?:\s*\w+ = \*{1,2}\(int \*\*\)\((?:this|param_1) \+ (?:4|0x40)\);)*\s*\w+ =\s*")
+    def sub_cast_interface(match: re.Match[str]) -> str:
+        definitions = list(re.finditer(r"^[ \t]*" + re.escape(match['var']) + r" = ([^;\n]*);",
+                                       text[:match.start()], re.M))
+        if not definitions:
+            return match.group(0)
+        previous = definitions[-1]
+        if (direct_load.fullmatch(previous[1])
+                and intervening_loads.fullmatch(text[previous.end():match.start()])):
+            name = slots.get(int(match['off'], 0))
+            if name:
+                return f'GSI->{name}'
+        return match.group(0)
+    text = cast_head.sub(sub_cast_interface, text)
     for pattern in PATTERNS:
         text = pattern.sub(sub_register if pattern is REGISTER_PATTERN else sub, text)
     # interface-pointer / vtable aliases under any local name (typed exports name them `this_00`, ...)

@@ -2,20 +2,24 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local resources = quest:RetailResources()
+    return quest:WithRetailResources(function(resources)
+    local picklockTargetOwner = 0
     local __native_condition_1, bVar4, cVar5, fVar2, fVar3, f_stk_24, f_stk_28, iVar10, iVar9, i_stk_20, i_stk_2c, native_arg_flag2_uVar11, native_arg_flag3_uVar11, pCVar6, pCVar7, pCVar8, r1, uVar11, value, xStack_10, xStack_20
     local alive = true
     pCVar6 = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(pCVar6)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if bVar4 then
+        resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
         return
     end
     bVar4 = false
     pCVar7 = quest:GetActiveQuestName()
     quest:SetQuestAsPersistent(pCVar7, bVar4)
     r1 = quest:GetHeroTargetedThing()
+    picklockTargetOwner = resources:TrackThingOutput(r1)
     bVar4 = quest:IsEntityPickLockable(r1)
     if bVar4 then
         bVar4 = quest:IsInMovieSequence()
@@ -127,7 +131,7 @@ function Main(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00eebc32 end
-                        iVar9 = math.random(0, 32767)
+                        iVar9 = quest:RetailRandModulo(32768)
                         i_stk_20 = (iVar9 % 100)
                         if i_stk_20 < f_stk_28 * 100.0 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -142,10 +146,12 @@ function Main(quest)
                 uVar11 = 0
                 pCVar7 = quest:GetActiveQuestName()
                 quest:DeactivateQuestLater(pCVar7, uVar11)
+                resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
                 return
             end
             ::LAB_00eebc32::
             resources:DestroyMovie(xStack_10)
+            resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
             return
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -155,6 +161,7 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then
+            resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
             return
         end
     end
@@ -162,6 +169,8 @@ function Main(quest)
     pCVar7 = quest:GetActiveQuestName()
     quest:DeactivateQuestLater(pCVar7, uVar11)
     ::LAB_00eeb8af::
+    resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
+    end)
 end
 
 function Init(quest)

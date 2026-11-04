@@ -1,5 +1,7 @@
 # NewOakValeIntro reconstruction handoff
 
+> Historical hand-port checkpoint; bounded closure is not current converter/runtime certification.
+
 Status: **trace-tested reconstructed port with experimental live allocator override** (playthrough in progress; not yet a verified retail port).
 
 ## Live ForgeFSE playtest checkpoint (2026-09-09)

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar11, CVar4, bVar5, cVar6, center, fVar3, fret_0, fret_00, iVar12, iVar13, iVar15, p1, pCVar7, pCVar8, pCVar9, pCreature, pvVar10, r1, r2, xStack_10, xStack_20, xStack_60, xStack_64, x_stk_2c, x_stk_38
+    local CVar11, CVar4, bVar5, cVar6, center, fVar3, fret_0, fret_00, iVar12, iVar13, iVar15, native_greeting_done, native_hit_cleanup_flags, p1, pCVar7, pCVar8, pCVar9, pCreature, pvVar10, r1, r2, xStack_10, xStack_20, xStack_60, xStack_64, x_stk_2c, x_stk_38
     local alive = true
     local function __cleanup_LAB_00e63fba()
         quest:PauseAllNonScriptedEntities(false)
@@ -33,8 +33,10 @@ function Main(quest, me)
         resources:DestroyMovie(xStack_10)
         resources:ReleaseResource(xStack_20)
     end
+    native_greeting_done = false
     xStack_20 = resources:NewResource()
     quest:SetIsPushableByHero(me, false)
+    xStack_60 = "BRAIN_PASSIVE_OVERRIDE"
     quest:SetCreatureBrain(me, "BRAIN_PASSIVE_OVERRIDE")
     pCVar7 = me:GetPos()
     center = pCVar7.x
@@ -72,7 +74,7 @@ function Main(quest, me)
             if bVar5 then goto LAB_00e63f59 end
             xStack_10 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if (unaff_EBX >> 0x10) == 0 then
+            if not native_greeting_done then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if bVar5 then
@@ -97,6 +99,9 @@ function Main(quest, me)
                     pvVar10 = xStack_64
                     pCVar9 = quest:GetHero()
                     r1 = me:Speak(pCVar9, pvVar10, iVar12, (p1 ~= 0), (iVar13 ~= 0), (iVar15 ~= 0))
+                    if not r1 then
+                        __cleanup_LAB_00e63fd8(); return
+                    end
                     iVar12 = me:IsPerformingScriptTask()
                     cVar6 = iVar12
                     while cVar6 do
@@ -116,7 +121,7 @@ function Main(quest, me)
                         return
                     end
                 end
-                -- TODO(native): unaff_EBX = 0x10000;
+                native_greeting_done = true
             else
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
@@ -143,6 +148,9 @@ function Main(quest, me)
                     pvVar10 = xStack_60
                     pCVar9 = quest:GetHero()
                     r2 = me:Speak(pCVar9, pvVar10, iVar12, (p1 ~= 0), (iVar13 ~= 0), (iVar15 ~= 0))
+                    if not r2 then
+                        __cleanup_LAB_00e63fba(); return
+                    end
                     iVar12 = me:IsPerformingScriptTask()
                     cVar6 = iVar12
                     while cVar6 do
@@ -167,7 +175,6 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_10)
         end
-        -- TODO(native): xStack_64 = xStack_64 | 1;
         bVar5 = me:MsgIsHitByHero()
         if bVar5 then
             goto LAB_00e63e78
@@ -183,7 +190,6 @@ function Main(quest, me)
         ::LAB_00e63e78::
         bVar5 = true
         ::FLOW_past_lab_00e63e78::
-            -- TODO(native): xStack_64 = CVar11 & 0xfffffffe;
         if bVar5 then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive

@@ -921,5 +921,105 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedFadeInThing": {
+    "0x00df2380": {
+      "sourceSha256": "c15abb2a4f6b3083a435a79ef8a29977c8c0439acb4bf8db4bed549a92e7cf7f",
+      "nativeSha256": "50a37a55966c4afad194bbb0c5dc06b6d7f9253152efe94d0e21cd2b43b07f1b",
+      "windowStart": "0xdf2469",
+      "site": "0xdf2470",
+      "windowSha256": "7338a7881b0c3f6ca2fb3935785f1b6348aebcd7599b4d048b5200fd19e66efd",
+      "helperSha256": "27f24c40e717cf737afb88d32ed35da06e51bb9f1c6308af46bb7846d68f8c54",
+      "review": "Embedded CScriptThing at owner +8 passed in ECX, float 2.0 pushed, direct retail FadeInThing 0x00CBE7AA. Helper uses IsAlive, EntitySetAlpha and NewScriptFrame, RET 4; sidecar binding invokes that same helper. Exact source/native/helper/window hashes gate the reviewed lowering."
+    },
+    "0x00df2ab0": {
+      "sourceSha256": "af39b73ab8355092508edd6ea0b7ed3634625defa80c0503426e06d594f1e16c",
+      "nativeSha256": "bd34d68e2a5922f846172c07b9bad073022a0484d2ba73d9479da98f96c195ae",
+      "windowStart": "0xdf2b9a",
+      "site": "0xdf2ba1",
+      "windowSha256": "217942d709d7852001fcbb1adae6af2c0add4b9b08fc9f1b2dc745cab60b07bf",
+      "helperSha256": "27f24c40e717cf737afb88d32ed35da06e51bb9f1c6308af46bb7846d68f8c54",
+      "review": "Embedded CScriptThing at owner +8 passed in ECX, float 2.0 pushed, direct retail FadeInThing 0x00CBE7AA. Helper uses IsAlive, EntitySetAlpha and NewScriptFrame, RET 4; sidecar binding invokes that same helper. Exact source/native/helper/window hashes gate the reviewed lowering."
+    }
+  },
+  "reviewedBriarComment": {
+    "0x00df1830": {
+      "sourceSha256": "24df876b2f84fc10a2abe0b80573d78f3e5396fc415ed35ed829bbb5d38aa75c",
+      "nativeSha256": "4be771a8e4b1643c3553920bac33a7dd2144bf3b2dc89ba4216764591385a878",
+      "site": "0x00df1bf2"
+    }
+  },
+  "reviewedBriarWaveElse": {
+    "0x00df1830": {
+      "sourceSha256": "24df876b2f84fc10a2abe0b80573d78f3e5396fc415ed35ed829bbb5d38aa75c",
+      "nativeSha256": "4be771a8e4b1643c3553920bac33a7dd2144bf3b2dc89ba4216764591385a878",
+      "branchWindowSha256": "8adac21d60fe4b9429965a98f334e99d4a2e7d92c578e612040c3897a034a34b"
+    }
+  },
+  "reviewedStackScalarAliases": {
+    "0x00df36e0": {
+      "alias": "shipMacroName",
+      "nativeSha256": "e1713b5523c712e25e6bdb5bbcb1a213d62f14f490177c41a5baf9fbed757d16",
+      "sourceSha256": "86f4403792aa4eec0ea70a06564af261de9153cb08295d81ef11a29ec44b6881",
+      "nativeInstructions": {
+        "0x00df3920": "51",
+        "0x00df3921": "8bcc",
+        "0x00df3923": "6aff",
+        "0x00df3925": "6890e42d01",
+        "0x00df392a": "e8c1b2baff",
+        "0x00df392f": "8bce",
+        "0x00df3931": "e81a050000",
+        "0x00df3a2b": "51",
+        "0x00df3a2c": "8bcc",
+        "0x00df3a2e": "6aff",
+        "0x00df3a30": "6854e42d01",
+        "0x00df3a35": "e8b6b1baff",
+        "0x00df3a3a": "8bce",
+        "0x00df3a3c": "e80f040000",
+        "0x00df3aa8": "51",
+        "0x00df3aa9": "8bcc",
+        "0x00df3aab": "6aff",
+        "0x00df3aad": "683ce42d01",
+        "0x00df3ab2": "e839b1baff",
+        "0x00df3ab7": "8bce",
+        "0x00df3ab9": "e892030000",
+        "0x00df3b0e": "51",
+        "0x00df3b0f": "8bcc",
+        "0x00df3b11": "6aff",
+        "0x00df3b13": "68dce32d01",
+        "0x00df3b18": "e8d3b0baff",
+        "0x00df3b1d": "8bce",
+        "0x00df3b1f": "e82c030000",
+        "0x00df3c56": "51",
+        "0x00df3c57": "8bcc",
+        "0x00df3c59": "6aff",
+        "0x00df3c5b": "689ce32d01",
+        "0x00df3c60": "e88bafbaff",
+        "0x00df3c65": "8bce",
+        "0x00df3c67": "e8e4010000",
+        "0x00df3ccc": "51",
+        "0x00df3ccd": "8bcc",
+        "0x00df3ccf": "6aff",
+        "0x00df3cd1": "683ce42d01",
+        "0x00df3cd6": "e815afbaff",
+        "0x00df3cdb": "8bce",
+        "0x00df3cdd": "e86e010000"
+      },
+      "edits": [
+        [
+          "stack0xffffffc4",
+          "shipMacroName"
+        ],
+        [
+          "DoMission_HeroUIInitialize(this,iVar7);",
+          "DoMission_HeroUIInitialize(this,shipMacroName);"
+        ]
+      ],
+      "editCounts": [
+        6,
+        6
+      ],
+      "review": "Scratch native caller evidence: six sites reserve one outgoing CCharString word, construct CS_SUMSHIP_PREINTRO/INTRO/WAVE2/OUTRO_FAILED/OUTRO/OUTRO_FAILED, and call DF3E50 with ECX=this. Helper consumes entrySP4 as a string address at DF3FA4/FA8, destroys it DF405A/405E, returns RET4 at DF406A. Exported int/stale iVar7 operand is not the native outgoing argument. Native and behavioral validation pending."
+    }
   }
 }

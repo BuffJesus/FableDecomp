@@ -11,9 +11,9 @@ function Main(quest, me)
     while waspVictim ~= nil and waspVictim:IsAlive() do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
-    if not quest:IsActiveThreadTerminating() then
-        quest:GiveThingBestEnemyTarget(me, quest:GetHero())
-    end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+    local pTarget = quest:GetHero()
+    quest:GiveThingBestEnemyTarget(me, pTarget)
     resources:ReleaseResource(resource)
 end
 

@@ -12,7 +12,9 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, ctr_CVar19, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, puVar1, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar18, vec_188, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
+    local native_call_target, native_call_target_token
+    local native_wide_arguments
+    local CVar17, CVar27, C_stk_370, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, bVar6, bVar8, cVar7, c_stk_381, c_stk_399, ctr_CVar19, fVar28, fVar4, f_stk_374, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar22, i_stk_190, i_stk_1d0, i_stk_210, i_stk_3a0, i_stk_3a4, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, native_arg_sequence_4, pCVar12, pCVar13, pCVar14, pCVar15, pCVar16, pCVar9, pcVar20, puVar29, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar18, vec_188, xStack_154, xStack_164, xStack_32c, xStack_33c, xStack_34c, xStack_374, xStack_394, xStack_398, x_stk_124, x_stk_170, x_stk_17c, x_stk_30, x_stk_90, x_stk_c0
     local alive = true
     C_stk_370 = 0
     xStack_394 = resources:NewResource()
@@ -113,19 +115,22 @@ function Main(quest, me)
                         resources:ReleaseResource(xStack_394)
                         return
                     end
+                    xStack_398 = "SCRIPT_NAME_HERO"
                     cVar7 = me:IsTalkedToByHero()
                     if cVar7 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then
-                            quest:DeregisterTimer(i_stk_3a4)
+                            quest:DeregisterTimer(i_stk_3a0)
                             quest:DeregisterTimer(i_stk_3a4)
                             resources:ReleaseResource(xStack_394)
                             return
                         end
                         quest:SetStateBool("TalkedTo", true)
                     end
-                    -- TODO(native): xStack_374 = xStack_374 | 1;
+                    ctr_CVar19 = C_stk_370 % 4294967296
+                    CVar17 = ctr_CVar19 | 1
+                    C_stk_370 = CVar17
                     cVar7 = me:MsgIsHitByHero()
                     if not cVar7 then
                         CVar17 = ctr_CVar19 | 3
@@ -208,7 +213,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar6 = not alive
                 if bVar6 then goto LAB_00e68af4 end
-                c_stk_381 = bVar6
+                c_stk_381 = (bVar6) and 1 or 0
                 xStack_33c = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_HITGUYTOP")
@@ -279,6 +284,15 @@ function Main(quest, me)
                             pcVar20 = "TEXT_QST_B17_MASTER_INITIAL_MEETING"
                             pCVar15 = quest:GetHero()
                             r1 = me:Speak(pCVar15, pcVar20, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
+                            if not r1 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_32c)
+                                -- LAB_00e661a5: (native jump target)
+                                quest:DeregisterTimer(i_stk_3a0)
+                                quest:DeregisterTimer(i_stk_3a4)
+                                resources:ReleaseResource(xStack_394)
+                                return
+                            end
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -287,7 +301,7 @@ function Main(quest, me)
                                 bVar6 = not alive
                                 if bVar6 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    pCVar16 = xStack_32c
+                                    resources:DestroyMovie(xStack_32c)
                                     -- LAB_00e661a5: (native jump target)
                                     quest:DeregisterTimer(i_stk_3a0)
                                     quest:DeregisterTimer(i_stk_3a4)
@@ -313,7 +327,7 @@ function Main(quest, me)
                         quest:SetQuestCardObjective(pCVar14, "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    pCVar16 = xStack_32c
+                    resources:DestroyMovie(xStack_32c)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
@@ -346,6 +360,14 @@ function Main(quest, me)
                             pcVar20 = "TEXT_QST_B17_MASTER_RETURN_MEETING"
                             pCVar15 = quest:GetHero()
                             r2 = me:Speak(pCVar15, pcVar20, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
+                            if not r2 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_34c)
+                                quest:DeregisterTimer(i_stk_3a0)
+                                quest:DeregisterTimer(i_stk_3a4)
+                                resources:ReleaseResource(xStack_394)
+                                return
+                            end
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -354,7 +376,7 @@ function Main(quest, me)
                                 bVar6 = not alive
                                 if bVar6 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    pCVar16 = xStack_34c
+                                    resources:DestroyMovie(xStack_34c)
                                     quest:DeregisterTimer(i_stk_3a0)
                                     quest:DeregisterTimer(i_stk_3a4)
                                     resources:ReleaseResource(xStack_394)
@@ -379,7 +401,7 @@ function Main(quest, me)
                         quest:SetQuestCardObjective(pCVar14, "TEXT_QUEST_CHICKEN_KICKING_OBJECTIVE_02", "", "")
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    pCVar16 = xStack_34c
+                    resources:DestroyMovie(xStack_34c)
                 end
             end
             cVar7 = quest:GetStateBool("KnowGhostHasGone")
@@ -423,7 +445,7 @@ function Main(quest, me)
                         iVar10 = i_stk_3a4
                         quest:SetTimer(i_stk_3a4, 8)
                         iVar11 = quest:GetTimer(i_stk_3a4)
-                        while ((0 < iVar11 and (not c_stk_381)) and (not quest:GetStateBool("TalkedTo"))) do
+                        while ((0 < iVar11 and (c_stk_381 == 0)) and (not quest:GetStateBool("TalkedTo"))) do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
@@ -527,7 +549,7 @@ function Main(quest, me)
                         bVar6 = not alive
                         if bVar6 then break end
                         quest:SetStateBool("SpectatorsUnderAttack", false)
-                        c_stk_381 = bVar6
+                        c_stk_381 = (bVar6) and 1 or 0
                         xStack_154 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
                         require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, "CS_CHICKING_HITGUYBOTTOM")
@@ -580,6 +602,9 @@ function Main(quest, me)
                                 pcVar20 = "TEXT_QST_B17_MASTER_GREETING_RETURN"
                                 pCVar12 = quest:GetHero()
                                 r4 = me:Speak(pCVar12, pcVar20, iVar10, (iVar11 ~= 0), (iVar22 ~= 0), false)
+                                if not r4 then
+                                    goto LAB_00e667c9
+                                end
                                 iVar10 = me:IsPerformingScriptTask()
                                 cVar7 = iVar10
                                 while cVar7 do
@@ -628,6 +653,9 @@ function Main(quest, me)
                                                     pcVar20 = "TEXT_QST_B17_MASTER_NO_MONEY"
                                                     pCVar15 = quest:GetHero()
                                                     r5 = me:Speak(pCVar15, pcVar20, iVar10, (iVar11 ~= 0), (iVar22 ~= 0), false)
+                                                    if not r5 then
+                                                        goto LAB_00e667c9
+                                                    end
                                                     iVar10 = me:IsPerformingScriptTask()
                                                     cVar7 = iVar10
                                                     while cVar7 do
@@ -663,6 +691,9 @@ function Main(quest, me)
                                                         pcVar20 = "TEXT_QST_B17_MASTER_START_KICKING"
                                                         pCVar12 = quest:GetHero()
                                                         r6 = me:Speak(pCVar12, pcVar20, iVar10, (iVar11 ~= 0), (iVar22 ~= 0), false)
+                                                        if not r6 then
+                                                            goto LAB_00e667c9
+                                                        end
                                                         iVar10 = me:IsPerformingScriptTask()
                                                         cVar7 = iVar10
                                                         while cVar7 do
@@ -693,6 +724,9 @@ function Main(quest, me)
                                                         pcVar20 = "TEXT_QST_B17_MASTER_START_KICKING_RETURN"
                                                         pCVar12 = quest:GetHero()
                                                         r7 = me:Speak(pCVar12, pcVar20, iVar10, (iVar11 ~= 0), (iVar22 ~= 0), false)
+                                                        if not r7 then
+                                                            goto LAB_00e66c23
+                                                        end
                                                         iVar10 = me:IsPerformingScriptTask()
                                                         cVar7 = iVar10
                                                         while cVar7 do
@@ -716,16 +750,16 @@ function Main(quest, me)
                                                     pCVar12 = quest:GetThingWithScriptName("Spectator1")
                                                     bVar6 = false
                                                     pCVar9 = pCVar12:GetPos()
-                                                    r8 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator")
+                                                    r8 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator", bVar6)
                                                     pCVar12 = quest:GetThingWithScriptName("Spectator2")
                                                     bVar6 = false
                                                     pCVar9 = pCVar12:GetPos()
-                                                    r9 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar9, "Spectator")
+                                                    r9 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar9, "Spectator", bVar6)
                                                     pCVar12 = quest:GetThingWithScriptName("Spectator3")
                                                     bVar6 = false
                                                     pCVar13 = "Spectator"
                                                     pCVar9 = pCVar12:GetPos()
-                                                    r10 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, pCVar13)
+                                                    r10 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, pCVar13, bVar6)
                                                     quest:SetStateBool("SpectatorsCreated", true)
                                                 end
                                                 quest:ConfiscateAllHeroWeapons()
@@ -750,6 +784,9 @@ function Main(quest, me)
                                         pcVar20 = "TEXT_QST_B17_MASTER_DONT_KICK"
                                         pCVar15 = quest:GetHero()
                                         r11 = me:Speak(pCVar15, pcVar20, iVar10, (iVar11 ~= 0), (iVar22 ~= 0), false)
+                                        if not r11 then
+                                            goto LAB_00e66c23
+                                        end
                                         iVar10 = me:IsPerformingScriptTask()
                                         cVar7 = iVar10
                                         while cVar7 do
@@ -792,9 +829,7 @@ function Main(quest, me)
                         bVar6 = not alive
                         if bVar6 then break end
                         xStack_32c = resources:StartMovie("")
-                        -- TODO(native): ctr_CVar19 = *(this + 4)
-                        ctr_CVar19 = nil --[[unresolved native value]]
-                        -- TODO(native): (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,true);
+                        quest:PauseAllNonScriptedEntities(true)
                         __native_entity_state:SetStateBool("HaveTalked", true)
                         iVar10 = me:IsPerformingScriptTask()
                         native_arg_sequence_4 = false
@@ -842,6 +877,9 @@ function Main(quest, me)
                                     pcVar20 = "TEXT_QST_B17_MASTER_QUICK_WALK"
                                     pCVar15 = quest:GetHero()
                                     r12 = me:Speak(pCVar15, pcVar20, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
+                                    if not r12 then
+                                        goto LAB_00e68a59
+                                    end
                                     iVar10 = me:IsPerformingScriptTask()
                                     cVar7 = iVar10
                                     while cVar7 do
@@ -869,15 +907,15 @@ function Main(quest, me)
                                         pCVar15 = quest:GetThingWithScriptName("Spectator1")
                                         CVar27 = 0x0
                                         pCVar9 = pCVar15:GetPos()
-                                        r13 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator")
+                                        r13 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator", (CVar27 ~= 0))
                                         pCVar15 = quest:GetThingWithScriptName("Spectator2")
                                         CVar27 = 0x0
                                         pCVar9 = pCVar15:GetPos()
-                                        r14 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar9, "Spectator")
+                                        r14 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar9, "Spectator", (CVar27 ~= 0))
                                         pCVar15 = quest:GetThingWithScriptName("Spectator3")
                                         CVar27 = 0x0
                                         pCVar9 = pCVar15:GetPos()
-                                        r15 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator")
+                                        r15 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator", (CVar27 ~= 0))
                                         quest:SetStateBool("SpectatorsCreated", true)
                                         goto LAB_00e6743e
                                     end
@@ -888,29 +926,29 @@ function Main(quest, me)
                         end
                         goto FLOW_past_lab_00e68a8f
                         ::LAB_00e68a8f::
-                        -- TODO(native): (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_32c)
                         ::FLOW_hoist_lab_00e68a8f_1::
                         goto FLOW_hoist_lab_00e6743e_1
                         ::FLOW_past_lab_00e68a8f::
                         goto FLOW_past_lab_00e68a59
                         ::LAB_00e68a59::
-                        -- TODO(native): (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_32c)
                         break
                         ::FLOW_hoist_lab_00e68a59_1::
                         pCVar12 = quest:GetThingWithScriptName("Spectator1")
                         CVar27 = 0x0
                         pCVar9 = pCVar12:GetPos()
-                        r16 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator")
+                        r16 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator", (CVar27 ~= 0))
                         pCVar12 = quest:GetThingWithScriptName("Spectator2")
                         CVar27 = 0x0
                         pCVar9 = pCVar12:GetPos()
-                        r17 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar9, "Spectator")
+                        r17 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar9, "Spectator", (CVar27 ~= 0))
                         pCVar12 = quest:GetThingWithScriptName("Spectator3")
                         CVar27 = 0x0
                         pCVar9 = pCVar12:GetPos()
-                        r18 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator")
+                        r18 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar9, "Spectator", (CVar27 ~= 0))
                         quest:SetStateBool("SpectatorsCreated", true)
                         ::FLOW_hoist_lab_00e68a59_2::
                         CVar27 = 0x0
@@ -972,13 +1010,13 @@ function Main(quest, me)
                         ::FLOW_past_lab_00e6760c::
                         goto FLOW_past_lab_00e67619
                         ::LAB_00e67619::
-                        -- TODO(native): (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);
+                        quest:PauseAllNonScriptedEntities(false)
                         this_00 = xStack_32c
                         goto LAB_00e6762e
                         ::FLOW_past_lab_00e67619::
                         goto FLOW_past_lab_00e68a73
                         ::LAB_00e68a73::
-                        -- TODO(native): (**(code **)(*(int *)xStack_374 + 0x5ec))((void *)xStack_374,false);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_32c)
                         ::FLOW_past_lab_00e68a73::
                         ::FLOW_hoist_lab_00e6743e_1::
@@ -999,14 +1037,18 @@ function Main(quest, me)
                             quest:DisplayQuestInfo(true)
                             quest:Pause(1.0)
                             CVar27 = 0x0
-                            pCVar15 = quest:GetThingWithScriptName("CK_HeroStart")
+                            native_call_target = quest:GetThingWithScriptName("CK_HeroStart")
+                            native_call_target_token = resources:TrackThingOutput(native_call_target)
                             pCVar15 = quest:GetHero()
-                            quest:EntityTeleportToThing(pCVar15, pCVar15, (CVar27 ~= 0))
+                            quest:EntityTeleportToThing(pCVar15, native_call_target, (CVar27 ~= 0))
+                            resources:RetireThingOutput(native_call_target_token)
+                            native_call_target = nil
                             CVar27 = 0x0
                             pCVar15 = quest:GetHero()
                             quest:EntitySetFacingAngleTowardsThing(me, pCVar15, (CVar27 ~= 0))
                             iVar10 = 0
                             ctr_CVar19 = 0
+                            xStack_374 = 0
                             repeat
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
@@ -1016,7 +1058,7 @@ function Main(quest, me)
                                 CVar27 = 0x0
                                 pCVar9 = pCVar15:GetPos()
                                 pCVar15 = "CREATURE_KICKING_CHICKEN_01"
-                                r19 = quest:CreateCreature(pCVar15, pCVar9, "KickedChicken")
+                                r19 = quest:CreateCreature(pCVar15, pCVar9, "KickedChicken", (CVar27 ~= 0))
                                 quest:SetPlayerCreatureOnlyTarget(r19)
                                 CVar27 = 0x0
                                 quest:SetIsPushableByHero(r19, (CVar27 ~= 0))
@@ -1090,7 +1132,7 @@ function Main(quest, me)
                                 if bVar6 then goto LAB_00e68ace end
                                 xStack_34c = resources:StartMovie("")
                                 quest:PauseAllNonScriptedEntities(true)
-                                -- TODO(native): CCharString::operator=(&xStack_398,"CS_CHICKING_LANDED");
+                                xStack_398 = "CS_CHICKING_LANDED"
                                 iVar11 = quest:GetStateInt("DistanceBand")
                                 if iVar11 == 4 then
                                     alive = not quest:IsActiveThreadTerminating()
@@ -1136,6 +1178,7 @@ function Main(quest, me)
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FAR_LEFT_NEW"
                                                 resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x64
+                                                xStack_374 = ctr_CVar19
                                             elseif iVar11 == 2 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
@@ -1143,6 +1186,7 @@ function Main(quest, me)
                                                 pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_LEFT_NEW"
                                                 resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x32
+                                                xStack_374 = ctr_CVar19
                                             elseif iVar11 == 1 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
@@ -1150,6 +1194,7 @@ function Main(quest, me)
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FRONT_LEFT_NEW"
                                                 resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x19
+                                                xStack_374 = ctr_CVar19
                                             end
                                             goto LAB_00e6805d
                                         end
@@ -1165,6 +1210,7 @@ function Main(quest, me)
                                                 pcVar20 = "TEXT_QST_B17_MASTER_FAR_CENTRE_NEW"
                                                 resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0xa
+                                                xStack_374 = ctr_CVar19
                                             elseif iVar11 == 2 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
@@ -1172,6 +1218,7 @@ function Main(quest, me)
                                                 pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_CENTRE_NEW"
                                                 resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0x19
+                                                xStack_374 = ctr_CVar19
                                             elseif iVar11 == 1 then
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
@@ -1179,6 +1226,7 @@ function Main(quest, me)
                                                 pcVar20 = "TEXT_QST_B17_MASTER_NEAR_CENTRE_NEW"
                                                 resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                 ctr_CVar19 = ctr_CVar19 + 0xa
+                                                xStack_374 = ctr_CVar19
                                             end
                                             goto LAB_00e6805d
                                         end
@@ -1219,6 +1267,7 @@ function Main(quest, me)
                                         pcVar20 = "TEXT_QST_B17_MASTER_FAR_RIGHT_NEW"
                                         resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         ctr_CVar19 = ctr_CVar19 + 0x64
+                                        xStack_374 = ctr_CVar19
                                     elseif iVar11 == 2 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
@@ -1226,6 +1275,7 @@ function Main(quest, me)
                                         pcVar20 = "TEXT_QST_B17_MASTER_CENTRE_RIGHT_NEW"
                                         resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         ctr_CVar19 = ctr_CVar19 + 0x32
+                                        xStack_374 = ctr_CVar19
                                     elseif iVar11 == 1 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
@@ -1233,6 +1283,7 @@ function Main(quest, me)
                                         pcVar20 = "TEXT_QST_B17_MASTER_NEAR_RIGHT_NEW"
                                         resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                         ctr_CVar19 = ctr_CVar19 + 0x19
+                                        xStack_374 = ctr_CVar19
                                     end
                                     goto LAB_00e6805d
                                 end
@@ -1248,8 +1299,7 @@ function Main(quest, me)
                                 ::LAB_00e68054::
                                 xStack_398 = pcVar20
                                 ::LAB_00e6805d::
-                                -- TODO(native): CCharString::CCharString(&xStack_398_2,&xStack_398);
-                                -- TODO(native): Game_InitializeArena(*(undefined4 *)(this + 0x14));
+                                require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, xStack_398)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_34c)
                                 CVar27 = 0x1
@@ -1268,30 +1318,28 @@ function Main(quest, me)
                                 quest:ReturnAllConfiscatedItemsToHero()
                                 quest:SetHeroWillAsUsable(true)
                                 quest:SetTeleportingAsActive(true)
-                                -- TODO(native): CCharString__SetFromFormatV();
-                                -- TODO(native): CWideString::CWideString(xStack_208,(int)&xStack_354);
-                                -- TODO(native): Vector_PushBack(xStack_360,(int)xStack_208);
-                                -- TODO(native): GetFormattedString is not a ForgeFSE binding
-                                quest:GetFormattedString("TEXT_QST_B17_SCORE", pCVar15)
-                                -- TODO(native): CWideString::operator=((CWideString *)&DAT_0143e908,(int)p0);
+                                native_wide_arguments = resources:NewWideTextArguments()
+                                native_wide_arguments:AppendInteger(((ctr_CVar19 + 2147483648) % 4294967296 - 2147483648))
+                                native_wide_arguments:FormatGlobalText(0x143e908, "TEXT_QST_B17_SCORE")
                                 xStack_398 = "CS_CHICKING_END"
-                                if f_stk_374 < quest:ReadGlobalGameDataFloat(0xfb0) then
-                                    if f_stk_374 < quest:ReadGlobalGameDataFloat(0xfac) then
-                                        if f_stk_374 < quest:ReadGlobalGameDataFloat(0xfa8) then
+                                f_stk_374 = (string.unpack("<f", string.pack("<f", ((xStack_374 + 2147483648) % 4294967296 - 2147483648))))
+                                if not (((xStack_374 + 2147483648) % 4294967296 - 2147483648) >= quest:ReadGlobalGameDataFloat(0xfb0)) then
+                                    if not (f_stk_374 >= quest:ReadGlobalGameDataFloat(0xfac)) then
+                                        if not (f_stk_374 >= quest:ReadGlobalGameDataFloat(0xfa8)) then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
                                             if not bVar6 then
                                                 pcVar20 = "CHICK_KICK_LOW"
                                                 resources:SetString(resources:MemberStringMap("csargs"), "$ANIM", pcVar20)
                                                 pcVar20 = "CHICK_KICK_LOW_LOOP"
-                                                resources:SetString(resources:MemberStringMap("csargs"), pCVar14, pcVar20)
+                                                resources:SetString(resources:MemberStringMap("csargs"), "$LOOP", pcVar20)
                                                 if quest:GetMasterGameState("MaxChickenKickingScore") < ctr_CVar19 then
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
                                                     if not bVar6 then
-                                                        -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
+                                                        quest:SetMasterGameState("MaxChickenKickingScore", ((ctr_CVar19 + 2147483648) % 4294967296 - 2147483648))
                                                         pcVar20 = "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN_HIGH"
-                                                        resources:SetString(resources:MemberStringMap("csargs"), pCVar14, pcVar20)
+                                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                         goto LAB_00e6894f
                                                     end
                                                 else
@@ -1299,7 +1347,7 @@ function Main(quest, me)
                                                     bVar6 = not alive
                                                     if not bVar6 then
                                                         pcVar20 = "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN"
-                                                        resources:SetString(resources:MemberStringMap("csargs"), pCVar14, pcVar20)
+                                                        resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                         goto LAB_00e6894f
                                                     end
                                                 end
@@ -1322,8 +1370,7 @@ function Main(quest, me)
                                                     if not bVar6 then
                                                         pcVar20 = "TEXT_QST_B17_MASTER_LOW_PRIZE_FIRST"
                                                         resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
-                                                        puVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x5c)
-                                                        -- TODO(native): *puVar1 = *puVar1 | 1;
+                                                        quest:SetStateInt("PrizesWon", quest:GetStateInt("PrizesWon") | 1)
                                                         xStack_398 = "CS_CHICKING_LOWPRIZE"
                                                         goto LAB_00e687e4
                                                     end
@@ -1335,7 +1382,7 @@ function Main(quest, me)
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar6 = not alive
                                                             if not bVar6 then
-                                                                -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
+                                                                quest:SetMasterGameState("MaxChickenKickingScore", ((ctr_CVar19 + 2147483648) % 4294967296 - 2147483648))
                                                                 pcVar20 = "TEXT_QST_B17_MASTER_LOW_PRIZE_AGAIN_HIGH"
                                                                 resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                                 goto LAB_00e687e4
@@ -1373,8 +1420,7 @@ function Main(quest, me)
                                                 if not bVar6 then
                                                     pcVar20 = "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_FIRST"
                                                     resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
-                                                    puVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x5c)
-                                                    -- TODO(native): *puVar1 = *puVar1 | 2;
+                                                    quest:SetStateInt("PrizesWon", quest:GetStateInt("PrizesWon") | 2)
                                                     xStack_398 = "CS_CHICKING_MIDPRIZE"
                                                     goto LAB_00e685d7
                                                 end
@@ -1386,7 +1432,7 @@ function Main(quest, me)
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar6 = not alive
                                                         if not bVar6 then
-                                                            -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
+                                                            quest:SetMasterGameState("MaxChickenKickingScore", ((ctr_CVar19 + 2147483648) % 4294967296 - 2147483648))
                                                             pcVar20 = "TEXT_QST_B17_MASTER_MIDDLE_PRIZE_AGAIN_HIGH"
                                                             resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                             goto LAB_00e685d7
@@ -1423,9 +1469,8 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
                                             if not bVar6 then
-                                                -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
-                                                puVar1 = (__native_entity_state:GetStateInt("self_0x14") + 0x5c)
-                                                -- TODO(native): *puVar1 = *puVar1 | 4;
+                                                quest:SetMasterGameState("MaxChickenKickingScore", ((ctr_CVar19 + 2147483648) % 4294967296 - 2147483648))
+                                                quest:SetStateInt("PrizesWon", quest:GetStateInt("PrizesWon") | 4)
                                                 xStack_398 = "CS_CHICKING_TOPPRIZE"
                                                 goto LAB_00e68954
                                             end
@@ -1437,7 +1482,7 @@ function Main(quest, me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
                                                     if not bVar6 then
-                                                        -- TODO(native): *(CCharString *)(*(int *)(this + 0x18) + 0xf8) = ctr_CVar19;
+                                                        quest:SetMasterGameState("MaxChickenKickingScore", ((ctr_CVar19 + 2147483648) % 4294967296 - 2147483648))
                                                         pcVar20 = "TEXT_QST_B17_MASTER_TOP_PRIZE_AGAIN_HIGH"
                                                         resources:SetString(resources:MemberStringMap("csargs"), "$LINE", pcVar20)
                                                         goto LAB_00e68395
@@ -1464,25 +1509,23 @@ function Main(quest, me)
                                 end
                                 goto FLOW_past_lab_00e68954
                                 ::LAB_00e68954::
-                                -- TODO(native): if ctr_CVar19 == *(__native_entity_state:GetStateInt("self_0x18") + 0xf8) then
-                                if false then
+                                if ((ctr_CVar19 + 2147483648) % 4294967296 - 2147483648) == quest:GetMasterGameState("MaxChickenKickingScore") then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar6 = not alive
                                     if bVar6 then goto LAB_00e68ad9 end
-                                    -- TODO(native): UpdateOnlineScore_ChickenKick is not a ForgeFSE binding
-                                    quest:UpdateOnlineScore_ChickenKick(f_stk_374)
+                                    resources:UpdateOnlineScore(0xb58, f_stk_374)
                                 end
                                 xStack_164 = resources:StartMovie("")
                                 quest:PauseAllNonScriptedEntities(true)
-                                -- TODO(native): CCharString::CCharString(&xStack_398_2,&xStack_398);
-                                -- TODO(native): Game_InitializeArena(*(undefined4 *)(this + 0x14));
+                                require("V_ChickenKicking.native_quest_helpers").helper_E68B20(quest, me, xStack_398)
+                                native_wide_arguments:ClearGlobalText(0x143e908)
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_164)
-                                -- TODO(native): CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);
+                                native_wide_arguments:Close()
                                 goto LAB_00e68a20
                                 ::FLOW_past_lab_00e68954::
                                 ::LAB_00e68ad9::
-                                -- TODO(native): CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);
+                                native_wide_arguments:Close()
                             end
                             ::LAB_00e68ae2::
                         end
@@ -1490,7 +1533,7 @@ function Main(quest, me)
                         break
                         ::FLOW_past_lab_00e6762e::
                         ::LAB_00e68a3c::
-                        -- TODO(native): (**(code **)(*CVar19 + 0x5ec))(ctr_CVar19,false);
+                        quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_32c)
                         break
                     end

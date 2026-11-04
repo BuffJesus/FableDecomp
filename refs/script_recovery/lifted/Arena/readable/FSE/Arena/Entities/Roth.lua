@@ -1,96 +1,106 @@
 -- Readable native conversion: Roth. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
+
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local earlyTalk, chamTalk, hintNumber
+local earlyTalk_, chamTalk_, hintNumber_
 
 -- Roth.Main (retail 0x00f21880)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult8, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04
-    local fret_05, fret_06, predicateResult29, scratchValue, registerTimer, switch, switch3, movie
-    local scratchValue23, pCVar22_b3, thing, movie2, meControl, movie3, movie4, actorMap, actorMap2
+    local scratchValue, predicateResult, controlAcquired, predicateResult9, predicateResult30
+    local scratchValue13, timerId, registerTimer, switch, switch3, p1, movie, resource3, movie2
+    local resource4, movie3, movie4, actorMap, actorMap2
     local function ReleaseEverything()
-        quest:PauseAllNonScriptedEntities(thing ~= 0)
+        quest:PauseAllNonScriptedEntities(false)
         local movie = movie2
         resources:DestroyMovie(movie)
         quest:DeregisterTimer(registerTimer)
-        resources:DestroyMovie(meControl)
+        resources:ReleaseResource(resource4)
     end
     local function ReleaseEverything2()
-        quest:PauseAllNonScriptedEntities(scratchValue23 ~= 0)
-        local movie = movie2
-        resources:DestroyMovie(movie)
-        quest:DeregisterTimer(registerTimer)
-        resources:DestroyMovie(meControl)
-    end
-    local function ReleaseEverything3()
         local movie = movie4
         resources:DestroyMovie(movie)
         quest:DeregisterTimer(registerTimer)
-        resources:DestroyMovie(meControl)
+        resources:ReleaseResource(resource4)
     end
-    local function ReleaseEverything4()
+    local function ReleaseEverything3()
         resources:DestroyMovie(movie)
         quest:DeregisterTimer(registerTimer)
-        resources:DestroyMovie(meControl)
+        resources:ReleaseResource(resource4)
     end
-    resources:NewResource()
+    resource4 = resources:NewResource()
+    resource3 = resource4
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     while quest:GetStateInt("ArenaState") == 2 do
-        if not quest:NewScriptFrame(me) then return end
+        quest:NewScriptFrame(me)
+        if quest:IsActiveThreadTerminating() then
+            resources:ReleaseResource(resource4)
+            do return end
+        end
     end
-    if quest:IsActiveThreadTerminating() then resources:DestroyMovie(meControl); return end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource4); return end
     quest:SetCreatureBrain(me, "BRAIN_PASSIVE_OVERRIDE")
-    thing = quest:GetThingWithScriptName("RothPoint")
-    quest:SetWanderCentrePoint(me, thing:GetPos())
+    local position = quest:GetThingWithScriptName("RothPoint"):GetPos()
+    scratchValue = position.x
+    p1 = nil
+    quest:SetWanderCentrePoint(me, position)
     quest:SetWanderMinDistance(me, 0.0)
     quest:SetWanderMaxDistance(me, 4.0)
     quest:SetScriptingStateGroup(me, 4)
     quest:SetThingHasInformation(me, false, true, false)
     registerTimer = quest:RegisterTimer()
-    scratchValue = 0
+    scratchValue13 = 0
+    timerId = registerTimer
     predicateResult = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult then
             quest:DeregisterTimer(registerTimer)
+            resources:ReleaseResource(resource4)
             return
         end
         if quest:GetStateBool("PlayerLeaving") then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(registerTimer)
-                resources:ReleaseResource(meControl)
+                resources:ReleaseResource(resource4)
                 return
             end
-            quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_ARENA_OBJECTIVE_05", "Arena", "KnotholeGlade")
-            resources:PrepareResource(meControl)
-            while not resources:TryAcquire(meControl, me, 4) do
+            local pQuestName = quest:GetActiveQuestName()
+            quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_ARENA_OBJECTIVE_05", "Arena", "KnotholeGlade")
+            resources:PrepareResource(resource4)
+            while not resources:TryAcquire(resource4, me, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(registerTimer)
-                    resources:ReleaseResource(meControl)
+                    resources:ReleaseResource(resource4)
                     do return end
                 end
             end
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(registerTimer)
-                resources:ReleaseResource(meControl)
+                resources:ReleaseResource(resource4)
                 return
             end
-            local resource = resources:NewResource()
-            resources:PrepareResource(resource)
-            while not resources:TryAcquire(resource, hero, 4) do
+            local resource5 = resources:NewResource()
+            resources:PrepareResource(resource5)
+            local resource = resource5
+            local hero6 = quest:GetHero()
+            controlAcquired = resources:TryAcquire(resource, hero6, 4)
+            while not controlAcquired do
                 if not quest:NewScriptFrame(me) then goto LAB_00f22c81 end
+                local resource2 = resource5
+                local hero7 = quest:GetHero()
+                controlAcquired = resources:TryAcquire(resource2, hero7, 4)
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00f22c81 end
             actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "Hero", resource)
-            -- TODO(native): resources:SetActor(xStack_bc, "Roth", &xStack_144)
+            resources:SetActor(actorMap, "Hero", resource5)
+            resources:SetActor(actorMap, "Roth", resource4)
             actorMap2 = resources:NewStringMap()
             switch = quest:GetStateInt("GoldMultiplier")
             repeat
@@ -110,92 +120,88 @@ function Main(quest, me)
             movie3 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
-            thing = 0
             resources:RunMacroWithStrings("CS_ARENA_ROTHWIMP", actorMap, actorMap2, false, true)
             quest:FixMovieSequenceCamera(false)
             quest:SetStateBool("PlayerLeaving", false)
-            earlyTalk = true
-            chamTalk = true
-            resources:PrepareResource(meControl)
+            earlyTalk_ = true
+            chamTalk_ = true
+            resources:PrepareResource(resource4)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie3)
             resources:DestroyStringMap(actorMap2)
             resources:DestroyActorMap(actorMap)
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource5)
             goto LAB_00f21f12
             ::LAB_00f22c81::
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource5)
             quest:DeregisterTimer(registerTimer)
-            resources:DestroyMovie(meControl)
+            resources:ReleaseResource(resource4)
             return
         end
         ::LAB_00f21f12::
         if quest:GetStateInt("ArenaState") ~= 5 then goto LAB_00f221ae end
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(registerTimer)
-            resources:ReleaseResource(meControl)
+            resources:ReleaseResource(resource4)
             return
         end
-        predicateResult8 = quest:IsActiveThreadTerminating()
-        if scratchValue == 2 then
-            if predicateResult8 then quest:DeregisterTimer(registerTimer); resources:DestroyMovie(meControl); return end
+        predicateResult9 = quest:IsActiveThreadTerminating()
+        if scratchValue13 == 2 then
+            if predicateResult9 then quest:DeregisterTimer(registerTimer); resources:ReleaseResource(resource4); return end
+            local hero = quest:GetHero()
             if quest:IsDistanceBetweenThingsUnder(me, hero, 5.0) then
-                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); resources:DestroyMovie(meControl); return end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); resources:ReleaseResource(resource4); return end
                 local conversationId = quest:AddNewConversation(me, false, false)
-                thing = hero
-                quest:AddPersonToConversation(conversationId, hero)
-                thing = "TEXT_QST_005_V2_ARENA_ROTH_COME_ON"
-                quest:AddLineToConversation(conversationId, thing, me, hero, false)
-                scratchValue = 1
-                quest:SetTimer(registerTimer, 10)
-                local position = quest:GetThingWithScriptName("RothPoint"):GetPos()
-                -- TODO(native): center._4_4_ = uVar17;
-                -- TODO(native): center._0_4_ = uVar14;
-                -- TODO(native): center._8_4_ = uVar21;
-                quest:SetWanderCentrePoint(me, position)
+                local hero8 = quest:GetHero()
+                quest:AddPersonToConversation(conversationId, hero8)
+                local hero2 = quest:GetHero()
+                quest:AddLineToConversation(conversationId, "TEXT_QST_005_V2_ARENA_ROTH_COME_ON", me, hero2, false)
+                scratchValue13 = 1
+                quest:SetTimer(timerId, 10)
+                local position2 = quest:GetThingWithScriptName("RothPoint"):GetPos()
+                local center = {x = position2.x, y = position2.y, z = position2.z}
+                quest:SetWanderCentrePoint(me, center)
+                registerTimer = timerId
+                timerId = registerTimer
                 goto LAB_00f221ae
             else
-                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); resources:DestroyMovie(meControl); return end
-                scratchValue = quest:GetTimer(registerTimer)
-                if 0 < scratchValue then goto LAB_00f221ae end
-                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); resources:DestroyMovie(meControl); return end
-                local position3 = hero:GetPos()
-                -- TODO(native): CVar2._4_4_ = uVar17;
-                -- TODO(native): CVar2._0_4_ = uVar14;
-                -- TODO(native): CVar2._8_4_ = uVar21;
-                quest:SetWanderCentrePoint(me, position3)
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); resources:ReleaseResource(resource4); return end
+                scratchValue13 = quest:GetTimer(registerTimer)
+                if 0 < scratchValue13 then goto LAB_00f221ae end
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); resources:ReleaseResource(resource4); return end
+                local position3 = quest:GetHero():GetPos()
+                local scratchValue2 = {x = position3.x, y = position3.y, z = position3.z}
+                quest:SetWanderCentrePoint(me, scratchValue2)
                 goto LAB_00f220f0
             end
             quest:DeregisterTimer(registerTimer)
-            resources:DestroyMovie(meControl)
+            resources:ReleaseResource(resource4)
             return
         end
-        if predicateResult8 then
+        if predicateResult9 then
             quest:DeregisterTimer(registerTimer)
-            resources:DestroyMovie(meControl)
+            resources:ReleaseResource(resource4)
             return
         end
-        if quest:GetTimer(registerTimer) < 1 and scratchValue == 1 then
+        if quest:GetTimer(registerTimer) < 1 and scratchValue13 == 1 then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(registerTimer)
-                resources:DestroyMovie(meControl)
+                resources:ReleaseResource(resource4)
                 return
             end
-            local position4 = hero:GetPos()
-            -- TODO(native): center_00._4_4_ = uVar17;
-            -- TODO(native): center_00._0_4_ = uVar14;
-            -- TODO(native): center_00._8_4_ = uVar21;
-            quest:SetWanderCentrePoint(me, position4)
-            scratchValue = 2
+            local position4 = quest:GetHero():GetPos()
+            local center_00 = {x = position4.x, y = position4.y, z = position4.z}
+            quest:SetWanderCentrePoint(me, center_00)
+            scratchValue13 = 2
             goto LAB_00f220f0
-        elseif scratchValue == 0 then
+        elseif scratchValue13 == 0 then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(registerTimer)
-                resources:DestroyMovie(meControl)
+                resources:ReleaseResource(resource4)
                 return
             end
             quest:SetTimer(registerTimer, 10)
-            scratchValue = 1
+            scratchValue13 = 1
         end
         goto FLOW_past_lab_00f220f0
         ::LAB_00f220f0::
@@ -207,72 +213,78 @@ function Main(quest, me)
                 goto LAB_00f22979
             else
                 if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00f22979 end
-                predicateResult29 = false
+                predicateResult30 = false
             end
             goto FLOW_past_lab_00f22979
             ::LAB_00f22979::
-            predicateResult29 = true
+            predicateResult30 = true
             ::FLOW_past_lab_00f22979::
-            if predicateResult29 then
+            if predicateResult30 then
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(registerTimer)
-                    resources:DestroyMovie(meControl)
+                    resources:ReleaseResource(resource4)
                     return
                 end
-                resources:PrepareResource(meControl)
-                while not resources:TryAcquire(meControl, me, 4) do
+                resources:PrepareResource(resource4)
+                while not resources:TryAcquire(resource4, me, 4) do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(registerTimer)
-                        resources:DestroyMovie(meControl)
+                        resources:ReleaseResource(resource4)
                         do return end
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:DeregisterTimer(registerTimer)
-                    resources:DestroyMovie(meControl)
+                    resources:ReleaseResource(resource4)
                     return
                 end
-                scratchValue = me:IsPerformingScriptTask()
-                if scratchValue then
+                scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                if scratchValue13 then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(registerTimer)
-                        resources:DestroyMovie(meControl)
+                        resources:ReleaseResource(resource4)
                         return
                     end
+                    resources:ClearCommands(resource4)
                 end
                 if not quest:GetStateBool("InHitCutsceneAlready") then
                     if quest:IsActiveThreadTerminating() then
                         quest:DeregisterTimer(registerTimer)
-                        resources:DestroyMovie(meControl)
+                        resources:ReleaseResource(resource4)
                         return
                     end
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     movie4 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    thing = resources:ScriptThing(meControl)
-                    if quest:GetHealth(thing) > 0.0 then
-                        scratchValue23 = 0
-                        scratchValue = me:IsPerformingScriptTask()
-                        while scratchValue do
+                    local scratchValue26 = resources:ScriptThing(resource4)
+                    if quest:GetHealth(scratchValue26) > 0.0 then
+                        p1 = quest:GetHero()
+                        resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                        while scratchValue13 do
                             quest:NewScriptFrame(me)
-                            if quest:IsActiveThreadTerminating() then
-                                -- TODO(native): (**(code **)(*(int *)xStack_12c + 0x5ec))();
-                                ReleaseEverything3(); return
+                            if not quest:IsActiveThreadTerminating() then
+                                scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                            else
+                                quest:PauseAllNonScriptedEntities(false)
+                                ReleaseEverything2(); do return end
+                                scratchValue13 = resources:IsPerformingScriptTask(resource4)
                             end
-                            scratchValue = me:IsPerformingScriptTask()
                         end
                         if quest:IsActiveThreadTerminating() then
-                            -- TODO(native): (**(code **)(*(int *)xStack_12c + 0x5ec))();
-                            ReleaseEverything3()
+                            quest:PauseAllNonScriptedEntities(false)
+                            ReleaseEverything2()
                             return
                         end
                     end
                     quest:ModifyThingHealth(me, 10000.0, false)
-                    quest:EntitySetThingAsAllyOfThing(me, hero)
-                    quest:EntitySetThingAsAllyOfThing(hero, me)
+                    local hero5 = quest:GetHero()
+                    quest:EntitySetThingAsAllyOfThing(me, hero5)
+                    local pThing1 = quest:GetHero()
+                    quest:EntitySetThingAsAllyOfThing(pThing1, me)
                     quest:SetStateBool("InHitCutsceneAlready", false)
-                    -- TODO(native): (**(code **)(*(int *)xStack_12c + 0x5ec))();
+                    quest:PauseAllNonScriptedEntities(false)
                     movie = movie4
                     goto LAB_00f22bf5
                 end
@@ -282,94 +294,92 @@ function Main(quest, me)
         end
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(registerTimer)
-            resources:ReleaseResource(meControl)
+            resources:ReleaseResource(resource4)
             return
         end
-        resources:PrepareResource(meControl)
-        while not resources:TryAcquire(meControl, me, 4) do
+        resources:PrepareResource(resource4)
+        while not resources:TryAcquire(resource4, me, 4) do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(registerTimer)
-                resources:DestroyMovie(meControl)
+                resources:ReleaseResource(resource4)
                 do return end
             end
         end
         if quest:IsActiveThreadTerminating() then
             quest:DeregisterTimer(registerTimer)
-            resources:DestroyMovie(meControl)
+            resources:ReleaseResource(resource4)
             return
         end
-        if me:IsPerformingScriptTask() then
+        if resources:IsPerformingScriptTask(resource4) then
             if quest:IsActiveThreadTerminating() then
                 quest:DeregisterTimer(registerTimer)
-                resources:DestroyMovie(meControl)
+                resources:ReleaseResource(resource4)
                 return
             end
+            resources:ClearCommands(resource4)
         end
         movie2 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
-        scratchValue = quest:GetStateInt("ArenaState")
-        if scratchValue == 3 and not earlyTalk then
-            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
-            quest:GetHealth(resources:ScriptThing(meControl))
-            -- TODO(native): pCVar22_b3 = !(fret_0 <= (float10)0.0);
-            if pCVar22_b3 then
-                scratchValue23 = 0
-                thing = 0
-                scratchValue = me:IsPerformingScriptTask()
-                while scratchValue do
+        scratchValue13 = quest:GetStateInt("ArenaState")
+        if scratchValue13 == 3 and not earlyTalk_ then
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+            local scratchValue16 = resources:ScriptThing(resource4)
+            if quest:GetHealth(scratchValue16) > 0.0 then
+                p1 = quest:GetHero()
+                resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_FIRST_CHAT_PRE_CHAM", GROUP_SELECT_FIRST, false, true, false)
+                scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                while scratchValue13 do
                     quest:NewScriptFrame(me)
                     if not quest:IsActiveThreadTerminating() then
-                        scratchValue = me:IsPerformingScriptTask()
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     else
                         quest:PauseAllNonScriptedEntities(false)
                         movie = movie2
-                        ReleaseEverything4(); do return end
-                        scratchValue = me:IsPerformingScriptTask()
+                        ReleaseEverything3(); do return end
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     end
-                end
-                if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
-            end
-            earlyTalk = true
-            goto FLOW_native_label_1
-            ReleaseEverything2()
-            return
-        end
-        if scratchValue == 5 and not chamTalk then
-            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-            quest:GetHealth(resources:ScriptThing(meControl))
-            -- TODO(native): pCVar22_b3 = !(fret_00 <= (float10)0.0);
-            if pCVar22_b3 then
-                scratchValue23 = 0
-                thing = 0
-                scratchValue = me:IsPerformingScriptTask()
-                while scratchValue do
-                    if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
-                    scratchValue = me:IsPerformingScriptTask()
                 end
                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
             end
-            chamTalk = true
+            earlyTalk_ = true
             goto FLOW_native_label_1
             ReleaseEverything()
             return
         end
-        if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
-        switch3 = hintNumber
+        if scratchValue13 == 5 and not chamTalk_ then
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+            local scratchValue17 = resources:ScriptThing(resource4)
+            if quest:GetHealth(scratchValue17) > 0.0 then
+                p1 = quest:GetHero()
+                resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_FIRST_CHAT_POST_CHAM", GROUP_SELECT_FIRST, false, true, false)
+                scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                while scratchValue13 do
+                    if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
+                    scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+            end
+            chamTalk_ = true
+            goto FLOW_native_label_1
+            ReleaseEverything()
+            return
+        end
+        if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+        switch3 = hintNumber_
         if not (switch3 == 0 or switch3 == 1 or switch3 == 2 or switch3 == 3 or switch3 == 4 or switch3 == 5) then
             switch3 = 0x7ffffffe
         end
         repeat
             if switch3 == 0 then
-                quest:GetHealth(resources:ScriptThing(meControl))
-                -- TODO(native): pCVar22_b3 = !(fret_01 <= (float10)0.0);
-                if pCVar22_b3 then
-                    scratchValue23 = 0
-                    thing = 0
-                    scratchValue = me:IsPerformingScriptTask()
-                    while scratchValue do
+                local scratchValue18 = resources:ScriptThing(resource4)
+                if quest:GetHealth(scratchValue18) > 0.0 then
+                    p1 = quest:GetHero()
+                    resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_FIRST_HINT", GROUP_SELECT_FIRST, false, true, false)
+                    scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                    while scratchValue13 do
                         if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                        scratchValue = me:IsPerformingScriptTask()
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     end
                     goto LAB_00f22807
                 end
@@ -377,96 +387,91 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00f22807
             ::LAB_00f22807::
-            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
             ::FLOW_hoist_lab_00f22807_1::
             break
             ::FLOW_past_lab_00f22807::
             if switch3 == 1 then
-                quest:GetHealth(resources:ScriptThing(meControl))
-                -- TODO(native): pCVar22_b3 = !(fret_02 <= (float10)0.0);
-                if pCVar22_b3 then
-                    scratchValue23 = 0
-                    thing = 0
-                    scratchValue = me:IsPerformingScriptTask()
-                    while scratchValue do
+                local scratchValue19 = resources:ScriptThing(resource4)
+                if quest:GetHealth(scratchValue19) > 0.0 then
+                    p1 = quest:GetHero()
+                    resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_SECOND_HINT", GROUP_SELECT_FIRST, false, true, false)
+                    scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                    while scratchValue13 do
                         if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                        scratchValue = me:IsPerformingScriptTask()
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     end
                     goto LAB_00f22807
                 end
                 break
             end
             if switch3 == 2 then
-                quest:GetHealth(resources:ScriptThing(meControl))
-                -- TODO(native): pCVar22_b3 = !(fret_03 <= (float10)0.0);
-                if pCVar22_b3 then
-                    scratchValue23 = 0
-                    thing = 0
-                    scratchValue = me:IsPerformingScriptTask()
-                    while scratchValue do
+                local scratchValue20 = resources:ScriptThing(resource4)
+                if quest:GetHealth(scratchValue20) > 0.0 then
+                    p1 = quest:GetHero()
+                    resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_THIRD_HINT", GROUP_SELECT_FIRST, false, true, false)
+                    scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                    while scratchValue13 do
                         if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                        scratchValue = me:IsPerformingScriptTask()
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     end
                     goto LAB_00f22807
                 end
                 break
             end
             if switch3 == 3 then
-                quest:GetHealth(resources:ScriptThing(meControl))
-                -- TODO(native): pCVar22_b3 = !(fret_04 <= (float10)0.0);
-                if pCVar22_b3 then
-                    scratchValue23 = 0
-                    thing = 0
-                    scratchValue = me:IsPerformingScriptTask()
-                    while scratchValue do
+                local scratchValue21 = resources:ScriptThing(resource4)
+                if quest:GetHealth(scratchValue21) > 0.0 then
+                    p1 = quest:GetHero()
+                    resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_FOURTH_HINT", GROUP_SELECT_FIRST, false, true, false)
+                    scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                    while scratchValue13 do
                         if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                        scratchValue = me:IsPerformingScriptTask()
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     end
                     goto LAB_00f22807
                 end
                 break
             end
             if switch3 == 4 then
-                quest:GetHealth(resources:ScriptThing(meControl))
-                -- TODO(native): pCVar22_b3 = !(fret_05 <= (float10)0.0);
-                if pCVar22_b3 then
-                    scratchValue23 = 0
-                    thing = 0
-                    scratchValue = me:IsPerformingScriptTask()
-                    while scratchValue do
+                local scratchValue22 = resources:ScriptThing(resource4)
+                if quest:GetHealth(scratchValue22) > 0.0 then
+                    p1 = quest:GetHero()
+                    resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_FIFTH_HINT", GROUP_SELECT_FIRST, false, true, false)
+                    scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                    while scratchValue13 do
                         if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                        scratchValue = me:IsPerformingScriptTask()
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     end
                     goto LAB_00f22807
                 end
                 break
             end
             if switch3 == 5 then
-                quest:GetHealth(resources:ScriptThing(meControl))
-                -- TODO(native): pCVar22_b3 = !(fret_06 <= (float10)0.0);
-                if pCVar22_b3 then
-                    scratchValue23 = 0
-                    thing = 0
-                    scratchValue = me:IsPerformingScriptTask()
-                    while scratchValue do
+                local scratchValue23 = resources:ScriptThing(resource4)
+                if quest:GetHealth(scratchValue23) > 0.0 then
+                    p1 = quest:GetHero()
+                    resources:Speak(resource4, p1, "TEXT_QST_005_V2_ARENA_ROTH_SIXTH_HINT", GROUP_SELECT_FIRST, false, true, false)
+                    scratchValue13 = resources:IsPerformingScriptTask(resource4)
+                    while scratchValue13 do
                         if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                        scratchValue = me:IsPerformingScriptTask()
+                        scratchValue13 = resources:IsPerformingScriptTask(resource4)
                     end
-                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 end
-                hintNumber = 4
+                hintNumber_ = 4
                 switch3 = 0x7ffffffe
             end
             if switch3 == 0x7ffffffe then goto FLOW_native_label_1 end
         until true
-        hintNumber = hintNumber + 1
+        hintNumber_ = hintNumber_ + 1
         ::FLOW_native_label_1::
-        quest:PauseAllNonScriptedEntities(switch3 ~= 0)
+        quest:PauseAllNonScriptedEntities(false)
         movie = movie2
         ::LAB_00f22bf5::
-        resources:ReleaseResource(movie)
+        resources:DestroyMovie(movie)
         ::LAB_00f22bfa::
-        resources:PrepareResource(meControl)
+        resources:PrepareResource(resource4)
         ::LAB_00f22c10::
         quest:NewScriptFrame(me)
         predicateResult = quest:IsActiveThreadTerminating()
@@ -475,18 +480,21 @@ end
 
 -- Roth.Init (retail 0x00f14610)
 function Init(quest, me)
-    earlyTalk = false
-    chamTalk = false
-    hintNumber = 0
+    earlyTalk_ = false
+    chamTalk_ = false
+    hintNumber_ = 0
     quest:EntitySetOpinionReactionsEnabled(me, false)
     quest:EntitySetDeedReactionsEnabled(me, false)
 end
 
 -- Roth.OnPersist (retail 0x00f21660)
 function OnPersist(quest, me, context)
-    earlyTalk = quest:PersistTransferBool(context, "EarlyTalk", earlyTalk)
-    chamTalk = quest:PersistTransferBool(context, "ChamTalk", chamTalk)
-    hintNumber = quest:PersistTransferInt(context, "HintNumber", hintNumber or 0)
+    local earlyTalk = earlyTalk_ or false
+    earlyTalk_ = quest:PersistTransferBool(context, "EarlyTalk", earlyTalk)
+    local chamTalk = chamTalk_ or false
+    chamTalk_ = quest:PersistTransferBool(context, "ChamTalk", chamTalk)
+    local hintNumber = hintNumber_ or 0
+    hintNumber_ = quest:PersistTransferInt(context, "HintNumber", hintNumber)
 end
 
 -- Roth.OnPredicateFail (retail 0x00cdebd0)

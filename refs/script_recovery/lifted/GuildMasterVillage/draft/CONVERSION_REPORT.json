@@ -142,7 +142,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "QUESTSTATE_GetString",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "SetStateBool",
             "SetStateBool",
             "SetStateBool",
@@ -150,7 +150,7 @@
             "SetStateBool",
             "QUESTSTATE_SetString"
           ],
-          "lines": 389,
+          "lines": 393,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -548,6 +548,66 @@
       "controlMode": "structured draft",
       "bindingFiles": {
         "GuildMasterGameFlow": "V_GuildMaster/Entities/GuildMasterGameFlow"
+      },
+      "blockingSpeechCancellation": {
+        "FSE/V_GuildMaster/Entities/GuildMasterGameFlow.lua": [
+          {
+            "line": 150,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                        resources:DestroyMovie(xStack_c8)\n                                        resources:ReleaseResource(xStack_1b0)\n                                        return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 213,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                        resources:DestroyMovie(xStack_d8)\n                                        resources:ReleaseResource(xStack_1b0)\n                                        return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 293,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            this_00 = xStack_b8\n                            goto LAB_00e91ef9",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 348,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e91ccb",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 383,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e91ee8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 425,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e91ee8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 466,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e91ccb",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "sharedHelpers": {
         "path": "FSE/V_GuildMaster/native_quest_helpers.lua",

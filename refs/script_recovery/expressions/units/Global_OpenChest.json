@@ -632,5 +632,180 @@
     "pdbMembersUnused": [],
     "nestedPdbMembers": {}
   },
-  "entities": {}
+  "entities": {},
+  "reviewedQuestConsciousConditions": {
+    "0x00eec890": {
+      "schema": "reviewed-quest-conscious-condition/1",
+      "address": "0x00eec890",
+      "role": "Main",
+      "sourceSha256": "7346ac112dc0bb0793e4ea86d8b2a50842ba7416a0f784590b53dda85c321354",
+      "nativeSha256": "572bc6678b2c54e163fdeb8cc920ff9042487915666d492a0f9dba1fe9fc2b9d",
+      "operation": "RegisterQuestConsciousCondition",
+      "nativeThreadOffset": "0x2c",
+      "nativeVTable": "0x012c2fe8",
+      "contract": "Native16-byte conscious condition, clone retains counted Thing; caller local destroyed before first frame. No Lua polling.",
+      "sdkMethodSha256": "72a8314f9e5727faae53be26db7075582fa6cdd6c8cdc54f9d6b4b42b771198e",
+      "sdkBindingSha256": "f534880bb9a740bc59d51afd3a029bc508c831f5af321e46989b9c1521f3cad7",
+      "temporaryReuse": {
+        "inputSha256": "0e7150e6cf4b60b0cb18c2b94f7081f78d5d3df4c91462b78e44d20004ec77dd",
+        "sourceAssignment": "xStack_10 = RESOURCE_StartMovie(\"\");",
+        "nativeSite": "0x00EECAD8",
+        "pushedStack": [
+          -16,
+          -64
+        ],
+        "contract": "Native header-16/Thing-12 destroyed before first frame; later movie overwrites header-16. Exact EBP-flag compiler profile, frame4C/saved12/depth88; preserve subsequent movie assignment and all cleanup."
+      }
+    }
+  },
+  "reviewedContainerItemDefCounts": {
+    "0x00eec890": {
+      "schema": "reviewed-container-item-def-count/1",
+      "address": "0x00eec890",
+      "sourceSha256": "7346ac112dc0bb0793e4ea86d8b2a50842ba7416a0f784590b53dda85c321354",
+      "inputSha256": "3430b7d5d8fd246213f66c5abefcd72472aeef5bbc644ffed1c4ab3d94bde400",
+      "nativeSha256": "572bc6678b2c54e163fdeb8cc920ff9042487915666d492a0f9dba1fe9fc2b9d",
+      "sdkMethodSha256": "e69bc4b68be94352292104859f2a20a715c7f6b13d692e8cc2cf053833a9b71b",
+      "sdkBindingSha256": "4fe32a501f58622e01fee30f20787bf2e5e7b473258e80a0cc9e2820161874b9",
+      "operation": "GetContainerItemDefCount",
+      "begin": "iStack_2c",
+      "end": "i_stk_28",
+      "target": "(CScriptThing *)xStack_38",
+      "beginSlot": -44,
+      "targetSlot": -56,
+      "callSite": "0x00EECB33",
+      "callDepth": 100,
+      "frameDepth": 92,
+      "destructorSites": [
+        "0x00EECDA3",
+        "0x00EECDF0"
+      ],
+      "destructorSha256": "6bbbcf45e604f2f2d72b08bed7eef4d9143154ba71c106be7090338f01d49fb9",
+      "anchors": {
+        "0xeecb18": "8b4e408d542430528d542428896c2434896c2438896c243c8b0152ff90300900008b4424303b4424348b4e408b116a018d442428500f95442419b301",
+        "0xeeccdc": "8a44241184c0746b84db7567"
+      },
+      "contract": "Native vector begin/end drives skip-reward branch when empty; count native elements, including null-text CString entries. No element/string use besides two original vector destruction exits. Existing string-list SDK conversion already retires strings before returning; additive count bridge keeps that boundary and one native query. Actual native deferred string lifetime and vector allocation remain unproven."
+    }
+  },
+  "reviewedThingOutputScopes": {
+    "0x00eec890": {
+      "address": "0x00EEC890",
+      "end": "0x00EECE98",
+      "sourceSha256": "7346ac112dc0bb0793e4ea86d8b2a50842ba7416a0f784590b53dda85c321354",
+      "nativeSha256": "572bc6678b2c54e163fdeb8cc920ff9042487915666d492a0f9dba1fe9fc2b9d",
+      "anchors": {
+        "0xeec938": "4e408b018d54242452ff90fc0400008b4c24283bcd0f840c0500008b01ff902c01000084c00f84fc0400008bcee8d6",
+        "0xeec9c0": "8d4c2414e81721abff8d4c2424e86ede5bff5b5f5e5d83c44cc3",
+        "0xeecd9f": "8d4c2430e8f88052ff8d4c244ce8cfad7fff8d4c243ce816a78fffe901fcffff8a442413",
+        "0xeecdf5": "8d4c244ce882ad7fff8d4c243ce8c9a68fffeb4d",
+        "0xeece56": "8d4c2414e8811cabff8d4c2424e8d8d95bff"
+      },
+      "dependencies": {
+        "0x6e7b80": {
+          "length": 66,
+          "sha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+        },
+        "0x7e74d0": {
+          "length": 66,
+          "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+        },
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_chest_container_shape_20261009/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_chest_container_shape_20261009/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_chest_container_shape_20261009/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "8ae5be46fe34b72757dd44705897e7265d470672b5416278a877b1d7a42ada9f"
+        },
+        "LuaQuestState.h": {
+          "path": "work/codex_lua_chest_container_shape_20261009/sidecar_candidate/FableScriptExtender/LuaQuestState.h",
+          "sha256": "fdfeb14f7e0da121994be24aebd7db91b590aa0e1116a1e205ee70c56f95b002"
+        },
+        "LuaManager.cpp": {
+          "path": "work/codex_lua_chest_container_shape_20261009/sidecar_candidate/FableScriptExtender/LuaManager.cpp",
+          "sha256": "26014fa22ee6e01bd959b7c69aa1fc18beb36ac0de114d360828487adcb2f3e2"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_chest_container_shape_20261009/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "76215ab1c8f75af889f974a5be9aa61c1c6f872d07fe5052d7bb4b21dbc09620"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_chest_container_shape_20261009/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "b00f98459a4831d5763aa740067b5424779587d7b3490e945de3feafc4d8d5b3",
+      "recoveredSha256": "4d6cd8695434f09b0349700af7f9ae223a16f3a1e86aff002aa7fa327c0ad2b2",
+      "operations": [
+        {
+          "before": "    local resources = quest:RetailResources()",
+          "after": "    return quest:WithRetailResources(function(resources)\n    local chestTargetOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "    r1 = quest:GetMostRecentValidUsedTarget()",
+          "after": "    r1 = quest:GetMostRecentValidUsedTarget()\n    chestTargetOwner = resources:TrackThingOutput(r1)",
+          "count": 1
+        },
+        {
+          "before": "        ::LAB_00eec9c9::\n        return",
+          "after": "        ::LAB_00eec9c9::\n        resources:RetireThingOutput(chestTargetOwner); chestTargetOwner = 0\n        return",
+          "count": 1
+        },
+        {
+          "before": "    ::LAB_00eece5f::",
+          "after": "    ::LAB_00eece5f::\n    resources:RetireThingOutput(chestTargetOwner); chestTargetOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "\nend\n",
+          "after": "\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "WithRetailResources",
+        "TrackThingOutput",
+        "RetireThingOutput"
+      ],
+      "contract": "Existing Chest Main: preserve explicit movie then resource cleanup, retire selected target at native early EEC9CD or normal EECE63 before deactivation. Callback scope closes remaining owned entries in reverse construction order on Lua error. No cutscene/pause-state restoration invented; actual host teardown and engine scheduling remain unproven."
+    }
+  },
+  "reviewedChestKeyResults": {
+    "0x00eec890": {
+      "schema": "reviewed-chest-key-result/1",
+      "address": "0x00eec890",
+      "inputSha256": "bbd2b3c48ff300d39d193733991963e44c1ff376d638856a046b64e06c0a79f3",
+      "sourceSha256": "7346ac112dc0bb0793e4ea86d8b2a50842ba7416a0f784590b53dda85c321354",
+      "nativeSha256": "572bc6678b2c54e163fdeb8cc920ff9042487915666d492a0f9dba1fe9fc2b9d",
+      "sdkMethodSha256": "29fde4a5d7748c146d100ac1f99731d48d5c76a0c7f0b0200f81bb1f0bf9b183",
+      "sdkBindingSha256": "4f04be5a9d0bdbfd64eac77f60dc983b812bd95431f5a554a9dec7e145bf42b6",
+      "count": "iVar9",
+      "target": "(CScriptThing *)xStack_38",
+      "key": "xStack_48",
+      "result": "native_keyQueryResult",
+      "callSite": "0x00EEC986",
+      "inventorySite": "0x00EEC9A7",
+      "frameDepth": 92,
+      "keySlot": -72,
+      "targetSlot": -56,
+      "anchors": {
+        "0xeec96e": "8d4c2414e8391babff8b4e408b118d442414508d44242850ff92d40600008bf83bfd7e48",
+        "0xeec99d": "8b4e408b118d44241450ff92dc0200003bc77d29",
+        "0xeec9c0": "8d4c2414e81721abff",
+        "0xeece56": "8d4c2414e8811cabff"
+      }
+    }
+  }
 }

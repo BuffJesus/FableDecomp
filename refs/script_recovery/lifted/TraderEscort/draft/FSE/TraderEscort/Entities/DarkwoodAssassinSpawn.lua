@@ -29,14 +29,13 @@ function Main(quest, me)
     xStack_20 = quest:ReadGlobalGameData(0xe14)
     iVar8 = quest:ReadGlobalGameData(0x3b0)
     iVar1 = quest:ReadGlobalGameData(0x3ac)
-    uVar5 = math.random(0, 32767)
-    -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0x3ac) + (uVar5 % (uint)(iVar8 - iVar1 >> 2)) * 4),(int)&xStack_28);
-    -- TODO(native): CCharString::CCharString(&xStack_30,&xStack_28);
+    uVar5 = quest:RetailRandModulo(32768)
+    local sampledSound = quest:ReadGlobalGameDataDefStringAt(0x3ac, uVar5 % ((iVar8 - iVar1) >> 2))
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
         f_CVar3 = xStack_20
-        -- TODO(native): xStack_20 = CVar3;
+        xStack_20 = f_CVar3
         repeat
             dist = f_CVar3
             pCVar6 = quest:GetHero()
@@ -71,11 +70,11 @@ function Main(quest, me)
                 xStack_24 = quest:ReadGlobalGameDataString(0xe18)
                 bVar4 = true
                 pCVar7 = me:GetPos()
-                r1 = quest:CreateCreature(xStack_24, pCVar7, "DarkwoodAssassin")
+                r1 = quest:CreateCreature(xStack_24, pCVar7, "DarkwoodAssassin", bVar4)
                 quest:SetThingPersistent(r1, true)
                 pCVar9 = quest:GetActiveQuestName()
                 quest:EntityAttachToScript(r1, pCVar9)
-                iVar8 = math.random(0, 32767)
+                iVar8 = quest:RetailRandModulo(32768)
                 if iVar8 % 5 == 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -132,7 +131,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if bVar4 then goto LAB_00e03372 end
-    r2 = quest:PlaySoundOnThing(r1, "DarkwoodAssassin")
+    r2 = quest:PlaySoundOnThing(r1, sampledSound)
     ::LAB_00e0320d::
     fVar10 = 12.0
     pCVar6 = quest:GetHero()
@@ -156,7 +155,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then goto LAB_00e03372 end
-        r3 = quest:PlaySoundOnThing(r1, nil --[[missing]])
+        r3 = quest:PlaySoundOnThing(r1, sampledSound)
     end
     fVar10 = 8.0
     pCVar6 = quest:GetHero()
@@ -180,9 +179,9 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then goto LAB_00e03372 end
-        r4 = quest:PlaySoundOnThing(r1, nil --[[missing]])
+        r4 = quest:PlaySoundOnThing(r1, sampledSound)
     end
-    quest:RemoveThing(p0, false, true)
+    quest:RemoveThing(me, false, true)
     ::LAB_00e03372::
     quest:DeregisterTimer(i_stk_2c)
 end

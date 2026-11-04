@@ -1,8 +1,6 @@
 -- Readable native conversion: BanditForger. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
-
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
@@ -12,14 +10,14 @@ local SCRIPT_DEF = {
 }
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local givenPass
+local givenPass_
 
 -- BanditForger.Main (retail 0x00d0c410)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult3, predicateResult, predicateResult20, scratchValue4, scratchValue5
-    local scratchValue6, questionAnswer, questionAnswer2, addNewConversation, timerId, resource
+    local predicateResult3, predicateResult4, predicateResult, predicateResult20, scratchValue4
+    local scratchValue5, scratchValue6, questionAnswer, questionAnswer2, addNewConversation, timerId
+    local hero2, hero3, hero17, line, scratchValue30, resource, scriptThing
     local function ReleaseEverything()
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource)
@@ -40,10 +38,10 @@ function Main(quest, me)
     if not quest:NewScriptFrame(me) then goto LAB_00d0d8d1 end
     timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 0)
-    if not givenPass then
+    if not givenPass_ then
         if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
         quest:GiveThingHeroRewardItem(me, "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", "")
-        givenPass = true
+        givenPass_ = true
     end
     repeat
         if scratchValue6 == 0 then goto LAB_00d0d04e end
@@ -52,6 +50,7 @@ function Main(quest, me)
             goto LAB_00d0c68f
         else
             if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0c68f end
+            local hero = quest:GetHero()
             predicateResult3 = false
             if quest:AreEntitiesEnemies(me, hero) then goto LAB_00d0c68f end
         end
@@ -63,23 +62,40 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
             scratchValue6 = 0
         end
-        if not ((quest:GetTimer(timerId) >= 1) or ((not quest:IsDistanceBetweenThingsUnder(hero, me, 10.0)) or quest:GetStateBool("Gate2Open")) or quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero)) then
+        if not (quest:GetTimer(timerId) < 1) then goto LAB_00d0c766 end
+        hero2 = quest:GetHero()
+        if not quest:IsDistanceBetweenThingsUnder(hero2, me, 10.0) or quest:GetStateBool("Gate2Open") then goto LAB_00d0c766 end
+        hero3 = quest:GetHero()
+        predicateResult4 = true
+        if quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero3) then goto LAB_00d0c766 end
+        goto FLOW_past_lab_00d0c766
+        ::LAB_00d0c766::
+        predicateResult4 = false
+        ::FLOW_past_lab_00d0c766::
+        if predicateResult4 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
-            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+            local hero4 = quest:GetHero()
+            quest:EntitySetFacingAngleTowardsThing(me, hero4, false)
             me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
             while me:IsPerformingScriptTask() do
                 if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
             end
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
             if scratchValue4 == 0 then
+                if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
                 addNewConversation = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(addNewConversation, hero)
-                quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_FORGER_ASIDE_FIRST", me, hero, false)
+                local hero5 = quest:GetHero()
+                quest:AddPersonToConversation(addNewConversation, hero5)
+                local hero6 = quest:GetHero()
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_FORGER_ASIDE_FIRST", me, hero6, false)
                 scratchValue4 = 1
             else
+                if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
                 addNewConversation = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(addNewConversation, hero)
-                quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_FORGER_ASIDE_SECOND", me, hero, false)
+                local hero7 = quest:GetHero()
+                quest:AddPersonToConversation(addNewConversation, hero7)
+                local hero8 = quest:GetHero()
+                quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_FORGER_ASIDE_SECOND", me, hero8, false)
                 scratchValue4 = 0
             end
             quest:SetTimer(timerId, 10)
@@ -89,13 +105,23 @@ function Main(quest, me)
         local movie2 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
         if not quest:GetStateBool("Gate2Open") then
+            local hero9 = quest:GetHero()
+            local isObjectInThingsPossession = quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero9)
             local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
-            if not quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero) then
+            if not isObjectInThingsPossession then
                 if isActiveThreadTerminating then
                     quest:PauseAllNonScriptedEntities(false)
                 else
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_009_FORGER_CHAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0cb83 end
+                    scriptThing = resources:ScriptThing(resource)
+                    if 0.0 < quest:GetHealth(scriptThing) then
+                        line = "TEXT_QST_009_FORGER_CHAT"
+                        local hero10 = quest:GetHero()
+                        if not me:Speak(hero10, line, 0, false, true, false) then
+                            goto LAB_00d0cb83
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00d0cb83 end
+                        end
                         if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d0d377 end
                     end
                     quest:GiveHeroYesNoQuestion("TEXT_QST_009_FORGER_CHAT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
@@ -106,37 +132,66 @@ function Main(quest, me)
                     end
                     if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d0d377 end
                     if questionAnswer ~= 1 then
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_009_FORGER_TURNED_DOWN", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0cb83 end
-                            goto LAB_00d0d014
+                        do
+                            scriptThing = resources:ScriptThing(resource)
+                            if 0.0 < quest:GetHealth(scriptThing) then
+                                line = "TEXT_QST_009_FORGER_TURNED_DOWN"
+                                local hero11 = quest:GetHero()
+                                if not me:Speak(hero11, line, 0, false, true, false) then
+                                    goto LAB_00d0cb83
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto LAB_00d0cb83 end
+                                end
+                                goto LAB_00d0d014
+                            end
+                            goto LAB_00d0d023
                         end
-                        goto LAB_00d0d023
                         quest:PauseAllNonScriptedEntities(false)
                         goto FLOW_after_lab_00d0d377
                     end
-                    if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount) then
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_009_FORGER_FAILED", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0cb83 end
-                            goto LAB_00d0d014
-                        end
-                        goto LAB_00d0d023
-                    end
-                    if not quest:IsActiveThreadTerminating() then
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_009_FORGER_SUCCESS", GROUP_SELECT_FIRST, false, true, false)
-                            while me:IsPerformingScriptTask() do
-                                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d0d377 end
+                    do
+                        if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount) then
+                            if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d0d377 end
+                            scriptThing = resources:ScriptThing(resource)
+                            if 0.0 < quest:GetHealth(scriptThing) then
+                                line = "TEXT_QST_009_FORGER_FAILED"
+                                local hero12 = quest:GetHero()
+                                if not me:Speak(hero12, line, 0, false, true, false) then
+                                    goto LAB_00d0cb83
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto LAB_00d0cb83 end
+                                end
+                                goto LAB_00d0d014
                             end
-                            if quest:IsActiveThreadTerminating() then goto LAB_00d0cb83 end
+                            goto LAB_00d0d023
                         end
-                        quest:GiveHeroObject("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", -1, false)
-                        quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount))))
-                        quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount))))
-                        quest:RemoveItemFromContainer(me, "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS")
-                        scratchValue5 = 0
-                        quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
-                        quest:ClearThingHasInformation(me)
-                        goto LAB_00d0d023
+                        if not quest:IsActiveThreadTerminating() then
+                            scriptThing = resources:ScriptThing(resource)
+                            if 0.0 < quest:GetHealth(scriptThing) then
+                                line = "TEXT_QST_009_FORGER_SUCCESS"
+                                local hero13 = quest:GetHero()
+                                if not me:Speak(hero13, line, 0, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    goto FLOW_after_lab_00d0d377
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d0d377 end
+                                end
+                                if quest:IsActiveThreadTerminating() then goto LAB_00d0cb83 end
+                            end
+                            quest:GiveHeroObject("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", -1, false)
+                            addNewConversation = math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount)))
+                            quest:GiveHeroGold(addNewConversation)
+                            addNewConversation = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount)))
+                            quest:EntityGiveGold(me, addNewConversation)
+                            quest:RemoveItemFromContainer(me, "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS")
+                            scratchValue5 = 0
+                            quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
+                            quest:ClearThingHasInformation(me)
+                            goto LAB_00d0d023
+                        end
                     end
                     ::LAB_00d0cb83::
                     quest:PauseAllNonScriptedEntities(false)
@@ -150,8 +205,15 @@ function Main(quest, me)
                 resources:DestroyMovie(movie2)
                 goto LAB_00d0d8c8
             end
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, "TEXT_QST_009_FORGER_EARLY_GOT_PASS", GROUP_SELECT_FIRST, false, true, false)
+            scriptThing = resources:ScriptThing(resource)
+            if 0.0 < quest:GetHealth(scriptThing) then
+                line = "TEXT_QST_009_FORGER_EARLY_GOT_PASS"
+                local hero14 = quest:GetHero()
+                if not me:Speak(hero14, line, 0, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie2)
+                    goto LAB_00d0d8c8
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
@@ -172,8 +234,16 @@ function Main(quest, me)
                 resources:DestroyMovie(movie2)
                 goto LAB_00d0d8c8
             end
-            if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then goto LAB_00d0d023 end
-            me:Speak(hero, "TEXT_QST_009_FORGER_EARLY_NOT_NEED", GROUP_SELECT_FIRST, false, true, false)
+            scriptThing = resources:ScriptThing(resource)
+            if quest:GetHealth(scriptThing) <= 0.0 then goto LAB_00d0d023 end
+            line = "TEXT_QST_009_FORGER_EARLY_NOT_NEED"
+            local hero15 = quest:GetHero()
+            if not me:Speak(hero15, line, 0, false, true, false) then
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie2)
+                ReleaseEverything()
+                return
+            end
             while me:IsPerformingScriptTask() do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
@@ -209,8 +279,9 @@ function Main(quest, me)
                 goto LAB_00d0d12f
             else
                 if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d0d12f end
+                local hero16 = quest:GetHero()
                 predicateResult = false
-                if quest:AreEntitiesEnemies(me, hero) then goto LAB_00d0d12f end
+                if quest:AreEntitiesEnemies(me, hero16) then goto LAB_00d0d12f end
             end
             goto FLOW_past_lab_00d0d12f
             ::LAB_00d0d12f::
@@ -223,20 +294,26 @@ function Main(quest, me)
         until me:IsTalkedToByHero()
         if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
         local movie = resources:StartMovie("")
+        local scratchValue31 = scratchValue30
         quest:PauseAllNonScriptedEntities(true)
         if quest:GetStateBool("Gate2Open") then goto LAB_00d0d27c end
-        -- TODO(native): xStack_8c = xStack_8c | 0x80;
+        hero17 = quest:GetHero()
         predicateResult20 = false
-        if quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero) then goto LAB_00d0d27c end
+        if quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", hero17) then goto LAB_00d0d27c end
         goto FLOW_past_lab_00d0d27c
         ::LAB_00d0d27c::
         predicateResult20 = true
         ::FLOW_past_lab_00d0d27c::
-            -- TODO(native): xStack_8c = xStack_8c & 0xffffff7f;
         if predicateResult20 then
             if not quest:IsActiveThreadTerminating() then
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                    me:Speak(hero, "TEXT_QST_009_FORGER_LATE_NOT_NEED", GROUP_SELECT_FIRST, false, true, false)
+                scriptThing = resources:ScriptThing(resource)
+                if 0.0 < quest:GetHealth(scriptThing) then
+                    line = "TEXT_QST_009_FORGER_LATE_NOT_NEED"
+                    local hero18 = quest:GetHero()
+                    if not me:Speak(hero18, line, 0, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        goto FLOW_after_lab_00d0d8e5
+                    end
                     while me:IsPerformingScriptTask() do
                         if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto FLOW_after_lab_00d0d8e5 end
                     end
@@ -259,8 +336,16 @@ function Main(quest, me)
                         if not predicateResult25 then
                             if quest:GetHeroGold() < quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount) then
                                 if not quest:IsActiveThreadTerminating() then
-                                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                        if not me:Speak(hero, "TEXT_QST_009_FORGER_SECOND_FAIL", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0d365 end
+                                    local scratchValue33 = resources:ScriptThing(resource)
+                                    if 0.0 < quest:GetHealth(scratchValue33) then
+                                        line = "TEXT_QST_009_FORGER_SECOND_FAIL"
+                                        local hero19 = quest:GetHero()
+                                        if not me:Speak(hero19, line, 0, false, true, false) then
+                                            goto LAB_00d0d365
+                                        end
+                                        while me:IsPerformingScriptTask() do
+                                            if not quest:NewScriptFrame(me) then goto LAB_00d0d365 end
+                                        end
                                         goto LAB_00d0d81a
                                     end
                                     goto LAB_00d0d829
@@ -268,25 +353,44 @@ function Main(quest, me)
                                 goto LAB_00d0d8e5
                             end
                             if not quest:IsActiveThreadTerminating() then
-                                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                    if not me:Speak(hero, "TEXT_QST_009_FORGER_SUCCESS", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0d8e5 end
+                                local scratchValue34 = resources:ScriptThing(resource)
+                                if 0.0 < quest:GetHealth(scratchValue34) then
+                                    line = "TEXT_QST_009_FORGER_SUCCESS"
+                                    local hero20 = quest:GetHero()
+                                    if not me:Speak(hero20, line, 0, false, true, false) then
+                                        goto LAB_00d0d8e5
+                                    end
+                                    while me:IsPerformingScriptTask() do
+                                        if not quest:NewScriptFrame(me) then goto LAB_00d0d8e5 end
+                                    end
                                     if quest:IsActiveThreadTerminating() then goto LAB_00d0d365 end
                                 end
                                 quest:GiveHeroObject("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", -1, false)
-                                quest:GiveHeroGold(math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount))))
-                                quest:EntityGiveGold(me, math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount))))
+                                addNewConversation = math.tointeger(math.modf(-quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount)))
+                                quest:GiveHeroGold(addNewConversation)
+                                addNewConversation = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BAC_ForgerGoldAmount)))
+                                quest:EntityGiveGold(me, addNewConversation)
                                 quest:RemoveItemFromContainer(me, "OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS")
                                 quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.EXPERIENCE_GRANT_SMALL))
                                 quest:ClearThingHasInformation(me)
                                 scratchValue5 = 0
+                                scratchValue30 = scratchValue31
                                 goto LAB_00d0d829
                             end
                         end
                         goto LAB_00d0d365
                     end
                     if not predicateResult25 then
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_009_FORGER_TURNED_DOWN", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00d0d365 end
+                        local scratchValue32 = resources:ScriptThing(resource)
+                        if 0.0 < quest:GetHealth(scratchValue32) then
+                            line = "TEXT_QST_009_FORGER_TURNED_DOWN"
+                            local hero21 = quest:GetHero()
+                            if not me:Speak(hero21, line, 0, false, true, false) then
+                                goto LAB_00d0d365
+                            end
+                            while me:IsPerformingScriptTask() do
+                                if not quest:NewScriptFrame(me) then goto LAB_00d0d365 end
+                            end
                             goto LAB_00d0d81a
                         end
                         goto FLOW_hoist_lab_00d0d81a_1
@@ -325,7 +429,8 @@ function Main(quest, me)
         if scratchValue6 == 0 then
             if quest:IsActiveThreadTerminating() then goto LAB_00d0d8c8 end
             quest:ClearThingHasInformation(me)
-            quest:GiveThingBestEnemyTarget(me, hero)
+            local hero22 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(me, hero22)
         end
         resources:PrepareResource(resource)
         repeat
@@ -337,7 +442,7 @@ end
 
 -- BanditForger.Init (retail 0x00d0c390)
 function Init(quest, me)
-    givenPass = false
+    givenPass_ = false
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetInFaction(me, "FACTION_TWINBLADE_CAMP_BANDITS")
     quest:SetIsPushableByHero(me, false)
@@ -345,7 +450,8 @@ end
 
 -- BanditForger.OnPersist (retail 0x00d0ee40)
 function OnPersist(quest, me, context)
-    givenPass = quest:PersistTransferBool(context, "GivenPass", givenPass)
+    local givenPass = givenPass_ or false
+    givenPass_ = quest:PersistTransferBool(context, "GivenPass", givenPass)
 end
 
 -- BanditForger.OnPredicateFail (retail 0x00cdebd0)

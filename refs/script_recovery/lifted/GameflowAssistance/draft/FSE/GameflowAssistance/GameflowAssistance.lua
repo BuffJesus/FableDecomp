@@ -214,7 +214,7 @@ function Tutorial_LowHealth(quest)
                 end
                 goto FLOW_past_lab_00cf0155
                 ::LAB_00cf0155::
-                quest:SetStateInt("HealthWarningsGiven", quest:GetStateInt("HealthWarningsGiven") + 1)
+                quest:SetStateInt("HealthWarningsGiven", ((quest:GetStateInt("HealthWarningsGiven") + 1 + 2147483648) % 4294967296 - 2147483648))
                 ::FLOW_past_lab_00cf0155::
                 iVar4 = iVar4 + -1
                 iVar5 = iVar5 + -1
@@ -267,17 +267,21 @@ function Tutorial_LowMagic(quest)
 end
 
 function Tutorial_RenownLevelIncrease(quest)
-    local iVar2, register0x00000010
+    local renownMessages = {
+        [1] = "TEXT_QST_080_RENOWN_LEVEL_ONE",
+        [2] = "TEXT_QST_080_RENOWN_LEVEL_TWO",
+        [3] = "TEXT_QST_080_RENOWN_LEVEL_THREE",
+        [4] = "TEXT_QST_080_RENOWN_LEVEL_FOUR",
+        [5] = "TEXT_QST_080_RENOWN_LEVEL_FIVE",
+        [6] = "TEXT_QST_080_RENOWN_LEVEL_SIX",
+        [7] = "TEXT_QST_080_RENOWN_LEVEL_SEVEN",
+    }
+    local iVar2
     local alive = true
     alive = not quest:IsActiveThreadTerminating()
     local bVar1 = not alive
     while true do
         if bVar1 then
-            iVar2 = 8
-            repeat
-                register0x00000010 = (register0x00000010 + -4)
-                iVar2 = iVar2 + -1
-            until not (iVar2 ~= 0)
             return
         end
         if quest:GetMasterGameState("KilledGM") then break end
@@ -287,18 +291,12 @@ function Tutorial_RenownLevelIncrease(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive
             if bVar1 then
-                iVar2 = 8
-                repeat
-                    register0x00000010 = (register0x00000010 + -4)
-                    iVar2 = iVar2 + -1
-                until not (iVar2 ~= 0)
                 return
             end
             if quest:GetStateInt("SavedRenownLevel") < iVar2 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar1 = not alive
                 if bVar1 then
-                    -- TODO(native): _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);
                     return
                 end
                 quest:SetStateInt("SavedRenownLevel", iVar2)
@@ -306,16 +304,14 @@ function Tutorial_RenownLevelIncrease(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar1 = not alive
                     if bVar1 then
-                        -- TODO(native): _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);
                         return
                     end
-                    quest:HeroReceiveMessageFromGuildMaster("", "TEXT_QST_080_RENOWN_LEVEL_SEVEN", true, true)
+                    quest:HeroReceiveMessageFromGuildMaster("", renownMessages[iVar2] or "TEXT_QST_080_RENOWN_LEVEL_SEVEN", true, true)
                 end
                 if 1 < iVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar1 = not alive
                     if bVar1 then
-                        -- TODO(native): _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);
                         return
                     end
                     quest:RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT")
@@ -330,17 +326,8 @@ function Tutorial_RenownLevelIncrease(quest)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar1 = not alive
-    iVar2 = 8
     if bVar1 then
-        repeat
-            register0x00000010 = (register0x00000010 + -4)
-            iVar2 = iVar2 + -1
-        until not (iVar2 ~= 0)
         return
     end
-    repeat
-        register0x00000010 = (register0x00000010 + -4)
-        iVar2 = iVar2 + -1
-    until not (iVar2 ~= 0)
 end
 

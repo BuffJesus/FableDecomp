@@ -29,7 +29,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools" / "script_recovery"))
 from annotate_interface_slots import RETAIL_EXE, annotate, load_slots, load_thing_slots  # noqa: E402
 from native_literal_loops import fold_literal_comparisons  # noqa: E402
-from native_random import fold_retail_random, fold_book_trader_random, fold_affair_wife_random  # noqa: E402
+from native_random import fold_retail_random_with_raw_fallback, fold_book_trader_random, fold_affair_wife_random  # noqa: E402
 from native_arguments import split_arguments, strip_template_pointer_casts  # noqa: E402
 from native_thing_predicates import recover_reviewed_thing_predicates  # noqa: E402
 from native_call_operands import recover_reviewed_call_operands  # noqa: E402
@@ -37,6 +37,7 @@ from native_self_wrapper import fold_self_wrapper_arguments  # noqa: E402
 from native_deeds import recover_deed_operands  # noqa: E402
 from native_goto_scopes import supported_jumps, duplicate_sibling_tails, merge_equivalent_regions, hoist_shared_tails  # noqa: E402
 from native_subregisters import fold_literal_slices, fold_unsigned_three_byte_casts  # noqa: E402
+from native_c_char_literals import lower_c_byte_literals  # noqa: E402
 from native_constant_conditions import fold_decisive_condition  # noqa: E402
 from native_conditions import conditional_call_assignment  # noqa: E402
 from native_condition_tree import parse as parse_condition_tree, has_call_assignment, needs_tree  # noqa: E402
@@ -165,8 +166,10 @@ RE_SLOT_ASSIGN = re.compile(r'^\s*((?:[pu]|pu|pC|pi|pf)?[a-zA-Z]*Stack_\w+|local
 # Float lifetimes split from string registers use `f_CVarN`; keep their assignments too. So do integer counters
 # split from a string-typed register (`ctr_CVar19`: V_ChickenKicking ChickenMaster's score, whose `= 0` and
 # `+ 0x64` updates were TODOs, so UpdateQuestInfoCounter and the high-score test read nil, 2026-09-28).
+# So do the lowering's byte-split names (`pCVar22_b3 = !(fret_0 <= 0.0)`: Arena Roth's health tests were TODOs and
+# every `if pCVar22_b3` speech branch read nil, 2026-10-02).
 RE_LOCAL_ASSIGN = re.compile(
-    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+|_pushed)?|(?:f|ctr)_[A-Za-z]{1,5}Var\d+(?:_\d+)?|native_arg_\w+'
+    r'^\s*([A-Za-z]{1,3}Var\d+(?:_\d+|_pushed|_b[0-3])?|(?:f|ctr)_[A-Za-z]{1,5}Var\d+(?:_\d+)?|native_arg_\w+'
     r'|(?!(?:this\b|return|goto|if|while|do|else|case|default|local_|in_stack_|extraout_|unaff_|in_|DAT_|LAB_|FUN_|PTR_|g_))'
     r'(?![A-Za-z_]*Var\d)(?!\w*Stack_)[A-Za-z_]\w*) = (.+);\s*$')
 RE_NUMBER_LITERAL = re.compile(r'-?(?:0x[0-9a-fA-F]+|\d+(?:\.\d+)?)')
@@ -297,6 +300,9 @@ def _captured_entity_self(body, src, text=''):
     """True when `src` is the entity's own thing (this+8: vtable, Info, Data): copied field by field from
     this+0xc / this+0x10 (DarkwoodTrader Init), or copy-constructed from `p0` where the function set
     `p0 = this + 8` (FUN_00e07640's TurnToBalv spawn: `CScriptThing::CScriptThing(xStack_c0, p0, ..)`)."""
+    direct = re.escape(src) + r' = \(CScriptThing \*\)\(this \+ 8\);'
+    if re.search(direct, body) and len(re.findall(r'\b'+re.escape(src)+r'\s*=(?!=)',body)) == 1:
+        return True
     field = r'\s*=\s*\*\(undefined4 \*\)\((?:\(int\))?this \+ 0x%s\);'
     if (re.search(re.escape(src) + r'\._4_4_' + field % 'c', body)
             and re.search(re.escape(src) + r'\._8_4_' + field % '10', body)):
@@ -343,6 +349,7 @@ RESOURCE_VTABLE_METHODS = {
     'ClearCommands': ('void',),
     'PerformExpression': ('void', 'thing', 'string'),
     'PlayAnimation': ('void', 'string') + ('bool',) * 7,
+    'PlayAnimationWithNativeArgument5': ('void', 'string') + ('bool',) * 6,
     'PlayCombatAnimation': ('void', 'string') + ('bool',) * 6,
     'PlayLoopingAnimation': ('void', 'string', 'int') + ('bool',) * 7,
     'ClearAllActions': ('void',),
@@ -573,6 +580,16 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
     A newer or differently shaped manifest entry is left intact for its own review.
     """
     result = copy.deepcopy(manifest)
+    # Retail GSI 0x008A9100 consumes a final flag byte; the reviewed host
+    # CreateCreature binding now forwards it, defaulting omitted flags to false.
+    # Keep the older SDK's exact three-parameter shape as the only overlay target.
+    creature = result.get('CreateCreature', {})
+    creature_params = creature.get('parameters', [])
+    if (creature.get('scope') == 'Quest' and creature.get('returnType') == 'std::shared_ptr<CScriptThing>'
+            and [(p.get('name'), p.get('type')) for p in creature_params] == [
+                ('defName', 'const std::string&'), ('position', 'sol::table'),
+                ('scriptName', 'const std::string&')]):
+        creature_params.append({'name': 'nativeFlag', 'type': 'sol::optional<bool>', 'optional': True})
     # LuaManager registers this current host binding, omitted by the older SDK.
     # LuaQuestState forwards the definition string and the supplied Thing.
     result.setdefault('IsObjectInThingsPossession', {
@@ -632,13 +649,18 @@ def converter_signatures(manifest: dict[str, dict]) -> dict[str, dict]:
         if name == 'GetGuildSealRecallPos' and spec.get('returnType') == 'sol::table':
             spec['returnNativeKind'] = 'vector'   # GetGuildSealRecallPos: a C3DVector as {x, y, z}
         if not (name.startswith('Create') or name in ('SetWanderCentrePoint', 'IsCameraPosOnScreen', 'EntityTeleportToPosition',
-                                                      'SetGuildSealRecallLocation')):
+                                                      'SetGuildSealRecallLocation', 'GetWaterHeightAtPosition')):
             continue
         for parameter in spec.get('parameters', []):
             if parameter.get('type') == 'sol::table' and parameter.get('name') in ('position', 'pos'):
                 parameter['nativeKind'] = 'vector'
     result.setdefault('RetailRandModulo', {'scope': 'Quest', 'returnType': 'int',
                       'parameters': [{'name': 'modulus', 'type': 'int'}]})
+    # Generic sidecar query: native GSI slot 0x54 / 0x00893360 returns bool.
+    # TourGuide EE6ABC saves AL and branches on it after destroying the string.
+    result.setdefault('MsgIsRegionUnloaded', {'name': 'MsgIsRegionUnloaded',
+                      'scope': 'Quest', 'returnType': 'bool', 'blocking': False,
+                      'parameters': [{'name': 'regionName', 'type': 'const std::string&'}]})
     # LuaManager exposes the existing-handle, nonblocking action clear. This is
     # distinct from ClearCommands and takes no native arguments after receiver.
     result.setdefault('ClearAllActions', {'name': 'ClearAllActions', 'scope': 'Entity',
@@ -1147,6 +1169,9 @@ class Lifter:
         self.todo: list[str] = []
         self.entities: list[str] = []
         self.calls: list[str] = []
+        self.native_tail_copy_trace: list[dict] = []
+        self.native_tail_copy_input = None
+        self.native_tail_copy_output = None
         self.temps: dict[str, str] = {}      # name -> Lua expression
         # name -> literal, kept after a block boundary drops the staged temporary; consulted only
         # for a name that would otherwise be emitted undeclared (WaspBoss helper_E12F20 0x00E12F20:
@@ -1161,6 +1186,7 @@ class Lifter:
         self.mutable_scalars: set[str] = set()
         self.state_stored_slots: set[str] = set()     # stack slots that later keep a state getter's value (unit mode)
         self.literal_assigned_slots: set[str] = set()   # string slots a later `operator=(slot, "LIT")` overwrites
+        self.mutable_copy_string_slots: set[str] = set()
         self.hoisted_scalars: set[str] = set()
         self.staged_scalars: set[str] = set()
         self.literal_comparisons = 0
@@ -1179,6 +1205,7 @@ class Lifter:
         self.slot_alias: dict[str, str] = {}   # `ppVar7 = apStack_c;` -> the stack slot it points at
         self.slot_results: dict[str, str] = {}  # hidden return slot -> Lua result variable
         self.resource_slots: set[str] = set()  # slots holding a RESOURCE_NewResource object
+        self.named_resource_receivers: set[str] = set()
         self.skip_depth = 0                  # inside a dropped block (refcount release idiom)
         self.cleanup_labels: set[str] = set()  # labels whose suffix is destructor-only then return
         self.thing_predicate_evidence: list[dict] = []
@@ -1317,6 +1344,20 @@ class Lifter:
     def emit(self, line: str) -> None:
         self.out.append("    " * self.indent + line)
 
+    def restore_branch_kinds(self, branch: dict) -> None:
+        """An else arm sees each register as it was at the `if`, not as the then-arm last assigned it (Arena
+        Flick 0x00F14A90: `iVar9` holds HintNumber at the switch but an IsPerformingScriptTask result inside
+        `case 0`, so the `else { if (iVar9 != 1)` test lifted as the boolean `not iVar9`)."""
+        entry = branch.get('kinds')
+        if entry is None:
+            return
+        # only scalar flips of registers: string/thing kinds also steer operand-slot guesses, and a stack slot
+        # is one variable whose representation the toggle rules keep consistent (DarkwoodTrader's c_stk_171)
+        for var, kind in list(self.kinds.items()):
+            if (re.fullmatch(r'[a-z]{1,3}Var\d+', var) and kind in ('number', 'bool')
+                    and entry.get(var) in ('number', 'bool') and entry[var] != kind):
+                self.kinds[var] = entry[var]
+
     def forget_value(self, name: str) -> None:
         """An unrepresented write must not leave an earlier operand value usable."""
         self.me_aliases.discard(name)
@@ -1362,6 +1403,9 @@ class Lifter:
                     pattern = (r'(?<![\w*])\*' + re.escape(variable) + r'\b' if index == 0
                                else r'\b' + re.escape(variable) + r'\[' + str(index) + r'\]')
                     text = re.sub(pattern, variable + '.' + axis, text)
+                    text = re.sub(RE_LUA_STRING.pattern + r"|'(?:[^'\\]|\\.)*'|\b" + re.escape(variable)
+                                  + r'\._' + str(index * 4) + r'_4_\b',
+                                  lambda m: m[0] if m[0][0] in ('\"', "'") else variable + '.' + axis, text)
         colour = colour_literal(text)
         if colour is not None:
             return colour
@@ -1399,7 +1443,18 @@ class Lifter:
             offset = (match.group(2) or match.group(3)).lower()
             if offset in self.state:
                 name, kind = self.state[offset]
-                return f'{self.state_receiver}:GetState{kind}("{name}")'
+                value = f'{self.state_receiver}:GetState{kind}("{name}")'
+                # A negative sentinel compared with an explicitly signed DWORD
+                # read must see the signed 32-bit value, even if Init stored an
+                # undefined4 hex literal. Int state also represents uint, so do
+                # not change storage or infer signedness from the state API.
+                before, after = match.string[:match.start()], match.string[match.end():]
+                negative_compare = (
+                    re.match(r'\s*(?:==|!=|<=|>=|<|>)\s*-\s*(?:0x[0-9a-fA-F]+|[0-9]+)\b', after)
+                    or re.search(r'-\s*(?:0x[0-9a-fA-F]+|[0-9]+)\s*(?:==|!=|<=|>=|<|>)\s*$', before))
+                if kind == 'Int' and match.group(1) in ('int', 'long') and negative_compare:
+                    return f'(({value} + 2147483648) % 4294967296 - 2147483648)'
+                return value
             self.todo.append(f"unnamed field {offset}")
             kind = STORE_TYPE.get(match.group(1) or "undefined1")
             if kind is not None:
@@ -1431,6 +1486,15 @@ class Lifter:
             if self.live_termination:
                 self.calls.extend(['IsActiveThreadTerminating'] * inline_termination)
         text = RE_EXTRAOUT.sub(lambda m: "alive" if m.group(1) == "==" else "not alive", text)
+        # Keep the bit pattern in storage/equality tests, but honor explicit
+        # signed reads of scalar locals seeded with high-bit 32-bit literals.
+        # Lua integers are wider than retail x86 int: simply erasing this cast
+        # made BookCollecting's -1 sentinel satisfy a nonnegative comparison.
+        for name in getattr(self, 'signed_literal_locals', ()):
+            text = re.sub(r'\(int\)\s*' + re.escape(name) + r'\b',
+                          lambda _: f'(({name} + 2147483648) % 4294967296 - 2147483648)', text)
+        from tools.script_recovery.native_float32 import narrow_arithmetic
+        text = narrow_arithmetic(text)
         text = RE_CAST.sub("", text)
         for temp, value in self.temps.items():
             text = re.sub(rf'(?<![\w.]){re.escape(temp)}\b', value, text)
@@ -1441,7 +1505,7 @@ class Lifter:
         text = re.sub(r'(?<![=~<>!])!\s*', "not ", text)
         # C char literals in bool/byte compares; `'\x01' - (cond)` is the compiler's `!cond`
         text = re.sub(r"'\\x01' - \(([^;()]+(?:\([^;()]*\)[^;()]*)*)\)", r'not (\1)', text)
-        text = text.replace("'\\0'", "0").replace("'\\x01'", "1")
+        text = lower_c_byte_literals(text)
         bool_atoms = [var for var, kind in self.kinds.items() if kind == "bool"]
         bool_atoms += array_bools
         bool_atoms += re.findall(r'\b\w+:GetStateBool\("\w+"\)', text)
@@ -1498,10 +1562,10 @@ class Lifter:
             return "thing"
         if arg.startswith('"'):
             return "string"
-        string_read = re.match(r'ENGINE_GlobalGameDataStringAt\(', arg.strip())
+        string_read = re.match(r'ENGINE_(?:GlobalGameData(?:Def)?StringAt|StateStringVectorAt)\(', arg.strip())
         if string_read and _balanced_call(arg.strip(), string_read.end() - 1):
             return 'string'
-        if re.match(r'ENGINE_(?:Vector3|VectorCopy|ZeroVector)\(|\{x = ', arg.strip()):    # an inline C3DVector (a stack vector built from three float slots)
+        if re.match(r'ENGINE_(?:Vector3|VectorCopy|ZeroVector|RotateVectorHorizontal)\(|\{x = ', arg.strip()):    # an inline C3DVector (a stack vector built from three float slots)
             return 'vector'
         # lowered state / list accessors carry their kind in the name (unit converter pseudo-calls)
         accessor = re.match(r'(?:(?:\w+|__native_entity_state):GetState(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)STATE_Get(String|Int|Bool|Float|Thing)|(?:QUEST|ENTITY)(?:THING_Get|LIST_At\w*)|RESOURCE_ScriptThing|resources:ScriptThing|LOCALLIST_At)\(', arg.strip())
@@ -1541,6 +1605,17 @@ class Lifter:
         return None
 
     def push_temp(self, name: str, value: str) -> None:
+        if name in self.parameters and value != name:
+            # A parameter's stack slot may become a temporary only on one
+            # branch. Preserve that write in control flow instead of letting
+            # textual constant propagation overwrite the incoming value on
+            # paths which skip the construction (BookCollecting E57020).
+            kind = self.kind_of(value)
+            self.emit(f'{name} = {value}')
+            self.forget_value(name)
+            if kind:
+                self.kinds[name] = kind
+            value = name
         self.parent_aliases.discard(name)
         self.parent_alias_depth.pop(name, None)
         if value in self.me_aliases:
@@ -1749,6 +1824,8 @@ class Lifter:
             # a plain local holding a resource (a script-member resource: `pCVar5 = RESOURCE_MemberResource(...)`)
             plain = re.fullmatch(r'(?:\([^)]*\))?\s*(\w+)', operands[0].strip())
             receiver = plain.group(1) if plain else None
+        if method == 'Speak' and receiver in self.named_resource_receivers:
+            params = ('void', 'thing', 'string', 'int', 'bool', 'bool', 'bool')
         if params is None or not operands or receiver not in self.resource_slots:
             return False
         from tools.script_recovery.native_evidence_lowering import _strip_addr
@@ -1775,7 +1852,51 @@ class Lifter:
         self.calls.append(method)
         return True
 
+    def optional_vector_output_call(self, target, name, argtext):
+        # Retail slot71C returns bool and writes a C3DVector only on success.
+        # The reviewed sidecar returns that vector as a table, or nil on failure.
+        # Keep the native flag separate and preserve the old destination on failure.
+        if not self.accessor_kinds or name != 'EntityGetShotStrikePos':
+            return False
+        operands = self.arguments(argtext)
+        spec = self.manifest.get(name, {})
+        params = [p for p in spec.get('parameters', []) if p.get('type') != 'sol::this_state']
+        output = (self.slot_name(operands[1]) if len(operands) == 2 and re.fullmatch(
+            r'\(C3DVector(?:_bv)? \*\)\s*&?\w+', operands[1].strip()) else None)
+        actor = self.expr(operands[0]) if len(operands) == 2 else None
+        if (spec.get('scope') != 'Quest' or spec.get('returnType') != 'sol::object'
+                or len(params) != 1 or 'CScriptThing' not in params[0].get('type', '')
+                or output is None or output == target or output == actor or output in self.temps
+                or output in self.slot_results or self.kind_of(actor) != 'thing'):
+            reason = name + ': unresolved native output vector'
+            self.todo.append(reason)
+            self.emit(f'-- TODO(native): {reason}; arguments: {argtext}')
+            if target:
+                self.emit(f'{self.declare(target)} = nil --[[unresolved native result]]')
+            return True
+        index = 1
+        temporary = '__native_vector_result_1'
+        while temporary in self.source_names or temporary in self.locals:
+            index += 1
+            temporary = f'__native_vector_result_{index}'
+        self.mutable_scalars.add(output)
+        destination = self.declare(output)
+        self.emit(f'{self.declare(temporary)} = {self.receiver}:{name}({actor})')
+        if target:
+            self.emit(f'{self.declare(target)} = ({temporary} ~= nil)')
+            self.kinds[target] = 'bool'
+        self.emit(f'if {temporary} ~= nil then')
+        self.indent += 1
+        self.emit(f'{destination} = {{x = {temporary}.x, y = {temporary}.y, z = {temporary}.z}}')
+        self.indent -= 1
+        self.emit('end')
+        self.kinds[output] = 'vector'
+        self.calls.append(name)
+        return True
+
     def interface_call(self, target: str | None, name: str, argtext: str) -> bool:
+        if self.optional_vector_output_call(target, name, argtext):
+            return True
         if name in self.out_thing_msgs:
             # WatchForPickpocketing 0x00E04F10: `MsgOnHeroPickedPocket(gsi, local_c)` then `local_c.IsEqualTo(trader)`;
             # dropping the out slot left the victim nil and the pickpocket count could never rise (2026-09-24)
@@ -1893,6 +2014,14 @@ class Lifter:
             # A by-value CScriptThing/CCharString result travels through a hidden first operand;
             # remember which stack slot so later uses of that slot resolve to the result.
             slot = self.slot_name(operands[0])
+            if (slot and self.accessor_kinds and name == 'GetThingWithScriptName'
+                    and len(operands) == 2 and self.temps.get(slot) in ('0', '0x0')
+                    and self.kind_of(self.temps.get(operands[1].lstrip('&'), operands[1])) == 'string'):
+                # Lowered source may stage zero under the by-value Thing output's name.
+                # With one independently typed name operand, that zero is output storage,
+                # not a name argument. Retain the result for every later use of the slot.
+                self.temps.pop(slot)
+                self.order.remove(slot)
             if slot and self.accessor_kinds and slot in self.temps and operands[0].lstrip().startswith('(CScriptThing *)'):
                 # Ghidra reused the stack slot: an explicitly CScriptThing-typed address is the hidden result
                 self.temps.pop(slot); self.order.remove(slot)
@@ -1907,7 +2036,7 @@ class Lifter:
             # a numeric local passed by reference (`AddQuestInfoTimer(&timer, ...)`: retail takes the CTimer&) is the
             # local itself; dropping the `&` operand let place_args back-fill the slot from an unrelated result
             # (ApprenticeSpeedTest showed the +20 timer on the HUD clock, 2026-09-19)
-            operands = [a[1:] if a.startswith("&") and self.kind_of(a[1:]) == 'number' else a for a in operands]
+            operands = [a[1:] if a.startswith("&") and self.kind_of(a[1:]) in ('number', 'vector', 'thing') else a for a in operands]
             # a string BUILT into a slot that is already an emitted Lua local (`xStack_15c = ("TEXT_QST_B11_" ..
             # name) .. tostring(n)`) and then passed by address (`TextEntryExists(&xStack_15c)`, TraderToRescue
             # 0x00DFE0F0) is that local -- dropping it left the optional key absent (third audit, 2026-09-20)
@@ -1953,6 +2082,12 @@ class Lifter:
         drop = {'CreateEffectAtPos': 2, 'CreateEffectOnThing': 3}.get(name)
         if drop is not None and len(args) > drop and args[drop] == '""':
             del args[drop]
+        if (name == 'CameraUseCameraPoint' and params and len(params) == 5
+                and len(operands) == len(args) == 5 and self.kind_of(args[0]) == 'string'):
+            # The manifest records ThingAndTarget, but the binding also exposes
+            # NameAndTarget (retail GSI slot 0x678). Select it only from a known
+            # string operand; otherwise argument diagnostics remain intact.
+            params = [dict(params[0], name='camPointName', type='std::string'), *params[1:]]
         if spec:
             args = self.place_args(params, args, explicit_things=tuple(explicit_things), call_name=name)
             required = len([p for p in params if "optional" not in p.get("type", "")])
@@ -2083,7 +2218,12 @@ class Lifter:
                 m = RE_ADDR_OF.match(a) or re.fullmatch(r'(?:\([^)]*\))?\s*(\w+)', a)
                 return m.group(1) if m and m.group(1) in self.temps else None
 
-            strings = [a for a in operands if a.startswith('"') or temp_name(a)]
+            # Known typed values remain explicit operands. The historical
+            # staging pool includes actors as well as strings; classifying an
+            # actor as a string drops IsEqualTo's actual operand.
+            strings = [a for a in operands if a.startswith('"') or (
+                temp_name(a) and self.kind_of(self.temps[temp_name(a)])
+                not in ("thing", "vector", "number", "bool"))]
             others = [a for a in operands if a not in strings]
             args = []
             for kind in kinds:
@@ -2185,8 +2325,27 @@ class Lifter:
 
     # ---- main driver ---------------------------------------------------------------------------
     def lift(self, role: str, decompile: str, *, native_function: dict | None = None,
-             parameters: dict[str, str] | None = None) -> list[str]:
+             parameters: dict[str, str] | None = None,
+             reviewed_resource_receivers: set[str] | None = None) -> list[str]:
         self.reset()
+        self.named_resource_receivers = set(reviewed_resource_receivers or ()) if self.execution_entity else set()
+        from tools.script_recovery.native_entry_me_snapshots import find as find_entry_me_snapshots
+        self.entry_me_snapshot_slots = find_entry_me_snapshots(decompile) if self.entity else set()
+        from tools.script_recovery.native_export_labels import normalize as normalize_export_labels
+        decompile = normalize_export_labels(decompile)
+        self.signed_literal_locals = {
+            m[1] for m in re.finditer(
+                r'\b(\w+) = (?:\((?:CCharString(?:_bv)?|int|uint|long|undefined4)\))?(0x[89a-fA-F][0-9a-fA-F]{7});',
+                decompile)}
+        # a declared `char` the function stores '\0' / '\x01' into is a byte flag: a boolean stored into it
+        # must stay 0/1 so its `== '\0'` tests hold in every state (Arena DoorGuard 0x00F17C70's c_stk_1f5
+        # starts as a bool result, then is toggled with char literals)
+        # (a slot also stored from a call result keeps the boolean lifting: those stores bypass the conversion
+        # and their tests stay boolean, DarkwoodTrader 0x00DFBB60's reused c_stk_169 / c_stk_171)
+        self.char_flags = {
+            name for name in re.findall(r'(?m)^\s*char (\w+);', decompile)
+            if re.search(r'(?m)^\s*' + re.escape(name) + r" = '\\(?:0|x01)';", decompile)
+            and not re.search(r'(?m)^\s*' + re.escape(name) + r' = [^;]*\w\s*\(', decompile)}
         self.parameters = set(parameters or {})
         self.locals.update(self.parameters)
         self.mutable_scalars.update(self.parameters)
@@ -2339,7 +2498,7 @@ class Lifter:
                 native_function, decompile, self.rdata)
             decompile, self.deed_evidence = recover_deed_operands(
                 native_function, decompile, self.rdata.bytes_at)
-            decompile, self.random_evidence = fold_retail_random(
+            decompile, self.random_evidence = fold_retail_random_with_raw_fallback(
                 decompile, native_function, self.rdata.bytes_at)
             decompile, self.cached_thing_query_evidence = recover_cached_thing_queries(
                 native_function, decompile, self.rdata)
@@ -2411,6 +2570,13 @@ class Lifter:
                 native_function, decompile, self.rdata.bytes_at)
             decompile, self.thing_predicate_evidence = recover_reviewed_thing_predicates(
                 native_function, decompile, self.rdata.bytes_at)
+        self.vector_normalization_evidence = []
+        if self.accessor_kinds and native_function:
+            from native_vector_normalization import recover as recover_vector_normalization
+            decompile, self.vector_normalization_evidence = recover_vector_normalization(native_function, decompile, self.rdata)
+        self.normalization_tokens = {row['token']: row['fields'] for row in self.vector_normalization_evidence}
+        for fields in self.normalization_tokens.values():
+            self.mutable_scalars.update(fields)
         decompile, self.literal_comparisons = fold_literal_comparisons(decompile, strip_declarations)
         # Exported worker functions can expose the implicit thiscall receiver as a typed ECX
         # input. Only the CScriptBase-typed, never-reassigned input is an alias of the quest.
@@ -2538,7 +2704,13 @@ class Lifter:
                 # unit converter: a continuation shared by two branches is moved out of the branch that hides
                 # it (hoist_shared_tails); what is left (jumps into loop bodies, small epilogues) becomes tail
                 # copies + a jump past the block
-                statements = duplicate_sibling_tails(hoist_shared_tails(merge_equivalent_regions(statements)))
+                if getattr(self, 'trace_native_tail_copies', False):
+                    statements = hoist_shared_tails(merge_equivalent_regions(statements))
+                    self.native_tail_copy_input = copy.deepcopy(statements)
+                    statements = duplicate_sibling_tails(statements, copy_trace=self.native_tail_copy_trace)
+                    self.native_tail_copy_output = copy.deepcopy(statements)
+                else:
+                    statements = duplicate_sibling_tails(hoist_shared_tails(merge_equivalent_regions(statements)))
                 statements = hoist_shared_tails(statements)      # a copy can carry the same shape inside it
                 import os as _os
                 if _os.environ.get('GOTO_DUMP') and _os.environ['GOTO_DUMP'] in (role or ''):
@@ -2559,6 +2731,14 @@ class Lifter:
                                - Counter({k: v for k, v in definitions.items()}))
         if self.lua_labels:
             self.mutable_scalars.update(definitions)
+            # A constructed stack string later copied from a branch-selected
+            # mutable value also needs its initial storage: a jump can bypass
+            # the copy (GivePrizeFund's empty second line on the default path).
+            self.mutable_copy_string_slots = {
+                match[1] for statement in statements
+                if (match := RE_CSTR_LOCAL_ASSIGN.match(statement))
+                and match[2] in self.mutable_scalars}.difference(self.literal_assigned_slots)
+            self.literal_assigned_slots.update(self.mutable_copy_string_slots)
         if self.accessor_kinds:
             self.state_stored_slots = {m.group(1) for m in re.finditer(
                 r'^\s*([a-zA-Z]*Stack_\w+|\w+_stk_\w+) = \*\(\w+ \*\)\(\*\(int \*\)\((?:this|param_1) \+ 0x14\) \+ (?:0x[0-9a-fA-F]+|\d+)\);',
@@ -2566,6 +2746,47 @@ class Lifter:
         # Conditional stack writes need a stored initial value when their
         # branch is skipped; propagating the initial literal loses that value.
         self.state_stored_slots.update(sequence_assignments)
+        scalar_initializers = set()
+        if self.accessor_kinds:
+            # Preserve literal writes reaching an explicit numeric stack read.
+            # Work backwards within the scalar lifetime: earlier address/object
+            # uses must not classify every lifetime of a reused slot as numeric.
+            scalar_lines = [re.sub(r'"(?:[^"\\]|\\.)*"', '""', line) for line in statements]
+            for read_index, line in enumerate(scalar_lines):
+                for slot in re.findall(r'\((?:int|uint|float|float10|double)\)\s*([a-zA-Z]*Stack_[0-9a-f]+)\b', line):
+                    if definitions[slot] < 2:
+                        continue
+                    escaped = re.escape(slot)
+                    boundary = re.compile(r'&\s*' + escaped + r'\b|\b' + escaped + r'\s*(?:\[|\.|->)'
+                                          r'|\*\s*(?:\([^)]*\)\s*)?' + escaped + r'\b')
+                    for index in range(read_index, -1, -1):
+                        previous = scalar_lines[index]
+                        if (boundary.search(previous) or ('::' in previous and re.search(r'\b' + escaped + r'\b', previous))):
+                            break
+                        assignment = RE_SLOT_ASSIGN.match(previous)
+                        if assignment and assignment[1] == slot:
+                            if re.search(r'=\s*\([^)]*\*', previous):
+                                break
+                            literal = self.literal(assignment[2])
+                            if literal is not None and RE_NUMBER_LITERAL.fullmatch(literal):
+                                scalar_initializers.add(index)
+        # Normalized byte slices are independent scalar locals. A later write
+        # (including one inside a loop) invalidates constant propagation of
+        # their initializer: BookCollecting LookForBook's first-new-book flag.
+        byte_writes = Counter(re.findall(
+            r'(?m)^\s*([a-zA-Z]*Stack_[0-9a-f]+_b[0-3])\s*=(?!=)',
+            '\n'.join(statements)))
+        # Restrict this recovery to a dominating entry initializer. Branch-local
+        # projections can share outgoing argument slots; those need call-site
+        # operand recovery before changing their temporary tracking.
+        entry_bytes = set()
+        for line in statements:
+            if re.match(r'\s*(?:if\b|while\b|do\b|for\b|switch\b|goto\b|\w+:)', line):
+                break
+            initial = re.fullmatch(r'\s*([a-zA-Z]*Stack_[0-9a-f]+_b[0-3]) = [01];\s*', line)
+            if initial:
+                entry_bytes.add(initial[1])
+        self.state_stored_slots.update(name for name in entry_bytes if byte_writes[name] > 1)
         for line in statements:
             assignment = RE_LOCAL_ASSIGN.match(line)
             if assignment and definitions[assignment[1]] > 1:
@@ -2585,7 +2806,7 @@ class Lifter:
                 # Reused decompiler stack slot: this value is overwritten by the immediately
                 # following literal string construction, with no intervening read or effect.
                 continue
-            self.statement(role, line)
+            self.statement(role, line, scalar_initializer=index in scalar_initializers)
         self.collapse_acquire_loops()
         # Native EH guards can outlive the destructor statements stripped from
         # their bodies (including a recovered spawned-thread allocation).
@@ -2731,7 +2952,31 @@ class Lifter:
         self.indent += 1
         self.emit(f'if not ({self.lower_condition_tree(role, tree)}) then break end')
 
-    def statement(self, role: str, line: str) -> None:
+    def statement(self, role: str, line: str, *, scalar_initializer=False) -> None:
+        normalize = re.fullmatch(r'(ENGINE_NormalizeFloat3_\d+)\((\w+), (\w+), (\w+)\);', line.strip())
+        if normalize and getattr(self, 'normalization_tokens', {}).get(normalize[1]) == list(normalize.groups()[1:]):
+            fields = list(normalize.groups()[1:])
+            if all(self.kind_of(v) == 'number' and v not in self.slot_alias and v not in self.slot_results for v in fields):
+                values = [self.expr(v) for v in fields]
+                for field in fields:
+                    self.forget_value(field)
+                    self.mutable_scalars.add(field)
+                    if field not in self.locals:
+                        self.emit(self.declare(field))
+                self.emit('do')
+                self.indent += 1
+                x, y, z = values
+                self.emit(f'local inverseLength = 1.0 / math.sqrt({z} * {z} + {y} * {y} + {x} * {x})')
+                for field, value in zip(fields, values):
+                    self.emit(f'{field} = (string.unpack("<f", string.pack("<f", {value} * inverseLength)))')
+                    self.kinds[field] = 'number'
+                self.indent -= 1
+                self.emit('end')
+                return
+        if normalize:
+            self.todo.append('unproven native normalization operands: ' + line.strip())
+            self.emit('-- TODO(native): ' + line.strip())
+            return
         pseudo = RE_PSEUDO_CALL.match(line)
         if pseudo:
             target, name, argtext = pseudo.group(1), pseudo.group(2), pseudo.group(3)
@@ -2753,14 +2998,19 @@ class Lifter:
                 self.resource_slots.add(target)
             elif target:
                 target = self.slot_results.get(target, target)
-            lifted = concat_args if concat_args is not None else [self.expr(a) for a in self.arguments(argtext)]
+            operands = self.arguments(argtext)
+            if name == 'RESOURCE_TryAcquire' and len(operands) == 3:
+                by_reference = re.fullmatch(r'(?:\(CScriptThing(?:_bv)? \*\))?&(native_arg_\w+)', operands[1].strip())
+                if by_reference and by_reference[1] in self.parameters and self.kind_of(by_reference[1]) == 'thing':
+                    operands[1] = by_reference[1]
+            lifted = concat_args if concat_args is not None else [self.expr(a) for a in operands]
             call = f'{name}({", ".join(lifted)})'
             if target:
                 self.emit(f'{self.declare(target)} = {call}')
                 self.kinds[target] = ('thing' if name.endswith('THING_Get') or '_LIST_At_' in name or name.endswith('LIST_At') or name in ('RESOURCE_ScriptThing', 'QUESTTHING_Empty', 'ENTITYTHING_Empty', 'LOCALLIST_At')
-                                      else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3')
+                                      else 'vector' if name in ('ENGINE_VectorCopy', 'ENGINE_ZeroVector', 'ENGINE_Vector3', 'ENGINE_RotateVectorHorizontal')
                                       else 'bool' if name.startswith(('ENGINE_Is', 'RESOURCE_Is')) or name.endswith('STATE_GetBool')
-                                      else 'string' if name in ('ENGINE_Concat', 'ENGINE_StringValue', 'ENGINE_GlobalGameDataString', 'ENGINE_GlobalGameDataStringAt', 'ENGINE_ConversationString', 'LOCALLIST_StringAt') or name.endswith('STATE_GetString') else 'number')
+                                      else 'string' if name in ('ENGINE_IntToString', 'ENGINE_Concat', 'ENGINE_StringValue', 'ENGINE_GlobalGameDataString', 'ENGINE_GlobalGameDataStringAt', 'ENGINE_StateStringVectorAt', 'ENGINE_GlobalGameDataDefStringAt', 'ENGINE_ConversationString', 'ENGINE_StateConversationString', 'LOCALLIST_StringAt') or name.endswith('STATE_GetString') else 'number')
             else:
                 self.emit(call)
             self.calls.append(name)
@@ -2888,6 +3138,16 @@ class Lifter:
             return
         m = RE_CSTR.match(line)
         if m:
+            if m.group(1) in self.literal_assigned_slots and re.fullmatch(r'\w*Stack_[0-9a-f]+', m.group(1)) \
+                    and m.group(1) not in self.locals:
+                # constructed here and re-assigned by a later `operator=(slot, "LIT")`: a string variable whose
+                # start value some path still reads (GivePrizeFund's switch default keeps "")
+                self.emit(f'{self.declare(m.group(1))} = {json.dumps(m.group(2))}')
+                self.kinds[m.group(1)] = 'string'
+                # until the first re-assignment the operand is still that literal (ChickenMaster 0x00E78C10's
+                # MsgIsTalkedToBy("SCRIPT_NAME_HERO") must keep folding to IsTalkedToByHero)
+                self.push_temp(m.group(1), json.dumps(m.group(2)))
+                return
             self.push_temp(m.group(1), json.dumps(m.group(2)))
             return
         indexed_string = re.fullmatch(r'\s*CCharString::operator=\((\w+),\(CCharString \*\)\((\w+) \+ (\w+) \* 4\)\);\s*', line)
@@ -2923,6 +3183,13 @@ class Lifter:
         if m:
             # A default-constructed native CCharString is the empty Lua string. Keep it as an
             # operand temporary; construction/destruction itself has no script-side effect.
+            # A slot a later `operator=(slot, "LIT")` assigns is a variable whose empty start value
+            # some path still reads (GivePrizeFund's switch default): materialise it.
+            if m.group(1) in self.literal_assigned_slots and re.fullmatch(r'\w*Stack_[0-9a-f]+', m.group(1)) \
+                    and m.group(1) not in self.locals:
+                self.emit(f'{self.declare(m.group(1))} = ""')
+                self.kinds[m.group(1)] = 'string'
+                return
             self.push_temp(m.group(1), '""')
             return
         m = RE_CSTR_COPY.match(line) or RE_CSTR_FROM_VALUE.match(line) or RE_CSTR_LOCAL_ASSIGN.match(line)
@@ -2941,8 +3208,21 @@ class Lifter:
         literal_assign = re.match(r'^\s*CCharString::operator=\s*\(\s*(?:\(CCharString \*\)\s*)?&?(\w+)\s*,\s*"((?:[^"\\]|\\.)*)"\s*\);\s*$', line)
         if literal_assign and literal_assign.group(1) in self.locals and self.kinds.get(literal_assign.group(1)) == 'string':
             self.emit(f'{literal_assign.group(1)} = "{literal_assign.group(2)}"')
+            if literal_assign.group(1) in self.temps:
+                self.forget_value(literal_assign.group(1))    # later reads take the variable, not the start literal
+                self.kinds[literal_assign.group(1)] = 'string'
             return
-        if m and m.group(2) in self.locals and self.kinds.get(m.group(2)) in ('string', None) and RE_CSTR_LOCAL_ASSIGN.match(line):
+        if (literal_assign and literal_assign.group(1) not in self.locals
+                and self.temps.get(literal_assign.group(1), '""') == '""'
+                and re.fullmatch(r'\w*Stack_[0-9a-f]+', literal_assign.group(1))):
+            # the slot's first write is the assignment itself (Arena GivePrizeFund 0x00F21300: one prize line per
+            # round, chosen in a switch): a string variable, not a constant -- later branches assign it too
+            self.emit(f'{self.declare(literal_assign.group(1))} = "{literal_assign.group(2)}"')
+            self.kinds[literal_assign.group(1)] = 'string'
+            return
+        if (m and m.group(2) in self.locals and self.kinds.get(m.group(2)) in ('string', None)
+                and (RE_CSTR_LOCAL_ASSIGN.match(line) or
+                     RE_CSTR_COPY.match(line) and m.group(2) in self.mutable_copy_string_slots)):
             # the source is a string built at run time (`pCVar4 = ("TEXT_QST_B11_" .. name)`): a plain Lua copy
             self.emit(f"{self.declare(m.group(1))} = {m.group(2)}")
             self.kinds[m.group(1)] = 'string'
@@ -2997,6 +3277,7 @@ class Lifter:
                 self.parent_alias_depth = dict(branch['entry'])
                 self.parent_aliases = set(branch['entry'])
                 self.parent_branch_groups[self.indent + 1] = branch
+                self.restore_branch_kinds(branch)
             if self.out and self.out[-1].strip() == "end":
                 self.out.pop()
                 self.indent += 1
@@ -3009,13 +3290,15 @@ class Lifter:
                 self.parent_alias_depth = dict(branch['entry'])
                 self.parent_aliases = set(branch['entry'])
                 self.parent_branch_groups[self.indent + 1] = branch
+                self.restore_branch_kinds(branch)
             if self.out and self.out[-1].strip() == "end":
                 self.out.pop()
                 self.indent += 1
             self.out.append("    " * (self.indent - 1) + f"elseif {self.expr(m.group(1))} then")
             return
         if stripped.startswith('if ') and stripped.endswith('{'):
-            self.parent_branch_groups[self.indent + 1] = {'entry': dict(self.parent_alias_depth), 'invalid': set()}
+            self.parent_branch_groups[self.indent + 1] = {'entry': dict(self.parent_alias_depth), 'invalid': set(),
+                                                          'kinds': dict(self.kinds)}
         m = RE_IF_RECHECK_TERMINATING.match(line)
         if m:
             # The repeated pure scheduler query is the same fact Forge reports as `alive`.
@@ -3247,6 +3530,15 @@ class Lifter:
         if m and not stripped.startswith("if ") and not stripped.startswith("while "):
             target, name, argtext = m.group(1), m.group(2), m.group(3)
             resolved = self.callee_names.get(name, name.split("::")[-1])
+            if resolved == 'ReviewedFadeInThing':
+                if (self.entity and self.execution_entity and not target and
+                        [a.strip() for a in self.arguments(argtext)] == ['p0', '0x40000000']):
+                    self.emit('me:FadeInThing(2.0)')
+                    self.calls.append('FadeInThing')
+                else:
+                    self.todo.append('ReviewedFadeInThing: reviewed receiver or duration changed')
+                    self.emit(f'-- TODO(native): {stripped}')
+                return
             if resolved in ('IsDistanceFromThingToPositionOver', 'IsDistanceFromThingToPositionUnder'):
                 # (Under: retail 0x00CBE4B7, the sidecar's thing:IsDistanceFromPositionUnder, same fastcall ABI)
                 method = 'IsDistanceFromPosition' + resolved.removeprefix('IsDistanceFromThingToPosition')
@@ -3303,7 +3595,9 @@ class Lifter:
             # not control `me`)
             first = (self.arguments(argtext) or [''])[0]
             param_receiver = re.sub(r'^(?:\([^)]*\))?\s*&?', '', first.strip()) in (self.parameters & self.resource_slots)
-            if mangled and (not self.execution_entity or param_receiver) and self.quest_resource_method(target, mangled.group(1), argtext):
+            named_receiver = (mangled and mangled.group(1) in ('Speak', 'IsPerformingScriptTask')
+                              and re.sub(r'^(?:\([^)]*\))?\s*&?', '', first.strip()) in self.named_resource_receivers)
+            if mangled and (not self.execution_entity or param_receiver or named_receiver or mangled.group(1) in ('PlayLoopingAnimation', 'PlayAnimationWithNativeArgument5')) and self.quest_resource_method(target, mangled.group(1), argtext):
                 return
             if mangled and mangled.group(1) in self.manifest:
                 # CScriptGameResourceObjectScriptedThingBase::<Method>(resource, thing, ...) is the
@@ -3374,15 +3668,45 @@ class Lifter:
                 if target and resolved in self.helper_return_kinds:
                     self.kinds[target] = self.helper_return_kinds[resolved]
                 return
+        # KickedChicken E6488C..E648A9 materializes planar displacement in
+        # float stack slots. Keep the value store and its native float32 rounding.
+        # Only independently proven vector components qualify; ambiguous storage
+        # and other arithmetic continue through the existing unresolved handling.
+        scalar_store = re.fullmatch(r'\s*((?:fStack_|f_stk_)[0-9a-fA-F]+) = (.+);\s*', line)
+        if (self.accessor_kinds and scalar_store
+                and not re.search(r'\((?!float\))[^)]*\)', scalar_store[2])):
+            target = scalar_store[1]
+            difference = self.expr(scalar_store[2])
+            pair = re.fullmatch(r'(\w+)\.([xyz]) - (\w+)\.([xyz])', difference)
+            if (pair and all(self.kind_of(pair[i]) == 'vector' for i in (1, 3))
+                    and self.kinds.get(target) in (None, 'number')
+                    and target not in self.slot_alias and target not in self.slot_results):
+                self.mutable_scalars.add(target)
+                self.emit(f'{self.declare(target)} = (string.unpack("<f", string.pack("<f", {difference})))')
+                self.kinds[target] = 'number'
+                return
         m = RE_SLOT_ASSIGN.match(line)
         if m:
+            # An initialized actor local is mutable value storage. Read the
+            # source before invalidating the old target alias so a retained
+            # swap preserves both actors and conditional stores remain real.
+            target = m[1]
+            source = RE_CAST.sub('', m[2]).strip()
+            if (target in self.locals and self.kinds.get(target) == 'thing'
+                    and self.kind_of(source) == 'thing'):
+                lhs = self.slot_results.get(target, target)
+                rhs = self.expr(source)
+                self.forget_value(target)
+                self.emit(f'{self.declare(lhs)} = {rhs}')
+                self.kinds[target] = self.kinds[lhs] = 'thing'
+                return
             value = m.group(2).strip()
             uncast = RE_CAST.sub('', value).strip()
             if m[1] in self.state_stored_slots and self.kinds.get(uncast) == 'number':
                 value = uncast  # a reused stack slot can retain a stale CCharString cast
             lit = self.literal(value)
             if lit is not None:
-                if m.group(1) in self.state_stored_slots and not lit.startswith('"'):
+                if (m.group(1) in self.state_stored_slots or scalar_initializer) and not lit.startswith('"'):
                     # the slot's init (`xStack_180 = 0`) when the slot later stores a state getter: a real local
                     # (inlined as a temporary, the compare read `0 ~= DummyHits` forever)
                     self.forget_value(m.group(1))
@@ -3407,7 +3731,7 @@ class Lifter:
                     lhs = self.slot_results.get(m.group(1), m.group(1))   # a hidden-result slot stores into its result var
                     if m[1] in self.state_stored_slots:
                         self.forget_value(m[1])
-                    self.emit(f"{self.declare(lhs)} = {self.temps.get(value, value)}")
+                    self.emit(f"{self.declare(lhs)} = {self.expr(value) if value in self.me_aliases and m[1] in self.entry_me_snapshot_slots else self.temps.get(value, value)}")
                     if value in self.kinds:
                         self.kinds[lhs] = self.kinds[value]
                     return
@@ -3441,6 +3765,8 @@ class Lifter:
                 # calls. Pure literal assignment is exact operand evidence, including misleading
                 # pointer casts such as `(CCharString *)0x1` on scalar ABI slots.
                 var = m.group(1)
+                if var in getattr(self, 'char_flags', ()) and lit in ('true', 'false'):
+                    lit = '1' if lit == 'true' else '0'     # a byte flag stays 0/1 (see char_flags)
                 if var in self.mutable_scalars:
                     self.emit(f"{self.declare(var)} = {lit}")
                     self.kinds[var] = ("string" if lit.startswith('"') else
@@ -3505,6 +3831,8 @@ class Lifter:
             # (SkillTarget 0x00D41D00's moving dummies stopped bouncing and wrapped instead)
             if (kind == "bool" and self.kinds.get(var) == "number"
                     and re.fullmatch(r'.+ [=~]= .+', lifted) and not lifted.startswith('(')):
+                lifted, kind = f"({lifted}) and 1 or 0", "number"
+            elif kind == "bool" and var in getattr(self, 'char_flags', ()):
                 lifted, kind = f"({lifted}) and 1 or 0", "number"
             self.emit(f"{self.declare(var)} = {lifted}")
             if kind:

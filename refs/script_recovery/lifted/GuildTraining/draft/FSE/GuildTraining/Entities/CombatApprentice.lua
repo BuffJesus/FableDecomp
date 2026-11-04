@@ -231,6 +231,11 @@ function Main(quest, me)
                     pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_APPRENTICE_EARLY"
                     pCVar7 = quest:GetHero()
                     r2 = me:Speak(pCVar7, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                    if not r2 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_ec)
+                        goto LAB_00d4c6da
+                    end
                     iVar5 = me:IsPerformingScriptTask()
                     cVar4 = iVar5
                     while cVar4 do
@@ -278,6 +283,11 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_OTHER_MELEE_GRADE"
                             pCVar7 = quest:GetHero()
                             r3 = me:Speak(pCVar7, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                            if not r3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_dc)
+                                goto LAB_00d4c6da
+                            end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar4 = iVar5
                             while cVar4 do
@@ -329,6 +339,11 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_NO_WHISPER"
                             pCVar7 = quest:GetHero()
                             r5 = me:Speak(pCVar7, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                            if not r5 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_cc)
+                                goto LAB_00d4c6d1
+                            end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar4 = iVar5
                             while cVar4 do
@@ -374,6 +389,9 @@ function Main(quest, me)
                         pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_DEPARTURE_HELLO"
                         pCVar7 = quest:GetHero()
                         r6 = me:Speak(pCVar7, pcVar13, iVar5, (iVar6 ~= 0), (iVar14 ~= 0), (iVar17 ~= 0))
+                        if not r6 then
+                            goto LAB_00d4c5ff
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar4 = iVar5
                         while cVar4 do
@@ -437,6 +455,11 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_RETURN"
                             pCVar7 = quest:GetHero()
                             r7 = me:Speak(pCVar7, pcVar13, iVar6, (iVar14 ~= 0), (iVar17 ~= 0), (iVar18 ~= 0))
+                            if not r7 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_20c)
+                                goto LAB_00d4c6d1
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -483,6 +506,11 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_START"
                             pCVar7 = quest:GetHero()
                             r8 = me:Speak(pCVar7, pcVar13, iVar6, (iVar14 ~= 0), (iVar17 ~= 0), (iVar18 ~= 0))
+                            if not r8 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_20c)
+                                goto LAB_00d4c6d1
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -516,8 +544,8 @@ function Main(quest, me)
                             x_stk_6c = resources:ScriptThing(xStack_254)
                             pCVar7 = x_stk_6c
                             fret_05 = quest:GetHealth(pCVar7)
-                            c_stk_259 = 0.0 < fret_05
-                            if c_stk_259 then
+                            c_stk_259 = (0.0 < fret_05) and 1 or 0
+                            if c_stk_259 ~= 0 then
                                 iVar18 = 0
                                 iVar17 = 1
                                 iVar14 = 0
@@ -525,6 +553,11 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_START_APLUS"
                                 pCVar7 = quest:GetHero()
                                 r9 = me:Speak(pCVar7, pcVar13, iVar6, (iVar14 ~= 0), (iVar17 ~= 0), (iVar18 ~= 0))
+                                if not r9 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_20c)
+                                    goto LAB_00d4c6d1
+                                end
                                 iVar6 = me:IsPerformingScriptTask()
                                 cVar4 = iVar6
                                 while cVar4 do
@@ -646,6 +679,11 @@ function Main(quest, me)
                                     pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_NO_LIGHTNING"
                                     pCVar7 = quest:GetHero()
                                     r10 = me:Speak(pCVar7, pcVar13, iVar5, (iVar14 ~= 0), (iVar17 ~= 0), (iVar18 ~= 0))
+                                    if not r10 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(xStack_bc)
+                                        goto LAB_00d4c6c8
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar4 = iVar5
                                     while cVar4 do
@@ -696,6 +734,11 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_APPRENTICE_MELEE_NO_BOW"
                                 pCVar7 = quest:GetHero()
                                 r11 = me:Speak(pCVar7, pcVar13, iVar5, (iVar14 ~= 0), (iVar17 ~= 0), (iVar18 ~= 0))
+                                if not r11 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_ac)
+                                    goto LAB_00d4c6c8
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -881,7 +924,7 @@ function Main(quest, me)
                         x_stk_214 = fret_12
                         fret_13 = quest:GetHealth(r4)
                         ixVar11 = 0
-                        f_stk_210 = ((f_stk_100 - fret_13) - (f_stk_210 - x_stk_214))
+                        f_stk_210 = (string.unpack("<f", string.pack("<f", ((f_stk_100 - fret_13) - (f_stk_210 - x_stk_214)))))
                         iVar5 = 0
                         repeat
                             iVar6 = iVar5

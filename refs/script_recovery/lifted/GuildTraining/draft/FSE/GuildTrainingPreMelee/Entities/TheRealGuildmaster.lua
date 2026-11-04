@@ -90,7 +90,7 @@ function Main(quest, me)
                 quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar3)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar8, "TEXT_QST_028_GUILDMASTER_PREMELEE_COMMENT_FIRST", me, pCVar6, false)
-                me:PlayAnimation("ST_WAVE_SPECIAL_02", false, false, false, true, true, false, false)
+                resources:PlayAnimationWithNativeArgument5(xStack_17c, "ST_WAVE_SPECIAL_02", false, false, false, true, false, false)
                 uVar14 = 1
                 break
             else
@@ -738,6 +738,9 @@ function Main(quest, me)
                                                                         pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                         pCVar5 = quest:GetHero()
                                                                         r3 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                        if not r3 then
+                                                                            goto LAB_00d55c72
+                                                                        end
                                                                         iVar7 = me:IsPerformingScriptTask()
                                                                         cVar4 = iVar7
                                                                         while cVar4 do
@@ -825,6 +828,9 @@ function Main(quest, me)
                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                     pCVar5 = quest:GetHero()
                                                                     r4 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                    if not r4 then
+                                                                        goto LAB_00d55cba
+                                                                    end
                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                     cVar4 = iVar7
                                                                     while cVar4 do
@@ -879,6 +885,9 @@ function Main(quest, me)
                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                             pCVar5 = quest:GetHero()
                                                                             r5 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                            if not r5 then
+                                                                                goto LAB_00d55cba
+                                                                            end
                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                             cVar4 = iVar7
                                                                             while cVar4 do
@@ -937,6 +946,9 @@ function Main(quest, me)
                                                                             pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END"
                                                                             pCVar5 = quest:GetHero()
                                                                             r6 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                            if not r6 then
+                                                                                goto LAB_00d555f3
+                                                                            end
                                                                             iVar7 = me:IsPerformingScriptTask()
                                                                             cVar4 = iVar7
                                                                             while cVar4 do
@@ -987,6 +999,9 @@ function Main(quest, me)
                                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PREMELEE_END_NO"
                                                                                     pCVar5 = quest:GetHero()
                                                                                     r7 = me:Speak(pCVar5, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                                    if not r7 then
+                                                                                        goto LAB_00d555f3
+                                                                                    end
                                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                                     cVar4 = iVar7
                                                                                     while cVar4 do
@@ -1042,6 +1057,9 @@ function Main(quest, me)
                                                                     pcVar15 = "TEXT_QST_028_GUILDMASTER_PRE_MELEE_BEETLES_NOT_DEAD"
                                                                     pCVar6 = quest:GetHero()
                                                                     r8 = me:Speak(pCVar6, pcVar15, iVar7, (iVar8 ~= 0), (iVar23 ~= 0), false)
+                                                                    if not r8 then
+                                                                        goto LAB_00d55cd5
+                                                                    end
                                                                     iVar7 = me:IsPerformingScriptTask()
                                                                     cVar4 = iVar7
                                                                     while cVar4 do

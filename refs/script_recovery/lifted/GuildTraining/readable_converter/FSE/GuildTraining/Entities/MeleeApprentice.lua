@@ -1,8 +1,6 @@
 -- Readable native conversion: MeleeApprentice. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
-
 local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 
 local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
@@ -12,9 +10,8 @@ local willWoodsChatDone, waitingForFight
 
 -- MeleeApprentice.Main (retail 0x00d40cf0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, movie, getPos, getPos2, movie6, resource
+    local predicateResult, movie, getPos, getPos2, meleeApprenticeMarker, movie6, resource
     local function ReleaseEverything()
         local movie = movie6
         resources:DestroyMovie(movie)
@@ -39,10 +36,11 @@ function Main(quest, me)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAllowBossPhaseChanges(me, false)
     me:SetFriendsWithEverythingFlag(true)
-    local meleeApprenticeMarker = quest:GetThingWithScriptName("MeleeApprenticeMarker")
+    meleeApprenticeMarker = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     predicateResult = quest:IsActiveThreadTerminating()
     repeat
         if predicateResult then
+            meleeApprenticeMarker = nil
             resources:ReleaseResource(resource)
             return
         end
@@ -90,24 +88,37 @@ function Main(quest, me)
             me:ClearCommands()
             quest:EntitySheatheWeapons(me, false)
         end
+        local isQuestActive = quest:IsQuestActive("Q_GuildTrainingWoodsWill")
         local predicateResult31 = quest:IsActiveThreadTerminating()
-        if quest:IsQuestActive("Q_GuildTrainingWoodsWill") then
+        if isQuestActive then
             if predicateResult31 then
                 resources:ReleaseResource(resource)
                 return
             end
             if not willWoodsChatDone then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos(), 3.0, ENTITY_MOVE_RUN, false, true)
+                local position = quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos()
+                me:MoveToPosition(position, 3.0, ENTITY_MOVE_RUN, false, true)
                 willWoodsChatDone = true
             else
-                if not me:IsTalkedToByHero() then quest:NewScriptFrame(me); predicateResult = quest:IsActiveThreadTerminating(); goto continue_6 end
+                if not me:IsTalkedToByHero() then
+                    quest:NewScriptFrame(me);
+                    predicateResult = quest:IsActiveThreadTerminating();
+                    goto continue_6
+                end
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 me:ClearCommands()
                 local movie3 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                    me:Speak(hero, "TEXT_QST_028_WHISPER_SCORPION_WOODS", GROUP_SELECT_FIRST, false, true, false)
+                local scratchValue40 = resources:ScriptThing(resource)
+                if 0.0 < quest:GetHealth(scratchValue40) then
+                    local line = "TEXT_QST_028_WHISPER_SCORPION_WOODS"
+                    local hero = quest:GetHero()
+                    if not me:Speak(hero, line, 0, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        movie = movie3
+                        ReleaseEverything2(); return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
@@ -124,7 +135,8 @@ function Main(quest, me)
                 end
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie3)
-                me:MoveToPosition(quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos(), 3.0, ENTITY_MOVE_RUN, false, true)
+                local position2 = quest:GetThingWithScriptName("MK_GTM_WD_HEROWALK"):GetPos()
+                me:MoveToPosition(position2, 3.0, ENTITY_MOVE_RUN, false, true)
             end
         else
             if predicateResult31 then
@@ -138,8 +150,15 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                     local movie5 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        me:Speak(hero, "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN", GROUP_SELECT_FIRST, false, true, false)
+                    local scratchValue43 = resources:ScriptThing(resource)
+                    if 0.0 < quest:GetHealth(scratchValue43) then
+                        local line2 = "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN"
+                        local hero2 = quest:GetHero()
+                        if not me:Speak(hero2, line2, 0, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            movie = movie5
+                            ReleaseEverything2(); return
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
@@ -162,8 +181,15 @@ function Main(quest, me)
                         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                         local movie4 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN", GROUP_SELECT_FIRST, false, true, false)
+                        local scratchValue42 = resources:ScriptThing(resource)
+                        if 0.0 < quest:GetHealth(scratchValue42) then
+                            local line3 = "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN"
+                            local hero3 = quest:GetHero()
+                            if not me:Speak(hero3, line3, 0, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                movie = movie4
+                                ReleaseEverything2(); return
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
@@ -184,22 +210,32 @@ function Main(quest, me)
                     end
                     if quest:IsQuestActive("Q_GuildTrainingDeparture") then
                         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+                        local isQuestActive5 = quest:IsQuestActive("Q_GuildTrainingWoodsDeparture")
                         local predicateResult32 = quest:IsActiveThreadTerminating()
-                        if quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
+                        if isQuestActive5 then
                             if predicateResult32 then
                                 resources:ReleaseResource(resource)
                                 return
                             end
                             local movie2 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                me:Speak(hero, "TEXT_QST_028_WHISPER_END_MOAN", GROUP_SELECT_FIRST, false, true, false)
+                            local scratchValue41 = resources:ScriptThing(resource)
+                            if 0.0 < quest:GetHealth(scratchValue41) then
+                                local line4 = "TEXT_QST_028_WHISPER_END_MOAN"
+                                local hero4 = quest:GetHero()
+                                if not me:Speak(hero4, line4, 0, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    movie = movie2
+                                    resources:DestroyMovie(movie)
+                                    resources:ReleaseResource(resource)
+                                    return
+                                end
                                 while me:IsPerformingScriptTask() do
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then
                                         quest:PauseAllNonScriptedEntities(false)
                                         movie = movie2
-                                        resources:DestroyMovie(movie2)
+                                        resources:DestroyMovie(movie)
                                         resources:ReleaseResource(resource)
                                         do return end
                                     end
@@ -220,8 +256,14 @@ function Main(quest, me)
                             end
                             movie6 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                me:Speak(hero, "TEXT_QST_028_WHISPER_MELEE_MOAN", GROUP_SELECT_FIRST, false, true, false)
+                            local scratchValue44 = resources:ScriptThing(resource)
+                            if 0.0 < quest:GetHealth(scratchValue44) then
+                                local line5 = "TEXT_QST_028_WHISPER_MELEE_MOAN"
+                                local hero5 = quest:GetHero()
+                                if not me:Speak(hero5, line5, 0, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    ReleaseEverything(); return
+                                end
                                 while me:IsPerformingScriptTask() do
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then

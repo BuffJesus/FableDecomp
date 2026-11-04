@@ -1,0 +1,456 @@
+diff --git a/FableScriptExtender/FableScriptExtender.vcxproj b/FableScriptExtender/FableScriptExtender.vcxproj
+index 5c91d1b..402d749 100644
+--- a/FableScriptExtender/FableScriptExtender.vcxproj
++++ b/FableScriptExtender/FableScriptExtender.vcxproj
+@@ -84,6 +84,7 @@
+     <ClInclude Include="framework.h" />
+     <ClInclude Include="FableAPI.h" />
+     <ClInclude Include="GameInterface.h" />
++    <ClInclude Include="RetailThingVector.h" />
+     <ClInclude Include="RetailCStringVector.h" />
+     <ClInclude Include="LuaEntityAPI.h" />
+     <ClInclude Include="LuaEntityHost.h" />
+diff --git a/FableScriptExtender/GameInterface.h b/FableScriptExtender/GameInterface.h
+index e754c4f..5fdadd5 100644
+--- a/FableScriptExtender/GameInterface.h
++++ b/FableScriptExtender/GameInterface.h
+@@ -2,6 +2,7 @@
+ #include "FableAPI.h"
+ #include "RetailCStringVector.h"
+ #include "EntityScriptingAPI.h"
++#include "RetailThingVector.h"
+ #include <list> 
+ #include <vector> 
+ #include <set> 
+@@ -866,16 +867,16 @@ typedef CScriptThing* (__thiscall* tGetHeroTargetedThing)(CGameScriptInterfaceBa
+ typedef CScriptThing* (__thiscall* tGetThingWithScriptName1)(CGameScriptInterfaceBase* This, CScriptThing* pResult, const CCharString* pName);
+ typedef CScriptThing* (__thiscall* tGetThingWithScriptName2)(CGameScriptInterfaceBase* This, CScriptThing* pResult, const CCharString* pName, const CCharString* pRegionName);
+ typedef CScriptThing* (__thiscall* tGetRandomThingWithScriptName)(CGameScriptInterfaceBase* This, CScriptThing* pResult, const CCharString* pName);
+-typedef int(__thiscall* tGetAllThingsWithScriptName)(CGameScriptInterfaceBase* This, const CCharString* pName, std::vector<CScriptThing>* pOutThings);
+-typedef int(__thiscall* tGetAllCreaturesInAreaWithScriptName)(CGameScriptInterfaceBase* This, const CCharString* pName, const C3DVector* pPosition, float radius, std::vector<CScriptThing>* pOutThings);
++typedef int(__thiscall* tGetAllThingsWithScriptName)(CGameScriptInterfaceBase* This, const CCharString* pName, RetailThingVectorStorage* pOutThings);
++typedef int(__thiscall* tGetAllCreaturesInAreaWithScriptName)(CGameScriptInterfaceBase* This, const CCharString* pName, const C3DVector* pPosition, float radius, RetailThingVectorStorage* pOutThings);
+ typedef CScriptThing* (__thiscall* tGetNearestWithScriptName)(CGameScriptInterfaceBase* This, CScriptThing* pResult, const CScriptThing* pRelativeTo, const CCharString* pName);
+ typedef CScriptThing* (__thiscall* tGetFurthestWithScriptName)(CGameScriptInterfaceBase* This, CScriptThing* pResult, const CScriptThing* pRelativeTo, const CCharString* pName);
+-typedef int(__thiscall* tGetAllThingsWithDefNameByDistanceFrom)(CGameScriptInterfaceBase* This, const CScriptThing* pRelativeTo, const CCharString* pDefName, std::vector<CScriptThing>* pOutThings);
+-typedef int(__thiscall* tGetAllThingsWithDefName)(CGameScriptInterfaceBase* This, const CCharString* pDefName, std::vector<CScriptThing>* pOutThings);
++typedef int(__thiscall* tGetAllThingsWithDefNameByDistanceFrom)(CGameScriptInterfaceBase* This, const CScriptThing* pRelativeTo, const CCharString* pDefName, RetailThingVectorStorage* pOutThings);
++typedef int(__thiscall* tGetAllThingsWithDefName)(CGameScriptInterfaceBase* This, const CCharString* pDefName, RetailThingVectorStorage* pOutThings);
+ typedef CScriptThing* (__thiscall* tGetNearestWithDefName)(CGameScriptInterfaceBase* This, CScriptThing* pResult, const CScriptThing* pRelativeTo, const CCharString* pDefName);
+ typedef CScriptThing* (__thiscall* tGetFurthestWithDefName)(CGameScriptInterfaceBase* This, CScriptThing* pResult, const CScriptThing* pRelativeTo, const CCharString* pDefName);
+ typedef CScriptThing* (__thiscall* tGetThingWithUID)(CGameScriptInterfaceBase* This, CScriptThing* pResult, unsigned __int64 uid);
+-typedef int(__thiscall* tGetAllCreaturesExcludingHero)(CGameScriptInterfaceBase* This, std::vector<CScriptThing>* pOutThings);
++typedef int(__thiscall* tGetAllCreaturesExcludingHero)(CGameScriptInterfaceBase* This, RetailThingVectorStorage* pOutThings);
+ typedef int(__thiscall* tGetAllThingsInLevel)(CGameScriptInterfaceBase* This, const CCharString* pLevelName, std::vector<CScriptThing>* pOutThings);
+ typedef bool(__thiscall* tIsThingWithThisUIDAlive)(CGameScriptInterfaceBase* This, unsigned __int64 uid);
+ typedef int(__thiscall* tRegisterTimer)(CGameScriptInterfaceBase* This);
+@@ -1065,9 +1066,9 @@ typedef bool(__thiscall* tIsHeroPerformingExpression)(CGameScriptInterfaceBase*
+ typedef bool(__thiscall* tIsDPadButtonHeldForExpression)(CGameScriptInterfaceBase* This, const CCharString* pExpressionName);
+ typedef void(__thiscall* tEntityFollowThing)(CGameScriptInterfaceBase* This, const CScriptThing* pFollower, const CScriptThing* pTarget, float distance, bool bUnknown);
+ typedef void(__thiscall* tEntityStopFollowing)(CGameScriptInterfaceBase* This, const CScriptThing* pFollower);
+-typedef bool(__thiscall* tGetFollowingEntityList)(CGameScriptInterfaceBase* This, const CScriptThing* pTarget, std::vector<CScriptThing>* pOutFollowers);
+-typedef bool(__thiscall* tGetHeroSummonedCreaturesList)(CGameScriptInterfaceBase* This, std::vector<CScriptThing>* pOutCreatures);
+-typedef bool(__thiscall* tGetPerceivingHeroEntityList)(CGameScriptInterfaceBase* This, std::vector<CScriptThing>* pOutEntities);
++typedef bool(__thiscall* tGetFollowingEntityList)(CGameScriptInterfaceBase* This, const CScriptThing* pTarget, RetailThingVectorStorage* pOutFollowers);
++typedef bool(__thiscall* tGetHeroSummonedCreaturesList)(CGameScriptInterfaceBase* This, RetailThingVectorStorage* pOutCreatures);
++typedef bool(__thiscall* tGetPerceivingHeroEntityList)(CGameScriptInterfaceBase* This, RetailThingVectorStorage* pOutEntities);
+ typedef bool(__thiscall* tIsEntityFollowingHero)(CGameScriptInterfaceBase* This, const CScriptThing* pThing);
+ typedef void(__thiscall* tEntitySetAsAllowedToFollowHero)(CGameScriptInterfaceBase* This, const CScriptThing* pThing, bool bIsAllowed);
+ typedef void(__thiscall* tEntitySetAsAllowedToChangeRegionFollowingState)(CGameScriptInterfaceBase* This, const CScriptThing* pThing, bool bIsAllowed);
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 007fb61..9d28e7e 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -868,21 +868,21 @@ sol::table LuaQuestState::GetAllThingsWithDefName(const std::string& defName, so
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetAllThingsWithDefName_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetAllThingsWithDefName_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetAllThingsWithDefName - API or memory allocator not available!");
+         return resultTable;
+     }
+ 
+     FableString fsName(defName.c_str());
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(10); // Reserve some space
++    RetailThingVector thingsVectorCopies;
+ 
+     // Call API - Fills the vector with COPIES
+-    int count = GetAllThingsWithDefName_API(m_pGameInterface, fsName, &thingsVectorCopies);
++    int count = GetAllThingsWithDefName_API(m_pGameInterface, fsName, thingsVectorCopies.Output());
+ 
+     if (count > 0) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             // 1. Malloc a new buffer for this copy
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+@@ -902,6 +902,7 @@ sol::table LuaQuestState::GetAllThingsWithDefName(const std::string& defName, so
+             // (WrapScriptThingOutput handles freeing pHeapCopy if it's invalid)
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+@@ -910,22 +911,22 @@ sol::table LuaQuestState::GetAllThingsWithScriptName(const std::string& scriptNa
+     sol::table resultTable = lua.create_table();
+ 
+     // Check prerequisites
+-    if (!m_pGameInterface || !GetAllThingsWithScriptName_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetAllThingsWithScriptName_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetAllThingsWithScriptName prerequisites (API func or malloc) not available!");
+         return resultTable;
+     }
+ 
+     FableString fsName(scriptName.c_str());
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(10); // Reserve some space
++    RetailThingVector thingsVectorCopies;
+ 
+     // Call game API - Fills thingsVectorCopies with COPIES
+-    int count = GetAllThingsWithScriptName_API(m_pGameInterface, fsName.get(), &thingsVectorCopies);
++    int count = GetAllThingsWithScriptName_API(m_pGameInterface, fsName.get(), thingsVectorCopies.Output());
+     Log("GetAllThingsWithScriptName: API returned " + std::to_string(count) + " copies for '" + scriptName + "'.");
+ 
+     if (count > 0) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             // 1. Allocate a NEW stable copy on the heap
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+@@ -943,6 +944,7 @@ sol::table LuaQuestState::GetAllThingsWithScriptName(const std::string& scriptNa
+             }
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+@@ -12780,19 +12782,19 @@ sol::table LuaQuestState::GetAllCreaturesExcludingHero(sol::this_state s) {
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetAllCreaturesExcludingHero_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetAllCreaturesExcludingHero_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetAllCreaturesExcludingHero - API or memory allocator not available!");
+         return resultTable;
+     }
+ 
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(20); // Reserve space
++    RetailThingVector thingsVectorCopies;
+ 
+-    int count = GetAllCreaturesExcludingHero_API(m_pGameInterface, &thingsVectorCopies);
++    int count = GetAllCreaturesExcludingHero_API(m_pGameInterface, thingsVectorCopies.Output());
+ 
+     if (count > 0) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+                 Log("!!! ERROR: GetAllCreaturesExcludingHero - Failed to allocate heap buffer for vector item!");
+@@ -12805,6 +12807,7 @@ sol::table LuaQuestState::GetAllCreaturesExcludingHero(sol::this_state s) {
+             }
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+@@ -12812,7 +12815,7 @@ sol::table LuaQuestState::GetAllThingsWithDefNameByDistanceFrom(const std::share
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetAllThingsWithDefNameByDistanceFrom_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetAllThingsWithDefNameByDistanceFrom_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetAllThingsWithDefNameByDistanceFrom - API or memory allocator not available!");
+         return resultTable;
+     }
+@@ -12824,14 +12827,14 @@ sol::table LuaQuestState::GetAllThingsWithDefNameByDistanceFrom(const std::share
+     }
+ 
+     FableString fsDefName(defName.c_str());
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(20);
++    RetailThingVector thingsVectorCopies;
+ 
+-    int count = GetAllThingsWithDefNameByDistanceFrom_API(m_pGameInterface, pRelativeTo, fsDefName.get(), &thingsVectorCopies);
++    int count = GetAllThingsWithDefNameByDistanceFrom_API(m_pGameInterface, pRelativeTo, fsDefName.get(), thingsVectorCopies.Output());
+ 
+     if (count > 0) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+                 Log("!!! ERROR: GetAllThingsWithDefNameByDistanceFrom - Failed to allocate heap buffer for vector item!");
+@@ -12844,6 +12847,7 @@ sol::table LuaQuestState::GetAllThingsWithDefNameByDistanceFrom(const std::share
+             }
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+@@ -12851,7 +12855,7 @@ sol::table LuaQuestState::GetAllCreaturesInAreaWithScriptName(const std::string&
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetAllCreaturesInAreaWithScriptName_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetAllCreaturesInAreaWithScriptName_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetAllCreaturesInAreaWithScriptName - API or memory allocator not available!");
+         return resultTable;
+     }
+@@ -12862,14 +12866,14 @@ sol::table LuaQuestState::GetAllCreaturesInAreaWithScriptName(const std::string&
+         position["y"].get_or(0.0f),
+         position["z"].get_or(0.0f)
+     };
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(20);
++    RetailThingVector thingsVectorCopies;
+ 
+-    int count = GetAllCreaturesInAreaWithScriptName_API(m_pGameInterface, fsName.get(), &pos, radius, &thingsVectorCopies);
++    int count = GetAllCreaturesInAreaWithScriptName_API(m_pGameInterface, fsName.get(), &pos, radius, thingsVectorCopies.Output());
+ 
+     if (count > 0) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+                 Log("!!! ERROR: GetAllCreaturesInAreaWithScriptName - Failed to allocate heap buffer for vector item!");
+@@ -12882,6 +12886,7 @@ sol::table LuaQuestState::GetAllCreaturesInAreaWithScriptName(const std::string&
+             }
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+@@ -13185,7 +13190,7 @@ sol::table LuaQuestState::GetFollowingEntityList(const std::shared_ptr<CScriptTh
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetFollowingEntityList_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetFollowingEntityList_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetFollowingEntityList - API or memory allocator not available!");
+         return resultTable;
+     }
+@@ -13196,14 +13201,14 @@ sol::table LuaQuestState::GetFollowingEntityList(const std::shared_ptr<CScriptTh
+         return resultTable;
+     }
+ 
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(10);
++    RetailThingVector thingsVectorCopies;
+ 
+-    bool result = GetFollowingEntityList_API(m_pGameInterface, pTarget, &thingsVectorCopies);
++    bool result = GetFollowingEntityList_API(m_pGameInterface, pTarget, thingsVectorCopies.Output());
+ 
+-    if (result && !thingsVectorCopies.empty()) {
++    if (result && !thingsVectorCopies.Empty()) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+                 Log("!!! ERROR: GetFollowingEntityList - Failed to allocate heap buffer for vector item!");
+@@ -13216,6 +13221,7 @@ sol::table LuaQuestState::GetFollowingEntityList(const std::shared_ptr<CScriptTh
+             }
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+@@ -13223,19 +13229,19 @@ sol::table LuaQuestState::GetHeroSummonedCreaturesList(sol::this_state s) {
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetHeroSummonedCreaturesList_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetHeroSummonedCreaturesList_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetHeroSummonedCreaturesList - API or memory allocator not available!");
+         return resultTable;
+     }
+ 
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(10);
++    RetailThingVector thingsVectorCopies;
+ 
+-    bool result = GetHeroSummonedCreaturesList_API(m_pGameInterface, &thingsVectorCopies);
++    bool result = GetHeroSummonedCreaturesList_API(m_pGameInterface, thingsVectorCopies.Output());
+ 
+-    if (result && !thingsVectorCopies.empty()) {
++    if (result && !thingsVectorCopies.Empty()) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+                 Log("!!! ERROR: GetHeroSummonedCreaturesList - Failed to allocate heap buffer for vector item!");
+@@ -13248,6 +13254,7 @@ sol::table LuaQuestState::GetHeroSummonedCreaturesList(sol::this_state s) {
+             }
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+@@ -13255,19 +13262,19 @@ sol::table LuaQuestState::GetPerceivingHeroEntityList(sol::this_state s) {
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetPerceivingHeroEntityList_API || !Game_malloc) {
++    if (!m_pGameInterface || !GetPerceivingHeroEntityList_API || !Game_malloc || !Game_free) {
+         Log("!!! ERROR: GetPerceivingHeroEntityList - API or memory allocator not available!");
+         return resultTable;
+     }
+ 
+-    std::vector<CScriptThing> thingsVectorCopies;
+-    thingsVectorCopies.reserve(20);
++    RetailThingVector thingsVectorCopies;
+ 
+-    bool result = GetPerceivingHeroEntityList_API(m_pGameInterface, &thingsVectorCopies);
++    bool result = GetPerceivingHeroEntityList_API(m_pGameInterface, thingsVectorCopies.Output());
+ 
+-    if (result && !thingsVectorCopies.empty()) {
++    if (result && !thingsVectorCopies.Empty()) {
+         int luaTableIndex = 1;
+-        for (const auto& thingCopy : thingsVectorCopies) {
++        for (unsigned int vectorIndex = 0; vectorIndex < thingsVectorCopies.Count(); ++vectorIndex) {
++            const auto& thingCopy = *thingsVectorCopies.At(vectorIndex);
+             CScriptThing* pHeapCopy = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+             if (!pHeapCopy) {
+                 Log("!!! ERROR: GetPerceivingHeroEntityList - Failed to allocate heap buffer for vector item!");
+@@ -13280,6 +13287,7 @@ sol::table LuaQuestState::GetPerceivingHeroEntityList(sol::this_state s) {
+             }
+         }
+     }
++    thingsVectorCopies.Close();
+     return resultTable;
+ }
+ 
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 92b6881..e45ca14 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -655,7 +655,7 @@ inline void RegisterNoviUnitOverrides(sol::usertype<LuaQuestState>& quest) {
+         return NoviFillThingVector(self, ts, [&](NoviRetailThingVector* vec) {
+             auto* gsi = self.GetGameInterface();
+             if (gsi && GetAllCreaturesExcludingHero_API)
+-                GetAllCreaturesExcludingHero_API(gsi, reinterpret_cast<std::vector<CScriptThing>*>(vec));
++                GetAllCreaturesExcludingHero_API(gsi, reinterpret_cast<RetailThingVectorStorage*>(vec));
+         });
+     };
+     quest["GetAllThingsWithScriptName"] = [](LuaQuestState& self, const std::string& name, sol::this_state ts) -> sol::table {
+@@ -663,7 +663,7 @@ inline void RegisterNoviUnitOverrides(sol::usertype<LuaQuestState>& quest) {
+             auto* gsi = self.GetGameInterface();
+             if (!gsi || !GetAllThingsWithScriptName_API) return;
+             FableString text(name.c_str());
+-            GetAllThingsWithScriptName_API(gsi, text.get(), reinterpret_cast<std::vector<CScriptThing>*>(vec));
++            GetAllThingsWithScriptName_API(gsi, text.get(), reinterpret_cast<RetailThingVectorStorage*>(vec));
+         });
+     };
+     quest["GetAllThingsWithDefName"] = [](LuaQuestState& self, const std::string& name, sol::this_state ts) -> sol::table {
+@@ -671,7 +671,7 @@ inline void RegisterNoviUnitOverrides(sol::usertype<LuaQuestState>& quest) {
+             auto* gsi = self.GetGameInterface();
+             if (!gsi || !GetAllThingsWithDefName_API) return;
+             FableString text(name.c_str());
+-            GetAllThingsWithDefName_API(gsi, text.get(), reinterpret_cast<std::vector<CScriptThing>*>(vec));
++            GetAllThingsWithDefName_API(gsi, text.get(), reinterpret_cast<RetailThingVectorStorage*>(vec));
+         });
+     };
+ }
+diff --git a/FableScriptExtender/RetailThingVector.h b/FableScriptExtender/RetailThingVector.h
+new file mode 100644
+index 0000000..ee04638
+--- /dev/null
++++ b/FableScriptExtender/RetailThingVector.h
+@@ -0,0 +1,75 @@
++#pragma once
++#include "FableAPI.h"
++#include "EntityScriptingAPI.h"
++#include <cstdint>
++#include <exception>
++#include <stdexcept>
++
++struct RetailThingVectorStorage {
++    CScriptThing* begin = nullptr;
++    CScriptThing* end = nullptr;
++    CScriptThing* capacity = nullptr;
++};
++static_assert(sizeof(CScriptThing) == 12 && sizeof(RetailThingVectorStorage) == 12,
++              "Retail Thing vectors require Win32 entries and three pointers");
++
++// The native vector owns its entries. Lua heap copies explicitly retain their
++// own references before this owner retires the originals through vtable slot0
++// with flags0, matching the original8AC970 destructor's12-byte stride.
++class RetailThingVector {
++public:
++    using Destroy = void(*)(CScriptThing*);
++    explicit RetailThingVector(t_free release = Game_free, Destroy destroy = &DestroyNative)
++        : release_(release), destroy_(destroy) {
++        if (!release_ || !destroy_)
++            throw std::runtime_error("Retail Thing vector cleanup unavailable");
++    }
++    ~RetailThingVector() { try { Close(); } catch (...) {} }
++    RetailThingVector(const RetailThingVector&) = delete;
++    RetailThingVector& operator=(const RetailThingVector&) = delete;
++    RetailThingVectorStorage* Output() {
++        if (closed_) throw std::runtime_error("Retail Thing vector is closed");
++        return &storage_;
++    }
++    unsigned int Count() const {
++        if (!storage_.begin) return 0;
++        return static_cast<unsigned int>((reinterpret_cast<std::uintptr_t>(storage_.end)
++            - reinterpret_cast<std::uintptr_t>(storage_.begin)) / sizeof(CScriptThing));
++    }
++    bool Empty() const { return Count() == 0; }
++    const CScriptThing* At(unsigned int index) const {
++        if (closed_ || index >= Count())
++            throw std::runtime_error("Retail Thing vector index out of range");
++        return storage_.begin + index;
++    }
++    void Close() {
++        if (closed_) return;
++        std::exception_ptr failure;
++        const unsigned int count = Count();
++        while (retired_ < count) {
++            auto entry = storage_.begin + retired_++;
++            try { destroy_(entry); }
++            catch (...) { if (!failure) failure = std::current_exception(); }
++        }
++        auto buffer = storage_.begin;
++        storage_ = {};
++        closed_ = true;
++        if (buffer) {
++            try { release_(buffer); }
++            catch (...) { if (!failure) failure = std::current_exception(); }
++        }
++        if (failure) std::rethrow_exception(failure);
++    }
++private:
++    static void DestroyNative(CScriptThing* entry) {
++        auto table = reinterpret_cast<CScriptThingVTable*>(entry->pVTable);
++        if (!table || !table->Destructor)
++            throw std::runtime_error("Retail Thing vector entry has no destructor");
++        table->Destructor(entry, 0);
++    }
++    RetailThingVectorStorage storage_{};
++    t_free release_;
++    Destroy destroy_;
++    unsigned int retired_ = 0;
++    bool closed_ = false;
++};

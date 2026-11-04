@@ -301,10 +301,7 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: } else {",
-            "label LAB_00df206e",
-            "unlifted: iVar9 = *(*(this + 0x14) + 0x48)",
-            "unlifted: bVar5 = require(\"SummoningTheShip.native_quest_helpers\").MakeBriarRoseComment(quest, me, &"
+            "label LAB_00df206e"
           ],
           "calls": [
             "NewScriptFrame",
@@ -329,8 +326,8 @@
             "DeregisterTimer",
             "GetNearestWithScriptName",
             "GetNearestWithScriptName",
-            "ENGINE_SquaredDistance",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
+            "ENGINE_RetailDistance",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsAlive",
@@ -374,7 +371,7 @@
             "IsActiveThreadTerminating",
             "DeregisterTimer"
           ],
-          "lines": 326,
+          "lines": 308,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -554,9 +551,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: FadeInThing(p0,0x40000000);"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -567,6 +562,7 @@
             "IsActiveThreadTerminating",
             "MiniMapAddMarker",
             "EntitySetInLimbo",
+            "FadeInThing",
             "IsActiveThreadTerminating",
             "AddQuestInfoBarHealth",
             "RESOURCE_NewResource",
@@ -736,9 +732,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: FadeInThing(p0,0x40000000);"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -751,6 +745,7 @@
             "GetHero",
             "GiveThingBestEnemyTarget",
             "EntitySetInLimbo",
+            "FadeInThing",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -984,9 +979,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: r2 = quest:AddQuestInfoBarHealth(r1, &0xff00ff00, \"HUD_ICON_FIRE_HEART\", 1.0)"
-          ],
+          "todo": [],
           "calls": [
             "EntitySetAlpha",
             "NewScriptFrame",
@@ -1033,7 +1026,7 @@
             "DeregisterTimer",
             "DeregisterTimer"
           ],
-          "lines": 143,
+          "lines": 142,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1299,7 +1292,7 @@
         "functionSyntaxPassed": 30,
         "fileSyntaxPassed": 8,
         "fileSyntaxChecked": 8,
-        "todo": 7
+        "todo": 1
       }
     }
   ],
@@ -1310,6 +1303,6 @@
     "functionSyntaxPassed": 30,
     "fileSyntaxPassed": 8,
     "fileSyntaxChecked": 8,
-    "todo": 7
+    "todo": 1
   }
 }

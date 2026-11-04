@@ -12,14 +12,14 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, bVar6, bVar7, bVar8, cVar5, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, i_stk_9c, native_arg_byte_uStack_a8_b3, native_arg_sequence_1, pCVar11, pCVar17, pCVar9, pThing, pcVar14, pvVar12, r1, r2, r3, stack0xffffff44, this_00, this_01, uVar13, uVar15, uVar16, uVar18, xStack_58, xStack_70, xStack_70_2, xStack_74, xStack_7c, xStack_8c, xStack_a0, x_stk_34
+    local bVar4, bVar6, bVar7, bVar8, cVar5, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar10, native_arg_byte_uStack_a8_b3, native_arg_sequence_1, pCVar11, pCVar17, pCVar9, pThing, pcVar14, pvVar12, r1, r2, r3, r4, r5, r6, stack0xffffff44, this_00, this_01, uVar13, witchAfterCureHitMovie, witchBeforeCureHitMovie, witchCureMovie, witchHitDialogueIndex, witchTalkMovie, xStack_58, xStack_74, xStack_7c, xStack_a0, x_stk_34
     local alive = true
     local function __cleanup_LAB_00ecf292()
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_8c)
+        resources:DestroyMovie(witchTalkMovie)
     end
     local function __cleanup_LAB_00ecf7c9()
-        this_01 = xStack_a0
+        this_01 = witchAfterCureHitMovie
         resources:DestroyMovie(this_01)
     end
     bVar7 = false
@@ -44,7 +44,7 @@ function Main(quest, me)
         bVar4 = not alive
         if not bVar4 then
             iVar10 = __native_entity_state:GetStateInt("ThingsForPotionGot")
-            i_stk_9c = 0
+            witchHitDialogueIndex = 0
             while iVar10 < 4 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -59,7 +59,7 @@ function Main(quest, me)
                     if bVar4 then
                         return
                     end
-                    xStack_8c = resources:StartMovie("")
+                    witchTalkMovie = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
                     if not __native_entity_state:GetStateBool("IntroDone") then
                         alive = not quest:IsActiveThreadTerminating()
@@ -74,7 +74,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_8c)
+                            resources:DestroyMovie(witchTalkMovie)
                             return
                         end
                         xStack_58 = quest:ReadGlobalGameDataString(0x738)
@@ -100,7 +100,7 @@ function Main(quest, me)
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_8c)
+                                    resources:DestroyMovie(witchTalkMovie)
                                     return
                                 end
                                 iVar10 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -109,7 +109,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_8c)
+                                resources:DestroyMovie(witchTalkMovie)
                                 return
                             end
                             alive = not quest:IsActiveThreadTerminating()
@@ -118,7 +118,7 @@ function Main(quest, me)
                                 if bVar4 then
                                     -- LAB_00ecf3e5: (native jump target)
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_8c)
+                                    resources:DestroyMovie(witchTalkMovie)
                                     return
                                 end
                                 while true do
@@ -131,18 +131,18 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_8c)
+                                        resources:DestroyMovie(witchTalkMovie)
                                         return
                                     end
                                     xStack_7c = quest:ReadGlobalGameDataString(0x738)
                                     quest:TakeObjectFromHero(xStack_7c)
-                                    __native_entity_state:SetStateInt("ThingsForPotionGot", __native_entity_state:GetStateInt("ThingsForPotionGot") + 1)
+                                    __native_entity_state:SetStateInt("ThingsForPotionGot", ((__native_entity_state:GetStateInt("ThingsForPotionGot") + 1 + 2147483648) % 4294967296 - 2147483648))
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_8c)
+                                    resources:DestroyMovie(witchTalkMovie)
                                     return
                                 end
                                 if 3 < __native_entity_state:GetStateInt("ThingsForPotionGot") then
@@ -150,7 +150,7 @@ function Main(quest, me)
                                     bVar8 = not alive
                                     if bVar8 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_8c)
+                                        resources:DestroyMovie(witchTalkMovie)
                                         return
                                     end
                                     stack0xffffff44 = quest:ReadGlobalGameDataString(0x744)
@@ -160,27 +160,26 @@ function Main(quest, me)
                                     quest:SetQuestCardObjective(pCVar9, pCVar17, "", "")
                                     quest:ClearThingHasInformation(me)
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_8c)
+                                    resources:DestroyMovie(witchTalkMovie)
                                     break
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar4 = not alive
                                 if bVar4 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_8c)
+                                    resources:DestroyMovie(witchTalkMovie)
                                     return
                                 end
-                                pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
-                                fret_0 = quest:GetHealth(pCVar11)
-                                fVar3 = 0.0
-                                if fVar3 < fret_0 then
-                                    -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
-                                    iVar10 = nil --[[unresolved native value]]
-                                    uVar16 = 0
-                                    uVar15 = 0
+                                pCVar11 = nil
+                                if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Witch"), 0.0) then
                                     pcVar14 = "TEXT_QST_B10_WITCH_NEED_MORE_CURE_10"
                                     pCVar11 = quest:GetHero()
                                     r1 = me:Speak(pCVar11, "TEXT_QST_B10_WITCH_NEED_MORE_CURE_10", 0, false, true, false)
+                                    if not r1 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(witchTalkMovie)
+                                        return
+                                    end
                                     cVar5 = me:IsPerformingScriptTask()
                                     while cVar5 do
                                         alive = quest:NewScriptFrame(me)
@@ -188,7 +187,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_8c)
+                                            resources:DestroyMovie(witchTalkMovie)
                                             return
                                         end
                                         cVar5 = me:IsPerformingScriptTask()
@@ -197,27 +196,26 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_8c)
+                                        resources:DestroyMovie(witchTalkMovie)
                                         return
                                     end
                                 end
                             else
                                 if bVar4 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_8c)
+                                    resources:DestroyMovie(witchTalkMovie)
                                     return
                                 end
-                                pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
-                                fret_00 = quest:GetHealth(pCVar11)
-                                fVar3 = 0.0
-                                if fVar3 < fret_00 then
-                                    -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
-                                    iVar10 = nil --[[unresolved native value]]
-                                    uVar16 = 0
-                                    uVar15 = 0
+                                pCVar11 = nil
+                                if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Witch"), 0.0) then
                                     pcVar14 = "TEXT_QST_B10_WITCH_NOT_GIVEN_MORE_MUSHROOMS_10"
                                     pCVar11 = quest:GetHero()
                                     r2 = me:Speak(pCVar11, "TEXT_QST_B10_WITCH_NOT_GIVEN_MORE_MUSHROOMS_10", 0, false, true, false)
+                                    if not r2 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(witchTalkMovie)
+                                        return
+                                    end
                                     cVar5 = me:IsPerformingScriptTask()
                                     while cVar5 do
                                         alive = quest:NewScriptFrame(me)
@@ -225,7 +223,7 @@ function Main(quest, me)
                                         bVar4 = not alive
                                         if bVar4 then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_8c)
+                                            resources:DestroyMovie(witchTalkMovie)
                                             return
                                         end
                                         cVar5 = me:IsPerformingScriptTask()
@@ -234,24 +232,21 @@ function Main(quest, me)
                                     bVar4 = not alive
                                     if bVar4 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_8c)
+                                        resources:DestroyMovie(witchTalkMovie)
                                         return
                                     end
                                 end
                             end
                         else
                             if bVar6 then __cleanup_LAB_00ecf292(); return end
-                            pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
-                            fret_01 = quest:GetHealth(pCVar11)
-                            fVar3 = 0.0
-                            if fVar3 < fret_01 then
-                                -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
-                                iVar10 = nil --[[unresolved native value]]
-                                uVar16 = 0
-                                uVar15 = 0
+                            pCVar11 = nil
+                            if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Witch"), 0.0) then
                                 pcVar14 = "TEXT_QST_B10_WITCH_WAITING_FOR_CURE"
                                 pCVar11 = quest:GetHero()
                                 r3 = me:Speak(pCVar11, "TEXT_QST_B10_WITCH_WAITING_FOR_CURE", 0, false, true, false)
+                                if not r3 then
+                                    __cleanup_LAB_00ecf292(); return
+                                end
                                 cVar5 = me:IsPerformingScriptTask()
                                 while cVar5 do
                                     alive = quest:NewScriptFrame(me)
@@ -267,40 +262,20 @@ function Main(quest, me)
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_8c)
+                    resources:DestroyMovie(witchTalkMovie)
                 end
-                cVar5 = me:MsgIsHitByHero()
-                if not cVar5 then
-                    bVar7 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                    if bVar7 then
-                        bVar7 = true
-                        bVar8 = true
-                        bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                        if not bVar4 then goto LAB_00ecef61 end
-                    end
-                    bVar7 = true
-                    native_arg_byte_uStack_a8_b3 = 0
-                else
-                    goto LAB_00ecef61
-                end
-                goto FLOW_past_lab_00ecef61
-                ::LAB_00ecef61::
-                native_arg_byte_uStack_a8_b3 = 1
-                ::FLOW_past_lab_00ecef61::
-                if bVar8 then
-                    bVar8 = false
-                end
-                if bVar7 then
-                    bVar7 = false
-                end
+                native_arg_byte_uStack_a8_b3 = resources:IsHitByHeroExceptAbility(me, 14) and 1 or 0
+                bVar7 = false
+                bVar8 = false
                 if native_arg_byte_uStack_a8_b3 ~= 0 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    iVar10 = i_stk_9c
+                    iVar10 = witchHitDialogueIndex
                     if bVar4 then
                         return
                     end
-                    i_stk_9c = i_stk_9c + 1
+                    witchHitDialogueIndex = witchHitDialogueIndex + 1
+                    xStack_a0 = ""
                     if iVar10 == 0 then
                         pcVar14 = "TEXT_QST_B10_WITCH_ONHIT_10"
                         goto LAB_00ecf00d
@@ -310,31 +285,33 @@ function Main(quest, me)
                             goto LAB_00ecf00d
                         end
                         if iVar10 == 2 then
-                            -- TODO(native): CCharString::operator=(xStack_a0,"TEXT_QST_B10_WITCH_ONHIT_30");
-                            i_stk_9c = 0
+                            xStack_a0 = "TEXT_QST_B10_WITCH_ONHIT_30"
+                            witchHitDialogueIndex = 0
                         else
-                            -- TODO(native): CCharString::operator=(xStack_a0,"TEXT_QST_B10_WITCH_ONHIT_20");
-                            i_stk_9c = 0
+                            xStack_a0 = "TEXT_QST_B10_WITCH_ONHIT_20"
+                            witchHitDialogueIndex = 0
                         end
                     end
                     goto FLOW_past_lab_00ecf00d
                     ::LAB_00ecf00d::
                     xStack_a0 = pcVar14
                     ::FLOW_past_lab_00ecf00d::
-                    xStack_70 = resources:StartMovie("")
+                    witchBeforeCureHitMovie = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
-                    fret_02 = quest:GetHealth(pCVar11)
-                    fVar3 = 0.0
+                    pCVar11 = nil
+                    fret_02 = resources:ResourceThingHealthAbove(resources:MemberResource("seh_Witch"), 0.0)
                     x_stk_34 = nil
                     x_stk_34 = 0
-                    if fVar3 < fret_02 then
-                        -- TODO(native): xStack_60 = *(int *)(*(int *)(this + 0x14) + 0x58);
-                        uVar16 = 0
-                        uVar15 = 0
+                    if fret_02 then
+                        -- reviewed native member speech table: xStack_60 = *(int *)(*(int *)(this + 0x14) + 0x58);
                         pvVar12 = xStack_a0
                         pCVar11 = quest:GetHero()
-                        -- TODO(native): (**(code **)((int)xStack_60 + 0x34))(pCVar11,pvVar12,uVar15,uVar16);
+                        r4 = me:Speak(pCVar11, pvVar12, 0, false, true, false)
+                        if not r4 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(witchBeforeCureHitMovie)
+                            return
+                        end
                         cVar5 = me:IsPerformingScriptTask()
                         while cVar5 do
                             alive = quest:NewScriptFrame(me)
@@ -342,7 +319,7 @@ function Main(quest, me)
                             bVar4 = not alive
                             if bVar4 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_8c)
+                                resources:DestroyMovie(witchBeforeCureHitMovie)
                                 return
                             end
                             cVar5 = me:IsPerformingScriptTask()
@@ -351,13 +328,13 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then
                             quest:PauseAllNonScriptedEntities(false)
-                            this_01 = xStack_8c
+                            this_01 = witchBeforeCureHitMovie
                             resources:DestroyMovie(this_01)
                             return
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_8c)
+                    resources:DestroyMovie(witchBeforeCureHitMovie)
                 end
                 iVar10 = __native_entity_state:GetStateInt("ThingsForPotionGot")
             end
@@ -388,20 +365,18 @@ function Main(quest, me)
                         if bVar8 then
                             return
                         end
-                        xStack_70_2 = resources:StartMovie("")
+                        witchCureMovie = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        pThing = resources:ScriptThing(resources:MemberResource("seh_Witch"))
-                        fret_03 = quest:GetHealth(pThing)
-                        fVar3 = 0.0
-                        if fVar3 < fret_03 then
-                            -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
-                            iVar10 = nil --[[unresolved native value]]
-                            uVar18 = 1
-                            uVar16 = 0
-                            uVar15 = 2
+                        pThing = nil
+                        if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Witch"), 0.0) then
                             pcVar14 = "TEXT_QST_B10_WITCH_GOT_CURE"
                             pCVar11 = quest:GetHero()
-                            -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar11,pcVar14,uVar15,uVar16,uVar18);
+                            r5 = me:Speak(pCVar11, "TEXT_QST_B10_WITCH_GOT_CURE", 2, false, true, false)
+                            if not r5 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(witchCureMovie)
+                                return
+                            end
                             cVar5 = me:IsPerformingScriptTask()
                             while cVar5 do
                                 alive = quest:NewScriptFrame(me)
@@ -409,7 +384,7 @@ function Main(quest, me)
                                 bVar8 = not alive
                                 if bVar8 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_8c)
+                                    resources:DestroyMovie(witchCureMovie)
                                     return
                                 end
                                 cVar5 = me:IsPerformingScriptTask()
@@ -418,38 +393,22 @@ function Main(quest, me)
                             bVar8 = not alive
                             if bVar8 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_8c)
+                                resources:DestroyMovie(witchCureMovie)
                                 return
                             end
                         end
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_8c)
+                        resources:DestroyMovie(witchCureMovie)
                     end
-                    cVar5 = me:MsgIsHitByHero()
-                    if not cVar5 then
-                        bVar8 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                        if bVar8 then
-                            bVar8 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                            if not bVar8 then goto LAB_00ecf576 end
-                        end
-                        -- TODO(native): uStack_a8 = uStack_a8 & 0xffffff | 0x10;
-                        native_arg_byte_uStack_a8_b3 = 0
-                    else
-                        goto LAB_00ecf576
-                    end
-                    goto FLOW_past_lab_00ecf576
-                    ::LAB_00ecf576::
-                    -- TODO(native): uStack_a8._0_3_ = (undefined3)(uStack_a8 | 0x10);
-                    native_arg_byte_uStack_a8_b3 = 1
-                    ::FLOW_past_lab_00ecf576::
+                    native_arg_byte_uStack_a8_b3 = resources:IsHitByHeroExceptAbility(me, 14) and 1 or 0
                     if native_arg_byte_uStack_a8_b3 ~= 0 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar8 = not alive
-                        iVar10 = i_stk_9c
+                        iVar10 = witchHitDialogueIndex
                         if bVar8 then
                             return
                         end
-                        i_stk_9c = i_stk_9c + 1
+                        witchHitDialogueIndex = witchHitDialogueIndex + 1
                         if iVar10 == 0 then
                             pcVar14 = "TEXT_QST_B10_WITCH_ONHIT_10"
                             goto LAB_00ecf622
@@ -460,29 +419,27 @@ function Main(quest, me)
                             end
                             if iVar10 == 2 then
                                 xStack_a0 = "TEXT_QST_B10_WITCH_ONHIT_30"
-                                i_stk_9c = 0
+                                witchHitDialogueIndex = 0
                             else
                                 xStack_a0 = "TEXT_QST_B10_WITCH_ONHIT_20"
-                                i_stk_9c = 0
+                                witchHitDialogueIndex = 0
                             end
                         end
                         goto FLOW_past_lab_00ecf622
                         ::LAB_00ecf622::
                         xStack_a0 = pcVar14
                         ::FLOW_past_lab_00ecf622::
-                        xStack_8c = resources:StartMovie("")
+                        witchAfterCureHitMovie = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        pCVar11 = resources:ScriptThing(resources:MemberResource("seh_Witch"))
-                        fret_04 = quest:GetHealth(pCVar11)
-                        fVar3 = 0.0
-                        if fVar3 < fret_04 then
-                            -- TODO(native): iVar10 = *(__native_entity_state:GetStateInt("self_0x14") + 0x58)
-                            iVar10 = nil --[[unresolved native value]]
-                            uVar16 = 0
-                            uVar15 = 0
+                        pCVar11 = nil
+                        if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Witch"), 0.0) then
                             pvVar12 = xStack_a0
                             pCVar11 = quest:GetHero()
-                            -- TODO(native): (**(code **)(iVar10 + 0x34))(pCVar11,pvVar12,uVar15,uVar16);
+                            r6 = me:Speak(pCVar11, pvVar12, 0, false, true, false)
+                            if not r6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                __cleanup_LAB_00ecf7c9(); return
+                            end
                             cVar5 = me:IsPerformingScriptTask()
                             while cVar5 do
                                 alive = quest:NewScriptFrame(me)
@@ -503,7 +460,7 @@ function Main(quest, me)
                             end
                         end
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_a0)
+                        resources:DestroyMovie(witchAfterCureHitMovie)
                     end
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()

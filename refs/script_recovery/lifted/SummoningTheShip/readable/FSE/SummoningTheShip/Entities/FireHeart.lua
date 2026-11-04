@@ -7,7 +7,7 @@ local helpers = require("SummoningTheShip.native_quest_helpers")
 
 -- FireHeart.Main (retail 0x00df2f90)
 function Main(quest, me)
-    local predicateResult
+    local predicateResult, healthBar
     quest:EntitySetAlpha(me, 0.0, true)
     while not quest:GetStateBool("LighthouseStarted") do
         if not quest:NewScriptFrame(me) then return end
@@ -22,8 +22,8 @@ function Main(quest, me)
     quest:DisplayQuestInfo(true)
     quest:EntitySetAlpha(me, 1.0, true)
     local timerId2 = quest:RegisterTimer()
-    -- TODO(native): r2 = quest:AddQuestInfoBarHealth(r1, &0xff00ff00, "HUD_ICON_FIRE_HEART", 1.0)
---[[unresolved native value]]
+    local fireHeart = quest:GetThingWithScriptName("FireHeart")
+    healthBar = quest:AddQuestInfoBarHealth(fireHeart, {R = 0, G = 255, B = 0, A = 255}, "HUD_ICON_FIRE_HEART", 1.0)
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 3)
     while 1.0 < quest:GetHealth(me) do

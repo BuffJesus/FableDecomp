@@ -7,7 +7,7 @@ local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 -- WB_Guard1.Main (retail 0x00e16e00)
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local getMasterGameState, p0_00
+    local getMasterGameState, p0_00, position, guard1Pos, whiteBalverine, scratchValue2
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -16,7 +16,7 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:EntitySetCutsceneBehaviour(me, CUTSCENE_BEHAVIOUR_PAUSED)
-    local guard1Pos = quest:GetThingWithScriptName("WB_Guard1Pos")
+    guard1Pos = quest:GetThingWithScriptName("WB_Guard1Pos")
     if guard1Pos == nil then
         p0_00 = {x = 0, y = 0, z = 0}
     else
@@ -37,25 +37,29 @@ function Main(quest, me)
             return
         end
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
-        if quest:IsDistanceBetweenThingsUnder(me, quest:GetThingWithScriptName("WB_WhiteBalverine"), 30.0) then
-            local position = quest:GetHero():GetPos()
-            local scratchValue2 = {x = position.x, y = position.y, z = position.z}
-            while true do
-                local scratchValue = resources:ScriptThing(resource)
-                local outsideDistance = scratchValue ~= nil and scratchValue:IsDistanceFromPositionOver(scratchValue2, 2.0)
-                if not outsideDistance then break end
-                if not quest:NewScriptFrame(me) then goto LAB_00e17103 end
-                me:MoveToPosition(scratchValue2, 0, ENTITY_MOVE_RUN, false, true)
-                while me:IsPerformingScriptTask() do
-                    quest:NewScriptFrame(me)
-                    if quest:IsActiveThreadTerminating() then
-                        resources:ReleaseResource(resource)
-                        do return end
+        whiteBalverine = quest:GetThingWithScriptName("WB_WhiteBalverine")
+        if quest:IsDistanceBetweenThingsUnder(me, whiteBalverine, 30.0) then
+            if not (quest:IsActiveThreadTerminating()) then
+                position = quest:GetHero():GetPos()
+                scratchValue2 = {x = position.x, y = position.y, z = position.z}
+                while true do
+                    local scratchValue = resources:ScriptThing(resource)
+                    if not (scratchValue ~= nil and scratchValue:IsDistanceFromPositionOver(scratchValue2, 2.0)) then break end
+                    if not quest:NewScriptFrame(me) then goto LAB_00e17103 end
+                    me:MoveToPosition(scratchValue2, 0, ENTITY_MOVE_RUN, false, true)
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            whiteBalverine = nil
+                            guard1Pos = nil
+                            resources:ReleaseResource(resource)
+                            do return end
+                        end
                     end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00e17103 end
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00e17103 end
+                if not quest:IsActiveThreadTerminating() then goto LAB_00e17119 end
             end
-            if not quest:IsActiveThreadTerminating() then goto LAB_00e17119 end
             ::LAB_00e17103::
             resources:ReleaseResource(resource)
             return

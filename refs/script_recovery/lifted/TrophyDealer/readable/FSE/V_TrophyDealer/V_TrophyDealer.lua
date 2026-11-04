@@ -13,7 +13,8 @@ function Main(quest)
     while true do
         if isRegionLoaded then
             if quest:IsActiveThreadTerminating() then return end
-            quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_02", "Witchwood2", "")
+            local pQuestName = quest:GetActiveQuestName()
+            quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_02", "Witchwood2", "")
             quest:KickOffQuestStartScreen("V_TrophyDealer", true, false)
             return
         end
@@ -24,7 +25,8 @@ end
 
 -- V_TrophyDealer.Init (retail 0x00ee6d60)
 function Init(quest)
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_01", "Witchwood2", "")
+    local pQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_01", "Witchwood2", "")
 end
 
 -- V_TrophyDealer.OnPersist (retail 0x00cbd4e0)

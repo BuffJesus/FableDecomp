@@ -24,15 +24,18 @@ end
 
 -- Q_GuildTrainingWoodsMelee.WatchForTermination (retail 0x00d66880)
 function WatchForTermination(quest)
-    local hero = quest:GetHero()
     while not quest:GetStateBool("MissionFailed") and not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     if not quest:GetStateBool("MissionFailed") then
-        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
+        if quest:IsActiveThreadTerminating() then return end
+        local getActiveQuestName = quest:GetActiveQuestName()
+        quest:SetQuestAsCompleted(getActiveQuestName, true, false, false)
     else
-        quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
+        if quest:IsActiveThreadTerminating() then return end
+        local getActiveQuestName2 = quest:GetActiveQuestName()
+        quest:SetQuestAsFailed(getActiveQuestName2, true, "", true)
     end
     quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_02", "HeroGuildComplexInside", "")
     if not quest:NewScriptFrame() then return end
@@ -40,7 +43,11 @@ function WatchForTermination(quest)
     if not quest:NewScriptFrame() then return end
     if not quest:NewScriptFrame() then return end
     if not quest:NewScriptFrame() then return end
-    quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDSEAL_COME_BACK", hero, hero, false)
+    local hero = quest:GetHero()
+    local conversationID = quest:AddNewConversation(hero, false, false)
+    local hero2 = quest:GetHero()
+    local pSpeaker = quest:GetHero()
+    quest:AddLineToConversation(conversationID, "TEXT_QST_028_GUILDSEAL_COME_BACK", pSpeaker, hero2, false)
     if quest:GetStateBool("MissionSucceeded") then
         if quest:IsActiveThreadTerminating() then return end
         quest:SetMasterGameState("ScorpionsDestroyedCutscenePlayed", true)
@@ -84,15 +91,24 @@ end
 
 -- Q_GuildTrainingWoodsMelee.TeleportOutHero (retail 0x00d66f50)
 function TeleportOutHero(quest)
-    local hero = quest:GetHero()
+    local guildWoodsTeleportExitHSP
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        if quest:GetHealth(hero) >= 6.0 then
+        local hero = quest:GetHero()
+        if not (quest:GetHealth(hero) < 6.0) then
             quest:NewScriptFrame()
         else
-            quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP"), false)
+            if quest:IsActiveThreadTerminating() then return end
+            guildWoodsTeleportExitHSP = quest:GetThingWithScriptName("GuildWoodsTeleportExitHSP")
+            local hero4 = quest:GetHero()
+            quest:EntityTeleportToThing(hero4, guildWoodsTeleportExitHSP, false)
+            guildWoodsTeleportExitHSP = nil
             quest:Pause(2.0)
-            quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", hero, hero, false)
+            local hero2 = quest:GetHero()
+            local conversationId = quest:AddNewConversation(hero2, false, false)
+            local hero3 = quest:GetHero()
+            local hero5 = quest:GetHero()
+            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_TELEPORT_OUT_FIRST", hero5, hero3, false)
             quest:ChangeHeroHealthBy(1000.0, true, false)
             quest:NewScriptFrame()
         end
@@ -106,7 +122,8 @@ function EndMission(quest)
     while true do
         if missionOver then
             if quest:IsActiveThreadTerminating() then return end
-            quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
+            local pQuestName = quest:GetActiveQuestName()
+            quest:SetQuestAsCompleted(pQuestName, true, false, false)
             quest:SetStateBool("MissionSucceeded", true)
             return
         end

@@ -1,0 +1,44 @@
+diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
+index 188c030..71bd542 100644
+--- a/FableScriptExtender/LuaManager.cpp
++++ b/FableScriptExtender/LuaManager.cpp
+@@ -700,6 +700,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["SetAllowScreenFadingIfAlreadyFaded"] = &LuaQuestState::SetAllowScreenFadingIfAlreadyFaded;
+     questState_type["SetToKeepHeroAbilitiesDuringCutscenes"] = &LuaQuestState::SetToKeepHeroAbilitiesDuringCutscenes;
+     questState_type["SetCutsceneSkippable"] = &LuaQuestState::SetCutsceneSkippable;
++    questState_type["SetCutsceneSkippableWhilePaused"] = &LuaQuestState::SetCutsceneSkippableWhilePaused;
+     questState_type["PreloadNewScene"] = &LuaQuestState::PreloadNewScene;
+     questState_type["StartProgressDisplay"] = &LuaQuestState::StartProgressDisplay;
+     questState_type["StopProgressDisplay"] = &LuaQuestState::StopProgressDisplay;
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index bd18648..d7787ff 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -6663,6 +6663,15 @@ void LuaQuestState::SetCutsceneSkippable(bool bIsSkippable) {
+     }
+ }
+ 
++void LuaQuestState::SetCutsceneSkippableWhilePaused(bool bIsSkippable) {
++    if (m_pGameInterface && SetCutsceneSkippableWhilePaused_API) {
++        SetCutsceneSkippableWhilePaused_API(m_pGameInterface, bIsSkippable);
++    }
++    else {
++        Log("!!! ERROR: SetCutsceneSkippableWhilePaused - API not available!");
++    }
++}
++
+ void LuaQuestState::PreloadNewScene(float unknown) {
+     if (m_pGameInterface && PreloadNewScene_API) {
+         PreloadNewScene_API(m_pGameInterface, unknown);
+diff --git a/FableScriptExtender/LuaQuestState.h b/FableScriptExtender/LuaQuestState.h
+index d7deb41..3c27e46 100644
+--- a/FableScriptExtender/LuaQuestState.h
++++ b/FableScriptExtender/LuaQuestState.h
+@@ -421,6 +421,7 @@ public:
+     void SetAllowScreenFadingIfAlreadyFaded(bool bIsAllowed);
+     void SetToKeepHeroAbilitiesDuringCutscenes(bool bDoKeep);
+     void SetCutsceneSkippable(bool bIsSkippable);
++    void SetCutsceneSkippableWhilePaused(bool bIsSkippable);
+     void PreloadNewScene(float unknown);
+     void StartProgressDisplay();
+     void StopProgressDisplay();

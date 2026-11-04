@@ -876,5 +876,1236 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedStackScalarAliases": {
+    "0x00e63890": {
+      "alias": "native_greeting_done",
+      "nativeSha256": "d114e80373de89b84268c3f6ebc1ae2e207318009379ab916f46d59ec62222e1",
+      "sourceSha256": "ce3849a6fd3da043803bbe4ab2031a72c8c4cf712ab2bccae78250e0e2e85c08",
+      "nativeInstructions": {
+        "0xe63890": "83ec6c",
+        "0xe63893": "53",
+        "0xe63894": "55",
+        "0xe63895": "56",
+        "0xe6389a": "57",
+        "0xe638a8": "55",
+        "0xe638a9": "83ec0c",
+        "0xe638d5": "c644242200",
+        "0xe638e6": "ff92300d0000",
+        "0xe63b24": "8a442412",
+        "0xe63b28": "84c0",
+        "0xe63b2c": "0f8542010000",
+        "0xe63c66": "c644241201",
+        "0xe63c6f": "e938010000",
+        "0xe63898": "33ed",
+        "0xe6389f": "896c2414",
+        "0xe63e00": "8b5c2414",
+        "0xe63e0a": "83cb01",
+        "0xe63e10": "895c2418",
+        "0xe63e31": "83cb02",
+        "0xe63e37": "895c2418",
+        "0xe63e5c": "83cb04",
+        "0xe63e63": "895c241c",
+        "0xe63e82": "83e3fb",
+        "0xe63e89": "895c2414",
+        "0xe63e97": "83e3fd",
+        "0xe63e9e": "895c2414",
+        "0xe63eac": "83e3fe",
+        "0xe63eb3": "895c2414"
+      },
+      "edits": [
+        [
+          "undefined4 uStack_4;",
+          "native_greeting_done = false;"
+        ],
+        [
+          "(char)((uint)unaff_EBX >> 0x10) == '\\0'",
+          "!native_greeting_done"
+        ],
+        [
+          "unaff_EBX = 0x10000;",
+          "native_greeting_done = true;"
+        ],
+        [
+          "xStack_64 = (CCharString_bv)0x0;",
+          "native_hit_cleanup_flags = 0;"
+        ],
+        [
+          "CVar4 = xStack_64;",
+          "CVar4 = native_hit_cleanup_flags;"
+        ],
+        [
+          "CVar11 = (CCharString_bv)((uint)xStack_64 | 1);",
+          "CVar11 = (CCharString_bv)((uint)native_hit_cleanup_flags | 1);"
+        ],
+        [
+          "xStack_64 = CVar11;",
+          "native_hit_cleanup_flags = CVar11;"
+        ],
+        [
+          "xStack_64 = (CCharString_bv)((uint)CVar11 & 0xfffffffe);",
+          "native_hit_cleanup_flags = (CCharString_bv)((uint)CVar11 & 0xfffffffe);"
+        ]
+      ],
+      "evidence": {
+        "nativeSlot": "byte at balanced ESP+0x12",
+        "initialization": "00E638D5 stores zero at ESP+0x22 while one word plus 12-byte Thing argument are pushed; 00E638E6 consumes16 bytes.",
+        "read": "00E63B24 loads byte ESP+0x12, 00E63B28 tests zero and 00E63B2C skips greeting when nonzero.",
+        "write": "00E63C66 stores one at the same byte after the greeting branch; 00E63C6F joins common cleanup.",
+        "sourceInitializationAnchor": "Last generated local declaration becomes the recovered scalar initialization before the first executable statement; no existing executable statement removed.",
+        "lifetime": "One invocation of Main; flag survives movie/resource release and repeated conversations, but resets on a new Main.",
+        "hitCleanupFlags": "Separate only native SP14/entry-68 initializer, scalar snapshot, OR and relay stores; preserve every greeting string operation on xStack_64. Original caller flag/string lifetime probe passes1024 cases."
+      },
+      "additionalAliases": [
+        "native_hit_cleanup_flags"
+      ],
+      "editCounts": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        5,
+        1
+      ]
+    }
+  },
+  "reviewedPositionListScopes": {
+    "0x00e64210": {
+      "address": "0x00E64210",
+      "end": "0x00E64D03",
+      "sourceSha256": "b49a0ac311d7bdc6d751e334c2467c64cd485da68d3fbfdd2f076560a24481ad",
+      "nativeSha256": "db26c7ab7f7294c348a6e1b239a690db92e11cd508cd271b0011033e1343585d",
+      "anchors": {
+        "0xe64861": "895c243c895c2440895c2444",
+        "0xe648dc": "e8af96a4ff",
+        "0xe648e5": "e8565f64ff",
+        "0xe6491d": "e86e96a4ff",
+        "0xe64926": "e8155f64ff",
+        "0xe6495e": "e82d96a4ff",
+        "0xe64967": "e8d45e64ff",
+        "0xe6499f": "e8ec95a4ff",
+        "0xe649a8": "e8935e64ff",
+        "0xe64c65": "e8067da4ff",
+        "0xe64c84": "e8e77ca4ff",
+        "0xe64ba5": "8b4c24283bcb74058b11ff5218",
+        "0xe64bb2": "8d54246c8d4c2424e89299e5ffd954240c",
+        "0xe64c58": "e8d30e0d0084c07419",
+        "0xe64c7a": "8b4e148959508d4c243ce8e77ca4ff",
+        "0xe64228": "8b4e048b018d542410528d54242852ff9020010000",
+        "0xe64c61": "8d4c243ce8067da4ff8d4c2424e8cd5b64ff5f5e5b83c46cc3",
+        "0xe64cf3": "8d4c2424e8445b64ff5f5e5b83c46cc3"
+      },
+      "dependencies": {
+        "0x8adf90": {
+          "length": 72,
+          "sha256": "7d9d10f19324e5cdd450513bd03b4ff3a673a0783e01dfe087188cc2158ae0c7"
+        },
+        "0x8ad5f0": {
+          "length": 272,
+          "sha256": "0443e2417c1425ff7d5d19a1d505df4001ee97248b0087b575fcfba0805e04a2"
+        },
+        "0x8ac140": {
+          "length": 58,
+          "sha256": "ed8cdd1adec3d71df8aecad29bf996b67a54b20950330e9b06f52519b214e27e"
+        },
+        "0x8ac970": {
+          "length": 50,
+          "sha256": "804b6b863d9405337d2e256db023e9c512614766507073be77773f0d217e2a6d"
+        },
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "0x4ab170": {
+          "length": 96,
+          "sha256": "ccde35ed737caa18b01e4d74c601f4c829d6265bc6b31c0dfaed9a39aec49e5a"
+        },
+        "0x99a2e0": {
+          "length": 7,
+          "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+        },
+        "0xe649b6": {
+          "length": 495,
+          "sha256": "593d7deb4f759d010b4e8f47977e8b93881b5ec5d96ccb295c6a1a530deeddc7"
+        },
+        "0x4aa980": {
+          "length": 18,
+          "sha256": "f5c90c753c25a2a2cac25d36b81d4dab11a2555b125fed4241097a24392f47e5"
+        },
+        "0x8a7d60": {
+          "length": 151,
+          "sha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+        },
+        "0x99ebf0": {
+          "length": 32,
+          "sha256": "faeb75a4f67125e1492923c62736fa55573879770599cbdc2db982e63eb1409e"
+        },
+        "0xcbe551": {
+          "length": 50,
+          "sha256": "4c55fd9022da656920f1309acafe7d77c5d6f2bb3f5257107f60ec983c8a9ad3"
+        },
+        "0xe64ba5": {
+          "length": 228,
+          "sha256": "f28d6f7b484e44ba48720fe34f913430bf492313dd4a3b90d530397ddadc18e6"
+        },
+        "0xa14440": {
+          "length": 61,
+          "sha256": "920be4a11b60c8d6269864dce7816181e214da1ba45510ebf0ab317b7d63ad7a"
+        },
+        "0xa13c60": {
+          "length": 120,
+          "sha256": "ca8a56772647283b2cde4ca965f26f92197a9989b2ec9209b09cf10513e30eca"
+        },
+        "0xa55f90": {
+          "length": 259,
+          "sha256": "12b5499c0aa50b157340366c18c2157d0b374e8c5030d3b8307e13a1a38d3a49"
+        },
+        "0xbfeba2": {
+          "length": 6,
+          "sha256": "eb5b3d8b3a8fa2d91cddebaf8cfb1b684ca5c75d8f3e89257e0ec6877e5c8118"
+        },
+        "0x122ded8": {
+          "length": 12,
+          "sha256": "b3f8ff72f9cffd28c8e920dee27829b9e5f34dfffa3c46603f59f85747e595ec"
+        },
+        "0x1237f08": {
+          "length": 4,
+          "sha256": "1648c99fd1eb13d11073d9725893dbf161a5ddbc37fe943b26d2b8fb9b9ca7fe"
+        },
+        "0x122f59c": {
+          "length": 4,
+          "sha256": "d99e58435243d9fef9c88273b8d553b4fba4d0baf8009d29eae74fa99e0d9f57"
+        },
+        "0x124f2b8": {
+          "length": 8,
+          "sha256": "8b609471f492a677f3d33880bdb21889037d34e397491117a62b901fa2e85e7a"
+        },
+        "0x129ba3c": {
+          "length": 4,
+          "sha256": "0f2f3591427956b004ca17393783192e0f81858c06bb5496aa2cea004f1ee863"
+        },
+        "0xe6427a": {
+          "length": 74,
+          "sha256": "3a8d1774e61a9bb467a32183b4c9b605f4ec01cecc3d1ea2919d5d502fab7b45"
+        },
+        "0xe642f8": {
+          "length": 67,
+          "sha256": "2e1415d8078444319e96858479030e6fe03cda7e63e0436b10262c03aa65fc5b"
+        },
+        "0xe6436f": {
+          "length": 67,
+          "sha256": "7b0e2561e756218aabf89c970617f58b6d7e75f834fa12059e5533e03b90af10"
+        },
+        "0xe643e6": {
+          "length": 67,
+          "sha256": "09d2c97649f32715c3bc3cd9d2cfc5140a7bc8895eccc5064d0b7119b747cc20"
+        },
+        "0xe6445b": {
+          "length": 67,
+          "sha256": "04ae268b52f415d35ae61e22f18f532834c036209244a94455ab35bd97424301"
+        },
+        "0xe644d0": {
+          "length": 67,
+          "sha256": "5a2fd5ce77642788fec27b30722e7250e83af44ca319658ce6e8efe32eac7563"
+        },
+        "0xe64545": {
+          "length": 67,
+          "sha256": "59a810c64ae38a805711e559f234229e0228c92255988b10e5dd9af5a3ec776a"
+        },
+        "0xe645ba": {
+          "length": 67,
+          "sha256": "69fcb0a25ec76b4424787207a352cb3b8d5d637e1a3815d57ddcdf576c3642c0"
+        },
+        "0xe64629": {
+          "length": 87,
+          "sha256": "5afe49ea50abaed36672960a7d0bcf5d821bc3535173a70dcdef9d25e6068621"
+        },
+        "0xe646ac": {
+          "length": 87,
+          "sha256": "fa9a69285ebf9d9e55aedadcbc2b5aa9bc0ddc24d8bdbcbda3719516c5ddbb81"
+        },
+        "0xe64798": {
+          "length": 127,
+          "sha256": "80df81d4a71265e6a826c43af29bee2f5a2d57f987392404cc29b04bbeb145c6"
+        },
+        "0xe6485b": {
+          "length": 50,
+          "sha256": "7331b2b3b3ee08c25c9b92843c9266733a78128749d5acdd01f45611939244aa"
+        }
+      },
+      "sidecar": {
+        "novi-retained-named-position-append.patch": {
+          "path": "tools/script_recovery/sidecar_patches/novi-retained-named-position-append.patch",
+          "sha256": "4d68eeccbe0cffe69dbbb13c86a5bc9a28bc4727db27ae0c5a0800b0386dc709"
+        },
+        "novi-scoped-named-thing-output.patch": {
+          "path": "tools/script_recovery/sidecar_patches/novi-scoped-named-thing-output.patch",
+          "sha256": "d095f8d4f44ad62ca7c4d26b01fb5bfd66448715caf202c1a9002291387b999e"
+        },
+        "nativeDistance": {
+          "path": "tools/script_recovery/sidecar_patches/novi-retail-distance-math.patch",
+          "sha256": "6e646b0906b18d148d931b55a4e05b7b2f7740018503dacaabe9b84cb3e9a7bd"
+        },
+        "novi-retail-position-pair.patch": {
+          "path": "tools/script_recovery/sidecar_patches/novi-retail-position-pair.patch",
+          "sha256": "a9c26ac3636c1ccffbe49379a51cfbc25ba6458c8f35dcf85d3fde39ede51ef3"
+        },
+        "novi-retail-float-math.patch": {
+          "path": "tools/script_recovery/sidecar_patches/novi-retail-float-math.patch",
+          "sha256": "b8733751d8ebf5cbfc326b439926043f9598e82fa1d70be3f4fc8e2b9edbf78d"
+        },
+        "novi-retail-thing-position.patch": {
+          "path": "tools/script_recovery/sidecar_patches/novi-retail-thing-position.patch",
+          "sha256": "689fe129329a9b3e5e1e0cc3c5f76a411209e0a1778ec2a8b72549b33fb82fa3"
+        }
+      },
+      "intermediateSha256": "47f48aa5e6cf25af119df2c7715b372a3eb916e7c47f331882ea7743a18b1893",
+      "operations": [
+        {
+          "before": "            pCVar3 = quest:GetThingWithScriptName(\"FirstAngleMarker\")\n            -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);\n            pCVar3 = quest:GetThingWithScriptName(\"SecondAngleMarker\")\n            -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);\n            pCVar3 = quest:GetThingWithScriptName(\"ThirdAngleMarker\")\n            -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);\n            pCVar3 = quest:GetThingWithScriptName(\"FourthAngleMarker\")\n            -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);\n            quest:SetStateInt(\"FinalSector\", 0)\n            ctr_68 = 0x1\n            native_arg_sequence_1 = false\n            if xStack_3c ~= pi_stk_38 then\n                native_arg_sequence_1 = true\n            else\n                native_arg_sequence_1 = false\n            end\n            if native_arg_sequence_1 then\n                piVar8 = xStack_3c + 3\n                if piVar8 ~= pi_stk_38 then\n                    native_arg_sequence_1 = true\n                else\n                    native_arg_sequence_1 = false\n                end\n            end\n            if native_arg_sequence_1 then\n                repeat\n                    if not (r1 ~= nil and not r1:IsNull()) then\n                        pfVar6 = {x = 0, y = 0, z = 0}\n                    else\n                        pfVar6 = r1:GetPos()\n                    end\n                    -- TODO(native): pfVar7 = (**(piVar8[-3] + 0x18))()\n                    pfVar7 = nil --[[unresolved native value]]\n                    f_stk_40 = pfVar7[2] - pfVar6.z\n                    f_stk_44 = pfVar7[1] - pfVar6.y\n                    -- TODO(native): fStack_48 = *pfVar7 - pfVar6.x;\n                    if not (r1 ~= nil and not r1:IsNull()) then\n                        pfVar6 = {x = 0, y = 0, z = 0}\n                    else\n                        pfVar6 = r1:GetPos()\n                    end\n                    -- TODO(native): pfVar7 = (**(*piVar8 + 0x18))()\n                    pfVar7 = nil --[[unresolved native value]]\n                    f_stk_2c = pfVar7[1] - pfVar6.y\n                    -- TODO(native): xStack_30 = (*pfVar7 - pfVar6.x);\n                    f_stk_40 = 0.0\n                    if (0.0001 * 0.0001 < fStack_48 * fStack_48 + f_stk_44 * f_stk_44) and (0.0001 * 0.0001 < f_stk_2c * f_stk_2c + pCVar3 * pCVar3) then\n                        -- TODO(native): C3DVector::GetScaled((C3DVector *)&fStack_48);\n                        -- TODO(native): C3DVector::GetScaled((C3DVector *)xStack_30);\n                        -- TODO(native): xStack_18._8_4_ = 1.0;\n                        f_p1 = (fret_0 * 0.15915493667125702 * 0.5)\n                        -- TODO(native): C3DVector::Rotate((C3DVector *)&fStack_48,(int)&xStack_18,(int)p1);\n                        fVar9 = fcos(f_p1 * 6.2831854820251465)\n                        if fVar9 < fStack_48 * fStack_24 + f_stk_40 * f_stk_1c + f_stk_44 * f_stk_20 then\n                            quest:SetStateInt(\"FinalSector\", ctr_68)\n                        end\n                    end\n                    ctr_68 = ctr_68 + 1\n                    piVar8 = piVar8 + 3\n                until not (piVar8 ~= pi_stk_38)\n            end\n            if (r1 ~= nil and not r1:IsNull()) then\n                r1:GetPos()\n            end\n            fVar10 = DistanceCalculator_GetVectorDistance(r1,xStack_c)\n            if fVar10 <= f_stk_64 then\n                if fVar10 <= f_stk_60 then\n                    if fVar10 <= f_stk_5c then\n                        if fVar10 <= f_stk_58 then\n                            alive = not quest:IsActiveThreadTerminating()\n                            bVar1 = not alive\n                            if bVar1 then\n                                return\n                            end\n                            quest:SetStateInt(\"DistanceBand\", 0)\n                        else\n                            alive = not quest:IsActiveThreadTerminating()\n                            bVar1 = not alive\n                            if bVar1 then\n                                -- LAB_00e64c61: (native jump target)\n                                return\n                            end\n                            quest:SetStateInt(\"DistanceBand\", 1)\n                        end\n                    else\n                        alive = not quest:IsActiveThreadTerminating()\n                        bVar1 = not alive\n                        if bVar1 then\n                            return\n                        end\n                        quest:SetStateInt(\"DistanceBand\", 2)\n                    end\n                else\n                    alive = not quest:IsActiveThreadTerminating()\n                    bVar1 = not alive\n                    if bVar1 then return end  -- TODO(native): goto LAB_00e64c61\n                    quest:SetStateInt(\"DistanceBand\", 3)\n                end\n            else\n                alive = not quest:IsActiveThreadTerminating()\n                bVar1 = not alive\n                if bVar1 then return end  -- TODO(native): goto LAB_00e64c61\n                quest:SetStateInt(\"DistanceBand\", 4)\n            end",
+          "after": "            if __native_named_marker_scope(quest, r1, xStack_c, fStack_24, f_stk_20, f_stk_1c, f_stk_58, f_stk_5c, f_stk_60, f_stk_64) then return end"
+        },
+        {
+          "before": "function Main(quest, me)\n",
+          "after": "local function __native_named_marker_scope(quest, r1, xStack_c, fStack_24, f_stk_20, f_stk_1c, f_stk_58, f_stk_5c, f_stk_60, f_stk_64)\n    return quest:WithRetailResources(function(markerResources)\n        local markerPositions = markerResources:NewThingPositionList()\n        markerPositions:AppendScriptName(\"FirstAngleMarker\")\n        markerPositions:AppendScriptName(\"SecondAngleMarker\")\n        markerPositions:AppendScriptName(\"ThirdAngleMarker\")\n        markerPositions:AppendScriptName(\"FourthAngleMarker\")\n        local function storeFloat32(value)\n            return ((\"<f\"):unpack((\"<f\"):pack(value)))\n        end\n        quest:SetStateInt(\"FinalSector\", 0)\n        local epsilon = 9.999999747378752e-05\n        for index = 1, markerPositions:Count() - 1 do\n            local pair = markerPositions:GetPosPair(index - 1, r1)\n            local previous = {\n                x = storeFloat32(pair.first.x - pair.second.x),\n                y = storeFloat32(pair.first.y - pair.second.y),\n                z = 0,\n            }\n            pair = markerPositions:GetPosPair(index, r1)\n            local currentRawY = pair.first.y - pair.second.y\n            local current = {\n                x = storeFloat32(pair.first.x - pair.second.x),\n                y = storeFloat32(currentRawY),\n                z = 0,\n            }\n            if epsilon * epsilon < previous.y * previous.y + previous.x * previous.x\n                and epsilon * epsilon < currentRawY * currentRawY + current.x * current.x then\n                previous = markerResources:NormalizeVector3(previous)\n                current = markerResources:NormalizeVector3(current)\n                local rawDot = previous.z * current.z + current.y * previous.y + current.x * previous.x\n                local dot = storeFloat32(rawDot)\n                if rawDot < -1 then\n                    dot = -1\n                elseif dot > 1 then\n                    dot = 1\n                end\n                local halfTurns = markerResources:ArcCosTurns(dot, 0.5)\n                local rotated = markerResources:RotateVector3(previous, {x = 0, y = 0, z = 1}, halfTurns)\n                local product = (rotated.y * f_stk_20 + rotated.z * f_stk_1c) + rotated.x * fStack_24\n                if markerResources:CosTurnsLessThan(halfTurns, product) then\n                    quest:SetStateInt(\"FinalSector\", index)\n                end\n            end\n        end\n        if (r1 ~= nil and not r1:IsNull()) then\n            r1:GetPos()\n        end\n        local distance = markerResources:DistanceFromThingToPosition(r1, xStack_c)\n        local storedDistance = ((\"<f\"):unpack((\"<f\"):pack(distance)))\n        local distanceBand\n        if distance > f_stk_64 then\n            distanceBand = 4\n        elseif storedDistance > f_stk_60 then\n            distanceBand = 3\n        elseif storedDistance > f_stk_5c then\n            distanceBand = 2\n        elseif storedDistance > f_stk_58 then\n            distanceBand = 1\n        else\n            distanceBand = 0\n        end\n        if quest:IsActiveThreadTerminating() then return true end\n        quest:SetStateInt(\"DistanceBand\", distanceBand)\n    end)\nend\n\nfunction Main(quest, me)\n"
+        },
+        {
+          "before": "function Main(quest, me)\n",
+          "after": "local function __native_arena_main(quest, me, arenaResources)\n"
+        },
+        {
+          "before": "    r1 = quest:GetThingWithScriptName(\"ChickenKickingArena\")\n",
+          "after": "    r1 = quest:GetThingWithScriptName(\"ChickenKickingArena\")\n    arenaResources:TrackThingOutput(r1)\n"
+        },
+        {
+          "before": "    ::LAB_00e64cf3::\nend\n",
+          "after": "    ::LAB_00e64cf3::\nend\n\nfunction Main(quest, me)\n    return quest:WithRetailResources(function(arenaResources)\n        return __native_arena_main(quest, me, arenaResources)\n    end)\nend\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"FirstLineMarker\")\n",
+          "after": "    local markerOutputToken\n    pCVar3 = quest:GetThingWithScriptName(\"FirstLineMarker\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"SecondLineMarker\")\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"SecondLineMarker\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"ThirdLineMarker\")\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"ThirdLineMarker\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"FourthLineMarker\")\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"FourthLineMarker\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"RearRight\")\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"RearRight\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"MidRight\")\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"MidRight\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"MidRight2\")\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"MidRight2\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"FrontRight\")\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"FrontRight\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"FoulLineMarkerA\")\n    pCVar4 = pCVar3:GetPos()\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"FoulLineMarkerA\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n    pCVar4 = arenaResources:GetThingPosition(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = quest:GetThingWithScriptName(\"FoulLineMarkerB\")\n    pCVar4 = pCVar3:GetPos()\n",
+          "after": "    pCVar3 = quest:GetThingWithScriptName(\"FoulLineMarkerB\")\n    markerOutputToken = arenaResources:TrackThingOutput(pCVar3)\n    pCVar4 = arenaResources:GetThingPosition(pCVar3)\n"
+        },
+        {
+          "before": "    pCVar3 = nil\n",
+          "after": "    arenaResources:RetireThingOutput(markerOutputToken)\n    pCVar3 = nil\n",
+          "count": 10
+        },
+        {
+          "before": "    until not ((vec_24.y - vec_30.y) * (vec_3c.x - vec_30.x) - (vec_3c.y - vec_30.y) * (vec_24.x - vec_30.x) <= 0.0)",
+          "after": "    until (vec_24.y - vec_30.y) * (vec_3c.x - vec_30.x) - (vec_3c.y - vec_30.y) * (vec_24.x - vec_30.x) > 0.0"
+        },
+        {
+          "before": "        pCVar3 = quest:GetHero()\n        pCVar4 = pCVar3:GetPos()\n",
+          "after": "        pCVar3 = quest:GetHero()\n        pCVar4 = arenaResources:GetThingPosition(pCVar3)\n"
+        },
+        {
+          "before": "            if not (r1 ~= nil and not r1:IsNull()) then\n                pfVar6 = {x = 0, y = 0, z = 0}\n            else\n                pfVar6 = r1:GetPos()\n            end\n",
+          "after": "            pfVar6 = arenaResources:GetThingPosition(r1)\n"
+        }
+      ],
+      "recoveredSha256": "c7676158f67dc2735e780300594466b6d2f226f83021c2696ee4b02484d5bac7",
+      "calls": [
+        "WithRetailResources",
+        "NewThingPositionList",
+        "AppendScriptName",
+        "DistanceFromThingToPosition",
+        "Count",
+        "GetPosPair",
+        "NormalizeVector3",
+        "ArcCosTurns",
+        "RotateVector3",
+        "CosTurnsLessThan",
+        "WithRetailResources",
+        "TrackThingOutput",
+        "TrackThingOutput",
+        "RetireThingOutput",
+        "GetThingPosition"
+      ],
+      "resolvedDiagnostics": {
+        "unlifted: Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);": 4,
+        "verify cleanup at LAB_00e64c61 (lifted as early return)": 2,
+        "unlifted: fStack_48 = *pfVar7 - pfVar6.x;": 1,
+        "unlifted: xStack_30 = (*pfVar7 - pfVar6.x);": 1,
+        "unlifted: C3DVector::GetScaled((C3DVector *)&fStack_48);": 1,
+        "unlifted: C3DVector::GetScaled((C3DVector *)xStack_30);": 1,
+        "unlifted: xStack_18._8_4_ = 1.0;": 1,
+        "unlifted: C3DVector::Rotate((C3DVector *)&fStack_48,(int)&xStack_18,(int)p1);": 1,
+        "unlifted: pfVar7 = (**(piVar8[-3] + 0x18))()": 1,
+        "unlifted: pfVar7 = (**(*piVar8 + 0x18))()": 1
+      },
+      "evidence": {
+        "proof": "work/codex_lua_marker_list_20261008/completion.json",
+        "scope": "Retained marker list construction/cleanup, adjacent sector iteration and distance bands. Arena ownership destruction remains independently unresolved.",
+        "sidecarCommit": "c23b422e31999f358159c4de06385e3560543bbc",
+        "helperBoundary": "Captures only input values: arena, landing, normalized heading and distance limits. Mutable geometry/list locals remain inside synchronous scope. Main reads none of these mutable locals after distance classification.",
+        "distanceCallerCorrection": "Four initial Euclidean distance results use native float32 stores; four discarded queries still execute. W35 generic recovery pins CBE512 and each call/return shape. Marker-scope body unchanged; scoring remains unresolved.",
+        "distanceBands": "CBE551 Thing/position native query. E64BBF FST m32 retains ST0 for first comparison; E64BEC/E64C10/E64C34 reload saved float. Strict ordered greater-than, unordered fallthrough to band0. Exactly one termination check before state write; existing scope closes on all exits. Existing unused conditional GetPos before query preserved. W36 original caller probe: 1416 cases; W34 independently validates query ABI on hardware.",
+        "adjacentSectors": "E649B6..E64BA5: zero-based adjacent pairs without wraparound, repeated arena-first borrowed position getters, raw/current-Y versus float32 thresholds, native normalization/rotation/arc cosine and retained x87 cosine predicate; write each matching sector immediately. W37 paired getters and W38 original full-sector hardware probe. Live empty-Thing fallback remains native.",
+        "arenaLifetime": "Native arena output at E64237 lives in stack Thing +24 throughout Main. Only two RETs: E64C79 after list E64C65 then arena E64C6E; E64D02 after arena E64CF7. Factor Main into a scope callback without moving checks. W39 native exit probe executes both epilogues and destructor. Scope failure/host behavior requires validation before promotion.",
+        "initialMarkerLifetimes": "Ten named results are tracked in the existing arena scope and explicitly retired after each native distance result/store or copied foul-marker position. Nil results have token0; GetThingPosition preserves the live native fallback for the two foul-marker queries. W41 native cleanup probe executes all ten original inline retirements and both coordinate copies, with destructor mutation. Native temporary name allocation timing and actual host suspension are separate.",
+        "foulPredicate": "E647D7..E64818 repeats on unordered, zero or negative cross product; only strict ordered positive exits. W42 original arithmetic/branch probe:6306 cases,50 prior complement disagreements. Default53-bit precision, no transcendental operations.",
+        "remainingPositionReads": "Hero coordinates at E647A3..E647C9 are copied before EntityGetShotStrikePos. Arena heading read at E6485B..E6488C uses implementation GetPos or live fallback; named lookup produces original Thing vtable whose GetPos delegates identically. W40 checked virtual position binding supplies both snapshots. Existing unused conditional prefetch inside marker scope remains untouched."
+      }
+    }
+  },
+  "reviewedInterfaceCallHeads": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "nativeInstructions": {
+        "0xe66d58": "8b7e04",
+        "0xe66d5b": "8b17",
+        "0xe66d5d": "6a01",
+        "0xe66d5f": "8bcf",
+        "0xe66d61": "897c2444",
+        "0xe66d65": "ff92ec050000",
+        "0xe67619": "8b4c2440",
+        "0xe6761d": "8b11",
+        "0xe6761f": "6a00",
+        "0xe67621": "ff92ec050000",
+        "0xe68a73": "8b4c2440",
+        "0xe68a77": "8b01",
+        "0xe68a79": "6a00",
+        "0xe68a7b": "ff90ec050000",
+        "0xe68a8f": "8b4c2440",
+        "0xe68a93": "8b11",
+        "0xe68a95": "6a00",
+        "0xe68a97": "ff92ec050000",
+        "0xe68a3c": "8b07",
+        "0xe68a3e": "6a00",
+        "0xe68a40": "8bcf",
+        "0xe68a42": "ff90ec050000",
+        "0xe68a59": "8b17",
+        "0xe68a5b": "6a00",
+        "0xe68a5d": "8bcf",
+        "0xe68a5f": "ff92ec050000"
+      },
+      "table": "0x01260f0c",
+      "slot": "0x5ec",
+      "method": "PauseAllNonScriptedEntities",
+      "target": "0x00890ab0",
+      "calleeBytes": "538b5c2408568bf18b4e048b0153ff500c8bc8e8f8e4c8ff84db741f8b4e048b4968680000803f68efbeefbe68ffff0000e88a56c3ff5e5bc204008b56048b4a6868efbeefbee84556c3ff5e5bc20400",
+      "purgeWords": 1,
+      "heads": [
+        {
+          "old": "(**(code **)(*(int *)xStack_374 + 0x5ec))",
+          "sites": [
+            "0x00e67621",
+            "0x00e68a7b",
+            "0x00e68a97"
+          ],
+          "printedReceiver": "(void *)xStack_374",
+          "receiverStackOffset": "0x40"
+        },
+        {
+          "old": "(**(code **)(*(int *)CVar19 + 0x5ec))",
+          "sites": [
+            "0x00e66d65",
+            "0x00e68a42",
+            "0x00e68a5f"
+          ],
+          "printedReceiver": "(void *)CVar19",
+          "receiverRegister": "edi",
+          "counterRenamedReceiver": true
+        }
+      ],
+      "arguments": {
+        "0xe67621": [
+          "false"
+        ],
+        "0xe68a7b": [
+          "false"
+        ],
+        "0xe68a97": [
+          "false"
+        ],
+        "0xe66d65": [
+          "true"
+        ],
+        "0xe68a42": [
+          "false"
+        ],
+        "0xe68a5f": [
+          "false"
+        ]
+      },
+      "review": "Original E66D58 loads GSI from owner ESI+4, then E66D61 saves it at pushed-SP+44 = balanced-SP+40. Three original false calls reload balanced-SP+40 into ECX, load its vtable and push only zero. Full direct control-flow predecessor review (no indirect jumps) reaches the initial load on all three paths; the only explicit ESP memory write on those paths is the GSI spill. Later score-counter stores sharing the exported xStack_374 are outside those predecessor sets. Restore only these three exact call heads; register-alias pause calls remain unresolved. Native bytes, table, callee purge and precise receiver/argument spelling are mandatory. Bounded native layout and generated cleanup-call tests do not establish full ChickenMaster or in-game lifecycle equivalence. Register calls E66D65/E68A42/E68A5F also use EDI loaded at E66D58. Complete direct-CFG predecessors of the two cleanup blocks contain no other EDI write. Twenty-four original native register-layout sequences check true/false operands, saved receiver and RET4 after owner+4/ECX mutation. The source CVar19 also has score-counter lives: preserve all original source through lowering, then match only the exact normalized vtable head with ctr_CVar19 receiver. No global alias or scalar rewriting.",
+      "deferUntilLowered": true
+    }
+  },
+  "reviewedX87Thresholds": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "0d207ed3dee983fc61db4eb54c39ad2cd3d3818f099625093df0eaf2a306ddde",
+      "frameBytes": 948,
+      "entrySlot": -884,
+      "integerSlot": "xStack_374",
+      "floatSlot": "f_stk_374",
+      "receiver": "quest",
+      "globalPointer": 21227788,
+      "conversionStart": 15106603,
+      "comparisons": [
+        {
+          "start": 15106617,
+          "compare": 15106617,
+          "end": 15106634,
+          "offset": 4016,
+          "lowerTarget": 15107080
+        },
+        {
+          "start": 15107080,
+          "compare": 15107084,
+          "end": 15107101,
+          "offset": 4012,
+          "lowerTarget": 15107605
+        },
+        {
+          "start": 15107605,
+          "compare": 15107609,
+          "end": 15107628,
+          "offset": 4008,
+          "lowerTarget": 15108130
+        }
+      ],
+      "nativeInstructions": {
+        "0xe64fb0": "81eca4030000",
+        "0xe64fb6": "53",
+        "0xe64fb7": "55",
+        "0xe64fb8": "56",
+        "0xe64fb9": "8bf1",
+        "0xe64fbb": "33db",
+        "0xe64fbd": "57",
+        "0xe64fbe": "8d4c2420",
+        "0xe64fc2": "895c2444",
+        "0xe6822b": "db442440",
+        "0xe6822f": "8b0d0ce94301",
+        "0xe68235": "d9542440",
+        "0xe68239": "d899b00f0000",
+        "0xe6823f": "dfe0",
+        "0xe68241": "f6c401",
+        "0xe68244": "0f85be010000",
+        "0xe68408": "d9442440",
+        "0xe6840c": "d899ac0f0000",
+        "0xe68412": "dfe0",
+        "0xe68414": "f6c401",
+        "0xe68417": "0f85f8010000",
+        "0xe68615": "d9442440",
+        "0xe68619": "d899a80f0000",
+        "0xe6861f": "8bce",
+        "0xe68621": "dfe0",
+        "0xe68623": "f6c401",
+        "0xe68626": "0f85f6010000"
+      }
+    }
+  },
+  "reviewedMasterIntStores": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "2ce2041501c651d20ffe850027e699645a8b08ee0e7bc04bd4cf36ebf036c6e9",
+      "fieldName": "MaxChickenKickingScore",
+      "fieldOffset": 248,
+      "ownerOffset": 24,
+      "ownerRegister": "esi",
+      "valueRegister": "ebx",
+      "valueLocal": "ctr_CVar19",
+      "receiver": "quest",
+      "increments": {
+        "0x64": 2,
+        "0x32": 2,
+        "0x19": 3,
+        "0xa": 2
+      },
+      "stores": [
+        {
+          "start": 15106899,
+          "end": 15106922,
+          "bytes": "8b56186aff68f0ca2c018d8c241c020000899af8000000"
+        },
+        {
+          "start": 15107045,
+          "end": 15107054,
+          "bytes": "8b5618899af8000000"
+        },
+        {
+          "start": 15107374,
+          "end": 15107397,
+          "bytes": "8b56186aff68f0ca2c018d8c2488010000899af8000000"
+        },
+        {
+          "start": 15107899,
+          "end": 15107922,
+          "bytes": "8b56186aff68f0ca2c018d8c2430010000899af8000000"
+        },
+        {
+          "start": 15108365,
+          "end": 15108376,
+          "bytes": "8b4e186aff8999f8000000"
+        }
+      ]
+    }
+  },
+  "reviewedStringCopyCalls": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "73753dfe4d8cb0081ee779b03fae13bdd2555c2c44aa544471813e64dded7fd4",
+      "helper": "helper_E68B20",
+      "module": "V_ChickenKicking.native_quest_helpers",
+      "callee": 15108896,
+      "copyConstructor": 10087472,
+      "stringDestructor": 10087136,
+      "stringRelease": 10086832,
+      "frameBytes": 948,
+      "entrySlot": -920,
+      "parentOffset": 20,
+      "ownerRegister": "esi",
+      "calleeFrameBytes": 52,
+      "cleanupStart": 15109543,
+      "cleanupEnd": 15109562,
+      "valueLocal": "xStack_398",
+      "copyLocal": "xStack_398_2",
+      "calleeLabel": "Game_InitializeArena",
+      "calls": [
+        {
+          "start": 15106141,
+          "end": 15106162,
+          "bytes": "518d4424208bcc50e8c66bb3ff8b4e14e8ae0a0000"
+        },
+        {
+          "start": 15108563,
+          "end": 15108584,
+          "bytes": "518d4424208bcc50e85062b3ff8b4e14e838010000"
+        }
+      ],
+      "dependencies": [
+        {
+          "start": 15108896,
+          "size": 666,
+          "sha256": "4d1bd485d1db5ddd05b32e3dc00f082696b5bdb7fb2495f440b0e9989087e07c"
+        },
+        {
+          "start": 10087472,
+          "size": 61,
+          "sha256": "a3acb13754a768da17ddb398c1ed55dcaeabd496848d6fd57bd892aedf2ccc86"
+        },
+        {
+          "start": 10087136,
+          "size": 12,
+          "sha256": "65d790bd8e62fef3658c4d1320e81e8b1c6d54ab12879256c0e4e4c533c1c53e"
+        },
+        {
+          "start": 10086832,
+          "size": 87,
+          "sha256": "e0ccad7278cb78743022e17eb02dad9b144f7132dc1538d5adb393a625d3e5de"
+        }
+      ]
+    }
+  },
+  "reviewedWideTextArguments": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "a0e266ca3d8b818e147de0760fccf328b6c4133b47411d208a6a8512980625df",
+      "frameBytes": 948,
+      "vectorSlot": -864,
+      "vectorReceivers": [
+        15108622,
+        15108825
+      ],
+      "globalAddress": 21227784,
+      "key": "TEXT_QST_B17_SCORE",
+      "alias": "native_wide_arguments",
+      "valueLocal": "ctr_CVar19",
+      "scorePush": 15106429,
+      "vtable": 19271436,
+      "slot": 2860,
+      "windows": {
+        "format": {
+          "start": 15106406,
+          "end": 15106589,
+          "bytes": "33ed8d4c2460896c2454896c2458896c245ce8532db3ff538d4424646844de220150e8e338b3ff83c40c8d4c2460518d8c24b0010000e87f35b3ff8d4c2460e86633b3ff8d9424ac010000528d4c2458e8e5a65aff8d8c24ac010000e84933b3ff6aff68d4782e018d8c240c020000e8166ab3ff8b4e048b018d542454528d942408020000528d94243002000052ff902c0b000050b908e94301e8cb35b3ff8d8c2428020000e8ff32b3ff8d8c2404020000e8c368b3ff"
+        },
+        "clear": {
+          "start": 15108584,
+          "end": 15108599,
+          "bytes": "680cd72201b908e94301e8092eb3ff"
+        },
+        "normalClose": {
+          "start": 15108622,
+          "end": 15108631,
+          "bytes": "8d4c2454e819975aff"
+        },
+        "abortClose": {
+          "start": 15108825,
+          "end": 15108834,
+          "bytes": "8d4c2454e84e965aff"
+        }
+      },
+      "calls": {
+        "0xe68178": 10071760,
+        "0xe68188": 10074736,
+        "0xe6819c": 10073888,
+        "0xe681a5": 10073360,
+        "0xe681b6": 4270240,
+        "0xe681c2": 10073360,
+        "0xe681d5": 10087408,
+        "0xe68200": 10074064,
+        "0xe6820c": 10073360,
+        "0xe68218": 10087136,
+        "0xe689f2": 10074112,
+        "0xe68a12": 4268336,
+        "0xe68add": 4268336
+      },
+      "dependencies": [
+        {
+          "start": 10071760,
+          "size": 15,
+          "sha256": "66e75d2fdbcb499fb2dcbe0bff71138f8e75a8f88a80961b4a0a508c512cde46"
+        },
+        {
+          "start": 10074736,
+          "size": 265,
+          "sha256": "3da377c0dfa845ffed00c92814e5e643c758c4210689eab3e32f1b0ba1c474c1"
+        },
+        {
+          "start": 10073888,
+          "size": 66,
+          "sha256": "33ea57064d1e746a9b95da32e003a61d1c77222ec2fc3e9a722527150d302230"
+        },
+        {
+          "start": 10073360,
+          "size": 68,
+          "sha256": "c70d00ba2ac2216b633f44821c68ccb214fe3d3a5cdf4cfc9267906ff213b65e"
+        },
+        {
+          "start": 10074064,
+          "size": 48,
+          "sha256": "819b2b9dbbd1600c269a174182710bdf7351358a73890450f4fe926e8572da78"
+        },
+        {
+          "start": 10074112,
+          "size": 92,
+          "sha256": "5848c58017209a4a1d97ea4f590edcea6562dad86a44b8141aa7c4231e77fdb5"
+        },
+        {
+          "start": 4270240,
+          "size": 59,
+          "sha256": "9f71423c6b9a8c5ff5f723a668df0dbbf9f65dba7c50e975d94d8e6d6694d7cc"
+        },
+        {
+          "start": 4268336,
+          "size": 49,
+          "sha256": "7b0464f8e23e8b0e77f4c3f008f423a32cbf297b876014beb838bd10587673cf"
+        },
+        {
+          "start": 4268848,
+          "size": 280,
+          "sha256": "40ba936ce2dad29e62a70a1e26d7c953ec9edf83647bce31a84b8008b3b5468e"
+        },
+        {
+          "start": 8983360,
+          "size": 87,
+          "sha256": "32cd60abf29664a18b44f5f0ca517eaffb849d6358016a7350906ccf831aa6ec"
+        }
+      ],
+      "literals": [
+        {
+          "address": 19062340,
+          "bytes": "250064000000"
+        },
+        {
+          "address": 19060492,
+          "bytes": "0000"
+        },
+        {
+          "address": 19822804,
+          "bytes": "544558545f5153545f4231375f53434f524500"
+        }
+      ],
+      "formatLines": [
+        "-- TODO(native): CCharString__SetFromFormatV();",
+        "-- TODO(native): CWideString::CWideString(xStack_208,(int)&xStack_354);",
+        "-- TODO(native): Vector_PushBack(xStack_360,(int)xStack_208);",
+        "-- TODO(native): GetFormattedString is not a ForgeFSE binding",
+        "quest:GetFormattedString(\"TEXT_QST_B17_SCORE\", pCVar15)",
+        "-- TODO(native): CWideString::operator=((CWideString *)&DAT_0143e908,(int)p0);"
+      ],
+      "cleanupLine": "-- TODO(native): CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);",
+      "normalLines": [
+        "require(\"V_ChickenKicking.native_quest_helpers\").helper_E68B20(quest, me, xStack_398)",
+        "quest:PauseAllNonScriptedEntities(false)",
+        "resources:DestroyMovie(xStack_164)",
+        "-- TODO(native): CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);"
+      ],
+      "diagnostics": {
+        "unlifted: CCharString__SetFromFormatV();": 1,
+        "unlifted: CWideString::CWideString(xStack_208,(int)&xStack_354);": 1,
+        "unlifted: Vector_PushBack(xStack_360,(int)xStack_208);": 1,
+        "GetFormattedString: not in FSE manifest": 1,
+        "unlifted: CWideString::operator=((CWideString *)&DAT_0143e908,(int)p0);": 1,
+        "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)xStack_360);": 2
+      }
+    }
+  },
+  "reviewedOnlineScoreCalls": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "fieldName": "MaxChickenKickingScore",
+      "fieldOffset": 248,
+      "ownerOffset": 24,
+      "ownerRegister": "esi",
+      "valueRegister": "ebx",
+      "valueLocal": "ctr_CVar19",
+      "luaSha256": "f445794ceb6e6b00c3d4fa9ac256532da15af02836812af9d220b73a7de8d409",
+      "floatLocal": "f_stk_374",
+      "floatEntrySlot": -884,
+      "frameBytes": 948,
+      "vtable": 19271436,
+      "slot": 2904,
+      "target": 9048256,
+      "terminationTarget": 15948592,
+      "abortTarget": 15108825,
+      "window": {
+        "start": 15108436,
+        "end": 15108478,
+        "bytes": "8b46183b98f8000000751f8bcee8cad10c0084c00f856b0100008b4e048b4424408b1150ff92580b0000"
+      },
+      "dependencies": [
+        {
+          "start": 9048256,
+          "size": 113,
+          "sha256": "ace3e37d0bde07e5bde0cc4683d7e1a68c4c683fbf0334f38f00a56291d9b32c"
+        },
+        {
+          "start": 5632944,
+          "size": 206,
+          "sha256": "3926c6362224048a37f18b2aa96c14184ea5058f1080310028ddf76e44c4c220"
+        }
+      ],
+      "floatAssignment": "f_stk_374 = (string.unpack(\"<f\", string.pack(\"<f\", ((xStack_374 + 2147483648) % 4294967296 - 2147483648))))",
+      "guardLines": [
+        "-- TODO(native): if ctr_CVar19 == *(__native_entity_state:GetStateInt(\"self_0x18\") + 0xf8) then",
+        "if false then"
+      ],
+      "callLines": [
+        "-- TODO(native): UpdateOnlineScore_ChickenKick is not a ForgeFSE binding",
+        "quest:UpdateOnlineScore_ChickenKick(f_stk_374)"
+      ],
+      "diagnostics": [
+        "unnamed field 0x18",
+        "UpdateOnlineScore_ChickenKick: not in FSE manifest",
+        "unlifted: if ctr_CVar19 == *(__native_entity_state:GetStateInt(\"self_0x18\") + 0xf8) then"
+      ]
+    }
+  },
+  "reviewedStackFlagUpdates": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "0b93be4830d0d74b7cf15d36e67c0a592de0af4fec051ab172e0405f2e477c8b",
+      "frameBytes": 948,
+      "entrySlot": -880,
+      "zeroRegister": 15093691,
+      "initialStore": 15093698,
+      "valueRegister": "ebx",
+      "receiverRegister": "ebp",
+      "nameStringOffset": 168,
+      "messageSlot": 84,
+      "mask": 1,
+      "snapshotLocal": "ctr_CVar19",
+      "updatedLocal": "CVar17",
+      "wordLocal": "C_stk_370",
+      "window": {
+        "start": 15094870,
+        "end": 15094897,
+        "bytes": "8b5c24448b45008d8c24a80000005183cb018bcd895c2448ff5054"
+      },
+      "cleanupStart": 15095013,
+      "cleanupEnd": 15095085,
+      "cleanupSha256": "af9661d6f637b916b7b25fdd5a0f5c38a53e333dffafc500a56e10a60e7d0122",
+      "destructors": [
+        15095032,
+        15095056,
+        15095080
+      ],
+      "unresolved": "xStack_374 = xStack_374 | 1;",
+      "aliasUses": [
+        "CVar17 = ctr_CVar19 | 3",
+        "CVar17 = ctr_CVar19 | 7",
+        "if (CVar17 & 4) ~= 0 then",
+        "if (CVar17 & 2) ~= 0 then",
+        "if (CVar17 & 1) ~= 0 then"
+      ]
+    }
+  },
+  "reviewedStackCallArguments": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "1766b50f93f877eaaefd44aa96aab1fe27c3202d6412b4ecdd8b9fbe1a9697e8",
+      "frameBytes": 948,
+      "registerSlot": 348,
+      "setSlot": 356,
+      "cleanupSlot": 352,
+      "windows": {
+        "registration": {
+          "start": 15094049,
+          "end": 15094117,
+          "sha256": "d6e8214302811bc02db79142287435821f5f405562dd7ecff8e856cbc1714de8"
+        },
+        "cache": {
+          "start": 15094686,
+          "end": 15094785,
+          "sha256": "1f7a604da31b42391aba808008eba0a6e4ada13f264c35691d90f40a1e0d2da7"
+        },
+        "talk": {
+          "start": 15094785,
+          "end": 15094851,
+          "sha256": "cbc3a320143e5bf19c2b4540ede051568e1b00bdb0ea1fcff53aded44d414060"
+        },
+        "cleanup": {
+          "start": 15098013,
+          "end": 15098047,
+          "sha256": "8b0aa3aec96e0c32295600b33fa85f63e74460989e9e09a9bb8ccf2b5faa4933"
+        }
+      },
+      "timers": [
+        {
+          "registerCall": 15094051,
+          "returnCopy": 15094063,
+          "store": 15094070,
+          "setCall": 15094074,
+          "register": "edi",
+          "entrySlot": -932,
+          "local": "i_stk_3a4",
+          "initialization": "iVar10 = quest:RegisterTimer()\n        i_stk_3a4 = iVar10\n        quest:SetTimer(i_stk_3a4, 0)"
+        },
+        {
+          "registerCall": 15094088,
+          "returnCopy": 15094100,
+          "store": 15094107,
+          "setCall": 15094111,
+          "register": "ebp",
+          "entrySlot": -928,
+          "local": "i_stk_3a0",
+          "initialization": "iVar11 = quest:RegisterTimer()\n        i_stk_3a0 = iVar11\n        quest:SetTimer(i_stk_3a0, 0)"
+        }
+      ],
+      "cacheLoad": 15094692,
+      "cleanupLoad": 15098019,
+      "firstPush": 15098025,
+      "firstCall": 15098026,
+      "secondPush": 15098040,
+      "secondCall": 15098041,
+      "terminationBranch": 15094838,
+      "api": {
+        "table": 19271436,
+        "start": 7239312,
+        "end": 7239386,
+        "sha256": "04745c470428b005eb82807f64e0df89636b63756b6373825248ed0658e16297",
+        "return": 7239383
+      },
+      "block": "                    cVar7 = me:IsTalkedToByHero()\n                    if cVar7 then\n                        alive = not quest:IsActiveThreadTerminating()\n                        bVar6 = not alive\n                        if bVar6 then\n                            quest:DeregisterTimer(i_stk_3a4)\n                            quest:DeregisterTimer(i_stk_3a4)\n                            resources:ReleaseResource(xStack_394)\n                            return\n                        end\n                        quest:SetStateBool(\"TalkedTo\", true)\n                    end\n"
+    }
+  },
+  "reviewedInlineMovieDestructors": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "192ff4e958f26b0147c785f9b1da56e6b3a7e05c831c4ac757f2a7d3c190284f",
+      "frameBytes": 948,
+      "alias": "pCVar16",
+      "dependencies": {
+        "movie": {
+          "start": 7240576,
+          "end": 7240642,
+          "sha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+        },
+        "member": {
+          "start": 7240368,
+          "end": 7240421,
+          "sha256": "23707643d74133867908da322ba37d39576eb0cb9001a73db24903f73725b556"
+        },
+        "base": {
+          "start": 10069040,
+          "end": 10069096,
+          "sha256": "1d75d831d3f6e008489a4847244a3e123b663f8f7de361ca3f15fc938a470796"
+        }
+      },
+      "objects": [
+        {
+          "local": "xStack_32c",
+          "entrySlot": -812,
+          "constructorLea": 15095983,
+          "constructorCall": 15095994,
+          "startReceiver": 15096048,
+          "startCall": 15096064,
+          "constructionWindow": {
+            "start": 15095983,
+            "end": 15096070,
+            "sha256": "62be9021dd472f5fcfad78c705cbb355940a94676be864eb11b75c6ad5d1d4db"
+          },
+          "sourceCount": 2,
+          "creationCount": 2,
+          "paths": [
+            {
+              "window": {
+                "start": 15096618,
+                "end": 15096664,
+                "sha256": "dacb3a1b88a17475ef2ecb07184c2e0645001b379149bec04991aac235da3e3c"
+              },
+              "memberLea": 15096629,
+              "memberCall": 15096636,
+              "vtableStore": 15096641,
+              "baseLea": 15096652,
+              "baseCall": 15097316,
+              "jump": 15096659
+            },
+            {
+              "window": {
+                "start": 15098149,
+                "end": 15098192,
+                "sha256": "133428a648189fd86c4bc2b8bae6e265fbd6742027c2ae47dae203ef7235605f"
+              },
+              "memberLea": 15098160,
+              "memberCall": 15098167,
+              "vtableStore": 15098172,
+              "baseLea": 15098183,
+              "baseCall": 15098277,
+              "jump": 15098190
+            }
+          ]
+        },
+        {
+          "local": "xStack_34c",
+          "entrySlot": -844,
+          "constructorLea": 15096677,
+          "constructorCall": 15096681,
+          "startReceiver": 15096726,
+          "startCall": 15096739,
+          "constructionWindow": {
+            "start": 15096677,
+            "end": 15096745,
+            "sha256": "255ed8db8d1240c8e042be954d22ea79d8480e2f4c0e98c9d9214d373f2c1140"
+          },
+          "sourceCount": 2,
+          "creationCount": 2,
+          "paths": [
+            {
+              "window": {
+                "start": 15097284,
+                "end": 15097321,
+                "sha256": "ee55597bc46363096434c7b174bb2ab842ffedad82a3a4829e1226d259e78f32"
+              },
+              "memberLea": 15097295,
+              "memberCall": 15097299,
+              "vtableStore": 15097304,
+              "baseLea": 15097312,
+              "baseCall": 15097316,
+              "jump": null
+            },
+            {
+              "window": {
+                "start": 15098245,
+                "end": 15098282,
+                "sha256": "4ada76c1793b1a67eb4086e4819313e55719c1943ce14b56d5a7c9f03632112a"
+              },
+              "memberLea": 15098256,
+              "memberCall": 15098260,
+              "vtableStore": 15098265,
+              "baseLea": 15098273,
+              "baseCall": 15098277,
+              "jump": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reviewedSavedThingArguments": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "96a96abf300bf0757c0e04058e670975ac89b5f459b4e8ed210bab9a4b189e8f",
+      "frameBytes": 948,
+      "resultEntrySlot": -204,
+      "vtable": 19271436,
+      "window": {
+        "start": 15103821,
+        "end": 15103918,
+        "sha256": "42edf1d12724556c0e47a99c7711ec704b8944df035c091d7f0daca969b5839e"
+      },
+      "dependencies": {
+        "lookup": {
+          "start": 9076064,
+          "end": 9076215,
+          "sha256": "965060f14a85d9ad12e4a17dccfb9a5b9b2227c4475f7510463f5eb9de433099"
+        },
+        "hero": {
+          "start": 8985760,
+          "end": 8985933,
+          "sha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af"
+        },
+        "teleport": {
+          "start": 8971584,
+          "end": 8971670,
+          "sha256": "5e529bd4c736d8b8d5e1c03993f55d73134deca8a3a8356e55352dc0f99050b0"
+        },
+        "thingDestructor": {
+          "start": 4892736,
+          "end": 4892802,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "thingBase": {
+          "start": 10068704,
+          "end": 10068711,
+          "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+        }
+      },
+      "lookupCall": 15103867,
+      "heroCall": 15103878,
+      "teleportCall": 15103888,
+      "savedPush": 15103875,
+      "movingPush": 15103887,
+      "flagPush": 15103847,
+      "resultLea": 15103857,
+      "destructorCall": 15103901,
+      "destructorLea": 15103894,
+      "literalPush": 15103823,
+      "literalAddress": 19823472,
+      "literal": "CK_HeroStart",
+      "overwrittenLocal": "pCVar15",
+      "savedLocal": "native_call_target",
+      "ownerToken": "native_call_target_token",
+      "flagLocal": "CVar27"
+    }
+  },
+  "reviewedLiteralMapKeys": {
+    "0x00e64fb0": {
+      "nativeSha256": "b0f9cf34d511d9a97cacefc15488af476ef74f20a4ac2c5e773e9577b465a5bc",
+      "sourceSha256": "f87af2a03454cf890cd56ae120242ff721933ac32f7d84b02431acfef6ff3907",
+      "luaSha256": "3c34ab30089b02a2e0b9835e718c241da629993e663a7a565b593fba18ac5443",
+      "mapName": "csargs",
+      "staleAlias": "pCVar14",
+      "valueLocal": "pcVar20",
+      "sites": [
+        {
+          "start": 15108205,
+          "end": 15108267,
+          "keyPush": 15108207,
+          "keyAddress": 19822756,
+          "key": "$LOOP",
+          "constructorLea": 15108212,
+          "constructorCall": 15108219,
+          "valuePush": 15108224,
+          "valueAddress": 19822256,
+          "value": "CHICK_KICK_LOW_LOOP",
+          "mapLea": 15108229,
+          "mapRegister": "ecx",
+          "mapPush": 15108236,
+          "mapOwner": 15108237,
+          "mapOffset": 15108240,
+          "mapCall": 15108243,
+          "assignReceiver": 15108248,
+          "assignCall": 15108250,
+          "destructorLea": 15108255,
+          "destructorCall": 15108262,
+          "stackOffset": 236,
+          "memberOffset": 100,
+          "sha256": "87c8fd88cde38429d3202e18776a7c8219fe9edd2d1ff80e94e849e4368f78c0"
+        },
+        {
+          "start": 15108293,
+          "end": 15108352,
+          "keyPush": 15108295,
+          "keyAddress": 19712752,
+          "key": "$LINE",
+          "constructorLea": 15108300,
+          "constructorCall": 15108307,
+          "valuePush": 15108315,
+          "valueAddress": 19822220,
+          "value": "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN",
+          "mapLea": 15108320,
+          "mapRegister": "eax",
+          "mapPush": 15108327,
+          "mapOwner": 15108312,
+          "mapOffset": 15108328,
+          "mapCall": 15108331,
+          "assignReceiver": 15108336,
+          "assignCall": 15108338,
+          "destructorLea": 15108343,
+          "destructorCall": 15108431,
+          "stackOffset": 244,
+          "memberOffset": 100,
+          "sha256": "73a20df6f717f26ed0dfbce8de3df5e102fc99832c9180e9819d4d8f46b17b17"
+        },
+        {
+          "start": 15108365,
+          "end": 15108436,
+          "keyPush": 15108376,
+          "keyAddress": 19712752,
+          "key": "$LINE",
+          "constructorLea": 15108381,
+          "constructorCall": 15108388,
+          "valuePush": 15108396,
+          "valueAddress": 19822180,
+          "value": "TEXT_QST_B17_MASTER_NO_PRIZE_AGAIN_HIGH",
+          "mapLea": 15108401,
+          "mapRegister": "edx",
+          "mapPush": 15108408,
+          "mapOwner": 15108393,
+          "mapOffset": 15108409,
+          "mapCall": 15108412,
+          "assignReceiver": 15108417,
+          "assignCall": 15108419,
+          "destructorLea": 15108424,
+          "destructorCall": 15108431,
+          "stackOffset": 240,
+          "memberOffset": 100,
+          "sha256": "b4c2c2862f04ec29dab04951ace5e6c94d8305f29ce6907feff117b3d513ac91"
+        }
+      ]
+    }
   }
 }

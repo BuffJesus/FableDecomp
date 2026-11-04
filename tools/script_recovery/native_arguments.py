@@ -27,7 +27,12 @@ def strip_template_pointer_casts(text: str) -> str:
     return _POINTER_CAST_OR_LITERAL.sub(replace, text)
 
 
-def split_arguments(text: str) -> list[str]:
+def split_arguments(text: str, *, template_types: bool = False) -> list[str]:
+    """Split operands, or declaration types with nested templates when requested.
+
+    Angle brackets are delimiters only in a declaration list. Ordinary call
+    expressions must retain comparison and shift operators as expressions.
+    """
     if not text.strip():
         return []
     operands = []
@@ -38,6 +43,8 @@ def split_arguments(text: str) -> list[str]:
     start = 0
     index = 0
     closing = {')': '(', ']': '[', '}': '{'}
+    if template_types:
+        closing['>'] = '<'
     while index < len(text):
         char = text[index]
         pair = text[index:index + 2]
@@ -60,7 +67,7 @@ def split_arguments(text: str) -> list[str]:
             index += 1
         elif char in ('"', "'"):
             quote = char
-        elif char in '([{':
+        elif char in '([{' or (template_types and char == '<'):
             stack.append(char)
         elif char in closing:
             if not stack or stack.pop() != closing[char]:

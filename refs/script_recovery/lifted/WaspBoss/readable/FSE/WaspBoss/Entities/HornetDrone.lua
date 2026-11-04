@@ -19,13 +19,14 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    me:MoveToThing(quest:GetNearestWithScriptName(me, "Q_WB_DeadBody"), 0.30000001192092896, ENTITY_MOVE_RUN)
+    local deadBody = quest:GetNearestWithScriptName(me, "Q_WB_DeadBody")
+    me:MoveToThing(deadBody, 0.30000001192092896, ENTITY_MOVE_RUN)
     while me:IsPerformingScriptTask() do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    me:PlayAnimation("ST_FEED_INTO", false, false, true, false, true, false, false)
-    me:PlayLoopingAnimation("ST_FEED_LOOP", -1, false, false, true)
+    resources:PlayAnimationWithNativeArgument5(resource, "ST_FEED_INTO", false, false, true, false, false, false)
+    resources:PlayLoopingAnimation(resource, "ST_FEED_LOOP", -1, false, false, true, false, true, false, false)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while true do
         if me:IsAwareOfHero() then break end
@@ -49,24 +50,25 @@ function Main(quest, me)
     if not quest:IsActiveThreadTerminating() then
         me:ClearCommands()
         me:ClearAllActionsIncludingLoopingAnimations()
-        me:PlayAnimation("ST_FEED_OUTOF", false, false, true, true, true, false, false)
+        resources:PlayAnimationWithNativeArgument5(resource, "ST_FEED_OUTOF", false, false, true, true, false, false)
         while me:IsPerformingScriptTask() do
             if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         end
-        goto LAB_00e12130
+    else
+        resources:ReleaseResource(resource)
+        do return end
     end
-    resources:ReleaseResource(resource)
-    do return end
     ::LAB_00e12130::
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    quest:GiveThingBestEnemyTarget(me, quest:GetHero())
+    local hero = quest:GetHero()
+    quest:GiveThingBestEnemyTarget(me, hero)
     resources:PrepareResource(resource)
     resources:ReleaseResource(resource)
 end
 
 -- HornetDrone.Init (retail 0x00e11d80)
 function Init(quest, me)
-    eatNow = math.random(0, 32767) % 200 + 1
+    eatNow = quest:RetailRandModulo(32768) % 200 + 1
 end
 
 -- HornetDrone.OnPersist (retail 0x00cdebc0)

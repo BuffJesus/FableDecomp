@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, b_stk_71, b_stk_72, cVar5, dist, fVar2, fret_0, fret_00, iVar12, iVar13, iVar6, iVar7, i_stk_70, p0, pCVar8, pCVar9, pcVar11, r1, r2, uVar10, uVar3, v_stk_6c, xStack_10, xStack_20, xStack_30, x_stk_3c, x_stk_48
+    local bVar4, b_stk_71, b_stk_72, cVar5, dist, fVar2, fret_0, fret_00, iVar12, iVar13, iVar6, iVar7, i_stk_70, p0, pCVar8, pcVar11, r1, r2, uVar10, uVar3, v_stk_6c, xStack_10, xStack_20, xStack_30, x_stk_3c, x_stk_48
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -76,7 +76,7 @@ function Main(quest, me)
                         resources:ReleaseResource(xStack_30)
                         return
                     end
-                    -- TODO(native): override_prt_d07c09_8df7e253:
+                    -- LAB_00d07c09: (native jump target)
                     quest:DeregisterTimer(i_stk_70)
                     resources:ReleaseResource(xStack_30)
                     return
@@ -84,7 +84,11 @@ function Main(quest, me)
                 if not quest:GetStateBool("Gate3Open") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    -- TODO(native): if (bVar4) goto override_prt_d07c09_8df7e253;
+                    if bVar4 then
+                        quest:DeregisterTimer(i_stk_70)
+                        resources:ReleaseResource(xStack_30)
+                        return
+                    end
                     iVar7 = quest:GetTimer(i_stk_70)
                     if iVar7 < 1 then
                         dist = 8.0
@@ -162,6 +166,10 @@ function Main(quest, me)
                                         pcVar11 = "TEXT_QST_009_BANDIT3_COMMENT_FIRST_CHAT"
                                         pCVar8 = quest:GetHero()
                                         r1 = me:Speak(pCVar8, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                        if not r1 then
+                                            quest:PauseAllNonScriptedEntities(false)
+                                            goto LAB_00d07caf
+                                        end
                                         iVar6 = me:IsPerformingScriptTask()
                                         cVar5 = iVar6
                                         while cVar5 do
@@ -183,7 +191,7 @@ function Main(quest, me)
                                         end
                                         goto FLOW_past_lab_00d07caf
                                         ::LAB_00d07caf::
-                                        pCVar9 = xStack_20
+                                        resources:DestroyMovie(xStack_20)
                                         goto LAB_00d07cf7
                                     end
                                     goto FLOW_hoist_lab_00d07cf7_1
@@ -219,6 +227,10 @@ function Main(quest, me)
                                         pcVar11 = "TEXT_QST_009_BANDIT3_COMMENT_SECOND_CHAT"
                                         pCVar8 = quest:GetHero()
                                         r2 = me:Speak(pCVar8, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                        if not r2 then
+                                            quest:PauseAllNonScriptedEntities(false)
+                                            goto LAB_00d07ce2
+                                        end
                                         iVar6 = me:IsPerformingScriptTask()
                                         cVar5 = iVar6
                                         while cVar5 do
@@ -240,12 +252,12 @@ function Main(quest, me)
                                         end
                                         goto FLOW_past_lab_00d07ce2
                                         ::LAB_00d07ce2::
-                                        pCVar9 = xStack_10
+                                        resources:DestroyMovie(xStack_10)
                                         goto LAB_00d07cf7
                                         ::FLOW_past_lab_00d07ce2::
                                     end
                                     quest:PauseAllNonScriptedEntities(false)
-                                    pCVar9 = xStack_10
+                                    resources:DestroyMovie(xStack_10)
                                     goto LAB_00d07bb5
                                 end
                             end
@@ -257,7 +269,7 @@ function Main(quest, me)
                         ::FLOW_hoist_lab_00d07cf7_1::
                         b_stk_71 = true
                         quest:PauseAllNonScriptedEntities(false)
-                        pCVar9 = xStack_20
+                        resources:DestroyMovie(xStack_20)
                         ::LAB_00d07bb5::
                         iVar6 = i_stk_70
                         goto LAB_00d07bbe

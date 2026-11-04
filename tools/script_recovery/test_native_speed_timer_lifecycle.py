@@ -1,0 +1,37 @@
+"""Actual speed-test Lua preserves registered timer identity across race lifecycle."""
+import itertools,json
+from pathlib import Path
+from unittest.mock import patch
+import pytest
+from lupa.lua54 import LuaRuntime
+from tools.script_recovery.convert_quest_unit import UnitConverter
+from tools.script_recovery.build_readable_unit import readable_file
+ROOT=Path(__file__).resolve().parents[2]
+@pytest.fixture(scope='module')
+def generated(tmp_path_factory):
+ c=UnitConverter(ROOT/'refs/script_recovery/guild_training/translation_unit_typed.json')
+ unit=json.loads((ROOT/'refs/script_recovery/guild_training/units/Q_GuildTraining.json').read_text())
+ unit['entities']={'ApprenticeSpeedTest':unit['entities']['ApprenticeSpeedTest']}
+ unit['quest']['functions']={};unit['quest']['helpers']={}
+ out=tmp_path_factory.mktemp('speed_timer_ids')
+ with patch.object(c,'constructor_defaults',return_value={}):c.convert(unit,out)
+ source=(out/'FSE/GuildTraining/Entities/ApprenticeSpeedTest.lua').read_text()
+ return source,readable_file(source)[0]
+def plain(v):
+ if hasattr(v,'items'):return [plain(x) for x in v.values()]
+ return v
+HARNESS='\nreturn function(outcome,limit,taskFrames,questionFrames,near)\n local frames,events,taskEnd,questionAt=0,{},0,0\n local timerCount,movieCount,raceStart,lastTalk=0,0,nil,-1\n local timers,movies={},{}\n local state={ReachedPlatform=false};local resourceOpen=false\n local q\n local function event(...)events[#events+1]={...}end\n local hero,friend,village,marker={},{},{},{}\n function friend:IsNull()return false end\n function friend:SetFriendsWithEverythingFlag(v)assert(v)end\n local me={}\n function me:SetFriendsWithEverythingFlag(v)assert(v)end\n function me:IsTalkedToByHero()\n  if frames==lastTalk then return false end\n  if not raceStart and frames>=2 or raceStart and frames>=raceStart+(outcome=="slow" and 6 or 2) then lastTalk=frames;return true end\n  return false\n end\n function me:IsPerformingScriptTask()return frames<taskEnd end\n function me:Speak(target,key,a,b,c,d)\n  assert(target==hero and a==0 and not b and c and not d);event("speak",key,frames);taskEnd=frames+taskFrames\n  while frames<taskEnd and frames<limit do q:NewScriptFrame(me)end\n  return frames<limit\n end\n q={}\n function q:GetHero()return hero end\n function q:IsActiveThreadTerminating()return frames>=limit end\n function q:NewScriptFrame(actor)\n  assert(actor==me);frames=frames+1;event("frame",frames)\n  for id,value in pairs(timers)do timers[id]=math.max(value-1,0)end\n  if raceStart and outcome~="platform" and frames>=raceStart+1 then state.ReachedPlatform=true end\n  return frames<limit\n end\n function q:GetThingWithScriptName(name)if name=="SpeedFriend" then return friend end;assert(name=="RaceMarker");return marker end\n function q:GetNearestWithDefName(actor,name)assert(actor==me and name=="VILLAGE_GUILD_COMPLEX_INSIDE");return village end\n function q:EntityAttachToVillage(actor,v)assert((actor==me or actor==friend) and v==village)end\n function q:SetIsPushableByHero(actor,value)assert(actor==me and not value)end\n function q:EntitySetAsKillable(actor,a,b)assert((actor==me or actor==friend) and not a and b)end\n function q:SetThingHasInformation(actor,a,b,c)assert(actor==me and not a and b and not c);event("info",frames)end\n function q:ClearThingHasInformation(actor)assert(actor==me);event("clearInfo",frames)end\n function q:RegisterTimer()timerCount=timerCount+1;local id=100+timerCount*17;timers[id]=0;event("register",id);return id end\n function q:DeregisterTimer(id)assert(timers[id]~=nil,"invalid timer cleanup");timers[id]=nil;event("deregister",id)end\n function q:SetTimer(id,value)assert(timers[id]~=nil);timers[id]=value;event("setTimer",id,value,frames)end\n function q:GetTimer(id)assert(timers[id]~=nil);event("getTimer",id,timers[id],frames);return timers[id]end\n function q:GetStateInt(name)assert(name=="GameState");return 3 end\n function q:GetStateBool(name)assert(name=="ReachedPlatform");return state[name]end\n function q:SetStateBool(name,value)assert(name=="ReachedPlatform");state[name]=value end\n function q:IsDistanceBetweenThingsUnder(a,b,d)assert(a==hero and b==me and d==10);return near end\n function q:GetHealth(actor)assert(actor==me);return 6 end\n function q:PauseAllNonScriptedEntities(flag)event("pause",flag,frames)end\n function q:GiveHeroYesNoQuestion(key,... )questionAt=frames;event("question",key,frames)end\n function q:MsgIsQuestionAnsweredYesOrNo()return frames<questionAt+questionFrames and -1 or 1 end\n function q:ReadGlobalGameDataFloat(offset)if offset==0xedc then return 5 end;assert(offset==0xee0);return 20 end\n function q:AddQuestInfoTimer(id,icon,scale)assert(id==117 and icon=="HUD_CLOCK_ICON" and scale==1);raceStart=frames;event("raceStart",frames);return 201 end\n function q:DisplayQuestInfo(flag)event("display",flag,frames)end\n function q:RemoveQuestInfoElement(id)assert(id==201);event("removeHud",frames)end\n function q:MiniMapAddMarker(actor,icon)assert(actor==marker and icon=="HUD_ORB_QUEST_VIGNETTE");event("addMarker",frames)end\n function q:MiniMapRemoveMarker(actor)assert(actor==marker);event("removeMarker",frames)end\n function q:GiveHeroGold(value)assert(value==20);event("gold",value,frames)end\n function q:AddNewConversation(actor,a,b)assert(actor==me and not a and not b);return 301 end\n function q:AddPersonToConversation(id,actor)assert(id==301 and actor==friend)end\n function q:AddLineToConversation(id,key,actor,target,flag)assert(id==301 and not flag);event("line",key,frames)end\n local r={}\n function q:RetailResources()return r end\n function r:NewResource()assert(not resourceOpen);resourceOpen=true;return 401 end\n function r:PrepareResource(id)assert(id==401 and resourceOpen)end\n function r:TryAcquire(id,actor,kind)assert(id==401 and actor==me and kind==4);return true end\n function r:ReleaseResource(id)assert(id==401 and resourceOpen);resourceOpen=false;event("release",frames)end\n function r:ScriptThing(id)assert(id==401 and resourceOpen);return me end\n function r:StartMovie(name)assert(name=="");movieCount=movieCount+1;movies[movieCount]=true;event("movie",movieCount,frames);return movieCount end\n function r:DestroyMovie(id)assert(movies[id],"invalid movie cleanup");movies[id]=nil;event("destroy",id,frames)end\n debug.sethook(function()error("instruction budget")end,"",50000)\n Main(q,me)\n debug.sethook()\n assert(not resourceOpen and next(movies)==nil and next(timers)==nil,"lifetime leak")\n return events\nend\n'
+
+@pytest.mark.parametrize('style',(0,1))
+@pytest.mark.parametrize('outcome,limit,task,question,near',list(itertools.product(('success','platform','slow'),(3,6,12,25),(0,2),(0,2),(False,True))))
+def test_initial_retry_and_reward_timer_roles(generated,style,outcome,limit,task,question,near):
+ lua=LuaRuntime();lua.execute(generated[style]);events=plain(lua.execute(HARNESS)(outcome,limit,task,question,near))
+ starts=[e for e in events if e[0]=='raceStart']
+ assert sum(e[0]=='setTimer' and e[1:3]==[151,25] for e in events)==len(starts)
+ assert not any(e[0]=='setTimer' and e[1:3]==[134,25] for e in events)
+ gold=[e for e in events if e[0]=='gold'];expected=int(outcome=='success' and 4+3*task+question<limit)
+ assert len(gold)==expected
+ if gold:assert gold[0][2]==4+3*task+question
+ assert sum(e[0]=='deregister' for e in events)==3
+ assert sum(e[0]=='release' for e in events)==1
+ assert sum(e[0]=='movie' for e in events)==sum(e[0]=='destroy' for e in events)

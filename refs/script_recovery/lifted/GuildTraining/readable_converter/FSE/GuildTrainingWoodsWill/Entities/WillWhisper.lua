@@ -19,13 +19,11 @@ function Main(quest, me)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAllowBossPhaseChanges(me, false)
     while quest:GetStateBool("BanditsAlive") do
-        if not quest:NewScriptFrame(me) then break end
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         if me:MsgIsHitByHero() then
             goto LAB_00d689df
         else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d689df end
-            end
+            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d689df end
             predicateResult = false
         end
         goto FLOW_past_lab_00d689df
@@ -33,15 +31,17 @@ function Main(quest, me)
         predicateResult = true
         ::FLOW_past_lab_00d689df::
         if predicateResult then
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             quest:EntitySetInFaction(me, "FACTION_HERO")
             me:SetFriendsWithEverythingFlag(true)
         end
         if quest:GetStateBool("WhisperAnimate") then
-            if quest:IsActiveThreadTerminating() then break end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             quest:SetStateBool("WhisperAnimate", false)
-            me:PlayAnimation("WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, true, false, false)
+            resources:PlayAnimationWithNativeArgument5(resource, "WILL_CAST_FORCE_SPELL_DELIVER_LEVEL_1", false, false, false, true, false, false)
         end
     end
+    quest:IsActiveThreadTerminating()
     resources:ReleaseResource(resource)
 end
 

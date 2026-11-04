@@ -152,17 +152,8 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: CCharString::operator+=(&xStack_80,(int)p0);",
             "label LAB_00ed3349",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
-            "unlifted: KillAllThingsInVector(*(void **)(this + 0x40),QUESTLIST_Ref(\"EffectList\"),0);",
-            "CameraUseCameraPoint: missing spCamPoint, spTarget (3 args for 5 params)",
-            "unlifted: KillAllThingsInVector(*(void **)(this + 0x40),QUESTLIST_Ref(\"EffectList\"),0);",
-            "unlifted: KillAllThingsInVector(*(void **)(this + 0x40),QUESTLIST_Ref(\"EffectList\"),0);",
-            "label LAB_00ed3335",
-            "unlifted: if piVar6[-8] ~= *piVar6 then",
-            "unlifted: if piVar6[-4] ~= *piVar6 then",
-            "unlifted: native_arg_switch_2 = *puVar7"
+            "label LAB_00ed3335"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -233,7 +224,12 @@
             "DeactivateQuestLater",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "GetMasterGameState"
+            "GetMasterGameState",
+            "GetStateListCopy",
+            "IsAlive",
+            "RemoveThing",
+            "GetStateInt",
+            "GetStateInt"
           ],
           "lines": 198,
           "syntax": {
@@ -296,10 +292,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: KillAllThingsInVector(*(void **)(this + 0x40),QUESTLIST_Ref(\"EffectList\"),0);",
-            "unlifted: Std_Vector_Erase_Range(QUESTLIST_Ref(\"EffectList\"),QUESTLIST_BeginValue(\"EffectList\"),(QUE"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "IsRegionLoaded",
@@ -313,7 +306,10 @@
             "IsRegionLoaded",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
-            "IsActiveThreadTerminating"
+            "IsActiveThreadTerminating",
+            "GetStateListCopy",
+            "IsAlive",
+            "RemoveThing"
           ],
           "lines": 43,
           "syntax": {
@@ -340,30 +336,11 @@
           },
           "todo": [
             "unnamed field 0x14",
-            "unlifted: xStack_4d = '\\0';",
-            "unlifted: xStack_4d = '\\x01';",
             "unnamed field 0x14",
             "label LAB_00ed3977",
-            "unlifted: *(undefined4 *) (*(int *)(this + 0x14) + 0x6c + *(int *)(*(int *)(this + 0x14) + 0x48) * 4",
             "unnamed field 0x14",
             "unnamed field 0x14",
-            "unlifted: std__vector_InsertRange((void *)(*(int *)(this + 0x14) + 0x7c),(int)p0,(int)pCVar3,(int)&x",
-            "unlifted: p0[1] = *(undefined4 *)(pCVar3 + 0x4);",
-            "unlifted: p0[2] = piVar1;",
-            "unlifted: *piVar1 = *piVar1 + 1;",
-            "unlifted: (QUESTLIST_Count(\"EffectList\") * 0xc) = (QUESTLIST_Count(\"EffectList\") * 0xc) + 0xc;",
-            "unlifted: *xStack_24 = *xStack_24 + -1;",
-            "label LAB_00ed38fe",
-            "label LAB_00ed343a",
-            "unlifted: xStack_18 = (int *)(pCVar4.z + 1.0);",
-            "unlifted: xStack_18._4_4_ = pCVar4.y;",
-            "unlifted: xStack_18._0_4_ = pCVar4.x;",
-            "unlifted: if *(__native_entity_state:GetStateInt(\"self_0x14\") + ctr_4c) ~= __native_entity_state:Get",
-            "unlifted: if *(__native_entity_state:GetStateInt(\"self_0x14\") + iVar8) == __native_entity_state:GetS",
-            "unlifted: p0 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x80)",
-            "unlifted: if p0 == *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x84) then",
-            "unlifted: piVar1 = *(pCVar3 + 0x8)",
-            "unlifted: __native_condition_1 = *r1 ~= 0"
+            "label LAB_00ed343a"
           ],
           "calls": [
             "GetNearestWithScriptName",
@@ -407,7 +384,10 @@
             "GetPos",
             "CreateEffectAtPos",
             "QUESTLIST_Push",
-            "QUESTTHING_Empty"
+            "QUESTTHING_Empty",
+            "GetStateInt",
+            "SetStateInt",
+            "StateListPush"
           ],
           "lines": 199,
           "syntax": {
@@ -905,6 +885,58 @@
           ]
         }
       },
+      "blockingSpeechCancellation": {
+        "FSE/V_SingingStones/Entities/ManWithDoorName.lua": [
+          {
+            "line": 88,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_98)\n                        goto LAB_00ed286a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 158,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    resources:DestroyMovie(xStack_cc)\n                    goto LAB_00ed286a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 263,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00ed2793",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 316,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00ed27cd",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 369,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00ed2807",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 449,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00ed283b",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 3,
         "functions": 14,
@@ -912,7 +944,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 43
+        "todo": 13
       }
     }
   ],
@@ -923,6 +955,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 43
+    "todo": 13
   }
 }

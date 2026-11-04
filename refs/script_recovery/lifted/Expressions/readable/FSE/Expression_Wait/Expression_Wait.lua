@@ -3,21 +3,35 @@
 
 -- Expression_Wait.Main (retail 0x00eea460)
 function Main(quest)
-    local hero = quest:GetHero()
-    local resources = quest:RetailResources()
-    if not quest:NewScriptFrame() then return end
-    if not hero:AcquireControl(4) then return end
-    local movie = resources:StartMovie("")
-    quest:FadeScreenOut(0.5, 0.5)
-    quest:Pause(1.0)
-    -- TODO(native): CScriptBase::KillSpawnedFunction((CScriptBase *)this,(int)&xStack_34,0);
-    quest:DeactivateQuest("Expression_Follow", 0)
-    quest:CameraDefault()
-    quest:Pause(1.0)
-    quest:FadeScreenIn()
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-    resources:DestroyMovie(movie)
-    hero:ReleaseControl()
+    return quest:WithRetailResources(function(resources)
+        local controlAcquired
+        local hero = quest:GetHero()
+        quest:RegisterQuestConsciousCondition(hero)
+        quest:NewScriptFrame()
+        if quest:IsActiveThreadTerminating() then return end
+        local resource = resources:NewResource()
+        local hero2 = quest:GetHero()
+        controlAcquired = resources:TryAcquire(resource, hero2, 4)
+        while not controlAcquired do
+            quest:NewScriptFrame()
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            local hero3 = quest:GetHero()
+            controlAcquired = resources:TryAcquire(resource, hero3, 4)
+        end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+        local movie = resources:StartMovie("")
+        quest:FadeScreenOut(0.5, 0.5)
+        quest:Pause(1.0)
+        quest:KillSpawnedFunction("FollowThread", 0)
+        quest:DeactivateQuest("Expression_Follow", 0)
+        quest:CameraDefault()
+        quest:Pause(1.0)
+        quest:FadeScreenIn()
+        local pQuestName = quest:GetActiveQuestName()
+        quest:DeactivateQuestLater(pQuestName, 0)
+        resources:DestroyMovie(movie)
+        resources:ReleaseResource(resource)
+    end)
 end
 
 -- Expression_Wait.Init (retail 0x00eea450)

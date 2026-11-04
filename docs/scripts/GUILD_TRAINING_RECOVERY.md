@@ -1,5 +1,7 @@
 # Hero's Guild training recovery
 
+> Historical active/deferred task state; newer checkpoints supersede it.
+
 Active offline work, requested 2026-09-14 while New Oakvale awaits live verification.
 Scope is the nine `Q_GuildTraining*` quests, including departure and Woods training.
 The separate `V_GuildMaster` donor port is not a replacement for these native quests.

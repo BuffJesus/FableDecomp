@@ -3,8 +3,7 @@
 
 -- V_StatueMaster.Main (retail 0x00ed3b30)
 function Main(quest)
-    local fret_0, fret_00, fret_01, fret_02, getPos, getPos2, getPos3, getPos4, getPos5, getPos6
-    local getPos7, getPos8
+    local getPos, getPos2, getPos3, getPos4, getPos5, getPos6, getPos7, getPos8
     quest:AddEntityBinding("StatueMasterStatue", "V_StatueMaster/Entities/StatueMasterStatue")
     quest:AddEntityBinding("StatueMasterCellarDoors", "V_StatueMaster/Entities/StatueMasterCellarDoors")
     quest:AddEntityBinding("StatueMasterChest", "V_StatueMaster/Entities/StatueMasterChest")
@@ -25,7 +24,9 @@ function Main(quest)
         getPos = nothing:GetPos()
     end
     local scratchValue = math.atan(getPos.x - getPos5.x, getPos.y - getPos5.y) * 0.15915493667125702
+    local scratchValue2 = scratchValue
     if scratchValue < 0.0 or 1.0 <= scratchValue then
+        local fret_0 = math.fmod(scratchValue2, 1.0)
         scratchValue = fret_0
         if fret_0 < 0.0 then
             scratchValue = fret_0 + 1.0
@@ -43,7 +44,9 @@ function Main(quest)
         getPos2 = bowerstone:GetPos()
     end
     scratchValue = math.atan(getPos2.x - getPos6.x, getPos2.y - getPos6.y) * 0.15915493667125702
+    scratchValue2 = scratchValue
     if scratchValue < 0.0 or 1.0 <= scratchValue then
+        local fret_00 = math.fmod(scratchValue2, 1.0)
         scratchValue = fret_00
         if fret_00 < 0.0 then
             scratchValue = fret_00 + 1.0
@@ -61,7 +64,9 @@ function Main(quest)
         getPos3 = guild:GetPos()
     end
     scratchValue = math.atan(getPos3.x - getPos7.x, getPos3.y - getPos7.y) * 0.15915493667125702
+    scratchValue2 = scratchValue
     if scratchValue < 0.0 or 1.0 <= scratchValue then
+        local fret_01 = math.fmod(scratchValue2, 1.0)
         scratchValue = fret_01
         if fret_01 < 0.0 then
             scratchValue = fret_01 + 1.0
@@ -79,12 +84,20 @@ function Main(quest)
         getPos4 = greatwood:GetPos()
     end
     scratchValue = math.atan(getPos4.x - getPos8.x, getPos4.y - getPos8.y) * 0.15915493667125702
-    if not ((scratchValue < 0.0) or (1.0 <= scratchValue)) then quest:SetStateFloat("AnglesToFaceList_3", scratchValue); return end
-    scratchValue = fret_02
-    if fret_02 < 0.0 then
-        scratchValue = fret_02 + 1.0
+    scratchValue2 = scratchValue
+    if scratchValue < 0.0 or 1.0 <= scratchValue then
+        local fret_02 = math.fmod(scratchValue2, 1.0)
+        scratchValue = fret_02
+        if fret_02 < 0.0 then
+            scratchValue = fret_02 + 1.0
+        end
     end
     quest:SetStateFloat("AnglesToFaceList_3", scratchValue)
+    center = nil
+    greatwood = nil
+    guild = nil
+    bowerstone = nil
+    nothing = nil
 end
 
 -- V_StatueMaster.Init (retail 0x00ed3a80)
@@ -99,15 +112,15 @@ function GetStatuePointingPosition(quest)
     getTimeOfDay = math.tointeger(math.modf(f_st0))
     scratchValue = 1
     repeat
-        if not (quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) - 0.03999999910593033 < (f_st0 - getTimeOfDay)) then
+        if not (quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) - 0.03999999910593033 < string.unpack("<f", string.pack("<f", f_st0 - getTimeOfDay))) then
             scratchValue = scratchValue + 1
         else
-            if (f_st0 - getTimeOfDay) < quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) + 0.03999999910593033 then
+            if string.unpack("<f", string.pack("<f", f_st0 - getTimeOfDay)) < quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) + 0.03999999910593033 then
                 return scratchValue
             end
             scratchValue = scratchValue + 1
         end
-    until scratchValue >= 4
+    until not (scratchValue < 4)
     return 0
 end
 

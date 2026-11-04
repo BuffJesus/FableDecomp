@@ -8,51 +8,98 @@ local SCRIPT_DEF = {
 
 -- Expression_Picklock.Main (retail 0x00eeb7b0)
 function Main(quest)
-    local hero = quest:GetHero()
-    local resources = quest:RetailResources()
-    local progress, scratchValue9, flag2UVar, flag3UVar
-    if not quest:NewScriptFrame() then return end
-    quest:SetQuestAsPersistent(quest:GetActiveQuestName(), false)
+    return quest:WithRetailResources(function(resources)
+    local picklockTargetOwner = 0
+    local predicateResult, scratchValue, progress, entityPostOpinionDeedKeepSearchingForWitnesses
+    local retailRandModulo, scratchValue7, flag2UVar, flag3UVar, getHero, getActiveQuestName, hero
+    local scratchValue8, scratchValue9
+    getHero = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(getHero)
+    quest:NewScriptFrame()
+    scratchValue = quest:IsActiveThreadTerminating()
+    if scratchValue then
+        resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
+        return
+    end
+    scratchValue = false
+    getActiveQuestName = quest:GetActiveQuestName()
+    quest:SetQuestAsPersistent(getActiveQuestName, scratchValue)
     local target = quest:GetHeroTargetedThing()
-    if quest:IsEntityPickLockable(target) then
-        if not quest:IsInMovieSequence() then
+    picklockTargetOwner = resources:TrackThingOutput(target)
+    scratchValue = quest:IsEntityPickLockable(target)
+    if scratchValue then
+        scratchValue = quest:IsInMovieSequence()
+        if not scratchValue then
             local movie = resources:StartMovie("")
             quest:DisplayMiniGameInfo(true, 4)
+            local scratchValue3 = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.PicklockDurationSeconds)
             flag2UVar = false
             flag3UVar = false
-            local scratchValue = (quest:GetHeroStatLevel(5) + 1.0) / (quest:GetHeroStatMax(5) + 1.0)
-            local value = quest:GetConstantFPS() * (quest:ReadGlobalGameDataFloat(SCRIPT_DEF.PicklockDurationSeconds) / scratchValue)
-            scratchValue9 = math.tointeger(math.modf(value))
-            local opinionDeedId = quest:EntityPostOpinionDeedKeepSearchingForWitnesses(hero, 4, target)
+            scratchValue9 = quest:GetHeroStatLevel(5)
+            local scratchValue5 = scratchValue9 + 1.0
+            scratchValue9 = quest:GetHeroStatMax(5)
+            local scratchValue4 = scratchValue5 / (scratchValue9 + 1.0)
+            scratchValue9 = quest:GetConstantFPS()
+            local value = scratchValue9 * (scratchValue3 / scratchValue4)
+            scratchValue7 = math.tointeger(math.modf(value))
+            getHero = target
+            entityPostOpinionDeedKeepSearchingForWitnesses = 4
+            hero = quest:GetHero()
+            entityPostOpinionDeedKeepSearchingForWitnesses = quest:EntityPostOpinionDeedKeepSearchingForWitnesses(hero, entityPostOpinionDeedKeepSearchingForWitnesses, getHero)
             quest:StartSneaking()
-            quest:EntitySetFacingAngleTowardsThing(hero, target, true)
+            scratchValue = true
+            getHero = target
+            hero = quest:GetHero()
+            quest:EntitySetFacingAngleTowardsThing(hero, getHero, scratchValue)
             repeat
-                if not quest:NewScriptFrame() then goto LAB_00eebc32 end
-                if not quest:IsDPadButtonHeldForExpression("EXPRESSION_PICKLOCK") then
+                quest:NewScriptFrame()
+                scratchValue = quest:IsActiveThreadTerminating()
+                if scratchValue then goto LAB_00eebc32 end
+                scratchValue = quest:IsDPadButtonHeldForExpression("EXPRESSION_PICKLOCK")
+                if not scratchValue then
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
                     flag2UVar = true
                     flag3UVar = true
                 end
-                if hero ~= nil and hero:MsgIsHitBy("") then
+                getHero = quest:GetHero()
+                scratchValue = getHero ~= nil and getHero:MsgIsHitBy("")
+                if scratchValue then
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
                     flag2UVar = true
                     flag3UVar = true
                 end
-                if quest:IsDeedWitnessed(opinionDeedId) then
+                scratchValue = quest:IsDeedWitnessed(entityPostOpinionDeedKeepSearchingForWitnesses)
+                if scratchValue then
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
                     flag2UVar = true
                     flag3UVar = true
                 end
-                progress = 1 - scratchValue9 / value
+                progress = 1 - scratchValue7 / value
                 if 1.0 < progress then
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
                     progress = 1.0
                 end
                 quest:UpdateMiniGameInfoBar(progress)
-                if not (target ~= nil and not target:IsNull()) or not (target ~= nil and target:IsAlive()) then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00eebc32 end
+                predicateResult = not (target ~= nil and not target:IsNull())
+                if not predicateResult then
+                    local scratchValue2 = target ~= nil and target:IsAlive()
+                    predicateResult = not scratchValue2
+                end
+                if predicateResult then
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
                     flag3UVar = true
                     goto LAB_00eebb6c
                 else
-                    if quest:IsActiveThreadTerminating() then goto LAB_00eebc32 end
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
                     if 1.0 <= progress then
-                        if not quest:IsActiveThreadTerminating() then goto LAB_00eebb6c end
+                        scratchValue = quest:IsActiveThreadTerminating()
+                        if not scratchValue then goto LAB_00eebb6c end
                         goto LAB_00eebc32
                     end
                 end
@@ -60,34 +107,61 @@ function Main(quest)
                 ::LAB_00eebb6c::
                 flag2UVar = true
                 ::FLOW_past_lab_00eebb6c::
-                if 0 < scratchValue9 then
-                    scratchValue9 = scratchValue9 - 1
+                if 0 < scratchValue7 then
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
+                    scratchValue7 = scratchValue7 - 1
                 end
             until flag2UVar
-            quest:RemoveOpinionDeedStillSearchingForWitnesses(hero, opinionDeedId)
-            quest:DisplayMiniGameInfo(false, 4)
-            if not flag3UVar then
-                if quest:IsActiveThreadTerminating() then goto LAB_00eebc32 end
-                if target ~= nil and target:IsAlive() then
-                    if (math.random(0, 32767) % 100) < progress * 100.0 then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00eebc32 end
-                        quest:EntitySetAsPickLocked(target)
-                        quest:ChangeHeroMoralityDueToPicklock()
+            scratchValue = quest:IsActiveThreadTerminating()
+            if not scratchValue then
+                getHero = quest:GetHero()
+                quest:RemoveOpinionDeedStillSearchingForWitnesses(getHero, entityPostOpinionDeedKeepSearchingForWitnesses)
+                quest:DisplayMiniGameInfo(false, 4)
+                if not flag3UVar then
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00eebc32 end
+                    retailRandModulo = target ~= nil and target:IsAlive()
+                    if retailRandModulo then
+                        scratchValue = quest:IsActiveThreadTerminating()
+                        if scratchValue then goto LAB_00eebc32 end
+                        retailRandModulo = quest:RetailRandModulo(32768)
+                        local scratchValue6 = retailRandModulo % 100
+                        if scratchValue6 < progress * 100.0 then
+                            scratchValue = quest:IsActiveThreadTerminating()
+                            if scratchValue then goto LAB_00eebc32 end
+                            quest:EntitySetAsPickLocked(target)
+                            quest:ChangeHeroMoralityDueToPicklock()
+                        end
                     end
                 end
+                resources:DestroyMovie(movie)
+                scratchValue8 = 0
+                getActiveQuestName = quest:GetActiveQuestName()
+                quest:DeactivateQuestLater(getActiveQuestName, scratchValue8)
+                resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
+                return
             end
-            resources:DestroyMovie(movie)
-            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-            do return end
             ::LAB_00eebc32::
             resources:DestroyMovie(movie)
+            resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
             return
         end
-        if quest:IsActiveThreadTerminating() then return end
+        scratchValue = quest:IsActiveThreadTerminating()
+        if scratchValue then goto LAB_00eeb8af end
     else
-        if quest:IsActiveThreadTerminating() then return end
+        scratchValue = quest:IsActiveThreadTerminating()
+        if scratchValue then
+            resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
+            return
+        end
     end
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+    scratchValue8 = 0
+    getActiveQuestName = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(getActiveQuestName, scratchValue8)
+    ::LAB_00eeb8af::
+    resources:RetireThingOutput(picklockTargetOwner); picklockTargetOwner = 0
+    end)
 end
 
 -- Expression_Picklock.Init (retail 0x00eeb7a0)

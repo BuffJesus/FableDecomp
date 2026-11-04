@@ -1,0 +1,75 @@
+{
+  "quest": "V_BookCollecting",
+  "host": "V_BookCollecting",
+  "maps": "BowerstoneSlums$",
+  "legs": {},
+  "enemyNames": [],
+  "clear": false,
+  "answer": "yes",
+  "steps": [
+    {
+      "name": "verify two donations before duplicate grant",
+      "do": [
+        "assert(quest:GetStateBool('DoneIntro')); assert(quest:GetStateInt('BooksInGame')==40); assert(quest:GetStateInt('BooksDonated')==2); assert(quest:GetStateInt('GoodBooksDonated')==2); assert(not quest:GetStateBool('ReadingBook')); assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero()), 'donated book still in inventory'); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do assert(quest:GetStateFlagVectorAt(name,i)==(i<2),name..'['..i..']') end end; assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,1),quest:GetHero()),'second donated book still in inventory'); Runner.twoDonationsLoaded=true"
+      ],
+      "until": "Runner.twoDonationsLoaded==true",
+      "timeout": 30,
+      "tries": 1
+    },
+    {
+      "name": "grant previously donated book zero",
+      "do": [
+        "local key=quest:ReadGlobalGameDataStringAt(0x4d4,0); if not quest:IsObjectInThingsPossession(key,quest:GetHero()) then quest:GiveHeroObject(key,1) end; assert(quest:IsObjectInThingsPossession(key,quest:GetHero()))"
+      ],
+      "until": "quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero())",
+      "timeout": 100,
+      "tries": 2
+    },
+    {
+      "name": "teacher rejects duplicate donation",
+      "do": [
+        "quest:SetTimeOfDay(12.0)",
+        "Runner.duplicateSceneSeen=false; Runner.probe=function(q) if q:IsInMovieSequence() then Runner.duplicateSceneSeen=true end end"
+      ],
+      "talk": "BS_Teacher",
+      "talkLabel": "Mr. Gout - Teacher",
+      "talkSides": [
+        [
+          0,
+          -1.3
+        ],
+        [
+          -1.5,
+          0
+        ],
+        [
+          1.5,
+          0
+        ],
+        [
+          0,
+          -2
+        ]
+      ],
+      "until": "Runner.duplicateSceneSeen and not quest:IsInCutscene() and not quest:IsInMovieSequence()",
+      "timeout": 140,
+      "tries": 2
+    },
+    {
+      "name": "verify duplicate retained and all donation state unchanged",
+      "do": [
+        "assert(quest:GetStateInt('BooksDonated')==2 and quest:GetStateInt('GoodBooksDonated')==2); assert(not quest:GetStateBool('ReadingBook') and not quest:IsInCutscene() and not quest:IsInMovieSequence()); assert(quest:GetStateInt('LastBookRequested')==-1); assert(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero())); assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,1),quest:GetHero())); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do assert(quest:GetStateFlagVectorAt(name,i)==(i<2),name..'['..i..']') end end; assert(Runner.duplicateSceneSeen); Runner.probe=nil; Runner.duplicateVerified=true"
+      ],
+      "until": "Runner.duplicateVerified==true",
+      "timeout": 30,
+      "tries": 1
+    }
+  ],
+  "done": "Runner.duplicateVerified==true",
+  "failed": "false",
+  "stateStatus": "'BooksDonated='..tostring(quest:GetStateInt('BooksDonated'))..' GoodBooks='..tostring(quest:GetStateInt('GoodBooksDonated'))..' Inventory0='..tostring(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero()))..' Movie='..tostring(quest:IsInMovieSequence())..' ObservedScene='..tostring(Runner.duplicateSceneSeen)",
+  "pauseSteps": [
+    "clear",
+    "key ENTER"
+  ]
+}

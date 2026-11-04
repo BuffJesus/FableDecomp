@@ -49,21 +49,25 @@
             "GetPos",
             "ENGINE_ZeroVector",
             "GetPos",
+            "ENGINE_Fmod",
             "SetStateFloat",
             "ENGINE_ZeroVector",
             "GetPos",
             "ENGINE_ZeroVector",
             "GetPos",
+            "ENGINE_Fmod",
             "SetStateFloat",
             "ENGINE_ZeroVector",
             "GetPos",
             "ENGINE_ZeroVector",
             "GetPos",
+            "ENGINE_Fmod",
             "SetStateFloat",
             "ENGINE_ZeroVector",
             "GetPos",
             "ENGINE_ZeroVector",
             "GetPos",
+            "ENGINE_Fmod",
             "SetStateFloat",
             "QUESTTHING_Empty",
             "QUESTTHING_Empty",
@@ -71,7 +75,7 @@
             "QUESTTHING_Empty",
             "QUESTTHING_Empty"
           ],
-          "lines": 95,
+          "lines": 99,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -180,6 +184,7 @@
             "GetThingWithScriptName",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
+            "ENGINE_Fmod",
             "EntitySetFacingAngle",
             "IsActiveThreadTerminating",
             "QUESTTHING_Empty",
@@ -189,7 +194,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 37,
+          "lines": 38,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -536,21 +541,6 @@
         "StatueMasterStatue": "V_StatueMaster/Entities/StatueMasterStatue",
         "StatueMasterCellarDoors": "V_StatueMaster/Entities/StatueMasterCellarDoors",
         "StatueMasterChest": "V_StatueMaster/Entities/StatueMasterChest"
-      },
-      "declaredFreeLocals": {
-        "FSE/V_StatueMaster/V_StatueMaster.lua": {
-          "Main": [
-            "fret_0",
-            "fret_00",
-            "fret_01",
-            "fret_02"
-          ]
-        },
-        "FSE/V_StatueMaster/Entities/StatueMasterStatue.lua": {
-          "Main": [
-            "fret_0"
-          ]
-        }
       },
       "sharedHelpers": {
         "path": "FSE/V_StatueMaster/native_quest_helpers.lua",

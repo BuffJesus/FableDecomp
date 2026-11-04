@@ -3,19 +3,32 @@
 
 -- Expression_Follow.Main (retail 0x00eea020)
 function Main(quest)
-    local hero = quest:GetHero()
-    local resources = quest:RetailResources()
-    if not quest:NewScriptFrame() then return end
-    if not hero:AcquireControl(4) then return end
-    local movie = resources:StartMovie("")
-    quest:FadeScreenOut(0.5, 0.5)
-    quest:Pause(1.0)
-    quest:CreateThread("FollowThread")  -- native thread body CExpression_FollowScript__FollowThread: lift it as function FollowThread(quest)
-    quest:CameraDefault()
-    quest:Pause(1.0)
-    quest:FadeScreenIn()
-    resources:DestroyMovie(movie)
-    hero:ReleaseControl()
+    return quest:WithRetailResources(function(resources)
+        local controlAcquired
+        local hero = quest:GetHero()
+        quest:RegisterQuestConsciousCondition(hero)
+        quest:NewScriptFrame()
+        if quest:IsActiveThreadTerminating() then return end
+        local resource = resources:NewResource()
+        local hero2 = quest:GetHero()
+        controlAcquired = resources:TryAcquire(resource, hero2, 4)
+        while not controlAcquired do
+            quest:NewScriptFrame()
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            local hero3 = quest:GetHero()
+            controlAcquired = resources:TryAcquire(resource, hero3, 4)
+        end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+        local movie = resources:StartMovie("")
+        quest:FadeScreenOut(0.5, 0.5)
+        quest:Pause(1.0)
+        quest:CreateThread("FollowThread")  -- native thread body CExpression_FollowScript__FollowThread: lift it as function FollowThread(quest)
+        quest:CameraDefault()
+        quest:Pause(1.0)
+        quest:FadeScreenIn()
+        resources:DestroyMovie(movie)
+        resources:ReleaseResource(resource)
+    end)
 end
 
 -- Expression_Follow.Init (retail 0x00ee9f70)
@@ -28,26 +41,29 @@ end
 
 -- Expression_Follow.FollowThread (retail 0x00eea240)
 function FollowThread(quest)
-    local sequence, scratchValue
-    local target = quest:GetHeroTargetedThing()
-    sequence = scratchValue == nil
-    if not sequence then
-        -- TODO(native): cVar2 = (**(*piStack_18 + 0x12c))()
-    --[[unresolved native value]]
-        sequence = not nil
-    end
-    if sequence then
-        if quest:IsActiveThreadTerminating() then return end
-        quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-        return
-    else
-        if quest:IsActiveThreadTerminating() then return end
-        target:AcquireControl(4)
-        while not quest:IsActiveThreadTerminating() do
-            quest:NewScriptFrame()
+    return quest:WithRetailResources(function(resources)
+        local target = quest:GetHeroTargetedThing()
+        local followTargetOwner = resources:TrackThingOutput(target)
+        if target == nil or not (target ~= nil and target:IsAlive()) then
+            if not quest:IsActiveThreadTerminating() then
+                local pQuestName = quest:GetActiveQuestName()
+                quest:DeactivateQuestLater(pQuestName, 0)
+                resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0
+                return
+            end
+        elseif not quest:IsActiveThreadTerminating() then
+            local resource = resources:NewResource()
+            resources:TryAcquire(resource, target, 4)
+            local hero = quest:GetHero()
+            resources:FollowThing(resource, hero, 1.0, true)
+            while not quest:IsActiveThreadTerminating() do
+                quest:NewScriptFrame()
+            end
+            resources:ReleaseResource(resource)
+            resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0
+            return
         end
-        target:ReleaseControl()
-        return
-    end
+        resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0
+    end)
 end
 

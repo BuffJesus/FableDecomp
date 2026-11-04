@@ -1,4 +1,4 @@
-# Full tour guide native conversion coverage
+# TourGuide retained waypoint copy
 
 Compilation is not behavioral parity. Missing bodies and unresolved operations prevent completion.
 
@@ -9,15 +9,15 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | V_TourGuide | V_TourGuide | OnPersist | 0x00ee5720 | True | 0 |
 | V_TourGuide | V_TourGuide | WatchForGuideKilled | 0x00ee4a70 | True | 0 |
 | V_TourGuide | V_TourGuide | WatchForClosingTime | 0x00ee4a00 | True | 0 |
-| V_TourGuide | V_TourGuide | WatchForNoFollowers | 0x00ee6a40 | True | 2 |
-| V_TourGuide | V_TourGuide | helper_EE6850 | 0x00ee6850 | True | 3 |
+| V_TourGuide | V_TourGuide | WatchForNoFollowers | 0x00ee6a40 | True | 1 |
+| V_TourGuide | V_TourGuide | helper_EE6850 | 0x00ee6850 | True | 0 |
 | V_TourGuide | TourGuideGuide | Main | 0x00ee57b0 | True | 3 |
 | V_TourGuide | TourGuideGuide | Init | 0x00ee4c60 | True | 0 |
 | V_TourGuide | TourGuideGuide | OnPersist | 0x00cdebc0 | True | 0 |
 | V_TourGuide | TourGuideGuide | OnPredicateFail | 0x00ee4cc0 | True | 0 |
-| V_TourGuide | TourGuideFollower | Main | 0x00ee4dd0 | True | 5 |
+| V_TourGuide | TourGuideFollower | Main | 0x00ee4dd0 | True | 2 |
 | V_TourGuide | TourGuideFollower | Init | 0x00ee4da0 | True | 0 |
 | V_TourGuide | TourGuideFollower | OnPersist | 0x00cdebc0 | True | 0 |
 | V_TourGuide | TourGuideFollower | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 3, "functions": 15, "missing": 0, "functionSyntaxPassed": 15, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 13}`
+Summary: `{"owners": 3, "functions": 15, "missing": 0, "functionSyntaxPassed": 15, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 6}`

@@ -11,6 +11,7 @@ do
 end
 
 function Main(quest, me)
+    local resources = quest:RetailResources()
     local CVar4, bVar1, ctr_8, fVar5, iVar3, pCVar2, pPosition, r1, thing2
     local alive = true
     quest:Pause(0.5)
@@ -30,9 +31,9 @@ function Main(quest, me)
     end
     bVar1 = false
     pPosition = me:GetPos()
-    r1 = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", pPosition, "")
+    r1 = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", pPosition, "", bVar1)
     pCVar2 = quest:GetHero()
-    fVar5 = (quest:GetDistanceBetweenThings(r1, pCVar2) ^ 2)
+    fVar5 = resources:DistanceBetweenThings(r1, pCVar2)
     ctr_8 = math.floor((fVar5 * 0.06666667014360428 + 0.5) + 0.5)
     if fVar5 * 0.06666667014360428 == ctr_8 - 1.0 then
         ctr_8 = ctr_8 - 1
@@ -44,7 +45,7 @@ function Main(quest, me)
         if bVar1 then goto LAB_00dfcbf7 end
         CVar4 = 0x3
     end
-    iVar3 = math.random(0, 32767)
+    iVar3 = quest:RetailRandModulo(32768)
     if iVar3 % CVar4 == 0 then
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive

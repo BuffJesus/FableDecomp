@@ -557,7 +557,7 @@ function RunTutorials(quest)
             pCVar3 = quest:GetThingWithScriptName("CombatApprenticeMarker")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r7 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "CombatApprentice")
+            r7 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "CombatApprentice", bVar2)
             pCVar3 = quest:GetThingWithScriptName("CombatApprentice")
             pCVar3:SetToKillOnLevelUnload(false)
         end
@@ -598,7 +598,7 @@ function RunTutorials(quest)
         pCVar3 = quest:GetThingWithScriptName("M_MeleeOpponentStand")
         bVar2 = false
         pCVar4 = pCVar3:GetPos()
-        r8 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar4, "MeleeApprentice")
+        r8 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar4, "MeleeApprentice", bVar2)
         pCVar3 = quest:GetThingWithScriptName("SkillApprentice")
         bVar2 = (pCVar3 ~= nil and pCVar3:IsAlive())
         if bVar2 then
@@ -674,7 +674,7 @@ function RunTutorials(quest)
             pCVar3 = quest:GetThingWithScriptName("SkillApprenticeMarker")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r9 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "SkillApprentice")
+            r9 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "SkillApprentice", bVar2)
             pCVar3 = quest:GetThingWithScriptName("SkillApprentice")
             pCVar3:SetToKillOnLevelUnload(false)
         end
@@ -687,7 +687,7 @@ function RunTutorials(quest)
             pCVar3 = quest:GetThingWithScriptName("BirdKillerMarker")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r10 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "BirdKiller")
+            r10 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "BirdKiller", bVar2)
         end
     end
     if quest:GetStateInt("GameState") == 7 then
@@ -709,7 +709,7 @@ function RunTutorials(quest)
         pCVar3 = quest:GetThingWithScriptName("M_MeleeOpponentStand")
         bVar2 = false
         pCVar4 = pCVar3:GetPos()
-        r11 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar4, "MeleeApprentice")
+        r11 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar4, "MeleeApprentice", bVar2)
         bVar2 = quest:IsQuestActive("Q_GuildTrainingWill")
         if not bVar2 then
             alive = not quest:IsActiveThreadTerminating()
@@ -749,7 +749,7 @@ function RunTutorials(quest)
             pCVar3 = quest:GetThingWithScriptName("WillApprenticeMarker")
             bVar2 = false
             pCVar4 = pCVar3:GetPos()
-            r12 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "WillApprentice")
+            r12 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar4, "WillApprentice", bVar2)
             pCVar3 = quest:GetThingWithScriptName("WillApprentice")
             pCVar3:SetToKillOnLevelUnload(false)
         end
@@ -768,7 +768,7 @@ function RunTutorials(quest)
     pCVar3 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     bVar2 = false
     pCVar4 = pCVar3:GetPos()
-    r13 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar4, "MeleeApprentice")
+    r13 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar4, "MeleeApprentice", bVar2)
     bVar2 = quest:IsQuestActive("Q_GuildTrainingDeparture")
     if not bVar2 then
         alive = not quest:IsActiveThreadTerminating()
@@ -1635,7 +1635,7 @@ function KeepTabsOnWhisper(quest)
                                             pCVar4 = quest:GetThingWithScriptName("M_MeleeOpponentStand")
                                             bVar2 = false
                                             pPosition = pCVar4:GetPos()
-                                            r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pPosition, "MeleeApprentice")
+                                            r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pPosition, "MeleeApprentice", bVar2)
                                         end
                                     end
                                 end
@@ -1755,7 +1755,7 @@ function RunArrivalCutscene(quest)
     pCVar4 = quest:GetThingWithScriptName("MK_GTA_MAZE1")
     bVar3 = false
     pPosition = pCVar4:GetPos()
-    r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_CUTSCENE", pPosition, "CutsceneMaze")
+    r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_MAZE_CUTSCENE", pPosition, "CutsceneMaze", bVar3)
     pCVar4 = nil
     xStack_30 = resources:NewResource()
     resources:PrepareResource(xStack_30)
@@ -1866,11 +1866,11 @@ function RunCeremonyCutscene(quest)
         pCVar4 = quest:GetThingWithScriptName("MK_GTC_WHISSTART")
         bVar2 = false
         pCVar5 = pCVar4:GetPos()
-        r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar5, "Whisper")
+        r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar5, "Whisper", bVar2)
         pCVar4 = quest:GetThingWithScriptName("MK_GTC_GMSTART")
         bVar2 = false
         pCVar5 = pCVar4:GetPos()
-        r2 = quest:CreateCreature("CREATURE_GUILDKEEPER", pCVar5, "GM")
+        r2 = quest:CreateCreature("CREATURE_GUILDKEEPER", pCVar5, "GM", bVar2)
         xStack_40 = resources:NewResource()
         resources:PrepareResource(xStack_40)
         bVar2 = resources:TryAcquire(xStack_40, r1, 4)

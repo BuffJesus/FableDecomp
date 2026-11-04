@@ -127,7 +127,7 @@ function Main(quest, me)
             bVar3 = false
             pThing = quest:GetHero()
             quest:EntitySetFacingAngleTowardsThing(pThing, me, bVar3)
-            me:PlayLoopingAnimation("DEFEATED_POSE", -1, false, false, false)
+            resources:PlayLoopingAnimation(xStack_20, "DEFEATED_POSE", -1, false, false, false, true, true, false, false)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             repeat
@@ -242,6 +242,10 @@ function Main(quest, me)
                     p1 = "TEXT_QST_009_TWINBLADE_OVER"
                     pCVar11 = quest:GetHero()
                     r1 = me:Speak(pCVar11, p1, iVar9, (iVar10 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                    if not r1 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        goto LAB_00d0b27a
+                    end
                     iVar9 = me:IsPerformingScriptTask()
                     cVar7 = iVar9
                     while cVar7 do

@@ -1,0 +1,23 @@
+{
+  "dll": "msvcr71.dll",
+  "sha256": "8094af5ee310714caebccaeee7769ffb08048503ba478b879edfef5f1a24fefe",
+  "randExport": "0x7c366be9",
+  "thunk": "ff2524014401",
+  "imports": [
+    [
+      "MSVCR71.dll",
+      "rand"
+    ]
+  ],
+  "instructions": [
+    "7c366be9 e8482afeff call 0x7c349636",
+    "7c366bee 8b4814 mov ecx, dword ptr [eax + 0x14]",
+    "7c366bf1 69c9fd430300 imul ecx, ecx, 0x343fd",
+    "7c366bf7 81c1c39e2600 add ecx, 0x269ec3",
+    "7c366bfd 894814 mov dword ptr [eax + 0x14], ecx",
+    "7c366c00 8bc1 mov eax, ecx",
+    "7c366c02 c1e810 shr eax, 0x10",
+    "7c366c05 25ff7f0000 and eax, 0x7fff",
+    "7c366c0a c3 ret "
+  ]
+}

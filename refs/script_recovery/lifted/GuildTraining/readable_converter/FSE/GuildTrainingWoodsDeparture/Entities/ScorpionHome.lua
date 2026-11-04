@@ -11,36 +11,43 @@ local scorpionsLeft, flourishHint
 
 -- ScorpionHome.Main (retail 0x00d643a0)
 function Main(quest, me)
-    local pPosition
+    local pPosition, guildStagBeetle
     while quest:GetStateInt("DepartureMissionPoint") ~= 1 do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    local infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles))), 1.0)
+    local scratchValue2 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles)))
+    local infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", scratchValue2, 1.0)
     quest:DisplayQuestInfo(true)
     while quest:GetStateInt("DepartureMissionPoint") == 1 do
         if not quest:NewScriptFrame(me) then return end
         local guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
-        local count = #guildScorpions
-        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles) - scorpionsLeft) - count)), -1)
-        if #guildScorpions < 3 then
+        local count2 = #guildScorpions
+        local scratchValue = count2
+        local count = math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_DepartureBeetles) - scorpionsLeft) - scratchValue))
+        quest:UpdateQuestInfoCounter(infoCounter, count, -1)
+        if (#guildScorpions) < 3 then
             if quest:IsActiveThreadTerminating() then return end
-            if #guildScorpions == 0 and scorpionsLeft == 0 then
+            if (#guildScorpions == 0) and scorpionsLeft == 0 then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateInt("DepartureMissionPoint", 2)
                 quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_12", "", "")
             elseif 0 < scorpionsLeft then
-                local scorpionSpawn = quest:GetFurthestWithScriptName(quest:GetHero(), "ScorpionSpawn")
+                if quest:IsActiveThreadTerminating() then return end
+                local hero = quest:GetHero()
+                local scorpionSpawn = quest:GetFurthestWithScriptName(hero, "ScorpionSpawn")
                 if scorpionSpawn == nil then
                     pPosition = {x = 0, y = 0, z = 0}
                 else
                     pPosition = scorpionSpawn:GetPos()
                 end
-                local guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+                guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions", false)
                 if guildStagBeetle ~= nil then
                     guildStagBeetle:SetToKillOnLevelUnload(false)
                 end
                 quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsDeparture")
                 scorpionsLeft = scorpionsLeft - 1
+                guildStagBeetle = nil
             end
         end
     end

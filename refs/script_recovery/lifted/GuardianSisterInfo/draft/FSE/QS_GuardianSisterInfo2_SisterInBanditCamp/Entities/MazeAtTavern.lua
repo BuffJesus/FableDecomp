@@ -72,7 +72,7 @@ function Main(quest, me)
                 quest:AddPersonToConversation(iVar5, pCVar6)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar5, "TEXT_QST_027_MAZE_CALL_HERO_OVER_10", me, pCVar6, false)
-                me:PlayAnimation("ST_HELLO", false, false, false, true, true, false, false)
+                resources:PlayAnimationWithNativeArgument5(xStack_8c, "ST_HELLO", false, false, false, true, false, false)
                 quest:SetTimer(i_stk_98, 5)
                 uVar15 = u_stk_7c
             end
@@ -169,6 +169,13 @@ function Main(quest, me)
                 p1 = "TEXT_QST_076_MAZE_ON_HIT_10"
                 pCVar6 = quest:GetHero()
                 r1 = me:Speak(pCVar6, p1, iVar11, (iVar5 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                if not r1 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_48)
+                    quest:DeregisterTimer(i_stk_98)
+                    resources:ReleaseResource(xStack_8c)
+                    return
+                end
                 iVar11 = me:IsPerformingScriptTask()
                 cVar4 = iVar11
                 while cVar4 do
@@ -195,7 +202,7 @@ function Main(quest, me)
                     return
                 end
             end
-            __native_entity_state:SetStateInt("HitCount", __native_entity_state:GetStateInt("HitCount") + 1)
+            __native_entity_state:SetStateInt("HitCount", ((__native_entity_state:GetStateInt("HitCount") + 1 + 2147483648) % 4294967296 - 2147483648))
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_48)
         end
@@ -292,7 +299,7 @@ function Main(quest, me)
             bVar3 = not alive
             if not bVar3 then
                 me:ClearCommands()
-                me:PlayAnimation("ST_TELEPORT_OUT", false, false, false, true, true, false, false)
+                resources:PlayAnimationWithNativeArgument5(xStack_8c, "ST_TELEPORT_OUT", false, false, false, true, false, false)
                 bVar13 = false
                 bVar3 = false
                 fVar14 = 0.0

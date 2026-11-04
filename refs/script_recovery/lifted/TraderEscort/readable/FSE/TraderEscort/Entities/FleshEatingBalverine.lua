@@ -11,6 +11,7 @@ function Main(quest, me)
     while not quest:GetStateBool("ShownBalverine") do
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -24,15 +25,18 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         if not predicateResult9 then
             if not me:IsPerformingScriptTask() then
-                me:PlayAnimation("ST_MUNCH", false, false, false, true, true, false, false)
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+                resources:PlayAnimationWithNativeArgument5(resource, "ST_MUNCH", false, false, false, true, false, false)
                 quest:EntityPlayObjectAnimation(balverineDinner, "EATEN_BY_BALVERINE", false)
             end
-            if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 25.0) then
+            local thing = quest:GetHero()
+            if quest:IsDistanceBetweenThingsUnder(me, thing, 25.0) then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 predicateResult9 = true
                 while me:IsPerformingScriptTask() do
                     if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 end
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 predicateResult8 = true
             end
         end

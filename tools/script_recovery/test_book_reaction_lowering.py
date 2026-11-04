@@ -59,7 +59,7 @@ def test_generated_worker_keeps_markers_actor_values_and_exit_order(generated, l
             return f'marker-{offset}-{index}'
         quest = lua.table_from({
             'RetailResources': lambda _: resources,
-            'GlobalConversations': lambda _self, offset: lua.table_from({4: lua.table_from({'Lines': lines})}),
+            'GetStateConversations': lambda _self, offset: lua.table_from({4: lua.table_from({'Lines': lines})}),
             'ReadGlobalGameDataStringAt': marker,
             'GetThingWithScriptName': lambda _self, value: value,
             'EntityTeleportToThing': record('teleport'),
@@ -115,9 +115,7 @@ def test_generated_teacher_dispatches_registered_worker_with_original_index(gene
         assert callable(lua.globals()[name])
         # Isolate cutscene-string construction and existing resource/conversation
         # gaps; this exercises dispatch and early exits, not full donation parity.
-        lua.execute(teacher + '\nif __native_entity_state then '
-                    '__native_entity_state:SetStateInt("BooksWanted", 0) else booksWanted = 0 end\n'
-                    'helper_E57020 = function() end; GetBookSpecificArgs = function() end')
+        lua.execute(teacher + '\nhelper_E57020 = function() end; GetBookSpecificArgs = function() end')
         events = []
         noop = lambda *args: None
         resources = lua.table_from({k: noop for k in ('SetActor', 'TryAcquire', 'RunMacroWithStrings',
@@ -127,6 +125,13 @@ def test_generated_teacher_dispatches_registered_worker_with_original_index(gene
             resources[key] = lambda *args: lua.table()
         quest = lua.table_from({k: noop for k in ('GiveHeroYesNoQuestion', 'TakeObjectFromHero',
                                'SetStateInt', 'FixMovieSequenceCamera', 'FadeScreenIn')})
+        inventory = []
+        def definition(_, offset, index):
+            inventory.append(('read', offset, index))
+            return f'BOOK_{index}'
+        quest['GetStateStringVectorAt'] = definition
+        quest['TakeObjectFromHero'] = lambda _, book: inventory.append(('take', book))
+        quest['SetStateFlagVectorAt'] = lambda _, name, index, value: inventory.append(('flag', name, index, value))
         quest['RetailResources'] = lambda _: resources
         quest['MsgIsQuestionAnsweredYesOrNo'] = lambda _: answer
         quest['IsActiveThreadTerminating'] = lambda _: terminate
@@ -136,9 +141,18 @@ def test_generated_teacher_dispatches_registered_worker_with_original_index(gene
         quest['GetHero'] = lambda _: lua.table()
         quest['SetStateBool'] = lambda _, key, value: events.append((key, value))
         quest['CreateThread'] = lambda _, key, opts: events.append((key, opts['args'][1]))
+        # Initialize through the emitted lifecycle; private field spellings can
+        # change when readable locals retain snapshots. Zero wanted skips the
+        # classroom path, while accepted25 keeps the completed-book reward out.
+        definitions = {1248: 0, 1252: 25, 1256: 35, 1264: 6, 1268: 9}
+        quest['ReadGlobalGameData'] = lambda _, offset: definitions[offset]
+        quest['ReadGlobalGameDataFloat'] = lambda *_: 0.0
+        lua.globals().Init(quest, lua.table())
         (lua.globals().helper_E55CE0 or lua.globals().AskForBook)(quest, lua.table(), 17)
         assert events == ([('ReadingBook', True), ('ReadingBook', False), (name, 17)]
                           if answer == 1 and not terminate else [])
+        assert inventory == ([('read', 'BookDef', 17), ('take', 'BOOK_17'), ('flag', 'BookDonated', 17, True)]
+                             if answer == 1 and not terminate else [])
 
 
 @pytest.mark.parametrize('speaker', ['boy0', 'girl0'])
@@ -159,7 +173,7 @@ def test_conversation_keeps_saved_handle_through_actor_and_animation_branches(ge
                                ('Animation', 'ANIM_START'), ('AnimLoop', loop)]})
         quest = lua.table_from({
             'RetailResources': lambda _: resource,
-            'GlobalConversations': lambda _, offset: lua.table_from([row]),
+            'GetStateConversations': lambda _, offset: lua.table_from([row]),
             'GetHero': lambda _: 'hero',
             'GetThingWithScriptName': lambda _, name: name,
             'IsActiveThreadTerminating': lambda _: False,

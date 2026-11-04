@@ -7,17 +7,24 @@ local helpers = require("V_StatueMaster.native_quest_helpers")
 
 -- StatueMasterStatue.Main (retail 0x00ed41d0)
 function Main(quest, me)
-    local f_stk_10_2, fret_0
+    local predicateResult
     quest:EntitySetCutsceneBehaviour(me, CUTSCENE_BEHAVIOUR_NOT_PAUSED)
+    local statueAltar
+    predicateResult = quest:IsActiveThreadTerminating()
     repeat
-        if quest:IsActiveThreadTerminating() then return end
-        f_stk_10_2 = helpers.HasCameraMode(quest, me) + 0.5
+        if predicateResult then
+            statueAltar = nil
+            return
+        end
+        local f_stk_10_2 = helpers.HasCameraMode(quest, me) + 0.5
+        local fret_0 = math.fmod(f_stk_10_2, 1.0)
         quest:EntitySetFacingAngle(me, fret_0, true)
         local scratchValue = helpers.GetStatuePointingPosition(quest, me)
         if scratchValue == 0 then
-            quest:NewScriptFrame(me)
+            quest:NewScriptFrame(me);
+            predicateResult = quest:IsActiveThreadTerminating();
         else
-            if quest:IsActiveThreadTerminating() then return end
+            if quest:IsActiveThreadTerminating() then statueAltar = nil; return end
             if scratchValue == 1 then
                 quest:SetReadableObjectTextTag(me, "TEXT_QST_061_STATUE_BOWERSTONE")
             elseif scratchValue == 3 then
@@ -26,7 +33,9 @@ function Main(quest, me)
                 quest:SetReadableObjectTextTag(me, "TEXT_QST_061_STATUE_NOWHERE")
             end
             quest:NewScriptFrame(me)
+            predicateResult = quest:IsActiveThreadTerminating()
         end
+        ::continue_1::
     until false
 end
 

@@ -8,21 +8,21 @@ local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
 -- PreMeleeMaze.Main (retail 0x00d43db0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult4, predicateResult5, msgIsHitByHero, predicateResult13
-    local fret_00, p0, this_00, movie
-    predicateResult13 = false
+    local predicateResult, predicateResult4, predicateResult5, predicateResult8, predicateResult14
+    local fret_00, p0, preMeleeMazeTargetMarker, this_00, movie, x_stk_3c_1
+    predicateResult14 = false
     predicateResult = false
     quest:EntitySetAsKillable(me, false, true)
     me:SetFriendsWithEverythingFlag(true)
-    local preMeleeMazeTargetMarker = quest:GetThingWithScriptName("PreMeleeMazeTargetMarker")
+    preMeleeMazeTargetMarker = quest:GetThingWithScriptName("PreMeleeMazeTargetMarker")
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource)
+            preMeleeMazeTargetMarker = nil
             do return end
         end
     end
@@ -31,6 +31,7 @@ function Main(quest, me)
     while true do
         if predicateResult4 then
             resources:ReleaseResource(resource)
+            preMeleeMazeTargetMarker = nil
             return
         end
         if quest:GetMasterGameState("GuildWarningOccuring") then
@@ -61,11 +62,11 @@ function Main(quest, me)
             goto LAB_00d44243
         else
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                predicateResult13 = true
+                predicateResult14 = true
                 predicateResult = true
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d44243 end
             end
-            predicateResult13 = true
+            predicateResult14 = true
             predicateResult5 = false
         end
         goto FLOW_past_lab_00d44243
@@ -73,20 +74,29 @@ function Main(quest, me)
         predicateResult5 = true
         ::FLOW_past_lab_00d44243::
         predicateResult = predicateResult and false
-        predicateResult13 = predicateResult13 and false
-        if not predicateResult5 then quest:NewScriptFrame(me); predicateResult4 = quest:IsActiveThreadTerminating(); goto continue_2 end
+        predicateResult14 = predicateResult14 and false
+        if not predicateResult5 then
+            quest:NewScriptFrame(me);
+            predicateResult4 = quest:IsActiveThreadTerminating();
+            goto continue_2
+        end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         me:ClearCommands()
         movie = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
-        fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+        x_stk_3c_1 = resources:ScriptThing(resource)
+        fret_00 = quest:GetHealth(x_stk_3c_1)
         if 0.0 < fret_00 then
-            me:Speak(hero, "TEXT_QST_028_MAZE_HIT", GROUP_SELECT_FIRST, false, true, false)
-            while me:IsPerformingScriptTask() do
-                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494 end
+            local hero = quest:GetHero()
+            if not me:Speak(hero, "TEXT_QST_028_MAZE_HIT", GROUP_SELECT_FIRST, false, true, false) then
+                quest:PauseAllNonScriptedEntities(false)
+            else
+                while me:IsPerformingScriptTask() do
+                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494 end
+                end
+                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494 end
+                goto FLOW_past_lab_00d44494
             end
-            if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494 end
-            goto FLOW_past_lab_00d44494
             ::LAB_00d44494::
             this_00 = movie
             resources:DestroyMovie(this_00)
@@ -106,30 +116,49 @@ function Main(quest, me)
     me:ClearCommands()
     local movie3 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
-    local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
-    if fret_0 <= 0.0 then
-        goto LAB_00d441a3
+    local scratchValue7 = resources:ScriptThing(resource)
+    local fret_0 = quest:GetHealth(scratchValue7)
+    if not (fret_0 <= 0.0) then
+        goto FLOW_past_lab_00d441a3
     end
-    goto FLOW_past_lab_00d441a3
     ::LAB_00d441a3::
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie3)
-    msgIsHitByHero = me:MsgIsHitByHero()
+    if me:MsgIsHitByHero() then
+        goto LAB_00d44243_c1
+    else
+        if me:MsgIsHitByAnySpecialAbilityFromHero() then
+            predicateResult14 = true
+            predicateResult = true
+            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00d44243_c1 end
+        end
+        predicateResult14 = true
+        predicateResult8 = false
+    end
+    goto FLOW_past_lab_00d44243_c1
+    ::LAB_00d44243_c1::
+    predicateResult8 = true
+    ::FLOW_past_lab_00d44243_c1::
     predicateResult = predicateResult and false
-    predicateResult13 = predicateResult13 and false
-    if msgIsHitByHero then
+    predicateResult14 = predicateResult14 and false
+    if predicateResult8 then
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         me:ClearCommands()
         local movie2 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
-        fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+        local x_stk_3c_2 = resources:ScriptThing(resource)
+        fret_00 = quest:GetHealth(x_stk_3c_2)
         if 0.0 < fret_00 then
-            me:Speak(hero, "TEXT_QST_028_MAZE_HIT", GROUP_SELECT_FIRST, false, true, false)
-            while me:IsPerformingScriptTask() do
-                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494_c1 end
+            local hero2 = quest:GetHero()
+            if not me:Speak(hero2, "TEXT_QST_028_MAZE_HIT", GROUP_SELECT_FIRST, false, true, false) then
+                quest:PauseAllNonScriptedEntities(false)
+            else
+                while me:IsPerformingScriptTask() do
+                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494_c1 end
+                end
+                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494_c1 end
+                goto FLOW_past_lab_00d44494_c1
             end
-            if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d44494_c1 end
-            goto FLOW_past_lab_00d44494_c1
             ::LAB_00d44494_c1::
             this_00 = movie2
             resources:DestroyMovie(this_00)
@@ -144,7 +173,14 @@ function Main(quest, me)
     quest:NewScriptFrame(me)
     goto FLOW_after_lab_00d441bb
     ::FLOW_past_lab_00d441a3::
-    me:Speak(hero, "TEXT_QST_028_MAZE_LEAVE_ME", GROUP_SELECT_FIRST, false, true, false)
+    local hero3 = quest:GetHero()
+    if not me:Speak(hero3, "TEXT_QST_028_MAZE_LEAVE_ME", GROUP_SELECT_FIRST, false, true, false) then
+        quest:PauseAllNonScriptedEntities(false)
+        this_00 = movie3
+        resources:DestroyMovie(this_00)
+        resources:ReleaseResource(resource)
+        return
+    end
     while me:IsPerformingScriptTask() do
         quest:NewScriptFrame(me)
         if quest:IsActiveThreadTerminating() then

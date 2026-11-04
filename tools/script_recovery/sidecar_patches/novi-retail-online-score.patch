@@ -1,0 +1,34 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 42ab64b..89c98ab 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1078,6 +1078,17 @@ void DestroyText(unsigned id) { Release(id, Kind::Text); }
+         return {x.as<float>(), y.as<float>(), z.as<float>()};
+     }
+ 
++    void UpdateOnlineScore(unsigned slot, float score) {
++        CheckOpen();
++        // Dispatch only reviewed original GSI score APIs; their state-dependent
++        // statistics behavior and receiver selection remain inside the engine.
++        if (slot != 0xB58)
++            throw std::runtime_error("Unknown retail online-score API slot");
++        if (!UpdateOnlineScore_ChickenKick_API)
++            throw std::runtime_error("Retail online-score API is unavailable");
++        UpdateOnlineScore_ChickenKick_API(m_game, score);
++    }
++
+     std::shared_ptr<RetailWideTextArguments> NewWideTextArguments() {
+         auto& entry = Add(Kind::WideTextArguments);
+         entry.wideTextArguments = std::make_shared<RetailWideTextArguments>(m_game, RetailWideTextAPIsForGame());
+@@ -2414,6 +2425,11 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["ArcCosTurns"] = &LuaRetailResources::ArcCosTurns;
+     type["CosTurnsLessThan"] = &LuaRetailResources::CosTurnsLessThan;
+     type["NewThingPositionList"] = &LuaRetailResources::NewThingPositionList;
++    type["UpdateOnlineScore"] = [](LuaRetailResources& resources, unsigned slot, sol::object value) {
++        if (!value.valid() || value.get_type() != sol::type::number)
++            throw std::runtime_error("Retail online score requires a Lua number");
++        resources.UpdateOnlineScore(slot, value.as<float>());
++    };
+     type["NewWideTextArguments"] = &LuaRetailResources::NewWideTextArguments;
+     type["RewardRemainingBarrel"] = &LuaRetailResources::RewardRemainingBarrel;
+     type["SpawnBarrelBeetle"] = &LuaRetailResources::SpawnBarrelBeetle;

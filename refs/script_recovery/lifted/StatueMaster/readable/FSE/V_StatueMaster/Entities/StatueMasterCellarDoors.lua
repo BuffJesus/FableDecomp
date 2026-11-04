@@ -5,15 +5,24 @@ local helpers = require("V_StatueMaster.native_quest_helpers")
 
 -- StatueMasterCellarDoors.Main (retail 0x00ed45a0)
 function Main(quest, me)
-    local predicateResult
+    local predicateResult, predicateResult2, predicateResult3, traderToEscort
+    predicateResult = false
+    predicateResult3 = false
     if helpers.GetStatuePointingPosition(quest, me) == 1 then
-        local traderToEscort = quest:GetThingWithScriptName("TraderToEscort")
         predicateResult = true
+        predicateResult3 = true
+        traderToEscort = quest:GetThingWithScriptName("TraderToEscort")
+        predicateResult2 = true
         if not (traderToEscort ~= nil and traderToEscort:IsAlive()) then goto LAB_00ed45ff end
     end
-    predicateResult = false
+    predicateResult2 = false
     ::LAB_00ed45ff::
+    if predicateResult3 then
+        traderToEscort = nil
+    end
     if predicateResult then
+    end
+    if predicateResult2 then
         if quest:IsActiveThreadTerminating() then return end
         quest:EntitySetAsLocked(me, false)
         return
@@ -24,6 +33,7 @@ function Main(quest, me)
             if not me:MsgIsUsedByHero() then
                 quest:NewScriptFrame(me)
             else
+                if quest:IsActiveThreadTerminating() then return end
                 quest:DisplayGameInfo("TEXT_QST_061_CELLAR_LOCKED")
                 while not quest:MsgIsGameInfoClickedPast() do
                     if not quest:NewScriptFrame(me) then return end

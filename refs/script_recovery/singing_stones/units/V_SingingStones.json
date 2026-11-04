@@ -874,5 +874,106 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedSingingEffectCleanup": {
+    "0x00ed2bb0": {
+      "sourceSha256": "e240b6ade8a9f5ab027583c507725c6b84ce153819f291146bace1332a617238",
+      "nativeSha256": "820d88bac5d408e6a68ad0e162aebcd3d6cf7636e1ed8d018fba8853b40c8374",
+      "killSites": [
+        "0x00ed2f0a",
+        "0x00ed312f",
+        "0x00ed32cc"
+      ],
+      "eraseSites": [
+        "0x00ed2f18",
+        "0x00ed313d",
+        "0x00ed32da"
+      ]
+    },
+    "0x00ed2a50": {
+      "sourceSha256": "9d9f5b2f9e22beec103230053c7dc590a81aedd729ee9d2ce9c6841854ab9027",
+      "nativeSha256": "8f2b96cfe46540e4249f9369630ed3d5fc6a8b11bb45b5a182ba0c2aded5d197",
+      "killSites": [
+        "0x00ed2b77"
+      ],
+      "eraseSites": [
+        "0x00ed2b85"
+      ]
+    },
+    "helperLua": {
+      "path": "refs/script_recovery/generated_helper_lua/00CBED82.lua",
+      "sha256": "cee53731fe4d7a1644c6265dc649382f219a125ab4333f7b5a48ffd27d412df2"
+    },
+    "sidecar": {
+      "NoviUnitBindings.h": {
+        "path": "work/codex_lua_summoning_fadein_20261004/sidecar_candidate/FableScriptExtender/NoviUnitBindings.h",
+        "sha256": "830a35aaaa8dd2c18cf1fc7c01badf78aa0263ebcf98c78f3e3cb7526fa611f5"
+      },
+      "LuaQuestState.cpp": {
+        "path": "work/codex_lua_summoning_fadein_20261004/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+        "sha256": "ad4c52606391704930440ba5883fc68993b31c43788985940f3ccae8dcceb61f"
+      },
+      "LuaEntityAPI.cpp": {
+        "path": "work/codex_lua_summoning_fadein_20261004/sidecar_candidate/FableScriptExtender/LuaEntityAPI.cpp",
+        "sha256": "1865e624886f0f0fade00b46ab6e4f1728965d5f9c845ff2256d136aa3052e46"
+      },
+      "LuaManager.cpp": {
+        "path": "work/codex_lua_summoning_fadein_20261004/sidecar_candidate/FableScriptExtender/LuaManager.cpp",
+        "sha256": "bb48f2f728bffe98a79192c331b472d2b84d1112b61780cc772cc1cb6e72bdac"
+      }
+    },
+    "helperDecompileSha256": "08cdc86ae77a8615a8375f700ab0205d16d3f2104b06e54ae7e785f4e8e30397"
+  },
+  "reviewedSingingPlaylistCompare": {
+    "0x00ed2bb0": {
+      "sourceSha256": "e240b6ade8a9f5ab027583c507725c6b84ce153819f291146bace1332a617238",
+      "nativeSha256": "820d88bac5d408e6a68ad0e162aebcd3d6cf7636e1ed8d018fba8853b40c8374"
+    }
+  },
+  "reviewedSingingNameSuffix": {
+    "0x00ed2bb0": {
+      "sourceSha256": "e240b6ade8a9f5ab027583c507725c6b84ce153819f291146bace1332a617238",
+      "nativeSha256": "820d88bac5d408e6a68ad0e162aebcd3d6cf7636e1ed8d018fba8853b40c8374"
+    }
+  },
+  "reviewedSingingStonePlay": {
+    "0x00ed3370": {
+      "sourceSha256": "c598d99a0726f8e8e7549f453d0512d413fd9a46a372121e4ed9ed5e0fb7b1af",
+      "nativeSha256": "ba1f973c4a9ab0a93dcca93da22fec67ca8c5e69daa7685000d72f8ce0385653"
+    }
+  },
+  "reviewedSingingEffectPush": {
+    "0x00ed3370": {
+      "sourceSha256": "c598d99a0726f8e8e7549f453d0512d413fd9a46a372121e4ed9ed5e0fb7b1af",
+      "nativeSha256": "ba1f973c4a9ab0a93dcca93da22fec67ca8c5e69daa7685000d72f8ce0385653"
+    }
+  },
+  "reviewedSingingEffectNamed": {
+    "0x00ed3370": {
+      "sourceSha256": "c598d99a0726f8e8e7549f453d0512d413fd9a46a372121e4ed9ed5e0fb7b1af",
+      "nativeSha256": "ba1f973c4a9ab0a93dcca93da22fec67ca8c5e69daa7685000d72f8ce0385653"
+    },
+    "sidecar": {
+      "path": "work/codex_lua_singing_effect_named_20261004/sidecar_candidate",
+      "buildReport": "work/codex_lua_singing_effect_named_20261004/sidecar_build.json",
+      "buildReportSha256": "09934aca11248056a09fa0a5ce812aa7a9195ba8c223d460b02a52c098bc3552"
+    }
+  },
+  "reviewedSingingTempCleanup": {
+    "0x00ed3370": {
+      "sourceSha256": "c598d99a0726f8e8e7549f453d0512d413fd9a46a372121e4ed9ed5e0fb7b1af",
+      "nativeSha256": "ba1f973c4a9ab0a93dcca93da22fec67ca8c5e69daa7685000d72f8ce0385653"
+    }
+  },
+  "reviewedSingingCamera": {
+    "0x00ed2bb0": {
+      "sourceSha256": "e240b6ade8a9f5ab027583c507725c6b84ce153819f291146bace1332a617238",
+      "nativeSha256": "820d88bac5d408e6a68ad0e162aebcd3d6cf7636e1ed8d018fba8853b40c8374"
+    },
+    "sidecar": {
+      "path": "work/codex_lua_singing_camera_20261004/sidecar_candidate",
+      "buildReport": "work/codex_lua_singing_camera_20261004/sidecar_build.json",
+      "buildReportSha256": "b6a169f6724c16db1a3c5f5063e6654637287b5b2a6da21acd62d981062145e7"
+    }
   }
 }

@@ -1,5 +1,7 @@
 # StatueMaster Lua port audit
 
+> This is the 2026-08 historical audit. The later `STATUEMASTER_XBOX_XREF.md` supplies the Xbox cross-reference that was unavailable at this checkpoint; its findings supersede that availability statement.
+
 Date: 2026-08-28
 
 Source reviewed: `D:\Downloads\StatueMaster.zip`, authored by AlbionSecrets,

@@ -5,47 +5,55 @@ local GROUP_SELECT_FIRST, GROUP_SELECT_RANDOM_NO_REPEAT = 0, 2  -- ETextGroupSel
 
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
-local helpers = require("V_SickChild.native_quest_helpers")
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    EndPotion = 1860,  -- 'OBJECT_MUSHROOM_POTION_01'
+}
 
--- per-entity fields (native class members; one Lua state per entity instance)
-local self0X14
+local helpers = require("V_SickChild.native_quest_helpers")
 
 -- SickChildsMother.Main (retail 0x00ecd9e0)
 function Main(quest, me)
-    local self_0x14
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isObjectInThingsPossession, predicateResult7, questionAnswer, scratchValue, movie3, movie4
+    local isObjectInThingsPossession, predicateResult7, questionAnswer, motherTalkMovie, hero5
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie3)
+        resources:DestroyMovie(motherTalkMovie)
     end
     if not quest:NewScriptFrame(me) then return end
-    resources:PrepareResource(resources:MemberResource("seh_Mother"))
+    local scratchValue = resources:MemberResource("seh_Mother")
+    resources:PrepareResource(scratchValue)
     while not resources:TryAcquire(resources:MemberResource("seh_Mother"), me, 4) do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    isObjectInThingsPossession = quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataString(1860), hero)
+    local scratchValue6 = quest:ReadGlobalGameDataString(SCRIPT_DEF.EndPotion)
+    local hero = quest:GetHero()
+    isObjectInThingsPossession = quest:IsObjectInThingsPossession(scratchValue6, hero)
     if isObjectInThingsPossession or not quest:GetStateBool("MotherIntroDone") then
         isObjectInThingsPossession = true
     end
     if isObjectInThingsPossession then
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetThingHasInformation(me, false, true, false)
     end
     if quest:IsActiveThreadTerminating() then return end
     repeat
         if not quest:GetStateBool("MotherIntroDone") then
-            if quest:IsDistanceBetweenThingsUnder(me, hero, 7.0) then
-                local movie = resources:StartMovie("")
+            local hero2 = quest:GetHero()
+            if quest:IsDistanceBetweenThingsUnder(me, hero2, 7.0) then
+                if quest:IsActiveThreadTerminating() then return end
+                local motherIntroMovie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 helpers.helper_ECE460(quest, me, "CS_SICK_INTRO", "NULL")
-                quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_SICK_CHILD", quest:GetActiveQuestName(), false)
-                quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_SICK_CHILD_OBJECTIVE_01", "", "")
+                local getActiveQuestName = quest:GetActiveQuestName()
+                quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_SICK_CHILD", getActiveQuestName, false)
+                local pQuestName = quest:GetActiveQuestName()
+                quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_SICK_CHILD_OBJECTIVE_01", "", "")
                 quest:SetStateBool("MotherIntroDone", true)
                 quest:ClearThingHasInformation(me)
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie)
+                resources:DestroyMovie(motherIntroMovie)
             end
         end
         if not quest:GetStateBool("MotherIntroDone") then
@@ -60,10 +68,13 @@ function Main(quest, me)
         ::FLOW_past_lab_00ecdd11::
         if predicateResult7 then
             if quest:IsActiveThreadTerminating() then return end
-            movie3 = resources:StartMovie("")
+            motherTalkMovie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
+            local scratchValue4 = quest:ReadGlobalGameDataString(SCRIPT_DEF.EndPotion)
+            hero5 = quest:GetHero()
+            local isObjectInThingsPossession2 = quest:IsObjectInThingsPossession(scratchValue4, hero5)
             local predicateResult18 = quest:IsActiveThreadTerminating()
-            if quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataString(1860), hero) then
+            if isObjectInThingsPossession2 then
                 if predicateResult18 then
                     ReleaseEverything()
                     return
@@ -76,69 +87,79 @@ function Main(quest, me)
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     else
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie3)
+                        resources:DestroyMovie(motherTalkMovie)
                         do return end
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie3)
+                    resources:DestroyMovie(motherTalkMovie)
                     return
                 end
                 local predicateResult = quest:IsActiveThreadTerminating()
                 if questionAnswer == 1 then
-                    if predicateResult then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie3); return end
+                    if predicateResult then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(motherTalkMovie); return end
                     helpers.helper_ECE460(quest, me, "CS_SICK_OUTRO", "NULL")
-                    quest:TakeObjectFromHero(quest:ReadGlobalGameDataString(1860))
+                    local scratchValue5 = quest:ReadGlobalGameDataString(SCRIPT_DEF.EndPotion)
+                    quest:TakeObjectFromHero(scratchValue5)
                     quest:ClearThingHasInformation(me)
                     quest:SetStateBool("FinishedQuest", true)
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie3)
+                    resources:DestroyMovie(motherTalkMovie)
                     if quest:IsActiveThreadTerminating() then return end
-                    resources:PrepareResource(resources:MemberResource("seh_Mother"))
+                    local scratchValue3 = resources:MemberResource("seh_Mother")
+                    resources:PrepareResource(scratchValue3)
                     repeat
                         quest:NewScriptFrame(me)
                     until quest:IsActiveThreadTerminating()
                     do return end
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie3)
+                    resources:DestroyMovie(motherTalkMovie)
                     return
                 end
                 if predicateResult then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie3)
+                    resources:DestroyMovie(motherTalkMovie)
                     return
                 end
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Mother"))) then
-                    -- TODO(native): iVar14 = *(self_0x14 + 0x48)
-                    scratchValue = nil --[[unresolved native value]]
-                    me:Speak(hero, "TEXT_QST_B10_MOTHER_ASK_CURE", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+                hero5 = nil
+                if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Mother"), 0.0) then
+                    hero5 = quest:GetHero()
+                    if not me:Speak(hero5, "TEXT_QST_B10_MOTHER_ASK_CURE", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(motherTalkMovie)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie3)
+                            resources:DestroyMovie(motherTalkMovie)
                             do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie3)
+                        resources:DestroyMovie(motherTalkMovie)
                         return
                     end
                 end
             else
                 if predicateResult18 then ReleaseEverything(); return end
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Mother"))) then
-                    -- TODO(native): iVar14 = *(self_0x14 + 0x48)
-                    scratchValue = nil --[[unresolved native value]]
-                    -- TODO(native): (**(code **)(iVar14 + 0x34))(pCVar13,pcVar15,uVar16,uVar17);
+                hero5 = nil
+                if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Mother"), 0.0) then
+                    hero5 = quest:GetHero()
+                    if not me:Speak(hero5, "TEXT_QST_B10_MOTHER_CURE_REMIND_10", GROUP_SELECT_FIRST, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(motherTalkMovie)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie4)
+                            resources:DestroyMovie(motherTalkMovie)
                             do return end
                         end
                     end
@@ -146,34 +167,40 @@ function Main(quest, me)
                 end
             end
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie3)
+            resources:DestroyMovie(motherTalkMovie)
         end
         if not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             if quest:IsActiveThreadTerminating() then return end
-            resources:StartMovie("")
+            local motherHitMovie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resources:MemberResource("seh_Mother"))) then
-                -- TODO(native): iVar14 = *(self_0x14 + 0x48)
-                scratchValue = nil --[[unresolved native value]]
-                me:Speak(hero, "TEXT_QST_B10_MOTHER_HIT", GROUP_SELECT_FIRST, false, true, false)
+            hero5 = nil
+            if resources:ResourceThingHealthAbove(resources:MemberResource("seh_Mother"), 0.0) then
+                hero5 = quest:GetHero()
+                if not me:Speak(hero5, "TEXT_QST_B10_MOTHER_HIT", GROUP_SELECT_FIRST, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(motherHitMovie)
+                    return
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie("")
+                        resources:DestroyMovie(motherHitMovie)
                         do return end
                     end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie("")
+                    resources:DestroyMovie(motherHitMovie)
                     return
                 end
             end
-            quest:EntitySetThingAsAllyOfThing(me, hero)
-            quest:EntitySetThingAsAllyOfThing(hero, me)
+            local hero3 = quest:GetHero()
+            quest:EntitySetThingAsAllyOfThing(me, hero3)
+            local hero4 = quest:GetHero()
+            quest:EntitySetThingAsAllyOfThing(hero4, me)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie("")
+            resources:DestroyMovie(motherHitMovie)
         end
         if not quest:NewScriptFrame(me) then return end
     until false

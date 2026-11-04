@@ -35,7 +35,7 @@ function Main(quest, me)
         if not bVar2 then
             quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
             quest:EntitySetInLimbo(me, false, true)
-            -- TODO(native): FadeInThing(p0,0x40000000);
+            me:FadeInThing(2.0)
             if __native_entity_state:GetStateInt("WaveID") == 1 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive

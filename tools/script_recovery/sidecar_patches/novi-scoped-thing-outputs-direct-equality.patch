@@ -1,0 +1,800 @@
+diff --git a/FableScriptExtender/DirectThingImplementationEquality.h b/FableScriptExtender/DirectThingImplementationEquality.h
+new file mode 100644
+index 0000000..c5a3da8
+--- /dev/null
++++ b/FableScriptExtender/DirectThingImplementationEquality.h
+@@ -0,0 +1,11 @@
++#pragma once
++
++// Scratch ABI candidate for native calls that load CScriptThing.Data and invoke
++// the concrete implementation vtable directly. Both arguments must be actual
++// 12-byte wrappers, including owned empty wrappers. No nil-safe substitution:
++// empty Data retains the native invalid-dereference behavior.
++inline bool DirectThingImplementationEquality(CScriptThing* lhs, const CScriptThing* rhs) {
++    auto* implementation = reinterpret_cast<CGameScriptThing*>(lhs->pImp.Data);
++    auto* table = reinterpret_cast<CGameScriptThingVTable*>(implementation->pVTable);
++    return table->IsEqualTo(implementation, reinterpret_cast<const CScriptThing*>(rhs->pImp.Data));
++}
+diff --git a/FableScriptExtender/FableAPI.cpp b/FableScriptExtender/FableAPI.cpp
+index 50916fd..973f6e6 100644
+--- a/FableScriptExtender/FableAPI.cpp
++++ b/FableScriptExtender/FableAPI.cpp
+@@ -6,6 +6,7 @@
+ #include <cfloat>
+ #include <intrin.h>
+ #include "EntityScriptingAPI.h"
++#include "RetailThingOutputOwner.h"
+ #include "LuaManager.h"
+ #pragma comment(lib, "shlwapi.lib")
+ 
+@@ -328,43 +329,42 @@ std::string GetScriptPath(const std::string& scriptFile) {
+ std::shared_ptr<CScriptThing> WrapScriptThingOutput(CScriptThing* pThingBuffer, bool retainShallowCopy) {
+     if (!pThingBuffer) return nullptr;
+ 
+-    // We must validate the result. IsNull check is safest.
+-    if (pThingBuffer->pVTable) {
+-        // --- THIS IS THE CORRECTED LINE ---
+-        auto* pVTable = reinterpret_cast<CScriptThingVTable*>(pThingBuffer->pVTable);
+-        // --- END CORRECTION ---
+-
+-        if (pVTable->IsNull && pVTable->IsNull(pThingBuffer)) {
+-            Game_free(pThingBuffer); // Free the buffer, it's a null object
+-            return nullptr;
+-        }
+-    }
+-    else {
+-        // No VTable, invalid.
+-        Game_free(pThingBuffer);
++    auto* table = reinterpret_cast<CScriptThingVTable*>(pThingBuffer->pVTable);
++    if (!table || !table->Destructor) {
++        Game_free(pThingBuffer); // A missing Thing vtable is not a valid output.
+         return nullptr;
+     }
+ 
+-    // A retail API that fills an output CScriptThing has already acquired this
+-    // reference through CBaseIntelligentPointer assignment. Only a raw shallow
+-    // copy from a borrowed container element needs an additional retain.
++    // An API output already owns its native reference. A raw container copy
++    // owns none until the explicit retain below. Retire owned null outputs and
++    // validation failures, without releasing an unretained borrowed copy.
++    bool ownsNativeReference = !retainShallowCopy;
++    auto destroy = [](CScriptThing* p) {
++        auto* current = reinterpret_cast<CScriptThingVTable*>(p->pVTable);
++        current->Destructor(p, 0);
++    };
++    auto freeBuffer = Game_free;
++    auto cleanupPending = [destroy, freeBuffer, &ownsNativeReference](CScriptThing* p) {
++        if (ownsNativeReference) destroy(p);
++        freeBuffer(p);
++    };
++    std::unique_ptr<CScriptThing, decltype(cleanupPending)> pending(pThingBuffer, cleanupPending);
++    if (table->IsNull && table->IsNull(pThingBuffer)) return nullptr;
++
+     if (retainShallowCopy && pThingBuffer->pImp.Info) {
+         pThingBuffer->pImp.Info->RefCount++;
+     }
+     else if (!pThingBuffer->pImp.Info) {
+         LogToFile("!!! WARNING: WrapScriptThingOutput - Thing has no pImp.Info! Cannot increment ref count.");
+     }
++    ownsNativeReference = true;
+ 
+-    // Return a shared_ptr that manages the heap-allocated buffer
+-    // and decrements the game's ref count on deletion.
+-    return std::shared_ptr<CScriptThing>(pThingBuffer, [](CScriptThing* p) {
+-        if (p && p->pImp.Info && p->pImp.Info->RefCount > 0) {
+-            p->pImp.Info->RefCount--;
+-        }
+-        if (p && Game_free) {
+-            Game_free(p);
+-        }
+-        });
++    // Virtual scalar destructor with flags0 performs the original decrement,
++    // final implementation/info destruction and wrapper clear without deleting
++    // this heap buffer. Shared ownership retires it once, then frees the buffer.
++    auto owner = std::make_shared<RetailThingOutputOwner>(pThingBuffer, destroy, freeBuffer);
++    pending.release();
++    return RetailThingOutputOwner::Publish(owner);
+ }
+ 
+ DWORD g_fableBase = 0;
+@@ -389,6 +389,7 @@ tScriptAllocFunc                        pSunnyvaleDataAlloc_func = nullptr;
+ CGameScriptInterfaceBase**              g_pDSTGame = nullptr;
+ tRunCutsceneMacro                       RunCutsceneMacro_Func = nullptr;
+ tFadeOutAndKillEntity                   FadeOutAndKillEntity_Func = nullptr;
++tFadeInThing                            FadeInThing_Func = nullptr;
+ tAddLogbookStoryEntry                   AddLogbookStoryEntry_Func = nullptr;
+ tAddEntityScriptBinding                 AddEntityScriptBinding_API = nullptr;
+ tPostAddScriptedEntities_CScriptBase    PostAddScriptedEntities_CScriptBase_API = nullptr;
+@@ -429,6 +430,7 @@ tStringVector_PushBack                  StringVector_PushBack_API = nullptr;
+ tStringVector_Destroy                   StringVector_Destroy_API = nullptr;
+ tCSGROSTB_Destructor                    CSGROSTB_Destroy_API = nullptr;
+ tRetailThingCopy RetailThing_Copy_API = nullptr;
++tRetailThingCopy RetailThing_Assign_API = nullptr;
+ tRetailThingDestroy RetailThing_Destroy_API = nullptr;
+ tRetailEntityCondition RetailEntity_SetCondition_API = nullptr;
+ void** g_pRetailAliveConditionVTable = nullptr;
+@@ -487,6 +489,7 @@ void InitializeFableAPI() {
+     IsActiveThreadTerminating_Quest_API = ASLR<tIsActiveThreadTerminating_Quest>(0xCB7940);
+     RunCutsceneMacro_Func = ASLR<tRunCutsceneMacro>(0xCBFB7D);
+     FadeOutAndKillEntity_Func = ASLR<tFadeOutAndKillEntity>(0xCBE716);
++    FadeInThing_Func = ASLR<tFadeInThing>(0xCBE7AA);
+     AddLogbookStoryEntry_Func = ASLR<tAddLogbookStoryEntry>(0xCBE87F);
+     StdMap_Construct_API = ASLR<tStdMap_Constructor>(0xCDBF70);
+     StdMap_Destroy_API = ASLR<tStdMap_Destructor>(0xCDBFB0);
+@@ -538,6 +541,7 @@ void InitializeFableAPI() {
+     StringVector_Destroy_API = ASLR<tStringVector_Destroy>(0x414EA0);
+     CSGROSTB_Destroy_API = ASLR<tCSGROSTB_Destructor>(0x7E74D0);
+     RetailThing_Copy_API = ASLR<tRetailThingCopy>(0x4ABE90);
++    RetailThing_Assign_API = ASLR<tRetailThingCopy>(0x8AB980);
+     RetailThing_Destroy_API = ASLR<tRetailThingDestroy>(0x4AA840);
+     RetailEntity_SetCondition_API = ASLR<tRetailEntityCondition>(0xF35B10);
+     g_pRetailAliveConditionVTable = ASLR<void**>(0x12C32F0);
+diff --git a/FableScriptExtender/FableAPI.h b/FableScriptExtender/FableAPI.h
+index cbf3b50..add2bce 100644
+--- a/FableScriptExtender/FableAPI.h
++++ b/FableScriptExtender/FableAPI.h
+@@ -238,6 +238,8 @@ typedef void(__fastcall* tRunCutsceneMacro)(const CCharString* macro_name, void*
+ // read as a float (`fld dword ptr [ebp+8]`). Confirmed independently by
+ // upstream FSE (eeeeeAeoN/FableScriptExtender @ master).
+ typedef void(__fastcall* tFadeOutAndKillEntity)(const CScriptThing* pEntity, bool bKillAfterFade, float fOverThisManySeconds, BOOL bKillPersistent);
++// Retail 0x00CBE7AA: ECX is the thing, [ESP+4] is float duration, RET 4.
++typedef void(__thiscall* tFadeInThing)(CScriptThing* pEntity, float duration);
+ typedef void(__fastcall* tAddLogbookStoryEntry)(int storyId);
+ typedef void(__thiscall* tStdMap_Constructor)(void* This);
+ typedef CScriptGameResourceObjectScriptedThingBase* (__thiscall* tStdMap_OperatorBracket)(void* This, const CCharString* pKey);
+@@ -295,6 +297,7 @@ extern tScriptAllocFunc                 pSunnyvaleDataAlloc_func;
+ extern CGameScriptInterfaceBase** g_pDSTGame;
+ extern tRunCutsceneMacro                RunCutsceneMacro_Func;
+ extern tFadeOutAndKillEntity            FadeOutAndKillEntity_Func;
++extern tFadeInThing                     FadeInThing_Func;
+ extern tAddLogbookStoryEntry            AddLogbookStoryEntry_Func;
+ extern t_free                           Game_free;
+ extern tAddEntityScriptBinding AddEntityScriptBinding_API;
+@@ -349,6 +352,8 @@ typedef CScriptThing* (__thiscall* tRetailThingCopy)(CScriptThing*, const CScrip
+ typedef void(__thiscall* tRetailThingDestroy)(CScriptThing*);
+ typedef void(__thiscall* tRetailEntityCondition)(void*, const void*);
+ extern tRetailThingCopy RetailThing_Copy_API;
++// Complete retail assignment: release old, retain new; same Info is unchanged.
++extern tRetailThingCopy RetailThing_Assign_API;
+ extern tRetailThingDestroy RetailThing_Destroy_API;
+ extern tRetailEntityCondition RetailEntity_SetCondition_API;
+ extern void** g_pRetailAliveConditionVTable;
+diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
+index 71bd542..5f0ea95 100644
+--- a/FableScriptExtender/LuaManager.cpp
++++ b/FableScriptExtender/LuaManager.cpp
+@@ -101,6 +101,11 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+             FadeOutAndKillEntity_Func(pMe, bKillAfterFade.value_or(true), fOverThisManySeconds.value_or(1.0f), bKillPersistent.value_or(true) ? 1 : 0);
+         }
+     };
++    cscriptThing_type["FadeInThing"] = [](CScriptThing* pMe, float duration) {
++        if (FadeInThing_Func && pMe) {
++            FadeInThing_Func(pMe, duration);
++        }
++    };
+     cscriptThing_type["SetIsPushableByHero"] = [entityAPI](CScriptThing* pMe, bool isPushable) {entityAPI->SetIsPushableByHero(pMe, isPushable);};
+     cscriptThing_type["MsgIsKilledBy"] = [entityAPI](CScriptThing* pMe, const std::string& killerName) {return entityAPI->MsgIsKilledBy(pMe, killerName);};
+     cscriptThing_type["IsAwareOfHero"] = [entityAPI](CScriptThing* pMe) {return entityAPI->IsAwareOfHero(pMe);};
+@@ -210,7 +215,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["RetainRetailThing"] = &LuaQuestState::RetainRetailThing;
+     questState_type["GetRetainedRetailThing"] = &LuaQuestState::GetRetainedRetailThing;
+     questState_type["WithRetailResources"] = [](LuaQuestState& self, sol::protected_function callback) {
+-        WithRetailResources(self.GetGameInterface(), callback);
++        return WithRetailResources(self.GetGameInterface(), callback);
+     };
+     questState_type["RegisterBoundConsciousCondition"] = [pEntityHost](LuaQuestState&) {
+         if (!pEntityHost) throw std::runtime_error("Conscious condition requires an entity VM");
+@@ -246,7 +251,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["GetFSEInfo"] = &LuaQuestState::GetFSEInfo;
+     questState_type["CreateThread"] = sol::overload([](LuaQuestState& self, const std::string& func) {self.CreateThread(func, sol::lua_nil); }, [](LuaQuestState& self, const std::string& func, sol::table args) {self.CreateThread(func, args); });
+     questState_type["GetHero"] = &LuaQuestState::GetHero;
+-    questState_type["CreateEffectAtPos"] = [](LuaQuestState& self, const std::string& effectName, sol::table position, sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) { return self.CreateEffectAtPos(effectName, position, angle, independent, alwaysUpdate); };
++    questState_type["CreateEffectAtPos"] = [](LuaQuestState& self, const std::string& effectName, sol::table position, sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate, sol::optional<std::string> scriptName) { return self.CreateEffectAtPos(effectName, position, angle, independent, alwaysUpdate, scriptName); };
+     questState_type["CreateEffectOnThing"] = [](LuaQuestState& self, const std::string& effectName, CScriptThing* pTarget, const std::string& boneName, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) { return self.CreateEffectOnThing(effectName, pTarget, boneName, independent, alwaysUpdate); };
+     questState_type["ShowMessage"] = &LuaQuestState::ShowMessage;
+     questState_type["ShowMessageWithButtons"] = &LuaQuestState::ShowMessageWithButtons;
+@@ -722,7 +727,7 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+         sol::resolve<void(const std::shared_ptr<CScriptThing>&, const std::shared_ptr<CScriptThing>&, float, int, int)>(&LuaQuestState::CameraUseCameraPoint),
+         sol::resolve<void(const std::string&, const std::shared_ptr<CScriptThing>&, float, int, int)>(&LuaQuestState::CameraUseCameraPoint),
+         sol::resolve<void(const std::shared_ptr<CScriptThing>&, sol::table, sol::table, float, int, int)>(&LuaQuestState::CameraUseCameraPoint),
+-        sol::resolve<void(const std::string&, sol::table, sol::table, float, int, int)>(&LuaQuestState::CameraUseCameraPoint));    
++        sol::resolve<void(const std::string&, sol::object, sol::object, float, int, int)>(&LuaQuestState::CameraUseCameraPoint));    
+     questState_type["CameraResetToViewBehindHero"] = &LuaQuestState::CameraResetToViewBehindHero;
+     questState_type["IsCameraInScriptedMode"] = &LuaQuestState::IsCameraInScriptedMode;
+     questState_type["CameraUseScreenEffect"] = &LuaQuestState::CameraUseScreenEffect;
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index d7787ff..9b0e288 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -330,7 +330,7 @@ std::shared_ptr<CScriptThing> LuaQuestState::CreateEffectOnThing(const std::stri
+ }
+ 
+ std::shared_ptr<CScriptThing> LuaQuestState::CreateEffectAtPos(const std::string& effectName, sol::table position,
+-    sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) {
++    sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate, sol::optional<std::string> scriptName) {
+ 
+     if (!m_pGameInterface || !CreateEffect_AtPosition_API || !Game_malloc) {
+         Log("!!! ERROR: CreateEffectAtPos - API function or Game_malloc not available!");
+@@ -338,7 +338,7 @@ std::shared_ptr<CScriptThing> LuaQuestState::CreateEffectAtPos(const std::string
+     }
+ 
+     FableString fsEffect(effectName.c_str());
+-    FableString fsScript("");
++    FableString fsScript(scriptName.value_or("").c_str());
+ 
+     // --- THIS IS THE FIX ---
+     // Added "const C3DVector" to define the variable.
+@@ -768,16 +768,22 @@ std::shared_ptr<CScriptThing> LuaQuestState::GetHeroTargetedThing() {
+     return WrapScriptThingOutput(pHeapResult);
+ }
+ 
+-std::shared_ptr<CScriptThing> LuaQuestState::GetNearestWithScriptName(const std::shared_ptr<CScriptThing>& spRelativeTo, const std::string& scriptName) {
++std::shared_ptr<CScriptThing> LuaQuestState::GetNearestWithScriptName(CScriptThing* pRelativeTo, const std::string& scriptName) {
+     if (!m_pGameInterface || !GetNearestWithScriptName_API || !Game_malloc) {
+         Log("!!! ERROR: GetNearestWithScriptName - API or memory allocator not available!");
+         return nullptr;
+     }
+ 
+-    CScriptThing* pRelativeTo = spRelativeTo.get();
++    CScriptThing emptyRelative{};
+     if (!pRelativeTo) {
+-        Log("!!! ERROR: GetNearestWithScriptName - pRelativeTo is null!");
+-        return nullptr;
++        // Nil is the empty retail wrapper. The native nearest query still
++        // searches from its relocated fallback position (GSI 0x0089A510).
++        if (!g_pCScriptThingVTable) {
++            Log("!!! ERROR: GetNearestWithScriptName - Thing vtable is unavailable!");
++            return nullptr;
++        }
++        emptyRelative.pVTable = g_pCScriptThingVTable;
++        pRelativeTo = &emptyRelative;
+     }
+ 
+     FableString fsName(scriptName.c_str());
+@@ -2246,7 +2252,7 @@ void LuaQuestState::ReleaseThing(CScriptThing* pThing) {
+     LogToFile("===== ReleaseThing (Direct Pointer - No Free) END =====");
+ }
+ 
+-std::shared_ptr<CScriptThing> LuaQuestState::CreateCreature(const std::string& defName, sol::table position, const std::string& scriptName) {
++std::shared_ptr<CScriptThing> LuaQuestState::CreateCreature(const std::string& defName, sol::table position, const std::string& scriptName, sol::optional<bool> nativeFlag) {
+     if (m_pGameInterface && CreateCreature_API && Game_malloc) {
+         FableString fsDef(defName.c_str());
+         FableString fsScript(scriptName.c_str());
+@@ -2255,7 +2261,7 @@ std::shared_ptr<CScriptThing> LuaQuestState::CreateCreature(const std::string& d
+         CScriptThing* pResult = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+         if (pResult) {
+             memset(pResult, 0, sizeof(CScriptThing));
+-            CreateCreature_API(m_pGameInterface, pResult, fsDef, &pos, fsScript, false);
++            CreateCreature_API(m_pGameInterface, pResult, fsDef, &pos, fsScript, nativeFlag.value_or(false));
+ 
+             // Wrap, validate, and return.
+             return WrapScriptThingOutput(pResult);
+@@ -6970,17 +6976,28 @@ void LuaQuestState::CameraUseCameraPoint(const std::shared_ptr<CScriptThing>& sp
+     CameraUseCameraPoint_ThingAndOffset_API(m_pGameInterface, pCamPoint, &vecOffset, &rotSet, duration, i1, i2);
+ }
+ 
+-void LuaQuestState::CameraUseCameraPoint(const std::string& camPointName, sol::table offset, sol::table rotation, float duration, int i1, int i2) {
++void LuaQuestState::CameraUseCameraPoint(const std::string& camPointName, sol::object offset, sol::object rotation, float duration, int i1, int i2) {
+     if (!m_pGameInterface || !CameraUseCameraPoint_NameAndOffset_API) {
+         Log("!!! ERROR: CameraUseCameraPoint (NameAndOffset) - API not available!");
+         return;
+     }
+ 
+     FableString fsCamPoint(camPointName.c_str());
+-    C3DVector vecOffset = { offset["x"].get_or(0.0f), offset["y"].get_or(0.0f), offset["z"].get_or(0.0f) };
+-    CRightHandedSet rotSet = ParseRotationTable(rotation);
++    C3DVector vecOffset = {};
++    CRightHandedSet rotSet = {};
++    const C3DVector* pOffset = nullptr;
++    const CRightHandedSet* pRotation = nullptr;
++    if (offset.is<sol::table>()) {
++        sol::table offsetTable = offset.as<sol::table>();
++        vecOffset = { offsetTable["x"].get_or(0.0f), offsetTable["y"].get_or(0.0f), offsetTable["z"].get_or(0.0f) };
++        pOffset = &vecOffset;
++    }
++    if (rotation.is<sol::table>()) {
++        rotSet = ParseRotationTable(rotation.as<sol::table>());
++        pRotation = &rotSet;
++    }
+ 
+-    CameraUseCameraPoint_NameAndOffset_API(m_pGameInterface, fsCamPoint.get(), &vecOffset, &rotSet, duration, i1, i2);
++    CameraUseCameraPoint_NameAndOffset_API(m_pGameInterface, fsCamPoint.get(), pOffset, pRotation, duration, i1, i2);
+ }
+ 
+ void LuaQuestState::CameraDoConversation(const std::shared_ptr<CScriptThing>& spSpeaker, const std::shared_ptr<CScriptThing>& spListener, int eOp, sol::optional<bool> bUnknown) {
+@@ -7236,20 +7253,26 @@ void LuaQuestState::SetThingHomeBuilding(const std::shared_ptr<CScriptThing>& sp
+     SetThingHomeBuilding_API(m_pGameInterface, pThing, pHouse);
+ }
+ 
+-void LuaQuestState::GiveThingBestEnemyTarget(const std::shared_ptr<CScriptThing>& spThing, const std::shared_ptr<CScriptThing>& spTarget) {
++void LuaQuestState::GiveThingBestEnemyTarget(CScriptThing* pThing, CScriptThing* pTarget) {
+     if (!m_pGameInterface || !GiveThingBestEnemyTarget_API) {
+         Log("!!! ERROR: GiveThingBestEnemyTarget - API not available!");
+         return;
+     }
+-    CScriptThing* pThing = spThing.get();
+     if (!pThing) {
+         Log("!!! ERROR: GiveThingBestEnemyTarget - pThing is null!");
+         return;
+     }
+-    CScriptThing* pTarget = spTarget.get();
++    // Lua nil represents an empty retail CScriptThing, not an omitted call.
++    // GSI 0x008A0260 still forwards a null enemy to component 8 and can
++    // notify the actor. Keep this borrowed wrapper alive through the call.
++    CScriptThing emptyTarget{};
+     if (!pTarget) {
+-        Log("!!! ERROR: GiveThingBestEnemyTarget - pTarget is null!");
+-        return;
++        if (!g_pCScriptThingVTable) {
++            Log("!!! ERROR: GiveThingBestEnemyTarget - Thing vtable is unavailable!");
++            return;
++        }
++        emptyTarget.pVTable = g_pCScriptThingVTable;
++        pTarget = &emptyTarget;
+     }
+     GiveThingBestEnemyTarget_API(m_pGameInterface, pThing, pTarget);
+ }
+diff --git a/FableScriptExtender/LuaQuestState.h b/FableScriptExtender/LuaQuestState.h
+index 3c27e46..3250c23 100644
+--- a/FableScriptExtender/LuaQuestState.h
++++ b/FableScriptExtender/LuaQuestState.h
+@@ -445,7 +445,7 @@ public:
+     void CameraCancelScreenEffect();
+     void CameraEarthquakeIntensityAtPos(sol::table pos, float intensity, float duration);
+     void CameraUseCameraPoint(const std::shared_ptr<CScriptThing>& spCamPoint, sol::table offset, sol::table rotation, float duration, int i1, int i2);
+-    void CameraUseCameraPoint(const std::string& camPointName, sol::table offset, sol::table rotation, float duration, int i1, int i2);
++    void CameraUseCameraPoint(const std::string& camPointName, sol::object offset, sol::object rotation, float duration, int i1, int i2);
+     void CameraDoConversation(const std::shared_ptr<CScriptThing>& spSpeaker, const std::shared_ptr<CScriptThing>& spListener, int eOp, sol::optional<bool> bUnknown);
+     void CloseChest(const std::shared_ptr<CScriptThing>& spChest);
+     void DisplayLockedChestMessage(const std::shared_ptr<CScriptThing>& spChest);
+@@ -457,7 +457,7 @@ public:
+     void ClearHeroEnemyOfGuards(const std::shared_ptr<CScriptThing>& spVillage);
+     void SetThingAsUsable(CScriptThing* pThing, bool bIsUsable);
+     void SetThingHomeBuilding(const std::shared_ptr<CScriptThing>& spThing, const std::shared_ptr<CScriptThing>& spHouse);
+-    void GiveThingBestEnemyTarget(const std::shared_ptr<CScriptThing>& spThing, const std::shared_ptr<CScriptThing>& spTarget);
++    void GiveThingBestEnemyTarget(CScriptThing* pThing, CScriptThing* pTarget);
+     void ClearThingBestEnemyTarget(const std::shared_ptr<CScriptThing>& spThing);
+     void EntitySetInLimbo(const std::shared_ptr<CScriptThing>& spThing, bool bIsInLimbo, sol::optional<bool> bUnknown);
+     void AddCrimeCommitted(const std::shared_ptr<CScriptThing>& spVillage, int crimeType, sol::optional<bool> bUnknown, const std::shared_ptr<CScriptThing>& spCriminal, const std::shared_ptr<CScriptThing>& spVictim, int deedType);
+@@ -1011,18 +1011,18 @@ public:
+     std::shared_ptr<CScriptThing> GetThingWithScriptNameAtRegion(const std::string& scriptName, const std::string& regionName);
+     std::shared_ptr<CScriptThing> GetNearestWithDefName(const std::shared_ptr<CScriptThing>& spRelativeTo, const std::string& defName);
+     std::shared_ptr<CScriptThing> GetHeroTargetedThing();
+-    std::shared_ptr<CScriptThing> GetNearestWithScriptName(const std::shared_ptr<CScriptThing>& spRelativeTo, const std::string& scriptName);
++    std::shared_ptr<CScriptThing> GetNearestWithScriptName(CScriptThing* pRelativeTo, const std::string& scriptName);
+     std::shared_ptr<CScriptThing> GetFurthestWithScriptName(const std::shared_ptr<CScriptThing>& spRelativeTo, const std::string& scriptName);
+     std::shared_ptr<CScriptThing> GetFurthestWithDefName(const std::shared_ptr<CScriptThing>& spRelativeTo, const std::string& defName);
+     std::shared_ptr<CScriptThing> CreateLight(sol::table position, sol::table color, const std::string& scriptName, float innerRadius, float outerRadius, sol::optional<float> flicker);
+     std::shared_ptr<CScriptThing> CreateObjectOnEntity(const std::string& defName, const std::shared_ptr<CScriptThing>& spOnThing, const std::string& scriptName);
+     std::shared_ptr<CScriptThing> CreateCreatureOnEntity(const std::string& defName, const std::shared_ptr<CScriptThing>& spOnThing, const std::string& scriptName);
+     std::shared_ptr<CScriptThing> TurnCreatureInto(const std::shared_ptr<CScriptThing>& spTarget, const std::string& newDefName);
+-    std::shared_ptr<CScriptThing> CreateCreature(const std::string& defName, sol::table position, const std::string& scriptName); 
++    std::shared_ptr<CScriptThing> CreateCreature(const std::string& defName, sol::table position, const std::string& scriptName, sol::optional<bool> nativeFlag = {}); 
+     std::shared_ptr<CScriptThing> CreateObjectWithRotation(const std::string& defName, sol::table position, float rotation, const std::string& scriptName);
+     std::shared_ptr<CScriptThing> CreateObject(const std::string& defName, sol::table position, const std::string& scriptName);
+     std::shared_ptr<CScriptThing> CreateCreatureNearby(const std::string& defName, sol::table position, float radius, const std::string& scriptName);
+-    std::shared_ptr<CScriptThing> CreateEffectAtPos(const std::string& effectName, sol::table position,sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate);
++    std::shared_ptr<CScriptThing> CreateEffectAtPos(const std::string& effectName, sol::table position,sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate, sol::optional<std::string> scriptName);
+     std::shared_ptr<CScriptThing> CreateEffectOnThing(const std::string& effectName, CScriptThing* pTarget, const std::string& boneName,sol::optional<bool> independent, sol::optional<bool> alwaysUpdate);
+     std::shared_ptr<CScriptThing> CreateExperienceOrb(sol::table position, int amount);
+     std::shared_ptr<CScriptThing> CreateExplosion(const std::string& defName, sol::table position, sol::table direction, const std::string& scriptName);
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index eadb255..8f49e11 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ #include "retail_barrel_watch_snapshot.h"
++#include "retail_thing_position_list.h"
+ #include "retail_theresa_guard_vector.h"
+ #include "retail_villager_speech_lists.h"
+ #include "retail_owned_timer.h"
+@@ -8,6 +9,7 @@
+ #include "FableAPI.h"
+ #include "GameInterface.h"
+ #include "EntityScriptingAPI.h"
++#include "RetailThingOutputOwner.h"
+ #include "LuaRetailFlags.h"
+ #include "sol/sol.hpp"
+ #include <memory>
+@@ -979,6 +981,13 @@ void DestroyText(unsigned id) { Release(id, Kind::Text); }
+         } catch(...) {cleanup();throw;}
+     }
+ 
++    std::shared_ptr<RetailThingPositionList> NewThingPositionList() {
++        auto& entry=Add(Kind::ThingPositionList);
++        entry.positionList=std::make_shared<RetailThingPositionList>(m_game);
++        entry.live=true;
++        return entry.positionList;
++    }
++
+     std::shared_ptr<RetailBarrelWatchSnapshot> NewBarrelWatchSnapshot() {
+         auto& entry=Add(Kind::BarrelWatchSnapshot);
+         entry.barrelSnapshot=std::make_shared<RetailBarrelWatchSnapshot>(m_game);
+@@ -1990,6 +1999,66 @@ void InitializeVictimActor(CScriptThing* actor) {
+         SetTeleporterAsActive_API(m_game, &e.thing, active);
+     }
+     void DestroyThing(unsigned id) { Release(id, Kind::Thing); }
++    unsigned TrackThingOutput(CScriptThing* thing) {
++        CheckOpen();
++        if (!thing) return 0;
++        auto owner = RetailThingOutputOwner::Find(thing);
++        if (!owner) throw std::runtime_error("Thing output is not owned by this API");
++        // Each output has one local lifetime; repeated tracking in this scope
++        // returns its existing token without adding another native reference.
++        for (const auto& pair : m_entries)
++            if (pair.second->kind == Kind::ThingOutput && pair.second->thingOutput == owner)
++                return pair.first;
++        owner->Claim(this);
++        try {
++            auto& entry = Add(Kind::ThingOutput);
++            entry.thingOutput = owner;
++            entry.live = true;
++            return entry.id;
++        } catch (...) {
++            // Once this scope accepts the local, even host allocation failure
++            // must retire it before Lua aliases are collected. A rejected claim
++            // in another scope reaches neither this block nor native cleanup.
++            owner->Retire();
++            throw;
++        }
++    }
++    void RetireThingOutput(unsigned id) {
++        CheckOpen();
++        if (id) Release(id, Kind::ThingOutput);
++    }
++    std::shared_ptr<CScriptThing> CopyThingOutput(CScriptThing* source) {
++        CheckOpen();
++        if (!Game_malloc || !Game_free || !RetailThing_Copy_API || !g_pCScriptThingVTable)
++            throw std::runtime_error("Retail Thing copy APIs are unavailable");
++        CScriptThing empty{}; empty.pVTable = g_pCScriptThingVTable;
++        auto freeBuffer = Game_free;
++        auto* buffer = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
++        if (!buffer) throw std::bad_alloc();
++        std::unique_ptr<CScriptThing, decltype(freeBuffer)> allocation(buffer, freeBuffer);
++        memset(buffer, 0, sizeof(CScriptThing));
++        auto destroy = [](CScriptThing* p) {
++            reinterpret_cast<CScriptThingVTable*>(p->pVTable)->Destructor(p, 0);
++        };
++        // Allocate host metadata before acquiring the native reference.
++        auto owner = std::make_shared<RetailThingOutputOwner>(buffer, destroy, freeBuffer);
++        buffer->pVTable = g_pCScriptThingVTable;
++        allocation.release();
++        RetailThing_Copy_API(buffer, source ? source : &empty);
++        auto result = RetailThingOutputOwner::Publish(owner);
++        TrackThingOutput(buffer);
++        return result;
++    }
++
++    void AssignThingOutput(unsigned id, CScriptThing* source) {
++        auto& entry = Get(id, Kind::ThingOutput);
++        if (!entry.thingOutput || entry.thingOutput->Retired())
++            throw std::runtime_error("Thing assignment destination is retired");
++        if (!RetailThing_Assign_API || !g_pCScriptThingVTable)
++            throw std::runtime_error("Retail Thing assignment API is unavailable");
++        CScriptThing empty{}; empty.pVTable = g_pCScriptThingVTable;
++        RetailThing_Assign_API(entry.thingOutput->Thing(), source ? source : &empty);
++    }
+ 
+     unsigned NewActorMap() {
+         auto& e = Add(Kind::ActorMap);
+@@ -2066,7 +2135,7 @@ void InitializeVictimActor(CScriptThing* actor) {
+     }
+ 
+ private:
+-    enum class Kind { Resource, ActorMap, Movie, Thing, Text, TheresaGuardVector, TheresaPresented, BarrelWatchSnapshot, StringMap };
++    enum class Kind { Resource, ActorMap, Movie, Thing, Text, TheresaGuardVector, TheresaPresented, BarrelWatchSnapshot, ThingPositionList, StringMap, ThingOutput };
+     struct Entry {
+         explicit Entry(Kind k) : kind(k) {}
+         Kind kind;
+@@ -2077,10 +2146,12 @@ private:
+         CScriptGameResourceObjectScriptedThingBase resource{};
+         CScriptGameResourceObjectMovieBase movie{};
+         CScriptThing thing{};
++        std::shared_ptr<RetailThingOutputOwner> thingOutput;
+         CCharString text{};
+         CScriptThing* presentedActor = nullptr;
+         std::shared_ptr<RetailTheresaGuardVector> guardVector;
+         std::shared_ptr<RetailBarrelWatchSnapshot> barrelSnapshot;
++        std::shared_ptr<RetailThingPositionList> positionList;
+         void* map = nullptr;
+     };
+     void CheckOpen() const {
+@@ -2145,10 +2216,12 @@ private:
+                 " id=" + std::to_string(e.id));
+             MovieResource_Destroy_API(&e.movie); break;
+         case Kind::Thing: RetailThing_Destroy_API(&e.thing); break;
++        case Kind::ThingOutput: e.thingOutput->Retire(); e.thingOutput.reset(); break;
+         case Kind::Text: CCharString_Destroy(&e.text); break;
+         case Kind::StringMap: StdMap_String_Destroy_API(e.map); Game_free(e.map); e.map=nullptr; break;
+         case Kind::TheresaPresented: CCharString_Destroy(&e.text); break;
+         case Kind::BarrelWatchSnapshot: try { e.barrelSnapshot->Close(); } catch(...) {} break;
++        case Kind::ThingPositionList: try { e.positionList->Close(); } catch(...) {} break;
+         case Kind::TheresaGuardVector: try { e.guardVector->Close(); } catch(...) {} break;
+         }
+         e.live = false;
+@@ -2163,6 +2236,14 @@ private:
+ };
+ 
+ inline void RegisterRetailResources(sol::state& lua) {
++    auto positions=lua.new_usertype<RetailThingPositionList>("RetailThingPositionList",sol::no_constructor);
++    positions["Clear"]=&RetailThingPositionList::Clear;
++    positions["FillScriptName"]=&RetailThingPositionList::FillScriptName;
++    positions["Count"]=&RetailThingPositionList::Count;
++    positions["GetPos"]=[](RetailThingPositionList& list,int index,sol::this_state ts) {
++        return ReadRetailThingPosition(list.PositionSource(index),ts);
++    };
++    positions["Close"]=&RetailThingPositionList::Close;
+     auto snapshot=lua.new_usertype<RetailBarrelWatchSnapshot>("RetailBarrelWatchSnapshot",sol::no_constructor);
+     snapshot["Refresh"]=&RetailBarrelWatchSnapshot::Refresh;
+     snapshot["Count"]=&RetailBarrelWatchSnapshot::Count;
+@@ -2190,6 +2271,7 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["NewBarrelThugRemarkConversation"] = &LuaRetailResources::NewBarrelThugRemarkConversation;
+     type["AddBarrelThugRemark"] = &LuaRetailResources::AddBarrelThugRemark;
+     type["NewBarrelWatchSnapshot"] = &LuaRetailResources::NewBarrelWatchSnapshot;
++    type["NewThingPositionList"] = &LuaRetailResources::NewThingPositionList;
+     type["RewardRemainingBarrel"] = &LuaRetailResources::RewardRemainingBarrel;
+     type["SpawnBarrelBeetle"] = &LuaRetailResources::SpawnBarrelBeetle;
+     type["TryAcquirePostAttackHero"] = &LuaRetailResources::TryAcquirePostAttackHero;
+@@ -2334,6 +2416,10 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["ThingAlive"] = &LuaRetailResources::ThingAlive;
+     type["SetTeleporterActive"] = &LuaRetailResources::SetTeleporterActive;
+     type["DestroyThing"] = &LuaRetailResources::DestroyThing;
++    type["TrackThingOutput"] = &LuaRetailResources::TrackThingOutput;
++    type["RetireThingOutput"] = &LuaRetailResources::RetireThingOutput;
++    type["CopyThingOutput"] = &LuaRetailResources::CopyThingOutput;
++    type["AssignThingOutput"] = &LuaRetailResources::AssignThingOutput;
+     type["SpeakTheresa"] = &LuaRetailResources::SpeakTheresa;
+     type["TryAcquireTheresaHero"] = &LuaRetailResources::TryAcquireTheresaHero;
+     type["DoesTheresaHeroHaveChocolates"] = &LuaRetailResources::DoesTheresaHeroHaveChocolates;
+@@ -2376,7 +2462,7 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["Pause"] = &LuaRetailResources::Pause;
+ }
+ 
+-inline void WithRetailResources(CGameScriptInterfaceBase* game, sol::protected_function callback) {
++inline sol::variadic_results WithRetailResources(CGameScriptInterfaceBase* game, sol::protected_function callback) {
+     auto scope = std::make_shared<LuaRetailResources>(game);
+     sol::protected_function_result result = callback(scope);
+     scope->Close();
+@@ -2384,4 +2470,7 @@ inline void WithRetailResources(CGameScriptInterfaceBase* game, sol::protected_f
+         sol::error error = result;
+         throw error;
+     }
++    sol::variadic_results values;
++    for (auto value : result) values.push_back(value.get<sol::object>());
++    return values;
+ }
+diff --git a/FableScriptExtender/ManifestFunctionRegistry.generated.h b/FableScriptExtender/ManifestFunctionRegistry.generated.h
+index d5b8a59..39f738d 100644
+--- a/FableScriptExtender/ManifestFunctionRegistry.generated.h
++++ b/FableScriptExtender/ManifestFunctionRegistry.generated.h
+@@ -1958,7 +1958,7 @@ inline std::vector<ManifestFunctionDef> GetGeneratedManifestFunctions() {
+         {
+             "GiveThingBestEnemyTarget", "Quest", "void", true, "Quest API",
+             "Auto-generated from header declaration.",
+-            {{"spThing", "const std::shared_ptr<CScriptThing>&", false}, {"spTarget", "const std::shared_ptr<CScriptThing>&", false}}
++            {{"pThing", "CScriptThing*", false}, {"pTarget", "CScriptThing*", false}}
+         },
+         {
+             "ClearThingBestEnemyTarget", "Quest", "void", true, "Quest API",
+@@ -4438,7 +4438,7 @@ inline std::vector<ManifestFunctionDef> GetGeneratedManifestFunctions() {
+         {
+             "GetNearestWithScriptName", "Quest", "std::shared_ptr<CScriptThing>", true, "Quest API",
+             "Auto-generated from header declaration.",
+-            {{"spRelativeTo", "const std::shared_ptr<CScriptThing>&", false}, {"scriptName", "const std::string&", false}}
++            {{"pRelativeTo", "CScriptThing*", false}, {"scriptName", "const std::string&", false}}
+         },
+         {
+             "GetFurthestWithScriptName", "Quest", "std::shared_ptr<CScriptThing>", true, "Quest API",
+@@ -4473,7 +4473,7 @@ inline std::vector<ManifestFunctionDef> GetGeneratedManifestFunctions() {
+         {
+             "CreateCreature", "Quest", "std::shared_ptr<CScriptThing>", true, "Quest API",
+             "Auto-generated from header declaration.",
+-            {{"defName", "const std::string&", false}, {"position", "sol::table", false}, {"scriptName", "const std::string&", false}}
++            {{"defName", "const std::string&", false}, {"position", "sol::table", false}, {"scriptName", "const std::string&", false}, {"nativeFlag", "sol::optional<bool>", true}}
+         },
+         {
+             "CreateObjectWithRotation", "Quest", "std::shared_ptr<CScriptThing>", true, "Quest API",
+@@ -4493,7 +4493,7 @@ inline std::vector<ManifestFunctionDef> GetGeneratedManifestFunctions() {
+         {
+             "CreateEffectAtPos", "Quest", "std::shared_ptr<CScriptThing>", true, "Quest API",
+             "Auto-generated from header declaration.",
+-            {{"effectName", "const std::string&", false}, {"position", "sol::table", false}, {"angle", "sol::optional<float>", true}, {"independent", "sol::optional<bool>", true}, {"alwaysUpdate", "sol::optional<bool>", true}}
++            {{"effectName", "const std::string&", false}, {"position", "sol::table", false}, {"angle", "sol::optional<float>", true}, {"independent", "sol::optional<bool>", true}, {"alwaysUpdate", "sol::optional<bool>", true}, {"scriptName", "sol::optional<std::string>", true}}
+         },
+         {
+             "CreateEffectOnThing", "Quest", "std::shared_ptr<CScriptThing>", true, "Quest API",
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index a39914d..92b6881 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -25,6 +25,7 @@
+ #include "sol/sol.hpp"
+ #include "FableAPI.h"
+ #include "EntityScriptingAPI.h"
++#include "DirectThingImplementationEquality.h"
+ #include "LuaQuestState.h"
+ #include "LuaRetailResources.h"
+ #include "NoviNativeFlagVector.h"
+@@ -105,14 +106,22 @@ inline sol::table NoviFillThingVector(LuaQuestState& self, sol::this_state ts, F
+     sol::table out = lua.create_table();
+     if (!Game_free || !RetailThing_Destroy_API) return out;
+     NoviRetailThingVector vec = { nullptr, nullptr, nullptr };
++    // Retail output elements own references even when a later copy or Lua
++    // table insertion fails. Keep cleanup tied to the output vector's scope.
++    struct VectorOwner {
++        NoviRetailThingVector& value;
++        ~VectorOwner() {
++            for (CScriptThing* p = value.first; p && p != value.last; ++p)
++                RetailThing_Destroy_API(p);
++            if (value.first) Game_free(value.first);
++        }
++    } owner{vec};
+     fill(&vec);
+     int index = 1;
+     for (CScriptThing* p = vec.first; p && p != vec.last; ++p) {
+         auto copy = NoviCopyThing(p);
+         if (copy) out[index++] = copy;
+     }
+-    for (CScriptThing* p = vec.first; p && p != vec.last; ++p) RetailThing_Destroy_API(p);
+-    if (vec.first) Game_free(vec.first);
+     return out;
+ }
+ 
+@@ -592,6 +601,8 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+     };
+     // CScriptThing::operator== goes through the implementation object's vtable (CGameScriptThing slot 0x138),
+     // exactly as the native scripts call it (`(**(**(int **)(thing + 4) + 0x138))(data, other.Data)`).
++    // Direct native implementation dispatch; owned empty wrappers retain native fault behavior.
++    thing["RetailImplementationIsEqualTo"] = &DirectThingImplementationEquality;
+     thing["IsEqualTo"] = [](CScriptThing* me, sol::object other) -> bool {
+         if (!me) return false;
+         const CScriptThing* rhs = nullptr;
+diff --git a/FableScriptExtender/RetailThingOutputOwner.h b/FableScriptExtender/RetailThingOutputOwner.h
+new file mode 100644
+index 0000000..b43187e
+--- /dev/null
++++ b/FableScriptExtender/RetailThingOutputOwner.h
+@@ -0,0 +1,72 @@
++#pragma once
++#include <functional>
++#include <map>
++#include <memory>
++#include <stdexcept>
++
++// Host metadata owns one native reference independently of Lua aliases.
++// Registry operations belong to the existing single-threaded script host.
++class RetailThingOutputOwner {
++public:
++    using Cleanup = std::function<void(CScriptThing*)>;
++    RetailThingOutputOwner(CScriptThing* thing, Cleanup destroy, Cleanup freeBuffer)
++        : m_thing(thing), m_destroy(std::move(destroy)), m_free(std::move(freeBuffer)) {}
++    ~RetailThingOutputOwner() noexcept {
++        // Publication may fail while creating the registry itself. An owner
++        // not yet registered must never try to initialize it during cleanup.
++        if (m_registered) {
++            auto& registry = Registry();
++            auto found = registry.find(m_thing);
++            if (found != registry.end()) registry.erase(found);
++        }
++        Retire();
++        m_free(m_thing);
++    }
++    RetailThingOutputOwner(const RetailThingOutputOwner&) = delete;
++    RetailThingOutputOwner& operator=(const RetailThingOutputOwner&) = delete;
++    void Retire() noexcept {
++        if (m_retired) return;
++        m_retired = true;
++        auto* emptyTable = m_thing->pVTable;
++        m_destroy(m_thing);
++        // Retail scalar destruction installs the base-object vtable. Lua aliases
++        // remain CScriptThing userdata and must retain callable empty-Thing slots.
++        m_thing->pImp.Data = nullptr;
++        m_thing->pImp.Info = nullptr;
++        m_thing->pVTable = emptyTable;
++    }
++    bool Retired() const noexcept { return m_retired; }
++    CScriptThing* Thing() const noexcept { return m_thing; }
++    void Claim(const void* scope) {
++        if (!scope || m_retired || (m_scope && m_scope != scope))
++            throw std::runtime_error("Thing output is retired or belongs to another scope");
++        m_scope = scope;
++    }
++    static std::shared_ptr<RetailThingOutputOwner> Find(CScriptThing* thing) {
++        auto& registry = Registry();
++        auto found = registry.find(thing);
++        return found == registry.end() ? nullptr : found->second.lock();
++    }
++    static std::shared_ptr<CScriptThing> Publish(
++        const std::shared_ptr<RetailThingOutputOwner>& owner) {
++        auto& registry = Registry();
++        if (registry.find(owner->m_thing) != registry.end())
++            throw std::runtime_error("Thing output already registered");
++        registry.emplace(owner->m_thing, owner);
++        owner->m_registered = true;
++        return std::shared_ptr<CScriptThing>(owner, owner->m_thing);
++    }
++private:
++    static std::map<CScriptThing*, std::weak_ptr<RetailThingOutputOwner>>& Registry() {
++        // Lua states can finalize during static teardown; keep this process-wide
++        // index alive, while each owner removes its entry on destruction.
++        static auto* registry = new std::map<CScriptThing*, std::weak_ptr<RetailThingOutputOwner>>;
++        return *registry;
++    }
++    CScriptThing* m_thing;
++    Cleanup m_destroy;
++    Cleanup m_free;
++    bool m_retired = false;
++    bool m_registered = false;
++    const void* m_scope = nullptr;
++};
+diff --git a/FableScriptExtender/retail_thing_position_list.h b/FableScriptExtender/retail_thing_position_list.h
+new file mode 100644
+index 0000000..c165283
+--- /dev/null
++++ b/FableScriptExtender/retail_thing_position_list.h
+@@ -0,0 +1,64 @@
++#pragma once
++// Generic retained retail Thing vector; only positions cross into Lua.
++#include "FableAPI.h"
++#include "GameInterface.h"
++#include <cstdint>
++#include <stdexcept>
++
++class RetailThingPositionList {
++public:
++    struct Vector { CScriptThing* begin=nullptr; CScriptThing* end=nullptr; CScriptThing* capacity=nullptr; };
++    static_assert(sizeof(Vector)==12 && sizeof(CScriptThing)==12,"Retail Thing vectors require x86");
++    using Getter=int(__thiscall*)(CGameScriptInterfaceBase*,const CCharString*,Vector*);
++    using Erase=CScriptThing*(__thiscall*)(Vector*,CScriptThing*,CScriptThing*);
++    using Destroy=void(__thiscall*)(Vector*);
++    struct APIs { Getter get; Erase erase; Destroy destroy; };
++    static APIs NativeAPIs() {
++        return {reinterpret_cast<Getter>(GetAllThingsWithScriptName_API),
++                ASLR<Erase>(0x008AC9D0),ASLR<Destroy>(0x008AC970)};
++    }
++    explicit RetailThingPositionList(CGameScriptInterfaceBase* game,APIs apis=NativeAPIs()):game(game),apis(apis) {
++        if(!game || !apis.get || !apis.erase || !apis.destroy || !CCharString_Construct_Literal || !CCharString_Destroy)
++            throw std::runtime_error("Retail Thing position list APIs unavailable");
++    }
++    RetailThingPositionList(const RetailThingPositionList&)=delete;
++    RetailThingPositionList& operator=(const RetailThingPositionList&)=delete;
++    ~RetailThingPositionList(){try {Close();}catch(...) {}}
++    void Clear() {
++        CheckOpen();
++        apis.erase(&vector,vector.begin,vector.end);
++    }
++    int FillScriptName(const std::string& name) {
++        CheckOpen();
++        CCharString key{};
++        CCharString_Construct_Literal(&key,name.c_str(),-1);
++        int result;
++        try {result=apis.get(game,&key,&vector);}
++        catch(...) {try {CCharString_Destroy(&key);}catch(...) {} throw;}
++        CCharString_Destroy(&key);
++        return result;
++    }
++    int Count() const {
++        CheckOpen();
++        auto bytes=static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(vector.end)-reinterpret_cast<std::uintptr_t>(vector.begin));
++        return bytes/12;
++    }
++    // Binding consumes this borrowed pointer immediately through native GetPos.
++    // It must never expose an actor userdata or retain a separate actor copy.
++    CScriptThing* PositionSource(int index) {
++        CheckOpen();
++        if(index<0 || index>=Count())throw std::out_of_range("Retail Thing position list index");
++        return vector.begin+index;
++    }
++    void Close() {
++        if(closed)return;
++        closed=true;
++        apis.destroy(&vector);
++    }
++private:
++    void CheckOpen() const {if(closed)throw std::runtime_error("Retail Thing position list is closed");}
++    CGameScriptInterfaceBase* game;
++    APIs apis;
++    Vector vector{};
++    bool closed=false;
++};

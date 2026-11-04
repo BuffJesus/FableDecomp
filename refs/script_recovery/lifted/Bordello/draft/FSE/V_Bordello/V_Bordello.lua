@@ -230,7 +230,7 @@ function CreateCustomers(quest)
                         pCVar4 = quest:GetThingWithScriptName("M_ClientSpawn")
                         bVar1 = false
                         pCVar5 = pCVar4:GetPos()
-                        r1 = quest:CreateCreature("CREATURE_BS_VILLAGER_MALE", pCVar5, "BordelloClient")
+                        r1 = quest:CreateCreature("CREATURE_BS_VILLAGER_MALE", pCVar5, "BordelloClient", bVar1)
                         r1 = nil
                         pCVar4 = nil
                     else
@@ -243,7 +243,7 @@ function CreateCustomers(quest)
                         pCVar4 = quest:GetThingWithScriptName("M_ClientSpawn")
                         bVar1 = false
                         pCVar5 = pCVar4:GetPos()
-                        r2 = quest:CreateCreature("CREATURE_BS_VILLAGER_FEMALE", pCVar5, "BordelloClient")
+                        r2 = quest:CreateCreature("CREATURE_BS_VILLAGER_FEMALE", pCVar5, "BordelloClient", bVar1)
                         r2 = nil
                         pCVar4 = nil
                     end
@@ -471,7 +471,7 @@ function helper_E3E320(quest)
     if bVar6 then
         cVar8 = cVar8 + 1
     end
-    return cVar8 == '\x04'
+    return cVar8 == 4
 end
 
 function helper_E3E720(quest, native_arg_param_2, native_arg_param_3)
@@ -499,7 +499,6 @@ function helper_E3E720(quest, native_arg_param_2, native_arg_param_3)
             resources:ReleaseResource(xStack_10)
             return
         end
-        -- TODO(native): SetCutsceneSkippableWhilePaused is not a ForgeFSE binding
         quest:SetCutsceneSkippableWhilePaused(true)
     end
     resources:RunMacroWithStrings(native_arg_param_2, xStack_1c, resources:MemberStringMap("csargs"), false, true)
@@ -512,7 +511,6 @@ function helper_E3E720(quest, native_arg_param_2, native_arg_param_3)
             resources:ReleaseResource(xStack_10)
             return
         end
-        -- TODO(native): SetCutsceneSkippableWhilePaused is not a ForgeFSE binding
         quest:SetCutsceneSkippableWhilePaused(false)
     end
     quest:FixMovieSequenceCamera(false)

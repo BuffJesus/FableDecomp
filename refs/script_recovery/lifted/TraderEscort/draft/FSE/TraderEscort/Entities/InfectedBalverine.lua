@@ -45,7 +45,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00e02c78 end
-                    me:PlayLoopingAnimation("ST_MUNCH", -1, false, false, false)
+                    resources:PlayLoopingAnimation(xStack_20, "ST_MUNCH", -1, false, false, false, true, true, false, false)
                 end
                 dist = v_stk_24
                 thing2 = quest:GetHero()

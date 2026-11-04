@@ -18,24 +18,25 @@ function Main(quest, me)
         quest:PauseAllNonScriptedEntities(false)
         this_00 = xStack_80
         resources:DestroyMovie(this_00)
-        resources:DestroyMovie(xStack_a0)
+        resources:ReleaseResource(ppuVar15)
     end
     local function __cleanup_LAB_00f154fe()
         quest:PauseAllNonScriptedEntities(false)
         this_00 = xStack_80
         resources:DestroyMovie(this_00)
-        resources:DestroyMovie(xStack_a0)
+        resources:ReleaseResource(ppuVar15)
     end
     local function __cleanup_LAB_00f1552d()
         this_00 = xStack_4c
         resources:DestroyMovie(this_00)
-        resources:DestroyMovie(xStack_a0)
+        resources:ReleaseResource(ppuVar15)
     end
     local function __cleanup_LAB_00f15531()
         resources:DestroyMovie(this_00)
-        resources:DestroyMovie(xStack_a0)
+        resources:ReleaseResource(ppuVar15)
     end
-    ppuVar15 = resources:NewResource()
+    xStack_a0 = resources:NewResource()
+    ppuVar15 = xStack_a0
     quest:EntityUnsetAsOpinionSource(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, false)
@@ -46,6 +47,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if bVar5 then
+            resources:ReleaseResource(xStack_a0)
             return
         end
         iVar9 = quest:GetStateInt("ArenaState")
@@ -54,7 +56,7 @@ function Main(quest, me)
     bVar5 = not alive
     if bVar5 then
         -- LAB_00f1553a: (native jump target)
-        resources:DestroyMovie(xStack_a0)
+        resources:ReleaseResource(ppuVar15)
         return
     end
     quest:SetCreatureBrain(me, "BRAIN_ARENA_CELLS")
@@ -69,6 +71,7 @@ function Main(quest, me)
     bVar5 = not alive
     if bVar5 then
         -- LAB_00f154a2: (native jump target)
+        resources:ReleaseResource(xStack_a0)
         return
     end
     ::LAB_00f14ca0::
@@ -77,7 +80,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if bVar5 then
-            resources:DestroyMovie(xStack_a0)
+            resources:ReleaseResource(ppuVar15)
             return
         end
         resources:PrepareResource(xStack_a0)
@@ -87,7 +90,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if bVar5 then
-                resources:DestroyMovie(xStack_a0)
+                resources:ReleaseResource(ppuVar15)
                 return
             end
             bVar5 = resources:TryAcquire(xStack_a0, me, 4)
@@ -95,17 +98,18 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if bVar5 then
-            resources:DestroyMovie(xStack_a0)
+            resources:ReleaseResource(ppuVar15)
             return
         end
-        iVar9 = me:IsPerformingScriptTask()
+        iVar9 = resources:IsPerformingScriptTask(xStack_a0)
         if iVar9 then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if bVar5 then
-                resources:DestroyMovie(xStack_a0)
+                resources:ReleaseResource(ppuVar15)
                 return
             end
+            resources:ClearCommands(xStack_a0)
         end
         xStack_80 = resources:StartMovie("")
         quest:PauseAllNonScriptedEntities(true)
@@ -127,14 +131,15 @@ function Main(quest, me)
                 pCVar12 = 0x0
                 pcVar11 = "TEXT_QST_005_V2_ARENA_FLICK_FIRST_CHAT_PRE_CHAM"
                 pCVar7 = quest:GetHero()
-                iVar9 = me:IsPerformingScriptTask()
+                resources:Speak(xStack_a0, pCVar7, "TEXT_QST_005_V2_ARENA_FLICK_FIRST_CHAT_PRE_CHAM", 0, false, true, false)
+                iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                 cVar6 = iVar9
                 while cVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then __cleanup_LAB_00f154eb(); return end
-                    iVar9 = me:IsPerformingScriptTask()
+                    iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                     cVar6 = iVar9
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -159,14 +164,15 @@ function Main(quest, me)
                 pCVar12 = 0x0
                 pcVar11 = "TEXT_QST_005_V2_ARENA_FLICK_FIRST_CHAT_POST_CHAM"
                 pCVar7 = quest:GetHero()
-                iVar9 = me:IsPerformingScriptTask()
+                resources:Speak(xStack_a0, pCVar7, "TEXT_QST_005_V2_ARENA_FLICK_FIRST_CHAT_POST_CHAM", 0, false, true, false)
+                iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                 cVar6 = iVar9
                 while cVar6 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then __cleanup_LAB_00f154fe(); return end
-                    iVar9 = me:IsPerformingScriptTask()
+                    iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                     cVar6 = iVar9
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -190,20 +196,21 @@ function Main(quest, me)
                     pCVar12 = 0x0
                     pcVar11 = "TEXT_QST_005_V2_ARENA_FLICK_FIRST_HINT"
                     pCVar7 = quest:GetHero()
-                    iVar9 = me:IsPerformingScriptTask()
+                    resources:Speak(xStack_a0, pCVar7, "TEXT_QST_005_V2_ARENA_FLICK_FIRST_HINT", 0, false, true, false)
+                    iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                     cVar6 = iVar9
                     while cVar6 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         if bVar5 then __cleanup_LAB_00f154eb(); return end
-                        iVar9 = me:IsPerformingScriptTask()
+                        iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                         cVar6 = iVar9
                     end
                     goto LAB_00f1515c
                 end
             else
-                if not iVar9 then
+                if iVar9 ~= 1 then
                     if iVar9 == 2 then
                         pCVar7 = resources:ScriptThing(xStack_a0)
                         fret_01 = quest:GetHealth(pCVar7)
@@ -215,14 +222,15 @@ function Main(quest, me)
                             pCVar12 = 0x0
                             pcVar11 = "TEXT_QST_005_V2_ARENA_FLICK_THIRD_HINT"
                             pCVar7 = quest:GetHero()
-                            iVar9 = me:IsPerformingScriptTask()
+                            resources:Speak(xStack_a0, pCVar7, "TEXT_QST_005_V2_ARENA_FLICK_THIRD_HINT", 0, false, true, false)
+                            iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                             cVar6 = iVar9
                             while cVar6 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar5 = not alive
                                 if bVar5 then __cleanup_LAB_00f154eb(); return end
-                                iVar9 = me:IsPerformingScriptTask()
+                                iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                                 cVar6 = iVar9
                             end
                             alive = not quest:IsActiveThreadTerminating()
@@ -243,14 +251,15 @@ function Main(quest, me)
                     pCVar12 = 0x0
                     pcVar11 = "TEXT_QST_005_V2_ARENA_FLICK_SECOND_HINT"
                     pCVar7 = quest:GetHero()
-                    iVar9 = me:IsPerformingScriptTask()
+                    resources:Speak(xStack_a0, pCVar7, "TEXT_QST_005_V2_ARENA_FLICK_SECOND_HINT", 0, false, true, false)
+                    iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                     cVar6 = iVar9
                     while cVar6 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         if bVar5 then __cleanup_LAB_00f154eb(); return end
-                        iVar9 = me:IsPerformingScriptTask()
+                        iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                         cVar6 = iVar9
                     end
                     goto LAB_00f1515c
@@ -262,7 +271,7 @@ function Main(quest, me)
             bVar5 = not alive
             if bVar5 then __cleanup_LAB_00f154fe(); return end
             ::FLOW_past_lab_00f1515c::
-            __native_entity_state:SetStateInt("HintNumber", __native_entity_state:GetStateInt("HintNumber") + 1)
+            __native_entity_state:SetStateInt("HintNumber", ((__native_entity_state:GetStateInt("HintNumber") + 1 + 2147483648) % 4294967296 - 2147483648))
         end
         ::LAB_00f1516e::
         quest:PauseAllNonScriptedEntities(false)
@@ -287,7 +296,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if bVar5 then
-            resources:DestroyMovie(xStack_a0)
+            resources:ReleaseResource(ppuVar15)
             return
         end
         resources:PrepareResource(xStack_a0)
@@ -297,7 +306,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if bVar5 then
-                resources:DestroyMovie(xStack_a0)
+                resources:ReleaseResource(ppuVar15)
                 return
             end
             bVar5 = resources:TryAcquire(xStack_a0, me, 4)
@@ -305,23 +314,24 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if bVar5 then
-            resources:DestroyMovie(xStack_a0)
+            resources:ReleaseResource(ppuVar15)
             return
         end
-        iVar9 = me:IsPerformingScriptTask()
+        iVar9 = resources:IsPerformingScriptTask(xStack_a0)
         if iVar9 then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if bVar5 then
-                resources:DestroyMovie(xStack_a0)
+                resources:ReleaseResource(ppuVar15)
                 return
             end
+            resources:ClearCommands(xStack_a0)
         end
         if quest:GetStateBool("InHitCutsceneAlready") then goto LAB_00f15475 end
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
         if bVar5 then
-            resources:DestroyMovie(xStack_a0)
+            resources:ReleaseResource(ppuVar15)
             return
         end
         quest:SetStateBool("InHitCutsceneAlready", true)
@@ -337,7 +347,8 @@ function Main(quest, me)
             pCVar12 = 0x0
             pcVar11 = "TEXT_QST_005_V2_ARENA_FLICK_ATTACKED"
             pCVar7 = quest:GetHero()
-            iVar9 = me:IsPerformingScriptTask()
+            resources:Speak(xStack_a0, pCVar7, "TEXT_QST_005_V2_ARENA_FLICK_ATTACKED", 0, false, true, false)
+            iVar9 = resources:IsPerformingScriptTask(xStack_a0)
             cVar6 = iVar9
             while cVar6 do
                 alive = quest:NewScriptFrame(me)
@@ -347,7 +358,7 @@ function Main(quest, me)
                     quest:PauseAllNonScriptedEntities(false)
                     __cleanup_LAB_00f1552d(); return
                 end
-                iVar9 = me:IsPerformingScriptTask()
+                iVar9 = resources:IsPerformingScriptTask(xStack_a0)
                 cVar6 = iVar9
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -374,6 +385,7 @@ function Main(quest, me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
     if bVar5 then
+        resources:ReleaseResource(xStack_a0)
         return
     end
     goto LAB_00f14ca0

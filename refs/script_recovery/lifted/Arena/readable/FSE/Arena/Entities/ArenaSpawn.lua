@@ -19,8 +19,11 @@ function Main(quest, me)
         if value >= 2147483648 then value = value - 4294967296 end
         return value
     end
-    local scratchValue = parseGameInteger(me:GetDataString())
+    local pPosition
+    local this_00 = me:GetDataString()
+    local scratchValue = parseGameInteger(this_00)
     local timerId = quest:RegisterTimer()
+    local scratchValue3 = timerId
     while not quest:IsActiveThreadTerminating() do
         while not quest:GetStateBool("ArenaSpawnNeeded_" .. scratchValue) do
             quest:NewScriptFrame(me)
@@ -32,7 +35,9 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then break end
         if quest:GetStateInt("ArenaRound") == 3 then quest:SetStateBool("ArenaSpawnNeeded_" .. scratchValue, false); quest:NewScriptFrame(me); goto continue_2 end
         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-        quest:CreateEffectAtPos("SUMMON_ARENA", me:GetPos(), timerId + 4, 0.0)
+        pPosition = me:GetPos()
+        quest:CreateEffectAtPos("SUMMON_ARENA", pPosition, 0.0, false, false)
+        timerId = scratchValue3
         quest:SetStateBool("ArenaSpawnNeeded_" .. scratchValue, false)
         quest:NewScriptFrame(me)
         ::continue_2::

@@ -3,7 +3,7 @@
 
 -- OrchardFarmWhisper.Main (retail 0x00dcf0b0)
 function Main(quest, me)
-    local hero = quest:GetHero()
+    local healthBar
     while quest:GetStateBool("WhisperInCutscene") do
         if not quest:NewScriptFrame(me) then return end
     end
@@ -12,25 +12,30 @@ function Main(quest, me)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     quest:EntitySetCombatType(me, "HERO_WHISPER_TUTORIAL_ATTACK_STYLE_ORCHARD_FARM_BLOCK")
     local conversationId = quest:AddNewConversation(me, false, false)
+    local hero = quest:GetHero()
     quest:AddPersonToConversation(conversationId, hero)
-    quest:AddLineToConversation(conversationId, "TEXT_QST_051_WHISPER_ATTACK_WITH_FLOURISH_10", me, hero, false)
+    local hero2 = quest:GetHero()
+    quest:AddLineToConversation(conversationId, "TEXT_QST_051_WHISPER_ATTACK_WITH_FLOURISH_10", me, hero2, false)
     while not me:MsgIsHitByHeroWithFlourish() do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     local conversationId2 = quest:AddNewConversation(me, false, false)
-    quest:AddPersonToConversation(conversationId2, hero)
-    quest:AddLineToConversation(conversationId2, "TEXT_QST_051_WHISPER_HAS_BEEN_HIT_WITH_FLOURISH_10", me, hero, false)
+    local hero3 = quest:GetHero()
+    quest:AddPersonToConversation(conversationId2, hero3)
+    local hero4 = quest:GetHero()
+    quest:AddLineToConversation(conversationId2, "TEXT_QST_051_WHISPER_HAS_BEEN_HIT_WITH_FLOURISH_10", me, hero4, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, true)
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAsDamageable(me, true)
     quest:DisplayQuestInfo(true)
-    quest:AddQuestInfoBarHealth(me, {R = 0, G = 255, B = 0, A = 255}, "HUD_WHISPER_ICON", 1.0)
+    healthBar = quest:AddQuestInfoBarHealth(me, {R = 0, G = 255, B = 0, A = 255}, "HUD_WHISPER_ICON", 1.0)
     quest:EntitySetCombatType(me, "HERO_WHISPER_ATTACK_STYLE_OFARM")
     while not quest:IsActiveThreadTerminating() do
-        if quest:GetHealth(me) > 1.0 then
+        if not (quest:GetHealth(me) <= 1.0) then
             quest:NewScriptFrame(me)
         else
+            if quest:IsActiveThreadTerminating() then return end
             quest:SetStateBool("MissionSucceeded", true)
             quest:NewScriptFrame(me)
         end
@@ -47,7 +52,8 @@ function Init(quest, me)
     end
     quest:EntitySetInFaction(me, string)
     quest:EntitySetAsKillable(me, false, true)
-    quest:EntitySetAsAwareOfThing(me, quest:GetHero())
+    local pThing = quest:GetHero()
+    quest:EntitySetAsAwareOfThing(me, pThing)
     quest:EntitySetAsDamageable(me, false)
     quest:EntitySetAllowBossPhaseChanges(me, false)
 end

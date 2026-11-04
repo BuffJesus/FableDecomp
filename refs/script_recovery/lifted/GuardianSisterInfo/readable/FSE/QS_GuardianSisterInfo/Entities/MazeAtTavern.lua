@@ -1,59 +1,66 @@
 -- Readable native conversion: MazeAtTavern. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
-
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
+
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    GSI_MazeCallsOverDistance = 3176,  -- 10
+}
 
 -- per-entity fields (native class members; one Lua state per entity instance)
 local wavedOver, hitCount, talkCounter
 
 -- MazeAtTavern.Main (retail 0x00e25f70)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, scratchValue4, scratchValue5, newResource
+    local predicateResult, cleanupFlags, scratchValue4, scratchValue5
+    cleanupFlags = 0
     if not quest:NewScriptFrame(me) then return end
-    newResource = resources:NewResource()
-    resources:PrepareResource(newResource)
-    while not resources:TryAcquire(newResource, me, 3) do
-        if not quest:NewScriptFrame(me) then resources:ReleaseResource(newResource); return end
+    local resource3 = resources:NewResource()
+    resources:PrepareResource(resource3)
+    while not resources:TryAcquire(resource3, me, 3) do
+        if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); return end
     end
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(newResource); return end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
     quest:EntitySetAsOpinionSource(me, "OPINION_SOURCE_MAZE_BS_PUB")
     quest:GetThingWithScriptName("M_MazeExit"):GetPos()
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
     quest:SetThingHasInformation(me, false, true, false)
     quest:SetIsPushableByHero(me, false)
-    local scratchValue = quest:ReadGlobalGameData(3176)
+    local scratchValue = quest:ReadGlobalGameData(SCRIPT_DEF.GSI_MazeCallsOverDistance)
     scratchValue5 = 0
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(newResource); return end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); return end
     repeat
         if not quest:GetStateBool("GuardianSpokeToHero") and not wavedOver then
+            local hero = quest:GetHero()
             if quest:IsDistanceBetweenThingsUnder(hero, me, scratchValue) then
                 if quest:IsActiveThreadTerminating() then break end
-                me:PlayAnimation("ST_HELLO", false, false, false, true, true, false, false)
+                resources:PlayAnimationWithNativeArgument5(resource3, "ST_HELLO", false, false, false, true, false, false)
                 local conversationId = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationId, hero)
-                quest:AddLineToConversation(conversationId, "TEXT_QST_027_MAZE_CALL_HERO_OVER_10", me, hero, false)
+                local hero2 = quest:GetHero()
+                quest:AddPersonToConversation(conversationId, hero2)
+                local hero3 = quest:GetHero()
+                quest:AddLineToConversation(conversationId, "TEXT_QST_027_MAZE_CALL_HERO_OVER_10", me, hero3, false)
                 wavedOver = true
-                scratchValue5 = newResource
+                scratchValue5 = cleanupFlags
             end
         end
         if not quest:GetStateBool("GuardianSpokeToHero") then
             if quest:IsActiveThreadTerminating() then break end
-            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+            local hero4 = quest:GetHero()
+            quest:EntitySetFacingAngleTowardsThing(me, hero4, false)
         end
         scratchValue4 = scratchValue5 | 1
-        newResource = scratchValue4
+        cleanupFlags = scratchValue4
         if me:MsgIsHitByHero() then
             goto LAB_00e262d9
         else
             scratchValue4 = scratchValue5 | 3
-            newResource = scratchValue4
+            cleanupFlags = scratchValue4
             if me:MsgIsHitByAnySpecialAbilityFromHero() then
                 scratchValue4 = scratchValue5 | 7
-                newResource = scratchValue4
+                cleanupFlags = scratchValue4
                 if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e262d9 end
             end
             predicateResult = false
@@ -62,34 +69,40 @@ function Main(quest, me)
         ::LAB_00e262d9::
         predicateResult = true
         ::FLOW_past_lab_00e262d9::
-        if scratchValue4 & 4 ~= 0 then
+        if (scratchValue4 & 4) ~= 0 then
             scratchValue4 = scratchValue4 & 0xfffffffb
-            newResource = scratchValue4
+            cleanupFlags = scratchValue4
         end
-        if scratchValue4 & 2 ~= 0 then
+        if (scratchValue4 & 2) ~= 0 then
             scratchValue4 = scratchValue4 & 0xfffffffd
-            newResource = scratchValue4
+            cleanupFlags = scratchValue4
         end
-        if scratchValue4 & 1 ~= 0 then
-            -- TODO(native): xStack_8c = uVar10 & 0xfffffffe;
+        if (scratchValue4 & 1) ~= 0 then
+            cleanupFlags = scratchValue4 & 0xfffffffe
         end
         if predicateResult then
             if quest:IsActiveThreadTerminating() then break end
-            resources:PrepareResource(newResource)
-            while not resources:TryAcquire(newResource, me, 4) do
-                if not quest:NewScriptFrame(me) then resources:ReleaseResource(newResource); return end
+            resources:PrepareResource(resource3)
+            while not resources:TryAcquire(resource3, me, 4) do
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); return end
             end
             if quest:IsActiveThreadTerminating() then break end
             local movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            local fret_0 = quest:GetHealth(resources:ScriptThing(newResource))
+            local scratchValue6 = resources:ScriptThing(resource3)
+            local fret_0 = quest:GetHealth(scratchValue6)
             if 0.0 < fret_0 then
-                me:Speak(hero, "TEXT_QST_027_MAZE_ON_HIT_10", GROUP_SELECT_FIRST, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e26754 end
+                local p1 = "TEXT_QST_027_MAZE_ON_HIT_10"
+                local hero5 = quest:GetHero()
+                if not me:Speak(hero5, p1, 0, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                else
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e26754 end
+                    end
+                    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e26754 end
+                    goto FLOW_past_lab_00e26754
                 end
-                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e26754 end
-                goto FLOW_past_lab_00e26754
                 ::LAB_00e26754::
                 resources:DestroyMovie(movie2)
                 break
@@ -103,37 +116,41 @@ function Main(quest, me)
         end
         if me:IsTalkedToByHero() then
             if quest:IsActiveThreadTerminating() then break end
-            resources:PrepareResource(newResource)
-            while not resources:TryAcquire(newResource, me, 4) do
-                if not quest:NewScriptFrame(me) then resources:ReleaseResource(newResource); return end
+            resources:PrepareResource(resource3)
+            while not resources:TryAcquire(resource3, me, 4) do
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource3); return end
             end
             if quest:IsActiveThreadTerminating() then break end
-            local resource = resources:NewResource()
-            resources:TryAcquire(resource, hero, 4)
+            local resource2 = resources:NewResource()
+            local resource = resource2
+            local hero6 = quest:GetHero()
+            resources:TryAcquire(resource, hero6, 4)
             local actorMap = resources:NewActorMap()
-            resources:SetActor(actorMap, "ME", newResource)
-            resources:SetActor(actorMap, "HERO", resource)
+            resources:SetActor(actorMap, "ME", resource3)
+            resources:SetActor(actorMap, "HERO", resource2)
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             resources:RunMacro("CS_GUARDIANSISTER_BOWERSTONE", actorMap, false, true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
             resources:DestroyActorMap(actorMap)
-            resources:ReleaseResource(resource)
+            resources:ReleaseResource(resource2)
             quest:SetStateBool("GuardianSpokeToHero", true)
             quest:ClearThingHasInformation(me)
-            quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
-            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+            local getActiveQuestName = quest:GetActiveQuestName()
+            quest:SetQuestAsCompleted(getActiveQuestName, false, false, false)
+            local getActiveQuestName2 = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(getActiveQuestName2, 0)
             quest:RemoveThing(me, false, true)
         end
         quest:NewScriptFrame(me)
-        scratchValue5 = newResource
+        scratchValue5 = cleanupFlags
         if quest:IsActiveThreadTerminating() then
-            resources:ReleaseResource(newResource)
+            resources:ReleaseResource(resource3)
             do return end
         end
     until false
-    resources:ReleaseResource(newResource)
+    resources:ReleaseResource(resource3)
 end
 
 -- MazeAtTavern.Init (retail 0x00e25d20)
@@ -149,8 +166,8 @@ end
 
 -- MazeAtTavern.OnPredicateFail (retail 0x00e25d30)
 function OnPredicateFail(quest, me)
-    if quest:GetStateBool("GuardianSpokeToHero") then
-        quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
-    end
+    if not quest:GetStateBool("GuardianSpokeToHero") then return end
+    local pQuestName = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(pQuestName, 0)
 end
 

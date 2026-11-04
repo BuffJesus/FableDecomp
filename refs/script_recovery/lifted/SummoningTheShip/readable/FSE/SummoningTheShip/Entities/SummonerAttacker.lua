@@ -8,22 +8,22 @@ local waveID
 
 -- SummonerAttacker.Main (retail 0x00df2380)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, p0, createCreatureNearby, createCreatureNearby2
+    local predicateResult, hero, hero5, healthBar, createCreatureNearby, createCreatureNearby2
+    local waveId = waveID
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetAlpha(me, 0.0, true)
     quest:EntitySetInLimbo(me, true, true)
-    while not quest:GetStateBool("SummonerAttacksStarted") or quest:GetStateInt("CurrentAttackWave") ~= waveID do
+    while not quest:GetStateBool("SummonerAttacksStarted") or quest:GetStateInt("CurrentAttackWave") ~= waveId do
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
     quest:EntitySetInLimbo(me, false, true)
-    -- TODO(native): FadeInThing(p0,0x40000000);
-    if waveID == 1 then
+    me:FadeInThing(2.0)
+    if waveId == 1 then
         if quest:IsActiveThreadTerminating() then return end
-        quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_SUMMONER_BLUE", 1.0)
+        healthBar = quest:AddQuestInfoBarHealth(me, {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_SUMMONER_BLUE", 1.0)
     end
     local resource = resources:NewResource()
     createCreatureNearby = nil
@@ -35,9 +35,11 @@ function Main(quest, me)
             if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         end
         if quest:IsActiveThreadTerminating() then break end
+        hero = quest:GetHero()
         while quest:IsDistanceBetweenThingsOver(me, hero, 15.0) do
             if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
             if not me:IsPerformingScriptTask() then
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 me:SummonerLightningOrbAttackTarget(hero)
             end
             if me:MsgIsHitByHero() then
@@ -50,22 +52,36 @@ function Main(quest, me)
             ::LAB_00df26bd::
             predicateResult = true
             ::FLOW_past_lab_00df26bd::
-            if predicateResult then
+            if not predicateResult then
+                hero = quest:GetHero()
+            else
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 if not (createCreatureNearby ~= nil and createCreatureNearby:IsAlive()) then
-                    createCreatureNearby = quest:CreateCreatureNearby("CREATURE_MINION_WARDOG", hero:GetPos(), 15.0, "SummonerMinion")
-                end
-                if not (createCreatureNearby2 ~= nil and createCreatureNearby2:IsAlive()) then
                     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                    createCreatureNearby2 = quest:CreateCreatureNearby("CREATURE_MINION_WARDOG", hero:GetPos(), 15.0, "SummonerMinion")
+                    local hero2 = quest:GetHero()
+                    local position = hero2:GetPos()
+                    createCreatureNearby = quest:CreateCreatureNearby("CREATURE_MINION_WARDOG", position, 15.0, "SummonerMinion")
+                end
+                if createCreatureNearby2 ~= nil and createCreatureNearby2:IsAlive() then
+                    hero = quest:GetHero()
+                else
+                    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+                    local hero3 = quest:GetHero()
+                    local position2 = hero3:GetPos()
+                    createCreatureNearby2 = quest:CreateCreatureNearby("CREATURE_MINION_WARDOG", position2, 15.0, "SummonerMinion")
+                    hero = quest:GetHero()
                 end
             end
         end
         if quest:IsActiveThreadTerminating() then break end
         resources:PrepareResource(resource)
         quest:MiniMapRemoveMarker(me)
-        while quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) do
-            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        local hero4 = quest:GetHero()
+        if quest:IsDistanceBetweenThingsUnder(me, hero4, 15.0) then
+            repeat
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+                hero5 = quest:GetHero()
+            until not quest:IsDistanceBetweenThingsUnder(me, hero5, 15.0)
         end
         if quest:IsActiveThreadTerminating() then break end
         if not quest:NewScriptFrame(me) then break end

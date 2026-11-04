@@ -1,0 +1,63 @@
+diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
+index 5f0ea95..070b994 100644
+--- a/FableScriptExtender/LuaManager.cpp
++++ b/FableScriptExtender/LuaManager.cpp
+@@ -1,5 +1,6 @@
+ #include "LuaManager.h"
+ #include <set>
++#include <cmath>
+ #include "LuaQuestHost.h"
+ #include "LuaQuestState.h" 
+ #include "FableAPI.h" 
+@@ -250,6 +251,16 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["Log"] = &LuaQuestState::Log;
+     questState_type["GetFSEInfo"] = &LuaQuestState::GetFSEInfo;
+     questState_type["CreateThread"] = sol::overload([](LuaQuestState& self, const std::string& func) {self.CreateThread(func, sol::lua_nil); }, [](LuaQuestState& self, const std::string& func, sol::table args) {self.CreateThread(func, args); });
++    questState_type["KillSpawnedFunction"] = [](LuaQuestState& self, sol::object functionName, sol::object identifier) {
++        if (!functionName.valid() || functionName.get_type() != sol::type::string)
++            throw std::runtime_error("Spawned-function name requires a string");
++        if (!identifier.valid() || identifier.get_type() != sol::type::number)
++            throw std::runtime_error("Spawned-function identifier requires an integer");
++        const auto number = identifier.as<double>();
++        if (!std::isfinite(number) || number < -2147483648.0 || number > 2147483647.0 || std::trunc(number) != number)
++            throw std::runtime_error("Spawned-function identifier requires int32");
++        self.KillSpawnedFunction(functionName.as<std::string>(), static_cast<int>(number));
++    };
+     questState_type["GetHero"] = &LuaQuestState::GetHero;
+     questState_type["CreateEffectAtPos"] = [](LuaQuestState& self, const std::string& effectName, sol::table position, sol::optional<float> angle, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate, sol::optional<std::string> scriptName) { return self.CreateEffectAtPos(effectName, position, angle, independent, alwaysUpdate, scriptName); };
+     questState_type["CreateEffectOnThing"] = [](LuaQuestState& self, const std::string& effectName, CScriptThing* pTarget, const std::string& boneName, sol::optional<bool> independent, sol::optional<bool> alwaysUpdate) { return self.CreateEffectOnThing(effectName, pTarget, boneName, independent, alwaysUpdate); };
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index a43a313..9e26a10 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -255,6 +255,18 @@ static sol::object MarshalThreadArg(const sol::object& arg, lua_State* targetL)
+         + std::string(sol::type_name(arg.lua_state(), arg.get_type())) + ")");
+ }
+ 
++void LuaQuestState::KillSpawnedFunction(const std::string& functionName, int identifier) {
++    if (!m_pParentHost || m_pParentHost->IsClosing())
++        throw std::runtime_error("Quest host unavailable for spawned-function control");
++    if (!g_fableBase || !CCharString_Construct_Literal || !CCharString_Destroy)
++        throw std::runtime_error("Retail spawned-function APIs unavailable");
++    if (functionName.find('\0') != std::string::npos)
++        throw std::runtime_error("Spawned-function name contains an embedded NUL");
++    FableString name(functionName.c_str());
++    using Kill = void(__thiscall*)(CScriptBase_Retail*, const CCharString*, int);
++    ASLR<Kill>(0x00CB7AA0)(&m_pParentHost->base, name.get(), identifier);
++}
++
+ void LuaQuestState::CreateThread(const std::string& luaFunctionName, sol::table args) {
+     if (!m_pParentHost) {
+         return;
+diff --git a/FableScriptExtender/LuaQuestState.h b/FableScriptExtender/LuaQuestState.h
+index 3250c23..a0977f7 100644
+--- a/FableScriptExtender/LuaQuestState.h
++++ b/FableScriptExtender/LuaQuestState.h
+@@ -99,6 +99,7 @@ public:
+ 
+     void Log(const std::string& message);
+     void CreateThread(const std::string& luaFunctionName, sol::table args);
++    void KillSpawnedFunction(const std::string& functionName, int identifier);
+     void ShowMessage(const std::string& message, float duration);
+     void ActivateQuest(const std::string& questName);
+     void ActivateQuestWithoutLoadingResources(const std::string& questName);

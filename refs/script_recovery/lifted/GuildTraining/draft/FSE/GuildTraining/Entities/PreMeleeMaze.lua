@@ -139,6 +139,10 @@ function Main(quest, me)
                 pcVar9 = "TEXT_QST_028_MAZE_HIT"
                 pCVar8 = quest:GetHero()
                 r2 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                if not r2 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    goto LAB_00d44494
+                end
                 iVar7 = me:IsPerformingScriptTask()
                 cVar5 = iVar7
                 while cVar5 do
@@ -193,6 +197,16 @@ function Main(quest, me)
     bVar4 = me:MsgIsHitByHero()
     if bVar4 then
         goto LAB_00d44243_c1
+    else
+        bVar6 = me:MsgIsHitByAnySpecialAbilityFromHero()
+        if bVar6 then
+            bVar6 = true
+            bVar3 = true
+            bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
+            if not bVar4 then goto LAB_00d44243_c1 end
+        end
+        bVar6 = true
+        bVar4 = false
     end
     goto FLOW_past_lab_00d44243_c1
     ::LAB_00d44243_c1::
@@ -223,6 +237,10 @@ function Main(quest, me)
             pcVar9 = "TEXT_QST_028_MAZE_HIT"
             pCVar8 = quest:GetHero()
             r3 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+            if not r3 then
+                quest:PauseAllNonScriptedEntities(false)
+                goto LAB_00d44494_c1
+            end
             iVar7 = me:IsPerformingScriptTask()
             cVar5 = iVar7
             while cVar5 do
@@ -264,6 +282,11 @@ function Main(quest, me)
     pcVar9 = "TEXT_QST_028_MAZE_LEAVE_ME"
     pCVar8 = quest:GetHero()
     r4 = me:Speak(pCVar8, pcVar9, iVar7, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+    if not r4 then
+        quest:PauseAllNonScriptedEntities(false)
+        this_00 = xStack_20
+        goto LAB_00d44498
+    end
     iVar7 = me:IsPerformingScriptTask()
     cVar5 = iVar7
     while cVar5 do

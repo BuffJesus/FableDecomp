@@ -3,14 +3,20 @@
 
 local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    IngredientObject = 1848,  -- 'OBJECT_MUSHROOM_BLUE_01'
+    StoleMushroomInBarrowFields = 1900,  -- -0.019999999552965164
+    BoughtMushroomInBarrowFields = 1904,  -- 0.019999999552965164
+}
+
 -- per-entity fields (native class members; one Lua state per entity instance)
-local boughtSpecialStuff, stoleSpecialStuff
+local boughtSpecialStuff_, stoleSpecialStuff_
 
 -- IngredientOwner.Main (retail 0x00ecb0e0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local questionAnswer, sequence, movie, movie2, movie4
+    local questionAnswer, scratchValue, getHero, movie, movie2, movie4, movie5
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -19,10 +25,15 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     local ingredient = quest:GetThingWithScriptName("Ingredient")
-    if not boughtSpecialStuff then
-        if not quest:IsActiveThreadTerminating() then quest:SetThingHasInformation(me, false, true, false); goto LAB_00ecb222 end
+    if not boughtSpecialStuff_ then
+        if not quest:IsActiveThreadTerminating() then
+            getHero = 0
+            quest:SetThingHasInformation(me, false, true, false)
+            goto LAB_00ecb222
+        end
     elseif not quest:IsActiveThreadTerminating() then
-        quest:RemoveThing(ingredient, (0 + 4) ~= 0, false)
+        getHero = 0 + 4
+        quest:RemoveThing(ingredient, false, true)
         goto LAB_00ecb222
     end
     resources:ReleaseResource(resource)
@@ -34,17 +45,25 @@ function Main(quest, me)
     while not quest:IsActiveThreadTerminating() do
         if me:IsTalkedToByHero() then
             if not quest:IsActiveThreadTerminating() then
-                if not boughtSpecialStuff then
+                if not boughtSpecialStuff_ then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00ecbc4d end
                     local movie6 = resources:StartMovie("")
+                    scratchValue = 1
                     quest:PauseAllNonScriptedEntities(true)
-                    local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
-                    if fret_0 <= 0.0 then
+                    getHero = nil
+                    if not resources:ResourceThingHealthAbove(resource, 0.0) then
                         goto LAB_00ecb3b6
                     else
-                        if not me:Speak(hero, "TEXT_QST_B10_TRADER_INTRO", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00ecbbc9 end
+                        getHero = quest:GetHero()
+                        if not me:Speak(getHero, "TEXT_QST_B10_TRADER_INTRO", GROUP_SELECT_FIRST, false, true, false) then
+                            goto LAB_00ecbbc9
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00ecbbc9 end
+                        end
                         if not quest:IsActiveThreadTerminating() then goto LAB_00ecb3b6 end
                     end
-                    goto FLOW_past_lab_00ecb3b6
+                    goto FLOW_past_lab_00ecbbc9
                     ::LAB_00ecb3b6::
                     quest:GiveHeroYesNoQuestion("TEXT_QST_B10_TRADER_BUY_MUSHROOM_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                     questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -53,31 +72,45 @@ function Main(quest, me)
                         questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        if questionAnswer ~= 1 then goto LAB_00ecb6d9 end
-                        if quest:GetHeroGold() < 1500 then
-                            if 1499 < quest:GetHeroGold() then goto LAB_00ecb6d9 end
-                            if quest:IsActiveThreadTerminating() then goto LAB_00ecb6c3 end
-                            local fret_01 = quest:GetHealth(resources:ScriptThing(resource))
-                            if 0.0 < fret_01 then
-                                if not me:Speak(hero, "TEXT_QST_B10_TRADER_NOT_ENOUGH_MONEY_10", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00ecbbc9 end
-                                if quest:IsActiveThreadTerminating() then goto LAB_00ecb6c3 end
-                            end
-                        else
-                            if quest:IsActiveThreadTerminating() then goto LAB_00ecbbc9 end
-                            quest:GiveHeroObject(quest:ReadGlobalGameDataString(1848), -1, false)
-                            quest:RemoveThing(1, false, false)
-                            quest:GiveHeroGold(-1500)
-                            quest:EntityGiveGold(me, 1500)
-                            local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
-                            if 0.0 < fret_00 then
-                                if not me:Speak(hero, "TEXT_QST_B10_TRADER_BOUGHT_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00ecb6c3 end
+                        if not (questionAnswer ~= 1) then
+                            if quest:GetHeroGold() < 1500 then
+                                if 1499 < quest:GetHeroGold() then goto LAB_00ecb6d9 end
+                                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00ecbbc9 end
+                                getHero = nil
+                                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                    scratchValue = quest:GetHero()
+                                    if not me:Speak(scratchValue, "TEXT_QST_B10_TRADER_NOT_ENOUGH_MONEY_10", GROUP_SELECT_FIRST, false, true, false) then
+                                        goto LAB_00ecbbc9
+                                    end
+                                    while me:IsPerformingScriptTask() do
+                                        if not quest:NewScriptFrame(me) then goto LAB_00ecbbc9 end
+                                    end
+                                    if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00ecbbc9 end
+                                end
+                            else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00ecbbc9 end
+                                local scratchValue3 = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                                quest:GiveHeroObject(scratchValue3, -1, false)
+                                quest:RemoveThing(ingredient, false, true)
+                                quest:GiveHeroGold(-1500)
+                                quest:EntityGiveGold(me, 1500)
+                                getHero = nil
+                                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                    scratchValue = quest:GetHero()
+                                    if not me:Speak(scratchValue, "TEXT_QST_B10_TRADER_BOUGHT_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false) then
+                                        goto FLOW_past_lab_00ecbbc9
+                                    end
+                                    while me:IsPerformingScriptTask() do
+                                        if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00ecbbc9 end
+                                    end
+                                    if quest:IsActiveThreadTerminating() then goto LAB_00ecbbc9 end
+                                end
+                                boughtSpecialStuff_ = true
+                                quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.BoughtMushroomInBarrowFields))
+                                quest:ClearThingHasInformation(me)
                             end
-                            boughtSpecialStuff = true
-                            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(1904))
-                            quest:ClearThingHasInformation(me)
+                            goto FLOW_past_lab_00ecb6d9
                         end
-                        goto FLOW_past_lab_00ecb6d9
                         ::LAB_00ecb6d9::
                         if quest:IsActiveThreadTerminating() then goto LAB_00ecbbc9 end
                         goto FLOW_hoist_lab_00ecbbc9_1
@@ -90,8 +123,15 @@ function Main(quest, me)
                     movie = movie6
                     goto LAB_00ecbc48
                     ::FLOW_hoist_lab_00ecbbc9_1::
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_B10_TRADER_NOT_BOUGHT_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00ecb6c3 end
+                    getHero = nil
+                    if resources:ResourceThingHealthAbove(resource, 0.0) then
+                        scratchValue = quest:GetHero()
+                        if not me:Speak(scratchValue, "TEXT_QST_B10_TRADER_NOT_BOUGHT_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false) then
+                            goto FLOW_past_lab_00ecbbc9
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00ecbbc9 end
+                        end
                         if quest:IsActiveThreadTerminating() then goto LAB_00ecbbc9 end
                     end
                     ::FLOW_hoist_lab_00ecbbc9_2::
@@ -99,17 +139,22 @@ function Main(quest, me)
                     movie2 = movie6
                     goto LAB_00ecb9e6
                     ::FLOW_past_lab_00ecbbc9::
-                    ::FLOW_past_lab_00ecb3b6::
-                    ::LAB_00ecb6c3::
                     quest:PauseAllNonScriptedEntities(false)
                     movie = movie6
                 else
-                    if stoleSpecialStuff then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00ecbc4d end
+                    if stoleSpecialStuff_ then
+                        if quest:IsActiveThreadTerminating() then goto LAB_00ecbc4d end
                         local movie3 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        local fret_04 = quest:GetHealth(resources:ScriptThing(resource))
-                        if 0.0 < fret_04 then
-                            me:Speak(hero, "TEXT_QST_B10_TRADER_POST_STOLE_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false)
+                        scratchValue = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            scratchValue = quest:GetHero()
+                            if not me:Speak(scratchValue, "TEXT_QST_B10_TRADER_POST_STOLE_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                movie = movie3
+                                goto LAB_00ecbc48
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
@@ -133,20 +178,26 @@ function Main(quest, me)
                 goto FLOW_past_lab_00ecb9e6
                 ::LAB_00ecb9e6::
                 resources:DestroyMovie(movie2)
-                goto LAB_00ecb9eb
+                goto FLOW_past_lab_00ecbc4d
                 ::FLOW_hoist_lab_00ecb9e6_1::
+                if quest:IsActiveThreadTerminating() then goto LAB_00ecbc4d end
                 movie4 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then
-                    goto LAB_00ecb8bb
+                scratchValue = nil
+                if not (not resources:ResourceThingHealthAbove(resource, 0.0)) then
+                    goto FLOW_past_lab_00ecb8bb
                 end
-                goto FLOW_past_lab_00ecb8bb
                 ::LAB_00ecb8bb::
                 quest:PauseAllNonScriptedEntities(false)
                 movie2 = movie4
                 goto LAB_00ecb9e6
                 ::FLOW_past_lab_00ecb8bb::
-                me:Speak(hero, "TEXT_QST_B10_TRADER_POST_BOUGHT_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false)
+                scratchValue = quest:GetHero()
+                if not me:Speak(scratchValue, "TEXT_QST_B10_TRADER_POST_BOUGHT_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    movie = movie4
+                    goto LAB_00ecbc48
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
@@ -178,39 +229,38 @@ function Main(quest, me)
         ::FLOW_hoist_lab_00ecbc4d_1::
         break
         ::FLOW_past_lab_00ecbc4d::
-        ::LAB_00ecb9eb::
-        sequence = not boughtSpecialStuff
-        if sequence then
-            -- TODO(native): cVar4 = (**(CStack_d8._0_4_ + 0x12c))()
-    --[[unresolved native value]]
-            sequence = not nil
-        end
-        if sequence then
-            if quest:IsActiveThreadTerminating() then goto LAB_00ecbc4d end
-            local movie5 = resources:StartMovie("")
-            quest:PauseAllNonScriptedEntities(true)
-            local fret_05 = quest:GetHealth(resources:ScriptThing(resource))
-            if 0.0 < fret_05 then
-                me:Speak(hero, "TEXT_QST_B10_TRADER_STOLE_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false)
+        if boughtSpecialStuff_ or (ingredient ~= nil and ingredient:IsAlive()) then quest:NewScriptFrame(me); goto continue_3 end
+        if quest:IsActiveThreadTerminating() then goto LAB_00ecbc4d end
+        movie5 = resources:StartMovie("")
+        quest:PauseAllNonScriptedEntities(true)
+        scratchValue = nil
+        if resources:ResourceThingHealthAbove(resource, 0.0) then
+            local hero = quest:GetHero()
+            if not me:Speak(hero, "TEXT_QST_B10_TRADER_STOLE_MUSHROOM_10", GROUP_SELECT_FIRST, false, true, false) then
+                quest:PauseAllNonScriptedEntities(false)
+            else
                 while me:IsPerformingScriptTask() do
                     if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00ecbc44 end
                 end
                 if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00ecbc44 end
                 goto FLOW_past_lab_00ecbc44
-                ::LAB_00ecbc44::
-                movie = movie5
-                goto LAB_00ecbc48
-                ::FLOW_past_lab_00ecbc44::
             end
-            boughtSpecialStuff = true
-            stoleSpecialStuff = true
-            quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(1900))
-            quest:ClearThingHasInformation(me)
-            quest:AddCrimeCommitted(quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS"), 6, true, nil --[[missing]], nil --[[missing]], 0)
-            quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(movie5)
+            ::LAB_00ecbc44::
+            movie = movie5
+            goto LAB_00ecbc48
+            ::FLOW_past_lab_00ecbc44::
         end
+        boughtSpecialStuff_ = true
+        stoleSpecialStuff_ = true
+        quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.StoleMushroomInBarrowFields))
+        quest:ClearThingHasInformation(me)
+        getHero = 0
+        scratchValue = quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS")
+        quest:AddCrimeCommitted(scratchValue, 6, true, nil, nil, 7)
+        quest:PauseAllNonScriptedEntities(false)
+        resources:DestroyMovie(movie5)
         quest:NewScriptFrame(me)
+        ::continue_3::
     end
     quest:DeregisterTimer(timerId)
     resources:ReleaseResource(resource)
@@ -218,8 +268,8 @@ end
 
 -- IngredientOwner.Init (retail 0x00ecb050)
 function Init(quest, me)
-    boughtSpecialStuff = false
-    stoleSpecialStuff = false
+    boughtSpecialStuff_ = false
+    stoleSpecialStuff_ = false
     if not quest:GetStateBool("OwnerAlive") then
         quest:RemoveThing(me, false, true)
     end
@@ -227,8 +277,10 @@ end
 
 -- IngredientOwner.OnPersist (retail 0x00ecd960)
 function OnPersist(quest, me, context)
-    boughtSpecialStuff = quest:PersistTransferBool(context, "BoughtSpecialStuff", boughtSpecialStuff)
-    stoleSpecialStuff = quest:PersistTransferBool(context, "StoleSpecialStuff", stoleSpecialStuff)
+    local boughtSpecialStuff = boughtSpecialStuff_ or false
+    boughtSpecialStuff_ = quest:PersistTransferBool(context, "BoughtSpecialStuff", boughtSpecialStuff)
+    local stoleSpecialStuff = stoleSpecialStuff_ or false
+    stoleSpecialStuff_ = quest:PersistTransferBool(context, "StoleSpecialStuff", stoleSpecialStuff)
 end
 
 -- IngredientOwner.OnPredicateFail (retail 0x00ecb080)

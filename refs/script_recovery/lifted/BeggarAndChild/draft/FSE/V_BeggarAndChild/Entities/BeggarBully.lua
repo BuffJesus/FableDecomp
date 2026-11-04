@@ -12,32 +12,33 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, aC_stk_28, au_stk_54, bVar4, bVar6, cVar5, fVar15, hb_stk_128, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_154, native_arg_switch_3, native_arg_switch_4, p0, p0_01, p0_01_b3, p1, p2, pCVar7, pcVar16, pppuVar20, pppuVar20_b3, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uStack_158_b2, uVar11, uVar12, uVar13, uVar2, uVar8, xStack_110, xStack_124, xStack_138, xStack_13c, xStack_150, xStack_164, xStack_78, xStack_fc, x_stk_10, x_stk_18, x_stk_30, x_stk_48, x_stk_58, x_stk_60, x_stk_64
+    local __native_condition_1, aC_stk_28, au_stk_54, bVar4, bVar6, belchCount, cVar5, fVar15, friendReplySelected, hb_stk_f001, hb_stk_f002, hb_stk_f003, hb_stk_f004, hb_stk_f005, hb_stk_f006, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_154, initialReplySelected, native_arg_switch_3, native_arg_switch_4, p0, p0_01, p0_01_b3, p1, p2, pCVar7, pcVar16, pppuVar20, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, uVar11, uVar8, xStack_124, xStack_138, xStack_13c, xStack_164, x_stk_10, x_stk_18, x_stk_30, x_stk_48, x_stk_58, x_stk_60, x_stk_64
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if not bVar4 then
         xStack_164 = resources:NewResource()
-        resources:PrepareResource(xStack_164)
+        local entityControl = xStack_164
+        resources:PrepareResource(entityControl)
         p2 = 4
         p1 = xStack_164
-        cVar5 = resources:TryAcquire(xStack_164, me, 4)
+        cVar5 = resources:TryAcquire(entityControl, me, 4)
         while not cVar5 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00e5ce43 end
-            cVar5 = resources:TryAcquire(xStack_164, me, 4)
+            cVar5 = resources:TryAcquire(entityControl, me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
             uVar8 = __native_entity_state:GetStateInt("self_0xc")
+            quest:SetIsPushableByHero(me, false)
             r1 = quest:GetThingWithScriptName("LookoutPointBeggar")
-            uVar2 = (r1 & 0xffffff)
-            -- TODO(native): xStack_164 = (undefined **)(uint)(uVar2 & 0xffff);
-            hb_stk_128 = false
+            friendReplySelected = false
+            belchCount = 0; initialReplySelected = false
             quest:SetThingHasInformation(me, false, false, false)
             quest:EntitySetAsKillable(me, false, true)
             cVar5 = quest:GetStateBool("BeggarHit")
@@ -80,7 +81,7 @@ function Main(quest, me)
                         bVar4 = not alive
                         if bVar4 then goto LAB_00e5ce3a end
                         bVar4 = false
-                        if (hb_stk_128) or (quest:GetStateBool("TaughtBelch")) then
+                        if (initialReplySelected) or (quest:GetStateBool("TaughtBelch")) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then goto LAB_00e5ce3a end
@@ -94,12 +95,15 @@ function Main(quest, me)
                                     if quest:GetStateInt("BelchedAtBeggar") == 0 then
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
-                                        if bVar6 then goto LAB_00e5ce6e end
-                                        x_stk_30 = resources:ScriptThing(xStack_150)
+                                        if bVar6 then goto LAB_00e5c30a end
+                                        x_stk_30 = resources:ScriptThing(entityControl)
                                         iVar10 = x_stk_30
                                         fVar15 = quest:GetHealth(iVar10)
-                                        -- TODO(native): pppuVar20_b3 = !(fVar15 <= (float10)0.0);
-                                        if pppuVar20_b3 then
+                                        hb_stk_f001 = true
+                                        if not (fVar15 > 0.0) then
+                                            hb_stk_f001 = false
+                                        end
+                                        if hb_stk_f001 then
                                             iVar19 = 0
                                             iVar18 = 1
                                             iVar17 = 0
@@ -107,13 +111,16 @@ function Main(quest, me)
                                             pcVar16 = "TEXT_QST_015_BULLY_FRIEND_BELCH_COMMAND"
                                             iVar9 = quest:GetHero()
                                             r2 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                            if not r2 then
+                                                goto LAB_00e5c30a
+                                            end
                                             iVar9 = me:IsPerformingScriptTask()
                                             cVar5 = iVar9
                                             while cVar5 do
                                                 alive = quest:NewScriptFrame(me)
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
-                                                if bVar6 then goto LAB_00e5bab8 end
+                                                if bVar6 then goto LAB_00e5c30a end
                                                 iVar9 = me:IsPerformingScriptTask()
                                                 cVar5 = iVar9
                                             end
@@ -122,23 +129,26 @@ function Main(quest, me)
                                             if not bVar6 then goto LAB_00e5c469 end
                                             -- LAB_00e5be23: (native jump target)
                                             quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_124)
+                                            resources:DestroyMovie(xStack_138)
                                             goto LAB_00e5ce3a
                                         end
                                     else
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
-                                        if bVar6 then goto LAB_00e5bab8 end
-                                        if uStack_158_b2 == 0 then
+                                        if bVar6 then goto LAB_00e5c30a end
+                                        if not friendReplySelected then
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
-                                            if bVar6 then goto LAB_00e5ce6e end
-                                            -- TODO(native): xStack_164._0_3_ = CONCAT12(1,(undefined2)xStack_164);
-                                            x_stk_18 = resources:ScriptThing(xStack_150)
+                                            if bVar6 then goto LAB_00e5c30a end
+                                            friendReplySelected = true
+                                            x_stk_18 = resources:ScriptThing(entityControl)
                                             iVar10 = x_stk_18
                                             fVar15 = quest:GetHealth(iVar10)
-                                            -- TODO(native): pppuVar20_b3 = !(fVar15 <= (float10)0.0);
-                                            if pppuVar20_b3 then
+                                            hb_stk_f002 = true
+                                            if not (fVar15 > 0.0) then
+                                                hb_stk_f002 = false
+                                            end
+                                            if hb_stk_f002 then
                                                 iVar19 = 0
                                                 iVar18 = 1
                                                 iVar17 = 0
@@ -146,29 +156,35 @@ function Main(quest, me)
                                                 pcVar16 = "TEXT_QST_015_BULLY_FRIEND_TALK"
                                                 iVar9 = quest:GetHero()
                                                 r3 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                                if not r3 then
+                                                    goto LAB_00e5c30a
+                                                end
                                                 iVar9 = me:IsPerformingScriptTask()
                                                 cVar5 = iVar9
                                                 while cVar5 do
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
-                                                    if bVar6 then goto LAB_00e5bab8 end
+                                                    if bVar6 then goto LAB_00e5c30a end
                                                     iVar9 = me:IsPerformingScriptTask()
                                                     cVar5 = iVar9
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
-                                                if bVar6 then goto LAB_00e5ce8a end
+                                                if bVar6 then goto LAB_00e5c30a end
                                             end
                                         else
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
-                                            if bVar6 then goto LAB_00e5bab8 end
-                                            x_stk_60 = resources:ScriptThing(xStack_150)
+                                            if bVar6 then goto LAB_00e5c30a end
+                                            x_stk_60 = resources:ScriptThing(entityControl)
                                             iVar10 = x_stk_60
                                             fVar15 = quest:GetHealth(iVar10)
-                                            -- TODO(native): pppuVar20_b3 = !(fVar15 <= (float10)0.0);
-                                            if not pppuVar20_b3 then goto LAB_00e5c469 end
+                                            hb_stk_f003 = true
+                                            if not (fVar15 > 0.0) then
+                                                hb_stk_f003 = false
+                                            end
+                                            if not hb_stk_f003 then goto LAB_00e5c469 end
                                             iVar19 = 0
                                             iVar18 = 1
                                             iVar17 = 0
@@ -176,13 +192,16 @@ function Main(quest, me)
                                             pcVar16 = "TEXT_QST_015_BULLY_FRIEND_SNEER_OFFER"
                                             iVar9 = quest:GetHero()
                                             r4 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                            if not r4 then
+                                                goto LAB_00e5c30a
+                                            end
                                             iVar9 = me:IsPerformingScriptTask()
                                             cVar5 = iVar9
                                             while cVar5 do
                                                 alive = quest:NewScriptFrame(me)
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
-                                                if bVar6 then goto LAB_00e5ce8a end
+                                                if bVar6 then goto LAB_00e5c30a end
                                                 iVar9 = me:IsPerformingScriptTask()
                                                 cVar5 = iVar9
                                             end
@@ -197,7 +216,7 @@ function Main(quest, me)
                             ::LAB_00e5c45a::
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
-                            if bVar6 then goto LAB_00e5bab8 end
+                            if bVar6 then goto LAB_00e5c30a end
                             ::FLOW_hoist_lab_00e5c45a_2::
                             goto LAB_00e5c469
                             ::FLOW_hoist_lab_00e5c45a_3::
@@ -213,7 +232,7 @@ function Main(quest, me)
                             p1 = pppuVar20
                             goto LAB_00e5c948
                             ::FLOW_hoist_lab_00e5c469_1::
-                            ::LAB_00e5ce6e::
+                            -- LAB_00e5ce6e: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_138)
                             goto LAB_00e5ce3a
@@ -221,14 +240,14 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if not bVar6 then
-                                x_stk_48 = resources:ScriptThing(xStack_150)
+                                x_stk_48 = resources:ScriptThing(entityControl)
                                 iVar10 = x_stk_48
                                 fVar15 = quest:GetHealth(iVar10)
-                                uVar13 = CONCAT13(1,(int3)p1)
-                                if fVar15 <= 0.0 then
-                                    uVar13 = p1 & 0xffffff
+                                hb_stk_f004 = true
+                                if not (fVar15 > 0.0) then
+                                    hb_stk_f004 = false
                                 end
-                                if (uVar13 >> 0x18) ~= 0 then
+                                if hb_stk_f004 then
                                     iVar19 = 0
                                     iVar18 = 1
                                     iVar17 = 0
@@ -236,19 +255,22 @@ function Main(quest, me)
                                     pcVar16 = "TEXT_QST_015_BULLY_FRIEND_TALK_20"
                                     iVar9 = quest:GetHero()
                                     r5 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                    if not r5 then
+                                        goto LAB_00e5c30a
+                                    end
                                     iVar9 = me:IsPerformingScriptTask()
                                     cVar5 = iVar9
                                     while cVar5 do
                                         alive = quest:NewScriptFrame(me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar6 = not alive
-                                        if bVar6 then goto LAB_00e5ce8a end
+                                        if bVar6 then goto LAB_00e5c30a end
                                         iVar9 = me:IsPerformingScriptTask()
                                         cVar5 = iVar9
                                     end
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar6 = not alive
-                                    if bVar6 then goto LAB_00e5bab8 end
+                                    if bVar6 then goto LAB_00e5c30a end
                                 end
                                 quest:GiveHeroYesNoQuestion("TEXT_QST_015_BULLY_REPEAT_BELCH_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
                                 iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
@@ -256,7 +278,7 @@ function Main(quest, me)
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar6 = not alive
-                                    if bVar6 then goto LAB_00e5ce8a end
+                                    if bVar6 then goto LAB_00e5c30a end
                                     iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
                                 end
                                 alive = not quest:IsActiveThreadTerminating()
@@ -266,14 +288,14 @@ function Main(quest, me)
                                     bVar6 = not alive
                                     if iVar9 == 1 then
                                         if not bVar6 then
-                                            x_stk_64 = resources:ScriptThing(xStack_13c)
+                                            x_stk_64 = resources:ScriptThing(entityControl)
                                             iVar10 = x_stk_64
                                             fVar15 = quest:GetHealth(iVar10)
-                                            pppuVar20 = CONCAT13(1,(int3)uVar13)
-                                            if fVar15 <= 0.0 then
-                                                pppuVar20 = (uVar13 & 0xffffff)
+                                            hb_stk_f005 = true
+                                            if not (fVar15 > 0.0) then
+                                                hb_stk_f005 = false
                                             end
-                                            if pppuVar20_b3 then
+                                            if hb_stk_f005 then
                                                 iVar19 = 0
                                                 iVar18 = 1
                                                 iVar17 = 0
@@ -281,19 +303,22 @@ function Main(quest, me)
                                                 pcVar16 = "TEXT_QST_015_BULLY_TEACH_BELCH"
                                                 iVar9 = quest:GetHero()
                                                 r6 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                                if not r6 then
+                                                    goto LAB_00e5c30a
+                                                end
                                                 iVar9 = me:IsPerformingScriptTask()
                                                 cVar5 = iVar9
                                                 while cVar5 do
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
-                                                    if bVar6 then goto LAB_00e5bab8 end
+                                                    if bVar6 then goto LAB_00e5c30a end
                                                     iVar9 = me:IsPerformingScriptTask()
                                                     cVar5 = iVar9
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar6 = not alive
-                                                if bVar6 then goto LAB_00e5ce8a end
+                                                if bVar6 then goto LAB_00e5c30a end
                                             end
                                             quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_BELCH_DUMMY", 2, 10)
                                             if quest:GetStateBool("ExpressionTutorialShown") then
@@ -315,14 +340,14 @@ function Main(quest, me)
                                                         alive = quest:NewScriptFrame(me)
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar6 = not alive
-                                                        if bVar6 then goto LAB_00e5ce8a end
+                                                        if bVar6 then goto LAB_00e5c30a end
                                                         cVar5 = quest:MsgIsGameInfoClickedPast()
                                                     end
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
                                                     if not bVar6 then goto LAB_00e5c3a1 end
                                                 end
-                                                goto LAB_00e5bab8
+                                                goto LAB_00e5c30a
                                             end
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar6 = not alive
@@ -333,7 +358,7 @@ function Main(quest, me)
                                                     alive = quest:NewScriptFrame(me)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar6 = not alive
-                                                    if bVar6 then goto LAB_00e5bab8 end
+                                                    if bVar6 then goto LAB_00e5c30a end
                                                     cVar5 = quest:MsgIsGameInfoClickedPast()
                                                 end
                                                 alive = not quest:IsActiveThreadTerminating()
@@ -348,63 +373,61 @@ function Main(quest, me)
                                             goto LAB_00e5c3a8
                                             ::FLOW_past_lab_00e5c3a1::
                                         end
-                                        goto LAB_00e5ce8a
+                                        -- LAB_00e5ce8a: (native jump target)
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(xStack_138)
+                                        goto LAB_00e5ce3a
                                     end
-                                    goto FLOW_hoist_lab_00e5ce8a_1
+                                    if not bVar6 then
+                                        x_stk_58 = resources:ScriptThing(entityControl)
+                                        iVar10 = x_stk_58
+                                        fVar15 = quest:GetHealth(iVar10)
+                                        hb_stk_f006 = true
+                                        if not (fVar15 > 0.0) then
+                                            hb_stk_f006 = false
+                                        end
+                                        if hb_stk_f006 then
+                                            iVar19 = 0
+                                            iVar18 = 1
+                                            iVar17 = 0
+                                            iVar10 = 0
+                                            pcVar16 = "TEXT_QST_015_BULLY_REPEAT_BELCH_QUESTION_REFUSAL"
+                                            iVar9 = quest:GetHero()
+                                            r7 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                            if not r7 then
+                                                goto LAB_00e5c30a
+                                            end
+                                            iVar9 = me:IsPerformingScriptTask()
+                                            cVar5 = iVar9
+                                            while cVar5 do
+                                                alive = quest:NewScriptFrame(me)
+                                                alive = not quest:IsActiveThreadTerminating()
+                                                bVar6 = not alive
+                                                if bVar6 then goto LAB_00e5c30a end
+                                                iVar9 = me:IsPerformingScriptTask()
+                                                cVar5 = iVar9
+                                            end
+                                            goto LAB_00e5c45a
+                                        end
+                                        goto LAB_00e5c469
+                                    end
                                 end
                             end
-                            goto FLOW_past_lab_00e5ce8a
-                            ::LAB_00e5ce8a::
+                            ::LAB_00e5c30a::
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_124)
-                            goto LAB_00e5ce3a
-                            ::FLOW_hoist_lab_00e5ce8a_1::
-                            if not bVar6 then
-                                x_stk_58 = resources:ScriptThing(xStack_13c)
-                                iVar10 = x_stk_58
-                                fVar15 = quest:GetHealth(iVar10)
-                                pppuVar20 = CONCAT13(1,(int3)uVar13)
-                                if fVar15 <= 0.0 then
-                                    pppuVar20 = (uVar13 & 0xffffff)
-                                end
-                                if pppuVar20_b3 then
-                                    iVar19 = 0
-                                    iVar18 = 1
-                                    iVar17 = 0
-                                    iVar10 = 0
-                                    pcVar16 = "TEXT_QST_015_BULLY_REPEAT_BELCH_QUESTION_REFUSAL"
-                                    iVar9 = quest:GetHero()
-                                    r7 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
-                                    iVar9 = me:IsPerformingScriptTask()
-                                    cVar5 = iVar9
-                                    while cVar5 do
-                                        alive = quest:NewScriptFrame(me)
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar6 = not alive
-                                        if bVar6 then goto LAB_00e5ce8a end
-                                        iVar9 = me:IsPerformingScriptTask()
-                                        cVar5 = iVar9
-                                    end
-                                    goto LAB_00e5c45a
-                                end
-                                goto LAB_00e5c469
-                            end
-                            ::FLOW_past_lab_00e5ce8a::
-                            -- LAB_00e5c30a: (native jump target)
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_110)
+                            resources:DestroyMovie(xStack_138)
                             goto LAB_00e5ce3a
                         end
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00e5ce3a end
-                        hb_stk_128 = true
+                        initialReplySelected = true
                         xStack_124 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        au_stk_54 = resources:ScriptThing(xStack_13c)
+                        au_stk_54 = resources:ScriptThing(entityControl)
                         pCVar7 = au_stk_54
                         fVar15 = quest:GetHealth(pCVar7)
-                        p0_01_b3 = not (fVar15 <= 0.0)
+                        p0_01_b3 = not (not (fVar15 > 0.0))
                         if not p0_01_b3 then
                             goto LAB_00e5b824
                         else
@@ -415,6 +438,9 @@ function Main(quest, me)
                             pcVar16 = "TEXT_QST_015_BULLY_FIRST_CHAT"
                             iVar9 = quest:GetHero()
                             r8 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                            if not r8 then
+                                goto LAB_00e5bab8
+                            end
                             iVar9 = me:IsPerformingScriptTask()
                             cVar5 = iVar9
                             while cVar5 do
@@ -448,10 +474,10 @@ function Main(quest, me)
                             bVar6 = not alive
                             if iVar9 == 1 then
                                 if not bVar6 then
-                                    x_stk_10 = resources:ScriptThing(xStack_13c)
+                                    x_stk_10 = resources:ScriptThing(entityControl)
                                     iVar10 = x_stk_10
                                     fVar15 = quest:GetHealth(iVar10)
-                                    p0_01_b3 = not (fVar15 <= 0.0)
+                                    p0_01_b3 = not (not (fVar15 > 0.0))
                                     if p0_01_b3 then
                                         iVar19 = 0
                                         iVar18 = 1
@@ -460,6 +486,9 @@ function Main(quest, me)
                                         pcVar16 = "TEXT_QST_015_BULLY_TEACH_BELCH"
                                         iVar9 = quest:GetHero()
                                         r9 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                        if not r9 then
+                                            goto LAB_00e5bab8
+                                        end
                                         iVar9 = me:IsPerformingScriptTask()
                                         cVar5 = iVar9
                                         while cVar5 do
@@ -529,14 +558,14 @@ function Main(quest, me)
                                 end
                                 -- LAB_00e5ce57: (native jump target)
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_110)
+                                resources:DestroyMovie(xStack_124)
                                 goto LAB_00e5ce3a
                             end
                             if not bVar6 then
-                                aC_stk_28 = resources:ScriptThing(xStack_150)
+                                aC_stk_28 = resources:ScriptThing(entityControl)
                                 iVar10 = aC_stk_28
                                 fVar15 = quest:GetHealth(iVar10)
-                                p0_01_b3 = not (fVar15 <= 0.0)
+                                p0_01_b3 = not (not (fVar15 > 0.0))
                                 if p0_01_b3 then
                                     iVar19 = 0
                                     iVar18 = 1
@@ -545,6 +574,9 @@ function Main(quest, me)
                                     pcVar16 = "TEXT_QST_015_BULLY_TEACH_BELCH_REFUSED"
                                     iVar9 = quest:GetHero()
                                     r10 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                    if not r10 then
+                                        goto LAB_00e5bab8
+                                    end
                                     iVar9 = me:IsPerformingScriptTask()
                                     cVar5 = iVar9
                                     while cVar5 do
@@ -568,11 +600,11 @@ function Main(quest, me)
                                 bVar6 = not alive
                                 if bVar6 then goto LAB_00e5bab8 end
                                 uVar8 = quest:GetActiveQuestName()
-                                quest:GiveHeroQuestCardDirectly(uVar8, "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", xStack_78)
+                                quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", uVar8, false)
                                 quest:SetStateBool("QuestCardGiven", true)
                             end
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_fc)
+                            resources:DestroyMovie(xStack_124)
                             iVar9 = quest:GetTimer(quest:GetStateInt("TauntTimer"))
                             quest:SetTimer(quest:GetStateInt("TauntTimer"), iVar9 + 5)
                             p1 = pppuVar20
@@ -582,7 +614,7 @@ function Main(quest, me)
                         ::FLOW_past_lab_00e5b824::
                         ::LAB_00e5bab8::
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_110)
+                        resources:DestroyMovie(xStack_124)
                         goto LAB_00e5ce3a
                     end
                     iVar9 = quest:GetTimer(quest:GetStateInt("TauntTimer"))
@@ -646,7 +678,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00e5cea1 end
-                        iVar10 = math.random(0, 32767)
+                        iVar10 = quest:RetailRandModulo(32768)
                         native_arg_switch_3 = iVar10 % 5
                         repeat
                             if native_arg_switch_3 == 0 then
@@ -679,7 +711,7 @@ function Main(quest, me)
                         ::FLOW_native_label_1::
                         uVar8 = quest:AddNewConversation(me, false, false)
                         quest:AddPersonToConversation(uVar8, r1)
-                        quest:AddLineToConversation(uVar8, "TEXT_QST_015_BULLY_TAUNT", me, nil --[[missing]], false)
+                        quest:AddLineToConversation(uVar8, "TEXT_QST_015_BULLY_TAUNT", me, r1, false)
                         quest:Pause(0.20000000298023224)
                         quest:SetStateBool("BullyHasTaunted", true)
                         quest:SetTimer(quest:GetStateInt("TauntTimer"), 0xc)
@@ -774,11 +806,11 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
                                 if bVar6 then goto LAB_00e5cedc end
-                                -- TODO(native): xStack_138 = xStack_138 + 1;
+                                belchCount = belchCount + 1
                                 uVar8 = quest:AddNewConversation(me, false, false)
                                 uVar11 = quest:GetHero()
                                 quest:AddPersonToConversation(uVar8, uVar11)
-                                native_arg_switch_4 = xStack_138
+                                native_arg_switch_4 = belchCount
                                 repeat
                                     if native_arg_switch_4 == 1 then
                                         uVar11 = quest:GetHero()
@@ -823,12 +855,11 @@ function Main(quest, me)
                 end
                 ::LAB_00e5cd74::
                 cVar5 = quest:GetStateBool("BeggarHit")
-                -- TODO(native): unaff_EBP = uVar12;
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if not bVar4 then
-                resources:PrepareResource(r1)
+                resources:PrepareResource(entityControl)
                 quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_BELCH_DUMMY", 2, -1)
                 quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 2, -1)
                 quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_SNEER_DUMMY", 2, -1)
@@ -837,7 +868,7 @@ function Main(quest, me)
             ::LAB_00e5ce3a::
         end
         ::LAB_00e5ce43::
-        resources:ReleaseResource(r1)
+        resources:ReleaseResource(entityControl)
     end
 end
 

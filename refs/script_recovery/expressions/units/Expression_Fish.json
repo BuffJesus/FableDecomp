@@ -637,5 +637,215 @@
     "pdbMembersUnused": [],
     "nestedPdbMembers": {}
   },
-  "entities": {}
+  "entities": {},
+  "reviewedStackScalarAliases": {
+    "0x00ee95c0": {
+      "alias": "local_fishingSpot",
+      "additionalAliases": [
+        "native_fishingAtSpot",
+        "native_fishingX",
+        "native_fishingY",
+        "native_fishingWater"
+      ],
+      "sourceSha256": "d59bc3892f5251291a6451383a36369dcf80eea56d13e9a1247fa8b64a33cfee",
+      "nativeSha256": "35aeb9352c6af157768909c949f36c06e2fba6116281731d10d01562dfb18094",
+      "nativeInstructions": {
+        "0xee9923": "c644241800",
+        "0xee9966": "ff973c010000",
+        "0xee99d6": "8d045b",
+        "0xee99d9": "8d1481",
+        "0xee99dd": "8d4c2424",
+        "0xee99e1": "e89a1f9cff",
+        "0xee9a2b": "8b08",
+        "0xee9a2d": "894c245c",
+        "0xee9a31": "8b5004",
+        "0xee9a37": "89542460",
+        "0xee9a3b": "8b4008",
+        "0xee9a3e": "89442464",
+        "0xee9a44": "8d44245c",
+        "0xee9a49": "ff92c8030000",
+        "0xee9a4f": "d95c2464",
+        "0xee9aad": "c644241801",
+        "0xee9b98": "8b442418",
+        "0xee9b9f": "ff92dc030000",
+        "0xee9d25": "8a442418",
+        "0xee9de0": "8a442418"
+      },
+      "edits": [
+        [
+          "xStack_6c",
+          "local_fishingSpot"
+        ],
+        [
+          "CScriptThing::operator=((CScriptThing *)local_fishingSpot,iStack_60 + iVar12 * 0xc);",
+          "local_fishingSpot = LOCALLIST_At(iStack_60, iVar12);"
+        ],
+        [
+          "xStack_74 = (CCharString_bv)((uint)xStack_74 & 0xffffff00);",
+          "native_fishingAtSpot = 0;"
+        ],
+        [
+          "xStack_74._0_1_",
+          "native_fishingAtSpot"
+        ],
+        [
+          "native_fishingAtSpot != '\\0'",
+          "native_fishingAtSpot != 0"
+        ],
+        [
+          "xStack_30 = (undefined **)*puVar7;",
+          "native_fishingX = *(float *)puVar7;"
+        ],
+        [
+          "xStack_2c = (float)puVar7[1];",
+          "native_fishingY = (float)puVar7[1];"
+        ],
+        [
+          "fStack_28",
+          "native_fishingWater"
+        ],
+        [
+          "(C3DVector_bv *)&xStack_30",
+          "ENGINE_Vector3(native_fishingX, native_fishingY, native_fishingWater)"
+        ],
+        [
+          "- xStack_2c;",
+          "- native_fishingY;"
+        ],
+        [
+          "(float)xStack_30",
+          "native_fishingX"
+        ]
+      ],
+      "editCounts": [
+        10,
+        1,
+        1,
+        4,
+        2,
+        1,
+        1,
+        4,
+        1,
+        1,
+        2
+      ]
+    }
+  },
+  "reviewedThingOutputScopes": {
+    "0x00ee95c0": {
+      "address": "0x00EE95C0",
+      "end": "0x00EE9EF5",
+      "sourceSha256": "d59bc3892f5251291a6451383a36369dcf80eea56d13e9a1247fa8b64a33cfee",
+      "nativeSha256": "35aeb9352c6af157768909c949f36c06e2fba6116281731d10d01562dfb18094",
+      "anchors": {
+        "0xee99d2": "8b4c242c8d045b8d1481528d4c2424e89a1f9cff",
+        "0xee9a17": "8b4c24243bcd7507b8e0e84301eb058b01ff50188b08894c245c8b50048b4e40895424608b4008894424648b118d44245c50ff92c8030000",
+        "0xee9a65": "d900d864245cd94004d8642460d94008d8642464d9c0d8c9d9c2d8cbdec1d9c3d8ccdec1d81d080a2301ddd8dfe0ddd8f6c405ddd87a43",
+        "0xee9ec0": "8d4c242ce8a72a9cff8d4c2420e86e095cff"
+      },
+      "dependencies": {
+        "0x4abe90": {
+          "length": 33,
+          "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+        },
+        "0x8ab980": {
+          "length": 74,
+          "sha256": "eea8f5b4daeb6d005ce07f2af99585aa47e28ea567d4ec3ed1dfbfab68e0eae0"
+        },
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "83d924f226af312090e032cc18ecffc5e767bd13fd633ba9dae1c9adc2c5c0dd"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "b4732cddade3e2b46ec842285ac2ad773be5d13b1e74b755c2e7c2b375a92558"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "36ab266e4271e84a10d897ab313748c48dfeeb85c6b3b8d4bcd44617d7d7a9f9",
+      "recoveredSha256": "0c1a31d1a220977d4bc079260306c0e58c007e2c601f8dc1a07ad570e045e1a8",
+      "operations": [
+        {
+          "before": "    local resources = quest:RetailResources()",
+          "after": "    return quest:WithRetailResources(function(resources)\n    local fishingSpotOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "    local_fishingSpot = nil",
+          "after": "    local_fishingSpot = resources:CopyThingOutput(nil)\n    fishingSpotOwner = resources:TrackThingOutput(local_fishingSpot)",
+          "count": 1
+        },
+        {
+          "before": "                    local_fishingSpot = iStack_60[iVar12 + 1]",
+          "after": "                    resources:AssignThingOutput(fishingSpotOwner, iStack_60[iVar12 + 1])",
+          "count": 1
+        },
+        {
+          "before": "                    if not (local_fishingSpot ~= nil and not local_fishingSpot:IsNull()) then\n                        puVar7 = {x = 0, y = 0, z = 0}\n                    else\n                        puVar7 = local_fishingSpot:GetPos()\n                    end",
+          "after": "                    puVar7 = resources:GetThingPosition(local_fishingSpot)",
+          "count": 1
+        },
+        {
+          "before": "                    pCVar8 = pCVar4:GetPos()",
+          "after": "                    pCVar8 = resources:GetThingPosition(pCVar4)",
+          "count": 1
+        },
+        {
+          "before": "if 100.0 <= (pCVar8.x - native_fishingX) * (pCVar8.x - native_fishingX) + fVar1 * fVar1 + fVar10 * fVar10 then goto LAB_00ee9adf end",
+          "after": "if not ((fVar1 * fVar1 + fVar10 * fVar10) + (pCVar8.x - native_fishingX) * (pCVar8.x - native_fishingX) < 100.0) then goto LAB_00ee9adf end",
+          "count": 1
+        },
+        {
+          "before": "resources:DestroyMovie(xStack_10)",
+          "after": "resources:RetireThingOutput(fishingSpotOwner); fishingSpotOwner = 0; resources:DestroyMovie(xStack_10)",
+          "count": 1
+        },
+        {
+          "before": "    resources:ReleaseResource(xStack_20)\nend\n",
+          "after": "    resources:ReleaseResource(xStack_20)\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "CopyThingOutput",
+        "TrackThingOutput",
+        "AssignThingOutput",
+        "GetThingPosition",
+        "RetireThingOutput"
+      ]
+    }
+  },
+  "reviewedQuestConsciousConditions": {
+    "0x00ee95c0": {
+      "schema": "reviewed-quest-conscious-condition/1",
+      "address": "0x00ee95c0",
+      "role": "Main",
+      "sourceSha256": "d59bc3892f5251291a6451383a36369dcf80eea56d13e9a1247fa8b64a33cfee",
+      "nativeSha256": "35aeb9352c6af157768909c949f36c06e2fba6116281731d10d01562dfb18094",
+      "operation": "RegisterQuestConsciousCondition",
+      "nativeThreadOffset": "0x2c",
+      "nativeVTable": "0x012c2fe8",
+      "contract": "Native16-byte conscious condition at stack-48 with counted Thing at-44; exact source cast &xStack_2c; four saved registers, frame7C/depth140. Local destroyed before first frame; existing fishing values/outputs preserved.",
+      "sdkMethodSha256": "72a8314f9e5727faae53be26db7075582fa6cdd6c8cdc54f9d6b4b42b771198e",
+      "sdkBindingSha256": "f534880bb9a740bc59d51afd3a029bc508c831f5af321e46989b9c1521f3cad7"
+    }
+  }
 }

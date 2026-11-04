@@ -7,15 +7,15 @@ function GetStatuePointingPosition(quest, me)
     getTimeOfDay = math.tointeger(math.modf(f_st0))
     scratchValue = 1
     repeat
-        if not (quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) - 0.03999999910593033 < (f_st0 - getTimeOfDay)) then
+        if not (quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) - 0.03999999910593033 < string.unpack("<f", string.pack("<f", f_st0 - getTimeOfDay))) then
             scratchValue = scratchValue + 1
         else
-            if (f_st0 - getTimeOfDay) < quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) + 0.03999999910593033 then
+            if string.unpack("<f", string.pack("<f", f_st0 - getTimeOfDay)) < quest:GetStateFloat("AnglesToFaceList_" .. scratchValue) + 0.03999999910593033 then
                 return scratchValue
             end
             scratchValue = scratchValue + 1
         end
-    until scratchValue >= 4
+    until not (scratchValue < 4)
     return 0
 end
 

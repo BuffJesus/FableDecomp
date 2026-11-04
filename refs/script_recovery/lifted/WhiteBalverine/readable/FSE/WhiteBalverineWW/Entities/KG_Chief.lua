@@ -1,8 +1,6 @@
 -- Readable native conversion: KG_Chief. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
-
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- per-entity fields (native class members; one Lua state per entity instance)
@@ -10,14 +8,14 @@ local initialChatted
 
 -- KG_Chief.Main (retail 0x00e19d80)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, thing, movie3, resource2
+    local predicateResult, movie3, resource2
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie3)
         resources:ReleaseResource(resource2)
     end
+    local thing = me
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetAsKillable(me, false, true)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
@@ -29,13 +27,18 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
-    quest:EntityAttachToScript(me, quest:GetActiveQuestName())
+    local pQuestName = quest:GetActiveQuestName()
+    quest:EntityAttachToScript(me, pQuestName)
     while not quest:GetStateBool("MissionSucceeded") do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
         if me:IsTalkedToByHero() then
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
             if not quest:GetStateBool("WhiteBalverineAlive") then
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
                 local resource = resources:NewResource()
-                resources:TryAcquire(resource, hero, 4)
+                local pScriptObject = resource
+                local hero = quest:GetHero()
+                resources:TryAcquire(pScriptObject, hero, 4)
                 local actorMap = resources:NewActorMap()
                 resources:SetActor(actorMap, "HERO", resource)
                 resources:SetActor(actorMap, "CHIEF", resource2)
@@ -50,13 +53,19 @@ function Main(quest, me)
                 resources:DestroyActorMap(actorMap)
                 resources:ReleaseResource(resource)
             else
+                if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
                 movie3 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 if not initialChatted then
                     if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                     initialChatted = false
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
-                        me:Speak(hero, "TEXT_QST_074_CHIEF_BALVERINE_GONE_FIRST", GROUP_SELECT_FIRST, false, true, false)
+                    local scratchValue25 = resources:ScriptThing(resource2)
+                    if 0.0 < quest:GetHealth(scratchValue25) then
+                        local line = "TEXT_QST_074_CHIEF_BALVERINE_GONE_FIRST"
+                        local hero2 = quest:GetHero()
+                        if not me:Speak(hero2, line, 0, false, true, false) then
+                            ReleaseEverything(); return
+                        end
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                         end
@@ -69,8 +78,13 @@ function Main(quest, me)
                     end
                 else
                     if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
-                        me:Speak(hero, "TEXT_QST_074_CHIEF_BALVERINE_GONE_SECOND", GROUP_SELECT_FIRST, false, true, false)
+                    local scratchValue24 = resources:ScriptThing(resource2)
+                    if 0.0 < quest:GetHealth(scratchValue24) then
+                        local line2 = "TEXT_QST_074_CHIEF_BALVERINE_GONE_SECOND"
+                        local hero3 = quest:GetHero()
+                        if not me:Speak(hero3, line2, 0, false, true, false) then
+                            ReleaseEverything(); return
+                        end
                         while me:IsPerformingScriptTask() do
                             if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                         end
@@ -106,8 +120,16 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource2)) then
-                me:Speak(hero, "TEXT_QST_074_CHIEF_BEEN_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
+            local scratchValue23 = resources:ScriptThing(resource2)
+            if 0.0 < quest:GetHealth(scratchValue23) then
+                local line3 = "TEXT_QST_074_CHIEF_BEEN_ATTACKED"
+                local hero4 = quest:GetHero()
+                if not me:Speak(hero4, line3, 0, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    resources:ReleaseResource(resource2)
+                    return
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
@@ -127,7 +149,7 @@ function Main(quest, me)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
             if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
-            me:SetFriendsWithEverythingFlag(thing)
+            me:SetFriendsWithEverythingFlag(true)
         end
     end
     if not quest:IsActiveThreadTerminating() then

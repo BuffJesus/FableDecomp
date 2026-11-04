@@ -115,6 +115,12 @@ function Main(quest, me)
                             p1 = "TEXT_QST_028_WHISPER_MEET"
                             pCVar6 = quest:GetHero()
                             r1 = me:Speak(pCVar6, p1, iVar8, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                            if not r1 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_bc)
+                                resources:ReleaseResource(xStack_d8)
+                                return
+                            end
                             iVar8 = me:IsPerformingScriptTask()
                             cVar5 = iVar8
                             while cVar5 do
@@ -462,7 +468,7 @@ function Main(quest, me)
                                         resources:ReleaseResource(xStack_d8)
                                         return
                                     end
-                                    uVar7 = math.random(0, 32767)
+                                    uVar7 = quest:RetailRandModulo(32768)
                                     uVar7 = uVar7 & 0x80000001
                                     if uVar7 < 0 then
                                         uVar7 = (uVar7 - 1 | 0xfffffffe) + 1
@@ -614,7 +620,7 @@ function Main(quest, me)
                                         resources:ReleaseResource(xStack_d8)
                                         return
                                     end
-                                    uVar7 = math.random(0, 32767)
+                                    uVar7 = quest:RetailRandModulo(32768)
                                     uVar7 = uVar7 & 0x80000001
                                     if uVar7 < 0 then
                                         uVar7 = (uVar7 - 1 | 0xfffffffe) + 1
@@ -677,7 +683,7 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar4 = not alive
                                         if not bVar4 then
-                                            uVar7 = math.random(0, 32767)
+                                            uVar7 = quest:RetailRandModulo(32768)
                                             uVar7 = uVar7 & 0x80000001
                                             if uVar7 < 0 then
                                                 uVar7 = (uVar7 - 1 | 0xfffffffe) + 1
@@ -728,7 +734,7 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar4 = not alive
                                             if not bVar4 then
-                                                uVar7 = math.random(0, 32767)
+                                                uVar7 = quest:RetailRandModulo(32768)
                                                 uVar7 = uVar7 & 0x80000001
                                                 if uVar7 < 0 then
                                                     uVar7 = (uVar7 - 1 | 0xfffffffe) + 1

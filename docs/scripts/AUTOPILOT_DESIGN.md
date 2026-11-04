@@ -1,5 +1,7 @@
 # Hands-free script testing (autopilot) — design, 2026-09-20
 
+> Historical design; current runner exposes JSON checklist interfaces, not the proposed YAML protocol.
+
 **Goal:** run a converter bundle through a quest checklist with nobody at the keyboard, and get back a graded
 report + the archived FSE log. Deterministic, not ML: the FSE log already says exactly what died; the missing
 piece is *driving the game to the seam*.

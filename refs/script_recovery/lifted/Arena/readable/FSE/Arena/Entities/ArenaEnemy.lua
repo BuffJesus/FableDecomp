@@ -4,16 +4,27 @@
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local myCreatureType, self0X14, bigCreature, healthBarIndex
+local myCreatureType, bigCreature, healthBarIndex
 
 -- ArenaEnemy.Main (retail 0x00f1a990)
 function Main(quest, me)
-    local predicateResult, predicateResult5
+    local predicateResult, predicateResult5, ctr_50, scratchValue
     local globalCrowdTimer = quest:GetStateInt("GlobalCrowdTimer")
-    local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     myCreatureType = 0
-    -- TODO(native): if 0 < *(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + *(self0X14 + 0x98)) + 0x28 + quest:GetStateInt("ArenaRoundWave") * 0x3c) then
+    ctr_50 = 0
+    if 0 < quest:GetStateInt("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_NumWaveCreatures") then
+        repeat
+            if quest:IsActiveThreadTerminating() then return end
+            if me:GetDefName() ~= quest:GetStateString("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. ctr_50 .. "_CreatureType") then
+                ctr_50 = ctr_50 + 1
+            else
+                if quest:IsActiveThreadTerminating() then return end
+                myCreatureType = ctr_50
+                ctr_50 = ctr_50 + 1
+            end
+        until not (ctr_50 < quest:GetStateInt("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_NumWaveCreatures"))
+    end
     if quest:IsActiveThreadTerminating() then return end
     quest:EntitySetInFaction(me, "FACTION_MONSTERS")
     bigCreature = false
@@ -21,28 +32,38 @@ function Main(quest, me)
         if me:GetDefName() ~= "CREATURE_ROCK_TROLL_START_STANDING" then
             if me:GetDefName() ~= "CREATURE_SCORPION_KING" then goto LAB_00f1acb5 end
             if quest:IsActiveThreadTerminating() then return end
+            scratchValue = "HUD_QUEST_ICON_SCORPION_KING"
         else
             if quest:IsActiveThreadTerminating() then return end
+            scratchValue = "HUD_QUEST_ICON_ROCK_TROLL"
         end
     else
         if quest:IsActiveThreadTerminating() then return end
+        scratchValue = "HUD_QUEST_ICON_EARTH_TROLL"
     end
-    -- TODO(native): iVar11 = quest:AddQuestInfoBarHealth(me, &xStack_50, pcVar13, 1.0)
-    --[[unresolved native value]]
-    healthBarIndex = nil
+    healthBarIndex = quest:AddQuestInfoBarHealth(me, {R = 255, G = 255, B = 0, A = 255}, scratchValue, 1.0)
     bigCreature = true
     ::LAB_00f1acb5::
     repeat
         if quest:IsActiveThreadTerminating() then return end
         if me:MsgIsHitByHeroWithFlourish() then
-            if quest:GetTimer(globalCrowdTimer) >= 1 then quest:NewScriptFrame(me); goto continue_1 end
             if quest:IsActiveThreadTerminating() then return end
-            quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
+            if not (quest:GetTimer(globalCrowdTimer) < 1) then quest:NewScriptFrame(me); goto continue_2 end
+            if quest:IsActiveThreadTerminating() then return end
+            local getStateString = quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3)
+            local hero = quest:GetHero()
+            local arenaSpawn = quest:GetNearestWithScriptName(hero, "ArenaSpawn")
+            quest:PlayCriteriaSoundOnThing(arenaSpawn, getStateString)
             quest:SetTimer(globalCrowdTimer, 10)
             quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + 5)
         elseif me:MsgIsHitByHeroWithDecapitate() then
+            if quest:IsActiveThreadTerminating() then return end
             if quest:GetTimer(globalCrowdTimer) < 9 then
-                quest:PlayCriteriaSoundOnThing(quest:GetNearestWithScriptName(hero, "ArenaSpawn"), quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3))
+                if quest:IsActiveThreadTerminating() then return end
+                local getStateString2 = quest:GetStateString("CrowdLoopTags_" .. quest:GetStateInt("NewCrowdBaseLevel") .. "_" .. 3)
+                local hero2 = quest:GetHero()
+                local arenaSpawn2 = quest:GetNearestWithScriptName(hero2, "ArenaSpawn")
+                quest:PlayCriteriaSoundOnThing(arenaSpawn2, getStateString2)
                 quest:SetTimer(globalCrowdTimer, 10)
                 quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + 7)
             end
@@ -58,8 +79,10 @@ function Main(quest, me)
             predicateResult = true
             ::FLOW_past_lab_00f1af52::
             if predicateResult then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + 1)
-                quest:GiveThingBestEnemyTarget(me, hero)
+                local hero3 = quest:GetHero()
+                quest:GiveThingBestEnemyTarget(me, hero3)
             else
                 if me:MsgIsHitBy("WhisperAlly") then
                     goto LAB_00f1b041
@@ -72,12 +95,14 @@ function Main(quest, me)
                 predicateResult5 = true
                 ::FLOW_past_lab_00f1b041::
                 if predicateResult5 then
-                    quest:GiveThingBestEnemyTarget(me, quest:GetThingWithScriptName("WhisperAlly"))
+                    if quest:IsActiveThreadTerminating() then return end
+                    local whisperAlly = quest:GetThingWithScriptName("WhisperAlly")
+                    quest:GiveThingBestEnemyTarget(me, whisperAlly)
                 end
             end
         end
         quest:NewScriptFrame(me)
-        ::continue_1::
+        ::continue_2::
     until false
 end
 
@@ -91,9 +116,9 @@ end
 
 -- ArenaEnemy.OnPredicateFail (retail 0x00f1a8f0)
 function OnPredicateFail(quest, me)
-    -- TODO(native): *piVar1 = *piVar1 - 1;
+    quest:SetStateInt("TotalCreatures_" .. myCreatureType, quest:GetStateInt("TotalCreatures_" .. myCreatureType) - 1)
     if me:MsgIsKilledBy("SCRIPT_NAME_HERO") then
-        -- TODO(native): quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + *(*(*(quest:GetStateInt("ArenaRound") * 0x38 + 0x2c + *(self0X14 + 0x98)) + 0x2c + quest:GetStateInt("ArenaRoundWave") * 0x3c) + 0x34 + myCreatureType * 0x38))
+        quest:SetStateInt("NewCrowdPoints", quest:GetStateInt("NewCrowdPoints") + quest:GetStateInt("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. myCreatureType .. "_DeathScore"))
     end
     if bigCreature then
         quest:RemoveQuestInfoElement(healthBarIndex)

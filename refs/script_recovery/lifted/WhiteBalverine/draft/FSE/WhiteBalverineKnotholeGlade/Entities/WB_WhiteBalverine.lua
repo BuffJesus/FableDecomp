@@ -128,7 +128,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar1 = not alive
                             if not bVar1 then
-                                me:PlayAnimation("HOWL", false, false, false, true, true, false, false)
+                                resources:PlayAnimationWithNativeArgument5(xStack_104, "HOWL", false, false, false, true, false, false)
                                 iVar4 = me:IsPerformingScriptTask()
                                 cVar2 = iVar4
                                 while cVar2 do
@@ -142,7 +142,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar1 = not alive
                                 if not bVar1 then
-                                    me:PlayAnimation("ST_RUN_JUMP", false, false, false, true, true, false, false)
+                                    resources:PlayAnimationWithNativeArgument5(xStack_104, "ST_RUN_JUMP", false, false, false, true, false, false)
                                     quest:Pause(1.0)
                                     bVar10 = false
                                     bVar1 = false
@@ -390,7 +390,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar1 = not alive
                     if not bVar1 then
-                        me:PlayAnimation("HOWL", false, false, false, true, true, false, false)
+                        resources:PlayAnimationWithNativeArgument5(xStack_104, "HOWL", false, false, false, true, false, false)
                         iVar4 = me:IsPerformingScriptTask()
                         cVar2 = iVar4
                         while cVar2 do
@@ -404,7 +404,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar1 = not alive
                         if not bVar1 then
-                            me:PlayAnimation("ST_RUN_JUMP", false, false, false, true, true, false, false)
+                            resources:PlayAnimationWithNativeArgument5(xStack_104, "ST_RUN_JUMP", false, false, false, true, false, false)
                             quest:Pause(1.0)
                             bVar10 = false
                             bVar1 = false
@@ -508,7 +508,7 @@ function Main(quest, me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar1 = not alive
                                             if not bVar1 then
-                                                me:PlayAnimation("HOWL", false, false, false, true, true, false, false)
+                                                resources:PlayAnimationWithNativeArgument5(xStack_104, "HOWL", false, false, false, true, false, false)
                                                 iVar4 = me:IsPerformingScriptTask()
                                                 cVar2 = iVar4
                                                 while cVar2 do
@@ -522,7 +522,7 @@ function Main(quest, me)
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar1 = not alive
                                                 if not bVar1 then
-                                                    me:PlayAnimation("ST_RUN_JUMP", false, false, false, true, true, false, false)
+                                                    resources:PlayAnimationWithNativeArgument5(xStack_104, "ST_RUN_JUMP", false, false, false, true, false, false)
                                                     quest:Pause(1.0)
                                                     bVar10 = false
                                                     bVar1 = false

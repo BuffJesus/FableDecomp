@@ -4,15 +4,19 @@
 -- M_HeroDownstairs.Main (retail 0x00e3b320)
 function Main(quest, me)
     while not quest:IsActiveThreadTerminating() do
-        if not quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 3.0) then
+        local thing = quest:GetHero()
+        if not quest:IsDistanceBetweenThingsUnder(me, thing, 3.0) then
             quest:NewScriptFrame(me)
         else
+            if quest:IsActiveThreadTerminating() then return end
             if quest:GetStateBool("HeroPartying") then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateBool("HeroPartying", false)
             end
             if not quest:GetStateBool("MagicianSleeping") then
                 quest:NewScriptFrame(me)
             else
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateBool("MagicianSleeping", false)
                 quest:NewScriptFrame(me)
             end

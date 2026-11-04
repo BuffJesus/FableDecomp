@@ -6,155 +6,133 @@ local SCRIPT_DEF = {
 }
 local MakeTraderComment
 function MakeTraderComment(quest, me, commentToMake, speaker, commentType)
-    local scratchValue, scratchValue2, scratchValue3, getTimer, conversationId, getDataString
-    local scratchValue4, getHero, getDataString2, getDataString3, scratchValue5, scratchValue6
-    local scratchValue7, darkwoodTrader, darkwoodTrader2, darkwoodTrader3, scratchValue8, this_00
-    local scratchValue9, predicateResult
     local commentTimer = quest:GetStateInt("CommentTimer")
-    local hero = quest:GetHero()
-    -- TODO(native): xStack_30._4_4_ = *(undefined4 *)(native_arg_speaker + 0x4);
-    -- TODO(native): xStack_30 = *(int **)(native_arg_speaker + 0x8);
-    local scratchValue10 = nil
-    if scratchValue10 ~= nil then
-        -- TODO(native): *xStack_30 = *xStack_30 + 1;
-    end
-    -- TODO(native): bVar2 = (*PTR__IsAlive_CScriptThing__UBE_NXZ_01238db8)(xStack_30)
-    scratchValue2 = nil --[[unresolved native value]]
+    return quest:WithRetailResources(function(resources)
+    local speakerOwner, nearestOwner, furthestOwner, fallbackOwner, swapOwner, triggerOwner = 0, 0, 0, 0, 0, 0
+    local scratchValue, scratchValue2, retailImplementationIsEqualTo, getTimer, conversationId
+    local local_furthest_handle, native_reply_available, native_rock_troll_match, getDataString
+    local scratchValue3, getHero, getDataString2, getDataString3, scratchValue4, scratchValue5
+    local predicateResult
+    local native_conversation_speaker = speaker
+    local scratchValue7 = resources:CopyThingOutput(speaker)
+    speakerOwner = resources:TrackThingOutput(scratchValue7)
+    scratchValue2 = scratchValue7 ~= nil and scratchValue7:IsAlive()
     if not scratchValue2 then
         scratchValue2 = quest:IsActiveThreadTerminating()
         if scratchValue2 then
             return false
         end
-        scratchValue4 = hero
-        scratchValue4 = quest:GetNearestWithScriptName(scratchValue4, "DarkwoodTrader")
-        -- TODO(native): piVar13 = *(pCVar4 + 0x8)
-        scratchValue7 = nil --[[unresolved native value]]
-        -- TODO(native): piVar1 = *(pCVar4 + 0x4)
-        scratchValue6 = nil --[[unresolved native value]]
-        if scratchValue10 ~= scratchValue7 then
-            -- TODO(native): xStack_30._4_4_ = piVar1;
-            if scratchValue7 ~= nil then
-                -- TODO(native): *piVar13 = *piVar13 + 1;
-            end
-        end
+        scratchValue3 = quest:GetHero()
+        scratchValue3 = quest:GetNearestWithScriptName(scratchValue3, "DarkwoodTrader")
+        fallbackOwner = resources:TrackThingOutput(scratchValue3)
+        resources:AssignThingOutput(speakerOwner, scratchValue3)
+        resources:RetireThingOutput(fallbackOwner)
     end
-    -- TODO(native): bVar2 = (**(xStack_30._0_4_ + 0x12c))(xStack_30)
-    scratchValue2 = nil --[[unresolved native value]]
+    scratchValue2 = scratchValue7 ~= nil and scratchValue7:IsAlive()
     if not scratchValue2 then
+        quest:IsActiveThreadTerminating()
         return false
     end
     if commentType ~= 2 then
         getTimer = quest:GetTimer(commentTimer)
         if 0 < getTimer then
+            quest:IsActiveThreadTerminating()
             return false
         end
-        conversationId = quest:AddNewConversation(scratchValue10, false, false)
-        scratchValue4 = hero
-        quest:AddPersonToConversation(conversationId, scratchValue4)
-        if not (scratchValue10 ~= nil and not scratchValue10:IsNull()) then
+        conversationId = quest:AddNewConversation(scratchValue7, false, false)
+        scratchValue3 = quest:GetHero()
+        quest:AddPersonToConversation(conversationId, scratchValue3)
+        if not (scratchValue7 ~= nil and not scratchValue7:IsNull()) then
             speaker = ""
         else
-            speaker = scratchValue10:GetDataString()
+            speaker = scratchValue7:GetDataString()
         end
-        getHero = hero
+        getHero = quest:GetHero()
         getDataString3 = commentToMake
-        scratchValue4 = scratchValue10
+        scratchValue3 = scratchValue7
         predicateResult = false
-        scratchValue7 = "_"
         getDataString2 = commentToMake
         getDataString = "TEXT_QST_067_" .. speaker
         getDataString = getDataString .. "_"
         getDataString2 = getDataString .. getDataString2
-        quest:AddLineToConversation(conversationId, getDataString2, scratchValue4, getHero, predicateResult)
-        if commentType ~= 1 then goto LAB_00e02355 end
-        scratchValue2 = quest:IsActiveThreadTerminating()
-        if scratchValue2 then goto LAB_00e01aca end
-        darkwoodTrader = quest:GetNearestWithScriptName(scratchValue10, "DarkwoodTrader")
-        getTimer = darkwoodTrader ~= nil and darkwoodTrader:IsAlive()
-        scratchValue = not getTimer
-        if not scratchValue then
-            scratchValue3 = darkwoodTrader ~= nil and darkwoodTrader:IsEqualTo(scratchValue10._4_4_)
-            scratchValue = scratchValue3
-        end
-        if scratchValue then
-            goto LAB_00e02213
-        else
-            scratchValue5 = "_RESPONSE"
-            scratchValue7 = "_"
-            getDataString2 = getDataString3
-            getDataString = darkwoodTrader:GetDataString()
-            getDataString = "TEXT_QST_067_" .. getDataString
-            getDataString = getDataString .. "_"
-            getDataString2 = getDataString .. getDataString2
-            getDataString2 = getDataString2 .. scratchValue5
-            scratchValue2 = quest:TextEntryExists(getDataString2)
-            speaker = CONCAT31(speaker._1_3_,1)
-            if not scratchValue2 then goto LAB_00e02213 end
-        end
-        goto FLOW_past_lab_00e02213
-        ::LAB_00e02213::
-        ::FLOW_past_lab_00e02213::
-        scratchValue9 = 31
-        if 31 & 16 ~= 0 then
-            scratchValue9 = 31 & 0xffffffef
-        end
-        if scratchValue9 & 8 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xfffffff7
-        end
-        if scratchValue9 & 4 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xfffffffb
-        end
-        if scratchValue9 & 2 ~= 0 then
-            scratchValue9 = scratchValue9 & 0xfffffffd
-        end
-        if speaker ~= 0 then
+        quest:AddLineToConversation(conversationId, getDataString2, scratchValue3, getHero, predicateResult)
+        if commentType == 1 then
             scratchValue2 = quest:IsActiveThreadTerminating()
-            if scratchValue2 then
-                return false
+            if scratchValue2 then return false end
+            speaker = "DarkwoodTrader"
+            local_furthest_handle = quest:GetNearestWithScriptName(scratchValue7, speaker)
+            if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end
+            furthestOwner = resources:TrackThingOutput(local_furthest_handle)
+            getTimer = local_furthest_handle ~= nil and local_furthest_handle:IsAlive()
+            scratchValue = not getTimer
+            if not scratchValue then
+                retailImplementationIsEqualTo = local_furthest_handle:RetailImplementationIsEqualTo(scratchValue7)
+                scratchValue = retailImplementationIsEqualTo
             end
-            quest:AddPersonToConversation(conversationId, darkwoodTrader)
-            getHero = hero
-            scratchValue4 = darkwoodTrader
-            predicateResult = false
-            scratchValue5 = "_RESPONSE"
-            scratchValue7 = "_"
-            getDataString2 = darkwoodTrader:GetDataString()
-            getDataString2 = "TEXT_QST_067_" .. getDataString2
-            getDataString2 = getDataString2 .. "_"
-            getDataString3 = getDataString2 .. getDataString3
-            getDataString3 = getDataString3 .. scratchValue5
-            quest:AddLineToConversation(conversationId, getDataString3, scratchValue4, getHero, predicateResult)
+            if scratchValue then
+                native_reply_available = 0
+            else
+                scratchValue4 = "_RESPONSE"
+                getDataString2 = getDataString3
+                getDataString = local_furthest_handle:GetDataString()
+                getDataString = "TEXT_QST_067_" .. getDataString
+                getDataString = getDataString .. "_"
+                getDataString2 = getDataString .. getDataString2
+                getDataString2 = getDataString2 .. scratchValue4
+                scratchValue2 = quest:TextEntryExists(getDataString2)
+                native_reply_available = 1
+                if not scratchValue2 then native_reply_available = 0 end
+            end
+            if native_reply_available ~= 0 then
+                scratchValue2 = quest:IsActiveThreadTerminating()
+                if scratchValue2 then
+                    return false
+                end
+                quest:AddPersonToConversation(conversationId, local_furthest_handle)
+                getHero = quest:GetHero()
+                scratchValue3 = local_furthest_handle
+                predicateResult = false
+                scratchValue4 = "_RESPONSE"
+                getDataString2 = local_furthest_handle:GetDataString()
+                getDataString2 = "TEXT_QST_067_" .. getDataString2
+                getDataString2 = getDataString2 .. "_"
+                getDataString3 = getDataString2 .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+            end
         end
-        ::LAB_00e02355::
+        resources:RetireThingOutput(furthestOwner)
+        furthestOwner = 0
         quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
         return true
     end
-    ::FLOW_after_lab_00e02355::
     scratchValue2 = quest:IsActiveThreadTerminating()
-    if scratchValue2 then goto LAB_00e01aca end
-    darkwoodTrader2 = quest:GetNearestWithScriptName(scratchValue10, "DarkwoodTrader")
-    darkwoodTrader3 = quest:GetFurthestWithScriptName(scratchValue10, "DarkwoodTrader")
-    scratchValue3 = darkwoodTrader2 ~= nil and darkwoodTrader2:IsEqualTo(darkwoodTrader3._4_4_)
-    if not scratchValue3 then
-        goto LAB_00e01afb
-    else
+    if scratchValue2 then return false end
+    commentType = "DarkwoodTrader"
+    local local_nearest_handle = quest:GetNearestWithScriptName(scratchValue7, commentType)
+    if local_nearest_handle == nil then local_nearest_handle = resources:CopyThingOutput(nil) end
+    nearestOwner = resources:TrackThingOutput(local_nearest_handle)
+    commentType = "DarkwoodTrader"
+    local_furthest_handle = quest:GetFurthestWithScriptName(scratchValue7, commentType)
+    if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end
+    furthestOwner = resources:TrackThingOutput(local_furthest_handle)
+    retailImplementationIsEqualTo = local_nearest_handle:RetailImplementationIsEqualTo(local_furthest_handle)
+    if retailImplementationIsEqualTo then
         scratchValue2 = quest:IsActiveThreadTerminating()
-        if not scratchValue2 then
-            -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&xStack_c);
-            -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_18,iVar5);
-            goto LAB_00e01afb
-        end
+        if scratchValue2 then return false end
+        resources:AssignThingOutput(furthestOwner, nil)
     end
-    goto FLOW_past_lab_00e01afb
-    ::LAB_00e01afb::
-    scratchValue5 = "SCARED"
-    this_00 = darkwoodTrader2:GetDataString()
-    getTimer = this_00 ~= scratchValue5 and 1 or 0
+    scratchValue4 = "SCARED"
+    local this_00 = local_nearest_handle:GetDataString()
+    getTimer = this_00 ~= scratchValue4 and 1 or 0
     if getTimer ~= 0 then
         scratchValue2 = quest:IsActiveThreadTerminating()
-        if scratchValue2 then goto LAB_00e01ab8 end
-        -- TODO(native): xStack_24 = xStack_18;
-        -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_18,(int)&xStack_c);
+        if scratchValue2 then return false end
+        local native_swap_handle = resources:CopyThingOutput(local_nearest_handle)
+        swapOwner = resources:TrackThingOutput(native_swap_handle)
+        resources:AssignThingOutput(nearestOwner, local_furthest_handle)
+        resources:AssignThingOutput(furthestOwner, native_swap_handle)
+        resources:RetireThingOutput(swapOwner)
     end
     getDataString3 = commentToMake
     if commentToMake == nil then
@@ -164,118 +142,115 @@ function MakeTraderComment(quest, me, commentToMake, speaker, commentType)
         end
     else
         getTimer = commentToMake == "ROCK_TROLL_CLOSE" and 0 or 1
-        scratchValue3 = getTimer == 0
-        commentToMake = CONCAT31(commentToMake._1_3_,scratchValue3)
-        if scratchValue3 then goto LAB_00e01ba2 end
+        retailImplementationIsEqualTo = getTimer == 0
+        native_rock_troll_match = retailImplementationIsEqualTo
+        if retailImplementationIsEqualTo then goto LAB_00e01ba2 end
     end
     goto FLOW_past_lab_00e01ba2
     ::LAB_00e01ba2::
     scratchValue2 = quest:IsActiveThreadTerminating()
-    if scratchValue2 then goto LAB_00e01ab8 end
-    scratchValue4 = quest:GetThingWithScriptName("RockTrollTrigger")
-    scratchValue8 = quest:PlayCriteriaSoundOnThing(scratchValue4, "EARTH_TROLL_OFFSCREEN_ROAR")
+    if scratchValue2 then return false end
+    commentType = "EARTH_TROLL_OFFSCREEN_ROAR"
+    commentToMake = "RockTrollTrigger"
+    scratchValue3 = quest:GetThingWithScriptName(commentToMake)
+    triggerOwner = resources:TrackThingOutput(scratchValue3)
+    scratchValue5 = quest:PlayCriteriaSoundOnThing(scratchValue3, commentType)
+    resources:RetireThingOutput(triggerOwner)
     quest:Pause(1.0)
     ::FLOW_past_lab_00e01ba2::
-    conversationId = quest:AddNewConversation(darkwoodTrader3, false, false)
-    scratchValue4 = hero
-    quest:AddPersonToConversation(conversationId, scratchValue4)
-    getTimer = darkwoodTrader2 ~= nil and darkwoodTrader2:IsAlive()
+    conversationId = quest:AddNewConversation(native_conversation_speaker, false, false)
+    scratchValue3 = quest:GetHero()
+    quest:AddPersonToConversation(conversationId, scratchValue3)
+    getTimer = local_nearest_handle ~= nil and local_nearest_handle:IsAlive()
     if not getTimer then
         quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
         do return true end
-        goto FLOW_after_lab_00e02355
     end
     scratchValue2 = quest:IsActiveThreadTerminating()
     if not scratchValue2 then
-        quest:AddPersonToConversation(conversationId, darkwoodTrader2)
-        getTimer = darkwoodTrader3 ~= nil and darkwoodTrader3:IsAlive()
+        quest:AddPersonToConversation(conversationId, local_nearest_handle)
+        getTimer = local_furthest_handle ~= nil and local_furthest_handle:IsAlive()
         if not getTimer then
             scratchValue2 = quest:IsActiveThreadTerminating()
             if not scratchValue2 then
-                getHero = hero
-                scratchValue4 = scratchValue10
+                getHero = quest:GetHero()
+                scratchValue3 = scratchValue7
                 predicateResult = false
-                scratchValue7 = "_"
-                getDataString2 = scratchValue10:GetDataString()
+                getDataString2 = scratchValue7:GetDataString()
                 getDataString2 = "TEXT_QST_067_" .. getDataString2
                 getDataString2 = getDataString2 .. "_"
                 getDataString3 = getDataString2 .. getDataString3
-                quest:AddLineToConversation(conversationId, getDataString3, scratchValue4, getHero, predicateResult)
-                getHero = hero
-                scratchValue4 = darkwoodTrader2
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_nearest_handle
                 predicateResult = false
-                scratchValue5 = "_INTRO_RESPONSE_NO"
-                getDataString3 = darkwoodTrader2:GetDataString()
+                scratchValue4 = "_INTRO_RESPONSE_NO"
+                getDataString3 = local_nearest_handle:GetDataString()
                 getDataString3 = "TEXT_QST_067_" .. getDataString3
-                getDataString3 = getDataString3 .. scratchValue5
-                quest:AddLineToConversation(conversationId, getDataString3, scratchValue4, getHero, predicateResult)
-                scratchValue4 = hero
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                scratchValue3 = quest:GetHero()
                 predicateResult = false
-                scratchValue5 = "_INTRO_RESPONSE_REWARD"
-                getHero = scratchValue10
+                scratchValue4 = "_INTRO_RESPONSE_REWARD"
+                getHero = scratchValue7
                 getDataString3 = getHero:GetDataString()
                 getDataString3 = "TEXT_QST_067_" .. getDataString3
-                getDataString3 = getDataString3 .. scratchValue5
-                quest:AddLineToConversation(conversationId, getDataString3, getHero, scratchValue4, predicateResult)
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, getHero, scratchValue3, predicateResult)
                 quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
                 do return true end
-                goto FLOW_after_lab_00e01fb0
             end
         else
             scratchValue2 = quest:IsActiveThreadTerminating()
             if not scratchValue2 then
-                quest:AddPersonToConversation(conversationId, darkwoodTrader3)
-                getHero = hero
-                scratchValue4 = scratchValue10
+                quest:AddPersonToConversation(conversationId, local_furthest_handle)
+                getHero = quest:GetHero()
+                scratchValue3 = scratchValue7
                 predicateResult = false
-                scratchValue7 = "_"
-                getDataString2 = scratchValue10:GetDataString()
+                getDataString2 = scratchValue7:GetDataString()
                 getDataString2 = "TEXT_QST_067_" .. getDataString2
                 getDataString2 = getDataString2 .. "_"
                 getDataString3 = getDataString2 .. getDataString3
-                quest:AddLineToConversation(conversationId, getDataString3, scratchValue4, getHero, predicateResult)
-                getHero = hero
-                scratchValue4 = darkwoodTrader2
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_nearest_handle
                 predicateResult = false
-                scratchValue5 = "_INTRO_RESPONSE_NO"
-                getDataString3 = darkwoodTrader2:GetDataString()
+                scratchValue4 = "_INTRO_RESPONSE_NO"
+                getDataString3 = local_nearest_handle:GetDataString()
                 getDataString3 = "TEXT_QST_067_" .. getDataString3
-                getDataString3 = getDataString3 .. scratchValue5
-                quest:AddLineToConversation(conversationId, getDataString3, scratchValue4, getHero, predicateResult)
-                getHero = hero
-                scratchValue4 = darkwoodTrader3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_furthest_handle
                 predicateResult = false
-                scratchValue5 = "_INTRO_RESPONSE_OATH"
-                getDataString3 = darkwoodTrader3:GetDataString()
+                scratchValue4 = "_INTRO_RESPONSE_OATH"
+                getDataString3 = local_furthest_handle:GetDataString()
                 getDataString3 = "TEXT_QST_067_" .. getDataString3
-                getDataString3 = getDataString3 .. scratchValue5
-                quest:AddLineToConversation(conversationId, getDataString3, scratchValue4, getHero, predicateResult)
-                getHero = hero
-                scratchValue4 = darkwoodTrader2
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_nearest_handle
                 predicateResult = false
-                scratchValue5 = "_INTRO_RESPONSE_BAD_NEWS"
-                getDataString3 = darkwoodTrader2:GetDataString()
+                scratchValue4 = "_INTRO_RESPONSE_BAD_NEWS"
+                getDataString3 = local_nearest_handle:GetDataString()
                 getDataString3 = "TEXT_QST_067_" .. getDataString3
-                getDataString3 = getDataString3 .. scratchValue5
-                quest:AddLineToConversation(conversationId, getDataString3, scratchValue4, getHero, predicateResult)
-                scratchValue4 = hero
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                scratchValue3 = quest:GetHero()
                 predicateResult = false
-                scratchValue5 = "_INTRO_RESPONSE_REWARD"
-                getHero = scratchValue10
+                scratchValue4 = "_INTRO_RESPONSE_REWARD"
+                getHero = scratchValue7
                 getDataString3 = getHero:GetDataString()
                 getDataString3 = "TEXT_QST_067_" .. getDataString3
-                getDataString3 = getDataString3 .. scratchValue5
-                quest:AddLineToConversation(conversationId, getDataString3, getHero, scratchValue4, predicateResult)
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, getHero, scratchValue3, predicateResult)
                 quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
                 return true
             end
         end
-        ::FLOW_after_lab_00e01fb0::
     end
-    ::FLOW_past_lab_00e01afb::
-    ::LAB_00e01ab8::
-    ::LAB_00e01aca::
     return false
+    end)
 end
 
 return {MakeTraderComment = MakeTraderComment}

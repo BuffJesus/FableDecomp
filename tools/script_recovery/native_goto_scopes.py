@@ -395,7 +395,7 @@ def rotate_mid_entered_loops(statements):
     return out
 
 
-def duplicate_sibling_tails(statements):
+def duplicate_sibling_tails(statements, *, copy_trace=None):
     """Rewrite `goto L` jumps whose label sits in a sibling block Lua cannot enter.
 
     When the label's region is straight-line code up to the closing brace of its block, the
@@ -403,7 +403,15 @@ def duplicate_sibling_tails(statements):
     to the jump site and the jump retargeted to a synthetic label placed right after the block's
     closing brace (an enclosing scope of the jump, which Lua accepts). Other jumps are untouched.
     """
+    trace_start = len(copy_trace) if copy_trace is not None else 0
+    if copy_trace is not None:
+        import hashlib
+        trace_input_sha = hashlib.sha256('\n'.join(statements).encode()).hexdigest()
+    from tools.script_recovery.native_loop_reentry import flatten as flatten_loop_reentry
+    statements = flatten_loop_reentry(statements)
     statements = rotate_mid_entered_loops(statements)
+    if copy_trace is not None:
+        trace_prepared_sha = hashlib.sha256('\n'.join(statements).encode()).hexdigest()
     scopes, labels, uses, closes = [], {}, [], {}
     serial = 0
     for index, statement in enumerate(statements):
@@ -510,6 +518,7 @@ def duplicate_sibling_tails(statements):
                 return None
 
             skipping = 0     # inside a sibling `else {` branch at tail depth 0: not reachable by falling through
+            outer_else = False  # only an enclosing block closure can make a following else unreachable
             for n, t in enumerate(lines):
                 if not t:
                     continue
@@ -521,9 +530,10 @@ def duplicate_sibling_tails(statements):
                     elif t.endswith('{'):
                         skipping += 1
                     continue
-                if depth == 0 and t.startswith('else') and t.endswith('{'):
+                if depth == 0 and outer_else and t.startswith('else') and t.endswith('{'):
                     skipping = 1
                     continue
+                outer_else = False
                 inner_label = re.match(r'^(' + LABEL_TOKEN + r'):\s*(.*)$', t)
                 if inner_label:
                     t = f'{inner_label[1]}{suffix}:' + (' ' + inner_label[2] if inner_label[2] else '')
@@ -565,6 +575,7 @@ def duplicate_sibling_tails(statements):
                         if t.endswith('{'):
                             ok = False
                             break
+                        outer_else = True
                         continue
                     depth -= 1
                 if depth == 0 and t in ('break;', 'continue;'):
@@ -613,11 +624,25 @@ def duplicate_sibling_tails(statements):
             edits[index] = [indent + conditional[1] + ' {'] + [indent + '  ' + r for r in region + leave if r] + [indent + '}']
         else:
             edits[index] = [indent + r for r in region if r] + ([statements[index].replace(f'goto {target};', leave[0])] if leave else [])
+        if copy_trace is not None:
+            copy_trace.append(dict(inputIndex=index, target=target, targetInputIndex=label_index,
+                                   inputSha256=trace_input_sha, preparedInputSha256=trace_prepared_sha,
+                                   originalJump=statements[index], copiedStatements=list(edits[index]),
+                                   terminated=terminated, syntheticExit=synthetic.get(exit_index)))
     if not edits:
         return statements
     out = []
     for index, statement in enumerate(statements):
+        if copy_trace is not None and index in edits:
+            for event in copy_trace[trace_start:]:
+                if event['inputIndex'] == index:
+                    event['outputStartIndex'] = len(out)
+                    event['outputStatementCount'] = len(edits[index])
         out.extend(edits.get(index, [statement]))
         if index in synthetic:
             out.append(statement[:len(statement) - len(statement.lstrip())] + synthetic[index] + ':')
+    if copy_trace is not None:
+        trace_output_sha = hashlib.sha256('\n'.join(out).encode()).hexdigest()
+        for event in copy_trace[trace_start:]:
+            event['outputSha256'] = trace_output_sha
     return out

@@ -83,6 +83,7 @@ function Main(quest)
         if (bVar13 & 0x40) ~= 0 then
             bVar13 = bVar13 & 0xbf
         end
+        bVar14 = bVar13
         if (bVar13 & 0x20) ~= 0 then
             bVar14 = bVar13 & 0xdf
         end
@@ -248,7 +249,7 @@ function SpawnBalverines(quest)
                     else
                         pPosition = r1:GetPos()
                     end
-                    r2 = quest:CreateCreature("CREATURE_BALVERINE_01", pPosition, "WBWW_SoldierBalverine")
+                    r2 = quest:CreateCreature("CREATURE_BALVERINE_01", pPosition, "WBWW_SoldierBalverine", false)
                     pCVar6 = quest:GetHero()
                     quest:GiveThingBestEnemyTarget(r2, pCVar6)
                     quest:Pause(0.2)
@@ -274,7 +275,7 @@ function SpawnBalverines(quest)
             quest:EntitySetAttackThingImmediately(pThing, pCVar6, bVar2, true)
             quest:Pause(0.2)
             r3 = quest:PlaySoundOnThing(pThing, "SND_LONGWOLFHOWL_01")
-            resources:PlayAnimation(xStack_bc, "HOWL", false, false, false, true, true, false, false)
+            resources:PlayAnimationWithNativeArgument5(xStack_bc, "HOWL", false, false, false, true, false, false)
             iVar8 = resources:IsPerformingScriptTask(xStack_bc)
             cVar4 = iVar8
             while cVar4 do

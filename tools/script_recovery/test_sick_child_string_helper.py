@@ -16,7 +16,7 @@ from tools.script_recovery.native_string_map_lowering import (
     fold_string_buffers, fold_case_compare, fold_string_maps,
 )
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'tools/script_recovery/script_units.py').exists())
 BUFFER = '''  if (value == (CCharString)0x0) {
     buffer = (int *)&DAT_0129aaf4;
   }
@@ -223,11 +223,21 @@ def test_generated_callers_pass_macro_and_constructed_argument(stage):
                 # Existing constructor result, not an extra data-table read.
                 value = re.search(r',\s*(\w+)\)$', line)
                 if value:
-                    assignment = re.findall(r'^[ \t]*(?:local )?' + re.escape(value[1])
-                                            + r' = quest:ReadGlobalGameDataString\(0x744\)[ \t]*$',
-                                            source[:source.index(line)], re.M)
+                    assignment = list(re.finditer(r'^[ \t]*(?:local )?' + re.escape(value[1])
+                                            + r' = quest:ReadGlobalGameDataString\((0x[0-9a-fA-F]+|[0-9]+|SCRIPT_DEF\.[A-Za-z_]\w*)\)[ \t]*$',
+                                            source[:source.index(line)], re.M))
                     assert assignment
-                    prefix = assignment[-1].strip() + '\n'
+                    offset = assignment[-1][1]
+                    if offset.startswith('SCRIPT_DEF.'):
+                        definition = re.search(r'local SCRIPT_DEF = \{([^{}]*)\n\}', source)
+                        assert definition
+                        entries = re.findall(r'\b' + re.escape(offset.split('.')[1])
+                                             + r' = (0x[0-9a-fA-F]+|[0-9]+)\b', definition[1])
+                        assert len(entries) == 1
+                        offset = entries[0]
+                        prefix = definition[0] + '\n'
+                    assert int(offset, 0) == 0x744
+                    prefix += assignment[-1][0].strip() + '\n'
                 lua.globals().expected_argument = 'TEXT_POTION'
             else:
                 lua.globals().expected_argument = 'NULL'
@@ -322,6 +332,12 @@ def test_generated_caller_branch_releases_its_own_movie(stage, scenario):
         function resources:DestroyMovie(v)
             assert(movies[v], 'destroyed wrong movie'); movies[v]=nil
         end
+        function resources:IsHitByHeroExceptAbility(actor,ability)
+            assert(actor==me and ability==14)
+            if actor:MsgIsHitByHero() then return true end
+            if not actor:MsgIsHitByAnySpecialAbilityFromHero() then return false end
+            return not actor:MsgIsHitByHeroSpecialAbility(ability)
+        end
         local quest = {RetailResources=function() return resources end, GetHero=function() return hero end}
         function quest:NewScriptFrame()
             frames=frames+1; assert(frames<20,'fixture failed to reach requested branch'); return not stop
@@ -356,7 +372,7 @@ def test_generated_caller_branch_releases_its_own_movie(stage, scenario):
             -- not a claim that the separate persistence callback is recovered.
             for i=1,30 do
                 local name,value=debug.getupvalue(Main,i); if not name then break end
-                if name=='introDone' then debug.setupvalue(Main,i,true) end
+                if name=='introDone' or name=='introDone_' then debug.setupvalue(Main,i,true) end
                 if name=='thingsForPotionGot_' then debug.setupvalue(Main,i,3) end
                 if name=='__native_entity_state' then
                     value:SetStateBool('IntroDone',true); value:SetStateInt('ThingsForPotionGot',3)

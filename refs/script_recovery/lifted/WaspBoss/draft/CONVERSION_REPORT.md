@@ -5,7 +5,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Script | Owner | Function | Address | Compiles | TODO |
 |---|---|---|---|---|---:|
 | Q_WaspBoss | Q_WaspBoss | Main | 0x00e0ea40 | True | 0 |
-| Q_WaspBoss | Q_WaspBoss | Init | 0x00e0e820 | True | 1 |
+| Q_WaspBoss | Q_WaspBoss | Init | 0x00e0e820 | True | 0 |
 | Q_WaspBoss | Q_WaspBoss | OnPersist | 0x00e0e9a0 | True | 0 |
 | Q_WaspBoss | Q_WaspBoss | WatchForTermination | 0x00e0f1d0 | True | 0 |
 | Q_WaspBoss | Q_WaspBoss | DoMission | 0x00e12580 | True | 0 |
@@ -51,4 +51,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_WaspBoss | HornetDrone | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_WaspBoss | HornetDrone | OnPredicateFail | 0x00cdebd0 | True | 0 |
 
-Summary: `{"owners": 10, "functions": 46, "missing": 0, "functionSyntaxPassed": 46, "fileSyntaxPassed": 10, "fileSyntaxChecked": 10, "todo": 4}`
+Summary: `{"owners": 10, "functions": 46, "missing": 0, "functionSyntaxPassed": 46, "fileSyntaxPassed": 10, "fileSyntaxChecked": 10, "todo": 3}`

@@ -1,5 +1,7 @@
 # Script-binding candidates — the 101 native CGameScriptInterface methods not in FSE
 
+> Historical binding hypotheses; names and donor signatures do not prove ABI or semantics.
+
 **Date:** 2026-07-19
 **Author:** RE/API-cataloging agent (analysis-only pass, no Ghidra).
 **Purpose:** turn `ghidra_out/native_methods_not_in_fse.txt` (the 101-method gap) into a

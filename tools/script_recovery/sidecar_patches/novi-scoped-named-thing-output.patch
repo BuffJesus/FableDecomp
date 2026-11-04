@@ -1,0 +1,90 @@
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 9b0e288..a43a313 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -2087,71 +2087,23 @@ std::string SafeGetDefName(CScriptThing* pThing) {
+ }
+ 
+ std::shared_ptr<CScriptThing> LuaQuestState::GetThingWithScriptName(const std::string& scriptName) {
+-    LogToFile("===== GetThingWithScriptName START: '" + scriptName + "' =====");
+-
+-    if (!m_pGameInterface || !GetThingWithScriptName_ByName_API || !Game_malloc || !Game_free) {
+-        Log("!!! ERROR: Prerequisites not available!");
+-        return nullptr;
+-    }
+-    if (!g_pCScriptThingVTable) {
+-        Log("!!! ERROR: g_pCScriptThingVTable is null!");
+-        return nullptr;
+-    }
+-
+-    FableString fsScriptName(scriptName.c_str());
+-
+-    CScriptThing* pHeapResult = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
+-    if (!pHeapResult) {
+-        Log("!!! ERROR: Failed to allocate heap memory!");
++    if (!m_pGameInterface || !GetThingWithScriptName_ByName_API ||
++        !Game_malloc || !Game_free || !g_pCScriptThingVTable) {
++        Log("GetThingWithScriptName: native lookup prerequisites unavailable");
+         return nullptr;
+     }
+-    memset(pHeapResult, 0, sizeof(CScriptThing));
+ 
+-    LogToFile("    Calling GetThingWithScriptName_ByName_API with heap buffer...");
+-    CScriptThing* pApiReturn = GetThingWithScriptName_ByName_API(m_pGameInterface, pHeapResult, fsScriptName);
+-    LogToFile("    API call returned.");
+-
+-    LogCScriptThingDetails("    Heap Buffer After API", pHeapResult);
+-
+-    bool isNull = true;
+-    if (pHeapResult->pVTable == g_pCScriptThingVTable) {
+-        CScriptThingVTable* pVTable = reinterpret_cast<CScriptThingVTable*>(pHeapResult->pVTable);
+-        if (pVTable->IsNull) {
+-            isNull = pVTable->IsNull(pHeapResult);
+-        }
+-    }
+-
+-    if (!isNull && pHeapResult->pImp.Info) {
+-        LogToFile("    Object is valid. Adopting API-owned reference (RefCount="
+-            + std::to_string(pHeapResult->pImp.Info->RefCount) + ").");
+-        LogToFile("===== GetThingWithScriptName END (Success) =====");
+-
+-        // Return shared_ptr with custom deleter
+-        return std::shared_ptr<CScriptThing>(pHeapResult, [](CScriptThing* p) {
+-            LogToFile("===== shared_ptr Deleter Called =====");
+-            std::stringstream ss;
+-            ss << "    Cleaning up CScriptThing* = 0x" << std::hex << reinterpret_cast<uintptr_t>(p);
+-            LogToFile(ss.str());
+-
+-            if (p && p->pImp.Info && p->pImp.Info->RefCount > 0) {
+-                LogToFile("    Current RefCount: " + std::to_string(p->pImp.Info->RefCount));
+-                p->pImp.Info->RefCount--;
+-                LogToFile("    Decremented to: " + std::to_string(p->pImp.Info->RefCount));
+-            }
+-
+-            if (p && Game_free) {
+-                Game_free(p);
+-                LogToFile("    Freed heap allocation.");
+-            }
+-            LogToFile("===== shared_ptr Deleter Complete =====");
+-            });
+-    }
+-    else {
+-        LogToFile("    Object not found or is null.");
+-        Game_free(pHeapResult);
+-        LogToFile("===== GetThingWithScriptName END (Not Found) =====");
+-        return nullptr;
+-    }
++    FableString name(scriptName.c_str());
++    auto freeBuffer = Game_free;
++    auto* output = static_cast<CScriptThing*>(Game_malloc(sizeof(CScriptThing)));
++    if (!output) return nullptr;
++    std::unique_ptr<CScriptThing, decltype(freeBuffer)> pending(output, freeBuffer);
++    memset(output, 0, sizeof(CScriptThing));
++    // Retail8A7D60 constructs one owned hidden result and returns that buffer.
++    // Adopt its reference through the common owner, including empty-result
++    // retirement. Lua aliases then support deterministic scoped retirement.
++    GetThingWithScriptName_ByName_API(m_pGameInterface, output, name);
++    return WrapScriptThingOutput(pending.release());
+ }
+ 
+ sol::table LuaQuestState::GetThingDebugInfo(CScriptThing* pThing, sol::this_state s) {

@@ -54,8 +54,8 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if not bVar2 then
-                me:PlayAnimation("ST_FEED_INTO", false, false, true, false, true, false, false)
-                me:PlayLoopingAnimation("ST_FEED_LOOP", -1, false, false, true)
+                resources:PlayAnimationWithNativeArgument5(xStack_10, "ST_FEED_INTO", false, false, true, false, false, false)
+                resources:PlayLoopingAnimation(xStack_10, "ST_FEED_LOOP", -1, false, false, true, false, true, false, false)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if not bVar2 then
@@ -100,7 +100,7 @@ function Main(quest, me)
                     if not bVar1 then
                         me:ClearCommands()
                         me:ClearAllActionsIncludingLoopingAnimations()
-                        me:PlayAnimation("ST_FEED_OUTOF", false, false, true, true, true, false, false)
+                        resources:PlayAnimationWithNativeArgument5(xStack_10, "ST_FEED_OUTOF", false, false, true, true, false, false)
                         iVar6 = me:IsPerformingScriptTask()
                         cVar3 = iVar6
                         while cVar3 do
@@ -132,7 +132,7 @@ function Main(quest, me)
 end
 
 function Init(quest, me)
-    local iVar1 = math.random(0, 32767)
+    local iVar1 = quest:RetailRandModulo(32768)
     __native_entity_state:SetStateInt("EatNow", iVar1 % 200 + 1)
 end
 

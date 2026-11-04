@@ -121,9 +121,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: xStack_8c = uVar10 & 0xfffffffe;"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -145,7 +143,7 @@
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "AddNewConversation",
             "GetHero",
             "AddPersonToConversation",
@@ -217,7 +215,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 209,
+          "lines": 210,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -334,6 +332,18 @@
       "bindingFiles": {
         "MazeAtTavern": "QS_GuardianSisterInfo/Entities/MazeAtTavern"
       },
+      "blockingSpeechCancellation": {
+        "FSE/QS_GuardianSisterInfo/Entities/MazeAtTavern.lua": [
+          {
+            "line": 135,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                goto LAB_00e26754",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 2,
         "functions": 7,
@@ -341,7 +351,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 2,
         "fileSyntaxChecked": 2,
-        "todo": 1
+        "todo": 0
       }
     },
     {
@@ -476,6 +486,24 @@
             "returnKind": null,
             "bsimVoid": false
           },
+          "directSignedFieldStepEvidence": [
+            {
+              "kind": "direct_memory_inc",
+              "field": "HitCount",
+              "offset": "0x24",
+              "native": {
+                "begin": "0xe272d3",
+                "end": "0xe272d6",
+                "bytes": "ff4624",
+                "receiver_register": "esi"
+              },
+              "body_sha256": "7d2a5e3f329af39018faffbb49aade7754f4514785ca8ed93d685f6763054633",
+              "export_sha256": "4319c2dfcf72f6fafe8bbad3e9f92ee595ef97f5d591e8449f37e2931cc24b9b",
+              "before": "__native_entity_state:GetStateInt(\"HitCount\") + 1",
+              "after": "((__native_entity_state:GetStateInt(\"HitCount\") + 1 + 2147483648) % 4294967296 - 2147483648)",
+              "basis": "Explicit signed C same-member +1, mapped Int, unique native memory INC32 and entry-this receiver over reachable branches; one executable setter/getter with single evaluation. No helper, callback or control flow moved."
+            }
+          ],
           "todo": [
             "label LAB_00e26ef7",
             "label LAB_00e27648",
@@ -509,7 +537,7 @@
             "AddPersonToConversation",
             "GetHero",
             "AddLineToConversation",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "SetTimer",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
@@ -608,7 +636,7 @@
             "ClearThingHasInformation",
             "IsActiveThreadTerminating",
             "ClearCommands",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "GetPos",
             "CreateEffectAtPos",
             "FadeOutAndKillEntity",
@@ -731,6 +759,18 @@
       "bindingFiles": {
         "MazeAtTavern": "QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern"
       },
+      "blockingSpeechCancellation": {
+        "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua": [
+          {
+            "line": 171,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    resources:DestroyMovie(xStack_48)\n                    quest:DeregisterTimer(i_stk_98)\n                    resources:ReleaseResource(xStack_8c)\n                    return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 2,
         "functions": 7,
@@ -749,6 +789,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 4,
     "fileSyntaxChecked": 4,
-    "todo": 4
+    "todo": 3
   }
 }

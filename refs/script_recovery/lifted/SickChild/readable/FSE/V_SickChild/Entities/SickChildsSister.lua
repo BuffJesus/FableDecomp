@@ -1,37 +1,36 @@
 -- Readable native conversion: SickChildsSister. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST, GROUP_SELECT_RANDOM_NO_REPEAT = 0, 2  -- ETextGroupSelectionMethod
-
-local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    SickChildsSisterAttentionAnims = 1868,  -- '0300000088e70400af9e04009d9e0400'
+}
+
 -- per-entity fields (native class members; one Lua state per entity instance)
-local leadHeroToSickChild
+local leadHeroToSickChild_
 
 -- SickChildsSister.Main (retail 0x00ec68a0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, msgIsHitByAnySpecialAbilityFromHero, isTalkedToByHero, predicateResult6
-    local predicateResult, predicateResult2, scratchValue5, scratchValue7, isPerformingScriptTask
-    local sequence1, movie, getPos, sickChildsMother, value, movie5, movie6, resource, registerTimer
-    local timerId
+    local isTalkedToByHero, scratchValue7, isPerformingScriptTask, sequence1
+    local nextPostIntroReminderNumber, movie, hero2, line, postIntroReminderNumber, getPos
+    local sickChildsMother, movie5, movie6, resource, registerTimer, timerId
     local function ReleaseEverything()
-        local movie = movie5
-        resources:DestroyMovie(movie)
-    end
-    local function ReleaseEverything2()
         quest:DeregisterTimer(registerTimer)
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource)
     end
-    local function ReleaseEverything3()
+    local function ReleaseEverything2()
         quest:DeregisterTimer(timerId)
         resources:ReleaseResource(resource)
     end
-    scratchValue5 = 0
+    local function ReleaseEverything3()
+        resources:DestroyMovie(movie)
+        resources:ReleaseResource(resource)
+    end
     if not quest:NewScriptFrame(me) then return end
     resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -43,11 +42,13 @@ function Main(quest, me)
         end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    if not leadHeroToSickChild and not quest:GetStateBool("MotherIntroDone") then
+    if not leadHeroToSickChild_ and not quest:GetStateBool("MotherIntroDone") then
         if not quest:IsActiveThreadTerminating() then
-            me:FollowThing(hero, 1.0, true)
+            local hero3 = quest:GetHero()
+            me:FollowThing(hero3, 1.0, true)
             timerId = quest:RegisterTimer()
             ::LAB_00ec69d4::
+            registerTimer = "SCRIPT_NAME_HERO"
             isTalkedToByHero = me:IsTalkedToByHero()
             sequence1 = isTalkedToByHero
             if not sequence1 then
@@ -55,17 +56,21 @@ function Main(quest, me)
                 sequence1 = quest:GetStateBool("MotherIntroDone")
             end
             if isTalkedToByHero and not sequence1 then
-                if not quest:NewScriptFrame(me) then ReleaseEverything3(); return end
+                if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
                 if quest:GetTimer(timerId) == 0 then
-                    me:StopFollowingThing(hero)
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+                    local hero4 = quest:GetHero()
+                    me:StopFollowingThing(hero4)
                     local conversationId = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationId, hero)
-                    quest:AddLineToConversation(conversationId, "TEXT_QST_B10_SISTER_CALLS_OVER_10", me, hero, false)
-                    quest:ReadGlobalGameData(1872)
-                    quest:ReadGlobalGameData(1868)
-                    math.random(0, 32767)
-                    -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0x74c) + (uVar8 % (uint)(iVar17 - iVar19 >> 2)) * 4),(int)&xStack_94);
-                    me:PlayAnimation(nil --[[missing]], false, false, false, true, true, false, false)
+                    local hero5 = quest:GetHero()
+                    quest:AddPersonToConversation(conversationId, hero5)
+                    local hero6 = quest:GetHero()
+                    quest:AddLineToConversation(conversationId, "TEXT_QST_B10_SISTER_CALLS_OVER_10", me, hero6, false)
+                    local scratchValue9 = quest:ReadGlobalGameData(1872)
+                    local scratchValue21 = quest:ReadGlobalGameData(SCRIPT_DEF.SickChildsSisterAttentionAnims)
+                    local randomChoice = quest:RetailRandModulo(32768)
+                    local scratchValue38 = quest:ReadGlobalGameDataDefStringAt(1868, randomChoice % ((scratchValue9 - scratchValue21) >> 2))
+                    resources:PlayAnimationWithNativeArgument5(resource, scratchValue38, false, false, false, true, false, false)
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
@@ -74,42 +79,28 @@ function Main(quest, me)
                             do return end
                         end
                     end
-                    if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
                     quest:SetTimer(timerId, 10)
-                    me:FollowThing(hero, 1.0, true)
+                    local hero7 = quest:GetHero()
+                    me:FollowThing(hero7, 1.0, true)
                 end
-                scratchValue = scratchValue5 | 2
-                if me:MsgIsHitByHero() then
-                    goto LAB_00ec6c50
-                else
-                    scratchValue = scratchValue5 | 6
-                    if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                        scratchValue = 14
-                        if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec6c50 end
-                    end
-                    predicateResult6 = false
-                end
-                goto FLOW_past_lab_00ec6c50
-                ::LAB_00ec6c50::
-                predicateResult6 = true
-                ::FLOW_past_lab_00ec6c50::
-                if scratchValue & 8 ~= 0 then
-                    scratchValue = scratchValue & 247
-                end
-                if scratchValue & 4 ~= 0 then
-                    scratchValue = scratchValue & 251
-                end
-                scratchValue5 = scratchValue
-                if scratchValue & 2 ~= 0 then
-                    scratchValue5 = scratchValue & 253
-                end
-                if predicateResult6 then
-                    if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
-                    me:StopFollowingThing(hero)
+                if resources:IsHitByHeroExceptAbility(me, 14) then
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+                    local hero8 = quest:GetHero()
+                    me:StopFollowingThing(hero8)
                     movie6 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        me:Speak(hero, "TEXT_QST_B10_SISTER_ON_HIT", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+                    hero8 = nil
+                    if resources:ResourceThingHealthAbove(resource, 0.0) then
+                        line = "TEXT_QST_B10_SISTER_ON_HIT"
+                        local hero9 = quest:GetHero()
+                        if not me:Speak(hero9, line, 2, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie6)
+                            quest:DeregisterTimer(timerId)
+                            resources:ReleaseResource(resource)
+                            return
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
@@ -128,22 +119,33 @@ function Main(quest, me)
                             return
                         end
                     end
-                    me:FollowThing(hero, 1.0, true)
+                    local hero10 = quest:GetHero()
+                    me:FollowThing(hero10, 1.0, true)
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie6)
                 end
                 goto LAB_00ec69d4
             end
-            if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
-            me:StopFollowingThing(hero)
+            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+            hero2 = quest:GetHero()
+            me:StopFollowingThing(hero2)
             if quest:GetStateBool("MotherIntroDone") then goto LAB_00ec734b end
-            if quest:IsActiveThreadTerminating() then ReleaseEverything3(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
             quest:FixMovieSequenceCamera(true)
-            quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0, -1)
+            quest:CameraUseCameraPoint("CAM_SC_GIRL", me, -1.0, 0, -1)
             movie6 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if quest:GetHealth(resources:ScriptThing(resource)) > 0.0 then
-                me:Speak(hero, "TEXT_QST_B10_SISTER_TOLD_TO_FOLLOW_20", GROUP_SELECT_FIRST, false, true, false)
+            hero2 = nil
+            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                line = "TEXT_QST_B10_SISTER_TOLD_TO_FOLLOW_20"
+                hero2 = quest:GetHero()
+                if not me:Speak(hero2, line, 0, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie6)
+                    quest:DeregisterTimer(timerId)
+                    resources:ReleaseResource(resource)
+                    return
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
@@ -182,9 +184,9 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00ec7326
             ::LAB_00ec7326::
-            if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
             quest:DeregisterTimer(registerTimer)
-            leadHeroToSickChild = true
+            leadHeroToSickChild_ = true
             goto LAB_00ec734b
             ::FLOW_past_lab_00ec7326::
             goto FLOW_past_lab_00ec734b
@@ -193,12 +195,18 @@ function Main(quest, me)
             goto LAB_00ec7354
             ::FLOW_past_lab_00ec734b::
             repeat
-                if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
-                msgIsHitByAnySpecialAbilityFromHero = (quest:GetDistanceBetweenThings(hero, sickChildsMother) ^ 2) <= (quest:GetDistanceBetweenThings(me, sickChildsMother) ^ 2)
-                if quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) or msgIsHitByAnySpecialAbilityFromHero then
-                    if quest:IsDistanceBetweenThingsUnder(me, hero, 11.0) or msgIsHitByAnySpecialAbilityFromHero then
+                if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
+                local scratchValue37 = ("<f"):unpack(("<f"):pack(resources:DistanceBetweenThings(me, sickChildsMother)))
+                local hero11 = quest:GetHero()
+                local scratchValue = resources:DistanceBetweenThings(hero11, sickChildsMother) <= scratchValue37
+                hero2 = quest:GetHero()
+                if quest:IsDistanceBetweenThingsUnder(me, hero2, 15.0) or scratchValue then
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
+                    hero2 = quest:GetHero()
+                    if quest:IsDistanceBetweenThingsUnder(me, hero2, 11.0) or scratchValue then
                         if not quest:IsActiveThreadTerminating() then
                             if isPerformingScriptTask ~= 0 then
+                                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                                 me:ClearCommands()
                                 if not (sickChildsMother ~= nil and not sickChildsMother:IsNull()) then
                                     getPos = {x = 0, y = 0, z = 0}
@@ -212,6 +220,7 @@ function Main(quest, me)
                         end
                     elseif not quest:IsActiveThreadTerminating() then
                         if isPerformingScriptTask ~= 1 then
+                            if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                             me:ClearCommands()
                             if not (sickChildsMother ~= nil and not sickChildsMother:IsNull()) then
                                 getPos = {x = 0, y = 0, z = 0}
@@ -227,11 +236,12 @@ function Main(quest, me)
                     ::LAB_00ec7467::
                     scratchValue7 = 0
                     if me:IsTalkedToByHero() then
-                        if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+                        if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                         me:ClearCommands()
                         movie6 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then
+                        hero2 = nil
+                        if not resources:ResourceThingHealthAbove(resource, 0.0) then
                             goto LAB_00ec75b3
                         end
                         goto FLOW_past_lab_00ec75b3
@@ -241,7 +251,13 @@ function Main(quest, me)
                         resources:DestroyMovie(movie6)
                         goto LAB_00ec75cd
                         ::FLOW_past_lab_00ec75b3::
-                        me:Speak(hero, "TEXT_QST_B10_SISTER_THIS_WAY", GROUP_SELECT_FIRST, false, true, false)
+                        line = "TEXT_QST_B10_SISTER_THIS_WAY"
+                        hero2 = quest:GetHero()
+                        if not me:Speak(hero2, line, 0, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            movie = movie6
+                            goto LAB_00ec7821
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
@@ -255,56 +271,41 @@ function Main(quest, me)
                         movie = movie6
                         ::LAB_00ec7821::
                         resources:DestroyMovie(movie)
+                        ReleaseEverything(); return
                     else
                         goto LAB_00ec75cd
                     end
-                    ::FLOW_after_lab_00ec7821::
                     goto FLOW_past_lab_00ec75cd
                     ::LAB_00ec75cd::
-                    scratchValue = scratchValue5 | 16
-                    if me:MsgIsHitByHero() then
-                        goto LAB_00ec765b
-                    else
-                        scratchValue = scratchValue5 | 48
-                        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                            scratchValue = scratchValue5 | 112
-                            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec765b end
-                        end
-                        scratchValue5 = scratchValue
-                        predicateResult = false
-                    end
-                    goto FLOW_past_lab_00ec765b
-                    ::LAB_00ec765b::
-                    scratchValue5 = scratchValue
-                    predicateResult = true
-                    ::FLOW_past_lab_00ec765b::
-                    if scratchValue5 & 64 ~= 0 then
-                        scratchValue5 = scratchValue5 & 191
-                    end
-                    if scratchValue5 & 32 ~= 0 then
-                        scratchValue5 = scratchValue5 & 223
-                    end
-                    if scratchValue5 & 16 ~= 0 then
-                        scratchValue5 = scratchValue5 & 239
-                    end
-                    if not predicateResult then goto LAB_00ec730e end
+                    if not resources:IsHitByHeroExceptAbility(me, 14) then goto LAB_00ec730e end
                     if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00ec75cd end
                     me:ClearCommands()
                     movie5 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        me:Speak(hero, "TEXT_QST_B10_SISTER_ON_HIT", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+                    hero2 = nil
+                    if resources:ResourceThingHealthAbove(resource, 0.0) then
+                        line = "TEXT_QST_B10_SISTER_ON_HIT"
+                        hero2 = quest:GetHero()
+                        if not me:Speak(hero2, line, 2, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            movie = movie5
+                            resources:DestroyMovie(movie)
+                            ReleaseEverything(); return
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                ReleaseEverything(); return  -- TODO(native): goto FLOW_after_lab_00ec7821
+                                movie = movie5
+                                resources:DestroyMovie(movie)
+                                ReleaseEverything(); do return end
                             end
                         end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            ReleaseEverything()
-                            goto FLOW_after_lab_00ec7821
+                            movie = movie5
+                            resources:DestroyMovie(movie)
+                            ReleaseEverything(); return
                         end
                     end
                     isPerformingScriptTask = 2
@@ -313,25 +314,29 @@ function Main(quest, me)
                     goto LAB_00ec730e
                     ::FLOW_past_lab_00ec75cd::
                     ::FLOW_past_lab_00ec7467::
-                    ReleaseEverything2()
+                    ReleaseEverything()
                     return
                 end
+                if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                 me:ClearCommands()
                 me:ClearAllActions()
                 if scratchValue7 == 0 then
                     if not quest:IsActiveThreadTerminating() then
-                        quest:EntitySetFacingAngleTowardsThing(me, hero, false)
+                        local hero12 = quest:GetHero()
+                        quest:EntitySetFacingAngleTowardsThing(me, hero12, false)
                         local conversationId2 = quest:AddNewConversation(me, false, false)
-                        quest:AddPersonToConversation(conversationId2, hero)
-                        quest:AddLineToConversation(conversationId2, "TEXT_QST_B10_SISTER_THIS_WAY", me, hero, false)
+                        local hero13 = quest:GetHero()
+                        quest:AddPersonToConversation(conversationId2, hero13)
+                        hero2 = quest:GetHero()
+                        quest:AddLineToConversation(conversationId2, "TEXT_QST_B10_SISTER_THIS_WAY", me, hero2, false)
                         while me:IsPerformingScriptTask() do
-                            if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
+                            if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                         end
                         if not quest:IsActiveThreadTerminating() then
                             quest:Pause(0.8)
-                            me:PlayAnimation("STANDARD_WAVE", false, false, false, true, true, false, false)
+                            resources:PlayAnimationWithNativeArgument5(resource, "STANDARD_WAVE", false, false, false, true, false, false)
                             while me:IsPerformingScriptTask() do
-                                if not quest:NewScriptFrame(me) then ReleaseEverything2(); return end
+                                if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                             end
                             if not quest:IsActiveThreadTerminating() then
                                 scratchValue7 = 1
@@ -341,11 +346,11 @@ function Main(quest, me)
                             end
                         end
                     end
-                    ReleaseEverything2(); return
+                    ReleaseEverything(); return
                 end
                 ::LAB_00ec72e4::
                 if quest:GetTimer(registerTimer) == 0 then
-                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                     scratchValue7 = 0
                 end
                 ::LAB_00ec730e::
@@ -358,9 +363,9 @@ function Main(quest, me)
     resources:ReleaseResource(resource)
     do return end
     ::LAB_00ec7354::
-    msgIsHitByAnySpecialAbilityFromHero = false
     quest:ClearThingHasInformation(me)
-    value = 10
+    nextPostIntroReminderNumber = 10
+    postIntroReminderNumber = 10
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     repeat
         if me:IsTalkedToByHero() then
@@ -369,7 +374,8 @@ function Main(quest, me)
                 if not quest:IsActiveThreadTerminating() then
                     movie5 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then
+                    hero2 = nil
+                    if not resources:ResourceThingHealthAbove(resource, 0.0) then
                         goto LAB_00ec79b4
                     end
                     goto FLOW_past_lab_00ec79b4
@@ -378,33 +384,49 @@ function Main(quest, me)
                     resources:DestroyMovie(movie5)
                     goto LAB_00ec7cd4
                     ::FLOW_past_lab_00ec79b4::
-                    if not me:Speak(hero, "TEXT_QST_B10_SISTER_THANKS", GROUP_SELECT_FIRST, false, true, false) then
+                    line = "TEXT_QST_B10_SISTER_THANKS"
+                    hero2 = quest:GetHero()
+                    if not me:Speak(hero2, line, 0, false, true, false) then
                         quest:PauseAllNonScriptedEntities(false)
-                        -- TODO(native): goto LAB_00ec7fd1
+                        movie = movie5
+                        ReleaseEverything3(); return
+                    end
+                    while me:IsPerformingScriptTask() do
+                        quest:NewScriptFrame(me)
+                        if quest:IsActiveThreadTerminating() then
+                            quest:PauseAllNonScriptedEntities(false)
+                            movie = movie5
+                            ReleaseEverything3(); do return end
+                        end
                     end
                     if not quest:IsActiveThreadTerminating() then goto LAB_00ec79b4 end
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): goto LAB_00ec7fd1
+                    movie = movie5
+                    ReleaseEverything3()
+                    return
                 end
-            else
-                goto FLOW_past_lab_00ec7fd1
-                -- LAB_00ec7fd1: (native jump target)
-                resources:DestroyMovie(movie)
+                break
             end
-            break
-            ::FLOW_past_lab_00ec7fd1::
             if quest:GetStateBool("MotherIntroDone") then
                 if not quest:IsActiveThreadTerminating() then
-                    registerTimer = "TEXT_QST_B10_SISTER_REMINDER_POSTINTRO_" .. tostring(value)
+                    registerTimer = "TEXT_QST_B10_SISTER_REMINDER_POSTINTRO_" .. tostring(postIntroReminderNumber)
                     if not quest:TextEntryExists(registerTimer) then
-                        value = 10
+                        postIntroReminderNumber = 10
                         registerTimer = "TEXT_QST_B10_SISTER_REMINDER_POSTINTRO_" .. tostring(10)
                     end
-                    -- TODO(native): xStack_88 = (CCharString)((int)value + 0xa);
+                    nextPostIntroReminderNumber = ((postIntroReminderNumber + 10 + 0x80000000) & 0xffffffff) - 0x80000000
                     local movie3 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        me:Speak(hero, registerTimer, 0, false, true, false)
+                    sickChildsMother, hero2 = nil, nil
+                    if resources:ResourceThingHealthAbove(resource, 0.0) then
+                        local p1 = registerTimer
+                        local hero = quest:GetHero()
+                        if not me:Speak(hero, p1, 0, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie3)
+                            resources:ReleaseResource(resource)
+                            return
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
@@ -427,61 +449,78 @@ function Main(quest, me)
                 end
                 break
             end
+            if quest:IsActiveThreadTerminating() then break end
             local movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                if not me:Speak(hero, "TEXT_QST_B10_SISTER_REMINDER", GROUP_SELECT_FIRST, false, true, false) then
+            hero2 = nil
+            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                line = "TEXT_QST_B10_SISTER_REMINDER"
+                hero2 = quest:GetHero()
+                if not me:Speak(hero2, line, 0, false, true, false) then
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): goto LAB_00ec7fd1
+                    movie = movie2
+                    resources:DestroyMovie(movie)
+                    resources:ReleaseResource(resource)
+                    return
+                end
+                while me:IsPerformingScriptTask() do
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then
+                        quest:PauseAllNonScriptedEntities(false)
+                        movie = movie2
+                        resources:DestroyMovie(movie)
+                        resources:ReleaseResource(resource)
+                        do return end
+                    end
                 end
                 if quest:IsActiveThreadTerminating() then
                     quest:PauseAllNonScriptedEntities(false)
-                    -- TODO(native): goto LAB_00ec7fd1
+                    movie = movie2
+                    resources:DestroyMovie(movie)
+                    resources:ReleaseResource(resource)
+                    return
                 end
             end
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie2)
         end
         ::LAB_00ec7cd4::
-        if me:MsgIsHitByHero() then
-            goto LAB_00ec7d68
-        else
-            if me:MsgIsHitByAnySpecialAbilityFromHero() then
-                msgIsHitByAnySpecialAbilityFromHero = true
-                if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec7d68 end
-            end
-            msgIsHitByAnySpecialAbilityFromHero = true
-            predicateResult2 = false
-        end
-        goto FLOW_past_lab_00ec7d68
-        ::LAB_00ec7d68::
-        predicateResult2 = true
-        ::FLOW_past_lab_00ec7d68::
-        scratchValue = scratchValue5 | 128
-        msgIsHitByAnySpecialAbilityFromHero = msgIsHitByAnySpecialAbilityFromHero and false
-        if scratchValue & 128 ~= 0 then
-            scratchValue = scratchValue5 & 127
-        end
-        if predicateResult2 then
+        if resources:IsHitByHeroExceptAbility(me, 14) then
             if quest:IsActiveThreadTerminating() then break end
             local movie4 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, "TEXT_QST_B10_SISTER_ON_HIT", GROUP_SELECT_FIRST, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00ec7fca end
+            movie6, hero2 = nil, nil
+            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                line = "TEXT_QST_B10_SISTER_ON_HIT"
+                hero2 = quest:GetHero()
+                if not me:Speak(hero2, line, 0, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    movie = movie4
+                    resources:DestroyMovie(movie)
+                    resources:ReleaseResource(resource)
+                    return
                 end
-                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00ec7fca end
-                goto FLOW_past_lab_00ec7fca
-                ::LAB_00ec7fca::
-                -- TODO(native): goto LAB_00ec7fd1
-                ::FLOW_past_lab_00ec7fca::
+                while me:IsPerformingScriptTask() do
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then
+                        quest:PauseAllNonScriptedEntities(false)
+                        movie = movie4
+                        resources:DestroyMovie(movie)
+                        resources:ReleaseResource(resource)
+                        do return end
+                    end
+                end
+                if quest:IsActiveThreadTerminating() then
+                    quest:PauseAllNonScriptedEntities(false)
+                    movie = movie4
+                    ReleaseEverything3(); return
+                end
             end
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie4)
         end
         quest:NewScriptFrame(me)
-        scratchValue5 = scratchValue
+        postIntroReminderNumber = nextPostIntroReminderNumber
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource)
             do return end
@@ -492,13 +531,14 @@ end
 
 -- SickChildsSister.Init (retail 0x00ec6860)
 function Init(quest, me)
-    leadHeroToSickChild = false
+    leadHeroToSickChild_ = false
     quest:SetThingHasInformation(me, false, true, false)
 end
 
 -- SickChildsSister.OnPersist (retail 0x00ecd860)
 function OnPersist(quest, me, context)
-    leadHeroToSickChild = quest:PersistTransferBool(context, "LeadHeroToSickChild", leadHeroToSickChild)
+    local leadHeroToSickChild = leadHeroToSickChild_ or false
+    leadHeroToSickChild_ = quest:PersistTransferBool(context, "LeadHeroToSickChild", leadHeroToSickChild)
 end
 
 -- SickChildsSister.OnPredicateFail (retail 0x00cdebd0)

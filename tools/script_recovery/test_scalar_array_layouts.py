@@ -196,9 +196,14 @@ def test_generated_client_init_reserves_available_slot(converted_bordello, reada
     lua.execute("package.preload['V_Bordello.native_quest_helpers'] = function() return {} end")
     state = {f'ClientInUse_{i}': v for i, v in enumerate(flags)}
     writes = []
+    random_bounds = []
     def set_bool(_q, key, value):
         writes.append((key, value))
         state[key] = value
+    def random_modulo(_q, bound):
+        random_bounds.append(bound)
+        assert bound == 32768
+        return 17
     quest = lua.table_from({
         'GetStateInt': lambda _q, key: 2,
         'SetStateInt': lambda _q, key, value: None,
@@ -206,10 +211,12 @@ def test_generated_client_init_reserves_available_slot(converted_bordello, reada
         'SetStateBool': set_bool,
         'SetThingPersistent': lambda *args: None,
         'EntitySetOpinionReactionMask': lambda *args: None,
+        'RetailRandModulo': random_modulo,
     })
     lua.execute(source)
     lua.globals().Init(quest,lua.table())
     assert writes == ([] if expected is None else [(f'ClientInUse_{expected}', True)])
+    assert random_bounds == [32768]
 
 
 def test_generated_quest_persistence_uses_initialized_boolean_keys(converted_bordello):

@@ -5,20 +5,23 @@ local helpers = require("TraderConflictGood.native_quest_helpers")
 
 -- BanditExtra.Main (retail 0x00dfca90)
 function Main(quest, me)
+    local resources = quest:RetailResources()
     local scratchValue, ctr_8
-    local hero = quest:GetHero()
     quest:Pause(0.5)
     if 9 < quest:GetStateListCount("AllCreatures") then
         return
     end
-    if not quest:IsDistanceBetweenThingsOver(me, hero, 14.0) then
+    local thing = quest:GetHero()
+    if not quest:IsDistanceBetweenThingsOver(me, thing, 14.0) then
         return
     end
     if quest:IsActiveThreadTerminating() then return end
-    local banditGruntLevel = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", me:GetPos(), "")
-    local getDistanceBetweenThings = quest:GetDistanceBetweenThings(banditGruntLevel, hero) ^ 2
-    ctr_8 = math.floor((getDistanceBetweenThings * 0.06666667014360428 + 0.5) + 0.5)
-    if getDistanceBetweenThings * 0.06666667014360428 == ctr_8 - 1.0 then
+    local pPosition = me:GetPos()
+    local banditGruntLevel = quest:CreateCreature("CREATURE_BANDIT_GRUNT_LEVEL2", pPosition, "", false)
+    local hero = quest:GetHero()
+    local scratchValue2 = resources:DistanceBetweenThings(banditGruntLevel, hero)
+    ctr_8 = math.floor((scratchValue2 * 0.06666667014360428 + 0.5) + 0.5)
+    if scratchValue2 * 0.06666667014360428 == ctr_8 - 1.0 then
         ctr_8 = ctr_8 - 1
     end
     scratchValue = ctr_8
@@ -26,11 +29,12 @@ function Main(quest, me)
         if quest:IsActiveThreadTerminating() then return end
         scratchValue = 3
     end
-    if not (math.random(0, 32767) % scratchValue == 0) then
+    if not (quest:RetailRandModulo(32768) % scratchValue == 0) then
         helpers.UpdateLiveEnemies(quest, me)
     else
         if quest:IsActiveThreadTerminating() then return end
-        quest:GiveThingBestEnemyTarget(banditGruntLevel, hero)
+        local hero2 = quest:GetHero()
+        quest:GiveThingBestEnemyTarget(banditGruntLevel, hero2)
         helpers.UpdateLiveEnemies(quest, me)
     end
 end

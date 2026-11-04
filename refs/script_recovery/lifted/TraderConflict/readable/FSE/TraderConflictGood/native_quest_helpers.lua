@@ -4,35 +4,37 @@ function UpdateLiveEnemies(quest, me)
     local isActiveThreadTerminating2, isActiveThreadTerminating3, scratchValue, p0
     local allCreaturesIndex, scratchValue9
     quest:StateListClear("AllCreatures")
-    quest:StateListSet("AllCreatures", quest:GetAllCreaturesExcludingHero())
+    local lst_AllCreatures = quest:GetAllCreaturesExcludingHero()
+    quest:StateListSet("AllCreatures", lst_AllCreatures)
     allCreaturesIndex = 0
     while allCreaturesIndex ~= quest:GetStateListCount("AllCreatures") do
         local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         if isActiveThreadTerminating then
             return isActiveThreadTerminating
         end
-        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() == "CREATURE_NEW_CHICKEN_04" then goto LAB_00dfc3b5 end
-        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "TraderToRescue" then
-            goto LAB_00dfc3b5
+        if not (quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetDefName() == "CREATURE_NEW_CHICKEN_04") then
+            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "TraderToRescue" then
+                goto LAB_00dfc3b5
+            end
+            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "BodyGuard" then
+                goto LAB_00dfc3b5
+            end
+            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "RingFighter" then
+                goto LAB_00dfc3b5
+            end
+            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "FisticuffsMember" then
+                goto LAB_00dfc3b5
+            end
+            if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "Tyler" then
+                goto LAB_00dfc3b5
+            end
+            isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
+            if isActiveThreadTerminating2 then
+                return isActiveThreadTerminating2
+            end
+            allCreaturesIndex = allCreaturesIndex + 1
+            goto FLOW_past_lab_00dfc3b5
         end
-        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "BodyGuard" then
-            goto LAB_00dfc3b5
-        end
-        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "RingFighter" then
-            goto LAB_00dfc3b5
-        end
-        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "FisticuffsMember" then
-            goto LAB_00dfc3b5
-        end
-        if quest:GetStateListAt("AllCreatures", allCreaturesIndex):GetName() == "Tyler" then
-            goto LAB_00dfc3b5
-        end
-        isActiveThreadTerminating2 = quest:IsActiveThreadTerminating()
-        if isActiveThreadTerminating2 then
-            return isActiveThreadTerminating2
-        end
-        allCreaturesIndex = allCreaturesIndex + 1
-        goto FLOW_past_lab_00dfc3b5
         ::LAB_00dfc3b5::
         isActiveThreadTerminating3 = quest:IsActiveThreadTerminating()
         if isActiveThreadTerminating3 then
@@ -45,7 +47,8 @@ function UpdateLiveEnemies(quest, me)
     scratchValue = predicateResult
     if not predicateResult then
         scratchValue9 = 0
-        local followers = quest:GetFollowingEntityList(quest:GetHero())
+        local pTarget = quest:GetHero()
+        local followers = quest:GetFollowingEntityList(pTarget)
         if #followers ~= 0 then
             scratchValue = 4
             repeat
@@ -62,8 +65,9 @@ function UpdateLiveEnemies(quest, me)
                 end
                 scratchValue9 = scratchValue9 + 1
                 scratchValue = scratchValue + 12
-            until scratchValue9 >= #followers
+            until not (scratchValue9 < (#followers))
         end
+        quest:IsActiveThreadTerminating()
         ::LAB_00dfc618::
     end
     return scratchValue

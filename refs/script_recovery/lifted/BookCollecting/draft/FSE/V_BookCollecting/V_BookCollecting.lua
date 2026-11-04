@@ -25,6 +25,7 @@ end
 function Init(quest)
     local iVar1
     quest:SetStateBool("ReadingBook", false)
+    quest:SnapshotGlobalConversations("BookReactions", 0x4c8)
     quest:SetStateBool("DoneIntro", false)
     quest:SetStateBool("HatRewarded", false)
     quest:SetStateBool("KeyRewarded", false)
@@ -35,16 +36,15 @@ function Init(quest)
     quest:SetStateInt("LastBookRequested", 0xffffffff)
     iVar1 = quest:ReadGlobalGameData(0x4ec)
     quest:SetStateInt("BooksInGame", iVar1)
-    -- TODO(native): p1 = CCharString::CCharString(xStack_4);
-    -- TODO(native): CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)(this + 0x94),iVar1,p1);
-    -- TODO(native): std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize((vector<unsigned_char,std::allocator<unsigned_char>_> *)(this + 0xa0), *(int *)(this + 0x90),(int)&local_5);
-    -- TODO(native): std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize((vector<unsigned_char,std::allocator<unsigned_char>_> *)(this + 0xac), *(int *)(this + 0x90),(int)&local_5);
+    quest:StateStringVectorResize("BookDef", iVar1)
+    quest:StateFlagVectorResize("BookDonated", quest:GetStateInt("BooksInGame"))
+    quest:StateFlagVectorResize("BookOwned", quest:GetStateInt("BooksInGame"))
     if 0 < quest:GetStateInt("BooksInGame") then
         iVar1 = 0
         repeat
-            -- TODO(native): CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), quest:ReadGlobalGameDataStringAt(0x4d4, iVar1));
-            -- TODO(native): *(undefined1 *)(iVar1 + *(int *)(this + 0xac)) = 0;
-            -- TODO(native): *(undefined1 *)(iVar1 + *(int *)(this + 0xa0)) = 0;
+            quest:SetStateStringVectorAt("BookDef", iVar1, quest:ReadGlobalGameDataStringAt(0x4d4, iVar1))
+            quest:SetStateFlagVectorAt("BookOwned", iVar1, false)
+            quest:SetStateFlagVectorAt("BookDonated", iVar1, false)
             iVar1 = iVar1 + 1
         until not (iVar1 < quest:GetStateInt("BooksInGame"))
     end
@@ -75,8 +75,8 @@ function OnPersist(quest, context)
     local lastBookRequested = quest:GetStateInt("LastBookRequested") or 0
     lastBookRequested = quest:PersistTransferInt(context, "LastBookRequested", lastBookRequested)
     quest:SetStateInt("LastBookRequested", lastBookRequested)
-    -- TODO(native): quest:PersistTransfer(context, "BookDonated", ...)  -- vector<bool,std::allocator<bool>_> member `BookDonated` (callee 0xcdcf80); binding missing
-    -- TODO(native): quest:PersistTransfer(context, "BookOwned", ...)  -- vector<bool,std::allocator<bool>_> member `BookOwned` (callee 0xcdcf80); binding missing
+    quest:PersistStateFlagVector(context, "BookDonated")
+    quest:PersistStateFlagVector(context, "BookOwned")
 end
 
 function BookReaction(quest, native_arg_param_1)
@@ -84,13 +84,15 @@ function BookReaction(quest, native_arg_param_1)
     local CVar1, bVar4, iVar2, lVar3, r1, r2, r3, r4, thing, thing_00, thing_01, thing_02, this_00, this_01
     local alive = true
     lVar3 = native_arg_param_1
-    iVar2 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1].Lines
+    iVar2 = quest:GetStateConversations("BookReactions")[(native_arg_param_1) + 1].Lines
     if iVar2 == 0 then
         alive = not quest:IsActiveThreadTerminating()
         return
     end
-    r1 = quest:GetThingWithScriptName("boy0")
-    r2 = quest:GetThingWithScriptName("girl0")
+    native_arg_param_1 = "boy0"
+    r1 = quest:GetThingWithScriptName(native_arg_param_1)
+    native_arg_param_1 = "girl0"
+    r2 = quest:GetThingWithScriptName(native_arg_param_1)
     r3 = quest:GetThingWithScriptName(quest:ReadGlobalGameDataStringAt(0x4b0, lVar3))
     r4 = quest:GetThingWithScriptName(quest:ReadGlobalGameDataStringAt(0x4bc, lVar3))
     this_00 = resources:MemberResource("seh_Boy")
@@ -148,10 +150,10 @@ function helper_E569D0(quest, native_arg_param_1, native_arg_param_2)
     local alive = true
     iVar6 = native_arg_param_1 * 0x5c
     iVar8 = native_arg_param_2 * 4
-    xStack_14 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Speaker"][(native_arg_param_2) + 1]
-    xStack_18 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Dialogue"][(native_arg_param_2) + 1]
-    xStack_1c = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["Animation"][(native_arg_param_2) + 1]
-    native_arg_param_2 = quest:GlobalConversations(0x4c8)[(native_arg_param_1) + 1]["AnimLoop"][(native_arg_param_2) + 1]
+    xStack_14 = quest:GetStateConversations("BookReactions")[(native_arg_param_1) + 1]["Speaker"][(native_arg_param_2) + 1]
+    xStack_18 = quest:GetStateConversations("BookReactions")[(native_arg_param_1) + 1]["Dialogue"][(native_arg_param_2) + 1]
+    xStack_1c = quest:GetStateConversations("BookReactions")[(native_arg_param_1) + 1]["Animation"][(native_arg_param_2) + 1]
+    native_arg_param_2 = quest:GetStateConversations("BookReactions")[(native_arg_param_1) + 1]["AnimLoop"][(native_arg_param_2) + 1]
     r1 = quest:GetThingWithScriptName(xStack_14)
     i_stk_10 = -1
     iVar6 = ((xStack_18 ~= "NULL") and 1 or 0)

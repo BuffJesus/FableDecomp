@@ -48,7 +48,7 @@ function Main(quest)
                     bVar2 = true
                     -- TODO(native): pCVar4 = tostring(*(uVar6 + 0x10))
                     pCVar4 = nil --[[unresolved native value]]
-                    quest:AddScreenTitleMessage(r1, pCVar4, 0.0)
+                    quest:AddScreenTitleMessage(pCVar4, 0.0, bVar2)
                     -- TODO(native): iVar5 = *(uVar6 + 0x10)
                     iVar5 = nil --[[unresolved native value]]
                     pCVar3 = quest:GetHero()

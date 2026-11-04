@@ -1,0 +1,59 @@
+diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
+index 1729557..0365fa7 100644
+--- a/FableScriptExtender/LuaManager.cpp
++++ b/FableScriptExtender/LuaManager.cpp
+@@ -922,6 +922,11 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["AddItemToContainer"] = &LuaQuestState::AddItemToContainer;
+     questState_type["RemoveItemFromContainer"] = &LuaQuestState::RemoveItemFromContainer;
+     questState_type["EntitySetDeathContainerAsEnabled"] = &LuaQuestState::EntitySetDeathContainerAsEnabled;
++    questState_type["GetContainerItemDefCount"] = [](LuaQuestState& quest, sol::object actor) {
++        if (actor == sol::nil) return quest.GetContainerItemDefCount(nullptr);
++        if (!actor.is<CScriptThing*>()) throw sol::error("GetContainerItemDefCount requires a Thing or nil");
++        return quest.GetContainerItemDefCount(actor.as<CScriptThing*>());
++    };
+     questState_type["GetItemDefNamesFromContainer"] = &LuaQuestState::GetItemDefNamesFromContainer;
+     questState_type["EntitySetStategroupEnabled"] = &LuaQuestState::EntitySetStategroupEnabled;
+     questState_type["EntitySetCombatEnabled"] = &LuaQuestState::EntitySetCombatEnabled;
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 3df9c7a..f5a3bba 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -8934,6 +8934,26 @@ void LuaQuestState::EntitySetDeathContainerAsEnabled(const std::shared_ptr<CScri
+     EntitySetDeathContainerAsEnabled_API(m_pGameInterface, pThing, bIsEnabled);
+ }
+ 
++unsigned int LuaQuestState::GetContainerItemDefCount(CScriptThing* pContainer) {
++    if (!m_pGameInterface || !GetItemDefNamesFromContainer_API || !CCharString_Destroy) {
++        Log("!!! ERROR: GetContainerItemDefCount - API or string destructor not available!");
++        return 0;
++    }
++    if (!pContainer) {
++        Log("!!! ERROR: GetContainerItemDefCount - pContainer is null!");
++        return 0;
++    }
++    std::vector<CCharString> outNames;
++    GetItemDefNamesFromContainer_API(m_pGameInterface, pContainer, &outNames);
++    // Count native vector elements, including entries with no text. The public
++    // string-list conversion omits such entries and cannot establish emptiness.
++    const unsigned int count = static_cast<unsigned int>(outNames.size());
++    for (auto& name : outNames) {
++        CCharString_Destroy(&name);
++    }
++    return count;
++}
++
+ sol::table LuaQuestState::GetItemDefNamesFromContainer(const std::shared_ptr<CScriptThing>& spContainer, sol::this_state s) {
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+diff --git a/FableScriptExtender/LuaQuestState.h b/FableScriptExtender/LuaQuestState.h
+index e1f0589..f788440 100644
+--- a/FableScriptExtender/LuaQuestState.h
++++ b/FableScriptExtender/LuaQuestState.h
+@@ -1039,6 +1039,7 @@ public:
+     std::shared_ptr<CScriptThing> GetRandomThingWithScriptName(const std::string& scriptName);
+     std::shared_ptr<CScriptThing> EntityGetThingInPrimarySlot(const std::shared_ptr<CScriptThing>& spThing);
+ 
++    unsigned int GetContainerItemDefCount(CScriptThing* pContainer);
+     sol::table GetItemDefNamesFromContainer(const std::shared_ptr<CScriptThing>& spContainer, sol::this_state s);
+     sol::table GetAllThingsWithDefName(const std::string& defName, sol::this_state s);
+     sol::table GetAllThingsWithScriptName(const std::string& scriptName, sol::this_state s);

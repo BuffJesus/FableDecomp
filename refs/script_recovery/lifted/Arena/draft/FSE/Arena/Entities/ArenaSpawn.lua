@@ -29,7 +29,6 @@ function Main(quest, me)
     end
     local bVar3, cVar1, pPosition, r1
     local alive = true
-    local p0 = v_stk_14
     local this_00 = me:GetDataString()
     local iVar4 = parseGameInteger(this_00)
     local timerId = quest:RegisterTimer()
@@ -61,7 +60,7 @@ function Main(quest, me)
             end
             bVar3 = false
             pPosition = me:GetPos()
-            r1 = quest:CreateEffectAtPos("SUMMON_ARENA", pPosition, (v_stk_14 + 4), 0.0)
+            r1 = quest:CreateEffectAtPos("SUMMON_ARENA", pPosition, 0.0, false, false)
             timerId = v_stk_14
         end
         quest:SetStateBool(("ArenaSpawnNeeded_" .. iVar4), false)

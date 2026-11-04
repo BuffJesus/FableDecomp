@@ -71,7 +71,7 @@ end
 function Init(quest)
     quest:SetStateInt("ReachedWaspHelper", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:AddQuestRegion("Q_WaspBoss", "PicnicArea")
-    quest:SetQuestWorldMapOffset("Q_WaspBoss", 0xa, nil --[[missing]])
+    quest:SetQuestWorldMapOffset("Q_WaspBoss", 10, 10)
     quest:SetStateBool("PanickedVillagersScene", false)
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -182,7 +182,7 @@ function DoMission(quest)
         pCVar9 = quest:GetThingWithScriptName(pCVar8)
         bVar6 = false
         pCVar10 = pCVar9:GetPos()
-        pCVar9 = quest:CreateCreature(xStack_44, pCVar10, "HornetDrone")
+        pCVar9 = quest:CreateCreature(xStack_44, pCVar10, "HornetDrone", bVar6)
         x_stk_30 = pCVar9
         pCVar9 = nil
         pCVar9 = nil
@@ -213,7 +213,7 @@ function DoMission(quest)
                 pCVar9 = quest:GetThingWithScriptName("MK_WQ_STARTING")
                 bVar6 = false
                 pCVar10 = pCVar9:GetPos()
-                r1 = quest:CreateCreature(xStack_44, pCVar10, "QueenHornet")
+                r1 = quest:CreateCreature(xStack_44, pCVar10, "QueenHornet", bVar6)
                 quest:SetStateBool("QueenHornetAttacks", true)
                 quest:CreateThread("GuildmasterHelp")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetDialogue: lift it as function GuildmasterHelp(quest)
                 alive = quest:NewScriptFrame()

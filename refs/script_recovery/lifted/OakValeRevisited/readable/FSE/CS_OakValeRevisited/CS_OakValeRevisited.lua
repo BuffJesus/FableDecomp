@@ -24,54 +24,66 @@ function OakValeFire(quest)
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:StateListSet("FirePoint", quest:GetAllThingsWithScriptName("Q_REVISITED_FIREPOINT"))
-    quest:StateListResize("Fires", ((quest:GetStateListCount("FirePoint") * 12) - 0) / 12)
+    local lst_FirePoint = quest:GetAllThingsWithScriptName("Q_REVISITED_FIREPOINT")
+    quest:StateListSet("FirePoint", lst_FirePoint)
+    local getStateListCount = quest:GetStateListCount("FirePoint") * 12
+    quest:StateListResize("Fires", (getStateListCount - 0) / 12)
     scratchValue6 = 0
     if quest:GetStateListCount("FirePoint") ~= 0 then
         ctr_28 = 0
         repeat
             if quest:IsActiveThreadTerminating() then return end
-            quest:StateListSetAt("Fires", ctr_28, quest:CreateEffectAtPos("OAKVALE_BURNING_PATCH", quest:GetStateListAt("FirePoint", ctr_28):GetPos(), 0.0, false))
+            local pPosition = quest:GetStateListAt("FirePoint", ctr_28):GetPos()
+            local scratchValue4 = quest:CreateEffectAtPos("OAKVALE_BURNING_PATCH", pPosition, 0.0, false)
+            quest:StateListSetAt("Fires", ctr_28, scratchValue4)
             ctr_28 = ctr_28 + 1
             scratchValue6 = scratchValue6 + 1
-        until scratchValue6 >= quest:GetStateListCount("FirePoint")
+        until not (scratchValue6 < quest:GetStateListCount("FirePoint"))
     end
     if quest:IsActiveThreadTerminating() then return end
     while quest:RetailFlags("OakValeFlag"):Get("fire") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:StateListResize("Fires", ((quest:GetStateListCount("FirePoint") * 12) - 0) / 12)
+    local getStateListCount2 = quest:GetStateListCount("FirePoint") * 12
+    quest:StateListResize("Fires", (getStateListCount2 - 0) / 12)
     scratchValue5 = 0
-    if quest:GetStateListCount("Fires") == 0 then return end
+    if quest:GetStateListCount("Fires") == 0 then quest:IsActiveThreadTerminating(); return end
     firesIndex = 0
     repeat
         if quest:IsActiveThreadTerminating() then return end
         quest:RemoveThing(quest:GetStateListAt("Fires", firesIndex), false, true)
         scratchValue5 = scratchValue5 + 1
         firesIndex = firesIndex + 1
-    until scratchValue5 >= quest:GetStateListCount("Fires")
+    until not (scratchValue5 < quest:GetStateListCount("Fires"))
+    quest:IsActiveThreadTerminating()
 end
 
 -- CS_OakValeRevisited.helper_EE8390 (retail 0x00ee8390)
 function helper_EE8390(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local firesIndex, scratchValue4, v_stk_44_1, v_stk_44_2
+    local scratchValue, firesIndex, scratchValue5, v_stk_44_1, v_stk_44_2
     quest:CreateThread("OakValeFire")  -- native thread body NScript::CCS_OakValeRevisitedScript::OakValeFire: lift it as function OakValeFire(quest)
-    quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("OV_HERO_START_MARKER"), false)
+    if not scratchValue then
+    end
+    local thing = quest:GetThingWithScriptName("OV_HERO_START_MARKER")
+    local pThingToMove = quest:GetHero()
+    quest:EntityTeleportToThing(pThingToMove, thing, false)
+    thing = nil
     local movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     local resource = resources:NewResource()
     local actorMap = resources:NewActorMap()
-    resources:TryAcquire(resource, hero, 4)
+    thing = quest:GetHero()
+    resources:TryAcquire(resource, thing, 4)
     resources:SetActor(actorMap, "Hero", resource)
     resources:RunMacroWithFlags("CS_OAKVALE_REVISITED", actorMap, quest:RetailFlags("OakValeFlag"), false, true)
     resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie)
-    quest:StateListResize("Fires", ((quest:GetStateListCount("FirePoint") * 12) - 0) / 12)
+    local getStateListCount = quest:GetStateListCount("FirePoint") * 12
+    quest:StateListResize("Fires", (getStateListCount - 0) / 12)
     v_stk_44_1 = 0
     if quest:GetStateListCount("Fires") ~= 0 then
         firesIndex = 0
@@ -80,20 +92,20 @@ function helper_EE8390(quest)
             quest:RemoveThing(quest:GetStateListAt("Fires", firesIndex), false, true)
             v_stk_44_1 = v_stk_44_1 + 1
             firesIndex = firesIndex + 1
-        until v_stk_44_1 >= quest:GetStateListCount("Fires")
+        until not (v_stk_44_1 < quest:GetStateListCount("Fires"))
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:DeactivateQuestLater("CS_OakValeRevisited", 0)
     local fence = quest:GetAllThingsWithScriptName("Fence")
     v_stk_44_2 = 0
-    if #fence == 0 then return end
-    scratchValue4 = 0
+    if not (#fence ~= 0) then return end
+    scratchValue5 = 0
     repeat
-        if fence[scratchValue4 + 1]:IsAlive() then
-            quest:RemoveThing(fence[scratchValue4 + 1], false, true)
+        if fence[scratchValue5 + 1]:IsAlive() then
+            quest:RemoveThing(fence[scratchValue5 + 1], false, true)
         end
         v_stk_44_2 = v_stk_44_2 + 1
-        scratchValue4 = scratchValue4 + 1
-    until v_stk_44_2 >= #fence
+        scratchValue5 = scratchValue5 + 1
+    until not (v_stk_44_2 < (#fence))
 end
 

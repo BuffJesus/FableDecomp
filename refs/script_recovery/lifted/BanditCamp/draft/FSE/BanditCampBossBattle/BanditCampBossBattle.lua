@@ -114,7 +114,7 @@ function BanditKingMissionProcess(quest)
     pCVar3 = quest:GetThingWithScriptName("BanditKingSpawn")
     bVar2 = false
     pCVar4 = pCVar3:GetPos()
-    pCVar3 = quest:CreateCreature("CREATURE_BOSS_BANDIT_KING", pCVar4, "BanditKing")
+    pCVar3 = quest:CreateCreature("CREATURE_BOSS_BANDIT_KING", pCVar4, "BanditKing", bVar2)
     xStack_90 = pCVar3
     xStack_5c = resources:NewResource()
     xStack_6c = resources:NewResource()
@@ -124,16 +124,14 @@ function BanditKingMissionProcess(quest)
     pThing = quest:GetHero()
     resources:TryAcquire(pCVar3, pThing, iVar12)
     xStack_84 = resources:NewActorMap()
-    -- TODO(native): pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_84,&xStack_a0);
-    -- TODO(native): CCountedPointer<CDiskFileWin32>::operator=__at8ab1e0((CCountedPointer<CDiskFileWin32> *)(pCVar5 + 8), (int)&((CScriptThing *)xStack_6c)->field_0x8);
+    resources:SetActor(xStack_84, "HERO", xStack_6c)
     xStack_48 = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     quest:FixMovieSequenceCamera(true)
     quest:SetAllowScreenFadingIfAlreadyFaded(true)
     resources:RunMacro("CS_BANDITKING_INTRO_BLACK", xStack_84, false, false)
     quest:SetAllowScreenFadingIfAlreadyFaded(false)
-    -- TODO(native): pCVar5 = std::map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> ::operator[]((map<CCharString,CCountedPointer<NUISystem::CComponent>,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCountedPointer<NUISystem::CComponent>_>_>_> *)xStack_84,&xStack_a0);
-    -- TODO(native): CCountedPointer<CDiskFileWin32>::operator=__at8ab1e0((CCountedPointer<CDiskFileWin32> *)(pCVar5 + 8), (int)&((CScriptThing *)xStack_6c)->field_0x8);
+    resources:SetActor(xStack_84, "HERO", xStack_6c)
     resources:SetActor(xStack_84, "KING", xStack_5c)
     resources:RunMacro("CS_BANDITKING_INTRO", xStack_84, false, true)
     quest:FixMovieSequenceCamera(false)
@@ -225,7 +223,7 @@ function BanditKingMissionProcess(quest)
                 quest:StopOverrideMusic(false)
                 bVar2 = false
                 fret_04 = quest:GetHealth(xStack_90)
-                quest:ModifyThingHealth(xStack_90, (C_stk_4c - fret_04), bVar2)
+                quest:ModifyThingHealth(xStack_90, (string.unpack("<f", string.pack("<f", (C_stk_4c - fret_04)))), bVar2)
                 iVar6 = (xStack_90 ~= nil and xStack_90:IsAlive())
                 if iVar6 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -236,7 +234,7 @@ function BanditKingMissionProcess(quest)
                     pCVar3 = quest:GetThingWithScriptName("BanditKingSpawn")
                     bVar2 = false
                     pCVar4 = pCVar3:GetPos()
-                    r1 = quest:CreateCreature("CREATURE_SISTER", pCVar4, "HeroSister")
+                    r1 = quest:CreateCreature("CREATURE_SISTER", pCVar4, "HeroSister", bVar2)
                     quest:SetStateBool("BanditsNeededForCutscene", true)
                     xStack_10 = resources:NewResource()
                     xStack_20 = resources:NewResource()
@@ -374,7 +372,7 @@ end
 
 function ProcessHostageCutscenes(quest)
     local resources = quest:RetailResources()
-    local CVar2, CVar8, __native_condition_1, __native_condition_2, amount, bVar12, bVar3, cVar4, c_stk_79, ePriority, iVar10, iVar6, native_arg_sequence_1, pCVar11, pCVar7, pPosition, r1, r2, r3, uVar9, xStack_1c, xStack_2c, xStack_3c, xStack_4c, xStack_5c, xStack_78
+    local __native_condition_1, __native_condition_2, amount, bVar12, bVar3, cVar4, c_stk_79, ePriority, iVar10, iVar6, native_arg_sequence_1, pCVar11, pCVar7, pPosition, r1, r2, r3, uVar9, xStack_1c, xStack_2c, xStack_3c, xStack_4c, xStack_5c, xStack_84
     local alive = true
     iVar10 = 0
     bVar3 = quest:IsRegionLoaded("BanditCampCentre")
@@ -407,8 +405,6 @@ function ProcessHostageCutscenes(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00d109cc end
-            CVar2 = 0
-            -- TODO(native): xStack_78 = xStack_78 | 1;
             __native_condition_1 = not (r1 ~= nil and not r1:IsNull())
             if not __native_condition_1 then
                 cVar4 = (r1 ~= nil and r1:MsgIsKilledBy(""))
@@ -438,7 +434,6 @@ function ProcessHostageCutscenes(quest)
             ::LAB_00d10034::
             c_stk_79 = 1
             ::FLOW_past_lab_00d10034::
-                -- TODO(native): xStack_78 = CVar8 & 0xfffffffe;
             if c_stk_79 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -570,9 +565,8 @@ function ProcessHostageCutscenes(quest)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_3c)
             xStack_5c = quest:GetAllThingsWithScriptName("DefensiveGuardBandit")
-            iVar6 = xStack_5c - xStack_5c >> 0x1f
             uVar9 = 0
-            if #xStack_5c + iVar6 ~= iVar6 then break end
+            if #xStack_5c ~= 0 then break end
             goto LAB_00d108eb
         end
         alive = quest:NewScriptFrame()
@@ -580,15 +574,15 @@ function ProcessHostageCutscenes(quest)
         bVar3 = not alive
     until false
     while true do
-        -- TODO(native): xStack_84 = (CCharString)(xStack_5c + iVar10);
-        pCVar7 = quest:GetHero()
-        quest:GiveThingBestEnemyTarget(pCVar7, nil --[[missing]])
-        uVar9 = uVar9 + 1
-        iVar10 = iVar10 + 0xc
-        if (#xStack_5c) <= uVar9 then break end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00d108f6 end
+        xStack_84 = xStack_5c[(iVar10) / 0xc + 1]
+        pCVar7 = quest:GetHero()
+        quest:GiveThingBestEnemyTarget(xStack_84, pCVar7)
+        uVar9 = uVar9 + 1
+        iVar10 = iVar10 + 0xc
+        if (#xStack_5c) <= uVar9 then break end
     end
     ::LAB_00d108eb::
     alive = not quest:IsActiveThreadTerminating()
@@ -599,7 +593,7 @@ function ProcessHostageCutscenes(quest)
         pCVar7 = quest:GetThingWithScriptName("DefensiveGuardLeader")
         bVar3 = false
         pPosition = pCVar7:GetPos()
-        r3 = quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", pPosition, "")
+        r3 = quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", pPosition, "", bVar3)
         pCVar7 = quest:GetHero()
         quest:GiveThingBestEnemyTarget(r3, pCVar7)
         goto LAB_00d109c8
@@ -837,7 +831,7 @@ function CheckForFirstAreaMassacre(quest)
         pCVar6 = quest:GetThingWithScriptName("DefensiveGuardLeader")
         bVar4 = false
         pPosition = pCVar6:GetPos()
-        r1 = quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", pPosition, "")
+        r1 = quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", pPosition, "", bVar4)
         pCVar6 = quest:GetHero()
         quest:GiveThingBestEnemyTarget(r1, pCVar6)
     end
@@ -847,7 +841,7 @@ end
 
 function CheckForSecondAreaMassacre(quest)
     local resources = quest:RetailResources()
-    local b2, bVar3, cVar4, elem_1, elem_2, iStack_50, iVar6, iVar8, native_arg_kills_xStack_74, pCVar5, pPosition, pScriptObject, r1, uVar7, xStack_10, xStack_20, xStack_38, xStack_5c, xStack_68
+    local b2, bVar3, cVar4, elem_1, elem_2, iStack_50, iVar6, iVar8, native_arg_kills_xStack_74, pCVar5, pPosition, pScriptObject, r1, uVar7, xStack_10, xStack_20, xStack_38, xStack_5c, xStack_68, xStack_6c
     local alive = true
     native_arg_kills_xStack_74 = 0
     alive = not quest:IsActiveThreadTerminating()
@@ -964,11 +958,7 @@ function CheckForSecondAreaMassacre(quest)
         resources:TryAcquire(pScriptObject, pCVar5, iVar8)
         quest:FadeScreenOut(0.5, 0.5)
         quest:Pause(1.0)
-        -- TODO(native): xStack_38._0_4_ = malloc(0x24);
-        -- TODO(native): *(undefined1 *)xStack_38._0_4_ = 0;
-        -- TODO(native): *(undefined **)(xStack_38._0_4_ + 4) = (undefined *)0x0;
-        -- TODO(native): *(undefined4 *)(xStack_38._0_4_ + 8) = xStack_38._0_4_;
-        -- TODO(native): *(undefined4 *)(xStack_38._0_4_ + 0xc) = xStack_38._0_4_;
+        xStack_38 = resources:NewActorMap()
         resources:RunMacro("CS_BANDITCAMP_ALARM_INNER", xStack_38, false, true)
         b2 = true
         bVar3 = false
@@ -989,9 +979,9 @@ function CheckForSecondAreaMassacre(quest)
                 if bVar3 then
                     goto LAB_00d0fe48
                 end
-                -- TODO(native): xStack_6c = (CCharString)(iStack_50 + iVar6);
+                xStack_6c = iStack_50[(iVar6) / 0xc + 1]
                 pCVar5 = quest:GetHero()
-                quest:GiveThingBestEnemyTarget(pCVar5, nil --[[missing]])
+                quest:GiveThingBestEnemyTarget(xStack_6c, pCVar5)
                 uVar7 = uVar7 + 1
                 iVar6 = iVar6 + 0xc
             until not (uVar7 < (#iStack_50))
@@ -1002,7 +992,7 @@ function CheckForSecondAreaMassacre(quest)
             pCVar5 = quest:GetThingWithScriptName("DefensiveGuardLeader")
             bVar3 = false
             pPosition = pCVar5:GetPos()
-            r1 = quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", pPosition, "")
+            r1 = quest:CreateCreature("CREATURE_BANDIT_LEADER_LEVEL2", pPosition, "", bVar3)
             pCVar5 = nil
             pCVar5 = quest:GetHero()
             quest:GiveThingBestEnemyTarget(r1, pCVar5)

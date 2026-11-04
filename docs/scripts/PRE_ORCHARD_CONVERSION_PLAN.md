@@ -1,5 +1,7 @@
 # The scripts between Guild Training and Orchard Farm (2026-09-22)
 
+> Historical plan, not current run authorization. The `ActivateQuest` shortcut below is not equivalent to accepting a quest card: the real card flow supplies additional state. Wasp progression also crosses LookoutPoint before PicnicArea. Use the later quest-card findings in `../pipeline/GOTCHAS.md`; retain this plan as the original reasoning record.
+
 The order is not guesswork: it is what our converted **Gameflow** does
 (`refs/script_recovery/lifted/Gameflow/readable/FSE/Gameflow/Gameflow.lua`, stages 0 -> 400).
 

@@ -1,9 +1,10 @@
 {
  "schema": "readable-unit/1",
  "unit": "guardian_sister_info",
- "draft": "work\\codex_lua_marathon_20260927\\comparison\\after\\guardian_sister_info",
+ "draft": "refs\\script_recovery\\lifted\\GuardianSisterInfo\\draft",
  "files": {
   "FSE/QS_GuardianSisterInfo/Entities/MazeAtTavern.lua": {
+   "callbackScopes": {},
    "functions": [
     {
      "function": "Main",
@@ -387,8 +388,8 @@
        "basis": "reused or unresolved native temporary",
        "assignmentRoles": [
         null,
-        "resource",
-        "resource"
+        null,
+        null
        ]
       },
       "xStack_1c": {
@@ -420,15 +421,10 @@
        ]
       },
       "xStack_8c": {
-       "name": "newResource",
-       "basis": "one method, several names",
+       "name": "resource3",
+       "basis": "consistent call/state result",
        "assignmentRoles": [
-        "resource",
-        null,
-        null,
-        null,
-        null,
-        null
+        "resource"
        ]
       },
       "x_stk_c": {
@@ -442,175 +438,175 @@
      "splitLocals": {
       "bVar4": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "bVar4_1": [
-         7
+         8
         ],
         "bVar4_2": [
-         11,
-         16
+         12,
+         17
         ],
         "bVar4_3": [
-         14
+         15
         ],
         "bVar4_4": [
-         19
+         20
         ],
         "bVar4_5": [
-         29
+         30
         ],
         "bVar4_6": [
-         36
+         37
         ],
         "bVar4_7": [
-         38
+         39
         ],
         "bVar4_8": [
-         51
+         52
         ],
         "bVar4_9": [
-         53
+         54
         ],
         "bVar4_10": [
-         59
+         60
         ],
         "bVar4_11": [
-         65
+         66
         ],
         "bVar4_12": [
-         69
+         70
         ],
         "bVar4_13": [
-         72,
-         76
+         73,
+         77
         ],
         "bVar4_14": [
-         90
+         91
         ],
         "bVar4_15": [
-         93,
-         98
+         94,
+         99
         ],
         "bVar4_16": [
-         96
+         97
         ],
         "bVar4_17": [
-         100
+         101
         ],
         "bVar4_18": [
-         122
+         127
         ],
         "bVar4_19": [
-         131
+         136
         ],
         "bVar4_20": [
-         148
+         153
         ],
         "bVar4_21": [
-         150
+         155
         ],
         "bVar4_22": [
-         153,
-         158
+         158,
+         163
         ],
         "bVar4_23": [
-         156
+         161
         ],
         "bVar4_24": [
-         160
+         165
         ],
         "bVar4_25": [
-         181
+         186
         ],
         "bVar4_26": [
-         191
+         196
         ]
        }
       },
       "pCVar6": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "pCVar6_1": [
-         22
+         23
         ],
         "pCVar6_2": [
-         35
+         36
         ],
         "pCVar6_3": [
-         42
+         43
         ],
         "pCVar6_4": [
-         44
+         45
         ],
         "pCVar6_5": [
-         54
+         55
         ],
         "pCVar6_6": [
-         106
+         107
         ],
         "pCVar6_7": [
-         115
+         116
         ],
         "pCVar6_8": [
-         165
+         170
         ]
        }
       },
       "iVar11": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "iVar11_1": [
-         113
+         114
         ],
         "iVar11_2": [
-         117
+         122
         ],
         "iVar11_3": [
-         127
+         132
         ]
        }
       },
       "iVar7": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "iVar7_1": [
-         41
+         42
         ],
         "iVar7_2": [
-         112
+         113
         ],
         "iVar7_3": [
-         163
+         168
         ]
        }
       },
       "pCVar9": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "pCVar9_1": [
-         182
+         187
         ],
         "pCVar9_2": [
-         185
+         190
         ]
        }
       },
       "uVar13": {
        "declarationLine": 3,
-       "originalDeclaration": "    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+       "originalDeclaration": "    local b2, b3, bVar4, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
        "versions": {
         "uVar13_1": [
-         30,
-         47,
-         192
+         31,
+         48,
+         197
         ],
         "uVar13_2": [
-         184
+         189
         ]
        }
       }
@@ -619,93 +615,93 @@
      "inlinedLiteralLocals": {
       "bVar4_9": {
        "literal": "false",
-       "definitionLine": 53,
+       "definitionLine": 54,
        "readLines": [
-        55
+        56
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
-        "53": "                        bVar4_9 = false\n",
-        "55": "                        quest:EntitySetFacingAngleTowardsThing(me, pCVar6_5, bVar4_9)\n"
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_9, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+        "54": "                        bVar4_9 = false\n",
+        "56": "                        quest:EntitySetFacingAngleTowardsThing(me, pCVar6_5, bVar4_9)\n"
        }
       },
       "bVar4_25": {
        "literal": "false",
-       "definitionLine": 181,
+       "definitionLine": 186,
        "readLines": [
-        183
+        188
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
-        "181": "                        bVar4_25 = false\n",
-        "183": "                        quest:SetQuestAsCompleted(pCVar9_1, bVar4_25, b2, b3)\n"
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_25, bVar4_26, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+        "186": "                        bVar4_25 = false\n",
+        "188": "                        quest:SetQuestAsCompleted(pCVar9_1, bVar4_25, b2, b3)\n"
        }
       },
       "fVar3": {
        "literal": "0.0",
-       "definitionLine": 108,
+       "definitionLine": 109,
        "readLines": [
-        109
+        110
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
-        "108": "                        fVar3 = 0.0\n",
-        "109": "                        if fVar3 < fret_0 then\n"
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+        "109": "                        fVar3 = 0.0\n",
+        "110": "                        if fVar3 < fret_0 then\n"
        }
       },
       "iVar11_1": {
        "literal": "0",
-       "definitionLine": 113,
+       "definitionLine": 114,
        "readLines": [
-        116
+        117
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
-        "113": "                            iVar11_1 = 0\n",
-        "116": "                            r1 = me:Speak(pCVar6_7, p1, iVar11_1, (iVar7_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, cleanupFlags, dist, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+        "114": "                            iVar11_1 = 0\n",
+        "117": "                            r1 = me:Speak(pCVar6_7, p1, iVar11_1, (iVar7_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
        }
       },
       "iVar7_2": {
        "literal": "0",
-       "definitionLine": 112,
+       "definitionLine": 113,
        "readLines": [
-        116
+        117
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
-        "112": "                            iVar7_2 = 0\n",
-        "116": "                            r1 = me:Speak(pCVar6_7, p1, (0), (iVar7_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, cleanupFlags, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_2, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+        "113": "                            iVar7_2 = 0\n",
+        "117": "                            r1 = me:Speak(pCVar6_7, p1, (0), (iVar7_2 ~= 0), (p4 ~= 0), (p5 ~= 0))\n"
        }
       },
       "iVar7_3": {
        "literal": "4",
-       "definitionLine": 163,
+       "definitionLine": 168,
        "readLines": [
-        166
+        171
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
-        "163": "                        iVar7_3 = 4\n",
-        "166": "                        resources:TryAcquire(pCVar12, pCVar6_8, iVar7_3)\n"
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, cleanupFlags, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, iVar7_3, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+        "168": "                        iVar7_3 = 4\n",
+        "171": "                        resources:TryAcquire(pCVar12, pCVar6_8, iVar7_3)\n"
        }
       },
       "uVar13_2": {
        "literal": "0",
-       "definitionLine": 184,
+       "definitionLine": 189,
        "readLines": [
-        186
+        191
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
-        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
-        "184": "                        uVar13_2 = 0\n",
-        "186": "                        quest:DeactivateQuestLater(pCVar9_2, uVar13_2)\n"
+        "3": "    local b2, b3, bVar4_1, bVar4_2, bVar4_3, bVar4_4, bVar4_5, bVar4_6, bVar4_7, bVar4_8, bVar4_10, bVar4_11, bVar4_12, bVar4_13, bVar4_14, bVar4_15, bVar4_16, bVar4_17, bVar4_18, bVar4_19, bVar4_20, bVar4_21, bVar4_22, bVar4_23, bVar4_24, bVar4_26, cVar5, cleanupFlags, dist, fret_0, iVar11_2, iVar11_3, iVar7_1, i_stk_38, p0_00, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar9_1, pCVar9_2, r1, uVar10, uVar13_1, uVar13_2, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c\n",
+        "189": "                        uVar13_2 = 0\n",
+        "191": "                        quest:DeactivateQuestLater(pCVar9_2, uVar13_2)\n"
        }
       }
      },
@@ -713,7 +709,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 217,
+     "sourceLine": 222,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -722,7 +718,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 223,
+     "sourceLine": 228,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -731,7 +727,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 226,
+     "sourceLine": 231,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -740,7 +736,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 11,
+     "sourceLine": 14,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -749,7 +745,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 138,
+     "sourceLine": 155,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -758,7 +754,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 144,
+     "sourceLine": 161,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -767,7 +763,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 147,
+     "sourceLine": 164,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -780,15 +776,15 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 9,
+       "splitLocals": 20,
        "closures": 0,
-       "hero": 1,
+       "hero": 0,
        "cutscenes": 0,
        "staleLabelComments": 0,
        "aliveStaging": 13,
        "exitChecksInlined": 2,
        "frameChecks": 5,
-       "inlinedTemporaries": 26,
+       "inlinedTemporaries": 16,
        "deadDefinitions": 6,
        "guardWrappers": 1,
        "retryLoops": 4,
@@ -796,14 +792,15 @@
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 4,
-       "copies": 0,
+       "copies": 1,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 43,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 1,
+       "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
        "sharedExitTests": 0,
@@ -819,28 +816,29 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 15,
+       "sunkLocals": 38,
        "cleanupClosureNames": 0,
-       "parentheses": 15,
+       "parentheses": 12,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 3,
+       "freeSuffixes": 2,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
-       "lines": 187,
-       "temporaries": 48,
+       "lines": 192,
+       "temporaries": 49,
        "labels": 5,
-       "gotos": 9,
+       "gotos": 10,
        "terminationChecks": 15,
        "frameChecks": 0,
        "requires": 0
       },
       "after": {
-       "lines": 126,
+       "lines": 140,
        "temporaries": 4,
        "labels": 4,
-       "gotos": 6,
+       "gotos": 7,
        "terminationChecks": 10,
        "frameChecks": 5,
        "requires": 0
@@ -867,6 +865,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -893,6 +892,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -935,6 +935,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -961,6 +962,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -984,7 +986,7 @@
      },
      "OnPredicateFail": {
       "rewrites": {
-       "splitLocals": 0,
+       "splitLocals": 1,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -992,7 +994,7 @@
        "aliveStaging": 0,
        "exitChecksInlined": 0,
        "frameChecks": 0,
-       "inlinedTemporaries": 1,
+       "inlinedTemporaries": 0,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
@@ -1003,7 +1005,8 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 0,
+       "deadBitmaskStaging": 0,
+       "tailGuards": 1,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
@@ -1023,12 +1026,13 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 0,
+       "sunkLocals": 2,
        "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1056,105 +1060,98 @@
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist"
-    ]
+    ],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
+   },
+   "structuredTailElseRegions": {
+    "Main": {
+     "kind": "then_tail_else_regions",
+     "regions": [
+      {
+       "kind": "then_tail_jump_to_else",
+       "line": 83,
+       "tailGotoLine": 85,
+       "oldEndLine": 86,
+       "targetLine": 92,
+       "label": "LAB_00e26754",
+       "condition": "not me:Speak(hero5, p1, 0, false, true, false)",
+       "thenDeclarationsRetained": 0,
+       "falseNestedDeclarationsRetained": 0,
+       "conditionHeaderExact": true,
+       "thenBranchScopeRetained": true,
+       "noFalseOuterDeclarationsMoved": true,
+       "noBodyLabels": true,
+       "targetLabelRetained": true,
+       "allLiveCallsRetained": true,
+       "beforeSha256": "c9e09c194bad8981437659a282e60883d5e9769b7e5b20de47d4c740055fc1c7",
+       "afterSha256": "c98c3ca13d32a701cb669e578d06653586131b72cb087245c527de1bec20605d"
+      }
+     ],
+     "removedGotos": 1,
+     "allDeclarationsRetained": true,
+     "labelsRetained": true,
+     "nearestThenScopesRetained": true,
+     "noHostReturnTypePremise": true
+    }
    },
    "readability": {
-    "lines": 156,
+    "lines": 173,
     "counts": {
-     "genericTemporaries": 29,
+     "genericTemporaries": 32,
      "gotos": 6,
-     "nativeNames": 10,
-     "unresolvedDiagnostics": 1
+     "nativeNames": 10
     },
-    "status": "needs-recovery",
+    "status": "needs-readability-work",
     "findings": [
      {
-      "line": 15,
+      "line": 17,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 15,
+      "line": 17,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 15,
+      "line": 17,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
-      "line": 28,
+      "line": 31,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 29,
+      "line": 32,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
-      "line": 33,
+      "line": 37,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 40,
+      "line": 46,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
-      "line": 47,
+      "line": 54,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
      {
-      "line": 47,
+      "line": 54,
       "category": "genericTemporaries",
       "text": "scratchValue5"
-     },
-     {
-      "line": 48,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 50,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 50,
-      "category": "nativeNames",
-      "text": "LAB_00e262d9"
-     },
-     {
-      "line": 52,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 52,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 53,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
      },
      {
       "line": 55,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 55,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 56,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
@@ -1171,70 +1168,80 @@
      {
       "line": 59,
       "category": "genericTemporaries",
-      "text": "predicateResult"
+      "text": "scratchValue4"
      },
      {
-      "line": 61,
-      "category": "gotos",
-      "text": "goto"
+      "line": 59,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
      },
      {
-      "line": 61,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e262d9"
+      "line": 60,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
      },
      {
       "line": 62,
-      "category": "nativeNames",
-      "text": "LAB_00e262d9"
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 62,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
      },
      {
       "line": 63,
       "category": "genericTemporaries",
-      "text": "predicateResult"
+      "text": "scratchValue4"
+     },
+     {
+      "line": 64,
+      "category": "gotos",
+      "text": "goto"
      },
      {
       "line": 64,
       "category": "nativeNames",
+      "text": "LAB_00e262d9"
+     },
+     {
+      "line": 66,
+      "category": "genericTemporaries",
+      "text": "predicateResult"
+     },
+     {
+      "line": 68,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 68,
+      "category": "nativeNames",
       "text": "FLOW_past_lab_00e262d9"
      },
      {
-      "line": 65,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 66,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 66,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 67,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
       "line": 69,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "category": "nativeNames",
+      "text": "LAB_00e262d9"
      },
      {
       "line": 70,
       "category": "genericTemporaries",
-      "text": "scratchValue4"
-     },
-     {
-      "line": 70,
-      "category": "genericTemporaries",
-      "text": "scratchValue4"
+      "text": "predicateResult"
      },
      {
       "line": 71,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e262d9"
+     },
+     {
+      "line": 72,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 73,
       "category": "genericTemporaries",
       "text": "scratchValue4"
      },
@@ -1245,56 +1252,96 @@
      },
      {
       "line": 74,
-      "category": "unresolvedDiagnostics",
-      "text": "-- TODO(native): xStack_8c = uVar10 & 0xfffffffe;"
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
      },
      {
       "line": 76,
       "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 77,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 77,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 78,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 80,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 81,
+      "category": "genericTemporaries",
+      "text": "scratchValue4"
+     },
+     {
+      "line": 83,
+      "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 89,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 89,
-      "category": "nativeNames",
-      "text": "LAB_00e26754"
-     },
-     {
-      "line": 91,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 91,
-      "category": "nativeNames",
-      "text": "LAB_00e26754"
-     },
-     {
       "line": 92,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 92,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e26754"
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
      },
      {
       "line": 93,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 101,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 101,
       "category": "nativeNames",
       "text": "LAB_00e26754"
      },
      {
-      "line": 96,
+      "line": 103,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 103,
+      "category": "nativeNames",
+      "text": "LAB_00e26754"
+     },
+     {
+      "line": 104,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 104,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e26754"
      },
      {
-      "line": 130,
+      "line": 106,
+      "category": "nativeNames",
+      "text": "LAB_00e26754"
+     },
+     {
+      "line": 109,
+      "category": "nativeNames",
+      "text": "FLOW_past_lab_00e26754"
+     },
+     {
+      "line": 147,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      }
@@ -1302,6 +1349,7 @@
    }
   },
   "FSE/QS_GuardianSisterInfo/QS_GuardianSisterInfo.lua": {
+   "callbackScopes": {},
    "functions": [
     {
      "function": "Main",
@@ -1414,7 +1462,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 20,
+     "sourceLine": 21,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1423,7 +1471,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 24,
+     "sourceLine": 25,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1436,7 +1484,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 4,
+       "splitLocals": 5,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -1444,7 +1492,7 @@
        "aliveStaging": 3,
        "exitChecksInlined": 0,
        "frameChecks": 1,
-       "inlinedTemporaries": 3,
+       "inlinedTemporaries": 2,
        "deadDefinitions": 0,
        "guardWrappers": 1,
        "retryLoops": 0,
@@ -1455,6 +1503,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1475,12 +1524,13 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 0,
+       "sunkLocals": 2,
        "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 2,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1493,7 +1543,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 15,
+       "lines": 16,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -1523,6 +1573,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1549,6 +1600,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1572,7 +1624,7 @@
      },
      "OnPersist": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -1580,7 +1632,7 @@
        "aliveStaging": 0,
        "exitChecksInlined": 0,
        "frameChecks": 0,
-       "inlinedTemporaries": 2,
+       "inlinedTemporaries": 0,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
@@ -1591,11 +1643,12 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 1,
+       "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
        "sharedExitTests": 0,
@@ -1613,10 +1666,11 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 1,
+       "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0,
+       "firstAssignments": 2,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1629,7 +1683,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 3,
+       "lines": 5,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -1642,18 +1696,20 @@
     "hoistedRequires": 0,
     "entityStateAliased": 0,
     "namedHelpers": 0,
-    "pureLocalFunctions": [
-     "Init"
-    ]
+    "pureLocalFunctions": [],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
-    "lines": 30,
+    "lines": 33,
     "counts": {},
     "status": "needs-human-review",
     "findings": []
    }
   },
   "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/Entities/MazeAtTavern.lua": {
+   "callbackScopes": {},
    "functions": [
     {
      "function": "Main",
@@ -1668,7 +1724,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 1,
-      "declarations": 5,
+      "declarations": 7,
       "decimalLiterals": 1
      }
     },
@@ -2176,7 +2232,7 @@
         ],
         "bVar3_5": [
          34,
-         305
+         312
         ],
         "bVar3_6": [
          48
@@ -2213,51 +2269,51 @@
          138
         ],
         "bVar3_17": [
-         164
+         171
         ],
         "bVar3_18": [
-         176
+         183
         ],
         "bVar3_19": [
-         189
+         196
         ],
         "bVar3_20": [
-         192
+         199
         ],
         "bVar3_21": [
-         199,
-         209
+         206,
+         216
         ],
         "bVar3_22": [
-         203
+         210
         ],
         "bVar3_23": [
-         212
+         219
         ],
         "bVar3_24": [
-         220
+         227
         ],
         "bVar3_25": [
-         248
+         255
         ],
         "bVar3_26": [
-         255,
-         265
+         262,
+         272
         ],
         "bVar3_27": [
-         259
+         266
         ],
         "bVar3_28": [
-         268
+         275
         ],
         "bVar3_29": [
-         279
+         286
         ],
         "bVar3_30": [
-         284
+         291
         ],
         "bVar3_31": [
-         291
+         298
         ]
        }
       },
@@ -2287,7 +2343,7 @@
          157
         ],
         "pCVar6_8": [
-         230
+         237
         ]
        }
       },
@@ -2297,16 +2353,16 @@
        "versions": {
         "iVar11_1": [
          36,
-         307
+         314
         ],
         "iVar11_2": [
          155
         ],
         "iVar11_3": [
-         159
+         166
         ],
         "iVar11_4": [
-         172
+         179
         ]
        }
       },
@@ -2324,7 +2380,7 @@
          154
         ],
         "iVar5_4": [
-         228
+         235
         ]
        }
       },
@@ -2333,10 +2389,10 @@
        "originalDeclaration": "    local b3, bVar13, bVar3, cVar4, c_stk_8d, fVar14, fVar2, fret_0, iVar11, iVar5, i_stk_98, p1, p4, p5, pCVar12, pCVar6, pCVar7, pCVar9, pPosition, r1, r2, uVar10, uVar15, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
        "versions": {
         "bVar13_1": [
-         283
+         290
         ],
         "bVar13_2": [
-         290
+         297
         ]
        }
       },
@@ -2348,7 +2404,7 @@
          46
         ],
         "fVar14_2": [
-         285
+         292
         ]
        }
       },
@@ -2381,10 +2437,10 @@
        "originalDeclaration": "    local b3, bVar13, bVar3, cVar4, c_stk_8d, fVar14, fVar2, fret_0, iVar11, iVar5, i_stk_98, p1, p4, p5, pCVar12, pCVar6, pCVar7, pCVar9, pPosition, r1, r2, uVar10, uVar15, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
        "versions": {
         "pCVar9_1": [
-         292
+         299
         ],
         "pCVar9_2": [
-         295
+         302
         ]
        }
       },
@@ -2395,10 +2451,10 @@
         "uVar15_1": [
          35,
          64,
-         306
+         313
         ],
         "uVar15_2": [
-         294
+         301
         ]
        }
       }
@@ -2406,7 +2462,7 @@
      "removedLiteralLocals": {
       "bVar13_1": {
        "3": "    local b3, bVar13_1, bVar13_2, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, cVar4, c_stk_8d, fVar14_1, fVar14_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar11_4, iVar5_1, iVar5_2, iVar5_3, iVar5_4, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar7_2, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
-       "283": "                bVar13_1 = false\n"
+       "290": "                bVar13_1 = false\n"
       },
       "pCVar7_2": {
        "3": "    local b3, bVar13_1, bVar13_2, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, cVar4, c_stk_8d, fVar14_1, fVar14_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar11_4, iVar5_1, iVar5_2, iVar5_3, iVar5_4, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar7_2, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
@@ -2416,15 +2472,15 @@
      "inlinedLiteralLocals": {
       "bVar13_2": {
        "literal": "false",
-       "definitionLine": 290,
+       "definitionLine": 297,
        "readLines": [
-        293
+        300
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local b3, bVar13_2, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, cVar4, c_stk_8d, fVar14_1, fVar14_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar11_4, iVar5_1, iVar5_2, iVar5_3, iVar5_4, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
-        "290": "                bVar13_2 = false\n",
-        "293": "                quest:SetQuestAsCompleted(pCVar9_1, bVar3_31, bVar13_2, b3)\n"
+        "297": "                bVar13_2 = false\n",
+        "300": "                quest:SetQuestAsCompleted(pCVar9_1, bVar3_31, bVar13_2, b3)\n"
        }
       },
       "bVar3_9": {
@@ -2442,28 +2498,28 @@
       },
       "bVar3_30": {
        "literal": "false",
-       "definitionLine": 284,
+       "definitionLine": 291,
        "readLines": [
-        287
+        294
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local b3, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_30, bVar3_31, cVar4, c_stk_8d, fVar14_1, fVar14_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar11_4, iVar5_1, iVar5_2, iVar5_3, iVar5_4, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
-        "284": "                bVar3_30 = false\n",
-        "287": "                r2 = quest:CreateEffectAtPos(\"MAZE_TELEPORT_OUT_01\", pPosition, fVar14_2, bVar3_30)\n"
+        "291": "                bVar3_30 = false\n",
+        "294": "                r2 = quest:CreateEffectAtPos(\"MAZE_TELEPORT_OUT_01\", pPosition, fVar14_2, bVar3_30)\n"
        }
       },
       "bVar3_31": {
        "literal": "false",
-       "definitionLine": 291,
+       "definitionLine": 298,
        "readLines": [
-        293
+        300
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local b3, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, bVar3_31, cVar4, c_stk_8d, fVar14_1, fVar14_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar11_4, iVar5_1, iVar5_2, iVar5_3, iVar5_4, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
-        "291": "                bVar3_31 = false\n",
-        "293": "                quest:SetQuestAsCompleted(pCVar9_1, bVar3_31, (false), b3)\n"
+        "298": "                bVar3_31 = false\n",
+        "300": "                quest:SetQuestAsCompleted(pCVar9_1, bVar3_31, (false), b3)\n"
        }
       },
       "fVar14_1": {
@@ -2481,15 +2537,15 @@
       },
       "fVar14_2": {
        "literal": "0.0",
-       "definitionLine": 285,
+       "definitionLine": 292,
        "readLines": [
-        287
+        294
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local b3, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar4, c_stk_8d, fVar14_2, fVar2, fret_0, iVar11_1, iVar11_2, iVar11_3, iVar11_4, iVar5_1, iVar5_2, iVar5_3, iVar5_4, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
-        "285": "                fVar14_2 = 0.0\n",
-        "287": "                r2 = quest:CreateEffectAtPos(\"MAZE_TELEPORT_OUT_01\", pPosition, fVar14_2, (false))\n"
+        "292": "                fVar14_2 = 0.0\n",
+        "294": "                r2 = quest:CreateEffectAtPos(\"MAZE_TELEPORT_OUT_01\", pPosition, fVar14_2, (false))\n"
        }
       },
       "fVar2": {
@@ -2533,28 +2589,28 @@
       },
       "iVar5_4": {
        "literal": "4",
-       "definitionLine": 228,
+       "definitionLine": 235,
        "readLines": [
-        231
+        238
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local b3, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar4, c_stk_8d, fret_0, iVar11_1, iVar11_3, iVar11_4, iVar5_1, iVar5_2, iVar5_4, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
-        "228": "                iVar5_4 = 4\n",
-        "231": "                resources:TryAcquire(pCVar12, pCVar6_8, iVar5_4)\n"
+        "235": "                iVar5_4 = 4\n",
+        "238": "                resources:TryAcquire(pCVar12, pCVar6_8, iVar5_4)\n"
        }
       },
       "uVar15_2": {
        "literal": "0",
-       "definitionLine": 294,
+       "definitionLine": 301,
        "readLines": [
-        296
+        303
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local b3, bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, bVar3_17, bVar3_18, bVar3_19, bVar3_20, bVar3_21, bVar3_22, bVar3_23, bVar3_24, bVar3_25, bVar3_26, bVar3_27, bVar3_28, bVar3_29, cVar4, c_stk_8d, fret_0, iVar11_1, iVar11_3, iVar11_4, iVar5_1, iVar5_2, i_stk_98_1, i_stk_98_2, p1, p4, p5, pCVar12, pCVar6_1, pCVar6_2, pCVar6_3, pCVar6_4, pCVar6_5, pCVar6_6, pCVar6_7, pCVar6_8, pCVar7_1, pCVar9_1, pCVar9_2, pPosition, r1, r2, uVar10, uVar15_1, uVar15_2, u_stk_7c, xStack_10, xStack_20, xStack_2c, xStack_38, xStack_48, xStack_8c\n",
-        "294": "                uVar15_2 = 0\n",
-        "296": "                quest:DeactivateQuestLater(pCVar9_2, uVar15_2)\n"
+        "301": "                uVar15_2 = 0\n",
+        "303": "                quest:DeactivateQuestLater(pCVar9_2, uVar15_2)\n"
        }
       }
      },
@@ -2562,7 +2618,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 323,
+     "sourceLine": 330,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2571,7 +2627,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 331,
+     "sourceLine": 338,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2580,7 +2636,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 334,
+     "sourceLine": 341,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2589,7 +2645,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 11,
+     "sourceLine": 9,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2598,7 +2654,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 227,
+     "sourceLine": 242,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2607,7 +2663,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 235,
+     "sourceLine": 250,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2616,7 +2672,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 238,
+     "sourceLine": 253,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -2624,35 +2680,36 @@
      "removedLiteralLocalsAfterInlining": {}
     }
    ],
-   "wrappedDeclarations": 1,
+   "wrappedDeclarations": 0,
    "style": {
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 10,
+       "splitLocals": 24,
        "closures": 0,
-       "hero": 1,
+       "hero": 0,
        "cutscenes": 0,
        "staleLabelComments": 3,
        "aliveStaging": 27,
        "exitChecksInlined": 2,
        "frameChecks": 1,
-       "inlinedTemporaries": 40,
-       "deadDefinitions": 2,
+       "inlinedTemporaries": 27,
+       "deadDefinitions": 4,
        "guardWrappers": 0,
        "retryLoops": 5,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 3,
-       "copies": 16,
-       "selfAssignments": 1,
+       "copies": 0,
+       "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 201,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 1,
+       "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
        "sharedExitTests": 0,
@@ -2668,16 +2725,17 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 17,
+       "sunkLocals": 46,
        "cleanupClosureNames": 0,
-       "parentheses": 17,
+       "parentheses": 15,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 3,
+       "freeSuffixes": 2,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
-       "lines": 295,
+       "lines": 302,
        "temporaries": 65,
        "labels": 2,
        "gotos": 3,
@@ -2686,11 +2744,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 215,
-       "temporaries": 9,
-       "labels": 3,
-       "gotos": 4,
-       "terminationChecks": 20,
+       "lines": 232,
+       "temporaries": 6,
+       "labels": 2,
+       "gotos": 3,
+       "terminationChecks": 19,
        "frameChecks": 1,
        "requires": 0
       }
@@ -2716,6 +2774,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -2742,6 +2801,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -2784,6 +2844,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -2810,6 +2871,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -2852,6 +2914,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -2878,6 +2941,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -2906,74 +2970,87 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
-    ]
+    ],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
-    "lines": 245,
+    "lines": 259,
     "counts": {
-     "genericTemporaries": 45,
-     "machineTemporaries": 2,
-     "gotos": 4,
+     "genericTemporaries": 44,
+     "machineTemporaries": 21,
+     "gotos": 3,
      "nativeNames": 5
     },
     "status": "needs-readability-work",
     "findings": [
      {
-      "line": 15,
+      "line": 12,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 15,
+      "line": 12,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 15,
-      "category": "machineTemporaries",
-      "text": "i_stk_98_2"
-     },
-     {
-      "line": 15,
+      "line": 12,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
-      "line": 15,
+      "line": 12,
       "category": "genericTemporaries",
       "text": "scratchValue6"
      },
      {
-      "line": 16,
+      "line": 12,
       "category": "genericTemporaries",
       "text": "scratchValue7"
      },
      {
-      "line": 17,
+      "line": 13,
       "category": "genericTemporaries",
       "text": "scratchValue7"
      },
      {
-      "line": 30,
+      "line": 26,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_1"
+     },
+     {
+      "line": 27,
       "category": "genericTemporaries",
       "text": "predicateResult"
+     },
+     {
+      "line": 28,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 29,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_1"
      },
      {
       "line": 31,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 34,
       "category": "machineTemporaries",
       "text": "i_stk_98_2"
      },
      {
-      "line": 35,
+      "line": 32,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
+      "line": 51,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
       "line": 52,
       "category": "genericTemporaries",
       "text": "scratchValue6"
@@ -2984,19 +3061,9 @@
       "text": "scratchValue7"
      },
      {
-      "line": 63,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 63,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 64,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "line": 57,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
      },
      {
       "line": 64,
@@ -3004,127 +3071,132 @@
       "text": "scratchValue5"
      },
      {
-      "line": 66,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 66,
-      "category": "nativeNames",
-      "text": "LAB_00e270f6"
-     },
-     {
-      "line": 68,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 68,
+      "line": 64,
       "category": "genericTemporaries",
       "text": "scratchValue6"
      },
      {
-      "line": 69,
+      "line": 65,
       "category": "genericTemporaries",
       "text": "scratchValue7"
      },
      {
-      "line": 69,
+      "line": 65,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
-      "line": 71,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 71,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 72,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
-     },
-     {
-      "line": 72,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 73,
+      "line": 67,
       "category": "gotos",
       "text": "goto"
      },
      {
-      "line": 73,
+      "line": 67,
       "category": "nativeNames",
       "text": "LAB_00e270f6"
      },
      {
-      "line": 75,
+      "line": 69,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 69,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 70,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 70,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 72,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 72,
+      "category": "genericTemporaries",
+      "text": "scratchValue6"
+     },
+     {
+      "line": 73,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 73,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 74,
+      "category": "gotos",
+      "text": "goto"
+     },
+     {
+      "line": 74,
+      "category": "nativeNames",
+      "text": "LAB_00e270f6"
+     },
+     {
+      "line": 76,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 77,
+      "line": 78,
       "category": "gotos",
       "text": "goto"
-     },
-     {
-      "line": 77,
-      "category": "nativeNames",
-      "text": "FLOW_past_lab_00e270f6"
      },
      {
       "line": 78,
       "category": "nativeNames",
-      "text": "LAB_00e270f6"
+      "text": "FLOW_past_lab_00e270f6"
      },
      {
       "line": 79,
+      "category": "nativeNames",
+      "text": "LAB_00e270f6"
+     },
+     {
+      "line": 80,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 80,
+      "line": 81,
       "category": "nativeNames",
       "text": "FLOW_past_lab_00e270f6"
      },
      {
-      "line": 81,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 82,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
       "line": 82,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
       "line": 83,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 83,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 84,
       "category": "genericTemporaries",
       "text": "scratchValue7"
      },
      {
-      "line": 83,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 85,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 86,
+      "line": 84,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
@@ -3136,7 +3208,7 @@
      {
       "line": 87,
       "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "text": "scratchValue5"
      },
      {
       "line": 87,
@@ -3144,64 +3216,145 @@
       "text": "scratchValue5"
      },
      {
-      "line": 89,
-      "category": "genericTemporaries",
-      "text": "scratchValue5"
-     },
-     {
-      "line": 90,
+      "line": 88,
       "category": "genericTemporaries",
       "text": "scratchValue7"
      },
      {
+      "line": 88,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
       "line": 90,
       "category": "genericTemporaries",
       "text": "scratchValue5"
      },
      {
-      "line": 92,
+      "line": 91,
+      "category": "genericTemporaries",
+      "text": "scratchValue7"
+     },
+     {
+      "line": 91,
+      "category": "genericTemporaries",
+      "text": "scratchValue5"
+     },
+     {
+      "line": 93,
       "category": "genericTemporaries",
       "text": "scratchValue"
      },
      {
-      "line": 209,
+      "line": 95,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 107,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 113,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 119,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 120,
+      "category": "genericTemporaries",
+      "text": "scratchValue8"
+     },
+     {
+      "line": 127,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 136,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 144,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 155,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 163,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 169,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 175,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 200,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 208,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 214,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 222,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 232,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
+     },
+     {
+      "line": 237,
       "category": "genericTemporaries",
       "text": "predicateResult"
      },
      {
-      "line": 209,
+      "line": 238,
       "category": "genericTemporaries",
       "text": "scratchValue6"
      },
      {
-      "line": 209,
+      "line": 238,
       "category": "genericTemporaries",
       "text": "scratchValue7"
      },
      {
-      "line": 209,
-      "category": "gotos",
-      "text": "goto"
-     },
-     {
-      "line": 223,
-      "category": "genericTemporaries",
-      "text": "predicateResult"
-     },
-     {
-      "line": 224,
-      "category": "genericTemporaries",
-      "text": "scratchValue6"
-     },
-     {
-      "line": 224,
-      "category": "genericTemporaries",
-      "text": "scratchValue7"
+      "line": 239,
+      "category": "machineTemporaries",
+      "text": "i_stk_98_2"
      }
     ]
    }
   },
   "FSE/QS_GuardianSisterInfo2_SisterInBanditCamp/QS_GuardianSisterInfo2_SisterInBanditCamp.lua": {
+   "callbackScopes": {},
    "functions": [
     {
      "function": "Main",
@@ -3216,7 +3369,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 2,
-      "declarations": 5,
+      "declarations": 6,
       "decimalLiterals": 0
      }
     },
@@ -3422,7 +3575,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 20,
+     "sourceLine": 24,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3431,7 +3584,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 24,
+     "sourceLine": 28,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -3444,7 +3597,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 2,
+       "splitLocals": 5,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -3452,17 +3605,18 @@
        "aliveStaging": 5,
        "exitChecksInlined": 1,
        "frameChecks": 2,
-       "inlinedTemporaries": 6,
-       "deadDefinitions": 2,
+       "inlinedTemporaries": 2,
+       "deadDefinitions": 3,
        "guardWrappers": 1,
        "retryLoops": 2,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 0,
-       "literals": 2,
+       "literals": 3,
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 1,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -3481,14 +3635,15 @@
        "loopExitJumps": 0,
        "cleanupExitJumps": 0,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 1,
+       "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 2,
+       "sunkLocals": 8,
        "cleanupClosureNames": 0,
        "parentheses": 2,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -3501,11 +3656,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 15,
+       "lines": 19,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
-       "terminationChecks": 1,
+       "terminationChecks": 2,
        "frameChecks": 2,
        "requires": 0
       }
@@ -3531,6 +3686,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -3557,6 +3713,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -3580,7 +3737,7 @@
      },
      "OnPersist": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -3588,7 +3745,7 @@
        "aliveStaging": 0,
        "exitChecksInlined": 0,
        "frameChecks": 0,
-       "inlinedTemporaries": 2,
+       "inlinedTemporaries": 0,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
@@ -3599,11 +3756,12 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 1,
+       "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
        "sharedExitTests": 0,
@@ -3621,10 +3779,11 @@
        "controlAcquires": 0,
        "sunkLocals": 0,
        "cleanupClosureNames": 0,
-       "parentheses": 1,
+       "parentheses": 0,
        "cosmetics": 0,
-       "firstAssignments": 0,
+       "firstAssignments": 2,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -3637,7 +3796,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 3,
+       "lines": 5,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -3650,18 +3809,20 @@
     "hoistedRequires": 0,
     "entityStateAliased": 0,
     "namedHelpers": 0,
-    "pureLocalFunctions": [
-     "Init"
-    ]
+    "pureLocalFunctions": [],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
-    "lines": 30,
+    "lines": 36,
     "counts": {},
     "status": "needs-human-review",
     "findings": []
    }
   },
   "FSE/quests.lua": {
+   "callbackScopes": {},
    "functions": [],
    "locals": [],
    "wrappedDeclarations": 0,
@@ -3670,7 +3831,10 @@
     "hoistedRequires": 0,
     "entityStateAliased": 0,
     "namedHelpers": 0,
-    "pureLocalFunctions": []
+    "pureLocalFunctions": [],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
     "lines": 2,

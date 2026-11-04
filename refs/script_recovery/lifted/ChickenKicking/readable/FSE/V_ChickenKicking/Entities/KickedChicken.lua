@@ -1,132 +1,186 @@
 -- Readable native conversion: KickedChicken. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
--- KickedChicken.Main (retail 0x00e64210)
-function Main(quest, me)
+local function __native_named_marker_scope(quest, scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue7, scratchValue8, scratchValue9)
+    return quest:WithRetailResources(function(markerResources)
+        local markerPositions = markerResources:NewThingPositionList()
+        markerPositions:AppendScriptName("FirstAngleMarker")
+        markerPositions:AppendScriptName("SecondAngleMarker")
+        markerPositions:AppendScriptName("ThirdAngleMarker")
+        markerPositions:AppendScriptName("FourthAngleMarker")
+        local function storeFloat32(value)
+            return (("<f"):unpack(("<f"):pack(value)))
+        end
+        quest:SetStateInt("FinalSector", 0)
+        local epsilon = 9.999999747378752e-05
+        for index = 1, markerPositions:Count() - 1 do
+            local pair = markerPositions:GetPosPair(index - 1, scratchValue)
+            local previous = {
+                x = storeFloat32(pair.first.x - pair.second.x),
+                y = storeFloat32(pair.first.y - pair.second.y),
+                z = 0,
+            }
+            pair = markerPositions:GetPosPair(index, scratchValue)
+            local currentRawY = pair.first.y - pair.second.y
+            local current = {
+                x = storeFloat32(pair.first.x - pair.second.x),
+                y = storeFloat32(currentRawY),
+                z = 0,
+            }
+            if epsilon * epsilon < previous.y * previous.y + previous.x * previous.x
+                and epsilon * epsilon < currentRawY * currentRawY + current.x * current.x then
+                previous = markerResources:NormalizeVector3(previous)
+                current = markerResources:NormalizeVector3(current)
+                local rawDot = previous.z * current.z + current.y * previous.y + current.x * previous.x
+                local dot = storeFloat32(rawDot)
+                if rawDot < -1 then
+                    dot = -1
+                elseif dot > 1 then
+                    dot = 1
+                end
+                local halfTurns = markerResources:ArcCosTurns(dot, 0.5)
+                local rotated = markerResources:RotateVector3(previous, {x = 0, y = 0, z = 1}, halfTurns)
+                local product = (rotated.y * scratchValue4 + rotated.z * scratchValue5) + rotated.x * scratchValue3
+                if markerResources:CosTurnsLessThan(halfTurns, product) then
+                    quest:SetStateInt("FinalSector", index)
+                end
+            end
+        end
+        if scratchValue ~= nil and not scratchValue:IsNull() then
+            scratchValue:GetPos()
+        end
+        local distance = markerResources:DistanceFromThingToPosition(scratchValue, scratchValue2)
+        local storedDistance = ("<f"):unpack(("<f"):pack(distance))
+        local distanceBand
+        if distance > scratchValue9 then
+            distanceBand = 4
+        elseif storedDistance > scratchValue8 then
+            distanceBand = 3
+        elseif storedDistance > scratchValue7 then
+            distanceBand = 2
+        elseif storedDistance > scratchValue6 then
+            distanceBand = 1
+        else
+            distanceBand = 0
+        end
+        if quest:IsActiveThreadTerminating() then return true end
+        quest:SetStateInt("DistanceBand", distanceBand)
+    end)
+end
+
+local function __native_arena_main(quest, me, arenaResources)
     local resources = quest:RetailResources()
-    local ctr_68, scratchValue3, scratchValue4, f_p1, fret_0, sequence, getPos, getPos2, getPos3
-    local scratchValue13, scratchValue14, scratchValue17, vec_30, scratchValue18, scratchValue20
+    local scratchValue4, f_stk_1c_2, f_stk_20_2, thing, retailRandModulo, vec_30, scratchValue12
     local chickenKickingArena = quest:GetThingWithScriptName("ChickenKickingArena")
-    local getDistanceBetweenThings = quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("FirstLineMarker")) ^ 2
-    local getDistanceBetweenThings2 = quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("SecondLineMarker")) ^ 2
-    local getDistanceBetweenThings3 = quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("ThirdLineMarker")) ^ 2
-    local getDistanceBetweenThings4 = quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("FourthLineMarker")) ^ 2
-    quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("RearRight"))
-    quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("MidRight"))
-    quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("MidRight2"))
-    quest:GetDistanceBetweenThings(chickenKickingArena, quest:GetThingWithScriptName("FrontRight"))
-    local position = quest:GetThingWithScriptName("FoulLineMarkerA"):GetPos()
-    local vec_3c = {x = position.x, y = position.y, z = position.z}
-    local position2 = quest:GetThingWithScriptName("FoulLineMarkerB"):GetPos()
-    local vec_24 = {x = position2.x, y = position2.y, z = position2.z}
+    arenaResources:TrackThingOutput(chickenKickingArena)
+    local markerOutputToken
+    thing = quest:GetThingWithScriptName("FirstLineMarker")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    local scratchValue5 = ("<f"):unpack(("<f"):pack(resources:DistanceBetweenThings(chickenKickingArena, thing)))
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("SecondLineMarker")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    local scratchValue6 = ("<f"):unpack(("<f"):pack(resources:DistanceBetweenThings(chickenKickingArena, thing)))
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("ThirdLineMarker")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    local scratchValue7 = ("<f"):unpack(("<f"):pack(resources:DistanceBetweenThings(chickenKickingArena, thing)))
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("FourthLineMarker")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    local scratchValue8 = ("<f"):unpack(("<f"):pack(resources:DistanceBetweenThings(chickenKickingArena, thing)))
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("RearRight")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    resources:DistanceBetweenThings(chickenKickingArena, thing)
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("MidRight")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    resources:DistanceBetweenThings(chickenKickingArena, thing)
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("MidRight2")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    resources:DistanceBetweenThings(chickenKickingArena, thing)
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("FrontRight")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    resources:DistanceBetweenThings(chickenKickingArena, thing)
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("FoulLineMarkerA")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    local getThingPosition = arenaResources:GetThingPosition(thing)
+    local vec_3c = {x = getThingPosition.x, y = getThingPosition.y, z = getThingPosition.z}
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
+    thing = quest:GetThingWithScriptName("FoulLineMarkerB")
+    markerOutputToken = arenaResources:TrackThingOutput(thing)
+    local getThingPosition2 = arenaResources:GetThingPosition(thing)
+    local vec_24 = {x = getThingPosition2.x, y = getThingPosition2.y, z = getThingPosition2.z}
+    arenaResources:RetireThingOutput(markerOutputToken)
+    thing = nil
     quest:SetStateInt("DistanceBand", 0)
     repeat
         if not quest:NewScriptFrame(me) then return end
         if me:MsgIsKicked() then
             if quest:IsActiveThreadTerminating() then return end
-            scratchValue17 = math.random(0, 32767) & 0x80000003
-            if scratchValue17 < 0 then
-                scratchValue17 = (scratchValue17 - 1 | 0xfffffffc) + 1
+            retailRandModulo = quest:RetailRandModulo(32768) & 0x80000003
+            if retailRandModulo < 0 then
+                retailRandModulo = (retailRandModulo - 1 | 0xfffffffc) + 1
             end
-            quest:PlaySoundOnThing(me, "SND_MM_CHICKEN_BUKARK_0" .. tostring(scratchValue17 + 1))
+            local scratchValue11 = "SND_MM_CHICKEN_BUKARK_0" .. tostring(retailRandModulo + 1)
+            quest:PlaySoundOnThing(me, scratchValue11)
         end
-        local position3 = quest:GetHero():GetPos()
-        vec_30 = {x = position3.x, y = position3.y, z = position3.z}
-        if quest:EntityGetShotStrikePos(me) then
+        local hero = quest:GetHero()
+        local getThingPosition3 = arenaResources:GetThingPosition(hero)
+        vec_30 = {x = getThingPosition3.x, y = getThingPosition3.y, z = getThingPosition3.z}
+        local __native_vector_result_1 = quest:EntityGetShotStrikePos(me)
+        local scratchValue = __native_vector_result_1 ~= nil
+        if __native_vector_result_1 ~= nil then
+            scratchValue12 = {x = __native_vector_result_1.x, y = __native_vector_result_1.y, z = __native_vector_result_1.z}
+        end
+        if scratchValue then
             if not quest:IsActiveThreadTerminating() then goto LAB_00e64831 end
             do return end
         end
-    until not ((vec_24.y - vec_30.y) * (vec_3c.x - vec_30.x) - (vec_3c.y - vec_30.y) * (vec_24.x - vec_30.x) <= 0.0)
+    until (vec_24.y - vec_30.y) * (vec_3c.x - vec_30.x) - (vec_3c.y - vec_30.y) * (vec_24.x - vec_30.x) > 0.0
     if not quest:IsActiveThreadTerminating() then quest:SetStateInt("DistanceBand", 0xffffffff); goto LAB_00e64831 end
     do return end
     ::LAB_00e64831::
     if quest:IsActiveThreadTerminating() then return end
     if quest:GetStateInt("DistanceBand") == 0 then
         if quest:IsActiveThreadTerminating() then return end
-        if not (chickenKickingArena ~= nil and not chickenKickingArena:IsNull()) then
-            getPos = {x = 0, y = 0, z = 0}
-        else
-            getPos = chickenKickingArena:GetPos()
+        local getThingPosition4 = arenaResources:GetThingPosition(chickenKickingArena)
+        local f_stk_20_1 = string.unpack("<f", string.pack("<f", scratchValue12.y - getThingPosition4.y))
+        local scratchValue3 = string.unpack("<f", string.pack("<f", scratchValue12.x - getThingPosition4.x))
+        do
+            local inverseLength = 1.0 / math.sqrt(0.0 * 0.0 + f_stk_20_1 * f_stk_20_1 + scratchValue3 * scratchValue3)
+            scratchValue4 = string.unpack("<f", string.pack("<f", scratchValue3 * inverseLength))
+            f_stk_20_2 = string.unpack("<f", string.pack("<f", f_stk_20_1 * inverseLength))
+            f_stk_1c_2 = string.unpack("<f", string.pack("<f", 0.0 * inverseLength))
         end
-        local scratchValue7 = scratchValue20._4_4_ - getPos.y
-        -- TODO(native): fStack_24 = (float)xStack_c._0_4_ - pfVar6.x;
-        -- TODO(native): C3DVector::GetScaled((C3DVector *)&fStack_24);
-        -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);
-        -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);
-        -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);
-        local fourthAngleMarker = quest:GetThingWithScriptName("FourthAngleMarker")
-        -- TODO(native): Vector_PushBack_ScriptThing(&xStack_3c,(int)pCVar3);
-        quest:SetStateInt("FinalSector", 0)
-        ctr_68 = 1
-        sequence = scratchValue18 ~= scratchValue14
-        if sequence then
-            scratchValue13 = scratchValue18 + 3
-            sequence = scratchValue13 ~= scratchValue14
-        end
-        if sequence then
-            repeat
-                if not (chickenKickingArena ~= nil and not chickenKickingArena:IsNull()) then
-                    getPos2 = {x = 0, y = 0, z = 0}
-                else
-                    getPos2 = chickenKickingArena:GetPos()
-                end
-                -- TODO(native): pfVar7 = (**(piVar8[-3] + 0x18))()
-    --[[unresolved native value]]
-                local scratchValue8 = (nil)[1] - getPos2.y
-                -- TODO(native): fStack_48 = *pfVar7 - pfVar6.x;
-                if not (chickenKickingArena ~= nil and not chickenKickingArena:IsNull()) then
-                    getPos3 = {x = 0, y = 0, z = 0}
-                else
-                    getPos3 = chickenKickingArena:GetPos()
-                end
-                local f_stk_2c_2 = quest:IsXbox()[1] - getPos3.y
-                -- TODO(native): xStack_30 = (*pfVar7 - pfVar6.x);
-                if not ((0.0001 * 0.0001 < scratchValue4 * scratchValue4 + scratchValue8 * scratchValue8) and (0.0001 * 0.0001 < f_stk_2c_2 * f_stk_2c_2 + fourthAngleMarker * fourthAngleMarker)) then ctr_68 = ctr_68 + 1; scratchValue13 = scratchValue13 + 3; goto continue_2 end
-                -- TODO(native): C3DVector::GetScaled((C3DVector *)&fStack_48);
-                -- TODO(native): C3DVector::GetScaled((C3DVector *)xStack_30);
-                -- TODO(native): xStack_18._8_4_ = 1.0;
-                f_p1 = fret_0 * 0.15915493667125702 * 0.5
-                -- TODO(native): C3DVector::Rotate((C3DVector *)&fStack_48,(int)&xStack_18,(int)p1);
-                if fcos(f_p1 * 6.2831854820251465) < scratchValue4 * scratchValue3 + 0.0 * 0.0 + scratchValue8 * scratchValue7 then
-                    quest:SetStateInt("FinalSector", ctr_68)
-                end
-                ctr_68 = ctr_68 + 1
-                scratchValue13 = scratchValue13 + 3
-                ::continue_2::
-            until scratchValue13 == scratchValue14
-        end
-        if chickenKickingArena ~= nil and not chickenKickingArena:IsNull() then
-            chickenKickingArena:GetPos()
-        end
-        local scratchValue5 = DistanceCalculator_GetVectorDistance(chickenKickingArena,scratchValue20)
-        if scratchValue5 <= getDistanceBetweenThings4 then
-            if scratchValue5 <= getDistanceBetweenThings3 then
-                if scratchValue5 <= getDistanceBetweenThings2 then
-                    if scratchValue5 <= getDistanceBetweenThings then
-                        if quest:IsActiveThreadTerminating() then return end
-                        quest:SetStateInt("DistanceBand", 0)
-                    else
-                        if quest:IsActiveThreadTerminating() then return end
-                        quest:SetStateInt("DistanceBand", 1)
-                    end
-                else
-                    if quest:IsActiveThreadTerminating() then return end
-                    quest:SetStateInt("DistanceBand", 2)
-                end
-            else
-                if quest:IsActiveThreadTerminating() then return end
-                quest:SetStateInt("DistanceBand", 3)
-            end
-        else
-            if quest:IsActiveThreadTerminating() then return end
-            quest:SetStateInt("DistanceBand", 4)
-        end
+        if __native_named_marker_scope(quest, chickenKickingArena, scratchValue12, scratchValue4, f_stk_20_2, f_stk_1c_2, scratchValue5, scratchValue6, scratchValue7, scratchValue8) then return end
     end
     quest:SetStateBool("ChickenLanded", true)
     resources:PrepareResource(resources:MemberResource("seh_Chicken"))
     while not resources:TryAcquire(resources:MemberResource("seh_Chicken"), me, 4) do
         if not quest:NewScriptFrame(me) then return end
     end
+    quest:IsActiveThreadTerminating()
+end
+
+-- KickedChicken.Main (retail 0x00e64210)
+function Main(quest, me)
+    return quest:WithRetailResources(function(arenaResources)
+        return __native_arena_main(quest, me, arenaResources)
+    end)
 end
 
 -- KickedChicken.Init (retail 0x00cdebb0)

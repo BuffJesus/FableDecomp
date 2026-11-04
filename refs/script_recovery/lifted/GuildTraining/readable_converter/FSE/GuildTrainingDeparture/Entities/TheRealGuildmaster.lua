@@ -1,21 +1,21 @@
 -- Readable native conversion: TheRealGuildmaster. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
-
 -- per-entity fields (native class members; one Lua state per entity instance)
 local heroSpokenToMe, teleportToWoods
 
 -- TheRealGuildmaster.Main (retail 0x00d50c60)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
+    local controlAcquired, departureTeacherStand
     quest:FadeScreenOut(0.5, 0.0)
     quest:SetThingHasInformation(me, false, false, false)
     quest:EntitySetAsKillable(me, false, true)
     quest:SetIsPushableByHero(me, false)
     quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(false)
-    quest:EntityTeleportToThing(me, quest:GetThingWithScriptName("M_DepartureTeacherStand"), false)
+    departureTeacherStand = quest:GetThingWithScriptName("M_DepartureTeacherStand")
+    quest:EntityTeleportToThing(me, departureTeacherStand, false)
+    departureTeacherStand = nil
     local resource2 = resources:NewResource()
     resources:PrepareResource(resource2)
     while not resources:TryAcquire(resource2, me, 4) do
@@ -27,15 +27,20 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
     if not quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") then
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
         local resource = resources:NewResource()
         resources:PrepareResource(resource)
-        while not resources:TryAcquire(resource, hero, 4) do
+        local hero = quest:GetHero()
+        controlAcquired = resources:TryAcquire(resource, hero, 4)
+        while not controlAcquired do
             quest:NewScriptFrame(me)
             if quest:IsActiveThreadTerminating() then
                 resources:ReleaseResource(resource)
                 resources:ReleaseResource(resource2)
-                do return end
+                return
             end
+            local hero2 = quest:GetHero()
+            controlAcquired = resources:TryAcquire(resource, hero2, 4)
         end
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource)
@@ -62,11 +67,20 @@ function Main(quest, me)
     while quest:IsQuestActive("Q_GuildTrainingWoodsDeparture") do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
         if me:IsTalkedToByHero() then
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
             local movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            local fret_0 = quest:GetHealth(resources:ScriptThing(resource2))
+            local scratchValue = resources:ScriptThing(resource2)
+            local fret_0 = quest:GetHealth(scratchValue)
             if 0.0 < fret_0 then
-                me:Speak(hero, "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN", GROUP_SELECT_FIRST, false, true, false)
+                local p1 = "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN"
+                local hero3 = quest:GetHero()
+                if not me:Speak(hero3, p1, 0, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie2)
+                    resources:ReleaseResource(resource2)
+                    return
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then

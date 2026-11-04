@@ -30,6 +30,7 @@ from tools.script_recovery.lift_native_lua import (  # noqa: E402
 )
 from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker  # noqa: E402
 from tools.script_recovery.native_function_parameters import function_parameters, rename_parameters  # noqa: E402
+from tools.script_recovery.native_reviewed_function_prototype import reviewed_function_parameters  # noqa: E402
 from tools.script_recovery.native_evidence_lowering import LoweringSpec, lower, finish_lua, strip_receiver_arguments, lower_after_annotate, _split_top, fold_stack_vector_builds  # noqa: E402
 from tools.script_recovery.annotate_interface_slots import load_thing_slots  # noqa: E402
 from tools.script_recovery.native_cleanup_regions import hoist_cleanup_regions  # noqa: E402
@@ -137,6 +138,13 @@ def lift_persist_evidence(source, unit, spec_l, persist_kinds):
         if not name:
             todo.append(f'persist transfer: unresolved name operand {name_arg} ({m.group(0).strip()[:60]})')
             out.append(f'    -- TODO(native): {m.group(0).strip()}')
+            continue
+        flag = (getattr(spec_l, 'parent_flag_vectors', {}).get(int(member.group(1), 0))
+                if member and not entity else None)
+        if (flag and flag.get('element') == 'Bool' and flag.get('stride') == 1
+                and target == int(flag['transfer'], 16) and name == flag['name'] and len(args) == 3):
+            out.append(f'    quest:PersistStateFlagVector(context, "{name}")')
+            calls.append('PersistStateFlagVector')
             continue
         if member and unmapped.get(hex(int(member.group(1), 0))) and 'vector<' in unmapped[hex(int(member.group(1), 0))]['type']:
             row = unmapped[hex(int(member.group(1), 0))]
@@ -308,10 +316,19 @@ def disambiguate_call_labels(decompile, calls, fn=None):
         pattern = re.compile(r'(?<![\w:])' + re.escape(label) + r'(?=\s*\()')
         if len(pattern.findall(decompile)) != len(targets):
             continue
+        in_text = None
         if ordered is not None:
             in_text = [int(site['target'], 16) for a, e, args, site, key, vtable in ordered if not vtable and key == label]
-            if len(in_text) == len(targets):
-                targets = in_text
+        if in_text is None or len(in_text) != len(targets):
+            # the whole text could not be reconciled, but this label's own sites still print in `callOrder`
+            # order (Arena Roth 0x00F21880: address order put the resource dtor 0x7E74D0 on the movie dtor printed
+            # at LAB_00f22bf5 -- ReleaseResource on a movie -- and swapped three other sites)
+            rank = {s.lower(): k for k, s in enumerate((fn or {}).get('callOrder') or [])}
+            own = [c for c in calls if c.get('currentName') == label]
+            if rank and all(c['site'].lower() in rank for c in own):
+                in_text = [int(c['target'], 16) for c in sorted(own, key=lambda c: rank[c['site'].lower()])]
+        if in_text is not None and len(in_text) == len(targets):
+            targets = in_text
         it = iter(targets)
 
         def repl(m, it=it, label=label):
@@ -415,6 +432,13 @@ def _align(site, args, vtable=False, receiver_printed=False):
     pushed = list(reversed(site.get('pushedStack', [])))
     values = list(reversed(site.get('pushedValue') or [None] * len(pushed)))
     ecx, edx = site.get('ecxStack'), site.get('edxStack')
+    # GetThingWithScriptName's complete hidden-result/name layout is thiscall:
+    # EDX feeds the output push, not a second register argument (E58E5E).
+    # Keep other layouts conservative: vector exports still have drifted aliases
+    # whose remaining uses cannot yet be reconciled by this local alignment.
+    if (vtable and site.get('slot') == '0x120' and site.get('ecxValue') in (4, 0x40)
+            and len(args) == len(pushed) == 2 and edx == pushed[0]):
+        edx = None
     if vtable and receiver_printed and len(pushed) == len(args) and len(pushed) > 0:
         # the record is one push too long and the receiver is printed: the EARLIEST push (the head of the
         # export's push-order list, the tail after the reversal) belongs to a later call -- VC7.1 pushes a
@@ -893,6 +917,18 @@ def restore_stack_operands(decompile, fn, _byte_slices=True):
 
     ordered = _text_order_sites(text, fn)
     if ordered is not None:
+        from tools.script_recovery.native_registered_timer_calls import recover as recover_registered_timer_calls
+        recovered, _ = recover_registered_timer_calls(text, fn, ordered)
+        if recovered != text:
+            text = recovered
+            ordered = _text_order_sites(text, fn)
+    if ordered is not None:
+        from tools.script_recovery.native_timer_operands import recover as recover_timer_operands
+        recovered = recover_timer_operands(text, fn, ordered, _register_operand_slot)
+        if recovered != text:
+            text = recovered
+            ordered = _text_order_sites(text, fn)
+    if ordered is not None:
         # exact pairing through the decompiler's token stream (callOrder): printed calls in text order
         for pos, end, args, site, key, vtable in ordered:
             # CTimer is a four-byte ID. At its destructor, the exporter can be
@@ -1186,6 +1222,9 @@ def unwrap_statements(text):
     # slot restoration understands (`&CStack_8c + 8`)
     text = re.sub(r'&(\w+Stack_[0-9a-f]+)\.field_0x([0-9a-f]+)\b', lambda m: f'&{m.group(1)} + {int(m.group(2), 16) if int(m.group(2), 16) != 12 else "0xc"}', text)
     return text
+
+
+from tools.script_recovery.native_reviewed_missing_calls import scoped_function_evidence
 
 
 class UnitConverter:
@@ -1524,12 +1563,15 @@ class UnitConverter:
                 text = text[:a] + replacement + text[e:]
             caller['decompile'] = text
 
-    APPEND_CSTRING = 0x99F600    # CCharString::AppendCString(dest, src, const char*) — __fastcall + one stack operand
+    APPEND_CSTRING = 0x99F600    # CCharString::AppendCString(dest, src, const char*) â€” __fastcall + one stack operand
 
     def name_append_literals(self, decompile, fn):
         """`AppendCString(dest, src, piVar9)` with `piVar9 = &iStack_70;`: Ghidra lost the pushed literal behind the
         earlier hidden-result push of `GetDataString`. The nearest `push <.rdata string>` before the call site is
         the operand."""
+        from tools.script_recovery.native_concat_literal_operands import restore
+        if any(int(c.get('target', '0'), 16) == 0x99F570 for c in fn.get('calls', [])):
+            decompile = restore(decompile, fn, _text_order_sites(decompile, fn), self.rdata)
         sites = [int(c['site'], 16) for c in fn.get('calls', []) if int(c.get('target', '0'), 16) == self.APPEND_CSTRING]
         if not sites:
             return decompile
@@ -1698,6 +1740,13 @@ class UnitConverter:
                     return ('result', ins.address) if reg == 'eax' else None      # the call's result
                 if ins.mnemonic in ('mov', 'lea', 'xor') and ins.operands and ins.operands[0].type == X86_OP_REG and ins.reg_name(ins.operands[0].reg) == reg:
                     src = ins.operands[1]
+                    if (ins.mnemonic == 'lea' and src.type == X86_OP_MEM
+                            and src.mem.base == ins.operands[0].reg and not src.mem.index and src.mem.disp == 0):
+                        # VC padding such as lea ebx,[ebx] preserves the value.
+                        # Following it recursively exhausts the alias-depth bound
+                        # in long functions (Magicman Main's later camera calls).
+                        i -= 1
+                        continue
                     if ins.mnemonic == 'xor' and src.type == X86_OP_REG and ins.reg_name(src.reg) == reg:
                         return '0'
                     if ins.mnemonic == 'mov' and src.type == X86_OP_IMM:
@@ -1830,7 +1879,45 @@ class UnitConverter:
                     rendered.append(value)
                 else:
                     rendered.append('__unknown_push')
-            if printed and not all(any(x.strip() == r for r in rendered) for x in printed):
+            def retained_operand_matches(operand, recovered):
+                if operand.strip() == recovered:
+                    return True
+                method = self.slots.get(int(site.get('slot') or '0', 16))
+                proven_line = (method == 'AddLineToConversation'
+                    and int(site['site'], 16) in {int(a,16) for a in fn.get('reviewedRetainedCStringSites', [])}
+                    and len(rendered) == 5 and recovered == rendered[1])
+                if method != 'GiveHeroObject' and not proven_line:
+                    return False
+                # A retained CCharString array decays to its address. Its printed
+                # stack name may differ from the entry-relative native slot.
+                # Accept that alias only when its latest constructor used the
+                # exact slot pushed to this call.
+                original = RE_STACK_OPERAND.fullmatch(operand.strip())
+                target = re.fullmatch(r'&xStack_([0-9a-f]+)', recovered)
+                if not original or original.group('plus') or not target:
+                    return False
+                constructors = []
+                for ca, ce, cargs, csite, ckey, cvtable in entries:
+                    if ca >= a or cvtable or csite.get('currentName') != 'CCharString::CCharString' or not cargs:
+                        continue
+                    receiver = RE_STACK_OPERAND.fullmatch(cargs[0].strip())
+                    if receiver and not receiver.group('plus') and receiver.group('name') == original.group('name'):
+                        constructors.append(csite)
+                if not constructors:
+                    return False
+                ctor = constructors[-1]
+                same_slot = (int(ctor['site'], 16) < int(site['site'], 16)
+                             and ctor.get('ecxStack') == -int(target[1], 16))
+                if not same_slot or not proven_line:
+                    return same_slot
+                ctor_entry = next(item for item in entries if item[3] is ctor)
+                from tools.script_recovery.native_retained_cstring_alias import prove as prove_retained_cstring
+                proof = prove_retained_cstring(fn, ctor, site, ctor_entry[2], self.rdata)
+                if proof is not None:
+                    self.__dict__.setdefault('retained_cstring_reviews', []).append(dict(function=fn['address'], **proof))
+                return proof is not None
+
+            if printed and not all(any(retained_operand_matches(x, r) for r in rendered) for x in printed):
                 continue          # a partly printed call is only rebuilt when every printed operand was found again
             edits.append((a, e, ','.join(rendered)))
         for start, end, replacement in sorted(edits, key=lambda x: (x[0], x[1]), reverse=True):
@@ -1903,6 +1990,7 @@ class UnitConverter:
         dropped = reachable({t for _, t in fill_edges}, set()) - kept
         return {a for a in dropped if names.get(a, '').startswith('helper_') or names.get(a) == 'Copy'}
 
+    @scoped_function_evidence
     def convert(self, unit, out):
         package = unit['package']
         quest_functions = {n: f for n, f in unit['quest']['functions'].items() if n not in SKIP_ROLES}
@@ -1925,9 +2013,15 @@ class UnitConverter:
                   'packages': [], 'functions': [], 'missing': [], 'syntax': {},
                   'controlMode': 'flat experimental' if self.flat_control else 'structured draft'}
         if snapshot_containers:
-            report.setdefault('runtimeBoundaries', []).append({'method': 'GlobalConversations',
-                'members': unit['quest'].get('definitionSnapshots', {}),
-                'omittedUnreachableContainerBodies': sorted(snapshot_containers)})
+            snapshots = unit['quest'].get('definitionSnapshots', {})
+            boundary = {'method': 'GlobalConversations', 'members': snapshots,
+                        'omittedUnreachableContainerBodies': sorted(snapshot_containers)}
+            owned = {offset: evidence for offset, evidence in snapshots.items()
+                     if evidence.get('storage') == 'questConversationVector'}
+            if owned:
+                boundary.update(method='SnapshotGlobalConversations',
+                                readMethod='GetStateConversations', members=owned)
+            report.setdefault('runtimeBoundaries', []).append(boundary)
         if arena_containers:
             report['runtimeBoundaries'] = report.get('runtimeBoundaries', []) + [{'method': 'InitialiseArenaRounds',
                 'nativeCaller': '0x00f25840', 'replacedCall': '0x00f25980',
@@ -1981,7 +2075,7 @@ class UnitConverter:
             for address, helper in local_names.items():
                 fn = self.native(address)
                 if fn:
-                    signatures[helper] = function_parameters(fn['decompile'], member=True)
+                    signatures[helper] = reviewed_function_parameters(fn, unit, self.rdata)
                     lifter.helper_parameters[helper] = [p['lua'] for p in signatures[helper]['parameters']]
                     if signatures[helper]['returnKind']:
                         lifter.helper_return_kinds[helper] = signatures[helper]['returnKind']
@@ -2013,6 +2107,15 @@ class UnitConverter:
                 if not fn:
                     report['missing'].append(row)
                     continue
+                table_staging_row = unit.get('reviewedInterfaceTableStaging', {}).get(str(fn['address']).lower())
+                saved_table_row = unit.get('reviewedSavedTableStaging', {}).get(str(fn['address']).lower())
+                register_health_row = unit.get('reviewedRegisterResourceHealthLifetimes', {}).get(str(fn['address']).lower())
+                register_comparison_row = unit.get('reviewedRegisterHealthComparisons', {}).get(str(fn['address']).lower())
+                member_health_row = unit.get('reviewedMemberResourceHealthLifetimes', {}).get(str(fn['address']).lower())
+                parent_health_row = unit.get('reviewedParentMemberHealthLifetimes', {}).get(str(fn['address']).lower())
+                typed_boolean_row = unit.get('reviewedTypedBooleanHealth', {}).get(str(fn['address']).lower())
+                lifter.trace_native_tail_copies = bool(table_staging_row and table_staging_row.get('copies') or saved_table_row and saved_table_row.get('copies') or register_health_row or register_comparison_row or typed_boolean_row or member_health_row or parent_health_row)
+                lifter.native_tail_copy_trace = []
                 lifter.callee_names = known_callee_aliases(fn)
                 lifter.parent_helpers = {}
                 # a call whose target is one of this owner's helpers takes the helper's local name whatever
@@ -2050,7 +2153,7 @@ class UnitConverter:
                         helper_fn = self.native(address)
                         if not helper_fn:
                             continue
-                        sig = function_parameters(helper_fn['decompile'], member=True)
+                        sig = reviewed_function_parameters(helper_fn, unit, self.rdata)
                         if sig.get('problem'):
                             continue
                         lifter.parent_helpers[label] = {'module': shared_module, 'name': helpers[address],
@@ -2061,15 +2164,81 @@ class UnitConverter:
                     if call.get('currentName') and str(call.get('target', '')).lower() in local_names:
                         candidates.setdefault(call['currentName'], set()).add(local_names[call['target'].lower()])
                 lifter.callee_names.update({label: next(iter(names)) for label, names in candidates.items() if len(names) == 1})
-                signature = signatures.get(name) or function_parameters(fn['decompile'], member=True)
+                signature = signatures.get(name) or reviewed_function_parameters(fn, unit, self.rdata)
                 representative = next((n for n, o in class_owner.items() if o == owner), owner) if entity else owner
                 spec_l = LoweringSpec(unit, representative, entity=entity, thing_slots=self.thing_slots)
                 spec_l.resolve_string = self.rdata.string_at
                 spec_l.resolve_wide = self.rdata.wide_string_at
                 spec_l.float_at = self.float_at
+                spec_l.native_function = fn
+                spec_l.rdata = self.rdata
                 spec_l.byte_at = lambda va: (self.rdata.bytes_at(va, 1) or bytes([255]))[0]
                 spec_l.call_labels = {c['currentName']: int(c['target'], 16) for c in fn.get('calls', []) if c.get('currentName')}
-                decompile, renamed = disambiguate_call_labels(restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.respell_me_receivers(self.restore_local_helper_operands(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_split_dword_stores(fold_vector_component_copies(native_literal_string_vectors.apply(merge_split_thing_words(rename_stack_parameters(unwrap_statements(fn['decompile']))), name, literal_vectors)))), fn), fn), fn), fn, entity), fn), fn), fn), fn.get('calls', []), fn)
+                from tools.script_recovery.native_scalar_operands import restore_scalar_operands
+                scalar_source = restore_scalar_operands(fn, unit.get('nativeScalarOperands', {}), self.rdata)
+                from tools.script_recovery.native_reviewed_void_register_stores import restore as restore_void_register_stores
+                scalar_source = restore_void_register_stores(scalar_source, fn, unit, self.rdata)
+                from tools.script_recovery.native_quest_card_operands import restore as restore_quest_card_operands
+                scalar_source = restore_quest_card_operands(
+                    scalar_source, fn, self.rdata,
+                    _text_order_sites(scalar_source, fn, include_unslotted=True))
+                from tools.script_recovery.native_create_creature_flag import restore as restore_create_creature_flag
+                scalar_source = restore_create_creature_flag(
+                    scalar_source, fn, _text_order_sites(scalar_source, fn), self.rdata)
+                if entity:
+                    from tools.script_recovery.native_inline_self_argument import restore as restore_inline_self_argument
+                    scalar_source = restore_inline_self_argument(
+                        scalar_source, fn, _text_order_sites(scalar_source, fn), self.rdata)
+                    from tools.script_recovery.native_me_call_operands import restore as restore_me_call_operands
+                    scalar_source = restore_me_call_operands(
+                        scalar_source, fn, _text_order_sites(scalar_source, fn), self.rdata)
+                    from tools.script_recovery.native_reviewed_self_operand import restore as restore_reviewed_self_operand
+                    scalar_source = restore_reviewed_self_operand(
+                        scalar_source, fn, _text_order_sites(scalar_source, fn), self.rdata,
+                        unit.get('reviewedSelfOperands', {}).get(str(fn['address']).lower()))
+                from tools.script_recovery.native_reviewed_stack_aliases import restore as restore_early_stack_aliases
+                scalar_source = restore_early_stack_aliases(
+                    scalar_source, fn, unit.get('reviewedEarlyStackScalarAliases', {}).get(str(fn['address']).lower()), self.rdata)
+                restored_source = restore_stack_operands(self.name_vector_copies(self.name_append_literals(self.respell_me_receivers(self.restore_local_helper_operands(self.recover_dropped_operands(respell_code_pointer_calls(fold_stack_vector_builds(fold_split_dword_stores(fold_vector_component_copies(native_literal_string_vectors.apply(merge_split_thing_words(rename_stack_parameters(unwrap_statements(scalar_source))), name, literal_vectors)))), fn), fn), fn), fn, entity), fn), fn), fn)
+                from tools.script_recovery.native_resource_thing_receivers import restore as restore_resource_thing_receivers
+                restored_source = restore_resource_thing_receivers(
+                    restored_source, fn,
+                    unit.get('reviewedResourceThingReceivers', {}).get(str(fn['address']).lower()),
+                    self.rdata, _text_order_sites(fn['decompile'], fn))
+                from tools.script_recovery.native_reviewed_stack_aliases import restore as restore_reviewed_stack_aliases
+                restored_source = restore_reviewed_stack_aliases(
+                    restored_source, fn,
+                    unit.get('reviewedStackScalarAliases', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_stack_values import restore as restore_reviewed_stack_values
+                restored_source = restore_reviewed_stack_values(
+                    restored_source, fn,
+                    unit.get('reviewedStackValueAliases', {}).get(str(fn['address']).lower()),
+                    self.rdata, _text_order_sites(fn['decompile'], fn))
+                from tools.script_recovery.native_reviewed_temporary_cleanup import restore as restore_reviewed_temporary_cleanup
+                restored_source = restore_reviewed_temporary_cleanup(
+                    restored_source, fn,
+                    unit.get('reviewedTemporaryCleanup', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                # Pair native raw animation bytes before reviewed cleanup removes call heads.
+                # The later guarded pass remains available when early source pairing declines.
+                from tools.script_recovery.native_animation_byte_calls import recover as recover_early_animation_bytes
+                restored_source, early_animation_byte_evidence = recover_early_animation_bytes(
+                    restored_source, fn, _text_order_sites(restored_source, fn, include_unslotted=True), self.rdata)
+                from tools.script_recovery.native_reviewed_movie_members import restore as restore_reviewed_movie_members
+                restored_source = restore_reviewed_movie_members(
+                    restored_source, fn,
+                    unit.get('reviewedMovieMembers', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_interface_calls import prepare as prepare_interface_calls, apply_deferred as apply_deferred_interface_calls
+                restored_source, deferred_interface_calls = prepare_interface_calls(restored_source, fn,
+                    unit.get('reviewedInterfaceCallHeads', {}).get(str(fn['address']).lower()),
+                    self.rdata, _text_order_sites(restored_source, fn))
+                from tools.script_recovery.native_reviewed_missing_interface_operands import review as review_missing_interface_operands, apply as apply_missing_interface_operands
+                missing_interface_edits = review_missing_interface_operands(restored_source, fn,
+                    unit.get('reviewedMissingInterfaceOperands', {}).get(str(fn['address']).lower()),
+                    self.rdata, _text_order_sites(restored_source, fn))
+                decompile, renamed = disambiguate_call_labels(restored_source, fn.get('calls', []), fn)
                 decompile = self.repair_literal_receiver_labels(decompile, renamed, fn)
                 spec_l.call_labels.update(renamed)
                 # a label two local helpers share (bsim: `RunSaveXPCutscene2` on both 0xD496F0 and 0xD49A20 in
@@ -2086,12 +2255,112 @@ class UnitConverter:
                 spec_l.native_address = int(fn['address'], 16)
                 spec_l.calls = fn.get('calls', [])
                 spec_l.indirect_calls = fn.get('indirectCalls', [])
-                if signature.get('bsimVoid'):
+                if signature.get('bsimVoid') or signature.get('reviewedVoid'):
                     decompile = re.sub(r'\breturn [^;]+;', 'return;', decompile)   # void per ego_r: Ghidra's int result is a stale register
-                from tools.script_recovery.native_member_resource_calls import recover_member_resource_calls
-                decompile = recover_member_resource_calls(decompile, fn, _text_order_sites(decompile, fn), spec_l, self.rdata)
-                lowered, lowering_diag = lower(rename_parameters(decompile, signature), spec_l)
+                from tools.script_recovery.native_member_resource_calls import recover_member_resource_calls, recover_definition_vector_loads
+                decompile = recover_member_resource_calls(decompile, fn, _text_order_sites(decompile, fn), spec_l, self.rdata,
+                    unit.get('reviewedResourceOperands', {}).get(str(fn['address']).lower()))
+                from tools.script_recovery.native_reviewed_member_speech import restore as restore_member_speech
+                member_speech_input = decompile
+                member_speech_review = unit.get('reviewedMemberSpeech', {}).get(str(fn['address']).lower())
+                decompile = restore_member_speech(decompile, fn, member_speech_review, self.rdata, spec_l)
+                decompile = recover_definition_vector_loads(decompile, fn, spec_l, self.rdata)
+                from tools.script_recovery.native_master_accessor_reads import restore as restore_master_accessor_reads
+                decompile = restore_master_accessor_reads(decompile, fn, spec_l, self.rdata)
+                from tools.script_recovery.native_animation_byte_calls import recover as recover_animation_byte_calls
+                decompile, animation_byte_evidence = recover_animation_byte_calls(
+                    decompile, fn, _text_order_sites(decompile, fn, include_unslotted=True), self.rdata)
+                decompile = apply_missing_interface_operands(decompile, missing_interface_edits)
+                parameter_source = rename_parameters(decompile, signature)
+                from tools.script_recovery.native_reviewed_trader_comment import restore as restore_trader_comment
+                parameter_source = restore_trader_comment(
+                    parameter_source, fn, self.rdata,
+                    unit.get('reviewedTraderComments', {}).get(str(fn['address']).lower()))
+                from tools.script_recovery.native_reviewed_trader_actor_selection import restore as restore_actor_selection
+                parameter_source = restore_actor_selection(
+                    parameter_source, fn, self.rdata,
+                    unit.get('reviewedTraderActorSelection', {}).get(str(fn['address']).lower()))
+                lowered, lowering_diag = lower(parameter_source, spec_l)
+                lowered = apply_deferred_interface_calls(lowered, deferred_interface_calls)
                 source = lower_after_annotate(strip_receiver_arguments(annotate(lowered, self.slots, self.things, self.returning, entity=entity)), self.things)
+                from tools.script_recovery.native_hero_event_data import restore as restore_hero_event_data
+                source = restore_hero_event_data(source, fn, self.rdata)
+                from tools.script_recovery.native_quest_conscious_condition import restore as restore_quest_condition
+                source = restore_quest_condition(source, fn, self.rdata,
+                    unit.get('reviewedQuestConsciousConditions', {}).get(str(fn['address']).lower()))
+                from tools.script_recovery.native_container_count import restore as restore_container_count
+                source = restore_container_count(source, fn, self.rdata,
+                    unit.get('reviewedContainerItemDefCounts', {}).get(str(fn['address']).lower()))
+                from tools.script_recovery.native_chest_key_result import restore as restore_key_result
+                source = restore_key_result(source, fn, self.rdata,
+                    unit.get('reviewedChestKeyResults', {}).get(str(fn['address']).lower()))
+                from tools.script_recovery.native_spawned_function_control import restore as restore_spawned_control
+                source = restore_spawned_control(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_list_capacity import restore as restore_list_capacity
+                source = restore_list_capacity(
+                    source, fn,
+                    unit.get('reviewedListCapacityInit', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_resource_constructors import restore as restore_resource_constructors
+                source = restore_resource_constructors(
+                    source, fn,
+                    unit.get('reviewedInlinedResourceConstructors', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_resource_speech import restore as restore_resource_speech
+                source = restore_resource_speech(
+                    source, fn,
+                    unit.get('reviewedResourceSpeech', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_cleanup_breaks import restore as restore_cleanup_breaks
+                source = restore_cleanup_breaks(
+                    source, fn,
+                    unit.get('reviewedCleanupBreakExits', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_named_resources import reviewed_resources
+                reviewed_receiver_objects = reviewed_resources(
+                    source, fn,
+                    unit.get('reviewedNamedResourceReceivers', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_wide_assign_receivers import recover_wide_assign_receivers
+                source = recover_wide_assign_receivers(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_arena_enemy import recover_arena_enemy
+                source = recover_arena_enemy(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_whisper_ally import recover_whisper_ally
+                source = recover_whisper_ally(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_crowd_checker import recover_crowd_checker
+                source = recover_crowd_checker(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_arena_audience import recover_arena_audience
+                source = recover_arena_audience(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_arena_wave import recover_arena_wave
+                source = recover_arena_wave(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_arena_spawn_selection import recover_arena_spawn_selection
+                source = recover_arena_spawn_selection(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_arena_reward import recover_arena_reward
+                source = recover_arena_reward(source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_definition_vectors import restore as restore_definition_vectors
+                source = restore_definition_vectors(source, fn,
+                    unit.get('reviewedDefinitionVectorConversions', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_cleanup_returns import restore as restore_cleanup_returns
+                source = restore_cleanup_returns(source, fn,
+                    unit.get('reviewedCleanupReturns', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_stack_aliases import materialize_string_values
+                source = materialize_string_values(source,
+                    unit.get('reviewedStackScalarAliases', {}).get(str(fn['address']).lower()))
+                from tools.script_recovery.native_reviewed_fade_in_thing import restore as restore_fade_in_thing
+                source = restore_fade_in_thing(source, fn,
+                    unit.get('reviewedFadeInThing', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_briar_wave_else import restore as restore_briar_wave_else
+                source = restore_briar_wave_else(source, fn,
+                    unit.get('reviewedBriarWaveElse', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_dragon_phase_else import restore as restore_dragon_phase_else
+                source = restore_dragon_phase_else(source, fn,
+                    unit.get('reviewedDragonPhaseElse', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_dragon_summoner_target import restore as restore_dragon_summoner_target
+                source = restore_dragon_summoner_target(source, fn,
+                    unit.get('reviewedDragonSummonerTarget', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_briar_comment import restore as restore_briar_comment
+                source = restore_briar_comment(source, fn,
+                    unit.get('reviewedBriarComment', {}).get(str(fn['address']).lower()), self.rdata)
                 if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):
                     print(f'===== LOWERED {owner}.{name}', source, sep='\n', file=sys.stderr)
                 if name == 'OnPersist':
@@ -2110,7 +2379,13 @@ class UnitConverter:
                                        else 'thing' if 'CScriptThing' in p['type']
                                        else 'string' if 'CCharString' in p['type'] else 'unknown'
                                        for p in signature['parameters']}
-                    body = lifter.lift(name, source, native_function=fn, parameters=parameter_kinds)
+                    if entity:
+                        from tools.script_recovery.native_parent_scalar_updates import recover as recover_parent_scalar_updates
+                        source, parent_update_evidence = recover_parent_scalar_updates(fn, source, self.rdata, parent_state)
+                        if parent_update_evidence:
+                            row['parentScalarUpdateEvidence'] = parent_update_evidence
+                    body = lifter.lift(name, source, native_function=fn, parameters=parameter_kinds,
+                                       reviewed_resource_receivers=reviewed_receiver_objects)
                     if name == 'Init' and timers.get(owner):
                         # The native class constructor registers every CTimer member through GSI RegisterTimer
                         # (slot 0x15c) before Init runs; the converter has no constructor body, so Init does it.
@@ -2123,12 +2398,555 @@ class UnitConverter:
                     if signature.get('problem'):
                         todo.append(signature['problem'])
                     todo.extend('lowering: ' + d for d in lowering_diag)
+                    from tools.script_recovery.native_reviewed_presented_item import restore as restore_reviewed_presented_item
+                    body, todo = restore_reviewed_presented_item(
+                        body, todo, fn,
+                        unit.get('reviewedPresentedItemNames', {}).get(str(fn['address']).lower()),
+                        self.rdata)
                 row['nativeSignature'] = signature
                 function_source = finish_lua('\n'.join([f'function {name}({params})'] + body + ['end', '']))
+                from tools.script_recovery.native_reviewed_arena_question import recover_arena_question
+                function_source = recover_arena_question(function_source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_renown_cleanup import restore as restore_renown_cleanup
+                function_source, todo = restore_renown_cleanup(function_source, todo, fn,
+                    unit.get('reviewedRenownCleanup', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_renown_message import restore as restore_renown_message
+                function_source = restore_renown_message(function_source, fn,
+                    unit.get('reviewedRenownMessages', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_beardy_helper_call import restore as restore_beardy_helper_call
+                beard_row = unit.get('reviewedBeardyHelperCall', {}).get(str(fn['address']).lower())
+                function_source, todo, calls = restore_beardy_helper_call(function_source, todo, calls, fn,
+                    self.native(beard_row['helperAddress']) if beard_row else None, beard_row,
+                    self.rdata, unit.get('entities', {}).get('BB_BeardyBaldyMan', {}).get('helpers', {}).get('helper_E53670', {}))
+                from tools.script_recovery.native_reviewed_dragon_spawn_summoners import restore as restore_dragon_spawn_summoners
+                function_source, todo, calls = restore_dragon_spawn_summoners(function_source, todo, calls, fn,
+                    unit.get('reviewedDragonSpawnSummoners', {}).get(str(fn['address']).lower()), self.rdata,
+                    unit.get('quest', {}).get('fields', {}))
                 if 'resources:' in function_source:
                     function_source = function_source.replace('\n', '\n    local resources = quest:RetailResources()\n', 1)
+                from tools.script_recovery.native_reviewed_singing_effect_cleanup import restore as restore_singing_effect_cleanup
+                singing_review = unit.get('reviewedSingingEffectCleanup', {})
+                function_source, todo, calls = restore_singing_effect_cleanup(function_source,todo,calls,fn,
+                    singing_review.get(str(fn['address']).lower()),self.rdata,singing_review)
+                from tools.script_recovery.native_reviewed_singing_playlist_compare import restore as restore_singing_playlist_compare
+                function_source, todo, calls = restore_singing_playlist_compare(function_source, todo, calls, fn,
+                    unit.get('reviewedSingingPlaylistCompare', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('quest', {}).get('fields', {}))
+                from tools.script_recovery.native_reviewed_singing_name_suffix import restore as restore_singing_name_suffix
+                function_source, todo, calls = restore_singing_name_suffix(function_source, todo, calls, fn,
+                    unit.get('reviewedSingingNameSuffix', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('quest', {}).get('fields', {}))
+                from tools.script_recovery.native_reviewed_singing_stone_play import restore as restore_singing_stone_play
+                function_source, todo, calls = restore_singing_stone_play(function_source, todo, calls, fn,
+                    unit.get('reviewedSingingStonePlay', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('quest', {}).get('fields', {}),
+                    unit.get('entities', {}).get('SingingStone', {}).get('fields', {}))
+                from tools.script_recovery.native_reviewed_singing_effect_push import restore as restore_singing_effect_push
+                function_source, todo, calls = restore_singing_effect_push(function_source, todo, calls, fn,
+                    unit.get('reviewedSingingEffectPush', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('quest', {}))
+                from tools.script_recovery.native_reviewed_singing_effect_named import restore as restore_singing_effect_named
+                function_source, todo, calls = restore_singing_effect_named(function_source, todo, calls, fn,
+                    unit.get('reviewedSingingEffectNamed', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('reviewedSingingEffectNamed', {}).get('sidecar'))
+                from tools.script_recovery.native_reviewed_singing_temp_cleanup import restore as restore_singing_temp_cleanup
+                function_source, todo, calls = restore_singing_temp_cleanup(function_source, todo, calls, fn,
+                    unit.get('reviewedSingingTempCleanup', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_singing_camera import restore as restore_singing_camera
+                function_source, todo, calls = restore_singing_camera(function_source, todo, calls, fn,
+                    unit.get('reviewedSingingCamera', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('reviewedSingingCamera', {}).get('sidecar'))
+                from tools.script_recovery.native_reviewed_wasp_offset import restore as restore_wasp_offset
+                function_source, todo, calls = restore_wasp_offset(function_source, todo, calls, fn,
+                    unit.get('reviewedWaspOffset', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_tour_follow_target import restore as restore_tour_follow_target
+                function_source, todo, calls = restore_tour_follow_target(function_source, todo, calls, fn,
+                    unit.get('reviewedTourFollowTarget', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_trader_awareness import restore as restore_trader_awareness
+                function_source, todo, calls = restore_trader_awareness(function_source, todo, calls, fn,
+                    unit.get('reviewedTraderAwareness', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_trader_sound import restore as restore_trader_sound
+                function_source, todo, calls = restore_trader_sound(function_source, todo, calls, fn,
+                    unit.get("reviewedTraderSounds", {}).get(str(fn["address"]).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_trader_vector import restore as restore_trader_vector
+                function_source, todo, calls = restore_trader_vector(function_source, todo, calls, fn,
+                    unit.get('reviewedTraderVectors', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_thing_outputs import restore as restore_thing_outputs
+                function_source, todo, calls = restore_thing_outputs(function_source, todo, calls, fn,
+                    unit.get('reviewedThingOutputScopes', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_position_lists import restore as restore_position_lists
+                function_source, todo, calls = restore_position_lists(function_source, todo, calls, fn,
+                    unit.get('reviewedPositionListScopes', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_loop_termination import restore as restore_loop_termination
+                function_source = restore_loop_termination(
+                    function_source, fn,
+                    unit.get('reviewedLoopHeadTermination', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_movie_scope import restore as restore_reviewed_movie_scope
+                function_source = restore_reviewed_movie_scope(
+                    function_source, fn,
+                    unit.get('reviewedMovieScopes', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_attacked_movie import restore as restore_reviewed_attacked_movie
+                function_source = restore_reviewed_attacked_movie(
+                    function_source, fn,
+                    unit.get('reviewedAttackedMovie', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_final_beer_movie import restore as restore_reviewed_final_beer_movie
+                function_source = restore_reviewed_final_beer_movie(
+                    function_source, fn,
+                    unit.get('reviewedFinalBeerMovie', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_magicman_conversation import restore as restore_reviewed_magicman_conversation
+                function_source, todo, calls = restore_reviewed_magicman_conversation(
+                    function_source, todo, calls, fn,
+                    unit.get('reviewedMagicmanConversation', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_magicman_task_loop import restore as restore_reviewed_magicman_task_loop
+                function_source, todo = restore_reviewed_magicman_task_loop(
+                    function_source, todo, fn,
+                    unit.get('reviewedMagicmanTaskLoop', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_magicman_pause_bool import restore as restore_reviewed_magicman_pause_bool
+                function_source = restore_reviewed_magicman_pause_bool(
+                    function_source, fn,
+                    unit.get('reviewedMagicmanPauseBool', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_setup import restore as restore_reviewed_bordello_lady_setup
+                function_source, todo = restore_reviewed_bordello_lady_setup(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadySetup', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_crime import restore as restore_reviewed_bordello_lady_crime
+                function_source, todo = restore_reviewed_bordello_lady_crime(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadyCrime', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('quest', {}).get('thingFields', {}))
+                from tools.script_recovery.native_reviewed_bordello_lady_information import restore as restore_reviewed_bordello_lady_information
+                function_source, todo = restore_reviewed_bordello_lady_information(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadyInformation', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_personality import restore as restore_reviewed_bordello_lady_personality
+                function_source, todo, calls = restore_reviewed_bordello_lady_personality(
+                    function_source, todo, calls, fn,
+                    unit.get('reviewedBordelloLadyPersonality', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_pause_bool import restore as restore_reviewed_bordello_lady_pause_bool
+                function_source, todo = restore_reviewed_bordello_lady_pause_bool(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadyPauseBool', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_health import restore as restore_reviewed_bordello_lady_health
+                function_source, todo = restore_reviewed_bordello_lady_health(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadyHealth', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_skippable import restore as restore_reviewed_bordello_lady_skippable
+                function_source, todo = restore_reviewed_bordello_lady_skippable(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadySkippable', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_sex_count import restore as restore_reviewed_bordello_lady_sex_count
+                function_source, todo = restore_reviewed_bordello_lady_sex_count(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadySexCount', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_client_sex_count import restore as restore_reviewed_bordello_client_sex_count
+                function_source, todo = restore_reviewed_bordello_client_sex_count(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloClientSexCount', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_client_pause import restore as restore_reviewed_bordello_client_pause
+                function_source, todo = restore_reviewed_bordello_client_pause(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloClientPause', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_client_resource import restore as restore_reviewed_bordello_client_resource
+                function_source, todo = restore_reviewed_bordello_client_resource(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloClientResource', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_client_flags import restore as restore_reviewed_bordello_client_flags
+                function_source, todo = restore_reviewed_bordello_client_flags(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloClientFlags', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_client_position import restore as restore_reviewed_bordello_client_position
+                function_source, todo = restore_reviewed_bordello_client_position(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloClientPosition', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_client_release import restore as restore_reviewed_bordello_client_release
+                function_source, todo = restore_reviewed_bordello_client_release(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloClientRelease', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('quest', {}), unit.get('entities', {}).get('BordelloClient', {}))
+                from tools.script_recovery.native_reviewed_madame_hit_flags import restore as restore_reviewed_madame_hit_flags
+                function_source, todo = restore_reviewed_madame_hit_flags(
+                    function_source, todo, fn,
+                    unit.get('reviewedMadameHitFlags', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_madame_presented_item import restore as restore_reviewed_madame_presented_item
+                function_source, todo = restore_reviewed_madame_presented_item(
+                    function_source, todo, fn,
+                    unit.get('reviewedMadamePresentedItem', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_madame_beer_health import restore as restore_reviewed_madame_beer_health
+                function_source, todo = restore_reviewed_madame_beer_health(
+                    function_source, todo, fn,
+                    unit.get('reviewedMadameBeerHealth', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_madame_resource_alias import restore as restore_reviewed_madame_resource_alias
+                function_source = restore_reviewed_madame_resource_alias(
+                    function_source, fn,
+                    unit.get('reviewedMadameResourceAlias', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_name_load import restore as restore_reviewed_bordello_lady_name_load
+                function_source, todo = restore_reviewed_bordello_lady_name_load(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadyNameLoad', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit.get('entities', {}).get('BordelloLady', {}).get('fields', {}), self.native)
+                from tools.script_recovery.native_reviewed_bordello_lady_resource import restore as restore_reviewed_bordello_lady_resource
+                function_source, todo = restore_reviewed_bordello_lady_resource(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloLadyResource', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_resource_lifetime import restore as restore_reviewed_bordello_lady_resource_lifetime
+                function_source = restore_reviewed_bordello_lady_resource_lifetime(
+                    function_source, fn,
+                    unit.get('reviewedBordelloLadyResourceLifetime', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_paused_skip_binding import restore as restore_reviewed_bordello_paused_skip_binding
+                from tools.script_recovery.native_reviewed_bordello_lady_questions import restore as restore_reviewed_bordello_lady_questions
+                function_source = restore_reviewed_bordello_lady_questions(
+                    function_source, fn,
+                    unit.get('reviewedBordelloLadyQuestions', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_return import restore as restore_reviewed_bordello_lady_return
+                function_source = restore_reviewed_bordello_lady_return(
+                    function_source, fn,
+                    unit.get('reviewedBordelloLadyReturn', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_lady_payment import restore as restore_reviewed_bordello_lady_payment
+                function_source = restore_reviewed_bordello_lady_payment(
+                    function_source, fn,
+                    unit.get('reviewedBordelloLadyPayment', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit['entities'].get('BordelloLady', {}).get('fields', {}))
+                from tools.script_recovery.native_reviewed_bordello_lady_cutscene_map import restore as restore_reviewed_bordello_lady_cutscene_map
+                function_source = restore_reviewed_bordello_lady_cutscene_map(
+                    function_source, fn,
+                    unit.get('reviewedBordelloLadyCutsceneMap', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                function_source, todo = restore_reviewed_bordello_paused_skip_binding(
+                    function_source, todo, fn,
+                    unit.get('reviewedBordelloPausedSkipBinding', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_madame_pushable import restore as restore_reviewed_madame_pushable
+                function_source, todo = restore_reviewed_madame_pushable(
+                    function_source, todo, fn,
+                    unit.get('reviewedMadamePushable', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_madame_camera_point import restore as restore_reviewed_madame_camera_point
+                function_source, todo = restore_reviewed_madame_camera_point(
+                    function_source, todo, fn,
+                    unit.get('reviewedMadameCameraPoint', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_ordered_health_flags import restore as restore_ordered_health_flags
+                function_source = restore_ordered_health_flags(function_source, fn, self.rdata)
+                from tools.script_recovery.native_reviewed_x87_thresholds import restore as restore_x87_thresholds
+                function_source = restore_x87_thresholds(function_source, fn,
+                    unit.get('reviewedX87Thresholds', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_master_int_stores import restore as restore_master_int_stores
+                function_source, todo, calls = restore_master_int_stores(
+                    function_source, todo, calls, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_string_copy_calls import restore as restore_string_copy_calls
+                function_source, todo = restore_string_copy_calls(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_wide_text_arguments import restore as restore_wide_text_arguments
+                function_source, todo = restore_wide_text_arguments(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_online_score_calls import restore as restore_online_score_calls
+                function_source, todo = restore_online_score_calls(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_stack_flag_updates import restore as restore_stack_flag_updates
+                function_source, todo = restore_stack_flag_updates(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_stack_call_arguments import restore as restore_stack_call_arguments
+                function_source, todo = restore_stack_call_arguments(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_inline_movie_destructors import restore as restore_inline_movie_destructors
+                function_source, todo = restore_inline_movie_destructors(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_saved_thing_arguments import restore as restore_saved_thing_arguments
+                function_source, todo = restore_saved_thing_arguments(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_literal_map_keys import restore as restore_literal_map_keys
+                function_source, todo = restore_literal_map_keys(function_source, todo, fn, unit, self.rdata)
+                from tools.script_recovery.native_reviewed_resource_lifetimes import restore as restore_resource_lifetimes
+                function_source = restore_resource_lifetimes(
+                    function_source, fn,
+                    unit.get('reviewedResourceLifetimes', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_lifted_interface_calls import restore as restore_lifted_interface_calls
+                interface_review = unit.get('reviewedLiftedInterfaceCalls', {}).get(str(fn['address']).lower())
+                function_source, todo = restore_lifted_interface_calls(
+                    function_source, todo, fn, interface_review, self.rdata)
+                if interface_review is not None:
+                    # The original lifter call walk is not a native call trace.
+                    # Keep the newly recovered native sites explicit instead of
+                    # inventing positions in that pre-restoration inventory.
+                    row['recoveredInterfaceCalls'] = [
+                        {'site': call['site'], 'method': interface_review['method'], 'arguments': ['false']}
+                        for call in interface_review['calls']]
+                    if interface_review['method'] not in calls:
+                        calls.append(interface_review['method'])
+                from tools.script_recovery.native_reviewed_terminal_resource_cleanup import restore as restore_terminal_resource_cleanup
+                terminal_review = unit.get('reviewedTerminalResourceCleanup', {}).get(str(fn['address']).lower())
+                function_source = restore_terminal_resource_cleanup(
+                    function_source, fn, terminal_review, self.rdata)
+                if terminal_review is not None:
+                    row['recoveredTerminalResourceCleanup'] = {
+                        'pollNativeEntry': terminal_review['cleanupEntry'],
+                        'localResource': terminal_review['alias'],
+                        'pollSourceExits': 1,
+                        'splitMovieNativeEntry': terminal_review['splitCleanup']['entry'],
+                        'splitMovieSourceExits': terminal_review['splitCleanup']['pairCount'],
+                        'note': 'Normal-path local retirement and split movie/local cleanup; not a native execution trace.'}
+                    if 'ReleaseResource' not in calls:
+                        calls.append('ReleaseResource')
+                from tools.script_recovery.native_reviewed_cleanup_operands import restore as restore_cleanup_operands
+                operand_review = unit.get('reviewedCleanupOperands', {}).get(str(fn['address']).lower())
+                function_source = restore_cleanup_operands(function_source, fn, operand_review, self.rdata)
+                if operand_review is not None:
+                    row['recoveredCleanupOperands'] = {
+                        'spanBegin': operand_review['spanBegin'],
+                        'spanEnd': operand_review['spanEnd'],
+                        'sourceOperandReplacements': sum(edit['count'] for edit in operand_review['replacements']),
+                        'note': 'Reviewed cleanup operands and shared receiver selection; separate from the original lifter call inventory, not a native execution trace.'}
+                timer_review = unit.get('reviewedTimerOperands', {}).get(str(fn['address']).lower())
+                function_source = restore_cleanup_operands(function_source, fn, timer_review, self.rdata)
+                if timer_review is not None:
+                    row['recoveredTimerOperands'] = {
+                        'spanBegin': timer_review['spanBegin'],
+                        'spanEnd': timer_review['spanEnd'],
+                        'sourceOperandReplacements': sum(edit['count'] for edit in timer_review['replacements']),
+                        'note': 'Reviewed registered timer ID and reset duration; separate from the original lifter call inventory, not a native execution trace.'}
+                from tools.script_recovery.native_reviewed_argument_temporaries import restore as restore_argument_temporaries
+                function_source, todo, reviewed_arguments = restore_argument_temporaries(
+                    function_source, todo, fn,
+                    unit.get('reviewedArgumentTemporaries', {}).get(str(fn['address']).lower()), self.rdata,
+                    private_state_factory=ENTITY_STATE if entity else None)
+                if reviewed_arguments:
+                    row['reviewedArgumentTemporaries'] = reviewed_arguments
+                from tools.script_recovery.native_reviewed_restored_call_diagnostics import classify as classify_restored_call_diagnostics
+                function_source, todo, reviewed_restored_calls = classify_restored_call_diagnostics(
+                    function_source, todo, fn,
+                    unit.get('reviewedRestoredCallDiagnostics', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_restored_calls:
+                    row['reviewedRestoredCallDiagnostics'] = reviewed_restored_calls
+                from tools.script_recovery.native_reviewed_numeric_conditions import restore as restore_numeric_conditions
+                function_source, reviewed_numeric_conditions = restore_numeric_conditions(
+                    function_source, fn,
+                    unit.get('reviewedNumericConditions', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_numeric_conditions:
+                    row['reviewedNumericConditions'] = reviewed_numeric_conditions
+                from tools.script_recovery.native_reviewed_thing_results import restore as restore_thing_results
+                function_source, reviewed_thing_results = restore_thing_results(
+                    function_source, fn,
+                    unit.get('reviewedThingResults', {}).get(str(fn['address']).lower()), self.rdata, entity=entity)
+                if reviewed_thing_results:
+                    row['reviewedThingResults'] = reviewed_thing_results
+                from tools.script_recovery.native_reviewed_string_operands import restore as restore_string_operands
+                function_source, reviewed_string_operands = restore_string_operands(
+                    function_source, fn,
+                    unit.get('reviewedStringOperands', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_string_operands:
+                    row['reviewedStringOperands'] = reviewed_string_operands
+                from tools.script_recovery.native_reviewed_stack_aliases import restore_lua as restore_lua_scalar_aliases
+                scalar_review = unit.get('reviewedLuaScalarAliases', {}).get(str(fn['address']).lower())
+                function_source = restore_lua_scalar_aliases(function_source, fn, scalar_review, self.rdata)
+                if scalar_review:
+                    row['reviewedLuaScalarAliases'] = scalar_review
+                from tools.script_recovery.native_reviewed_temporary_mask_diagnostics import classify as classify_temporary_masks
+                function_source, todo, reviewed_masks = classify_temporary_masks(
+                    function_source, todo, fn,
+                    unit.get('reviewedTemporaryMaskDiagnostics', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_masks:
+                    row['reviewedTemporaryMaskDiagnostics'] = reviewed_masks
+                from tools.script_recovery.native_reviewed_restored_call_diagnostics import classify_staging
+                function_source, todo, reviewed_staging = classify_staging(
+                    function_source, todo, fn,
+                    unit.get('reviewedRestoredVtableStaging', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_staging:
+                    row['reviewedRestoredVtableStaging'] = reviewed_staging
+                from tools.script_recovery.native_reviewed_restored_call_diagnostics import classify_hidden_result
+                function_source, todo, reviewed_hidden_result = classify_hidden_result(
+                    function_source, todo, fn,
+                    unit.get('reviewedHiddenReturnTemporaries', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_hidden_result:
+                    row['reviewedHiddenReturnTemporaries'] = reviewed_hidden_result
+                from tools.script_recovery.native_reviewed_restored_call_diagnostics import classify_argument_copy
+                function_source, todo, reviewed_argument_copy = classify_argument_copy(
+                    function_source, todo, fn,
+                    unit.get('reviewedArgumentCopyComments', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_argument_copy:
+                    row['reviewedArgumentCopyComments'] = reviewed_argument_copy
+                from tools.script_recovery.native_reviewed_value_staging import classify as classify_value_staging
+                function_source, todo, reviewed_value_staging = classify_value_staging(
+                    function_source, todo, fn,
+                    unit.get('reviewedValueStaging', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_value_staging:
+                    row['reviewedValueStaging'] = reviewed_value_staging
+                from tools.script_recovery.native_reviewed_cleanup_join_labels import classify as classify_cleanup_joins
+                function_source, todo, reviewed_joins = classify_cleanup_joins(
+                    function_source, todo, fn,
+                    unit.get('reviewedCleanupJoinLabels', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_joins:
+                    row['reviewedCleanupJoins'] = reviewed_joins
+                from tools.script_recovery.native_signed_field_steps import recover as recover_signed_steps
+                function_source, signed_steps = recover_signed_steps(function_source, fn, spec_l, self.rdata)
+                if signed_steps:
+                    row['signedFieldStepEvidence'] = signed_steps
+                from tools.script_recovery.native_reviewed_dispatch_staging import classify as classify_dispatch_staging
+                from tools.script_recovery.native_member_resource_calls import resource_call_evidence
+                from tools.script_recovery.lua_staging_liveness import prove_unused_staging
+                parent_dispatch = unit.get('reviewedResourceOperands', {}).get(str(fn['address']).lower())
+                function_source, todo, dispatch_staging = classify_dispatch_staging(
+                    function_source, todo, fn,
+                    (parent_dispatch or {}).get('unusedDispatchStaging'), parent_dispatch,
+                    spec_l, self.rdata, resource_call_evidence, prove_unused_staging)
+                if dispatch_staging:
+                    row['reviewedDispatchStaging'] = dispatch_staging
+                from tools.script_recovery.native_reviewed_stack_byte_spills import classify as classify_byte_spills
+                from tools.script_recovery.native_stack_byte_helper_access import summarize as summarize_byte_spill_helpers
+                from tools.script_recovery.native_stack_byte_liveness import prove as prove_byte_spill_liveness
+                function_source, todo, byte_spills = classify_byte_spills(
+                    function_source, todo, fn,
+                    unit.get('reviewedUnusedStackBytes', {}).get(str(fn['address']).lower()),
+                    self.rdata, unit, owner, summarize_byte_spill_helpers, prove_byte_spill_liveness)
+                if byte_spills:
+                    row['reviewedUnusedStackBytes'] = byte_spills
+                from tools.script_recovery.native_reviewed_definition_staging import classify as classify_definition_staging
+                function_source, todo, definition_staging = classify_definition_staging(
+                    function_source, todo, fn,
+                    unit.get('reviewedDefinitionStaging', {}).get(str(fn['address']).lower()),
+                    unit, owner, spec_l, self.rdata, resource_call_evidence, prove_unused_staging)
+                if definition_staging:
+                    row['reviewedDefinitionStaging'] = definition_staging
+                from tools.script_recovery.native_reviewed_register_dispatch_staging import classify as classify_register_dispatch_staging
+                function_source, todo, register_dispatch_staging = classify_register_dispatch_staging(
+                    function_source, todo, fn,
+                    unit.get('reviewedRegisterDispatchStaging', {}).get(str(fn['address']).lower()),
+                    spec_l, self.rdata, resource_call_evidence, prove_unused_staging)
+                if register_dispatch_staging:
+                    row['reviewedRegisterDispatchStaging'] = register_dispatch_staging
+                from tools.script_recovery.native_reviewed_interface_pointer_staging import classify as classify_interface_pointer_staging
+                function_source, todo, interface_pointer_staging = classify_interface_pointer_staging(
+                    function_source, todo, fn,
+                    unit.get('reviewedInterfacePointerStaging', {}).get(str(fn['address']).lower()),
+                    spec_l, self.rdata, resource_call_evidence, prove_unused_staging)
+                if interface_pointer_staging:
+                    row['reviewedInterfacePointerStaging'] = interface_pointer_staging
+                from tools.script_recovery.native_reviewed_interface_table_staging import classify as classify_interface_table_staging
+                from tools.script_recovery.native_register_snapshot_provenance import analyze as snapshot_provenance
+                from tools.script_recovery.lua_terminal_cleanup_alias import prove_terminal_cleanup_alias
+                function_source, todo, interface_table_staging = classify_interface_table_staging(
+                    function_source, todo, fn,
+                    unit.get('reviewedInterfaceTableStaging', {}).get(str(fn['address']).lower()),
+                    spec_l, self.rdata, snapshot_provenance, prove_unused_staging,
+                    hoist_cleanup_regions, prove_terminal_cleanup_alias, copy_trace=lifter.native_tail_copy_trace)
+                if interface_table_staging:
+                    row['reviewedInterfaceTableStaging'] = interface_table_staging
+                from tools.script_recovery.native_reviewed_saved_table_staging import classify as classify_saved_table_staging
+                function_source, todo, saved_table_staging = classify_saved_table_staging(
+                    function_source, todo, fn, saved_table_row, spec_l, self.rdata,
+                    lifter.native_tail_copy_trace, prove_unused_staging, hoist_cleanup_regions)
+                if saved_table_staging:
+                    row['reviewedSavedTableStaging'] = saved_table_staging
+                from tools.script_recovery.native_reviewed_hit_query_lifetimes import recover as recover_hit_query_lifetimes
+                function_source, todo, calls, hit_query_lifetimes = recover_hit_query_lifetimes(
+                    function_source, todo, calls, fn,
+                    unit.get('reviewedHitQueryLifetimes', {}).get(str(fn['address']).lower()),
+                    unit, owner, self.rdata, prove_unused_staging)
+                if hit_query_lifetimes:
+                    row['reviewedHitQueryLifetimes'] = hit_query_lifetimes
+                from tools.script_recovery.native_reviewed_hit_health_lifetimes import recover as recover_hit_health_lifetimes
+                prior_hit_health_input = dict(source=function_source, todo=list(todo), calls=list(calls)) if unit.get('reviewedHitHealthLifetimes', {}).get(str(fn['address']).lower()) is not None else None
+                function_source, todo, calls, hit_health_lifetimes = recover_hit_health_lifetimes(
+                    function_source, todo, calls, fn,
+                    unit.get('reviewedHitHealthLifetimes', {}).get(str(fn['address']).lower()),
+                    unit, owner, self.rdata, prove_unused_staging)
+                if hit_health_lifetimes:
+                    row['reviewedHitHealthLifetimes'] = hit_health_lifetimes
+                else:
+                    prior_hit_health_input = None
+                from tools.script_recovery.native_reviewed_saved_health_predicates import recover as recover_saved_health_predicates
+                function_source, todo, calls, saved_health_predicates = recover_saved_health_predicates(
+                    function_source, todo, calls, fn,
+                    unit.get('reviewedSavedHealthPredicates', {}).get(str(fn['address']).lower()),
+                    unit, owner, self.rdata, self.manifest)
+                if saved_health_predicates:
+                    row['reviewedSavedHealthPredicates'] = saved_health_predicates
+                prior_typed_boolean_input = dict(source=function_source, todo=list(todo), calls=list(calls)) if member_health_row else None
+                from tools.script_recovery.native_reviewed_typed_boolean_health import recover as recover_typed_boolean_health
+                function_source, todo, calls, typed_boolean_health = recover_typed_boolean_health(
+                    function_source, todo, calls, fn, typed_boolean_row,
+                    unit, owner, self.rdata, self.manifest,
+                    lifter.native_tail_copy_input, lifter.native_tail_copy_output)
+                if typed_boolean_health:
+                    row['reviewedTypedBooleanHealth'] = typed_boolean_health
+                from tools.script_recovery.native_reviewed_resource_health_lifetimes import recover as recover_resource_health_lifetimes
+                function_source, todo, calls, resource_health_lifetimes = recover_resource_health_lifetimes(
+                    function_source, todo, calls, fn,
+                    unit.get('reviewedResourceHealthLifetimes', {}).get(str(fn['address']).lower()),
+                    unit, owner, self.rdata, self.manifest)
+                if resource_health_lifetimes:
+                    row['reviewedResourceHealthLifetimes'] = resource_health_lifetimes
+                prior_register_comparison_input = dict(source=function_source, todo=list(todo), calls=list(calls)) if register_comparison_row is not None else None
+                from tools.script_recovery.native_reviewed_register_health_comparisons import recover as recover_register_health_comparisons
+                function_source, todo, calls, register_comparisons = recover_register_health_comparisons(
+                    function_source, todo, calls, fn, register_comparison_row,
+                    unit, owner, self.rdata, self.manifest,
+                    lifter.native_tail_copy_input, lifter.native_tail_copy_output)
+                if register_comparisons:
+                    row['reviewedRegisterHealthComparisons'] = register_comparisons
+                from tools.script_recovery.native_reviewed_register_resource_health_lifetimes import recover as recover_register_resource_health
+                function_source, todo, calls, register_resource_health = recover_register_resource_health(
+                    function_source, todo, calls, fn, register_health_row,
+                    unit, owner, self.rdata, self.manifest,
+                    lifter.native_tail_copy_input, lifter.native_tail_copy_output,
+                    prior_hit_health_input=prior_hit_health_input,
+                    prior_register_comparison_input=prior_register_comparison_input)
+                if register_resource_health:
+                    row['reviewedRegisterResourceHealthLifetimes'] = register_resource_health
+                from tools.script_recovery.native_reviewed_member_resource_health_lifetimes import recover as recover_member_resource_health
+                function_source, todo, calls, member_resource_health = recover_member_resource_health(
+                    function_source, todo, calls, fn, member_health_row,
+                    unit, owner, self.rdata, self.manifest,
+                    lifter.native_tail_copy_input, lifter.native_tail_copy_output,
+                    prior_typed_input=prior_typed_boolean_input)
+                if member_resource_health:
+                    row['reviewedMemberResourceHealthLifetimes'] = member_resource_health
+                from tools.script_recovery.native_reviewed_member_table_staging import classify as classify_member_table_staging
+                function_source, todo, member_table_staging = classify_member_table_staging(
+                    function_source, todo, fn,
+                    unit.get('reviewedMemberTableStaging', {}).get(str(fn['address']).lower()),
+                    member_speech_input, member_speech_review, spec_l, self.rdata, unit, owner)
+                if member_table_staging:
+                    row['reviewedMemberTableStaging'] = member_table_staging
+                from tools.script_recovery.native_reviewed_parent_member_health_lifetimes import recover as recover_parent_member_health
+                function_source, todo, calls, parent_member_health = recover_parent_member_health(
+                    function_source, todo, calls, fn, parent_health_row,
+                    unit, owner, self.rdata, self.manifest,
+                    lifter.native_tail_copy_input, lifter.native_tail_copy_output)
+                if parent_member_health:
+                    row['reviewedParentMemberHealthLifetimes'] = parent_member_health
+                from tools.script_recovery.native_signed_field_steps import recover_direct as recover_direct_signed_steps
+                function_source, direct_signed_steps = recover_direct_signed_steps(function_source, fn, spec_l, self.rdata)
+                if direct_signed_steps:
+                    row['directSignedFieldStepEvidence'] = direct_signed_steps
                 if not entity and name in helpers.values():
                     shared_inputs[name] = (source, fn, signature, dict(lifter.callee_names))
+                if fn.get('reviewedMissingCallMetadata'):
+                    row['reviewedMissingCallMetadata'] = fn['reviewedMissingCallMetadata']
+                retained_reviews = [proof for proof in getattr(self, 'retained_cstring_reviews', [])
+                                    if proof['function'].lower() == str(fn['address']).lower()]
+                if retained_reviews:
+                    row['reviewedRetainedCStringAliases'] = retained_reviews
                 row.update(todo=todo, calls=calls, lines=len(body),
                            syntax=self.checker.check({relative + ':' + name: function_source}))
                 if name != 'OnPersist':
@@ -2168,6 +2986,11 @@ class UnitConverter:
             source, declared = declare_free_locals(source)
             if declared:
                 report.setdefault('declaredFreeLocals', {})[relative] = declared
+            if entity:
+                from tools.script_recovery.native_blocking_speech_cancellation import recover as recover_speech_cancellation
+                source, speech_exits = recover_speech_cancellation(source, self.manifest)
+                if speech_exits:
+                    report.setdefault('blockingSpeechCancellation', {})[relative] = speech_exits
             destination = out / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_text(source + '\n', encoding='utf-8')
@@ -2191,6 +3014,12 @@ class UnitConverter:
                 if name not in shared_inputs:
                     continue
                 source, fn, signature, aliases = shared_inputs[name]
+                from tools.script_recovery.native_reviewed_definition_vectors import restore as restore_definition_vectors
+                source = restore_definition_vectors(source, fn,
+                    unit.get('reviewedDefinitionVectorConversions', {}).get(str(fn['address']).lower()), self.rdata)
+                from tools.script_recovery.native_reviewed_cleanup_returns import restore as restore_cleanup_returns
+                source = restore_cleanup_returns(source, fn,
+                    unit.get('reviewedCleanupReturns', {}).get(str(fn['address']).lower()), self.rdata)
                 if os.environ.get('CONVERT_DUMP') and name in os.environ['CONVERT_DUMP'].split(','):
                     print(f'===== LOWERED (shared) {name}', source, sep='\n', file=sys.stderr)
                 shared_lifter = Lifter(self.manifest, quest_state, 'quest', False, package, self.rdata,
@@ -2204,7 +3033,7 @@ class UnitConverter:
                     helper_fn = self.native(address)
                     if not helper_fn:
                         continue
-                    sig = function_parameters(helper_fn['decompile'], member=True)
+                    sig = reviewed_function_parameters(helper_fn, unit, self.rdata)
                     shared_lifter.helper_parameters[helper] = [p['lua'] for p in sig['parameters']]
                     if sig['returnKind']:
                         shared_lifter.helper_return_kinds[helper] = sig['returnKind']
@@ -2220,7 +3049,32 @@ class UnitConverter:
                 shared_sources[name] = finish_lua('\n'.join([f'function {name}({params})'] + body + ['end', '']))
                 if 'resources:' in shared_sources[name]:      # the same retail-resource handle the quest copy gets
                     shared_sources[name] = shared_sources[name].replace('\n', '\n    local resources = quest:RetailResources()\n', 1)
-                shared_diagnostics[name] = list(shared_lifter.todo)
+                from tools.script_recovery.native_reviewed_thing_outputs import restore as restore_shared_outputs
+                shared_sources[name], shared_todo, _ = restore_shared_outputs(
+                    shared_sources[name], list(shared_lifter.todo), [], fn,
+                    unit.get('reviewedSharedThingOutputScopes', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_bordello_paused_skip_binding import restore as restore_shared_paused_skip
+                shared_sources[name], shared_todo = restore_shared_paused_skip(
+                    shared_sources[name], shared_todo, fn,
+                    unit.get('reviewedBordelloPausedSkipBinding', {}).get(str(fn['address']).lower()),
+                    self.rdata)
+                from tools.script_recovery.native_reviewed_cleanup_join_labels import classify as classify_shared_cleanup_joins
+                shared_sources[name], shared_todo, reviewed_joins = classify_shared_cleanup_joins(
+                    shared_sources[name], shared_todo, fn,
+                    unit.get('reviewedCleanupJoinLabels', {}).get(str(fn['address']).lower()), self.rdata)
+                if reviewed_joins:
+                    report.setdefault('sharedReviewedCleanupJoins', {})[name] = reviewed_joins
+                from tools.script_recovery.native_signed_field_steps import recover as recover_shared_signed_steps
+                signed_spec = LoweringSpec(unit, '', entity=False, thing_slots={})
+                shared_sources[name], signed_steps = recover_shared_signed_steps(shared_sources[name], fn, signed_spec, self.rdata)
+                if signed_steps:
+                    report.setdefault('sharedSignedFieldStepEvidence', {})[name] = signed_steps
+                from tools.script_recovery.native_signed_field_steps import recover_direct as recover_shared_direct_signed_steps
+                shared_sources[name], direct_signed_steps = recover_shared_direct_signed_steps(shared_sources[name], fn, signed_spec, self.rdata)
+                if direct_signed_steps:
+                    report.setdefault('sharedDirectSignedFieldStepEvidence', {})[name] = direct_signed_steps
+                shared_diagnostics[name] = shared_todo
             names = sorted(shared_sources)
             shared = '\n'.join(['-- Generated from the same native helper bodies as the quest draft.',
                                 'local ' + ', '.join(names)] + [shared_sources[n] for n in names] +

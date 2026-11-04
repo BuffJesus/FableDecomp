@@ -1,0 +1,133 @@
+diff --git a/FableScriptExtender/NoviConversationSnapshot.h b/FableScriptExtender/NoviConversationSnapshot.h
+new file mode 100644
+index 0000000..b2327e2
+--- /dev/null
++++ b/FableScriptExtender/NoviConversationSnapshot.h
+@@ -0,0 +1,54 @@
++#pragma once
++#include "sol/sol.hpp"
++#include <array>
++#include <string>
++#include <utility>
++#include <vector>
++
++// Script-visible values of retail CConversation (stride 0x5C). Native Copy at
++// E54CA0/E54C50 copies Lines and all four CString vectors independently.
++// Definition-base pool/identity fields are not exposed by this value snapshot.
++struct NoviConversationValue {
++    int lines = 0;
++    std::array<std::vector<std::string>, 4> strings;
++};
++
++template<class ReadString>
++inline std::vector<NoviConversationValue> NoviReadConversationValues(
++    const unsigned char* definitions, int offset, ReadString readString) {
++    std::vector<NoviConversationValue> out;
++    if (!definitions || offset < 0) return out;
++    struct Vec { const unsigned char* first; const unsigned char* last; const unsigned char* end; };
++    const auto* conversations = reinterpret_cast<const Vec*>(definitions + offset);
++    for (const unsigned char* record = conversations->first;
++         record && record + 0x5C <= conversations->last; record += 0x5C) {
++        NoviConversationValue value;
++        value.lines = *reinterpret_cast<const int*>(record + 0x28);
++        for (int field = 0; field < 4; ++field) {
++            const auto* strings = reinterpret_cast<const Vec*>(record + 0x2C + field * 12);
++            for (const unsigned char* p = strings->first; p && p < strings->last; p += 4)
++                value.strings[field].push_back(readString(p));
++        }
++        out.push_back(std::move(value));
++    }
++    return out;
++}
++
++inline sol::table NoviConversationValuesToLua(sol::state_view lua,
++    const std::vector<NoviConversationValue>& values) {
++    const char* fields[] = {"Speaker", "Dialogue", "Animation", "AnimLoop"};
++    sol::table out = lua.create_table();
++    int index = 0;
++    for (const auto& value : values) {
++        sol::table record = lua.create_table();
++        record["Lines"] = value.lines;
++        for (int field = 0; field < 4; ++field) {
++            sol::table strings = lua.create_table();
++            int line = 0;
++            for (const auto& text : value.strings[field]) strings[++line] = text;
++            record[fields[field]] = strings;
++        }
++        out[++index] = record;
++    }
++    return out;
++}
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index fa304c1..54ebd39 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -29,6 +29,7 @@
+ #include "LuaQuestState.h"
+ #include "LuaRetailResources.h"
+ #include "NoviNativeFlagVector.h"
++#include "NoviConversationSnapshot.h"
+ #include <stdexcept>
+ #include <map>
+ #include <memory>
+@@ -38,6 +39,7 @@
+ struct NoviUnitQuestData {
+     std::map<std::string, std::vector<unsigned char>> flagVectors;
+     std::map<std::string, std::vector<std::string>> stringVectors;
++    std::map<std::string, std::vector<NoviConversationValue>> conversations;
+     std::map<std::string, std::vector<std::shared_ptr<CScriptThing>>> lists;
+     std::shared_ptr<LuaRetailResources> resources;
+ };
+@@ -421,36 +423,24 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         if (!definitions || offset < 0) return 0;
+         return *reinterpret_cast<const volatile int*>(definitions + offset);
+     };
+-    // A std::vector<CConversation> in the global definitions (*(0x0143E90C) + offset), copied into Lua. Retail
+-    // CConversation (0x5C bytes, CConversation::Copy 0x00E54CA0): Lines @0x28, then vector<CCharString> Speaker
+-    // @0x2C, Dialogue @0x38, Animation @0x44, AnimLoop @0x50. V_BookCollecting Init snapshots +0x4C8 into its
+-    // BookReactions member and never writes it; the scripts read the definitions through this instead.
++    // Global value view and explicitly retained quest snapshot share the same
++    // native layout reader. Returned Lua tables are copies, never storage aliases.
+     quest["GlobalConversations"] = [](LuaQuestState&, int offset, sol::this_state ts) -> sol::table {
+-        sol::state_view lua(ts);
+-        sol::table out = lua.create_table();
+         auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
+-        if (!definitions || offset < 0) return out;
+-        struct Vec { const unsigned char* first; const unsigned char* last; const unsigned char* end; };
+-        const auto* conversations = reinterpret_cast<const Vec*>(definitions + offset);
+-        auto strings = [&](const unsigned char* record, int at) {
+-            sol::table list = lua.create_table();
+-            const auto* v = reinterpret_cast<const Vec*>(record + at);
+-            int n = 0;
+-            for (const unsigned char* p = v->first; p && p < v->last; p += sizeof(CCharString))
+-                list[++n] = NoviCCharStringToStd(reinterpret_cast<const CCharString*>(p));
+-            return list;
+-        };
+-        int index = 0;
+-        for (const unsigned char* r = conversations->first; r && r + 0x5C <= conversations->last; r += 0x5C) {
+-            sol::table c = lua.create_table();
+-            c["Lines"] = *reinterpret_cast<const int*>(r + 0x28);
+-            c["Speaker"] = strings(r, 0x2C);
+-            c["Dialogue"] = strings(r, 0x38);
+-            c["Animation"] = strings(r, 0x44);
+-            c["AnimLoop"] = strings(r, 0x50);
+-            out[++index] = c;
+-        }
+-        return out;
++        auto values = NoviReadConversationValues(definitions, offset, [](const unsigned char* p) {
++            return NoviCCharStringToStd(reinterpret_cast<const CCharString*>(p));
++        });
++        return NoviConversationValuesToLua(sol::state_view(ts), values);
++    };
++    quest["SnapshotGlobalConversations"] = [](LuaQuestState& self, const std::string& name, int offset) {
++        auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        auto values = NoviReadConversationValues(definitions, offset, [](const unsigned char* p) {
++            return NoviCCharStringToStd(reinterpret_cast<const CCharString*>(p));
++        });
++        NoviUnitData(self).conversations[name] = std::move(values);
++    };
++    quest["GetStateConversations"] = [](LuaQuestState& self, const std::string& name, sol::this_state ts) -> sol::table {
++        return NoviConversationValuesToLua(sol::state_view(ts), NoviUnitData(self).conversations[name]);
+     };
+     quest["ReadGlobalGameDataFloat"] = [](LuaQuestState&, int offset) -> float {
+         auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);

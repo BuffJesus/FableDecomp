@@ -62,7 +62,7 @@ def rename_identifiers(source, names):
     return ''.join(result)
 
 
-def assignment_role(expression):
+def assignment_role(expression, *, generated=GENERATED):
     expression = expression.strip()
     guarded_distance = re.fullmatch(r'\((\w+) ~= nil and \1:IsDistanceFromPositionOver\(.+\)\)', expression)
     if guarded_distance:
@@ -84,7 +84,7 @@ def assignment_role(expression):
     if element:
         return camel(re.sub(r'^All', '', element[1])) + 'Item'
     if re.fullmatch(r'#\w+', expression):
-        return camel(expression[1:]) + 'Count' if not GENERATED.fullmatch(expression[1:]) else 'count'
+        return camel(expression[1:]) + 'Count' if not generated.fullmatch(expression[1:]) else 'count'
     method = re.match(r'\w+:(\w+)\(', expression)
     if method:
         name = method[1]
@@ -119,15 +119,15 @@ def assignment_role(expression):
 # may be a callable over the match, for the calls that name the value themselves (the list it indexes, the
 # actor-map key it fills); returning None from one declines and moves on.
 def _named_after(group, suffix=''):
-    def role(m):
+    def role(m, *, generated=GENERATED):
         value = m.group(group)
-        if GENERATED.fullmatch(value) or value.startswith('scratchValue'):
+        if generated.fullmatch(value) or value.startswith('scratchValue'):
             return None
         return camel(value) + suffix
     return role
 
 
-def _list_position(m):
+def _list_position(m, *, generated=GENERATED):
     """`GetStateListAt("AllCreatures", X)` indexes the list; `..., X / 12)` walks it by byte offset."""
     return camel(m.group('of')) + ('Offset' if m.group('scale') else 'Index')
 
@@ -164,7 +164,7 @@ USE_ROLES = (
 FLAG_STEP = re.compile(r'(?:0x[0-9a-f]+|\d+)|NAME\s*[&|~]\s*(?:0x[0-9a-f]+|\d+)|\(?NAME\s*[&|~][^()]*\)?')
 
 
-def use_role(name, code):
+def use_role(name, code, *, generated=GENERATED):
     """The role of a value whose assignments say nothing, taken from the API that consumes it.
 
     Only when the consumers agree about the *kind* of value: a register passed to both `DeregisterTimer`
@@ -174,7 +174,7 @@ def use_role(name, code):
     found = []
     for pattern, kind, role in USE_ROLES:
         for match in re.finditer(pattern.replace('NAME', token), code):
-            chosen = role(match) if callable(role) else role
+            chosen = role(match, generated=generated) if callable(role) else role
             if chosen is not None:
                 found.append((kind, chosen))
                 break
@@ -236,7 +236,10 @@ def wrap_local_declarations(source, width=100):
     return ''.join(result), changes
 
 
-def readable_function(source):
+def readable_function(source, *, generated=GENERATED):
+    from tools.script_recovery.lua_binding_guard import ambiguous_bindings
+    if ambiguous_bindings(source):
+        return source, {}
     # Do not interpret comments or strings as declarations/assignments. Preserve
     # string literals for role inference, while blanking comments with line breaks.
     code = ''.join(re.sub(r'[^\n]', ' ', t[0]) if t.lastgroup in ('comment', 'longcomment')
@@ -264,11 +267,11 @@ def readable_function(source):
     # the role of a copy (`r1_2 = pCVar9_4`) is the role of what it copies: direct roles first, copies after
     direct = {}
     for name, count in declarations.items():
-        if count == 1 and (GENERATED.fullmatch(name) or name in string_aliases):
+        if count == 1 and (generated.fullmatch(name) or name in string_aliases):
             rhs_list = [rhs.strip() for rhs in re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=\s*([^\n]*)', code, re.M)]
-            direct[name] = [assignment_role(r) for r in rhs_list if r != 'nil' and not re.fullmatch(r'[A-Za-z_]\w*', r)]
+            direct[name] = [assignment_role(r, generated=generated) for r in rhs_list if r != 'nil' and not re.fullmatch(r'[A-Za-z_]\w*', r)]
     for name, count in declarations.items():
-        if count != 1 or not (GENERATED.fullmatch(name) or name in string_aliases):
+        if count != 1 or not (generated.fullmatch(name) or name in string_aliases):
             continue
         assignments = re.findall(r'^\s*(?:local\s+)?' + re.escape(name) + r'\s*=\s*([^\n]*)', code, re.M)
         roles = []
@@ -280,7 +283,7 @@ def readable_function(source):
                 copied = direct[rhs]
                 roles.append(copied[0] if copied and all(r is not None and r == copied[0] for r in copied) else None)
             else:
-                roles.append(assignment_role(rhs))
+                roles.append(assignment_role(rhs, generated=generated))
         if name.startswith('native_arg_'):
             base, reason = camel(name.removeprefix('native_arg_')), 'native argument role'
         elif roles and all(role is not None and role == roles[0] for role in roles):
@@ -299,7 +302,7 @@ def readable_function(source):
             if flags is not None:
                 base, reason = flags, 'a bit field, not a value'
         if base == 'scratchValue':
-            consumed = use_role(name, code)
+            consumed = use_role(name, code, generated=generated)
             if consumed is not None:
                 base, reason = consumed, 'named by the API that consumes it'
         if base == 'scratchValue' and re.fullmatch(r'scratchValue\d*', name):
@@ -316,7 +319,10 @@ def readable_function(source):
     return output, evidence
 
 
-def readable_source(source, *, split_reused=True, inline_literals=False):
+def readable_source(source, *, split_reused=True, inline_literals=False, generated=GENERATED):
+    from tools.script_recovery.lua_binding_guard import ambiguous_bindings
+    if ambiguous_bindings(source):
+        return source, []
     code_starts = {t.start() for t in tokens(source) if t.lastgroup == 'identifier'}
     matches = [m for m in FUNCTION.finditer(source) if m.start() in code_starts]
     if not matches:
@@ -331,14 +337,14 @@ def readable_source(source, *, split_reused=True, inline_literals=False):
         post_inline_removals = {}
         if split_reused:
             from tools.script_recovery.lua_local_versions import split_hoisted_locals, prune_unused_literal_locals
-            chunk, splits = split_hoisted_locals(chunk)
-            chunk, removals = prune_unused_literal_locals(chunk)
+            chunk, splits = split_hoisted_locals(chunk, generated=generated)
+            chunk, removals = prune_unused_literal_locals(chunk, generated=generated)
         if inline_literals:
             from tools.script_recovery.lua_literal_values import inline_literal_locals
             from tools.script_recovery.lua_local_versions import prune_unused_literal_locals
-            chunk, literals = inline_literal_locals(chunk)
-            chunk, post_inline_removals = prune_unused_literal_locals(chunk)
-        chunk, names = readable_function(chunk)
+            chunk, literals = inline_literal_locals(chunk, generated=generated)
+            chunk, post_inline_removals = prune_unused_literal_locals(chunk, generated=generated)
+        chunk, names = readable_function(chunk, generated=generated)
         result.append(chunk)
         mappings.append({'function': match[1], 'sourceLine': source.count('\n', 0, match.start()) + 1,
                          'locals': names, 'splitLocals': splits, 'removedLiteralLocals': removals,

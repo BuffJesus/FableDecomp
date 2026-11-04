@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bUnknown, bVar3, cVar4, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar10, iVar11, iVar13, iVar8, native_arg_sequence_1, pCVar14, pCVar5, pCVar6, pCVar9, pcVar7, r1, r2, r3, r4, r5, r6, r7, r8, xStack_70, xStack_80, xStack_90, xStack_ac, xStack_cc, xStack_e8, xStack_ec, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
+    local __native_condition_1, bUnknown, bVar3, cVar4, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, iVar10, iVar11, iVar13, iVar8, pCVar14, pCVar5, pCVar6, pcVar7, r1, r2, r3, r4, r5, r6, r7, r8, xStack_70, xStack_80, xStack_90, xStack_ac, xStack_cc, xStack_e8, xStack_ec, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -47,7 +47,7 @@ function Main(quest, me)
         bVar3 = not alive
         if not bVar3 then
             pCVar5 = (0x0 + 4)
-            quest:RemoveThing(r1, (pCVar5 ~= 0), false)
+            quest:RemoveThing(r1, false, true)
             goto LAB_00ecb222
         end
     end
@@ -72,11 +72,8 @@ function Main(quest, me)
                     xStack_cc = resources:StartMovie("")
                     pCVar14 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
-                    x_stk_30 = resources:ScriptThing(xStack_e8)
-                    pCVar5 = x_stk_30
-                    fret_0 = quest:GetHealth(pCVar5)
-                    fVar2 = 0.0
-                    if fret_0 <= fVar2 then
+                    pCVar5, x_stk_30 = nil, nil
+                    if not resources:ResourceThingHealthAbove(xStack_e8, 0.0) then
                         goto LAB_00ecb3b6
                     else
                         iVar13 = 0
@@ -86,6 +83,9 @@ function Main(quest, me)
                         pcVar7 = "TEXT_QST_B10_TRADER_INTRO"
                         pCVar5 = quest:GetHero()
                         r2 = me:Speak(pCVar5, pcVar7, iVar8, (iVar10 ~= 0), (iVar11 ~= 0), (iVar13 ~= 0))
+                        if not r2 then
+                            goto LAB_00ecbbc9
+                        end
                         iVar8 = me:IsPerformingScriptTask()
                         cVar4 = iVar8
                         while cVar4 do
@@ -122,11 +122,8 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00ecb6c3 end
-                                x_stk_54 = resources:ScriptThing(xStack_e8)
-                                pCVar5 = x_stk_54
-                                fret_01 = quest:GetHealth(pCVar5)
-                                fVar2 = 0.0
-                                if fVar2 < fret_01 then
+                                pCVar5, x_stk_54 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_e8, 0.0) then
                                     iVar13 = 0
                                     iVar11 = 1
                                     iVar10 = 0
@@ -134,6 +131,9 @@ function Main(quest, me)
                                     pcVar7 = "TEXT_QST_B10_TRADER_NOT_ENOUGH_MONEY_10"
                                     pCVar14 = quest:GetHero()
                                     r3 = me:Speak(pCVar14, pcVar7, iVar8, (iVar10 ~= 0), (iVar11 ~= 0), (iVar13 ~= 0))
+                                    if not r3 then
+                                        goto LAB_00ecbbc9
+                                    end
                                     iVar8 = me:IsPerformingScriptTask()
                                     cVar4 = iVar8
                                     while cVar4 do
@@ -154,14 +154,11 @@ function Main(quest, me)
                                 if bVar3 then goto LAB_00ecbbc9 end
                                 xStack_ac = quest:ReadGlobalGameDataString(0x738)
                                 quest:GiveHeroObject(xStack_ac, -1, false)
-                                quest:RemoveThing(pCVar14, false, false)
+                                quest:RemoveThing(r1, false, true)
                                 quest:GiveHeroGold(-0x5dc)
                                 quest:EntityGiveGold(me, 0x5dc)
-                                x_stk_60 = resources:ScriptThing(xStack_e8)
-                                pCVar5 = x_stk_60
-                                fret_00 = quest:GetHealth(pCVar5)
-                                fVar2 = 0.0
-                                if fVar2 < fret_00 then
+                                pCVar5, x_stk_60 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_e8, 0.0) then
                                     iVar13 = 0
                                     iVar11 = 1
                                     iVar10 = 0
@@ -169,6 +166,9 @@ function Main(quest, me)
                                     pcVar7 = "TEXT_QST_B10_TRADER_BOUGHT_MUSHROOM_10"
                                     pCVar14 = quest:GetHero()
                                     r4 = me:Speak(pCVar14, pcVar7, iVar8, (iVar10 ~= 0), (iVar11 ~= 0), (iVar13 ~= 0))
+                                    if not r4 then
+                                        goto LAB_00ecb6c3
+                                    end
                                     iVar8 = me:IsPerformingScriptTask()
                                     cVar4 = iVar8
                                     while cVar4 do
@@ -207,11 +207,8 @@ function Main(quest, me)
                     pCVar6 = xStack_cc
                     goto LAB_00ecbc48
                     ::FLOW_hoist_lab_00ecbbc9_1::
-                    x_stk_3c = resources:ScriptThing(xStack_e8)
-                    pCVar5 = x_stk_3c
-                    fret_02 = quest:GetHealth(pCVar5)
-                    fVar2 = 0.0
-                    if fVar2 < fret_02 then
+                    pCVar5, x_stk_3c = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_e8, 0.0) then
                         iVar13 = 0
                         iVar11 = 1
                         iVar10 = 0
@@ -219,6 +216,9 @@ function Main(quest, me)
                         pcVar7 = "TEXT_QST_B10_TRADER_NOT_BOUGHT_MUSHROOM_10"
                         pCVar14 = quest:GetHero()
                         r5 = me:Speak(pCVar14, pcVar7, iVar8, (iVar10 ~= 0), (iVar11 ~= 0), (iVar13 ~= 0))
+                        if not r5 then
+                            goto LAB_00ecb6c3
+                        end
                         iVar8 = me:IsPerformingScriptTask()
                         cVar4 = iVar8
                         while cVar4 do
@@ -252,11 +252,8 @@ function Main(quest, me)
                         if bVar3 then goto LAB_00ecbc4d end
                         xStack_70 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        x_stk_c = resources:ScriptThing(xStack_e8)
-                        pCVar14 = x_stk_c
-                        fret_04 = quest:GetHealth(pCVar14)
-                        fVar2 = 0.0
-                        if fVar2 < fret_04 then
+                        pCVar14, x_stk_c = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_e8, 0.0) then
                             iVar13 = 0
                             iVar11 = 1
                             iVar10 = 0
@@ -264,6 +261,11 @@ function Main(quest, me)
                             pcVar7 = "TEXT_QST_B10_TRADER_POST_STOLE_MUSHROOM_10"
                             pCVar14 = quest:GetHero()
                             r6 = me:Speak(pCVar14, pcVar7, iVar8, (iVar10 ~= 0), (iVar11 ~= 0), (iVar13 ~= 0))
+                            if not r6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                pCVar6 = xStack_70
+                                goto LAB_00ecbc48
+                            end
                             iVar8 = me:IsPerformingScriptTask()
                             cVar4 = iVar8
                             while cVar4 do
@@ -302,11 +304,8 @@ function Main(quest, me)
                 if bVar3 then goto LAB_00ecbc4d end
                 xStack_80 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                x_stk_24 = resources:ScriptThing(xStack_e8)
-                pCVar14 = x_stk_24
-                fret_03 = quest:GetHealth(pCVar14)
-                fVar2 = 0.0
-                if fret_03 <= fVar2 then
+                pCVar14, x_stk_24 = nil, nil
+                if not resources:ResourceThingHealthAbove(xStack_e8, 0.0) then
                     goto LAB_00ecb8bb
                 end
                 goto FLOW_past_lab_00ecb8bb
@@ -322,6 +321,11 @@ function Main(quest, me)
                 pcVar7 = "TEXT_QST_B10_TRADER_POST_BOUGHT_MUSHROOM_10"
                 pCVar14 = quest:GetHero()
                 r7 = me:Speak(pCVar14, pcVar7, iVar8, (iVar10 ~= 0), (iVar11 ~= 0), (iVar13 ~= 0))
+                if not r7 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    pCVar6 = xStack_80
+                    goto LAB_00ecbc48
+                end
                 iVar8 = me:IsPerformingScriptTask()
                 cVar4 = iVar8
                 while cVar4 do
@@ -361,32 +365,19 @@ function Main(quest, me)
         break
         ::FLOW_past_lab_00ecbc4d::
         ::LAB_00ecb9eb::
-        native_arg_sequence_1 = false
-        if not __native_entity_state:GetStateBool("BoughtSpecialStuff") then
-            native_arg_sequence_1 = true
-        else
-            native_arg_sequence_1 = false
+        __native_condition_1 = not __native_entity_state:GetStateBool("BoughtSpecialStuff")
+        if __native_condition_1 then
+            cVar4 = (r1 ~= nil and r1:IsAlive())
+            __native_condition_1 = not cVar4
         end
-        if native_arg_sequence_1 then
-            -- TODO(native): cVar4 = (**(CStack_d8._0_4_ + 0x12c))()
-            cVar4 = nil --[[unresolved native value]]
-            if not cVar4 then
-                native_arg_sequence_1 = true
-            else
-                native_arg_sequence_1 = false
-            end
-        end
-        if native_arg_sequence_1 then
+        if __native_condition_1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00ecbc4d end
             xStack_90 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            x_stk_48 = resources:ScriptThing(xStack_e8)
-            pCVar14 = x_stk_48
-            fret_05 = quest:GetHealth(pCVar14)
-            fVar2 = 0.0
-            if fVar2 < fret_05 then
+            pCVar14, x_stk_48 = nil, nil
+            if resources:ResourceThingHealthAbove(xStack_e8, 0.0) then
                 iVar13 = 0
                 iVar11 = 1
                 iVar10 = 0
@@ -394,6 +385,10 @@ function Main(quest, me)
                 pcVar7 = "TEXT_QST_B10_TRADER_STOLE_MUSHROOM_10"
                 pCVar14 = quest:GetHero()
                 r8 = me:Speak(pCVar14, pcVar7, iVar8, (iVar10 ~= 0), (iVar11 ~= 0), (iVar13 ~= 0))
+                if not r8 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    goto LAB_00ecbc44
+                end
                 iVar8 = me:IsPerformingScriptTask()
                 cVar4 = iVar8
                 while cVar4 do
@@ -423,13 +418,11 @@ function Main(quest, me)
             __native_entity_state:SetStateBool("StoleSpecialStuff", true)
             quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(0x76c))
             quest:ClearThingHasInformation(me)
-            iVar11 = 7
-            pCVar9 = 0x0
             pCVar5 = 0x0
             bUnknown = 0x1
             iVar10 = 6
             pCVar14 = quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS")
-            quest:AddCrimeCommitted(pCVar14, iVar10, (bUnknown ~= 0), nil --[[missing]], nil --[[missing]], pCVar5)
+            quest:AddCrimeCommitted(pCVar14, iVar10, (bUnknown ~= 0), nil, nil, 7)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(xStack_90)
         end

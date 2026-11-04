@@ -2,10 +2,11 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local resources = quest:RetailResources()
+    return quest:WithRetailResources(function(resources)
     local bVar3, delay, iVar6, pCVar4, pQuestName, pppuVar5, xStack_20, xStack_30
     local alive = true
     pCVar4 = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(pCVar4)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
@@ -31,7 +32,7 @@ function Main(quest)
             xStack_20 = resources:StartMovie("")
             quest:FadeScreenOut(0.5, 0.5)
             quest:Pause(1.0)
-            -- TODO(native): CScriptBase::KillSpawnedFunction((CScriptBase *)this,(int)&xStack_34,0);
+            quest:KillSpawnedFunction("FollowThread", 0)
             quest:DeactivateQuest("Expression_Follow", 0)
             quest:CameraDefault()
             quest:Pause(1.0)
@@ -44,6 +45,7 @@ function Main(quest)
         ::LAB_00eea668::
         resources:ReleaseResource(xStack_30)
     end
+    end)
 end
 
 function Init(quest)

@@ -58,9 +58,14 @@ def test_generated_guard_stores_village_before_waiting_and_terminates_cleanly(gu
     lua = LuaRuntime()
     runner = lua.execute('''return function(source)
         local me, village, hero, quest, resources = {}, {}, {}, {}, {}
-        local frame, saved, lookups = 0, nil, 0
+        local frame, saved, lookups, released = 0, nil, 0, 0
+        local handle = {}
         function quest:RetailResources() return resources end
-        function resources:NewResource() return {} end
+        function resources:NewResource() return handle end
+        function resources:ReleaseResource(id)
+            assert(id == handle and frame == 1 and released == 0)
+            released = released + 1
+        end
         function quest:GetHero() return hero end
         function quest:GetNearestWithDefName(relative, name)
             assert(relative == me and name == "VILLAGE_ARENA_CELLS")
@@ -80,6 +85,6 @@ def test_generated_guard_stores_village_before_waiting_and_terminates_cleanly(gu
         function quest:EntitySetAsKillable(entity, a, b) assert(entity == me and not a and not b) end
         function quest:EntitySetAsToAddToComboMultiplierWhenHit(entity, enabled) assert(entity == me and not enabled) end
         assert(load(source))(); Main(quest, me)
-        return lookups == 1 and frame == 1 and saved == village
+        return lookups == 1 and frame == 1 and saved == village and released == 1
     end''')
     assert runner(source)

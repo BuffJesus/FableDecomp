@@ -26,6 +26,7 @@ function Main(quest)
     fVar6 = fVar6 * 0.15915493667125702
     local f_stk_40 = fVar6
     if (fVar6 < 0.0) or (1.0 <= fVar6) then
+        fret_0 = math.fmod(f_stk_40, 1.0)
         fVar6 = fret_0
         if fret_0 < 0.0 then
             fVar6 = fret_0 + 1.0
@@ -46,6 +47,7 @@ function Main(quest)
     fVar6 = fVar6 * 0.15915493667125702
     f_stk_40 = fVar6
     if (fVar6 < 0.0) or (1.0 <= fVar6) then
+        fret_00 = math.fmod(f_stk_40, 1.0)
         fVar6 = fret_00
         if fret_00 < 0.0 then
             fVar6 = fret_00 + 1.0
@@ -66,6 +68,7 @@ function Main(quest)
     fVar6 = fVar6 * 0.15915493667125702
     f_stk_40 = fVar6
     if (fVar6 < 0.0) or (1.0 <= fVar6) then
+        fret_01 = math.fmod(f_stk_40, 1.0)
         fVar6 = fret_01
         if fret_01 < 0.0 then
             fVar6 = fret_01 + 1.0
@@ -86,6 +89,7 @@ function Main(quest)
     fVar6 = fVar6 * 0.15915493667125702
     f_stk_40 = fVar6
     if (fVar6 < 0.0) or (1.0 <= fVar6) then
+        fret_02 = math.fmod(f_stk_40, 1.0)
         fVar6 = fret_02
         if fret_02 < 0.0 then
             fVar6 = fret_02 + 1.0
@@ -109,8 +113,8 @@ function GetStatuePointingPosition(quest)
     iVar1 = math.tointeger(math.modf(f_st0))
     iVar2 = 1
     repeat
-        if quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) - 0.03999999910593033 < (f_st0 - iVar1) then
-            if (f_st0 - iVar1) < quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) + 0.03999999910593033 then
+        if quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) - 0.03999999910593033 < (string.unpack("<f", string.pack("<f", (f_st0 - iVar1)))) then
+            if (string.unpack("<f", string.pack("<f", (f_st0 - iVar1)))) < quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) + 0.03999999910593033 then
                 return iVar2
             end
         end

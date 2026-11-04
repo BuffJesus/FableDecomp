@@ -194,6 +194,11 @@ function Main(quest, me)
                         pcVar10 = "TEXT_QST_028_WHISPER_SCORPION_WOODS"
                         pCVar6 = quest:GetHero()
                         r2 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                        if not r2 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            pCVar9 = xStack_74
+                            __cleanup_LAB_00d41a02(); return
+                        end
                         iVar11 = me:IsPerformingScriptTask()
                         cVar5 = iVar11
                         while cVar5 do
@@ -263,6 +268,11 @@ function Main(quest, me)
                         pcVar10 = "TEXT_QST_028_TEEN_WHISPER_SKILL_MOAN"
                         pCVar6 = quest:GetHero()
                         r3 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                        if not r3 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            pCVar9 = xStack_94
+                            __cleanup_LAB_00d41a02(); return
+                        end
                         iVar11 = me:IsPerformingScriptTask()
                         cVar5 = iVar11
                         while cVar5 do
@@ -311,6 +321,11 @@ function Main(quest, me)
                             pcVar10 = "TEXT_QST_028_TEEN_WHISPER_WILL_MOAN"
                             pCVar6 = quest:GetHero()
                             r4 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                            if not r4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                pCVar9 = xStack_84
+                                __cleanup_LAB_00d41a02(); return
+                            end
                             iVar11 = me:IsPerformingScriptTask()
                             cVar5 = iVar11
                             while cVar5 do
@@ -367,6 +382,13 @@ function Main(quest, me)
                                 pcVar10 = "TEXT_QST_028_WHISPER_END_MOAN"
                                 pCVar6 = quest:GetHero()
                                 r5 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                if not r5 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    pCVar9 = xStack_64
+                                    resources:DestroyMovie(pCVar9)
+                                    resources:ReleaseResource(xStack_f8)
+                                    return
+                                end
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar5 = iVar11
                                 while cVar5 do
@@ -413,6 +435,10 @@ function Main(quest, me)
                                 pcVar10 = "TEXT_QST_028_WHISPER_MELEE_MOAN"
                                 pCVar6 = quest:GetHero()
                                 r6 = me:Speak(pCVar6, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                if not r6 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    __cleanup_LAB_00d419fe(); return
+                                end
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar5 = iVar11
                                 while cVar5 do

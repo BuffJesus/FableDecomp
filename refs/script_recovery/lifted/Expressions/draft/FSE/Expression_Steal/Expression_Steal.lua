@@ -2,20 +2,24 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local resources = quest:RetailResources()
+    return quest:WithRetailResources(function(resources)
+    local stealTargetOwner = 0
     local __native_condition_1, bVar4, cVar5, fVar2, fVar3, f_stk_24, f_stk_28, iVar8, iVar9, i_stk_20, i_stk_2c, native_arg_flag2_uVar10, native_arg_flag3_uVar10, pActor, pCVar6, pCVar7, r1, uVar10, value, xStack_10, xStack_20
     local alive = true
     pCVar6 = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(pCVar6)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
     if bVar4 then
+        resources:RetireThingOutput(stealTargetOwner); stealTargetOwner = 0
         return
     end
     bVar4 = false
     pCVar7 = quest:GetActiveQuestName()
     quest:SetQuestAsPersistent(pCVar7, bVar4)
     r1 = quest:GetHeroTargetedThing()
+    stealTargetOwner = resources:TrackThingOutput(r1)
     bVar4 = quest:IsEntityStealable(r1)
     if bVar4 then
         bVar4 = quest:IsInMovieSequence()
@@ -123,7 +127,7 @@ function Main(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar4 = not alive
                         if bVar4 then goto LAB_00eec252 end
-                        iVar8 = math.random(0, 32767)
+                        iVar8 = quest:RetailRandModulo(32768)
                         i_stk_20 = (iVar8 % 100)
                         if i_stk_20 < f_stk_28 * 100.0 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -138,10 +142,12 @@ function Main(quest)
                 uVar10 = 0
                 pCVar7 = quest:GetActiveQuestName()
                 quest:DeactivateQuestLater(pCVar7, uVar10)
+                resources:RetireThingOutput(stealTargetOwner); stealTargetOwner = 0
                 return
             end
             ::LAB_00eec252::
             resources:DestroyMovie(xStack_10)
+            resources:RetireThingOutput(stealTargetOwner); stealTargetOwner = 0
             return
         end
         alive = not quest:IsActiveThreadTerminating()
@@ -151,6 +157,7 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then
+            resources:RetireThingOutput(stealTargetOwner); stealTargetOwner = 0
             return
         end
     end
@@ -158,6 +165,8 @@ function Main(quest)
     pCVar7 = quest:GetActiveQuestName()
     quest:DeactivateQuestLater(pCVar7, uVar10)
     ::LAB_00eebeef::
+    resources:RetireThingOutput(stealTargetOwner); stealTargetOwner = 0
+    end)
 end
 
 function Init(quest)

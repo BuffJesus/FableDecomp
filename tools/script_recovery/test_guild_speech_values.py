@@ -152,7 +152,8 @@ def lua_run(generated,stage,filename,config):
     quest=lua.table_from({'GetMasterGameState':get_master,'GetStateString':lambda *_:state['cache'],
         'SetStateString':set_cache,'GetStateBool':get_flag,'SetStateBool':set_flag,
         'IsQuestCompleted':lambda _self,key:query('completed',key),'IsQuestActive':lambda _self,key:query('active',key),
-        'IsActiveThreadTerminating':lambda *_:query('terminating'),'GetHeroTitle':lambda *_:query('title')})
+        'IsActiveThreadTerminating':lambda *_:query('terminating'),'GetHeroTitle':lambda *_:query('title'),
+        'RetailRandModulo':lambda _self,modulus:random() % modulus})
     module=lua.execute((generated/stage/'FSE/V_GuildMaster'/filename).read_text()) or lua.globals()
     name='helper_E91F20' if stage=='draft' else 'GetGuildMasterSpeech'
     result=module[name](quest,lua.table())

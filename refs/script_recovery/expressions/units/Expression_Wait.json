@@ -632,5 +632,87 @@
     "pdbMembersUnused": [],
     "nestedPdbMembers": {}
   },
-  "entities": {}
+  "entities": {},
+  "reviewedQuestConsciousConditions": {
+    "0x00eea460": {
+      "schema": "reviewed-quest-conscious-condition/1",
+      "address": "0x00eea460",
+      "role": "Main",
+      "sourceSha256": "e3ec44d4b0e0d1b3a3238e194b869624ec2daf4fd2095ca930ee0673646a6c5c",
+      "nativeSha256": "387d05e433f6fea05115e10e4de293125b064faf5a0c45396c21011313a5c0a2",
+      "operation": "RegisterQuestConsciousCondition",
+      "nativeThreadOffset": "0x2c",
+      "nativeVTable": "0x012c2fe8",
+      "contract": "Native16-byte conscious condition, clone retains counted Thing; caller local destroyed before first frame. No Lua polling.",
+      "sdkMethodSha256": "72a8314f9e5727faae53be26db7075582fa6cdd6c8cdc54f9d6b4b42b771198e",
+      "sdkBindingSha256": "f534880bb9a740bc59d51afd3a029bc508c831f5af321e46989b9c1521f3cad7"
+    }
+  },
+  "reviewedThingOutputScopes": {
+    "0x00eea460": {
+      "address": "0x00EEA460",
+      "end": "0x00EEA678",
+      "sourceSha256": "e3ec44d4b0e0d1b3a3238e194b869624ec2daf4fd2095ca930ee0673646a6c5c",
+      "nativeSha256": "387d05e433f6fea05115e10e4de293125b064faf5a0c45396c21011313a5c0a2",
+      "anchors": {
+        "0xeea4b6": "8d4c2410e8c1feaaff8b4e4033db8bc1c74424104c092701895c2418895c",
+        "0xeea535": "8d4c2420e842feaaff6aff680ed722018d4c2414c7442428f40e2601895c2430895c2434e89246abff",
+        "0xeea64e": "8d4c2428e859d47fff8d4c2420c74424208c002601e8c8fdaaff8d4c2410e85fce8fff5f5e5b83c434c3"
+      },
+      "dependencies": {
+        "0x6e7ab0": {
+          "length": 53,
+          "sha256": "23707643d74133867908da322ba37d39576eb0cb9001a73db24903f73725b556"
+        },
+        "0x6e7b80": {
+          "length": 66,
+          "sha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+        },
+        "0x7e74d0": {
+          "length": 66,
+          "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "476ba7c926536992b7fb10a5a00a57576f9b5967f41f1d23cfb0441511e3a54a"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "76215ab1c8f75af889f974a5be9aa61c1c6f872d07fe5052d7bb4b21dbc09620"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "4546311b30dca9fcbdcad429521460a3b620708c69f00148650da6301209ca55",
+      "recoveredSha256": "7f75a34b166db2a208ffd58d7e8ddced82a125210e6da8c9655add1c93ce037d",
+      "operations": [
+        {
+          "before": "    local resources = quest:RetailResources()",
+          "after": "    return quest:WithRetailResources(function(resources)",
+          "count": 1
+        },
+        {
+          "before": "\nend\n",
+          "after": "\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "WithRetailResources"
+      ],
+      "contract": "Resource-only callback scope: preserves explicit movie then resource normal cleanup and resource-only early exit; reverse-order fallback for Lua callback errors. No new Thing output ownership operations."
+    }
+  }
 }

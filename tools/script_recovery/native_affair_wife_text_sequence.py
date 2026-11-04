@@ -19,7 +19,8 @@ def recover_affair_wife_text_sequence(function, source, rdata, text_bank=TEXT_BA
         bank_hash = hashlib.sha256(Path(text_bank).read_bytes()).hexdigest()
     except OSError:
         return reject('reviewed text bank unavailable')
-    if bank_hash != w['textBankSha256']:
+    reviewed_banks = {w['textBankSha256'], *w.get('compatibleTextBankSha256', [])}
+    if bank_hash not in reviewed_banks:
         return reject('reviewed text bank changed')
     for region in w['regions']:
         raw = rdata.bytes_at(region['address'], region['size'])

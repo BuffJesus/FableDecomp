@@ -109,7 +109,7 @@ function Main(quest, me)
                     else
                         pPosition = r1:GetPos()
                     end
-                    pCVar9 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
+                    pCVar9 = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions", false)
                     r1 = pCVar9
                     pCVar9 = nil
                     if (r1 ~= nil and not r1:IsNull()) then

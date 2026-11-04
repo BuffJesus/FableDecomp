@@ -13,6 +13,7 @@ function Main(quest, me)
     while quest:GetStateInt("PreMeleeMode") == 1 do
         if not quest:NewScriptFrame(me) then return end
         if me:MsgIsHitByHero() then
+            if quest:IsActiveThreadTerminating() then return end
             quest:EntityPlayObjectAnimation(me, "WOBBLE", false)
             quest:SetStateInt("DummyHits", quest:GetStateInt("DummyHits") + 1)
         end
@@ -21,12 +22,15 @@ function Main(quest, me)
     while quest:GetStateInt("PreMeleeMode") == 2 do
         if not quest:NewScriptFrame(me) then return end
         if me:MsgIsHitByHeroWithWeapon("OBJECT_HERO_STICK") then
+            if quest:IsActiveThreadTerminating() then return end
             quest:SetStateInt("DummyHits", quest:GetStateInt("DummyHits") + 1)
             quest:EntityPlayObjectAnimation(me, "GET_HIT_SPIN", false)
         elseif me:MsgIsHitByHero() then
+            if quest:IsActiveThreadTerminating() then return end
             quest:EntityPlayObjectAnimation(me, "WOBBLE", false)
         end
     end
+    quest:IsActiveThreadTerminating()
 end
 
 -- PreMeleeDummy.Init (retail 0x00d51fb0)

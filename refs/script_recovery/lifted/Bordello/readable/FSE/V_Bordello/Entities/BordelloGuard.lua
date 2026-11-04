@@ -9,9 +9,8 @@ local helpers = require("V_Bordello.native_quest_helpers")
 
 -- BordelloGuard.Main (retail 0x00e40420)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue7, this_02, movie, movie2
+    local p1, this_02, movie, movie2, scriptThing, scratchValue28
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -23,18 +22,23 @@ function Main(quest, me)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     while true do
         if me:IsTalkedToByHero() then break end
-        scratchValue7 = (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) and 1 or 0
-        if scratchValue7 ~= 0 then
+        if not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, a .. helpers.GetHeroStatusTextTag(quest, me), 2, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a end
+            scriptThing = resources:ScriptThing(resource)
+            if 0.0 < quest:GetHealth(scriptThing) then
+                p1 = "TEXT_QST_B13_GUARD_ATTACKED" .. helpers.GetHeroStatusTextTag(quest, me)
+                local hero = quest:GetHero()
+                if not me:Speak(hero, p1, 2, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                else
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a end
+                    end
+                    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a end
+                    goto FLOW_past_lab_00e40e5a
                 end
-                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a end
-                goto FLOW_past_lab_00e40e5a
                 ::LAB_00e40e5a::
                 resources:DestroyMovie(movie2)
                 resources:ReleaseResource(resource)
@@ -45,7 +49,8 @@ function Main(quest, me)
             resources:DestroyMovie(movie2)
         end
         if not quest:GetStateBool("HeroPartying") and ((not quest:GetStateBool("HeroTricking") or not helpers.IsHeroWearingBeard(quest, me)) and not quest:GetStateBool("PlayerOwned")) then
-            if (quest:IsDistanceBetweenThingsUnder(me, hero, 3.0) and (not quest:GetStateBool("CutscenePlaying"))) and not quest:GetStateBool("MagicianSleeping") then
+            local hero2 = quest:GetHero()
+            if (quest:IsDistanceBetweenThingsUnder(me, hero2, 3.0) and (not quest:GetStateBool("CutscenePlaying"))) and not quest:GetStateBool("MagicianSleeping") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 local scratchValue = "TEXT_QST_B13_GUARD_ENTRY_REFUSED" .. helpers.GetHeroStatusTextTag(quest, me)
                 resources:SetString(resources:MemberStringMap("csargs"), "$DIALOGUE", scratchValue)
@@ -69,9 +74,16 @@ function Main(quest, me)
         if not quest:GetStateBool("BecomeNunnery") then
             if quest:GetStateBool("HeroTricking") and helpers.IsHeroWearingBeard(quest, me) then
                 if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
-                local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+                local scratchValue26 = resources:ScriptThing(resource)
+                local fret_00 = quest:GetHealth(scratchValue26)
                 if 0.0 < fret_00 then
-                    if not me:Speak(hero, "TEXT_QST_B13_GUARD_STRANGE_LADY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e40673 end
+                    local hero3 = quest:GetHero()
+                    if not me:Speak(hero3, "TEXT_QST_B13_GUARD_STRANGE_LADY", GROUP_SELECT_FIRST, false, true, false) then
+                        goto LAB_00e40673
+                    end
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then goto LAB_00e40673 end
+                    end
                     goto LAB_00e40a48
                 end
                 goto LAB_00e40a57
@@ -84,31 +96,59 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    local fret_02 = quest:GetHealth(resources:ScriptThing(resource))
+                    local scratchValue24 = resources:ScriptThing(resource)
+                    local fret_02 = quest:GetHealth(scratchValue24)
                     if 0.0 < fret_02 then
-                        if not me:Speak(hero, "TEXT_QST_B13_GUARD_FEMALE_NO_ENTRY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e40673 end
+                        local hero4 = quest:GetHero()
+                        if not me:Speak(hero4, "TEXT_QST_B13_GUARD_FEMALE_NO_ENTRY", GROUP_SELECT_FIRST, false, true, false) then
+                            goto LAB_00e40673
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00e40673 end
+                        end
                         goto LAB_00e40a48
                     end
                 elseif not quest:GetStateBool("PlayerOwned") then
                     if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
-                    local fret_04 = quest:GetHealth(resources:ScriptThing(resource))
+                    local scratchValue23 = resources:ScriptThing(resource)
+                    local fret_04 = quest:GetHealth(scratchValue23)
                     if 0.0 < fret_04 then
-                        if not me:Speak(hero, "TEXT_QST_B13_GUARD_MALE_NO_ENTRY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e40673 end
+                        local hero5 = quest:GetHero()
+                        if not me:Speak(hero5, "TEXT_QST_B13_GUARD_MALE_NO_ENTRY", GROUP_SELECT_FIRST, false, true, false) then
+                            goto LAB_00e40673
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00e40673 end
+                        end
                         goto LAB_00e40a48
                     end
                 else
                     if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
-                    local fret_03 = quest:GetHealth(resources:ScriptThing(resource))
+                    local scratchValue27 = resources:ScriptThing(resource)
+                    local fret_03 = quest:GetHealth(scratchValue27)
                     if 0.0 < fret_03 then
-                        if not me:Speak(hero, "TEXT_QST_B13_GUARD_GREETING", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e40673 end
+                        local hero6 = quest:GetHero()
+                        if not me:Speak(hero6, "TEXT_QST_B13_GUARD_GREETING", GROUP_SELECT_FIRST, false, true, false) then
+                            goto LAB_00e40673
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00e40673 end
+                        end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
                     end
                 end
             else
                 if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
-                local fret_01 = quest:GetHealth(resources:ScriptThing(resource))
+                local scratchValue25 = resources:ScriptThing(resource)
+                local fret_01 = quest:GetHealth(scratchValue25)
                 if 0.0 < fret_01 then
-                    if not me:Speak(hero, "TEXT_QST_B13_GUARD_HERO_EXHAUSTED", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e40673 end
+                    local hero7 = quest:GetHero()
+                    if not me:Speak(hero7, "TEXT_QST_B13_GUARD_HERO_EXHAUSTED", GROUP_SELECT_FIRST, false, true, false) then
+                        goto LAB_00e40673
+                    end
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then goto LAB_00e40673 end
+                    end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
                 end
             end
@@ -122,25 +162,23 @@ function Main(quest, me)
         ::LAB_00e40a57::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie3)
-        if not me:MsgIsHitByHero() then
-            if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40afa_c1 end
-            scratchValue7 = 0
-        end
-        goto FLOW_past_lab_00e40afa_c1
-        ::LAB_00e40afa_c1::
-        scratchValue7 = 1
-        ::FLOW_past_lab_00e40afa_c1::
-        if scratchValue7 ~= 0 then
+        if not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, a .. helpers.GetHeroStatusTextTag(quest, me), 2, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a_c1 end
+            scriptThing = resources:ScriptThing(resource)
+            if 0.0 < quest:GetHealth(scriptThing) then
+                p1 = "TEXT_QST_B13_GUARD_ATTACKED" .. helpers.GetHeroStatusTextTag(quest, me)
+                local hero8 = quest:GetHero()
+                if not me:Speak(hero8, p1, 2, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                else
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a_c1 end
+                    end
+                    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a_c1 end
+                    goto FLOW_past_lab_00e40e5a_c1
                 end
-                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e40e5a_c1 end
-                goto FLOW_past_lab_00e40e5a_c1
                 ::LAB_00e40e5a_c1::
                 resources:DestroyMovie(movie2)
                 resources:ReleaseResource(resource)
@@ -151,10 +189,11 @@ function Main(quest, me)
             resources:DestroyMovie(movie2)
         end
         if not quest:GetStateBool("HeroPartying") and ((not quest:GetStateBool("HeroTricking") or not helpers.IsHeroWearingBeard(quest, me)) and not quest:GetStateBool("PlayerOwned")) then
-            if (quest:IsDistanceBetweenThingsUnder(me, hero, 3.0) and (not quest:GetStateBool("CutscenePlaying"))) and not quest:GetStateBool("MagicianSleeping") then
+            local hero9 = quest:GetHero()
+            if (quest:IsDistanceBetweenThingsUnder(me, hero9, 3.0) and (not quest:GetStateBool("CutscenePlaying"))) and not quest:GetStateBool("MagicianSleeping") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                local scratchValue23 = "TEXT_QST_B13_GUARD_ENTRY_REFUSED" .. helpers.GetHeroStatusTextTag(quest, me)
-                resources:SetString(resources:MemberStringMap("csargs"), "$DIALOGUE", scratchValue23)
+                local scratchValue22 = "TEXT_QST_B13_GUARD_ENTRY_REFUSED" .. helpers.GetHeroStatusTextTag(quest, me)
+                resources:SetString(resources:MemberStringMap("csargs"), "$DIALOGUE", scratchValue22)
                 movie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 helpers.PlayCutscene(quest, me, "CS_BORDELLO_KICKEDOUT", false)
@@ -165,12 +204,20 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         goto FLOW_after_lab_00e40a6c
         ::FLOW_past_lab_00e40a57::
-        if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
-        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-            if not me:Speak(hero, "TEXT_QST_B13_GUARD_EMPLOYED_NUNNERY", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e40673 end
-            if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
+        if not (quest:IsActiveThreadTerminating()) then
+            scratchValue28 = resources:ScriptThing(resource)
+            if 0.0 < quest:GetHealth(scratchValue28) then
+                local hero10 = quest:GetHero()
+                if not me:Speak(hero10, "TEXT_QST_B13_GUARD_EMPLOYED_NUNNERY", GROUP_SELECT_FIRST, false, true, false) then
+                    goto LAB_00e40673
+                end
+                while me:IsPerformingScriptTask() do
+                    if not quest:NewScriptFrame(me) then goto LAB_00e40673 end
+                end
+                if quest:IsActiveThreadTerminating() then goto LAB_00e40673 end
+            end
+            goto LAB_00e40a57
         end
-        goto LAB_00e40a57
         ::LAB_00e40673::
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie3)

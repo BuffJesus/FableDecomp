@@ -12,8 +12,9 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, bVar2, cVar3, iVar4, iVar5, i_stk_50, pCVar6, pOther, pThing, puVar7, pvVar8, r1, vec_28, xStack_10, xStack_40, xStack_54
+    local __native_condition_1, __native_condition_2, bVar2, cVar3, iVar4, iVar5, i_stk_50, native_arg_member_string_value_1, pCVar6, pOther, pThing, puVar7, pvVar8, r1, vec_28, xStack_10, xStack_40, xStack_54
     local alive = true
+    xStack_54 = ""
     iVar4 = quest:RegisterTimer()
     i_stk_50 = iVar4
     quest:SetTimer(i_stk_50, 0)
@@ -88,7 +89,7 @@ function Main(quest, me)
                 bVar2 = false
                 pCVar6 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar2)
-                iVar4 = math.random(0, 32767)
+                iVar4 = quest:RetailRandModulo(32768)
                 iVar5 = quest:EntityGetSex(me)
                 if iVar5 == 1 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -99,7 +100,7 @@ function Main(quest, me)
                         quest:DeregisterTimer(i_stk_50)
                         return
                     end
-                    pOther = (__native_entity_state:GetStateInt("self_0x14") + 0x13c + (iVar4 % 5) * 4)
+                    pOther = ("RandomFollowerResponseM_" .. tostring((iVar4 % 5)))
                     goto LAB_00ee50ab
                 elseif iVar5 == 2 then
                     alive = not quest:IsActiveThreadTerminating()
@@ -109,12 +110,13 @@ function Main(quest, me)
                         quest:DeregisterTimer(i_stk_50)
                         return
                     end
-                    pOther = (__native_entity_state:GetStateInt("self_0x14") + 0x150 + (iVar4 % 5) * 4)
+                    pOther = ("RandomFollowerResponseF_" .. tostring((iVar4 % 5)))
                     goto LAB_00ee50ab
                 end
                 goto FLOW_past_lab_00ee50ab
                 ::LAB_00ee50ab::
-                xStack_54 = pOther
+                native_arg_member_string_value_1 = quest:GetStateString(pOther)
+                xStack_54 = native_arg_member_string_value_1
                 ::FLOW_past_lab_00ee50ab::
                 iVar5 = quest:AddNewConversation(me, false, false)
                 pCVar6 = quest:GetHero()
@@ -123,7 +125,7 @@ function Main(quest, me)
                 quest:AddLineToConversation(iVar5, xStack_54, me, pCVar6, false)
                 iVar4 = i_stk_50
                 quest:SetTimer(i_stk_50, quest:ReadGlobalGameData(0x8e4))
-                me:FollowThing(nil --[[missing]], quest:ReadGlobalGameData(0x8d0), true)
+                me:FollowThing(r1, quest:ReadGlobalGameData(0x8d0), true)
             end
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()

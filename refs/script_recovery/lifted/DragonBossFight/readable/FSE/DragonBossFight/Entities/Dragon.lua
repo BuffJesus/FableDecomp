@@ -1,23 +1,41 @@
 -- Readable native conversion: Dragon. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    DBDragonMediumHealth = 2996,  -- 1400.0
+    DBDragonLowHealth = 3000,  -- 900.0
+    DBDragonVeryLowHealth = 3004,  -- 500.0
+    DBNumMinionsMediumHealth = 3012,  -- 2
+    DBNumMinionsLowHealth = 3016,  -- 2
+    DBNumMinionsVeryLowHealth = 3020,  -- 3
+    DBNumSummonersMediumHealth = 3028,  -- 0
+    DBNumSummonersLowHealth = 3032,  -- 1
+    DBNumSummonersVeryLowHealth = 3036,  -- 1
+}
+
 local helpers = require("DragonBossFight.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local mediumHealth, lowHealth, veryLowHealth
+local mediumHealth_, lowHealth_, veryLowHealth_
 
 -- Dragon.Main (retail 0x00d25a00)
 function Main(quest, me)
-    local getStateInt, getStateInt2, getStateInt3, predicateResult, this_00
+    local getStateInt, getStateInt2, getStateInt3, predicateResult, readGlobalGameData
+    local mediumHealth = mediumHealth_
+    local lowHealth = lowHealth_
+    local veryLowHealth = veryLowHealth_
     if not quest:NewScriptFrame(me) then return end
     predicateResult = false
     while quest:GetStateInt("DragonState") ~= 4 do
         if not quest:NewScriptFrame(me) then return end
         if predicateResult then
             if not quest:IsCreatureFlying(me) then
+                if quest:IsActiveThreadTerminating() then return end
                 predicateResult = false
             end
         elseif quest:IsCreatureFlying(me) then
+            if quest:IsActiveThreadTerminating() then return end
             helpers.SpawnEnemies(quest, me)
             predicateResult = true
         end
@@ -30,11 +48,11 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateInt("DragonState", 1)
             if not quest:IsActiveThreadTerminating() then
-                quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3012))
-                quest:ReadGlobalGameData(3028)
+                quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumMinionsMediumHealth))
+                readGlobalGameData = quest:ReadGlobalGameData(SCRIPT_DEF.DBNumSummonersMediumHealth)
                 goto LAB_00d25bfd
             end
-            -- TODO(native): } else {
+        else
             getStateInt2 = quest:GetStateInt("DragonState") == 1
             if getStateInt2 then
                 local fret_00 = quest:GetHealth(me)
@@ -44,11 +62,11 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateInt("DragonState", 2)
                 if not quest:IsActiveThreadTerminating() then
-                    quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3016))
-                    quest:ReadGlobalGameData(3032)
+                    quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumMinionsLowHealth))
+                    readGlobalGameData = quest:ReadGlobalGameData(SCRIPT_DEF.DBNumSummonersLowHealth)
                     goto LAB_00d25bfd
                 end
-                -- TODO(native): } else {
+            else
                 getStateInt3 = quest:GetStateInt("DragonState") == 2
                 if getStateInt3 then
                     local fret_01 = quest:GetHealth(me)
@@ -58,8 +76,8 @@ function Main(quest, me)
                     if quest:IsActiveThreadTerminating() then return end
                     quest:SetStateInt("DragonState", 3)
                     if not quest:IsActiveThreadTerminating() then
-                        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3020))
-                        quest:ReadGlobalGameData(3036)
+                        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumMinionsVeryLowHealth))
+                        readGlobalGameData = quest:ReadGlobalGameData(SCRIPT_DEF.DBNumSummonersVeryLowHealth)
                         goto LAB_00d25bfd
                     end
                 end
@@ -67,17 +85,18 @@ function Main(quest, me)
         end
         goto FLOW_past_lab_00d25bfd
         ::LAB_00d25bfd::
-        -- TODO(native): *(undefined4 *)(this_00 + 0x6c) = uVar4;
+        quest:SetStateInt("TargetNumSummoners", readGlobalGameData)
         ::FLOW_past_lab_00d25bfd::
     end
+    quest:IsActiveThreadTerminating()
 end
 
 -- Dragon.Init (retail 0x00d25880)
 function Init(quest, me)
     helpers.helper_D258C0(quest, me, 0)
-    mediumHealth = quest:ReadGlobalGameData(2996)
-    lowHealth = quest:ReadGlobalGameData(3000)
-    veryLowHealth = quest:ReadGlobalGameData(3004)
+    mediumHealth_ = quest:ReadGlobalGameData(SCRIPT_DEF.DBDragonMediumHealth)
+    lowHealth_ = quest:ReadGlobalGameData(SCRIPT_DEF.DBDragonLowHealth)
+    veryLowHealth_ = quest:ReadGlobalGameData(SCRIPT_DEF.DBDragonVeryLowHealth)
 end
 
 -- Dragon.OnPersist (retail 0x00cdebc0)

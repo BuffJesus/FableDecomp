@@ -16,6 +16,7 @@ function Main(quest, me)
         if not me:MsgIsUsedByHero() then
             lighthouseStarted = quest:GetStateBool("LighthouseStarted")
         else
+            if quest:IsActiveThreadTerminating() then return end
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:SetStateBool("LighthouseStarted", true)

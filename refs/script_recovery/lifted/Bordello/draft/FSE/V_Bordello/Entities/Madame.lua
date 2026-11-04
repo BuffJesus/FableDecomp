@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, aC_stk_80, au_stk_9c, au_stk_b8, au_stk_e8, bVar3, cVar4, ctr_140, fVar14, fVar19, iVar15, iVar16, iVar17, iVar5, iVar7, i_stk_19c, i_stk_1a8, native_arg_sequence_1, native_arg_sequence_2, p0, p5, pCVar10, pCVar6, pCVar8, pcVar18, pvVar9, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_120, xStack_124, xStack_124_b3, xStack_12c, xStack_134, xStack_148, xStack_148_2, xStack_14c, xStack_15c, xStack_160, xStack_164, xStack_174, xStack_178, xStack_17c, xStack_90, xStack_a0, xStack_a4, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_f8_b3, x_stk_14, x_stk_18, x_stk_20, x_stk_24, x_stk_44, x_stk_50, x_stk_54, x_stk_5c, x_stk_6c, x_stk_74, x_stk_78, x_stk_80
+    local CVar2, __push1, __push10, __push11, __push12, __push13, __push14, __push15, __push2, __push3, __push4, __push5, __push6, __push7, __push8, __push9, aC_stk_80, au_stk_9c, au_stk_b8, au_stk_e8, bVar3, cVar4, ctr_140, fVar14, fVar19, iVar15, iVar16, iVar17, iVar5, iVar7, i_stk_19c, i_stk_1a8, native_arg_sequence_1, native_arg_sequence_2, p0, p5, pCVar10, pCVar6, pCVar8, pcVar18, pvVar9, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_120, xStack_124_b3, xStack_12c, xStack_148_2, xStack_14c, xStack_15c, xStack_160, xStack_164, xStack_174, xStack_17c, xStack_90, xStack_a0, xStack_a4, xStack_bc, xStack_cc, xStack_dc, xStack_ec, xStack_f8_b3, x_stk_14, x_stk_18, x_stk_20, x_stk_24, x_stk_44, x_stk_50, x_stk_54, x_stk_5c, x_stk_6c, x_stk_74, x_stk_78, x_stk_80
     local alive = true
     x_stk_80 = 0
     alive = quest:NewScriptFrame(me)
@@ -32,35 +32,30 @@ function Main(quest, me)
     end
     uVar20 = 0
     ctr_140 = nil
-    -- TODO(native): xStack_174 = *(undefined ***)(this + 0x10);
-    if xStack_174 ~= nil then
-        -- TODO(native): *xStack_174 = *xStack_174 + 1;
-    end
-    quest:SetIsPushableByHero(nil --[[missing]], (uVar20 ~= 0))
+    quest:SetIsPushableByHero(me, (uVar20 ~= 0))
     i_stk_1a8 = 0
     xStack_17c = p0
     quest:EntitySetAsKillable(me, false, false)
-    -- TODO(native): xStack_124._0_3_ = 0;
-    -- TODO(native): xStack_124_b3 = '\0';
     xStack_15c = p0
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     xStack_174 = resources:NewResource()
-    resources:PrepareResource(xStack_174)
+    local madameResource = xStack_174
+    resources:PrepareResource(madameResource)
     xStack_160 = xStack_174
     xStack_164 = p0
-    cVar4 = resources:TryAcquire(xStack_174, me, 4)
+    cVar4 = resources:TryAcquire(madameResource, me, 4)
     while not cVar4 do
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then goto LAB_00e3e301 end
         xStack_12c = p0
-        cVar4 = resources:TryAcquire(xStack_174, me, 4)
+        cVar4 = resources:TryAcquire(madameResource, me, 4)
     end
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if bVar3 then goto LAB_00e3e301 end
-    resources:AssignResource(resources:MemberResource("seh_Madam"), xStack_174)
+    resources:AssignResource(resources:MemberResource("seh_Madam"), madameResource)
     iVar5 = quest:RegisterTimer()
     i_stk_1a8 = iVar5
     quest:SetTimer(iVar5, 2)
@@ -69,7 +64,6 @@ function Main(quest, me)
         bVar3 = not alive
         if not bVar3 then
             xStack_160 = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             bVar3 = require("V_Bordello.native_quest_helpers").helper_E3E320(quest, me)
             if bVar3 then
@@ -131,18 +125,21 @@ function Main(quest, me)
                 quest:EntitySetFacingAngleTowardsThing(me, __push1, false)
             end
         end
+        xStack_17c = ""
+        g_PresentedItemName = nil
         bVar3 = me:MsgIsPresentedWithItem()
-        if bVar3 then xStack_178 = _G.g_PresentedItemName end
+        if bVar3 then xStack_17c = g_PresentedItemName end
         if bVar3 then
-            if xStack_178 == nil then
+            if xStack_17c == nil then
                 bVar3 = false
                 if bVar3 then
                     goto LAB_00e3bf28
                 end
             else
+                xStack_120 = xStack_17c
                 iVar5 = ((xStack_120 == "OBJECT_BEER_TANKARD") and 0 or 1)
-                -- TODO(native): xStack_124_b3 = !(iVar5 != 0);
-                if xStack_124_b3 ~= 0 then goto LAB_00e3bf28 end
+                xStack_124_b3 = (iVar5 == 0)
+                if xStack_124_b3 then goto LAB_00e3bf28 end
             end
             goto FLOW_past_lab_00e3bf28
             ::LAB_00e3bf28::
@@ -150,16 +147,16 @@ function Main(quest, me)
             bVar3 = not alive
             if bVar3 then goto LAB_00e3e2ef end
             xStack_dc = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
-            au_stk_9c = resources:ScriptThing(xStack_124)
+            au_stk_9c = resources:ScriptThing(madameResource)
             pCVar8 = au_stk_9c
             fVar14 = quest:GetHealth(pCVar8)
             CVar2 = xStack_164
-            if fVar14 <= 0.0 then
-                -- TODO(native): xStack_164 = CVar2 & 0xffffff;
+            xStack_124_b3 = true
+            if not (fVar14 > 0.0) then
+                xStack_124_b3 = false
             end
-            if 1 ~= 0 then
+            if xStack_124_b3 then
                 iVar17 = 0
                 iVar16 = 1
                 iVar15 = 0
@@ -167,6 +164,13 @@ function Main(quest, me)
                 pcVar18 = "TEXT_QST_B13_MADAME_GIVEN_BEER"
                 iVar5 = quest:GetHero()
                 r1 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                if not r1 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_dc)
+                    quest:DeregisterTimer(i_stk_1a8)
+                    resources:ReleaseResource(madameResource)
+                    return
+                end
                 iVar5 = me:IsPerformingScriptTask()
                 cVar4 = iVar5
                 while cVar4 do
@@ -175,9 +179,9 @@ function Main(quest, me)
                     bVar3 = not alive
                     if bVar3 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_cc)
-                        quest:DeregisterTimer(xStack_160)
-                        resources:DestroyMovie(xStack_160)
+                        resources:DestroyMovie(xStack_dc)
+                        quest:DeregisterTimer(i_stk_1a8)
+                        resources:ReleaseResource(madameResource)
                         return
                     end
                     iVar5 = me:IsPerformingScriptTask()
@@ -187,12 +191,13 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then
                     quest:PauseAllNonScriptedEntities(false)
+                    pCVar10 = xStack_dc
                     goto LAB_00e3e2ea
                 end
             end
             quest:GiveHeroObject("OBJECT_BEER_TANKARD", -1, true)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(xStack_cc)
+            resources:DestroyMovie(xStack_dc)
             ::FLOW_past_lab_00e3bf28::
         end
         xStack_124_b3 = me:IsTalkedToByHero()
@@ -228,8 +233,8 @@ function Main(quest, me)
                 xStack_174 = p0
                 quest:EntitySetFacingAngleTowardsThing(me, __push3, true)
                 alive = quest:NewScriptFrame(me)
-                quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0x1, 1)
-                au_stk_b8 = resources:ScriptThing(xStack_174)
+                quest:CameraUseCameraPoint("CAM_B_MADAM", me, -1.0, 0, -1)
+                au_stk_b8 = resources:ScriptThing(madameResource)
                 pCVar8 = au_stk_b8
                 fVar14 = quest:GetHealth(pCVar8)
                 cVar4 = 0.0 < fVar14
@@ -241,6 +246,9 @@ function Main(quest, me)
                     pcVar18 = "TEXT_QST_B13_MADAME_WORK_QUESTION"
                     iVar5 = quest:GetHero()
                     r2 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                    if not r2 then
+                        goto LAB_00e3d063
+                    end
                     iVar5 = me:IsPerformingScriptTask()
                     cVar4 = iVar5
                     while cVar4 do
@@ -271,7 +279,7 @@ function Main(quest, me)
                 bVar3 = not alive
                 if iVar5 == 1 then
                     if bVar3 then goto LAB_00e3d063 end
-                    x_stk_18 = resources:ScriptThing(xStack_148)
+                    x_stk_18 = resources:ScriptThing(madameResource)
                     iVar7 = x_stk_18
                     fVar14 = quest:GetHealth(iVar7)
                     cVar4 = 0.0 < fVar14
@@ -283,6 +291,9 @@ function Main(quest, me)
                         pcVar18 = "TEXT_QST_B13_MADAME_HERO_JOINED"
                         iVar5 = quest:GetHero()
                         r3 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                        if not r3 then
+                            goto LAB_00e3d473
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar4 = iVar5
                         while cVar4 do
@@ -300,7 +311,7 @@ function Main(quest, me)
                     quest:SetStateBool("HeroTricking", true)
                 else
                     if bVar3 then goto LAB_00e3d473 end
-                    x_stk_54 = resources:ScriptThing(xStack_148)
+                    x_stk_54 = resources:ScriptThing(madameResource)
                     iVar7 = x_stk_54
                     fVar14 = quest:GetHealth(iVar7)
                     cVar4 = 0.0 < fVar14
@@ -312,6 +323,9 @@ function Main(quest, me)
                         pcVar18 = "TEXT_QST_B13_MADAME_HERO_DECLINED"
                         iVar5 = quest:GetHero()
                         r4 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                        if not r4 then
+                            goto LAB_00e3d063
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar4 = iVar5
                         while cVar4 do
@@ -340,7 +354,6 @@ function Main(quest, me)
                     bVar3 = not alive
                     if not bVar3 then
                         xStack_cc = resources:StartMovie("")
-                        quest:StartMovieSequence()
                         quest:PauseAllNonScriptedEntities(true)
                         require("V_Bordello.native_quest_helpers").helper_E3E720(quest, me, "CS_BORDELLO_MAGICIAN_LEAVES", false)
                         quest:SetStateBool("PlayerOwned", true)
@@ -371,23 +384,22 @@ function Main(quest, me)
                     bVar3 = not alive
                     if bVar3 then goto LAB_00e3e2ef end
                     xStack_a0 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     __push5 = quest:GetHero()
                     quest:EntitySetFacingAngleTowardsThing(me, __push5, false)
                     quest:Pause(1.0)
                     __push6 = quest:GetHero()
-                    xStack_174 = p0
+                    xStack_174 = me
                     quest:EntitySetFacingAngleTowardsThing(me, __push6, true)
                     alive = quest:NewScriptFrame(me)
-                    quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0x1, fVar19)
+                    quest:CameraUseCameraPoint("CAM_B_MADAM", me, -1.0, 0, -1)
                     if 5 < me then
                         i_stk_19c = 1
                     end
                     pCVar6 = tostring(i_stk_19c)
                     xStack_14c = ("TEXT_QST_B13_MADAME_CHIT_CHAT_0" .. pCVar6)
-                    au_stk_e8 = resources:ScriptThing(xStack_174)
+                    au_stk_e8 = resources:ScriptThing(madameResource)
                     pCVar8 = au_stk_e8
                     fVar14 = quest:GetHealth(pCVar8)
                     cVar4 = 0.0 < fVar14
@@ -399,6 +411,11 @@ function Main(quest, me)
                         pvVar9 = xStack_14c
                         iVar5 = quest:GetHero()
                         r5 = me:Speak(iVar5, pvVar9, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                        if not r5 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            pCVar10 = xStack_a0
+                            goto LAB_00e3e2ea
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar4 = iVar5
                         while cVar4 do
@@ -430,18 +447,17 @@ function Main(quest, me)
                     bVar3 = not alive
                     if bVar3 then goto LAB_00e3e2ef end
                     xStack_90 = resources:StartMovie("")
-                    quest:StartMovieSequence()
                     quest:PauseAllNonScriptedEntities(true)
                     quest:FixMovieSequenceCamera(true)
                     __push7 = quest:GetHero()
                     quest:EntitySetFacingAngleTowardsThing(me, __push7, false)
                     quest:Pause(1.0)
                     __push8 = quest:GetHero()
-                    xStack_174 = p0
+                    xStack_174 = me
                     quest:EntitySetFacingAngleTowardsThing(me, __push8, true)
                     alive = quest:NewScriptFrame(me)
-                    quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0x1, i_stk_19c)
-                    x_stk_80 = resources:ScriptThing(xStack_174)
+                    quest:CameraUseCameraPoint("CAM_B_MADAM", me, -1.0, 0, -1)
+                    x_stk_80 = resources:ScriptThing(madameResource)
                     pCVar8 = x_stk_80
                     fVar14 = quest:GetHealth(pCVar8)
                     cVar4 = 0.0 < fVar14
@@ -453,6 +469,11 @@ function Main(quest, me)
                         pcVar18 = "TEXT_QST_B13_MADAME_HERO_EARN_SOME"
                         iVar5 = quest:GetHero()
                         r6 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                        if not r6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            pCVar10 = xStack_90
+                            goto LAB_00e3e2ea
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar4 = iVar5
                         while cVar4 do
@@ -480,7 +501,7 @@ function Main(quest, me)
                     pCVar10 = xStack_90
                 end
             end
-            resources:ReleaseResource(pCVar10)
+            resources:DestroyMovie(pCVar10)
         end
         ::LAB_00e3cab0::
         bVar3 = me:MsgIsHitByHero()
@@ -492,30 +513,29 @@ function Main(quest, me)
                 bVar3 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar3 then goto LAB_00e3cb3c end
             end
-            -- TODO(native): xStack_124_b3 = '\0';
+            xStack_124_b3 = false
         end
         goto FLOW_past_lab_00e3cb3c
         ::LAB_00e3cb3c::
-        -- TODO(native): xStack_124_b3 = '\x01';
+        xStack_124_b3 = true
         ::FLOW_past_lab_00e3cb3c::
-        if xStack_124_b3 ~= 0 then
+        if xStack_124_b3 then
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00e3e2ef end
             xStack_ec = resources:StartMovie("")
-            quest:StartMovieSequence()
             quest:PauseAllNonScriptedEntities(true)
             quest:FixMovieSequenceCamera(true)
             __push9 = quest:GetHero()
             quest:EntitySetFacingAngleTowardsThing(me, __push9, false)
             quest:Pause(1.0)
             __push10 = quest:GetHero()
-            xStack_174 = p0
+            xStack_174 = me
             quest:EntitySetFacingAngleTowardsThing(me, __push10, true)
             alive = quest:NewScriptFrame(me)
             iVar7 = -1
-            quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, iVar7, 0x1)
-            xStack_90 = resources:ScriptThing(xStack_174)
+            quest:CameraUseCameraPoint("CAM_B_MADAM", me, -1.0, 0, -1)
+            xStack_90 = resources:ScriptThing(madameResource)
             pCVar8 = xStack_90
             fVar14 = quest:GetHealth(pCVar8)
             cVar4 = 0.0 < fVar14
@@ -525,10 +545,17 @@ function Main(quest, me)
                 iVar16 = 0
                 iVar15 = 2
                 pCVar6 = require("V_Bordello.native_quest_helpers").helper_E3E6B0(quest, me)
-                pCVar6 = (a .. pCVar6)
+                pCVar6 = ("TEXT_QST_B13_MADAME_ATTACKED" .. pCVar6)
                 pvVar9 = pCVar6
                 iVar5 = quest:GetHero()
                 r7 = me:Speak(iVar5, pvVar9, iVar15, (iVar16 ~= 0), (iVar17 ~= 0), (p5 ~= 0))
+                if not r7 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_ec)
+                    quest:DeregisterTimer(iVar7)
+                    resources:ReleaseResource(madameResource)
+                    return
+                end
                 iVar5 = me:IsPerformingScriptTask()
                 cVar4 = iVar5
                 while cVar4 do
@@ -539,7 +566,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_ec)
                         quest:DeregisterTimer(iVar7)
-                        resources:ReleaseResource(xStack_174)
+                        resources:ReleaseResource(madameResource)
                         return
                     end
                     iVar5 = me:IsPerformingScriptTask()
@@ -567,7 +594,7 @@ function Main(quest, me)
         while true do
             xStack_148_2 = iVar5
             if not (not bVar3) then break end
-            iVar7 = quest:GetTimer(4)
+            iVar7 = quest:GetTimer(i_stk_1a8)
             if iVar7 == 0 then
                 fVar19 = 8.0
                 pCVar8 = quest:GetHero()
@@ -576,7 +603,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then break end
-                    quest:SetTimer(4, fVar19)
+                    quest:SetTimer(i_stk_1a8, 4)
                     __push11 = quest:GetHero()
                     xStack_12c = p0
                     quest:EntitySetFacingAngleTowardsThing(me, __push11, false)
@@ -588,17 +615,16 @@ function Main(quest, me)
                 bVar3 = not alive
                 if bVar3 then break end
                 xStack_15c = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
                 __push12 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(me, __push12, false)
                 quest:Pause(1.0)
                 __push13 = quest:GetHero()
-                xStack_174 = p0
+                xStack_174 = me
                 quest:EntitySetFacingAngleTowardsThing(me, __push13, true)
                 alive = quest:NewScriptFrame(me)
-                quest:CameraUseCameraPoint(me, pCVar8, -1.0, 0x1, nil --[[missing]])
+                quest:CameraUseCameraPoint("CAM_B_MADAM", me, -1.0, 0, -1)
                 if not quest:GetStateBool("BecomeNunnery") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -612,7 +638,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00e3d473 end
-                            x_stk_74 = resources:ScriptThing(xStack_174)
+                            x_stk_74 = resources:ScriptThing(madameResource)
                             iVar7 = x_stk_74
                             fVar14 = quest:GetHealth(iVar7)
                             cVar4 = 0.0 < fVar14
@@ -624,6 +650,9 @@ function Main(quest, me)
                                 pcVar18 = "TEXT_QST_B13_MADAME_WORK_QUESTION"
                                 iVar5 = quest:GetHero()
                                 r8 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                if not r8 then
+                                    goto LAB_00e3d063
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -662,7 +691,7 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
                                         if bVar3 then goto LAB_00e3d063 end
-                                        x_stk_54 = resources:ScriptThing(xStack_148_2)
+                                        x_stk_54 = resources:ScriptThing(madameResource)
                                         iVar7 = x_stk_54
                                         fVar14 = quest:GetHealth(iVar7)
                                         cVar4 = 0.0 < fVar14
@@ -674,6 +703,9 @@ function Main(quest, me)
                                             pcVar18 = "TEXT_QST_B13_MADAME_HERO_JOINED"
                                             iVar5 = quest:GetHero()
                                             r9 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                            if not r9 then
+                                                goto LAB_00e3d473
+                                            end
                                             iVar5 = me:IsPerformingScriptTask()
                                             cVar4 = iVar5
                                             while cVar4 do
@@ -692,7 +724,7 @@ function Main(quest, me)
                                         alive = not quest:IsActiveThreadTerminating()
                                         bVar3 = not alive
                                         if bVar3 then goto LAB_00e3d473 end
-                                        x_stk_24 = resources:ScriptThing(xStack_148_2)
+                                        x_stk_24 = resources:ScriptThing(madameResource)
                                         iVar7 = x_stk_24
                                         fVar14 = quest:GetHealth(iVar7)
                                         cVar4 = 0.0 < fVar14
@@ -704,6 +736,9 @@ function Main(quest, me)
                                             pcVar18 = "TEXT_QST_B13_MADAME_HERO_JOINED_OWNED"
                                             iVar5 = quest:GetHero()
                                             r10 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                            if not r10 then
+                                                goto LAB_00e3d063
+                                            end
                                             iVar5 = me:IsPerformingScriptTask()
                                             cVar4 = iVar5
                                             while cVar4 do
@@ -727,7 +762,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then goto LAB_00e3d473 end
-                                    x_stk_6c = resources:ScriptThing(xStack_148_2)
+                                    x_stk_6c = resources:ScriptThing(madameResource)
                                     iVar7 = x_stk_6c
                                     fVar14 = quest:GetHealth(iVar7)
                                     cVar4 = 0.0 < fVar14
@@ -739,6 +774,9 @@ function Main(quest, me)
                                         pcVar18 = "TEXT_QST_B13_MADAME_HERO_JOINED_OWNED"
                                         iVar5 = quest:GetHero()
                                         r11 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                        if not r11 then
+                                            goto LAB_00e3d063
+                                        end
                                         iVar5 = me:IsPerformingScriptTask()
                                         cVar4 = iVar5
                                         while cVar4 do
@@ -757,7 +795,7 @@ function Main(quest, me)
                                 quest:SetStateBool("HeroTricking", true)
                             else
                                 if bVar3 then goto LAB_00e3d473 end
-                                x_stk_18 = resources:ScriptThing(xStack_15c)
+                                x_stk_18 = resources:ScriptThing(madameResource)
                                 iVar7 = x_stk_18
                                 fVar14 = quest:GetHealth(iVar7)
                                 cVar4 = 0.0 < fVar14
@@ -769,6 +807,9 @@ function Main(quest, me)
                                     pcVar18 = "TEXT_QST_B13_MADAME_HERO_DECLINED"
                                     iVar5 = quest:GetHero()
                                     r12 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                    if not r12 then
+                                        goto LAB_00e3d063
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar4 = iVar5
                                     while cVar4 do
@@ -786,7 +827,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00e3d063 end
-                            x_stk_44 = resources:ScriptThing(xStack_148_2)
+                            x_stk_44 = resources:ScriptThing(madameResource)
                             iVar7 = x_stk_44
                             fVar14 = quest:GetHealth(iVar7)
                             cVar4 = 0.0 < fVar14
@@ -798,6 +839,9 @@ function Main(quest, me)
                                 pcVar18 = "TEXT_QST_B13_MADAME_HERO_EARN_SOME"
                                 iVar5 = quest:GetHero()
                                 r13 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                if not r13 then
+                                    goto LAB_00e3d473
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -826,7 +870,7 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00e3d063 end
                                 __native_entity_state:SetStateBool("MentionedNunnery", true)
-                                x_stk_20 = resources:ScriptThing(xStack_174)
+                                x_stk_20 = resources:ScriptThing(madameResource)
                                 iVar7 = x_stk_20
                                 fVar14 = quest:GetHealth(iVar7)
                                 cVar4 = 0.0 < fVar14
@@ -838,6 +882,9 @@ function Main(quest, me)
                                     pcVar18 = "TEXT_QST_B13_MADAME_BECOME_NUNNERY"
                                     iVar5 = quest:GetHero()
                                     r14 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                    if not r14 then
+                                        goto LAB_00e3d473
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar4 = iVar5
                                     while cVar4 do
@@ -856,7 +903,7 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then goto LAB_00e3d473 end
-                                x_stk_14 = resources:ScriptThing(xStack_15c)
+                                x_stk_14 = resources:ScriptThing(madameResource)
                                 iVar7 = x_stk_14
                                 fVar14 = quest:GetHealth(iVar7)
                                 cVar4 = 0.0 < fVar14
@@ -868,6 +915,9 @@ function Main(quest, me)
                                     pcVar18 = "TEXT_QST_B13_MADAME_BECOME_NUNNERY_REPEAT"
                                     iVar5 = quest:GetHero()
                                     r15 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                    if not r15 then
+                                        goto LAB_00e3d063
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar4 = iVar5
                                     while cVar4 do
@@ -899,7 +949,7 @@ function Main(quest, me)
                             bVar3 = not alive
                             if iVar5 == 1 then
                                 if bVar3 then goto LAB_00e3d063 end
-                                aC_stk_80 = resources:ScriptThing(xStack_148_2)
+                                aC_stk_80 = resources:ScriptThing(madameResource)
                                 iVar7 = aC_stk_80
                                 fVar14 = quest:GetHealth(iVar7)
                                 cVar4 = 0.0 < fVar14
@@ -911,6 +961,9 @@ function Main(quest, me)
                                     pcVar18 = "TEXT_QST_B13_MADAME_BECOME_NUNNERY_SURE"
                                     iVar5 = quest:GetHero()
                                     r16 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                    if not r16 then
+                                        goto LAB_00e3d473
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar4 = iVar5
                                     while cVar4 do
@@ -941,7 +994,7 @@ function Main(quest, me)
                                 bVar3 = not alive
                                 if iVar5 == 1 then
                                     if bVar3 then goto LAB_00e3d473 end
-                                    x_stk_78 = resources:ScriptThing(xStack_134)
+                                    x_stk_78 = resources:ScriptThing(madameResource)
                                     iVar7 = x_stk_78
                                     fVar14 = quest:GetHealth(iVar7)
                                     cVar4 = 0.0 < fVar14
@@ -953,6 +1006,9 @@ function Main(quest, me)
                                         pcVar18 = "TEXT_QST_B13_MADAME_BECOME_NUNNERY_THANKS"
                                         iVar5 = quest:GetHero()
                                         r17 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                        if not r17 then
+                                            goto LAB_00e3d063
+                                        end
                                         iVar5 = me:IsPerformingScriptTask()
                                         cVar4 = iVar5
                                         while cVar4 do
@@ -976,7 +1032,7 @@ function Main(quest, me)
                                     quest:GiveHeroMorality(0.20000000298023224)
                                 else
                                     if bVar3 then goto LAB_00e3d063 end
-                                    xStack_a4 = resources:ScriptThing(xStack_134)
+                                    xStack_a4 = resources:ScriptThing(madameResource)
                                     iVar7 = xStack_a4
                                     fVar14 = quest:GetHealth(iVar7)
                                     cVar4 = 0.0 < fVar14
@@ -988,6 +1044,9 @@ function Main(quest, me)
                                         pcVar18 = "TEXT_QST_B13_MADAME_BECOME_NUNNERY_RECONSIDER"
                                         iVar5 = quest:GetHero()
                                         r18 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                        if not r18 then
+                                            goto LAB_00e3d473
+                                        end
                                         iVar5 = me:IsPerformingScriptTask()
                                         cVar4 = iVar5
                                         while cVar4 do
@@ -1005,7 +1064,7 @@ function Main(quest, me)
                                 end
                             else
                                 if bVar3 then goto LAB_00e3d473 end
-                                xStack_cc = resources:ScriptThing(xStack_134)
+                                xStack_cc = resources:ScriptThing(madameResource)
                                 iVar7 = xStack_cc
                                 fVar14 = quest:GetHealth(iVar7)
                                 cVar4 = 0.0 < fVar14
@@ -1017,6 +1076,9 @@ function Main(quest, me)
                                     pcVar18 = "TEXT_QST_B13_MADAME_BECOME_NUNNERY_DECLINED"
                                     iVar5 = quest:GetHero()
                                     r19 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                    if not r19 then
+                                        goto LAB_00e3d063
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar4 = iVar5
                                     while cVar4 do
@@ -1034,7 +1096,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00e3d063 end
-                            x_stk_5c = resources:ScriptThing(xStack_148_2)
+                            x_stk_5c = resources:ScriptThing(madameResource)
                             iVar7 = x_stk_5c
                             fVar14 = quest:GetHealth(iVar7)
                             cVar4 = 0.0 < fVar14
@@ -1046,6 +1108,9 @@ function Main(quest, me)
                                 pcVar18 = "TEXT_QST_B13_MADAME_NUNNERY_THANKYOU"
                                 iVar5 = quest:GetHero()
                                 r20 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                                if not r20 then
+                                    goto LAB_00e3d473
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -1072,7 +1137,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00e3d063 end
-                    x_stk_50 = resources:ScriptThing(xStack_174)
+                    x_stk_50 = resources:ScriptThing(madameResource)
                     iVar7 = x_stk_50
                     fVar14 = quest:GetHealth(iVar7)
                     cVar4 = 0.0 < fVar14
@@ -1084,6 +1149,9 @@ function Main(quest, me)
                         pcVar18 = "TEXT_QST_B13_MADAME_NUNNERY_THANKYOU"
                         iVar5 = quest:GetHero()
                         r21 = me:Speak(iVar5, pcVar18, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                        if not r21 then
+                            goto LAB_00e3d473
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar4 = iVar5
                         while cVar4 do
@@ -1111,31 +1179,30 @@ function Main(quest, me)
                     cVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                     if not cVar4 then goto LAB_00e3e06a end
                 end
-                -- TODO(native): xStack_f8_b3 = '\0';
+                xStack_f8_b3 = false
             else
                 goto LAB_00e3e06a
             end
             goto FLOW_past_lab_00e3e06a
             ::LAB_00e3e06a::
-            -- TODO(native): xStack_f8_b3 = '\x01';
+            xStack_f8_b3 = true
             ::FLOW_past_lab_00e3e06a::
-            if xStack_f8_b3 ~= 0 then
+            if xStack_f8_b3 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then break end
                 xStack_bc = resources:StartMovie("")
-                quest:StartMovieSequence()
                 quest:PauseAllNonScriptedEntities(true)
                 quest:FixMovieSequenceCamera(true)
                 __push14 = quest:GetHero()
                 quest:EntitySetFacingAngleTowardsThing(me, __push14, false)
                 quest:Pause(1.0)
                 __push15 = quest:GetHero()
-                xStack_174 = p0
+                xStack_174 = me
                 quest:EntitySetFacingAngleTowardsThing(me, __push15, true)
                 alive = quest:NewScriptFrame(me)
-                quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0x1, nil --[[missing]])
-                xStack_ec = resources:ScriptThing(xStack_174)
+                quest:CameraUseCameraPoint("CAM_B_MADAM", me, -1.0, 0, -1)
+                xStack_ec = resources:ScriptThing(madameResource)
                 pCVar8 = xStack_ec
                 fVar14 = quest:GetHealth(pCVar8)
                 cVar4 = 0.0 < fVar14
@@ -1147,6 +1214,10 @@ function Main(quest, me)
                     pvVar9 = this_00
                     iVar5 = quest:GetHero()
                     r22 = me:Speak(iVar5, pvVar9, iVar7, (iVar15 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                    if not r22 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        goto LAB_00e3e2e3
+                    end
                     iVar5 = me:IsPerformingScriptTask()
                     cVar4 = iVar5
                     while cVar4 do
@@ -1196,7 +1267,7 @@ function Main(quest, me)
     ::LAB_00e3e2ef::
     quest:DeregisterTimer(i_stk_1a8)
     ::LAB_00e3e301::
-    resources:ReleaseResource(xStack_174)
+    resources:ReleaseResource(madameResource)
 end
 
 function Init(quest, me)

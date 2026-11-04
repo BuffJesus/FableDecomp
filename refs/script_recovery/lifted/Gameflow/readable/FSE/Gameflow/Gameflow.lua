@@ -11,12 +11,16 @@ local SCRIPT_DEF = {
 
 -- Gameflow.Main (retail 0x00ce7670)
 function Main(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, isActiveThreadTerminating, predicateResult4, predicateResult5
-    local getMasterGameState, switch, newActorMap
+    local predicateResult, predicateResult2, scratchValue6, isActiveThreadTerminating
+    local predicateResult3, predicateResult4, controlAcquired, getMasterGameState, switch, resource
+    local scratchValue, newActorMap
     quest:CreateThread("CoreQuestReminder")  -- native thread body NScript::CQ_HeroSoulsNostroScript::CNostro::Main: lift it as function CoreQuestReminder(quest)
+    if not scratchValue6 then
+    end
     quest:CreateThread("CheckBarrowFieldsGuards")  -- native thread body NScript::CGameflowScript::CheckBarrowFieldsGuards: lift it as function CheckBarrowFieldsGuards(quest)
+    if not scratchValue6 then
+    end
     isActiveThreadTerminating = false
     switch = quest:GetMasterGameState("PostSavePosition")
     if not (switch == 0 or switch == 100 or switch == 150 or switch == 200 or switch == 300 or switch == 400 or switch == 450 or switch == 500 or switch == 550 or switch == 600 or switch == 700 or switch == 800 or switch == 850 or switch == 856 or switch == 865 or switch == 870 or switch == 875 or switch == 900 or switch == 1000 or switch == 1050 or switch == 1100 or switch == 1200 or switch == 1250 or switch == 1300 or switch == 1450 or switch == 1500 or switch == 1550 or switch == 1600 or switch == 1700 or switch == 1900 or switch == 2100 or switch == 2300 or switch == 2400 or switch == 2500 or switch == 2600 or switch == 2800) then
@@ -97,7 +101,9 @@ function Main(quest)
             local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
             if theRealGuildmaster ~= nil and theRealGuildmaster:IsAlive() then
                 if quest:IsActiveThreadTerminating() then return end
-                quest:EntityTeleportToThing(quest:GetThingWithScriptName("TheRealGuildmaster"), quest:GetThingWithScriptName("M_GuildmasterMarker"), false)
+                local guildmasterMarker = quest:GetThingWithScriptName("M_GuildmasterMarker")
+                scratchValue = quest:GetThingWithScriptName("TheRealGuildmaster")
+                quest:EntityTeleportToThing(scratchValue, guildmasterMarker, false)
             end
             quest:SetHeroGuideToShowQuestCardsWhenSpokenTo(true)
             local guildDoors = quest:GetThingWithScriptName("GuildDoors")
@@ -119,7 +125,8 @@ function Main(quest)
             quest:ActivateQuest("V_BookCollecting")
             quest:ActivateQuest("V_ChickenKicking")
             quest:ActivateQuest("V_Bordello")
-            quest:SetTeleporterAsActive(quest:GetThingWithScriptName("WitchwoodTeleporter"), false)
+            local witchwoodTeleporter = quest:GetThingWithScriptName("WitchwoodTeleporter")
+            quest:SetTeleporterAsActive(witchwoodTeleporter, false)
             quest:RemoveRumourCategory("GUILD_TRAINING")
             quest:AddNewRumourToCategory("WASP_BOSS", "TEXT_AI_GOSSIP_WASP_BOSS_GLOBAL")
             quest:SetCategoryActivity("WASP_BOSS", true)
@@ -138,6 +145,7 @@ function Main(quest)
                 while not quest:MsgIsTutorialClickedPast() do
                     if not quest:NewScriptFrame() then return end
                 end
+                if quest:IsActiveThreadTerminating() then return end
             end
             quest:RemoveRumourCategory("WASP_BOSS")
             quest:AddNewRumourToCategory("DOING_WASP_BOSS", "TEXT_AI_GOSSIP_DOING_WASP_BOSS_GLOBAL")
@@ -155,6 +163,7 @@ function Main(quest)
                 while not quest:MsgIsTutorialClickedPast() do
                     if not quest:NewScriptFrame() then return end
                 end
+                if quest:IsActiveThreadTerminating() then return end
             end
             if not quest:NewScriptFrame() then return end
             if not quest:NewScriptFrame() then return end
@@ -199,12 +208,14 @@ function Main(quest)
             while true do
                 if quest:IsQuestActive("Q_OrchardFarmRaidGood") then break end
                 if quest:IsQuestActive("Q_OrchardFarmRaidEvil") then
+                    if quest:IsActiveThreadTerminating() then return end
                     if not quest:NewScriptFrame() then return end
                     quest:RemoveQuestCardFromGuild("Q_OrchardFarmRaidGood")
                     goto LAB_00ce933c
                 end
                 if not quest:NewScriptFrame() then return end
             end
+            if quest:IsActiveThreadTerminating() then return end
             if not quest:NewScriptFrame() then return end
             quest:RemoveQuestCardFromGuild("Q_OrchardFarmRaidEvil")
             ::LAB_00ce933c::
@@ -389,15 +400,24 @@ function Main(quest)
             quest:SetMasterGameState("PostSavePosition", 856)
             quest:AutoSave()
             quest:SetStateInt("CoreQuestWaiting", 1)
-            predicateResult4 = false
+            predicateResult3 = false
             while not quest:IsQuestActive("Q_WhiteBalverineKnotholeGlade") do
                 if not quest:NewScriptFrame() then return end
-                if quest:IsRegionLoaded("KnotholeGlade") then
-                    if predicateResult4 then goto continue_1 end
+                local isRegionLoaded = quest:IsRegionLoaded("KnotholeGlade")
+                predicateResult2 = quest:IsActiveThreadTerminating()
+                if isRegionLoaded then
+                    if predicateResult2 then
+                        return
+                    end
+                    if predicateResult3 then goto continue_1 end
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_078_GM_MSG_KNOTHOLE_GLADE_CLOSED", "", true, true)
-                    predicateResult4 = true
+                    predicateResult3 = true
                 else
-                    predicateResult4 = false
+                    if predicateResult2 then
+                        return
+                    end
+                    predicateResult3 = false
                 end
                 ::continue_1::
             end
@@ -565,7 +585,10 @@ function Main(quest)
             while not quest:MsgOnQuestCompleted("Q_OpeningGraveyardSecretPassage") do
                 if not quest:NewScriptFrame() then return end
             end
-            isActiveThreadTerminating = false
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+            if isActiveThreadTerminating then
+                return
+            end
             quest:AddQuestCard("OBJECT_QUEST_CARD_BOUNTY_HUNT", "Q_BountyHunt", false, false)
             quest:RemoveRumourCategory("DOING_GRAVEYARD_GLOBAL")
             quest:RemoveRumourCategory("DOING_GRAVEYARD_GRAVEYARD")
@@ -615,16 +638,25 @@ function Main(quest)
         if switch == 1450 then
             quest:SetMasterGameState("PostSavePosition", 1450)
             quest:SetStateInt("CoreQuestWaiting", 1)
-            predicateResult5 = false
+            predicateResult4 = false
             while not quest:IsQuestActive("Q_WizardBattle") do
                 if not quest:NewScriptFrame() then return end
-                if quest:IsRegionLoaded("HeroGuildComplexInside") then
-                    if predicateResult5 then goto continue_2 end
+                local isRegionLoaded2 = quest:IsRegionLoaded("HeroGuildComplexInside")
+                predicateResult2 = quest:IsActiveThreadTerminating()
+                if isRegionLoaded2 then
+                    if predicateResult2 then
+                        return
+                    end
+                    if predicateResult4 then goto continue_2 end
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:AutoSave()
                     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_078_GM_MOTHER_LEFT_YOU_THIS", "", true, true)
-                    predicateResult5 = true
+                    predicateResult4 = true
                 else
-                    predicateResult5 = false
+                    if predicateResult2 then
+                        return
+                    end
+                    predicateResult4 = false
                 end
                 ::continue_2::
             end
@@ -724,6 +756,7 @@ function Main(quest)
             while quest:IsQuestActive("Q_EndGameBossBattle") do
                 if not quest:NewScriptFrame() then return end
             end
+            if quest:IsActiveThreadTerminating() then return end
             quest:RemoveRumourCategory("FINAL_BATTLE_GLOBAL")
             quest:RemoveRumourCategory("FINAL_BATTLE_GUILD")
             quest:AddNewRumourToCategory("AFTER_FINAL_BATTLE_GLOBAL", "TEXT_AI_GOSSIP_AFTER_FINAL_BATTLE_GLOBAL")
@@ -804,6 +837,7 @@ function Main(quest)
             while not quest:IsRegionLoaded("LostBay") do
                 if not quest:NewScriptFrame() then return end
             end
+            if quest:IsActiveThreadTerminating() then return end
             quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_ASK_ORACLE", "Q_AwakeningTheOracle", false)
             quest:RemoveRumourCategory("SUMMON_THE_SHIP")
             quest:AddNewRumourToCategory("NORTHERN_WASTES_OPEN", "TEXT_AI_GOSSIP_NORTHERN_WASTES_OPEN")
@@ -887,36 +921,43 @@ function Main(quest)
             while quest:IsQuestActive("Q_DragonBossFight") do
                 if not quest:NewScriptFrame() then return end
             end
+            if quest:IsActiveThreadTerminating() then return end
             quest:ActivateQuest("Hook_Fresco_12_KilledDragon")
             quest:SetRegionTextDisplayAsActive(false)
             quest:SetAllowScreenFadingOnNextRegionChange(false)
             quest:FadeScreenOutUntilNextCallToFadeScreenIn(1.0, 0.0)
             if not quest:NewScriptFrame() then return end
-            quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("FrescoDomeHSP"), false)
+            local frescoDomeHSP = quest:GetThingWithScriptName("FrescoDomeHSP")
+            scratchValue = quest:GetHero()
+            quest:EntityTeleportToThing(scratchValue, frescoDomeHSP, false)
             while not quest:IsLevelLoaded("FrescoDome") do
                 if not quest:NewScriptFrame() then return end
             end
             if quest:IsActiveThreadTerminating() then return end
-            local resource = resources:NewResource()
-            resources:PrepareResource(resource)
-            while not resources:TryAcquire(resource, hero, 4) do
-                quest:NewScriptFrame()
-                if quest:IsActiveThreadTerminating() then
-                    resources:ReleaseResource(resource)
-                    do return end
-                end
+            local resource2 = resources:NewResource()
+            resources:PrepareResource(resource2)
+            resource = resource2
+            local hero = quest:GetHero()
+            controlAcquired = resources:TryAcquire(resource, hero, 4)
+            while not controlAcquired do
+                if not quest:NewScriptFrame() then resources:ReleaseResource(resource2); return end
+                resource = resource2
+                local hero2 = quest:GetHero()
+                controlAcquired = resources:TryAcquire(resource, hero2, 4)
             end
-            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
             newActorMap = resources:NewActorMap()
-            resources:SetActor(newActorMap, "Hero", resource)
+            resources:SetActor(newActorMap, "Hero", resource2)
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             resources:RunMacro("CS_FABLE_CREDITS", newActorMap, false, true)
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
             resources:DestroyActorMap(newActorMap)
-            resources:ReleaseResource(resource)
-            quest:EntityTeleportToThing(hero, quest:GetThingWithScriptName("NW3BronzeDoorHSP"), false)
+            resources:ReleaseResource(resource2)
+            local nw3BronzeDoorHsp = quest:GetThingWithScriptName("NW3BronzeDoorHSP")
+            scratchValue = quest:GetHero()
+            quest:EntityTeleportToThing(scratchValue, nw3BronzeDoorHsp, false)
             while not quest:IsRegionLoaded("NorthernWastes3") do
                 if not quest:NewScriptFrame() then return end
             end
@@ -1029,8 +1070,12 @@ end
 
 -- Gameflow.OnPersist (retail 0x00cef8e0)
 function OnPersist(quest, context)
-    quest:SetMasterGameState("PostSavePosition", quest:PersistTransferInt(context, "PostSavePosition", quest:GetMasterGameState("PostSavePosition") or 0))
-    quest:SetStateInt("CoreQuestWaiting", quest:PersistTransferUInt(context, "CoreQuestWaiting", quest:GetStateInt("CoreQuestWaiting") or 0))
+    local postSavePosition = quest:GetMasterGameState("PostSavePosition") or 0
+    postSavePosition = quest:PersistTransferInt(context, "PostSavePosition", postSavePosition)
+    quest:SetMasterGameState("PostSavePosition", postSavePosition)
+    local coreQuestWaiting = quest:GetStateInt("CoreQuestWaiting") or 0
+    coreQuestWaiting = quest:PersistTransferUInt(context, "CoreQuestWaiting", coreQuestWaiting)
+    quest:SetStateInt("CoreQuestWaiting", coreQuestWaiting)
     local savedScriptNames = quest:PersistTransferStringList(context, "SavedScriptNames", {})  -- vector<CCharString> member `SavedScriptNames` (this + 0x4c)
     local savedCardDefNames = quest:PersistTransferStringList(context, "SavedCardDefNames", {})  -- vector<CCharString> member `SavedCardDefNames` (this + 0x58)
 end
@@ -1043,6 +1088,7 @@ function CoreQuestReminder(quest)
         while quest:GetStateInt("CoreQuestWaiting") == 0 do
             if not quest:NewScriptFrame() then return end
         end
+        if quest:IsActiveThreadTerminating() then return end
         timerId = quest:RegisterTimer()
         quest:SetTimer(timerId, quest:ReadGlobalGameData(SCRIPT_DEF.CoreQuestReminderIntervalSeconds))
         while quest:GetTimer(timerId) ~= 0 do
@@ -1055,6 +1101,7 @@ function CoreQuestReminder(quest)
         if quest:IsActiveThreadTerminating() then break end
         local getStateInt = quest:GetStateInt("CoreQuestWaiting") ~= 0 and not quest:IsHeroOnQuest()
         if getStateInt then
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
             quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_078_GM_MSG_NEW_QUEST_AT_GUILD", "", true, false)
         end
         quest:DeregisterTimer(timerId)
@@ -1065,13 +1112,17 @@ end
 
 -- Gameflow.CheckBarrowFieldsGuards (retail 0x00cef550)
 function CheckBarrowFieldsGuards(quest)
-    local predicateResult, predicateResult3
+    local predicateResult, predicateResult3, predicateResult4
+    predicateResult4 = false
     if not quest:IsQuestCompleted("Q_TraderConflictEvil") then
+        predicateResult4 = true
         predicateResult = true
         if not quest:IsQuestCompleted("Q_TraderConflictGood") then goto LAB_00cef5bb end
     end
     predicateResult = false
     ::LAB_00cef5bb::
+    if predicateResult4 then
+    end
     if not predicateResult or quest:IsActiveThreadTerminating() then return end
     repeat
         if quest:IsQuestActive("Q_TraderConflictEvil") then
@@ -1089,16 +1140,21 @@ function CheckBarrowFieldsGuards(quest)
             if not quest:IsQuestActive("Q_TraderConflictEvil") then
                 return
             end
+            if quest:IsActiveThreadTerminating() then return end
             while not quest:MsgOnQuestCompleted("Q_TraderConflictEvil") do
                 if not quest:NewScriptFrame() then return end
             end
+            if quest:IsActiveThreadTerminating() then return end
             while quest:IsRegionLoaded("BarrowFields") do
                 if not quest:NewScriptFrame() then return end
             end
+            if quest:IsActiveThreadTerminating() then return end
             while not quest:IsRegionLoaded("BarrowFields") do
                 if not quest:NewScriptFrame() then return end
             end
-            quest:EnableGuards(quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS"), true)
+            if quest:IsActiveThreadTerminating() then return end
+            local pVillage = quest:GetThingWithScriptName("VILLAGE_BARROWFIELDS")
+            quest:EnableGuards(pVillage, true)
             do return end
             return
         end

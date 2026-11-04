@@ -92,8 +92,11 @@ def test_init_keeps_name_price_and_dialogue_in_agreement(generated, stage, helpe
     source = (generated / stage / 'FSE/V_Bordello/Entities/BordelloLady.lua').read_text()
     lua = LuaRuntime()
     lua.execute("package.preload['V_Bordello.native_quest_helpers'] = function() return {} end")
+    # A Main local can force the readable Name upvalue to use a suffix.
+    # Inspect the member used by the dialogue helper, not a fixed display name.
+    readable_member = re.search(r'"TEXT_QST_B13_" \.\. (\w+)', source)[1] if stage == 'readable' else None
     fields = ('__native_entity_state:GetStateString("Name"), __native_entity_state:GetStateInt("GoldRequired")'
-              if stage == 'draft' else 'name, goldRequired')
+              if stage == 'draft' else f'{readable_member}, goldRequired')
     inspect = lua.execute(source + '\nreturn function() return ' + fields + ' end')
     reads, information = [], []
     def data(_me):

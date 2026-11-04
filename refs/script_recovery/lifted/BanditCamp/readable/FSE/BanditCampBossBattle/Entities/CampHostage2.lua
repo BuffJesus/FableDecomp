@@ -3,7 +3,6 @@
 
 -- CampHostage2.Main (retail 0x00d08790)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local hostagesRescued, scratchValue
     if not quest:NewScriptFrame(me) then return end
@@ -19,25 +18,32 @@ function Main(quest, me)
     scratchValue = 0
     while not hostagesRescued and not quest:GetStateBool("HostageKilled") do
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
-        if quest:GetTimer(timerId) >= 1 then
-            hostagesRescued = quest:GetStateBool("HostagesRescued")
-        elseif not quest:IsDistanceBetweenThingsUnder(me, hero, 8.0) then
+        if not (quest:GetTimer(timerId) < 1) then
             hostagesRescued = quest:GetStateBool("HostagesRescued")
         else
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
-            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-            local conversationId = quest:AddNewConversation(me, false, false)
-            quest:AddPersonToConversation(conversationId, hero)
-            me:PlayAnimation("CS_DISAPPOINTED", false, false, false, true, true, false, false)
-            if scratchValue == 0 then
-                quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_SECOND_CRY_FIRST", me, hero, false)
-                scratchValue = 1
-            elseif scratchValue == 1 then
-                quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_SECOND_CRY_SECOND", me, hero, false)
-                scratchValue = 0
+            local hero = quest:GetHero()
+            if not quest:IsDistanceBetweenThingsUnder(me, hero, 8.0) then
+                hostagesRescued = quest:GetStateBool("HostagesRescued")
+            else
+                if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
+                local hero2 = quest:GetHero()
+                quest:EntitySetFacingAngleTowardsThing(me, hero2, false)
+                local conversationId = quest:AddNewConversation(me, false, false)
+                local hero3 = quest:GetHero()
+                quest:AddPersonToConversation(conversationId, hero3)
+                resources:PlayAnimationWithNativeArgument5(resource, "CS_DISAPPOINTED", false, false, false, true, false, false)
+                if scratchValue == 0 then
+                    local hero4 = quest:GetHero()
+                    quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_SECOND_CRY_FIRST", me, hero4, false)
+                    scratchValue = 1
+                elseif scratchValue == 1 then
+                    local hero5 = quest:GetHero()
+                    quest:AddLineToConversation(conversationId, "TEXT_QST_009_HOSTAGE_SECOND_CRY_SECOND", me, hero5, false)
+                    scratchValue = 0
+                end
+                quest:SetTimer(timerId, 8)
+                hostagesRescued = quest:GetStateBool("HostagesRescued")
             end
-            quest:SetTimer(timerId, 8)
-            hostagesRescued = quest:GetStateBool("HostagesRescued")
         end
     end
     if not quest:IsActiveThreadTerminating() then

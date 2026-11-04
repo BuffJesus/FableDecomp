@@ -7,6 +7,24 @@ from pathlib import Path
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def validate_lua_bindings(bundle, manifest):
+    # This validator is copied into standalone bundles; keep its lexical scan
+    # independent of repository modules. Only executable identifier tokens in
+    # manifest-listed Lua require the generated direct method binding.
+    lexical = re.compile(
+        r'--\[(?P<ceq>=*)\[[\s\S]*?\](?P=ceq)\]'
+        r'|--[^\n]*|\[(?P<seq>=*)\[[\s\S]*?\](?P=seq)\]'
+        r"|\"(?:[^\"\\]|\\[\s\S])*\"|'(?:[^'\\]|\\[\s\S])*'"
+        r'|(?P<identifier>[A-Za-z_]\w*)')
+    required = 'ResourceThingHealthAbove'
+    for name in manifest['files']:
+        if not name.lower().endswith('.lua'):continue
+        source = (bundle/name).read_text(encoding='utf-8-sig')
+        if any(token.lastgroup=='identifier' and token[0]==required for token in lexical.finditer(source)):
+            if required.encode()+b'\0' not in (bundle/'NoviCompatibility.dll').read_bytes():
+                raise ValueError('Add-on DLL lacks required Lua binding '+required+' used by '+name)
+            return
+
 def validate_dll_roles(bundle):
     # The chained launcher requires this stock build to install the first hook.
     # Manifest integrity alone cannot detect a sidecar staged in the stock slot.
@@ -24,6 +42,7 @@ def validate(bundle,game):
         if not target.is_relative_to(bundle.resolve()) or sha(target)!=digest:
             raise ValueError('Payload hash mismatch: '+name)
     validate_dll_roles(bundle)
+    validate_lua_bindings(bundle, manifest)
     if sha(game/'Fable.exe')!=manifest['game_exe_sha256']:
         raise ValueError('Unsupported Fable.exe')
     text=(game/'data/Levels/FinalAlbion.qst').read_text(encoding='utf-8-sig')

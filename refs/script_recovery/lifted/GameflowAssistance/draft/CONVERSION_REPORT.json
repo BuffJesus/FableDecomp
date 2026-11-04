@@ -190,6 +190,24 @@
             "returnKind": null,
             "bsimVoid": true
           },
+          "directSignedFieldStepEvidence": [
+            {
+              "kind": "direct_memory_inc",
+              "field": "HealthWarningsGiven",
+              "offset": "0x58",
+              "native": {
+                "begin": "0xcf0155",
+                "end": "0xcf0158",
+                "bytes": "ff4658",
+                "receiver_register": "esi"
+              },
+              "body_sha256": "98a8bc6dfbd160492cd61d0071f25d4a13a3cc90cc9831ea6df03cc166c17f6a",
+              "export_sha256": "4cf45771307112307d00306e8e7af4d7f31d7d14a9419928751d01f02a91a4ea",
+              "before": "quest:GetStateInt(\"HealthWarningsGiven\") + 1",
+              "after": "((quest:GetStateInt(\"HealthWarningsGiven\") + 1 + 2147483648) % 4294967296 - 2147483648)",
+              "basis": "Explicit signed C same-member +1, mapped Int, unique native memory INC32 and entry-this receiver over reachable branches; one executable setter/getter with single evaluation. No helper, callback or control flow moved."
+            }
+          ],
           "todo": [],
           "calls": [
             "NewScriptFrame",
@@ -274,11 +292,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);",
-            "unlifted: _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);",
-            "unlifted: _vector_constructor_iterator_((int)xStack_20,4,8,0x99eae0);"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "GetHeroRenownLevel",
@@ -333,7 +347,7 @@
         "functionSyntaxPassed": 7,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 3
+        "todo": 0
       }
     }
   ],
@@ -344,6 +358,6 @@
     "functionSyntaxPassed": 7,
     "fileSyntaxPassed": 1,
     "fileSyntaxChecked": 1,
-    "todo": 3
+    "todo": 0
   }
 }

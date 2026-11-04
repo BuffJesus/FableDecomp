@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, hb_stk_fffffeec, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar16, pCVar17, pCVar18, pCVar6, pCVar7, pQuestName, pThing, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec
+    local CVar8, CVar9, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bUnknown, bVar3, cVar4, c_stk_ed, creatureTotal, fVar19, fVar2, f_stk_bc, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_v0, hb_stk_fffffeec, iVar12, iVar20, iVar5, native_arg_switch_1, p0, p2, p3, p4, pCVar16, pCVar17, pCVar18, pCVar6, pCVar7, pQuestName, pThing, pcVar15, r1, r2, r3, scale, timerId, uVar13, uVar14, uVar21_b3, u_stk_f4, xStack_104, xStack_108, xStack_34, xStack_54, xStack_64, xStack_74, xStack_a0, xStack_a4, xStack_a8, xStack_ac, xStack_e8, xStack_ec
     local alive = true
     local function __cleanup_LAB_00f242fc()
         quest:DeregisterTimer(iVar5)
@@ -74,7 +74,8 @@ function Main(quest, me)
             resources:ReleaseResource(xStack_104)
             return
         end
-        iVar12 = 0xd0
+        creatureTotal = 0
+        iVar12 = 0
         repeat
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -83,9 +84,9 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_104)
                 return
             end
-            -- TODO(native): xStack_108 = xStack_108 + *(int *)(*(int *)(this + 0x14) + iVar12);
-            iVar12 = iVar12 + 4
-        until not (iVar12 < 0xdc)
+            creatureTotal = creatureTotal + quest:GetStateInt(("TotalCreatures_" .. iVar12))
+            iVar12 = iVar12 + 1
+        until not (iVar12 < 3)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if bVar3 then
@@ -93,7 +94,7 @@ function Main(quest, me)
             resources:ReleaseResource(xStack_104)
             return
         end
-        while (xStack_108 == 0 and (quest:GetStateInt("ArenaState") ~= 8)) do
+        while (creatureTotal == 0 and (quest:GetStateInt("ArenaState") ~= 8)) do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -102,7 +103,8 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_104)
                 return
             end
-            iVar12 = 0xd0
+            creatureTotal = 0
+            iVar12 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -111,9 +113,9 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_104)
                     return
                 end
-                -- TODO(native): xStack_108 = xStack_108 + *(int *)(*(int *)(this + 0x14) + iVar12);
-                iVar12 = iVar12 + 4
-            until not (iVar12 < 0xdc)
+                creatureTotal = creatureTotal + quest:GetStateInt(("TotalCreatures_" .. iVar12))
+                iVar12 = iVar12 + 1
+            until not (iVar12 < 3)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then __cleanup_LAB_00f242fc(); return end
@@ -137,7 +139,7 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_104)
                 return
             end
-            iVar12 = math.random(0, 32767)
+            iVar12 = quest:RetailRandModulo(32768)
             if iVar12 % 0x3c ~= 0 then
                 fVar19 = 5.0
                 pCVar6 = quest:GetHero()
@@ -218,7 +220,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_64)
                     goto LAB_00f25806
                 end
-                -- TODO(native): (**(code **)(*(int *)xStack_c0 + 0x5ec))();
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_54)
             end
             bVar3 = me:MsgIsHitByHero()
@@ -269,7 +271,7 @@ function Main(quest, me)
         end
         resources:PrepareResource(xStack_104)
         quest:SetTimer(iVar5, 10)
-        while (xStack_108 ~= 0 and (quest:GetStateInt("ArenaState") ~= 8)) do
+        while (creatureTotal ~= 0 and (quest:GetStateInt("ArenaState") ~= 8)) do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
@@ -316,8 +318,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_104)
                     return
                 end
-                -- TODO(native): cVar4 = (**(r1 + 0x12c))()
-                cVar4 = nil --[[unresolved native value]]
+                cVar4 = (r1 ~= nil and r1:IsAlive())
                 if not cVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -390,7 +391,6 @@ function Main(quest, me)
                 hb_stk_fffffeec = false
                 ::FLOW_past_lab_00f2405a::
                 if not hb_stk_fffffeec then
-                    -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                     bVar3 = me:MsgHitEnemyWithMeleeWeapon()
                     if not bVar3 then goto LAB_00f241aa end
                     alive = not quest:IsActiveThreadTerminating()
@@ -439,8 +439,7 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_104)
                     return
                 end
-                -- TODO(native): cVar4 = (**(r1 + 0x12c))()
-                cVar4 = nil --[[unresolved native value]]
+                cVar4 = (r1 ~= nil and r1:IsAlive())
                 if not cVar4 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
@@ -513,7 +512,6 @@ function Main(quest, me)
                     hb_stk_fffffeec = false
                     ::FLOW_past_lab_00f23cba::
                     if not hb_stk_fffffeec then
-                        -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                         bVar3 = me:MsgHitEnemyWithMeleeWeapon()
                         if not bVar3 then goto LAB_00f241aa end
                         alive = not quest:IsActiveThreadTerminating()
@@ -593,7 +591,6 @@ function Main(quest, me)
                     hb_stk_fffffeec = false
                     ::FLOW_past_lab_00f2389f::
                     if not hb_stk_fffffeec then
-                        -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                         bVar3 = me:MsgHitEnemyWithMeleeWeapon()
                         if not bVar3 then goto LAB_00f23a17 end
                         alive = not quest:IsActiveThreadTerminating()
@@ -628,7 +625,8 @@ function Main(quest, me)
             end
             ::LAB_00f23a17::
             ::LAB_00f241aa::
-            iVar12 = 0xd0
+            creatureTotal = 0
+            iVar12 = 0
             repeat
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -637,9 +635,9 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_104)
                     return
                 end
-                -- TODO(native): xStack_108 = xStack_108 + *(int *)(*(int *)(this + 0x14) + iVar12);
-                iVar12 = iVar12 + 4
-            until not (iVar12 < 0xdc)
+                creatureTotal = creatureTotal + quest:GetStateInt(("TotalCreatures_" .. iVar12))
+                iVar12 = iVar12 + 1
+            until not (iVar12 < 3)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then
@@ -700,10 +698,10 @@ function Main(quest, me)
     quest:ClearThingHasInformation(me)
     quest:EntitySetTargetingType(me, 0x3a)
     quest:ModifyThingHealth(me, 10000.0, false)
-    -- TODO(native): xStack_ac = quest:AddQuestInfoBarHealth(me, &0xffffff00, "HUD_WHISPER_ICON", 1.0)
-    xStack_ac = nil --[[unresolved native value]]
+    xStack_ac = quest:AddQuestInfoBarHealth(me, {R = 255, G = 255, B = 0, A = 255}, "HUD_WHISPER_ICON", 1.0)
     fret_v0 = quest:GetHealth(me)
     CVar8 = math.tointeger(math.modf(fret_v0))
+    uVar21_b3 = false
     c_stk_ed = 0
     xStack_a4 = CVar8
     fret_02 = quest:GetHealth(me)
@@ -739,6 +737,7 @@ function Main(quest, me)
                 quest:AddPersonToConversation(CVar8, pCVar6)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(CVar8, "TEXT_QST_005_V2_ARENA_WHISPER_FINALBATTLE_QUARTER", me, pCVar6, false)
+                uVar21_b3 = true
                 quest:SetTimer(timerId, 0xd)
                 CVar8 = xStack_a4
             end
@@ -780,7 +779,6 @@ function Main(quest, me)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(CVar8, "TEXT_QST_005_V2_ARENA_WHISPER_FIGHT_BEEN_HIT", me, pCVar6, false)
                 else
-                    -- TODO(native): MsgHitEnemyWithMeleeWeapon is not a ForgeFSE binding
                     bVar3 = me:MsgHitEnemyWithMeleeWeapon()
                     if not bVar3 then goto LAB_00f249f7 end
                     alive = not quest:IsActiveThreadTerminating()
@@ -824,7 +822,7 @@ function Main(quest, me)
         quest:StopOverrideMusic(false)
         bVar3 = false
         fret_07 = quest:GetHealth(me)
-        quest:ModifyThingHealth(me, (xStack_a8 - fret_07), bVar3)
+        quest:ModifyThingHealth(me, (string.unpack("<f", string.pack("<f", (xStack_a8 - fret_07)))), bVar3)
         quest:EntitySetInFaction(me, "FACTION_HERO")
         pCVar6 = quest:GetHero()
         quest:EntitySetThingAsAllyOfThing(me, pCVar6)
@@ -1003,7 +1001,7 @@ function Main(quest, me)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_54)
                         quest:DisplayQuestInfo(true)
-                        iVar12 = quest:AddQuestInfoBar(xStack_a4, 0.0, 0xffff0000, {R = 255, G = 0, B = 0, A = 255}, "HUD_WHISPER_ICON", "", 1.0)
+                        iVar12 = quest:AddQuestInfoBar(xStack_a4, 0.0, {R = 255, G = 0, B = 0, A = 255}, {R = 255, G = 0, B = 0, A = 255}, "HUD_WHISPER_ICON", "", 1.0)
                         fret_09 = quest:GetHealth(me)
                         if 1.0 < fret_09 then
                             repeat

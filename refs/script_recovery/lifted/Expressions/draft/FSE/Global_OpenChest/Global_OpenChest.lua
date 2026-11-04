@@ -2,10 +2,12 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local resources = quest:RetailResources()
-    local __native_condition_1, bVar11, bVar2, bVar4, bVar5, bVar6, cVar3, delay, iStack_2c, iVar10, iVar9, i_stk_28, native_arg_sequence_1, pCVar12, pCVar7, pCVar8, r1, r2, xStack_10, xStack_20
+    return quest:WithRetailResources(function(resources)
+    local chestTargetOwner = 0
+    local __native_condition_1, bVar11, bVar2, bVar4, bVar5, bVar6, cVar3, delay, iStack_2c, iVar10, iVar9, native_arg_sequence_1, native_keyQueryResult, pCVar12, pCVar7, pCVar8, r1, r2, xStack_10, xStack_20, xStack_48
     local alive = true
     pCVar7 = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(pCVar7)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -23,6 +25,7 @@ function Main(quest)
         return
     end
     r1 = quest:GetMostRecentValidUsedTarget()
+    chestTargetOwner = resources:TrackThingOutput(r1)
     __native_condition_1 = (r1 ~= nil and not r1:IsNull())
     if __native_condition_1 then
         cVar3 = (r1 ~= nil and r1:IsAlive())
@@ -32,14 +35,16 @@ function Main(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then goto LAB_00eec9c9 end
-        iVar9 = quest:GetNumberOfKeysNeededToUnlockChest(r1)
+        native_keyQueryResult = quest:GetNumberOfKeysNeededToUnlockChest(r1)
+        iVar9 = native_keyQueryResult.count
+        xStack_48 = (native_keyQueryResult.keyName or "")
         if iVar9 < 1 then
             goto LAB_00eec9da
         else
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if not bVar2 then
-                iVar10 = quest:GetNumberOfItemsOfTypeInInventory("")
+                iVar10 = quest:GetNumberOfItemsOfTypeInInventory(xStack_48)
                 if iVar9 <= iVar10 then goto LAB_00eec9da end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -98,8 +103,8 @@ function Main(quest)
                 quest:SetCutsceneMode(true, false)
                 quest:EntitySetCutsceneBehaviour(r1, 2)
                 quest:PauseAllEntities(true)
-                iStack_2c = quest:GetItemDefNamesFromContainer(r1)
-                bVar11 = iStack_2c == i_stk_28
+                iStack_2c = quest:GetContainerItemDefCount(r1)
+                bVar11 = iStack_2c == 0
                 bVar2 = true
                 bVar6 = quest:OpenChest(r1, true)
                 if bVar6 then
@@ -169,7 +174,6 @@ function Main(quest)
                     pCVar7 = quest:GetHero()
                     quest:EntityUnsheatheRangedWeapon(pCVar7, bVar2)
                 end
-                -- TODO(native): CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);
                 resources:DestroyMovie(xStack_10)
                 resources:ReleaseResource(xStack_20)
                 goto LAB_00eece56
@@ -194,7 +198,6 @@ function Main(quest)
                 end
                 ::FLOW_past_lab_00eecca6::
                 ::LAB_00eecd9f::
-                -- TODO(native): CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);
                 resources:DestroyMovie(xStack_10)
             end
             ::LAB_00eecdb1::
@@ -207,13 +210,16 @@ function Main(quest)
         ::FLOW_past_lab_00eece56::
         ::LAB_00eec9c0::
         ::LAB_00eec9c9::
+        resources:RetireThingOutput(chestTargetOwner); chestTargetOwner = 0
         return
     end
     ::LAB_00eece5f::
+    resources:RetireThingOutput(chestTargetOwner); chestTargetOwner = 0
     ::LAB_00eece68::
     delay = 0
     pCVar8 = quest:GetActiveQuestName()
     quest:DeactivateQuestLater(pCVar8, delay)
+    end)
 end
 
 function Init(quest)

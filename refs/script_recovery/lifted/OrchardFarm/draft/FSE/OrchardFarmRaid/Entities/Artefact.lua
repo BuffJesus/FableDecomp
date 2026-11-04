@@ -13,11 +13,11 @@ end
 function Main(quest, me)
     local bVar3, bVar4
     local alive = true
+    bVar4 = false
+    local r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     local function __cleanup_LAB_00dcddcf()
         r1 = nil
     end
-    bVar4 = false
-    local r1 = quest:GetThingWithScriptName("BanditTeamCrateDrop")
     alive = not quest:IsActiveThreadTerminating()
     local bVar2 = not alive
     repeat

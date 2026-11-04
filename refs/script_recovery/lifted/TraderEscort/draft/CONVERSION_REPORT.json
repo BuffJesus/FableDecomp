@@ -256,7 +256,6 @@
           },
           "todo": [
             "label LAB_00e06394",
-            "unlifted: Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)x_stk_2c);",
             "verify cleanup at LAB_00e063f5 (lifted as early return)",
             "verify cleanup at LAB_00e063f5 (lifted as early return)",
             "verify cleanup at LAB_00e063f5 (lifted as early return)",
@@ -279,7 +278,7 @@
             "EntitySetFacingAngleTowardsThing",
             "SetTimer",
             "GetNearestWithScriptName",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "GetNearestWithScriptName",
             "GiveThingBestEnemyTarget",
@@ -294,7 +293,15 @@
             "SetStateInt",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
-            "IsActiveThreadTerminating"
+            "IsActiveThreadTerminating",
+            "WithRetailResources",
+            "NewThingPositionList",
+            "Clear",
+            "FillScriptName",
+            "Count",
+            "GetPos",
+            "TrackThingOutput",
+            "RetireThingOutput"
           ],
           "lines": 106,
           "syntax": {
@@ -586,10 +593,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: bVar3 = RESOURCE_TryAcquire(xStack_30, &native_arg_Me, 4)",
-            "unlifted: bVar3 = RESOURCE_TryAcquire(xStack_30, &native_arg_Me, 4)"
-          ],
+          "todo": [],
           "calls": [
             "RESOURCE_NewResource",
             "RESOURCE_NewResource",
@@ -636,7 +640,7 @@
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 77,
+          "lines": 75,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -738,28 +742,16 @@
             "bsimVoid": false
           },
           "todo": [
-            "unlifted: xStack_30._4_4_ = *(undefined4 *)(native_arg_speaker + 0x4);",
-            "unlifted: xStack_30 = *(int **)(native_arg_speaker + 0x8);",
-            "unlifted: *xStack_30 = *xStack_30 + 1;",
-            "unlifted: xStack_30._4_4_ = piVar1;",
-            "unlifted: *piVar13 = *piVar13 + 1;",
-            "unlifted: iVar5 = CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&xStack_c);",
-            "unlifted: CScriptThing::operator=((CScriptThing *)xStack_18,iVar5);",
-            "unlifted: xStack_24 = xStack_18;",
-            "unlifted: CScriptThing::operator=((CScriptThing *)xStack_18,(int)&xStack_c);",
             "label LAB_00e01ff9_c2",
             "label LAB_00e01fb0",
-            "label LAB_00e01ff9",
-            "unlifted: bVar2 = (*PTR__IsAlive_CScriptThing__UBE_NXZ_01238db8)(xStack_30)",
-            "unlifted: piVar13 = *(pCVar4 + 0x8)",
-            "unlifted: piVar1 = *(pCVar4 + 0x4)",
-            "unlifted: bVar2 = (**(xStack_30._0_4_ + 0x12c))(xStack_30)"
+            "label LAB_00e01ff9"
           ],
           "calls": [
-            "QUESTTHING_Empty",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "GetHero",
             "GetNearestWithScriptName",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "GetTimer",
             "IsActiveThreadTerminating",
@@ -798,6 +790,7 @@
             "GetFurthestWithScriptName",
             "IsEqualTo",
             "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
             "GetDataString",
             "ENGINE_StrNotEqual",
             "IsActiveThreadTerminating",
@@ -860,9 +853,15 @@
             "ENGINE_Concat",
             "ENGINE_Concat",
             "AddLineToConversation",
-            "SetTimer"
+            "SetTimer",
+            "WithRetailResources",
+            "CopyThingOutput",
+            "TrackThingOutput",
+            "AssignThingOutput",
+            "RetireThingOutput",
+            "RetailImplementationIsEqualTo"
           ],
-          "lines": 281,
+          "lines": 267,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -917,10 +916,7 @@
             "label LAB_00e0a389",
             "label LAB_00e0a4ef",
             "label LAB_00e07e06",
-            "unlifted: iVar8 = CCarriedReadableDef::CCarriedReadableDef__at6e7b40((CCarriedReadableDef *)xStack_c",
-            "unlifted: CScriptThing::operator=((CScriptThing *)xStack_12c,iVar8);",
             "label LAB_00e07e39",
-            "unlifted: xStack_144 = xStack_12c;",
             "label LAB_00e07e30_c7",
             "label LAB_00e07e30_c8"
           ],
@@ -957,9 +953,9 @@
             "ENGINE_IsDistanceBetweenThingsUnder",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistanceFloat32",
             "GetHero",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
@@ -1110,7 +1106,7 @@
             "GetDataString",
             "ENGINE_StrEq",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1193,10 +1189,10 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "SetTimer",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "SetTimer",
             "SetStateInt",
             "IsActiveThreadTerminating",
@@ -1274,6 +1270,7 @@
             "IsActiveThreadTerminating",
             "IsEqualTo",
             "IsActiveThreadTerminating",
+            "QUESTTHING_Empty",
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource",
             "RESOURCE_ReleaseResource",
@@ -1664,8 +1661,14 @@
                 "type": "int"
               }
             ],
-            "returnKind": "number",
-            "bsimVoid": false
+            "returnKind": null,
+            "bsimVoid": false,
+            "reviewedVoid": true,
+            "returnEvidence": {
+              "oracle": "refs/script_recovery/trader_escort/reviewed_prototypes/SetBrainState_pdb_signature.txt",
+              "signature": "void NScript::CQ_TraderEscortScript::CDarkwoodTrader::SetBrainState(long brain_state)",
+              "evidence": "debug_build/Ego_r.pdb GUID774B3052-BDD8-43B4-808D-48481CC576CE age4; debug signature void(long), retail RET4 and direct caller immediately overwrites EAX."
+            }
           },
           "todo": [],
           "calls": [
@@ -1698,7 +1701,7 @@
             "IsActiveThreadTerminating",
             "SetTimer"
           ],
-          "lines": 94,
+          "lines": 92,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1740,7 +1743,7 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "EntityPlayObjectAnimation",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
@@ -2139,13 +2142,8 @@
             "bsimVoid": true
           },
           "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(ENGINE_GlobalGameData(0x3ac) + (uVar",
-            "unlifted: CCharString::CCharString(&xStack_30,&xStack_28);",
-            "unlifted: xStack_20 = CVar3;",
             "verify cleanup at LAB_00e02ff7 (lifted as early return)",
-            "label LAB_00e02ff7",
-            "PlaySoundOnThing: missing soundName (1 args for 2 params)",
-            "PlaySoundOnThing: missing soundName (1 args for 2 params)"
+            "label LAB_00e02ff7"
           ],
           "calls": [
             "NewScriptFrame",
@@ -2155,7 +2153,7 @@
             "ENGINE_GlobalGameData",
             "ENGINE_GlobalGameData",
             "ENGINE_GlobalGameData",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
@@ -2173,7 +2171,7 @@
             "SetThingPersistent",
             "GetActiveQuestName",
             "EntityAttachToScript",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetNearestWithScriptName",
@@ -2440,9 +2438,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: xStack_34 = CVar2;"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -2971,11 +2967,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CDefString::operator_class_CCharString((CDefString *)(ENGINE_GlobalGameData(0x3ac) + (uVar",
-            "unlifted: CCharString::CCharString(&xStack_14,&xStack_18);",
-            "PlaySoundOnThing: missing soundName (1 args for 2 params)"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -2988,7 +2980,7 @@
             "IsActiveThreadTerminating",
             "ENGINE_GlobalGameData",
             "ENGINE_GlobalGameData",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "PlaySoundOnThing",
             "GetHero",
             "GiveThingBestEnemyTarget",
@@ -3607,6 +3599,44 @@
           ]
         }
       },
+      "blockingSpeechCancellation": {
+        "FSE/TraderEscort/Entities/DarkwoodTrader.lua": [
+          {
+            "line": 1273,
+            "actor": "me",
+            "query": "iVar8",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                goto LAB_00e0a33a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/TraderEscort/Entities/EndTrader.lua": [
+          {
+            "line": 121,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar3",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    this_00 = xStack_20\n                    resources:DestroyMovie(this_00)\n                    -- LAB_00e0602a_c5: (native jump target)\n                    goto FLOW_after_lab_00e0602a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 179,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar3",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                __region_LAB_00e0601a(); goto FLOW_after_lab_00e0602a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 344,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar3",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_54)\n                                goto LAB_00e05fd1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "cleanupRegions": {
         "FSE/TraderEscort/Entities/DarkwoodAssassinSpawn.lua": {
           "LAB_00e02ff7": [
@@ -3627,22 +3657,9 @@
         ],
         "todo": {
           "MakeTraderComment": [
-            "unlifted: xStack_30._4_4_ = *(undefined4 *)(native_arg_speaker + 0x4);",
-            "unlifted: xStack_30 = *(int **)(native_arg_speaker + 0x8);",
-            "unlifted: *xStack_30 = *xStack_30 + 1;",
-            "unlifted: xStack_30._4_4_ = piVar1;",
-            "unlifted: *piVar13 = *piVar13 + 1;",
-            "unlifted: iVar5 = CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&xStack_c);",
-            "unlifted: CScriptThing::operator=((CScriptThing *)xStack_18,iVar5);",
-            "unlifted: xStack_24 = xStack_18;",
-            "unlifted: CScriptThing::operator=((CScriptThing *)xStack_18,(int)&xStack_c);",
             "label LAB_00e01ff9_c2",
             "label LAB_00e01fb0",
-            "label LAB_00e01ff9",
-            "unlifted: bVar2 = (*PTR__IsAlive_CScriptThing__UBE_NXZ_01238db8)(xStack_30)",
-            "unlifted: piVar13 = *(pCVar4 + 0x8)",
-            "unlifted: piVar1 = *(pCVar4 + 0x4)",
-            "unlifted: bVar2 = (**(xStack_30._0_4_ + 0x12c))(xStack_30)"
+            "label LAB_00e01ff9"
           ]
         },
         "syntax": {
@@ -3660,7 +3677,7 @@
         "functionSyntaxPassed": 65,
         "fileSyntaxPassed": 16,
         "fileSyntaxChecked": 16,
-        "todo": 60
+        "todo": 32
       }
     }
   ],
@@ -3671,6 +3688,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 16,
     "fileSyntaxChecked": 16,
-    "todo": 60
+    "todo": 32
   }
 }

@@ -11,7 +11,8 @@ do
 end
 
 function Main(quest, me)
-    local bVar2, bVar3, bVar4, bVar5, bVar6, bVar7, cVar1, fVar11, f_stk_40, iVar9, i_stk_2c, i_stk_38, i_stk_90, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar8, pOther, pQuestName, r1, r2, xStack_8c, x_stk_7c
+    local resources = quest:RetailResources()
+    local bVar2, bVar3, bVar4, bVar5, bVar6, bVar7, cVar1, fVar11, f_stk_40, iVar9, i_stk_2c, i_stk_38, i_stk_90, native_arg_sequence_1, p0, pCVar8, pOther, pQuestName, r1, r2, xStack_80, xStack_8c, x_stk_7c
     local alive = true
     bVar4 = false
     bVar7 = false
@@ -40,6 +41,7 @@ function Main(quest, me)
             i_stk_90 = quest:RegisterTimer()
             i_stk_38 = 0
             __native_entity_state:SetStateInt("BrainState", 2)
+            xStack_80 = "HookCoast"
             pQuestName = quest:GetActiveQuestName()
             quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_SUMMONING_SHIP_OBJECTIVE_03", "HookCoast", "HookCoast")
             helper_DF2090(quest, me, 1)
@@ -67,7 +69,7 @@ function Main(quest, me)
                         end
                         x_stk_7c = 1
                     end
-                    -- TODO(native): } else {
+                else
                     native_arg_sequence_1 = false
                     if x_stk_7c == 1 then
                         native_arg_sequence_1 = true
@@ -91,8 +93,8 @@ function Main(quest, me)
                         end
                         r1 = quest:GetNearestWithScriptName(me, "SummonerAttacker")
                         r2 = quest:GetNearestWithScriptName(me, "SummonerMinion")
-                        f_stk_40 = (quest:GetDistanceBetweenThings(me, r1) ^ 2)
-                        fVar11 = (quest:GetDistanceBetweenThings(me, r2) ^ 2)
+                        f_stk_40 = (("<f"):unpack(("<f"):pack(resources:DistanceBetweenThings(me, r1))))
+                        fVar11 = resources:DistanceBetweenThings(me, r2)
                         if f_stk_40 <= fVar11 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -146,39 +148,20 @@ function Main(quest, me)
                     end
                     goto FLOW_past_lab_00df1bd5
                     ::LAB_00df1bd5::
+                    xStack_80 = pOther
                     ::FLOW_past_lab_00df1bd5::
-                    -- TODO(native): iVar9 = *(*(this + 0x14) + 0x48)
-                    iVar9 = nil --[[unresolved native value]]
-                    native_arg_sequence_2 = false
-                    if 0 < iVar9 then
-                        native_arg_sequence_2 = true
-                    else
-                        native_arg_sequence_2 = false
-                    end
-                    if native_arg_sequence_2 then
-                        if iVar9 < 4 then
-                            native_arg_sequence_2 = true
-                        else
-                            native_arg_sequence_2 = false
-                        end
-                    end
-                    if native_arg_sequence_2 then
-                        -- TODO(native): bVar5 = require("SummoningTheShip.native_quest_helpers").MakeBriarRoseComment(quest, me, &pOther)
-                        bVar5 = nil --[[unresolved native value]]
+                    iVar9 = quest:GetStateInt("SummonersAlive")
+                    if (0 < iVar9) and (iVar9 < 4) then
+                        bVar5 = require("SummoningTheShip.native_quest_helpers").MakeBriarRoseComment(quest, me, pOther)
                         if bVar5 then
-                            native_arg_sequence_2 = true
-                        else
-                            native_arg_sequence_2 = false
+                            alive = not quest:IsActiveThreadTerminating()
+                            bVar5 = not alive
+                            if bVar5 then
+                                quest:DeregisterTimer(i_stk_90)
+                                return
+                            end
+                            i_stk_38 = quest:GetStateInt("SummonersAlive")
                         end
-                    end
-                    if native_arg_sequence_2 then
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar5 = not alive
-                        if bVar5 then
-                            quest:DeregisterTimer(i_stk_90)
-                            return
-                        end
-                        i_stk_38 = quest:GetStateInt("SummonersAlive")
                     end
                 end
                 iVar9 = me:GetCurrentStateGroupType()

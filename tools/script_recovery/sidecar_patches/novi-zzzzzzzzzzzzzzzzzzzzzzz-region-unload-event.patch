@@ -1,0 +1,18 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 0f42350..f2a830f 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -281,6 +281,13 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         }
+         CancelUsingAbility_API(gsi, static_cast<EHeroAbility>(ability));
+     };
++    // GSI slot 0x54 reports the region-unload event for this script context.
++    quest["MsgIsRegionUnloaded"] = [](LuaQuestState& self, const std::string& regionName) -> bool {
++        auto* gsi = self.GetGameInterface();
++        if (!gsi || !MsgIsRegionUnloaded_API) return false;
++        FableString name(regionName.c_str());
++        return MsgIsRegionUnloaded_API(gsi, name.get());
++    };
+     // ---- text table probe (GSI slot 0x598, bool(const CCharString&) const) ----------------------
+     // The key is required natively; a call without one is a converter gap (the operand was dropped), logged and false.
+     quest["TextEntryExists"] = [](LuaQuestState& self, sol::optional<std::string> key) -> bool {

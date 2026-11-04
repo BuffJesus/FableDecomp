@@ -1091,5 +1091,11 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedWaspOffset": {
+    "0x00e0e820": {
+      "sourceSha256": "ccf404d5c95ae0e78f6870ad0adb5b9cad2d9b8d52f2aa2fd681217a95be54bd",
+      "nativeSha256": "72b1fe42771499d8af10694521fc06183360fc2b88c6c312a3d7297546693bd0"
+    }
   }
 }

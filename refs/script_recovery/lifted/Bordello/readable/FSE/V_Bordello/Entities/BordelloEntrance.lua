@@ -9,10 +9,14 @@ function Main(quest, me)
         if isQuestCompleted then
             if quest:IsActiveThreadTerminating() then return end
             if not quest:GetStateBool("BecomeNunnery") then
-                quest:SetReadableObjectTextTag(quest:GetThingWithScriptName("BordelloSign"), "TEXT_QST_B13_BORDELLO_OPEN")
+                if quest:IsActiveThreadTerminating() then return end
+                local bordelloSign = quest:GetThingWithScriptName("BordelloSign")
+                quest:SetReadableObjectTextTag(bordelloSign, "TEXT_QST_B13_BORDELLO_OPEN")
                 quest:EntitySetAsLocked(me, false)
             else
-                quest:SetReadableObjectTextTag(quest:GetThingWithScriptName("BordelloSign"), "TEXT_QST_B13_BORDELLO_REFUGE")
+                if quest:IsActiveThreadTerminating() then return end
+                local bordelloSign2 = quest:GetThingWithScriptName("BordelloSign")
+                quest:SetReadableObjectTextTag(bordelloSign2, "TEXT_QST_B13_BORDELLO_REFUGE")
                 quest:EntitySetAsLocked(me, false)
             end
             repeat
@@ -24,6 +28,7 @@ function Main(quest, me)
         if not me:MsgIsUsedByHero() then
             isQuestCompleted = quest:IsQuestCompleted("Q_TraderEscort")
         else
+            if quest:IsActiveThreadTerminating() then return end
             quest:DisplayGameInfo("TEXT_QST_B13_BORDELLO_CLOSED")
             while not quest:MsgIsGameInfoClickedPast() do
                 if not quest:NewScriptFrame(me) then return end

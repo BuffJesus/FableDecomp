@@ -1,5 +1,7 @@
 # Script split proposal for the Aeon collaboration (generated 2026-09-17)
 
+> Historical assignment proposal and external baseline; not an active assignment.
+
 Aeon proposed converting every Fable TLC quest script to FSE Lua, splitting the work and cross-referencing the results.
 This is the inventory to split from: the 161 native script clusters in `refs/script_recovery/conversion_queue.tsv`.
 Function counts / bytes = retail functions whose bsim donor is a `NScript::C<Name>Script` member

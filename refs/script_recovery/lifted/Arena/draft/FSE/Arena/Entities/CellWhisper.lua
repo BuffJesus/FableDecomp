@@ -12,9 +12,9 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar5, cVar6, c_stk_85, center, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar9, native_arg_switch_1, pCVar12, pCVar13, pCVar14, pCVar7, pCVar8, pThing, pThing1, pcVar11, ppuVar15, this_00, uVar10, uVar4, u_stk_84, xStack_4c, xStack_80, xStack_9c
+    local bVar5, cVar6, c_stk_85, cellWhisperResource, center, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, iVar9, native_arg_switch_1, pCVar12, pCVar13, pCVar14, pCVar7, pCVar8, pThing, pThing1, pcVar11, r1, r2, r3, r4, r5, r6, this_00, uVar10, uVar4, u_stk_84, xStack_4c, xStack_80
     local alive = true
-    ppuVar15 = resources:NewResource()
+    cellWhisperResource = resources:NewResource()
     quest:EntityUnsetAsOpinionSource(me, false)
     quest:EntitySetInFaction(me, "FACTION_HERO")
     quest:EntitySetAsKillable(me, false, false)
@@ -37,14 +37,14 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if bVar5 then break end
-            resources:PrepareResource(xStack_9c)
-            bVar5 = resources:TryAcquire(xStack_9c, me, 4)
+            resources:PrepareResource(cellWhisperResource)
+            bVar5 = resources:TryAcquire(cellWhisperResource, me, 4)
             while not bVar5 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if bVar5 then goto LAB_00f17b3f end
-                bVar5 = resources:TryAcquire(xStack_9c, me, 4)
+                bVar5 = resources:TryAcquire(cellWhisperResource, me, 4)
             end
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
@@ -54,14 +54,15 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if bVar5 then goto LAB_00f17b3f end
+                me:ClearCommands()
             end
             xStack_80 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            iVar9 = math.random(0, 32767)
+            iVar9 = quest:RetailRandModulo(32768)
             native_arg_switch_1 = iVar9 % (quest:GetStateInt("ArenaRound") + -2)
             repeat
                 if native_arg_switch_1 == 0 then
-                    pCVar7 = resources:ScriptThing(xStack_9c)
+                    pCVar7 = resources:ScriptThing(cellWhisperResource)
                     fret_0 = quest:GetHealth(pCVar7)
                     fVar3 = 0.0
                     if fret_0 <= fVar3 then break end
@@ -71,6 +72,10 @@ function Main(quest, me)
                     pCVar12 = 0x0
                     pcVar11 = "TEXT_QST_005_V2_ARENA_WHISPER_COMMENT_THIRD_ROUND"
                     pCVar7 = quest:GetHero()
+                    r1 = me:Speak(pCVar7, pcVar11, pCVar12, (pCVar13 ~= 0), (pCVar14 ~= 0), bVar5)
+                    if not r1 then
+                        goto LAB_00f17af0
+                    end
                     iVar9 = me:IsPerformingScriptTask()
                     cVar6 = iVar9
                     while cVar6 do
@@ -84,7 +89,7 @@ function Main(quest, me)
                     goto LAB_00f17734
                 else
                     if native_arg_switch_1 == 1 then
-                        pCVar7 = resources:ScriptThing(xStack_9c)
+                        pCVar7 = resources:ScriptThing(cellWhisperResource)
                         fret_00 = quest:GetHealth(pCVar7)
                         fVar3 = 0.0
                         if fVar3 < fret_00 then
@@ -94,6 +99,10 @@ function Main(quest, me)
                             pCVar12 = 0x0
                             pcVar11 = "TEXT_QST_005_V2_ARENA_WHISPER_COMMENT_FOURTH_ROUND"
                             pCVar7 = quest:GetHero()
+                            r2 = me:Speak(pCVar7, pcVar11, pCVar12, (pCVar13 ~= 0), (pCVar14 ~= 0), bVar5)
+                            if not r2 then
+                                goto LAB_00f17af0
+                            end
                             iVar9 = me:IsPerformingScriptTask()
                             cVar6 = iVar9
                             while cVar6 do
@@ -109,7 +118,7 @@ function Main(quest, me)
                         break
                     else
                         if native_arg_switch_1 == 2 then
-                            pCVar7 = resources:ScriptThing(xStack_9c)
+                            pCVar7 = resources:ScriptThing(cellWhisperResource)
                             fret_01 = quest:GetHealth(pCVar7)
                             fVar3 = 0.0
                             if fVar3 < fret_01 then
@@ -119,6 +128,10 @@ function Main(quest, me)
                                 pCVar12 = 0x0
                                 pcVar11 = "TEXT_QST_005_V2_ARENA_WHISPER_COMMENT_FIFTH_ROUND"
                                 pCVar7 = quest:GetHero()
+                                r3 = me:Speak(pCVar7, pcVar11, pCVar12, (pCVar13 ~= 0), (pCVar14 ~= 0), bVar5)
+                                if not r3 then
+                                    goto LAB_00f17af0
+                                end
                                 iVar9 = me:IsPerformingScriptTask()
                                 cVar6 = iVar9
                                 while cVar6 do
@@ -134,7 +147,7 @@ function Main(quest, me)
                             break
                         else
                             if native_arg_switch_1 == 3 then
-                                pCVar7 = resources:ScriptThing(xStack_9c)
+                                pCVar7 = resources:ScriptThing(cellWhisperResource)
                                 fret_02 = quest:GetHealth(pCVar7)
                                 fVar3 = 0.0
                                 if fVar3 < fret_02 then
@@ -144,6 +157,10 @@ function Main(quest, me)
                                     pCVar12 = 0x0
                                     pcVar11 = "TEXT_QST_005_V2_ARENA_WHISPER_COMMENT_SIXTH_ROUND"
                                     pCVar7 = quest:GetHero()
+                                    r4 = me:Speak(pCVar7, pcVar11, pCVar12, (pCVar13 ~= 0), (pCVar14 ~= 0), bVar5)
+                                    if not r4 then
+                                        goto LAB_00f17af0
+                                    end
                                     iVar9 = me:IsPerformingScriptTask()
                                     cVar6 = iVar9
                                     while cVar6 do
@@ -159,7 +176,7 @@ function Main(quest, me)
                                 break
                             else
                                 if native_arg_switch_1 == 4 then
-                                    pCVar7 = resources:ScriptThing(xStack_9c)
+                                    pCVar7 = resources:ScriptThing(cellWhisperResource)
                                     fret_03 = quest:GetHealth(pCVar7)
                                     fVar3 = 0.0
                                     if fVar3 < fret_03 then
@@ -169,6 +186,10 @@ function Main(quest, me)
                                         pCVar12 = 0x0
                                         pcVar11 = "TEXT_QST_005_V2_ARENA_WHISPER_COMMENT_SEVENTH_ROUND"
                                         pCVar7 = quest:GetHero()
+                                        r5 = me:Speak(pCVar7, pcVar11, pCVar12, (pCVar13 ~= 0), (pCVar14 ~= 0), bVar5)
+                                        if not r5 then
+                                            goto LAB_00f17af0
+                                        end
                                         iVar9 = me:IsPerformingScriptTask()
                                         cVar6 = iVar9
                                         while cVar6 do
@@ -219,14 +240,14 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if bVar5 then goto LAB_00f17b3f end
-                resources:PrepareResource(xStack_9c)
-                bVar5 = resources:TryAcquire(xStack_9c, me, 4)
+                resources:PrepareResource(cellWhisperResource)
+                bVar5 = resources:TryAcquire(cellWhisperResource, me, 4)
                 while not bVar5 do
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then goto LAB_00f17b3f end
-                    bVar5 = resources:TryAcquire(xStack_9c, me, 4)
+                    bVar5 = resources:TryAcquire(cellWhisperResource, me, 4)
                 end
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
@@ -236,6 +257,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then goto LAB_00f17b3f end
+                    me:ClearCommands()
                 end
                 if not quest:GetStateBool("InHitCutsceneAlready") then
                     alive = not quest:IsActiveThreadTerminating()
@@ -244,7 +266,7 @@ function Main(quest, me)
                     quest:SetStateBool("InHitCutsceneAlready", true)
                     xStack_4c = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    pCVar7 = resources:ScriptThing(xStack_9c)
+                    pCVar7 = resources:ScriptThing(cellWhisperResource)
                     fret_04 = quest:GetHealth(pCVar7)
                     fVar3 = 0.0
                     if fVar3 < fret_04 then
@@ -254,6 +276,11 @@ function Main(quest, me)
                         pCVar12 = 0x0
                         pcVar11 = "TEXT_QST_005_WHISPER_ENEMY_BEENHITATSTART_10"
                         pCVar7 = quest:GetHero()
+                        r6 = me:Speak(pCVar7, pcVar11, pCVar12, (pCVar13 ~= 0), (pCVar14 ~= 0), bVar5)
+                        if not r6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto LAB_00f17b32
+                        end
                         iVar9 = me:IsPerformingScriptTask()
                         cVar6 = iVar9
                         while cVar6 do
@@ -293,12 +320,13 @@ function Main(quest, me)
         end
         goto FLOW_past_lab_00f17a59
         ::LAB_00f17a59::
-        resources:PrepareResource(xStack_9c)
+        resources:PrepareResource(cellWhisperResource)
         ::FLOW_past_lab_00f17a59::
         alive = quest:NewScriptFrame(me)
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
     end
+    resources:ReleaseResource(cellWhisperResource)
     do return end
     ::LAB_00f17af0::
     quest:PauseAllNonScriptedEntities(false)
@@ -306,7 +334,7 @@ function Main(quest, me)
     ::LAB_00f17b36::
     resources:DestroyMovie(this_00)
     ::LAB_00f17b3f::
-    resources:ReleaseResource(ppuVar15)
+    resources:ReleaseResource(cellWhisperResource)
 end
 
 function Init(quest, me)

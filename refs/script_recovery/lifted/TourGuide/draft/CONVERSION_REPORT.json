@@ -293,8 +293,7 @@
             "bsimVoid": true
           },
           "todo": [
-            "label LAB_00ee6be5",
-            "MsgIsRegionUnloaded: not in FSE manifest"
+            "label LAB_00ee6be5"
           ],
           "calls": [
             "GetAllThingsWithScriptName",
@@ -308,7 +307,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 43,
+          "lines": 42,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -348,11 +347,26 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 4);",
-            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 8);",
-            "unlifted: *xStack_18 = *xStack_18 + 1;"
+          "signedFieldStepEvidence": [
+            {
+              "field": "WaypointCounter",
+              "offset": "0x164",
+              "local": "iVar9",
+              "bound": 18,
+              "native": {
+                "begin": "0xee690b",
+                "end": "0xee691f",
+                "bytes": "8b9664010000428bc283f8128996640100007c17",
+                "receiver_register": "esi"
+              },
+              "body_sha256": "7159a93be10d1f5a9e9a07289266540c10ed5b3084605ed4873228e801e6ff0a",
+              "export_sha256": "55b49a5efe7b12567807f1fbe9615a44fdcb8539cb8e4b2d065afe28cd9f8d5a",
+              "before": "quest:GetStateInt(\"WaypointCounter\") + 1",
+              "after": "((quest:GetStateInt(\"WaypointCounter\") + 1 + 2147483648) % 4294967296 - 2147483648)",
+              "basis": "Explicit int local/member pair, unique MOV/INC/MOV/CMP/store/JL and receiver alias proven over reachable branches; apply after prior reviewed recovery."
+            }
           ],
+          "todo": [],
           "calls": [
             "IsAlive",
             "IsActiveThreadTerminating",
@@ -372,7 +386,11 @@
             "IsActiveThreadTerminating",
             "ENGINE_ZeroVector",
             "GetPos",
-            "MoveToPosition"
+            "MoveToPosition",
+            "CopyThingOutput",
+            "TrackThingOutput",
+            "AssignThingOutput",
+            "RetireThingOutput"
           ],
           "lines": 80,
           "syntax": {
@@ -460,7 +478,7 @@
             "SetStateBool",
             "SetStateBool",
             "SetStateBool",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "GetRandomThingWithScriptName",
             "IsAlive",
@@ -499,7 +517,7 @@
             "SetStateBool",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "SetStateInt",
@@ -554,7 +572,7 @@
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "SetStateInt",
@@ -624,7 +642,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 526,
+          "lines": 525,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -751,10 +769,7 @@
           },
           "todo": [
             "label LAB_00ee52f3",
-            "label LAB_00ee5237",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "FollowThing: missing spTargetThing (2 args for 3 params)"
+            "label LAB_00ee5237"
           ],
           "calls": [
             "RegisterTimer",
@@ -790,14 +805,17 @@
             "ClearCommands",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "EntityGetSex",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "DeregisterTimer",
+            "ENGINE_Concat",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
             "DeregisterTimer",
+            "ENGINE_Concat",
+            "QUESTSTATE_GetString",
             "AddNewConversation",
             "GetHero",
             "AddPersonToConversation",
@@ -852,7 +870,7 @@
             "RESOURCE_ReleaseResource",
             "DeregisterTimer"
           ],
-          "lines": 226,
+          "lines": 228,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -960,17 +978,34 @@
         "TourGuideGuide": "V_TourGuide/Entities/TourGuideGuide",
         "TourGuideFollower": "V_TourGuide/Entities/TourGuideFollower"
       },
+      "sharedSignedFieldStepEvidence": {
+        "helper_EE6850": [
+          {
+            "field": "WaypointCounter",
+            "offset": "0x164",
+            "local": "iVar9",
+            "bound": 18,
+            "native": {
+              "begin": "0xee690b",
+              "end": "0xee691f",
+              "bytes": "8b9664010000428bc283f8128996640100007c17",
+              "receiver_register": "esi"
+            },
+            "body_sha256": "7159a93be10d1f5a9e9a07289266540c10ed5b3084605ed4873228e801e6ff0a",
+            "export_sha256": "55b49a5efe7b12567807f1fbe9615a44fdcb8539cb8e4b2d065afe28cd9f8d5a",
+            "before": "quest:GetStateInt(\"WaypointCounter\") + 1",
+            "after": "((quest:GetStateInt(\"WaypointCounter\") + 1 + 2147483648) % 4294967296 - 2147483648)",
+            "basis": "Explicit int local/member pair, unique MOV/INC/MOV/CMP/store/JL and receiver alias proven over reachable branches; apply after prior reviewed recovery."
+          }
+        ]
+      },
       "sharedHelpers": {
         "path": "FSE/V_TourGuide/native_quest_helpers.lua",
         "functions": [
           "helper_EE6850"
         ],
         "todo": {
-          "helper_EE6850": [
-            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 4);",
-            "unlifted: xStack_18 = *(int **)(native_arg_param_1 + 8);",
-            "unlifted: *xStack_18 = *xStack_18 + 1;"
-          ]
+          "helper_EE6850": []
         },
         "syntax": {
           "runtime": "Lua 5.4",
@@ -987,7 +1022,7 @@
         "functionSyntaxPassed": 15,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 13
+        "todo": 6
       }
     }
   ],
@@ -998,6 +1033,6 @@
     "functionSyntaxPassed": 15,
     "fileSyntaxPassed": 4,
     "fileSyntaxChecked": 4,
-    "todo": 13
+    "todo": 6
   }
 }

@@ -3,7 +3,8 @@
 
 -- HeroBed.Main (retail 0x00d446d0)
 function Main(quest, me)
-    local scratchValue, scratchValue3, scratchValue4, scratchValue5, scratchValue6, scratchValue7
+    local scratchValue, scratchValue2, scratchValue3, scratchValue4, scratchValue5, scratchValue6
+    local scratchValue7
     scratchValue4 = 0
     quest:SetThingAsUsable(me, false)
     quest:SetThingPersistent(me, true)
@@ -17,9 +18,9 @@ function Main(quest, me)
             quest:SetThingPersistent(guildBedFloorPallet01[scratchValue5 + 1], true)
             scratchValue4 = scratchValue4 + 1
             scratchValue5 = scratchValue5 + 1
-        until scratchValue4 >= count
+        until not (scratchValue4 < count)
     end
-    scratchValue = 0
+    scratchValue2 = 0
     if not quest:IsActiveThreadTerminating() then
         local guildBedApprentice01 = quest:GetAllThingsWithDefName("OBJECT_GUILD_BED_APPRENTICE_01")
         local count2 = #guildBedApprentice01
@@ -29,9 +30,9 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00d449bd end
                 quest:SetThingAsUsable(guildBedApprentice01[scratchValue6 + 1], false)
                 quest:SetThingPersistent(guildBedApprentice01[scratchValue6 + 1], true)
-                scratchValue = scratchValue + 1
+                scratchValue2 = scratchValue2 + 1
                 scratchValue6 = scratchValue6 + 1
-            until scratchValue >= count2
+            until not (scratchValue2 < count2)
         end
         scratchValue3 = 0
         if not quest:IsActiveThreadTerminating() then
@@ -45,22 +46,29 @@ function Main(quest, me)
                     quest:SetThingPersistent(bsSlumBedBrown01[scratchValue7 + 1], true)
                     scratchValue3 = scratchValue3 + 1
                     scratchValue7 = scratchValue7 + 1
-                until scratchValue3 >= count3
+                until not (scratchValue3 < count3)
+            end
+            if not quest:IsActiveThreadTerminating() then
             end
         end
     end
+    scratchValue = guildBedFloorPallet01 == nil
     do return end
     ::LAB_00d449bd::
     if #guildBedFloorPallet01 ~= 0 then
+        scratchValue = guildBedFloorPallet01 == nil
         return
     end
-    do return end
+    goto LAB_00d44bc3
     ::LAB_00d44b4d::
-    do return end
+    goto LAB_00d44bc3
     ::LAB_00d4482d::
-    if #guildBedFloorPallet01 ~= 0 then
-        return
+    if not (not (#guildBedFloorPallet01 ~= 0)) then
+        scratchValue = guildBedFloorPallet01 == nil
+        do return end
     end
+    ::LAB_00d44bc3::
+    scratchValue = guildBedFloorPallet01 == nil
 end
 
 -- HeroBed.Init (retail 0x00d40be0)

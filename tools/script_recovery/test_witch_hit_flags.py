@@ -10,7 +10,7 @@ import pytest
 from tools.script_recovery.native_evidence_lowering import normalise_typed_decompile, rename_scalar_stack_locals
 from tools.script_recovery.test_entity_persistence import generated, witch_vm
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'tools/script_recovery/script_units.py').exists())
 
 
 def test_projected_byte_is_not_an_object_slot_alias():
@@ -128,6 +128,12 @@ def test_generated_witch_hit_gate_matches_retail(generated, retail, stage, case)
         function resources:TryAcquire(v,m,p) assert(v==member and m==me and p==4); return true end
         function resources:StartMovie() movies=movies+1; error(boundary) end
         function quest:RetailResources() return resources end
+        function resources:IsHitByHeroExceptAbility(actor,ability)
+            assert(actor==me and ability==14)
+            if actor:MsgIsHitByHero() then return true end
+            if not actor:MsgIsHitByAnySpecialAbilityFromHero() then return false end
+            return not actor:MsgIsHitByHeroSpecialAbility(ability)
+        end
         function quest:GetHero() return hero end
         function quest:NewScriptFrame(v)
             assert(v==me); frames=frames+1; assert(frames<5)

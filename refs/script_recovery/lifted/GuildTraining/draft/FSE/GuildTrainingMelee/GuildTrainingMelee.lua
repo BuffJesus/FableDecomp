@@ -18,7 +18,7 @@ function Main(quest)
     pCVar4 = quest:GetThingWithScriptName("MK_GTWU_WHISPER")
     bVar6 = false
     pPosition = pCVar4:GetPos()
-    r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pPosition, "MeleeOpponent")
+    r1 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pPosition, "MeleeOpponent", bVar6)
     pCVar4 = nil
     quest:EntitySetInFaction(r1, "FACTION_HERO")
     if (r1 ~= nil and not r1:IsNull()) then

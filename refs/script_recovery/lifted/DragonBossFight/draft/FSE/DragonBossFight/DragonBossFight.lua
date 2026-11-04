@@ -319,7 +319,7 @@ function SpawnMinions(quest)
             r1 = nil
             bVar2 = false
             pCVar3 = quest:GetStateListAt("MinionSpawnPoints", (iVar4) / 0xc):GetPos()
-            r2 = quest:CreateCreature("CREATURE_MINION_WARDOG", pCVar3, "DBMinion")
+            r2 = quest:CreateCreature("CREATURE_MINION_WARDOG", pCVar3, "DBMinion", bVar2)
             r2 = nil
             v_stk_20 = v_stk_20 + 1
             iVar4 = iVar4 + 0xc
@@ -341,7 +341,7 @@ function SpawnSummoners(quest)
             if bVar2 then
                 return
             end
-            uVar3 = math.random(0, 32767)
+            uVar3 = quest:RetailRandModulo(32768)
             uVar3 = uVar3 & 0x80000001
             bVar2 = uVar3 == 0
             if uVar3 < 0 then
@@ -352,14 +352,12 @@ function SpawnSummoners(quest)
                 string = "CREATURE_SUMMONER_02"
             end
             bVar2 = false
-            -- TODO(native): pCVar4 = (**(*(quest:GetStateListRef("SummonerSpawnPoints") + quest:GetStateInt("NextSummonerSpawnPoint") * 0xc) + 0x18))()
-            pCVar4 = nil --[[unresolved native value]]
-            r1 = quest:CreateEffectAtPos("SUMMON_CREATURE_SUMMON_EVIL", nil --[[missing]], 0.0, bVar2)
+            pCVar4 = quest:GetStateListAt("SummonerSpawnPoints", quest:GetStateInt("NextSummonerSpawnPoint")):GetPos()
+            r1 = quest:CreateEffectAtPos("SUMMON_CREATURE_SUMMON_EVIL", pCVar4, 0.0, bVar2)
             r1 = nil
             bVar2 = false
-            -- TODO(native): pCVar4 = (**(*(quest:GetStateListRef("SummonerSpawnPoints") + quest:GetStateInt("NextSummonerSpawnPoint") * 0xc) + 0x18))()
-            pCVar4 = nil --[[unresolved native value]]
-            r2 = quest:CreateCreature(pCVar4, nil --[[missing]], "DBSummoner")
+            pCVar4 = quest:GetStateListAt("SummonerSpawnPoints", quest:GetStateInt("NextSummonerSpawnPoint")):GetPos()
+            r2 = quest:CreateCreature(string, pCVar4, "DBSummoner", bVar2)
             r2 = nil
             iVar1 = quest:GetStateInt("NextSummonerSpawnPoint")
             quest:SetStateInt("NextSummonerSpawnPoint", iVar1 + 1)

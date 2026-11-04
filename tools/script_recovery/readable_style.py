@@ -13,7 +13,7 @@ the readable copy:
     call) are dropped; retry loops become `while not cond do ... end`
   * single-use temporaries (step 2): a temporary assigned once and read once at the very next
     statement is substituted at the read (evaluation order preserved: no completed call precedes
-    the read in that statement unless the value is a pure state read)
+    the read in that statement, and the read is not conditionally executed)
   * boolean materialisation: `if C then v = true else v = false end` -> `v = C`,
     `if v then v = E end` -> `v = v and E`, empty then-branches inverted
   * cosmetics (step 6): redundant parentheses, `x + -1`, `v ~= false`, blank lines, one
@@ -25,7 +25,7 @@ import functools
 import re
 from collections import Counter
 
-from tools.script_recovery.lua_local_versions import flow_graph
+from tools.script_recovery.lua_local_versions import flow_graph, random_result_locals, compound_scalar_stores, nil_clear_targets
 from tools.script_recovery.readable_lua import rename_identifiers, tokens
 
 TERMINATING = r'(?P<recv>\w+):IsActiveThreadTerminating\(\)'
@@ -90,6 +90,10 @@ def _closure_ranges(structure):
     while i < len(structure):
         m = re.match(r'^(\s*)local function \w+\(', structure[i])
         if m:
+            # The range finder models emitted multiline declarations only.
+            # An inline body must not consume a later unrelated same-indent end.
+            if not re.fullmatch(r'\s*local function \w+\([\w, .]*\)\s*', structure[i]):
+                return None
             indent = m.group(1)
             j = i + 1
             while j < len(structure) and structure[j] != indent + 'end':
@@ -109,10 +113,17 @@ class Flow:
         self.lines = lines
         self.structure = _structure(lines)
         self.ok = False
+        self.inert_nil_initializations = set()
         ranges = _closure_ranges(self.structure)
         if ranges is None:
             return
-        self.pinned = set()
+        # Keep random-result destinations and their explicit releases together.
+        self.pinned = random_result_locals(self.structure)
+        # Compound destinations block identifier substitution. They need not
+        # block rewrites that retain stores or remove an entire dead statement.
+        self.opaque_pinned = self.pinned | {'_ENV'}
+        self.pinned.update(compound_scalar_stores(self.structure))
+        self.pinned.add('_ENV')  # bare global accesses implicitly read this binding
         blanked = list(self.structure)
         for a, b in ranges:
             shadowed = set()          # a closure-local (`local x = ...`) is not the enclosing function's x
@@ -123,6 +134,7 @@ class Flow:
                     names.discard(local.group(1))
                     shadowed.add(local.group(1))
                 self.pinned.update(names - shadowed)
+                self.opaque_pinned.update(names - shadowed)
                 blanked[i] = ''
         # `__cleanup_X(); return` (hoisted cleanup regions) is straight-line code before the exit
         for i, line in enumerate(blanked):
@@ -134,6 +146,23 @@ class Flow:
         for i, targets in self.graph.items():
             for t in targets:
                 self.preds.setdefault(t, set()).add(i)
+        # A lone nil store to one uninitialized, uncaptured hoisted local has
+        # no previous value to retire. Keep ordinary literal staging available;
+        # every ambiguous, reused, captured or compound destination stays pinned.
+        declarations = Counter(_declared_temporaries(self.structure))
+        definitions = Counter(_line_target(line) for line in self.structure)
+        clear_counts = Counter(name for line in self.structure for name in nil_clear_targets(line))
+        other_compound = compound_scalar_stores(self.structure, include_nil_clears=False)
+        for i, line in enumerate(self.structure):
+            targets = nil_clear_targets(line)
+            if len(targets) != 1:
+                continue
+            name = next(iter(targets))
+            if (declarations[name] == definitions[name] == clear_counts[name] == 1
+                    and name not in self.opaque_pinned and name not in other_compound
+                    and not re.search(r'\b' + re.escape(name) + r'\b', self.structure[0])):
+                self.inert_nil_initializations.add(i)
+                self.pinned.discard(name)
         self.ok = True
 
     def only_ends_after(self, i):
@@ -194,7 +223,8 @@ def _top_level_operators(expr):
             depth += 1
         elif v in ')]}':
             depth -= 1
-        elif depth == 0 and (v in ('and', 'or', 'not', '..', '+', '-', '*', '/', '%', '^', '==', '~=', '<', '>', '<=', '>=')):
+        elif depth == 0 and (v in ('and', 'or', 'not', '..', '+', '-', '*', '/', '//', '%', '^',
+                                   '&', '|', '~', '<<', '>>', '#', '==', '~=', '<', '>', '<=', '>=')):
             ops.append(v)
     return ops
 
@@ -204,6 +234,51 @@ def _atomic(expr):
     if _wrapped(expr):
         return True
     return not _top_level_operators(expr)
+
+
+def _can_expand_results(expr):
+    """Conservative call/vararg recognition, including Lua's call sugar."""
+    if _wrapped(expr.strip()) or not _atomic(expr):
+        return False
+    stream = [t for t in tokens(expr) if t.lastgroup not in ('space', 'comment', 'longcomment')]
+    if not stream:
+        return False
+    last = stream[-1]
+    return (last[0] in ('...', ')')
+            or len(stream) > 1 and last.lastgroup in ('string', 'longstring')
+            or last[0] == '}' and stream[0][0] != '{')
+
+
+def _result_list_tail(previous, following, after_following=''):
+    return (previous in ('(', ',', '{', 'return', '=', 'in')
+            and (following in (')', '}', '', 'end', ';', 'do')
+                 or following == ',' and after_following == '}'))
+
+
+def _has_expression_list(expr):
+    depth = 0
+    for token in tokens(expr):
+        if token.lastgroup in ('space', 'comment', 'longcomment', 'string', 'longstring'):
+            continue
+        if token[0] in ('(', '[', '{'):
+            depth += 1
+        elif token[0] in (')', ']', '}'):
+            depth -= 1
+        elif token[0] == ',' and depth == 0:
+            return True
+    return False
+
+
+def _reference_can_expand(source, name):
+    stream = [t for t in tokens(source) if t.lastgroup not in ('space', 'comment', 'longcomment')]
+    for i, token in enumerate(stream):
+        if token.lastgroup == 'identifier' and token[0] == name:
+            if i and stream[i - 1][0] == '=' and not _has_expression_list(''.join(t[0] for t in stream[:i - 1])):
+                return False  # one assignment target always consumes exactly one value
+            return _result_list_tail(stream[i - 1][0] if i else '',
+                                     stream[i + 1][0] if i + 1 < len(stream) else '',
+                                     stream[i + 2][0] if i + 2 < len(stream) else '')
+    return False
 
 
 def _wrapped(expr):
@@ -221,22 +296,75 @@ def _wrapped(expr):
 KEYWORDS = {'and', 'or', 'not', 'if', 'elseif', 'while', 'until', 'return', 'then', 'do', 'in'}
 
 
-def _calls(line):
-    """(kind, receiver, name) per call: kind is ':' (method), '.' (field function) or '' (bare)."""
+def _calls(line, *, completed_only=False):
+    """Calls in Lua code, ignoring comments/literal contents and spacing.
+
+    Dynamic callees are unknown effectful calls. Literal/table argument sugar
+    is still a call even though it has no opening parenthesis.
+    """
+    stream = [t for t in tokens(line) if t.lastgroup not in ('space', 'comment', 'longcomment')]
     calls = []
-    for m in re.finditer(r'(?:(?P<recv>[\w.]+)?(?P<kind>[:.]))?\b(?P<name>\w+)\(', line):
-        if m.group('name') in KEYWORDS:
+    for i, token in enumerate(stream):
+        if not i or not (token[0] in ('(', '{') or token.lastgroup in ('string', 'longstring')):
             continue
-        calls.append((m.group('kind') or '', m.group('recv'), m.group('name')))
+        if completed_only and token[0] in ('(', '{'):
+            closing = {'(': ')', '[': ']', '{': '}'}
+            stack = [closing[token[0]]]
+            for following in stream[i + 1:]:
+                value = following[0]
+                if value in closing:
+                    stack.append(closing[value])
+                elif value in (')', ']', '}'):
+                    if not stack or value != stack.pop():
+                        break
+                    if not stack:
+                        break
+            if stack:
+                continue
+        previous = stream[i - 1]
+        if previous.lastgroup == 'identifier' and previous[0] not in KEYWORDS_ALL:
+            name, kind, receiver = previous[0], '', None
+            start = i - 1
+            if i >= 2 and stream[i - 2][0] in (':', '.'):
+                kind = stream[i - 2][0]
+                start = i - 3
+                if start >= 0 and stream[start].lastgroup == 'identifier':
+                    end = start
+                    while start >= 2 and stream[start - 1][0] == '.' and stream[start - 2].lastgroup == 'identifier':
+                        start -= 2
+                    receiver = ''.join(t[0] for t in stream[start:end + 1])
+            if start >= 1 and stream[start - 1][0] == 'function':
+                continue
+            calls.append((kind, receiver, name))
+        elif previous[0] in (')', ']', '}') or previous.lastgroup in ('string', 'longstring'):
+            calls.append(('', None, '<dynamic>'))
     return calls
 
 
-def _pure_line(structure_line, raw_line, pure_functions):
+
+def _environment_evaluation_is_inert(flow, raw_line, definition):
+    """Unknown variable reads/stores may dispatch through an _ENV metatable."""
+    structure = _structure_line(raw_line)
+    names = set(_line_reads(structure))
+    target = _line_target(structure)
+    if target and not structure.lstrip().startswith('local '):
+        names.add(target)
+    if '_ENV' in names:
+        return False
+    return not names or (flow is not None and flow.ok and
+        _prefix_bindings_are_stable(flow, 'return ' + ', '.join(sorted(names)), definition))
+
+
+def _pure_line(structure_line, raw_line, pure_functions, flow=None, definition=0):
     s = structure_line.strip()
     if not s or re.fullmatch(r'(?:end|else|repeat|do|break|return|goto \w+|::\w+::|local [\w, ]+)', s):
         return True
+    if _prefix_has_implicit_evaluation(raw_line):
+        return False  # indexing/operators can run metamethods and change scheduler state
+    if not _environment_evaluation_is_inert(flow, raw_line, definition):
+        return False
     for kind, recv, name in _calls(raw_line):
-        if kind == ':' and (recv in PURE_RECEIVER or PURE_METHOD.match(name)):
+        if kind == ':' and name == 'IsActiveThreadTerminating':
             continue
         if kind == '' and name in pure_functions:
             continue
@@ -249,17 +377,28 @@ def _negate(cond):
     if cond.startswith('not ') and _atomic(cond[4:]):
         return cond[4:]
     ops = _top_level_operators(cond)
-    flips = {'==': '~=', '~=': '==', '<': '>=', '>=': '<', '>': '<=', '<=': '>'}
+    # Relational complements differ for NaN (and may invoke different Lua
+    # metamethods). Preserve logical negation unless equality is involved.
+    flips = {'==': '~=', '~=': '=='}
     if len(ops) == 1 and ops[0] in flips:
-        return re.sub(r' ' + re.escape(ops[0]) + r' ', f' {flips[ops[0]]} ', cond, count=1)
+        depth = 0
+        for token in tokens(cond):
+            if token.lastgroup in ('string', 'longstring', 'comment', 'longcomment', 'space'):
+                continue
+            value = token[0]
+            if value in ('(', '[', '{'):
+                depth += 1
+            elif value in (')', ']', '}'):
+                depth -= 1
+            elif depth == 0 and value == ops[0]:
+                return cond[:token.start()] + flips[value] + cond[token.end():]
     return f'not {cond}' if _atomic(cond) else f'not ({cond})'
-
 
 # ------------------------------------------------------------------------------------------ passes
 
 def normalize_alive(lines):
     """`alive = not T()` + `p = not alive` -> `p = T()` when `alive` has no other readers; then
-    every remaining `alive =` staging goes (`alive = NewScriptFrame(..)` becomes the bare call)."""
+    remaining staging drops its unused result but preserves scheduler calls."""
     structure = _structure(lines)
     pairs = []
     for i in range(len(lines) - 1):
@@ -278,8 +417,12 @@ def normalize_alive(lines):
         lines[i + 1] = f'{b.group(1)}{b.group(2)} = {a.group(2)}\n'
         count += 1
     for i, line in enumerate(lines):
-        if re.fullmatch(r'\s*(?:local )?alive = (?:true|not \w+:IsActiveThreadTerminating\(\))\n', line):
+        if re.fullmatch(r'\s*(?:local )?alive = true\n', line):
             lines[i] = ''
+            count += 1
+        m = re.fullmatch(r'(\s*)(?:local )?alive = not (\w+:IsActiveThreadTerminating\(\))\n', line)
+        if m:
+            lines[i] = f'{m.group(1)}{m.group(2)}\n'
             count += 1
         m = re.fullmatch(r'(\s*)alive = (\w+:NewScriptFrame\([^\n]*\))\n', line)
         if m:
@@ -350,22 +493,50 @@ def propagate_literals(lines):
                 continue
             if re.search(r'(?<![\w.:])' + re.escape(name) + r'\s*[:.\[(]', _structure_line(lines[r])):
                 continue                                 # a literal cannot be a prefix expression (`nil:IsAlive()`)
-            lines[r] = rename_identifiers(lines[r], {name: m.group(3)})
+            value = m.group(3)
+            # A negative number is a unary expression, not an atomic token:
+            # bare substitution changes x^2 and can turn a preceding '-' into
+            # a Lua comment opener. Preserve the original variable grouping.
+            replacement = '(' + value + ')' if value.startswith('-') else value
+            lines[r] = rename_identifiers(lines[r], {name: replacement})
             count += 1
     return lines, count
 
 
 def propagate_copies(lines):
-    """`a = b` where `b` is defined exactly once (or is a parameter / never assigned): every read of `a`
-    reached only by that copy reads `b` itself; the copy then dies."""
+    """Propagate copies only from a unique, stable function-local binding."""
     count = 0
     flow = Flow(lines)
     if not flow.ok:
         return lines, 0
     structure = flow.structure
+    inline_written = compound_scalar_stores(structure)
     copy = re.compile(r'(\s*)(?:local )?(\w+) = (\w+)\n')
     declared = set(_declared_temporaries(structure))
     initialised = {m.group(1) for l in structure for m in [re.match(r'\s*local (\w+) = ', l)] if m}
+    bindings = {}
+    for i, line in enumerate(structure):
+        match = re.fullmatch(r'(\s*)local ([\w, ]+?)(?: = .+)?', line)
+        if match:
+            for local in match[2].split(','):
+                bindings.setdefault(local.strip(), []).append((i, len(match[1])))
+
+    def reaches(starts, target, blocked=()):
+        seen, queue = set(blocked), list(starts)
+        while queue:
+            i = queue.pop()
+            if i in seen:
+                continue
+            if i == target:
+                return True
+            seen.add(i)
+            queue.extend(flow.graph.get(i, ()))
+        return False
+
+    def unique_top_binding(name):
+        sites = bindings.get(name, ())
+        return len(sites) == 1 and sites[0][1] == 4
+
     # a name a cleanup closure only reads keeps its definitions; its reads outside the closure may still be renamed
     closure_written = set()
     for a, b in _closure_ranges(structure) or []:
@@ -373,8 +544,8 @@ def propagate_copies(lines):
             target = _line_target(structure[k])
             if target and not re.match(r'\s*local ', structure[k]):      # (a closure-local shadow is not a write)
                 closure_written.add(target)
-    for name in list(declared | initialised):
-        if name in closure_written:
+    for name in sorted(declared | initialised):
+        if name in inline_written or name in closure_written or not unique_top_binding(name):
             continue
         defs, reads = _reads_and_defs(structure, name)
         if name in initialised:
@@ -387,13 +558,22 @@ def propagate_copies(lines):
             if not m or m.group(3) in ('true', 'false', 'nil') or m.group(3) == name:
                 continue
             src = m.group(3)
+            # A global/upvalue may be changed by any callee, even without a
+            # visible assignment here. Shadowed or nested bindings are opaque.
+            if not unique_top_binding(src) or src in flow.pinned:
+                continue
+            declaration = bindings[src][0][0]
+            if declaration >= d or reaches([0], d, blocked={declaration}):
+                continue
             src_defs = _reads_and_defs(structure, src)[0]
-            # a source reloaded from the alias (`timerId = scratchValue4` at a loop end) still never moves
-            src_defs = [x for x in src_defs if not re.fullmatch(r'\s*' + re.escape(src) + r' = ' + re.escape(name) + r'\n', lines[x])]
-            if (src in declared or src in initialised) and len(src_defs) > 1:
-                continue                          # the source moves: not an alias
-            if src not in declared and src not in initialised and src_defs:
-                continue                          # an unknown (upvalue / global) written somewhere
+            if len(src_defs) > 1:
+                continue
+            if src_defs:
+                definition = src_defs[0]
+                if reaches([0], d, blocked={definition}):
+                    continue  # the source is not initialized on every copy path
+                if reaches(flow.graph.get(definition, ()), definition):
+                    continue  # one syntactic assignment may run on later iterations
             candidates[d] = src
         if not candidates:
             continue
@@ -452,11 +632,12 @@ def tidy_closures(lines):
         if not straight_line(a, b):
             continue
         body = lines[a + 1:b]
+        inline_written = compound_scalar_stores(_structure(body))
         literal = re.compile(r'(\s*)(\w+) = (true|false|nil|-?\d+(?:\.\d+)?)\n')
         i = 0
         while i < len(body):
             m = literal.fullmatch(body[i])
-            if m:
+            if m and m.group(2) not in inline_written:
                 name = m.group(2)
                 later = ''.join(body[i + 1:])
                 # the temporary is read only in this closure after the store, and never stored again here
@@ -607,94 +788,140 @@ def simplify_fresh_guards(lines):
 
 
 def hoist_hero(lines):
-    """`quest:GetHero()` asked twice or more in one function: one `hero` local at the top (the hero never
-    changes), every call reads it."""
-    calls = [i for i, l in enumerate(lines) if 'quest:GetHero()' in _structure_line(l)]
-    if len(calls) < 2:
-        return lines, 0
-    declared = set(_declared_temporaries(_structure(lines)))
-    head = re.match(r'function \w+\(([^)]*)\)', lines[0]) if lines else None
-    params = {x.strip() for x in head.group(1).split(',')} if head else set()
-    name = 'hero'
-    if name in declared:
-        # an existing `hero` local that only ever holds `quest:GetHero()` is the hoisted one
-        structure = _structure(lines)
-        defs = [i for i, l in enumerate(structure) if _line_target(l) == name]
-        if defs and all(re.fullmatch(r'\s*hero = quest:GetHero\(\)\n', lines[i]) for i in defs):
-            for i in defs:
-                lines[i] = ''
-            _remove_declaration(lines, name)
-            declared.discard(name)
-            calls = [i for i in calls if lines[i]]
-    while name in declared or name in params:
-        name += '_'
-    for i in calls:
-        lines[i] = lines[i].replace('quest:GetHero()', name)
-    # after the parameter line and any leading `local` declarations
-    at = 1
-    while at < len(lines) and re.match(r'\s*local [\w, ]+\n', lines[at]):
-        at += 1
-    indent = re.match(r'\s*', lines[at] if at < len(lines) else '    ').group(0) or '    '
-    lines.insert(at, f'{indent}local {name} = quest:GetHero()\n')
-    return lines, 1
+    """Keep each native hero lookup at its original execution point.
+
+    GetHero returns a borrowed engine handle. Neither handle identity across
+    yields nor the timing of a nullable lookup is established by readability.
+    """
+    return lines, 0
+
+
+def _constant_condition_structure(source):
+    """Blank Lua text tokens across the complete source, preserving offsets."""
+    return ''.join(re.sub(r'[^\n]', ' ', t[0])
+        if t.lastgroup in ('string','longstring','comment','longcomment') else t[0]
+        for t in tokens(source))
+
+def _plain_constant_else(lines, code, indent):
+    """Inline a kept else only when neither text nor a lexical lifetime can move."""
+    if any(raw!=masked or '::' in masked for raw,masked in zip(lines,code)):
+        return None
+    if any(t[0] in ('local','return','function') for t in tokens(''.join(code))):
+        return None
+    if any(line.strip() and not line.startswith(indent+'    ') for line in code):
+        return None
+    flat=[line[4:] if line.startswith('    ') else line for line in lines]
+    changed=True
+    while changed:
+        changed=False
+        for i,line in enumerate(flat):
+            inline=re.fullmatch(r'( *)do (goto [A-Za-z_]\w*) end\n',line)
+            if inline:
+                flat[i]=inline[1]+inline[2]+'\n'
+                changed=True
+                break
+            match=re.fullmatch(r'( *)do\n',line)
+            if not match:
+                continue
+            prefix=match[1]
+            end=next((j for j in range(i+1,len(flat)) if flat[j]==prefix+'end\n'),None)
+            if end is None or any(raw.strip() and not raw.startswith(prefix+'    ') for raw in flat[i+1:end]):
+                continue
+            flat[i:end+1]=[raw[4:] if raw.startswith('    ') else raw for raw in flat[i+1:end]]
+            changed=True
+            break
+    return flat
 
 
 def fold_constant_conditions(lines):
-    """`not true` / `not false`, `if true then BODY end` -> BODY, `if false then ... end` -> nothing."""
-    count = 0
-    for i, line in enumerate(lines):
-        new = re.sub(r'\bnot true\b', 'false', re.sub(r'\bnot false\b', 'true', line))
-        if not new.lstrip().startswith('--'):
-            def literal_compare(mm):
-                # only a literal that is a whole operand (`, 1 ~= 0`), not `x & 1 ~= 0` (binds as `(x & 1) ~= 0`)
-                if not re.search(r'(?:[(=,]|\b(?:if|elseif|while|until|return|and|or|not))\s*$', new[:mm.start()]):
-                    return mm.group(0)
-                truth = bool(int(mm.group(1))) if mm.group(2) == '~=' else not int(mm.group(1))
-                return 'true' if truth else 'false'
-            new = re.sub(r'(?<![\w.])(\d+) (~=|==) 0\b', literal_compare, new)
-        if not new.lstrip().startswith('--'):
-            new = re.sub(r' and true\b', '', new)
-            new = re.sub(r'\btrue and ', '', new)
-            new = re.sub(r' or false\b', '', new)
-            new = re.sub(r'\bfalse or ', '', new)
-        if new != line:
-            lines[i] = new
-            count += 1
-    changed = True
+    """Fold proven literals without changing values, arity, text or scope."""
+    source=''.join(lines)
+    code=_constant_condition_structure(source)
+    changes=[]
+    # Only actual unary tokens; preserve comments between tokens and precedence.
+    for match in re.finditer(r'\bnot[ \t]+(true|false)\b',code):
+        if source[match.start():match.end()]!=match[0]:
+            continue
+        if code[match.end():].lstrip().startswith('^'):
+            continue
+        changes.append((match.start(),match.end(),'false' if match[1]=='true' else 'true'))
+    for start,end,value in reversed(changes):
+        source=source[:start]+value+source[end:]
+    count=len(changes)
+    lines=source.splitlines(True)
+    code=_constant_condition_structure(source).splitlines(True)
+    # Fold only a whole literal comparison. Never eat part of an operand or
+    # turn Lua operand-valued and/or into boolean algebra.
+    pattern=re.compile(r'(?P<head>\s*(?:(?:if|elseif|while|until|return) |(?:local )?[A-Za-z_]\w* = ))(?P<expr>\d+ (?:~=|==) 0)(?P<tail>(?: then(?: .* end)?| do)?[ \t]*\n)')
+    for i,(raw,body) in enumerate(zip(lines,code)):
+        match=pattern.fullmatch(body)
+        if not match or raw[match.start('expr'):match.end('expr')]!=match['expr']:
+            continue
+        number,op,_=match['expr'].split()
+        truth=int(number)!=0 if op=='~=' else int(number)==0
+        lines[i]=raw[:match.start('expr')]+str(truth).lower()+raw[match.end('expr'):]
+        count+=1
+    # Constant branches still need lexical scopes and Lua's return placement.
+    # Keep ambiguous blocks, labels, comments/diagnostics and alternate entries.
+    changed=True
     while changed:
-        changed = False
-        lines = [l for l in lines if l != '']
-        for i, line in enumerate(lines):
-            m = re.fullmatch(r'(\s*)if (true|false) then(?: [^\n]* end)?\n', line)
-            if not m:
-                continue
-            indent, value = m.group(1), m.group(2)
-            if line.rstrip().endswith(' end'):                     # inline form
-                if value == 'false':
-                    lines[i] = ''
-                else:
-                    lines[i] = indent + line.rstrip()[len(indent) + len('if true then '):-len(' end')] + '\n'
-                count += 1
-                changed = True
+        changed=False
+        code=_constant_condition_structure(''.join(lines)).splitlines(True)
+        for i,(raw,body) in enumerate(zip(lines,code)):
+            match=re.fullmatch(r'( *)if (true|false) then\n',body)
+            inline=re.fullmatch(r'( *)if (true|false) then (.+) end\n',body)
+            if inline:
+                if raw!=body:
+                    continue
+                indent,value,statement=inline.groups()
+                # Do not discard diagnostic-bearing edges or label entries.
+                if '::' in statement:
+                    continue
+                if any(t[0] in {'if','then','else','elseif','end','function','for','while','repeat','until','do'} for t in tokens(statement)):
+                    continue
+                lines[i]=indent+'do '+statement+' end\n' if value=='true' else ''
+                count+=1
+                changed=True
                 break
-            end = next((j for j in range(i + 1, len(lines)) if lines[j] == indent + 'end\n' or lines[j] == indent + 'else\n'
-                        or lines[j].startswith(indent + 'elseif ')), None)
-            if end is None or lines[end] != indent + 'end\n':
+            if not match or raw!=body:
                 continue
-            if value == 'false':
-                if any(re.match(r'\s*::\w+::', lines[j]) for j in range(i + 1, end)):
-                    continue                                        # a goto target lives inside
-                for j in range(i, end + 1):
-                    lines[j] = ''
+            indent,value=match.groups()
+            end=next((j for j in range(i+1,len(lines)) if code[j]==indent+'end\n'
+                or code[j]==indent+'else\n' or code[j].startswith(indent+'elseif ')),None)
+            if end is None:
+                continue
+            if any(line.strip() and not line.startswith(indent+'    ') for line in code[i+1:end]):
+                continue
+            if value=='false' and lines[end]!=indent+'end\n':
+                if any(a!=b or '::' in b for a,b in zip(lines[i+1:end],code[i+1:end])):
+                    continue
+                if code[end].startswith(indent+'elseif '):
+                    lines[i:end+1]=[indent+'if '+lines[end][len(indent+'elseif '):]]
+                elif lines[end]==indent+'else\n':
+                    close=next((j for j in range(end+1,len(lines)) if code[j]==indent+'end\n'),None)
+                    kept=_plain_constant_else(lines[end+1:close],code[end+1:close],indent) if close is not None else None
+                    if kept is None:
+                        lines[i:end+1]=[indent+'do\n']
+                    else:
+                        lines[i:close+1]=kept
+                else:
+                    continue
+                count+=1
+                changed=True
+                break
+            if lines[end]!=indent+'end\n':
+                continue
+            if value=='true':
+                lines[i]=indent+'do\n'
             else:
-                lines[i] = lines[end] = ''
-                for j in range(i + 1, end):
-                    if lines[j].startswith(indent + '    '):
-                        lines[j] = lines[j][4:]
-            count += 1
-            changed = True
+                if any(a!=b or '::' in b for a,b in zip(lines[i+1:end],code[i+1:end])):
+                    continue
+                lines[i:end+1]=[]
+            count+=1
+            changed=True
             break
-    return lines, count
+        lines=[line for line in lines if line]
+    return lines,count
 
 
 def fold_frame_checks(lines):
@@ -768,7 +995,7 @@ def _read_reachable(flow, name, start_lines, defs):
     return False
 
 
-QUERY_METHOD = re.compile(r'^(?:Get|Is|Has|Can|Msg)')
+QUERY_METHOD = re.compile(r'^(?:Get(?!Random|Hero$)|Is|Has|Can|Msg)')
 
 
 def _sink_target(flow, name, d, expr, reads, def_set, touched=frozenset()):
@@ -797,10 +1024,117 @@ def _sink_target(flow, name, d, expr, reads, def_set, touched=frozenset()):
         written = re.match(r'\s*(\w+)\s*=(?!=)', line)
         if written and written.group(1) in expr_ids:
             return None
-        if expr_calls and any(kind != ':' or not QUERY_METHOD.match(n) for kind, _, n in _calls(flow.lines[s])):
+        if written and (written[1] not in _declared_temporaries(flow.structure)
+                        or written[1] in flow.pinned):
+            return None  # global/upvalue or captured-local stores are observable
+        if not written and re.search(r'(?<![~=<>])=(?!=)', line):
+            return None  # a field/index store is not a plain local assignment
+        intervening_calls = _calls(flow.lines[s])
+        if intervening_calls:
+            return None  # query names do not establish reorderable effects/errors
+        if written and not intervening_calls:
+            # Indexing and operators can invoke metamethods or raise, even
+            # without a syntactic call. Only inert staging can be crossed.
+            rhs = flow.lines[s].split('=', 1)[1].strip()
+            stream = [t for t in tokens(rhs) if t.lastgroup not in
+                      ('space', 'comment', 'longcomment')]
+            literal = (bool(re.fullmatch(
+                r'-?(?:0[xX][\da-fA-F]+|(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)', rhs))
+                or len(stream) == 1 and
+                (stream[0].lastgroup in ('string', 'longstring')
+                 or stream[0][0] in ('nil', 'true', 'false')))
+            local_read = (len(stream) == 1 and stream[0].lastgroup == 'identifier'
+                          and stream[0][0] in _declared_temporaries(flow.structure)
+                          and stream[0][0] not in flow.pinned)
+            if not (literal or local_read):
+                return None
+        if expr_calls and intervening_calls and any(n == 'IsActiveThreadTerminating' or n.startswith('GetRandom') for _, _, n in [*_calls(expr), *intervening_calls]):
+            return None
+        if any(kind != ':' or not QUERY_METHOD.match(n) for kind, _, n in intervening_calls):
             return None
         prev = s
     return None
+
+
+def _prefix_has_implicit_evaluation(prefix):
+    """Conservatively retain values before preceding indexing/operator work.
+
+    An unfinished operator immediately before the use runs after its operand;
+    completed operands earlier in the prefix may invoke metamethods or raise.
+    """
+    stream = [t for t in tokens(prefix) if t.lastgroup not in
+              ('space', 'comment', 'longcomment')]
+    operators = {'+', '-', '*', '/', '//', '%', '^', '..', '#', '&', '|',
+                 '~', '<<', '>>', '==', '~=', '<', '>', '<=', '>='}
+    pending = operators | {'(', 'not'}
+    for i, token in enumerate(stream):
+        value = token[0]
+        if value == '[':
+            return True
+        if value == '.':
+            # The lexer emits decimal numbers character by character.
+            if (i and stream[i - 1][0].isdigit()
+                    or i + 1 < len(stream) and stream[i + 1][0].isdigit()):
+                continue
+            return True
+        if value in operators and any(t[0] not in pending for t in stream[i + 1:]):
+            return True
+    return False
+
+
+def _prefix_bindings_are_stable(flow, prefix, definition):
+    """An effectful expression cannot pass a mutable binding/method lookup."""
+    stream = [t for t in tokens(prefix) if t.lastgroup not in
+              ('space', 'comment', 'longcomment', 'string', 'longstring')]
+    if any(t[0] == ':' for t in stream):
+        return False  # method resolution can invoke __index or select a changed method
+    names = _line_reads(_structure_line(prefix))
+    if not names:
+        return True
+    if names & flow.pinned:
+        return False
+    head = re.fullmatch(r'(?:local )?function \w+\(([^)]*)\)', flow.structure[0])
+    params = {n.strip() for n in head[1].split(',')} if head else set()
+    bindings = {}
+    for i, line in enumerate(flow.structure):
+        match = re.fullmatch(r'(\s*)local ([\w, ]+?)(?: = .+)?', line)
+        if match:
+            for name in match[2].split(','):
+                bindings.setdefault(name.strip(), []).append((i, len(match[1])))
+    for name in names:
+        sites = bindings.get(name, ())
+        if name in params and not sites:
+            continue
+        if name in params or len(sites) != 1 or sites[0][1] != 4:
+            return False
+        declaration = sites[0][0]
+        if declaration >= definition:
+            return False
+        seen, queue = {declaration}, [0]
+        while queue:
+            i = queue.pop()
+            if i in seen:
+                continue
+            if i == definition:
+                return False
+            seen.add(i)
+            queue.extend(flow.graph.get(i, ()))
+    return True
+
+
+def _inert_inline_value(flow, expression, definition):
+    """Literal values and unexposed local reads have no reorderable effects."""
+    stream = [t for t in tokens(expression) if t.lastgroup not in
+              ('space', 'comment', 'longcomment')]
+    if re.fullmatch(r'-?(?:0[xX][\da-fA-F]+|(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)', expression):
+        return True
+    if len(stream) != 1:
+        return False
+    token = stream[0]
+    if token.lastgroup in ('string', 'longstring') or token[0] in ('nil', 'true', 'false'):
+        return True
+    return (token.lastgroup == 'identifier' and token[0] not in KEYWORDS_ALL
+            and _prefix_bindings_are_stable(flow, 'return ' + expression, definition))
 
 
 def inline_single_use(lines):
@@ -816,7 +1150,7 @@ def inline_single_use(lines):
         done = False
         touched = set()
         for name in _declared_temporaries(structure):
-            if name in flow.pinned:
+            if name in flow.opaque_pinned:
                 continue
             defs, reads = _reads_and_defs(structure, name)
             if not defs or not reads:
@@ -826,11 +1160,20 @@ def inline_single_use(lines):
                 m = re.fullmatch(r'(\s*)' + re.escape(name) + r' = ([^\n]+?)\s*\n', lines[d])
                 if not m or any(t.lastgroup in ('comment', 'longcomment') for t in tokens(lines[d])):
                     continue
+                if compound_scalar_stores([structure[d]]) and d not in flow.inert_nil_initializations:
+                    continue
                 expr = m.group(2)
+                if _has_expression_list(expr):
+                    continue  # a single local can discard later results while retaining their effects
                 if d in touched:
                     continue
                 r = _sink_target(flow, name, d, expr, reads, def_set, touched)
                 if r is None or r in touched:
+                    continue
+                # An inline assignment destination is not a substitution site.
+                # Later inline writes are conservative reads in reachability;
+                # retain their binding while allowing unrelated earlier uses.
+                if name in compound_scalar_stores([structure[r]]):
                     continue
                 read_line = lines[r]
                 if re.match(r'\s*local\b', read_line):
@@ -844,25 +1187,28 @@ def inline_single_use(lines):
                 if not r_is_def and _read_reachable(flow, name, flow.graph.get(r, ()), def_set):
                     continue
                 prefix = marked.split(marker, 1)[0]
-                if not STATE_READ.match(expr) and not re.fullmatch(r'[\w."]+', expr):
-                    # evaluation order: calls that complete before the moved expression is evaluated
-                    # may only be reordered with it when both sides are queries
-                    completed, stack = [], []
-                    stream = [t for t in tokens(prefix) if t.lastgroup not in ('space', 'comment', 'longcomment')]
-                    for k, t in enumerate(stream):
-                        if t[0] == '(':
-                            callee = k > 0 and ((stream[k - 1].lastgroup == 'identifier' and stream[k - 1][0] not in KEYWORDS)
-                                                or stream[k - 1].lastgroup == 'string' or stream[k - 1][0] in (')', ']'))
-                            stack.append(k - 1 if callee else None)
-                        elif t[0] == ')':
-                            if stack and (c := stack.pop()) is not None:
-                                completed.append((stream[c - 1][0] if c > 0 else '', stream[c][0]))
-                    if completed:
-                        queries = all(sep == ':' and QUERY_METHOD.match(n) for sep, n in completed)
-                        expr_query = all(kind == ':' and (recv in PURE_RECEIVER or QUERY_METHOD.match(n)) for kind, recv, n in _calls(expr))
-                        if not (queries and expr_query):
-                            continue
-                replacement = expr if _atomic(expr) else f'({expr})'
+                # A line is one CFG node, but a use after a short-circuit
+                # operator or inside an inline branch need not execute.
+                # Keep the unconditional evaluation at its original statement.
+                if any(t[0] in ('and', 'or', 'then', 'else', 'elseif', 'function')
+                       for t in tokens(prefix) if t.lastgroup == 'identifier'):
+                    continue
+                if (not _inert_inline_value(flow, expr, d)
+                        and not _prefix_bindings_are_stable(flow, prefix, d)):
+                    continue
+                if _prefix_has_implicit_evaluation(prefix):
+                    continue
+                prefix_calls, expression_calls = _calls(prefix), _calls(expr)
+                if prefix_calls and expression_calls and any(n == 'IsActiveThreadTerminating' or n.startswith('GetRandom') for _, _, n in [*prefix_calls, *expression_calls]):
+                    continue  # scheduler boundary queries cannot cross another call
+                # Calls whose arguments already closed run before the moved
+                # expression. State reads and variable reads must not cross
+                # mutations; string/table argument sugar also completes calls.
+                completed = _calls(prefix, completed_only=True)
+                if completed:
+                    continue  # preserve completed query calls and their errors
+                needs_arity_guard = _can_expand_results(expr) and _reference_can_expand(marked, marker)
+                replacement = expr if _atomic(expr) and not needs_arity_guard else f'({expr})'
                 if re.fullmatch(r'nil|true|false|-?\d[\w.]*|"[^"]*"', expr) and re.search(r'(?<![\w.:])' + re.escape(name) + r'\s*[:.\[(]', _structure_line(read_line)):
                     replacement = f'({expr})'            # a literal prefix expression must be parenthesised
                 lines[r] = rename_identifiers(marked, {marker: replacement}).replace('__lhs__ =', name + ' =', 1)
@@ -904,7 +1250,10 @@ def sink_hoisted_locals(lines):
     labels = {m.group(1): i for i, l in enumerate(structure) for m in [re.fullmatch(r'\s*::(\w+)::', l)] if m}
     gotos = [(i, m.group(1)) for i, l in enumerate(structure) for m in [re.search(r'\bgoto (\w+)\b', l)] if m]
     count = 0
+    pinned = random_result_locals(structure)
     for name in _declared_temporaries(structure):
+        if name in pinned:
+            continue  # narrowing this scope can release an owned random result early
         defs, reads = _reads_and_defs(structure, name)
         if len(defs) != 1 or not reads:
             continue
@@ -963,7 +1312,7 @@ def prune_dead_defs(lines):
         return lines, 0
     structure = flow.structure
     for name in _declared_temporaries(structure):
-        if name in flow.pinned:
+        if name in flow.opaque_pinned:
             continue
         defs, reads = _reads_and_defs(structure, name)
         def_set = set(defs)
@@ -972,7 +1321,14 @@ def prune_dead_defs(lines):
             m = re.fullmatch(r'(\s*)' + re.escape(name) + r' = ([^\n]+?)\s*\n', lines[d])
             if not m or any(t.lastgroup in ('comment', 'longcomment') for t in tokens(lines[d])):
                 continue
-            if not self_only and (d in reads or _read_reachable(flow, name, flow.graph.get(d, ()), def_set)):
+            if compound_scalar_stores([structure[d]]) and d not in flow.inert_nil_initializations:
+                continue
+            if d in reads or _read_reachable(flow, name, flow.graph.get(d, ()), def_set):
+                continue
+            if (_prefix_has_implicit_evaluation(m.group(2))
+                    and not _inert_inline_value(flow, m.group(2), d)):
+                continue  # unused results can still run metamethods or raise
+            if not _environment_evaluation_is_inert(flow, m.group(2), d):
                 continue
             calls = _calls(m.group(2))
             if not calls or all(kind == ':' and (recv in PURE_RECEIVER or QUERY_METHOD.match(n)) for kind, recv, n in calls):
@@ -1016,6 +1372,10 @@ def fold_goto_else(lines):
     """`if C then X; goto L end; Y; ::L::` -> `if C then X else Y end` (the goto skips the rest of the
     enclosing branch); `if X then goto L end; Y; ::L::` -> `if not X then Y end`; an enclosing if whose
     whole body is that if merges its condition with `and`."""
+    # Raw line structure inside opaque multiline text is not Lua control flow.
+    if any(t.lastgroup in ('string', 'longstring', 'longcomment')
+           and any(c in t[0] for c in '\r\n') for t in tokens(''.join(lines))):
+        return lines, 0
     count = 0
     changed = True
     while changed:
@@ -1283,12 +1643,16 @@ def fold_elseif(lines):
 
 
 def prune_unused_closures(lines):
-    """A hoisted cleanup closure nothing calls any more."""
+    """Remove an unused multiline cleanup, retaining references as values."""
     count = 0
-    structure = _structure(lines)
+    masked = _constant_condition_structure(''.join(lines))
+    structure, offset = [], 0
+    for line in lines:
+        structure.append(masked[offset:offset + len(line)].rstrip('\n'))
+        offset += len(line)
     for a, b in _closure_ranges(structure) or []:
         name = re.match(r'\s*local function (\w+)\(', structure[a]).group(1)
-        if not any(re.search(r'\b' + name + r'\(', structure[i]) for i in range(len(structure)) if not a <= i <= b):
+        if not any(re.search(r'\b' + name + r'\b', structure[i]) for i in range(len(structure)) if not a <= i <= b):
             for i in range(a, b + 1):
                 lines[i] = ''
             count += 1
@@ -1450,7 +1814,7 @@ def prune_dead_termination_checks(lines, pure_functions):
             return succ < i         # back edge: the loop continues only while not terminating
         if re.fullmatch(r'\s*while not ' + TERMINATING + r' do', s):
             return succ == min(flow.graph[i])   # the body runs only while not terminating
-        if not _pure_line(structure[i], lines[i], pure_functions):
+        if not _pure_line(structure[i], lines[i], pure_functions, flow, i):
             return False
         return state_in[i]
 
@@ -1635,6 +1999,12 @@ def _strip_parens_once(lines, i, COMPARE):
             continue
         prev = stream[sig[open_n - 1]][0] if open_n else ''
         nxt = stream[sig[close_n + 1]][0] if close_n + 1 < len(sig) else ''
+        # Calls/varargs can contribute multiple values only at the tail of an
+        # expression list. Conditions and receivers still consume one value.
+        multiple_assignment = prev == '=' and _has_expression_list(''.join(t[0] for t in stream[:sig[open_n] - 1]))
+        after_next = stream[sig[close_n + 2]][0] if close_n + 2 < len(sig) else ''
+        if _can_expand_results(content) and _result_list_tail(prev, nxt, after_next) and (prev != '=' or multiple_assignment):
+            continue
         ops = set(_top_level_operators(content))
         enclosing = max((o for o, (c, _) in pairs.items() if o < open_n and c > close_n), default=None)
         if enclosing is not None and pairs[enclosing][1] and prev in ('(', ',') and nxt in (',', ')'):
@@ -1743,12 +2113,12 @@ def simplify_conditions(lines):
             count += 1
     # p = T() with no readers
     for i, line in enumerate(lines):
-        m = re.fullmatch(r'\s*(\w+) = \w+:IsActiveThreadTerminating\(\)\n', line)
+        m = re.fullmatch(r'(\s*)(\w+) = (\w+:IsActiveThreadTerminating\(\))\n', line)
         if m:
-            defs, reads = _reads_and_defs(structure, m.group(1))
+            defs, reads = _reads_and_defs(structure, m.group(2))
             if not reads:
-                lines[i] = ''
-                _remove_declaration(lines, m.group(1))
+                lines[i] = f'{m.group(1)}{m.group(3)}\n'
+                _remove_declaration(lines, m.group(2))
                 count += 1
     return lines, count
 
@@ -1883,6 +2253,102 @@ def fold_flag_clears(lines):
         count += 1
         break
     return lines, count
+
+
+def prune_dead_bitmask_staging(lines):
+    """Drop a private, unused integer mask and its self-contained AND guards.
+
+    Unlike general dead-store removal this proves every operand is an integer:
+    initialization and masks are uint32 literals, and each subsequent value is
+    their bitwise AND. No call, arithmetic fault, diagnostic, label, captured
+    value, or global store may disappear with the group.
+    """
+    # Whole-chunk tokenization prevents multiline strings/comments from
+    # inventing declarations or hiding uses on their interior lines.
+    structure = ''.join(re.sub(r'[^\n]', ' ', t[0])
+                        if t.lastgroup in ('comment', 'longcomment', 'string', 'longstring')
+                        else t[0] for t in tokens(''.join(lines))).splitlines()
+    declarations = Counter(_declared_temporaries(structure))
+    number = r'(?:0x[0-9a-fA-F]+|\d+)'
+
+    def integer(value):
+        return int(value, 16 if value.startswith('0x') else 10) <= 0xffffffff
+
+    flow = None
+    for start, line in enumerate(lines):
+        if structure[start] != line.rstrip('\n'):
+            continue                                    # text inside a string/comment is not code
+        first = re.fullmatch(r'([ \t]*)(\w+) = (' + number + r')\n', line)
+        if not first or first[2] == '_ENV' or declarations[first[2]] != 1 or not integer(first[3]):
+            continue
+        indent, name = first[1], first[2]
+        declaration = next(i for i, text in enumerate(structure)
+                           if re.fullmatch(r'\s*local [\w, ]+\s*', text)
+                           and name in re.findall(r'\w+', text)[1:])
+        if declaration >= start:
+            continue
+        # The declaring block must still enclose the assignment. Count lexical
+        # block tokens, not indentation; elseif replaces its preceding then.
+        depth, enclosed = 0, True
+        for token in tokens('\n'.join(structure[declaration + 1:start])):
+            word = token[0]
+            if word in ('end', 'until', 'else', 'elseif') and depth == 0:
+                enclosed = False
+                break
+            if word in ('function', 'then', 'do', 'repeat'):
+                depth += 1
+            elif word in ('end', 'until', 'elseif'):
+                depth -= 1
+        if not enclosed:
+            continue
+        operand = '(?:' + re.escape(name) + '|' + number + ')'
+        condition = re.compile(re.escape(indent) + r'if \((' + operand + r') & (' + number + r')\) ~= 0 then\n')
+        assignment = re.compile(re.escape(indent + '    ') + r'(\w+) = (' + operand + r') & (' + number + r')\n')
+        aliases = {name}
+        end, groups = start + 1, 0
+        while end + 1 < len(lines):
+            test = condition.fullmatch(lines[end])
+            if not test:
+                break
+            # Earlier dead-store pruning may empty a guard. The enclosing
+            # group still proves its local is a private uint32, so evaluating
+            # this bitwise test cannot call user code or raise a type error.
+            if lines[end + 1] == indent + 'end\n':
+                if any(value != name and not integer(value) for value in (test[1], test[2])):
+                    break
+                end += 2
+                groups += 1
+                continue
+            if end + 2 >= len(lines):
+                break
+            update = assignment.fullmatch(lines[end + 1])
+            if not update or lines[end + 2] != indent + 'end\n':
+                break
+            operands = [test[1], test[2], update[2], update[3]]
+            if any(value != name and not integer(value) for value in operands):
+                break
+            target = update[1]
+            if target == '_ENV':
+                break
+            if target != name:
+                if flow is None:
+                    flow = Flow(lines)
+                if not flow.ok or declarations[target] != 1 or not _prefix_bindings_are_stable(flow, 'return ' + target, start):
+                    break
+            aliases.add(target)
+            end += 3
+            groups += 1
+        if not groups:
+            continue
+        outside = [text for i, text in enumerate(structure) if not start <= i < end
+                   and not re.fullmatch(r'\s*local [\w, ]+\s*', text)]
+        if any(re.search(r'\b' + re.escape(alias) + r'\b', '\n'.join(outside)) for alias in aliases):
+            continue
+        lines[start:end] = []
+        for alias in sorted(aliases):
+            _remove_declaration(lines, alias)
+        return lines, groups + 1
+    return lines, 0
 
 
 def fold_blocking_speech(lines):
@@ -2048,31 +2514,56 @@ def prune_self_assignments(lines):
 
 def cosmetics(lines, function_indent='    '):
     count = 0
+    source = ''.join(lines)
+    masked = _constant_condition_structure(source)
+    offset = 0
     for i, line in enumerate(lines):
-        new = re.sub(r' \+ -(\d+(?:\.\d+)?)\b', r' - \1', line)
-        new = re.sub(r'\(#(\w+) \* 12\) / 12', r'#\1', new)         # element count via the 12-byte stride
+        code = masked[offset:offset + len(line)]
+        offset += len(line)
+        edits = []
+        for pattern, replacement in ((r' \+ -(\d+(?:\.\d+)?)\b', r' - \1'),
+                                      (r'\(#(\w+) \* 12\) / 12', r'#\1')):
+            for match in re.finditer(pattern, code):
+                edits.append((match.start(), match.end(), match.expand(replacement)))
+        new = line
+        for a, b, value in sorted(edits, reverse=True):
+            new = new[:a] + value + new[b:]
         if new != line:
             lines[i] = new
             count += 1
-    # local ret = x ; return ret
+    # A local assignment consumes exactly one value, including function calls
+    # and varargs. Parentheses retain that arity when removing the local.
+    masked = _constant_condition_structure(''.join(lines))
+    offset, structure = 0, []
+    for line in lines:
+        structure.append(masked[offset:offset + len(line)])
+        offset += len(line)
     for i in range(len(lines) - 1):
+        code = structure[i]
         a = re.fullmatch(r'(\s*)local (\w+) = ([^\n]+)\n', lines[i])
-        if a and lines[i + 1] == f'{a.group(1)}return {a.group(2)}\n':
+        if a and re.match(r'\s*local \w+ = ', code) and lines[i + 1] == f'{a.group(1)}return {a.group(2)}\n':
+            if _has_expression_list(a.group(3)):
+                continue
+            if any(t.lastgroup in ('comment', 'longcomment') for t in tokens(a.group(3))):
+                continue
             lines[i] = ''
-            lines[i + 1] = f'{a.group(1)}return {a.group(3)}\n'
+            lines[i + 1] = f'{a.group(1)}return ({a.group(3)})\n'
             count += 1
-    # trailing bare return at the function's tail
-    last = next((j for j in range(len(lines) - 1, -1, -1) if lines[j].strip()), None)
-    if last is not None and lines[last] == 'end\n':
-        prev = next((j for j in range(last - 1, -1, -1) if lines[j].strip()), None)
-        if prev is not None and lines[prev] == function_indent + 'return\n':
-            lines[prev] = ''
-            count += 1
+    # Keep trailing-return cleanup conservative around opaque text.
+    if not any(t.lastgroup in ('string', 'longstring', 'longcomment') and '\n' in t[0] for t in tokens(''.join(lines))):
+        last = next((j for j in range(len(lines) - 1, -1, -1) if lines[j].strip()), None)
+        if last is not None and lines[last] == 'end\n':
+            prev = next((j for j in range(last - 1, -1, -1) if lines[j].strip()), None)
+            if prev is not None and lines[prev] == function_indent + 'return\n':
+                lines[prev] = ''
+                count += 1
     return lines, count
 
 
 def tidy_blank_lines(text):
-    """Blank lines inside a function body are where statements were removed; keep one between functions."""
+    """Never treat whitespace inside opaque Lua tokens as formatting."""
+    if any(t.lastgroup in ('string', 'longstring', 'longcomment') and '\n' in t[0] for t in tokens(text)):
+        return text
     out, depth = [], 0
     for line in text.splitlines(keepends=True):
         if re.match(r'^(?:local )?function ', line):
@@ -2108,7 +2599,8 @@ def pure_local_functions(source):
                 continue
             lines = chunk.splitlines(keepends=True)
             structure = _structure(lines)
-            if all(_pure_line(s, raw, pure) for s, raw in zip(structure[1:], lines[1:])):
+            flow = Flow(lines)
+            if all(_pure_line(s, raw, pure, flow, i) for i, (s, raw) in enumerate(zip(structure[1:], lines[1:]), 1)):
                 pure.add(name)
         if len(pure) == before:
             return pure
@@ -2148,6 +2640,7 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
         total += run('copies', propagate_copies)
         total += run('selfAssignments', prune_self_assignments)
         total += run('flagClears', fold_flag_clears)
+        total += run('deadBitmaskStaging', prune_dead_bitmask_staging)
         total += run('tailGuards', flatten_tail_guards)
         total += run('blockingSpeech', fold_blocking_speech)
         total += run('uintFixups', fold_uint_fixups)
@@ -2187,6 +2680,8 @@ def style_function(chunk, pure_functions, *, frame_returns_alive=True):
     run('cosmetics', cosmetics)
     run('firstAssignments', merge_first_assignments)
     run('freeSuffixes', drop_free_suffixes)
+    # Final cleanup: do not let removed dead edges trigger new executable folds.
+    run('unreachableReturnJumps', prune_unreachable_return_jumps)
     return ''.join(lines), stats
 
 
@@ -2444,65 +2939,171 @@ STATE_SHIM = re.compile(
     r'    end\nend\n')
 
 
+def _entity_code(source):
+    return [token for token in tokens(source) if token.lastgroup not in ('space', 'comment', 'longcomment')]
+
+
+def _entity_shim(source, pattern):
+    starts = {token.start(): token for token in _entity_code(source)}
+    matches = [match for match in pattern.finditer(source)
+               if match.start() in starts and starts[match.start()][0] == 'local']
+    return matches[0] if len(matches) == 1 else None
+
+
+def _entity_prefixes(source, receiver, shim, *, state_word):
+    stream = _entity_code(source)
+    pattern = re.compile(re.escape(receiver) + r':(?P<action>Get|Set)' + state_word
+                         + r'(?P<kind>Bool|Int|Float|String|Thing)\(')
+    result = []
+    for index, token in enumerate(stream):
+        if token.lastgroup != 'identifier' or token[0] != receiver:
+            continue
+        if shim.start() <= token.start() < shim.end():
+            continue
+        previous = stream[index - 1][0] if index else ''
+        match = pattern.match(source, token.start())
+        if token.start() < shim.end() or previous in ('.', ':', 'function') or not match:
+            return None  # escaped/shadowed/qualified/unsupported receiver
+        result.append((match, index))
+    return stream, result
+
+
+def _entity_edits(source, edits):
+    for begin, end, replacement in sorted(edits, reverse=True):
+        source = source[:begin] + replacement + source[end:]
+    return source
+
+
 def alias_entity_state(source):
-    """The per-entity state shim becomes `state` with `GetInt`/`SetInt`... methods
-    (`__native_entity_state:GetStateInt("TeamID")` -> `state:GetInt("TeamID")`)."""
-    if not STATE_SHIM.search(source) or re.search(r'\bstate\b', rename_identifiers(source, {'__native_entity_state': 'x'})):
+    """Normalize real primitive calls; opaque text and unsupported receiver uses stay intact."""
+    shim = _entity_shim(source, STATE_SHIM)
+    # Retain the existing conservative name-collision policy in this task.
+    if not shim or re.search(r'\bstate\b', rename_identifiers(source, {'__native_entity_state': 'x'})):
         return source, 0
-    shim = ('local state = {}  -- per-entity script state (__native_entity_state)\n'
-            'do\n    local fields = {}\n'
-            '    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do\n'
-            '        state["Get" .. kind] = function(_, name) return fields[name] end\n'
-            '        state["Set" .. kind] = function(_, name, value) fields[name] = value end\n'
-            '    end\nend\n')
-    source = STATE_SHIM.sub(lambda m: shim, source, count=1)
-    source, k = re.subn(r'\b__native_entity_state:(Get|Set)State(Bool|Int|Float|String|Thing)\(', r'state:\1\2(', source)
-    return source, k
+    found = _entity_prefixes(source, '__native_entity_state', shim, state_word='State')
+    if found is None:
+        return source, 0
+    _, calls = found
+    replacement = ('local state = {}  -- per-entity script state (__native_entity_state)\n'
+                   'do\n    local fields = {}\n'
+                   '    for _, kind in ipairs({"Bool", "Int", "Float", "String", "Thing"}) do\n'
+                   '        state["Get" .. kind] = function(_, name) return fields[name] end\n'
+                   '        state["Set" .. kind] = function(_, name, value) fields[name] = value end\n'
+                   '    end\nend\n')
+    edits = [(shim.start(), shim.end(), replacement)]
+    edits.extend((match.start(), match.end(), 'state:' + match['action'] + match['kind'] + '(')
+                 for match, _ in calls)
+    return _entity_edits(source, edits), len(calls)
+
+
+def _entity_literal_calls(source, shim):
+    found = _entity_prefixes(source, 'state', shim, state_word='')
+    if found is None:
+        return None
+    stream, prefixes = found
+    calls = []
+    for match, position in prefixes:
+        opening = position + 3
+        if opening >= len(stream) or stream[opening][0] != '(':
+            return None
+        stack, commas, closing = ['('], [], None
+        for index in range(opening + 1, len(stream)):
+            token = stream[index]
+            value = token[0]
+            if token.lastgroup in ('string', 'longstring'):
+                continue
+            if value == 'function':
+                return None
+            if value in ('(', '[', '{'):
+                stack.append(value)
+            elif value in (')', ']', '}'):
+                if not stack or stack[-1] != {')': '(', ']': '[', '}': '{'}[value]:
+                    return None
+                stack.pop()
+                if not stack:
+                    closing = index
+                    break
+            elif value == ',' and len(stack) == 1:
+                commas.append(index)
+        if closing is None:
+            return None
+        action = match['action']
+        expected_commas = 0 if action == 'Get' else 1
+        if len(commas) != expected_commas:
+            return None
+        key_end = closing if not commas else commas[0]
+        key_tokens = stream[opening + 1:key_end]
+        if len(key_tokens) != 1 or key_tokens[0].lastgroup != 'string':
+            return None
+        key = re.fullmatch(r'"(\w+)"', key_tokens[0][0])
+        if not key:
+            return None
+        previous = stream[position - 1] if position else None
+        expression_prefixes = ('=', '(', '[', '{', ',', '+', '-', '*', '/', '//', '%', '^', '..',
+                               '==', '~=', '<', '>', '<=', '>=', '&', '|', '~', '<<', '>>', '#',
+                               'and', 'or', 'not', 'return', 'if', 'elseif', 'while', 'until', 'in')
+        following = stream[closing + 1] if closing + 1 < len(stream) else None
+        suffix = following is not None and (following[0] in ('(', '[', '{', '.', ':')
+                                             or following.lastgroup in ('string', 'longstring'))
+        if action == 'Get':
+            if not suffix and (previous is None or previous[0] not in expression_prefixes):
+                return None  # a discarded getter call cannot become a bare variable statement
+        else:
+            if commas[0] + 1 == closing:
+                return None
+            if suffix:
+                return None  # preserve chained calls on the setter's nil result
+            same_line = previous is not None and '\n' not in source[previous.end():match.start()]
+            statement_start = previous is None or previous[0] in ('then', 'do', 'else', 'repeat', ';', '::')
+            if not statement_start:
+                statement_start = not same_line and previous[0] not in expression_prefixes
+            if not statement_start:
+                return None  # setter return value/argument evaluation must be preserved
+        calls.append(dict(match=match, key=key[1], action=action,
+                          end=stream[closing].end(), value=stream[commas[0] + 1].start() if commas else None))
+    return calls
 
 
 def inline_entity_fields(source):
-    """The per-entity state shim (`state:GetInt("AppleMode")`) holds the native class's member variables. ForgeFSE
-    creates one sol::state per entity instance (LuaManager::RegisterEntityScriptData), so file-level locals ARE
-    per-entity fields: `local appleMode` at the top, `appleMode` / `appleMode = v` in the functions. The shim goes."""
+    """Inline supported real field calls, preserving opaque text and receiver scope."""
     from tools.script_recovery.readable_lua import camel
-    shim = re.search(r'^local state = \{\}  -- per-entity script state \(__native_entity_state\)\n(?:.*\n)*?^end\n', source, re.M)
+    original = source
+    pattern = re.compile(r'^local state = \{\}  -- per-entity script state \(__native_entity_state\)\n(?:.*\n)*?^end\n', re.M)
+    shim = _entity_shim(source, pattern)
     if not shim:
         return source, 0
-    keys = []
-    for k in re.findall(r'\bstate:(?:Get|Set)(?:Bool|Int|Float|String|Thing)\("(\w+)"', source):
-        if k not in keys:
-            keys.append(k)
-    if re.search(r'\bstate:\w+\((?!")', source):                 # a non-literal key: keep the shim
-        return source, 0
+    calls = _entity_literal_calls(source, shim)
+    if calls is None:
+        return original, 0
+    keys = list(dict.fromkeys(call['key'] for call in calls))
     if not keys:
-        # this entity never touches its own fields: the shim is dead scaffolding, not state
-        rest = source[:shim.start()] + source[shim.end():]
-        return (rest, 1) if not re.search(r'\bstate\b', rest) else (source, 0)
-    # a function-local snapshot of a field under the field's own name (`local dummyNumber = state:GetInt("DummyNumber")`)
-    # is dropped when that function never writes the field or the local: its reads read the field itself
-    freed = set()
-    for k in keys:
-        n = camel(k)
-        for chunk in _function_chunks(source):
-            snap = re.search(r'^[ \t]*local ' + n + r' = state:Get\w+\("' + k + r'"\)\n', chunk, re.M)
-            if snap and not re.search(r'^[ \t]*' + n + r'\s*=(?!=)', chunk, re.M) and f'"{k}", ' not in chunk \
-                    and len(re.findall(r'\blocal ' + n + r'\b', chunk)) == 1:
-                source = source.replace(chunk, chunk.replace(snap.group(0), '', 1), 1)
-                freed.add(n)
-    taken = {t[0] for t in tokens(source) if t.lastgroup == 'identifier'} - freed
+        return source[:shim.start()] + source[shim.end():], 1
+    # Keep function-local snapshots. A helper or yielded callback may write the
+    # field later; replacing the snapshot with a live field read changes values.
+    # Retaining every local also avoids freeing a name still bound in another scope.
+    taken = {token[0] for token in tokens(source) if token.lastgroup == 'identifier'}
     names = {}
-    for k in keys:
-        n = camel(k)
-        while n in taken or n in names.values() or n in KEYWORDS_ALL:
-            n += '_'
-        names[k] = n
-    new = re.sub(r'\bstate:Set(?:Bool|Int|Float|String|Thing)\("(\w+)", ', lambda m: names[m.group(1)] + ' = (', source)
-    new = re.sub(r'\bstate:Get(?:Bool|Int|Float|String|Thing)\("(\w+)"\)', lambda m: names[m.group(1)], new)
-    # `x = (value)` -> `x = value` for a plain operand
-    new = re.sub(r'^(\s*\w+ = )\(([^()\n]*(?:\([^()\n]*\)[^()\n]*)*)\)$', r'\1\2', new, flags=re.M)
-    block = '-- per-entity fields (native class members; one Lua state per entity instance)\nlocal ' + ', '.join(names[k] for k in keys) + '\n'
-    new = new.replace(shim.group(0), block, 1)
-    return new, len(keys)
+    for key in keys:
+        name = camel(key)
+        while name in taken or name in names.values() or name in KEYWORDS_ALL:
+            name += '_'
+        names[key] = name
+    edits = []
+    for call in calls:
+        match = call['match']
+        if call['action'] == 'Get':
+            edits.append((match.start(), call['end'], names[call['key']]))
+        else:
+            edits.append((match.start(), call['value'], names[call['key']] + ' = ('))
+    block = '-- per-entity fields (native class members; one Lua state per entity instance)\nlocal ' + ', '.join(names[key] for key in keys) + '\n'
+    edits.append((shim.start(), shim.end(), block))
+    new = _entity_edits(source, edits)
+    code_starts = {token.start() for token in _entity_code(new) if token.lastgroup == 'identifier'}
+    cosmetic = re.compile(r'^(?P<indent>[ \t]*)(?P<lhs>\w+ = )\((?P<value>[^()\n]*(?:\([^()\n]*\)[^()\n]*)*)\)$', re.M)
+    edits = [(match.start(), match.end(), match['indent'] + match['lhs'] + match['value'])
+             for match in cosmetic.finditer(new) if match.start('lhs') in code_starts]
+    return _entity_edits(new, edits), len(keys)
+
 
 
 def state_writers(sources):
@@ -2630,7 +3231,7 @@ def name_speak_methods(source):
     return new, len(used)
 
 
-def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
+def style_source(source, *, frame_returns_alive=True, rel=None, writers=None, frame_keep_check_indices=()):
     source, hoisted = hoist_requires(source)
     source, aliased = alias_entity_state(source)
     source, script_def = name_script_def_reads(source)
@@ -2641,24 +3242,193 @@ def style_source(source, *, frame_returns_alive=True, rel=None, writers=None):
     named += named_shape
     pure = pure_local_functions(source)
     out, report = [], {}
+    function_index = -1
     for part in _function_chunks(source):
         if not part.startswith(('function ', 'local function ')):
             out.append(part)
             continue
+        function_index += 1
         name = re.match(r'(?:local )?function (\w+)', part).group(1)
         before = style_metrics(part)
-        styled, stats = style_function(part, pure, frame_returns_alive=frame_returns_alive)
+        dispatch_evidence = []
+        if rel is not None:
+            from tools.script_recovery.readable_dispatch_scaffolding import prune_unused_dispatch_seeds
+            path_parts = str(rel).replace('\\', '/').split('/')
+            part, dispatch_evidence = prune_unused_dispatch_seeds(part, entity='Entities' in path_parts)
+        styled, stats = style_function(part, pure, frame_returns_alive=frame_returns_alive and function_index not in frame_keep_check_indices)
+        if dispatch_evidence:
+            stats['unusedNativeDispatchSeeds'] = len(dispatch_evidence)
         if writers is not None:
             styled, k = hoist_invariant_state(styled, rel, writers)
             stats['hoistedState'] = k
         report[name] = {'rewrites': stats, 'before': before, 'after': style_metrics(styled)}
+        if dispatch_evidence:
+            report[name]['nativeDispatchSeeds'] = dispatch_evidence
         out.append(styled)
     text = tidy_blank_lines(''.join(out))
     text, late = name_helpers_by_shape(text)      # shapes appear once the bodies are styled (the cutscene fold)
     text, fields = inline_entity_fields(text)     # after styling: the copies of the fields are gone, their names free
+    joined = 0
+    while True:
+        text, count = fold_literal_exit_join(text)
+        if not count:
+            break
+        joined += count
+    flags_joined = 0
+    while True:
+        text, count = fold_literal_flag_join(text)
+        if not count:
+            break
+        flags_joined += count
+    text, unused_labels = prune_unused_generated_labels(text)
     named += late
     return text, {'functions': report, 'hoistedRequires': hoisted, 'entityStateAliased': aliased, 'namedHelpers': named,
-                  'pureLocalFunctions': sorted(pure)}
+                  'pureLocalFunctions': sorted(pure), 'unusedGeneratedLabels': unused_labels,
+                  'literalExitJoins': joined, 'literalFlagJoins': flags_joined}
+
+
+def fold_literal_flag_join(source):
+    """Structure a two-way literal flag join without moving its first write.
+
+    The shared fallback store can enter the branches only when their prefix has
+    no local declarations or nested control: closing a local there could observe
+    the old flag. Keep the initial store before the inner predicate, and reject
+    shadowed/out-of-scope bindings and alternate entries.
+    """
+    code = ''.join(re.sub(r'[^\n]', ' ', t[0])
+                   if t.lastgroup in ('string', 'longstring', 'comment', 'longcomment')
+                   else t[0] for t in tokens(source))
+    pattern = re.compile(r'(?m)^(?P<ind> {4,})if (?P<outer>[^\n]+) then\n'
+        r'(?P=ind)    goto (?P<label>\w+)\n(?P=ind)else\n'
+        r'(?P<prefix>(?:(?P=ind)    [^\n]*\n)*?)'
+        r'(?P=ind)    (?P<name>\w+) = (?P<initial>0|1|true|false)\n'
+        r'(?P=ind)    if (?P<inner>[^\n]+) then goto (?P=label) end\n'
+        r'(?P=ind)end\n(?P=ind)goto (?P<done>\w+)\n(?P=ind)::(?P=label)::\n'
+        r'(?P=ind)(?P=name) = (?P<fallback>0|1|true|false)\n(?P=ind)::(?P=done)::\n')
+    jumps = Counter(re.findall(r'\bgoto\s+(\w+)', code))
+    labels = Counter(re.findall(r'::(\w+)::', code))
+    declarations = list(re.finditer(r'(?m)^[ \t]*local ([\w, ]+)\n', code))
+    control = {'local', 'if', 'then', 'else', 'elseif', 'end', 'function', 'for',
+               'while', 'repeat', 'until', 'do', 'break', 'return', 'goto'}
+    opposite = {'0': '1', '1': '0', 'true': 'false', 'false': 'true'}
+    for match in pattern.finditer(source):
+        indent, name = match['ind'], match['name']
+        if name == '_ENV' or opposite[match['initial']] != match['fallback']:
+            continue
+        if code[match.start():match.start() + len(indent) + 3] != indent + 'if ':
+            continue
+        if match['label'] == match['done'] or jumps[match['label']] != 2 or jumps[match['done']] != 1:
+            continue
+        if labels[match['label']] != 1 or labels[match['done']] != 1:
+            continue
+        if any(code[match.start(key):match.end(key)] != match[key] for key in ('outer', 'inner')):
+            continue
+        straight = '\n'.join(code[match.start(key):match.end(key)] for key in ('prefix', 'outer', 'inner'))
+        if '::' in straight or any(token[0] in control for token in tokens(straight)):
+            continue
+        bindings = [decl for decl in declarations if name in [n.strip() for n in decl[1].split(',')]]
+        if len(bindings) != 1 or bindings[0].end() > match.start():
+            continue
+        binding = bindings[0]
+        word = r'\b' + re.escape(name) + r'\b'
+        # Conservatively reject other local/parameter/loop binding sites, even
+        # when a local initializer merely reads this name.
+        without_binding = code[:binding.start()] + code[binding.end():]
+        if any(re.search(word, line) and
+               (line.lstrip().startswith(('local ', 'for ')) or
+                re.search(r'\bfunction[^\n(]*\([^)]*' + word, line))
+               for line in without_binding.splitlines()):
+            continue
+        depth, enclosed = 0, True
+        for token in tokens(code[binding.end():match.start()]):
+            value = token[0]
+            if value in ('end', 'until', 'else', 'elseif') and depth == 0:
+                enclosed = False
+                break
+            if value in ('function', 'then', 'do', 'repeat'):
+                depth += 1
+            elif value in ('end', 'until', 'elseif'):
+                depth -= 1
+        if not enclosed:
+            continue
+        replacement = (indent + 'if ' + match['outer'] + ' then\n'
+                       + indent + '    ' + name + ' = ' + match['fallback'] + '\n'
+                       + indent + 'else\n' + match['prefix']
+                       + indent + '    ' + name + ' = ' + match['initial'] + '\n'
+                       + indent + '    if ' + match['inner'] + ' then ' + name + ' = ' + match['fallback'] + ' end\n'
+                       + indent + 'end\n')
+        return source[:match.start()] + replacement + source[match.end():], 1
+    return source, 0
+
+
+def fold_literal_exit_join(source):
+    """Structure a closed two-jump join whose remaining path returns a literal.
+
+    Both conditions run once, in their original order. The prefix keeps its
+    scope; moving the straight-line inner body to the same branch preserves
+    local close order. Only bare/nil/boolean exits may move before scope closure.
+    Reject alternate entries, nested control flow and diagnostic-bearing edges.
+    """
+    code = ''.join(re.sub(r'[^\n]', ' ', t[0])
+                   if t.lastgroup in ('string', 'longstring', 'comment', 'longcomment')
+                   else t[0] for t in tokens(source))
+    pattern = re.compile(r'(?m)^(?P<ind> {4,})if (?P<outer>[^\n]+) then\n'
+        r'(?P=ind)    goto (?P<label>\w+)\n(?P=ind)else\n'
+        r'(?P<prefix>(?:(?P=ind)    [^\n]*\n)*?)'
+        r'(?P=ind)    if (?P<inner>[^\n]+) then\n'
+        r'(?P<body>(?:(?P=ind)        [^\n]*\n)*?)'
+        r'(?P=ind)        goto (?P=label)\n(?P=ind)    end\n(?P=ind)end\n'
+        r'(?P=ind)do (?P<ret>return(?: (?:nil|true|false))?) end\n'
+        r'(?P=ind)::(?P=label)::\n')
+    jumps = Counter(re.findall(r'\bgoto\s+(\w+)', code))
+    labels = Counter(re.findall(r'::(\w+)::', code))
+    control = {'if', 'then', 'else', 'elseif', 'end', 'function', 'for', 'while',
+               'repeat', 'until', 'do', 'break', 'return', 'goto'}
+
+    def invert(condition):
+        simple = re.fullmatch(r'not ([A-Za-z_]\w*)', condition)
+        return simple[1] if simple else 'not (' + condition + ')'
+
+    for match in pattern.finditer(source):
+        indent = match['ind']
+        if code[match.start():match.start() + len(indent) + 3] != indent + 'if ':
+            continue
+        if jumps[match['label']] != 2 or labels[match['label']] != 1:
+            continue
+        if any(code[match.start(name):match.end(name)] != match[name]
+               for name in ('outer', 'inner', 'ret')):
+            continue
+        straight = '\n'.join(code[match.start(name):match.end(name)]
+                             for name in ('prefix', 'body', 'outer', 'inner'))
+        if '::' in straight or any(t[0] in control for t in tokens(straight)):
+            continue
+        body = ''.join(line[4:] for line in match['body'].splitlines(keepends=True))
+        replacement = (indent + 'if ' + invert(match['outer']) + ' then\n' + match['prefix']
+                       + indent + '    if ' + invert(match['inner']) + ' then ' + match['ret'] + ' end\n'
+                       + body + indent + 'end\n')
+        return source[:match.start()] + replacement + source[match.end():], 1
+    return source, 0
+
+
+def prune_unused_generated_labels(source):
+    """Drop only unreferenced generated labels at the end of each style round.
+
+    Scan the complete file so references outside a function chunk remain visible.
+    Counting same-named jumps in other scopes is intentionally conservative.
+    Keep user labels and labels carrying diagnostic comments.
+    """
+    code = ''.join(re.sub(r'[^\n]', ' ', t[0])
+                   if t.lastgroup in ('string', 'longstring', 'comment', 'longcomment')
+                   else t[0] for t in tokens(source))
+    jumps = set(re.findall(r'\bgoto\s+(\w+)', code))
+    lines = source.splitlines(keepends=True)
+    count = 0
+    for i, (raw, body) in enumerate(zip(lines, code.splitlines(keepends=True))):
+        label = re.fullmatch(r'[ \t]*::((?:LAB_|FLOW_)\w+)::\n', raw)
+        if label and raw == body and label[1] not in jumps:
+            lines[i] = ''
+            count += 1
+    return ''.join(lines), count
 
 
 def fold_else_exit(lines):
@@ -2688,6 +3458,9 @@ def fold_else_exit(lines):
             exit_line = lines[else_at + 1]
             if not re.fullmatch(re.escape(indent) + r'    (?:[^\n;]+; )?(?:return(?: [^\n]*)?|goto \w+|break)\n', exit_line):
                 continue
+            if any(t[0] in {'if', 'then', 'else', 'elseif', 'end', 'function', 'do', 'for', 'while', 'repeat', 'until'}
+                   for t in tokens(exit_line) if t.lastgroup == 'identifier'):
+                continue  # a conditional exit does not leave the else branch on every path
             body = lines[i + 1:else_at]
             if any(l.strip().startswith('::') for l in body):
                 continue
@@ -2807,7 +3580,7 @@ def fold_boolean_jump_chains(lines):
         if not conditions or store is None or i + 3 >= len(lines):
             continue
         name, initial = store
-        if declared[name] != 1 or name in flow.pinned:
+        if declared[name] != 1 or name in flow.opaque_pinned:
             continue
         if any(name in _line_reads(_structure_line(c)) for c in conditions):
             continue
@@ -2830,10 +3603,11 @@ def fold_boolean_jump_chains(lines):
 
 
 def fold_nested_return_jumps(lines):
-    """Replace jumps to an immediate bare return, including nested early exits.
+    """Replace jumps to an immediate bare or literal return, including nested exits.
 
-    No return expression is moved across scopes: shadowed locals would change its
-    meaning. Duplicate label names and closure bodies are deliberately excluded.
+    Only nil/boolean literals can move across scopes; a variable or call could
+    change meaning through shadowing or cleanup. Duplicate label names and named
+    closure bodies are deliberately excluded.
     A block around a non-tail return keeps Lua's last-statement grammar intact.
     """
     structure = _structure(lines)
@@ -2851,8 +3625,16 @@ def fold_nested_return_jumps(lines):
         implicit_tail = (raw.startswith('    ::') and not raw.startswith('     ')
                          and nxt is not None and structure[nxt] == 'end'
                          and not any(s.strip() for s in structure[nxt + 1:]))
-        if nxt is None or (structure[nxt].strip() != 'return' and not implicit_tail):
+        if nxt is None:
             continue
+        # Structure blanks string literals as well as comments. Inspect the
+        # actual return tokens so `return "text"` cannot look like a bare return.
+        return_code = ''.join(t[0] for t in tokens(lines[nxt])
+                              if t.lastgroup not in ('comment', 'longcomment')).strip()
+        literal_return = re.fullmatch(r'return(?: (?:nil|true|false))?', return_code)
+        if not literal_return and not implicit_tail:
+            continue
+        ret = literal_return[0] if literal_return else 'return'
         label = match[1]
         for j, line in enumerate(lines):
             if j in excluded:
@@ -2861,14 +3643,37 @@ def fold_nested_return_jumps(lines):
             if jump:
                 following = next((s.strip() for s in structure[j + 1:] if s.strip()), 'end')
                 tail = following == 'end' or following == 'else' or following.startswith(('elseif ', 'until '))
-                lines[j] = jump[1] + ('return' if tail else 'do return end') + '\n'
+                lines[j] = jump[1] + (ret if tail else f'do {ret} end') + '\n'
                 count += 1
             elif re.fullmatch(r'[ \t]*if .+ then goto ' + re.escape(label) + r' end\n', line):
-                lines[j] = re.sub(r'\bthen goto ' + re.escape(label) + r' end\n$', 'then return end\n', line)
+                lines[j] = re.sub(r'\bthen goto ' + re.escape(label) + r' end\n$', f'then {ret} end\n', line)
                 count += 1
         remaining = '\n'.join(_structure(lines))
         if not re.search(r'\bgoto ' + re.escape(label) + r'\b', remaining):
             lines[i] = ''
+    return lines, count
+
+
+def prune_unreachable_return_jumps(lines):
+    """Remove an immediate goto after an unconditional literal-return block.
+
+    The enclosing do block contains only the return. No intervening label can
+    provide another entry to the jump; cleanup errors also cannot reach it.
+    Keep calls, arbitrary expressions and diagnostic comments outside this rule.
+    """
+    code = ''.join(re.sub(r'[^\n]', ' ', t[0])
+                   if t.lastgroup in ('string', 'longstring', 'comment', 'longcomment')
+                   else t[0] for t in tokens(''.join(lines))).splitlines()
+    count = 0
+    for i, line in enumerate(lines[:-1]):
+        match = re.fullmatch(r'([ \t]*)do return(?: (?:nil|true|false))? end\n', line)
+        if not match or code[i] != line.rstrip('\n'):
+            continue
+        if code[i + 1] != lines[i + 1].rstrip('\n'):
+            continue
+        if re.fullmatch(re.escape(match[1]) + r'goto \w+\n', lines[i + 1]):
+            lines[i + 1] = ''
+            count += 1
     return lines, count
 
 

@@ -12,13 +12,12 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar8, CVar9, bVar2, bVar3, cVar4, c_stk_69, c_stk_7d, c_stk_85, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, iVar12, iVar13, iVar6, iVar7, i_stk_20, i_stk_a0, pCVar5, pThing, pcVar11, piVar10, pi_stk_1c, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, xStack_3c, xStack_68, xStack_7c, xStack_8c, xStack_9c, x_stk_18, x_stk_38, x_stk_c
+    local bVar2, bVar3, cVar4, c_stk_69, c_stk_7d, c_stk_85, dist, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, iVar12, iVar13, iVar6, iVar7, i_stk_20, i_stk_a0, pCVar5, pThing, pcVar11, piVar10, pi_stk_1c, r1, r10, r2, r3, r4, r5, r6, r7, r8, r9, xStack_3c, xStack_68, xStack_7c, xStack_9c, x_stk_18, x_stk_38, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d0d3c8()
         quest:DeregisterTimer(i_stk_a0)
         resources:ReleaseResource(xStack_9c)
     end
-    CVar8 = 0
     c_stk_7d = 1
     c_stk_69 = 0
     c_stk_85 = 1
@@ -174,6 +173,9 @@ function Main(quest, me)
                         pcVar11 = "TEXT_QST_009_FORGER_CHAT"
                         pCVar5 = quest:GetHero()
                         r1 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                        if not r1 then
+                            goto LAB_00d0cb83
+                        end
                         iVar6 = me:IsPerformingScriptTask()
                         cVar4 = iVar6
                         while cVar4 do
@@ -222,6 +224,9 @@ function Main(quest, me)
                                 pcVar11 = "TEXT_QST_009_FORGER_TURNED_DOWN"
                                 pCVar5 = quest:GetHero()
                                 r2 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                if not r2 then
+                                    goto LAB_00d0cb83
+                                end
                                 iVar6 = me:IsPerformingScriptTask()
                                 cVar4 = iVar6
                                 while cVar4 do
@@ -260,6 +265,9 @@ function Main(quest, me)
                                 pcVar11 = "TEXT_QST_009_FORGER_FAILED"
                                 pCVar5 = quest:GetHero()
                                 r3 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                if not r3 then
+                                    goto LAB_00d0cb83
+                                end
                                 iVar6 = me:IsPerformingScriptTask()
                                 cVar4 = iVar6
                                 while cVar4 do
@@ -289,6 +297,10 @@ function Main(quest, me)
                                 pcVar11 = "TEXT_QST_009_FORGER_SUCCESS"
                                 pCVar5 = quest:GetHero()
                                 r4 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                if not r4 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    goto FLOW_after_lab_00d0d377
+                                end
                                 iVar6 = me:IsPerformingScriptTask()
                                 cVar4 = iVar6
                                 while cVar4 do
@@ -342,6 +354,12 @@ function Main(quest, me)
                 pcVar11 = "TEXT_QST_009_FORGER_EARLY_GOT_PASS"
                 pCVar5 = quest:GetHero()
                 r5 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                if not r5 then
+                    -- LAB_00d0d377_c7: (native jump target)
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_7c)
+                    goto LAB_00d0d8c8
+                end
                 iVar6 = me:IsPerformingScriptTask()
                 cVar4 = iVar6
                 while cVar4 do
@@ -386,6 +404,12 @@ function Main(quest, me)
             pcVar11 = "TEXT_QST_009_FORGER_EARLY_NOT_NEED"
             pCVar5 = quest:GetHero()
             r6 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+            if not r6 then
+                quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(xStack_7c)
+                __cleanup_LAB_00d0d3c8()
+                return
+            end
             iVar6 = me:IsPerformingScriptTask()
             cVar4 = iVar6
             while cVar4 do
@@ -464,7 +488,6 @@ function Main(quest, me)
         pi_stk_1c = piVar10
         quest:PauseAllNonScriptedEntities(true)
         if not quest:GetStateBool("Gate2Open") then
-            -- TODO(native): xStack_8c = xStack_8c | 0x80;
             pCVar5 = quest:GetHero()
             bVar3 = quest:IsObjectInThingsPossession("OBJECT_RESIDENTIAL_BANDIT_CAMP_PASS", pCVar5)
             bVar2 = false
@@ -476,7 +499,6 @@ function Main(quest, me)
         ::LAB_00d0d27c::
         bVar2 = true
         ::FLOW_past_lab_00d0d27c::
-            -- TODO(native): xStack_8c = xStack_8c & 0xffffff7f;
         if bVar2 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
@@ -493,6 +515,10 @@ function Main(quest, me)
                     pcVar11 = "TEXT_QST_009_FORGER_LATE_NOT_NEED"
                     pCVar5 = quest:GetHero()
                     r7 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                    if not r7 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        goto FLOW_after_lab_00d0d8e5
+                    end
                     iVar6 = me:IsPerformingScriptTask()
                     cVar4 = iVar6
                     while cVar4 do
@@ -550,6 +576,9 @@ function Main(quest, me)
                                         pcVar11 = "TEXT_QST_009_FORGER_SECOND_FAIL"
                                         pCVar5 = quest:GetHero()
                                         r8 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                        if not r8 then
+                                            goto LAB_00d0d365
+                                        end
                                         iVar6 = me:IsPerformingScriptTask()
                                         cVar4 = iVar6
                                         while cVar4 do
@@ -581,6 +610,9 @@ function Main(quest, me)
                                     pcVar11 = "TEXT_QST_009_FORGER_SUCCESS"
                                     pCVar5 = quest:GetHero()
                                     r9 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    if not r9 then
+                                        goto LAB_00d0d8e5
+                                    end
                                     iVar6 = me:IsPerformingScriptTask()
                                     cVar4 = iVar6
                                     while cVar4 do
@@ -623,6 +655,9 @@ function Main(quest, me)
                             pcVar11 = "TEXT_QST_009_FORGER_TURNED_DOWN"
                             pCVar5 = quest:GetHero()
                             r10 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            if not r10 then
+                                goto LAB_00d0d365
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do

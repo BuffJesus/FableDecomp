@@ -1,5 +1,7 @@
 # Lua Gameflow parity and authority audit
 
+> Dated comparison record. Paths under `work/` are local evidence, not checked-in reproducible profiles. Playback and parity statements below describe the recorded fixture/version, not a fresh certification of the current converter or runtime.
+
 ## Status
 
 Aeon's downloaded `LUAGameflow.lua` is a structurally strong port, but it is **not safe to deploy as

@@ -46,8 +46,8 @@ class QuestVectorTests(unittest.TestCase):
             lua, state, events = LuaRuntime(), {}, []
             def put(_q, key, value):
                 state[key] = value
-            def create(_q, definition, position, name):
-                events.append(('create', definition, tuple(position[a] for a in 'xyz'), name))
+            def create(_q, definition, position, name, native_flag):
+                events.append(('create', definition, tuple(position[a] for a in 'xyz'), name, native_flag))
                 return 'beetle'
             quest = lua.table_from({'SetStateBool': put, 'SetStateFloat': put,
                 'GetStateFloat': lambda _q, key: state[key], 'CreateCreature': create,
@@ -57,7 +57,7 @@ class QuestVectorTests(unittest.TestCase):
             lua.execute('return function(quest,me)\n' + callback + '\nend')(quest, me)
             position.x = 999  # Native callback copies; it does not retain the position pointer.
             lua.execute('return function(quest)\n' + spawn + '\nend')(quest)
-            self.assertEqual(events, [('create', 'CREATURE_OAKVALE_STAG_BEETLE', coords, 'NOVI_CreatedBeetle'),
+            self.assertEqual(events, [('create', 'CREATURE_OAKVALE_STAG_BEETLE', coords, 'NOVI_CreatedBeetle', False),
                                       ('health', 'beetle', 2.0, True)])
             self.assertTrue(state['BarrelBrokenInstantaneous'])
             self.assertTrue(state['BarrelBrokenPersistent'])

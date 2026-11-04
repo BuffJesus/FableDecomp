@@ -5,7 +5,8 @@
 function Main(quest)
     quest:AddEntityBinding("MazeAtTavern", "QS_GuardianSisterInfo/Entities/MazeAtTavern")
     quest:FinalizeEntityBindings()
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01", "", "BowerstoneSlums")
+    local pQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_GUARDIAN_SISTER_INFO_FIRST_OBJECTIVE_01", "", "BowerstoneSlums")
     local isRegionLoaded = quest:IsRegionLoaded("BowerstoneSlums")
     while true do
         if isRegionLoaded then
@@ -25,6 +26,8 @@ end
 
 -- QS_GuardianSisterInfo.OnPersist (retail 0x00e25f40)
 function OnPersist(quest, context)
-    quest:SetStateBool("GuardianSpokeToHero", quest:PersistTransferBool(context, "GuardianSpokeToHero", quest:GetStateBool("GuardianSpokeToHero")))
+    local guardianSpokeToHero = quest:GetStateBool("GuardianSpokeToHero") or false
+    guardianSpokeToHero = quest:PersistTransferBool(context, "GuardianSpokeToHero", guardianSpokeToHero)
+    quest:SetStateBool("GuardianSpokeToHero", guardianSpokeToHero)
 end
 

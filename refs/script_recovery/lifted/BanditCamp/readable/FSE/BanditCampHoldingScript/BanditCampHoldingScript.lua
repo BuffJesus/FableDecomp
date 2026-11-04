@@ -9,6 +9,7 @@ function Main(quest)
         while not quest:IsLevelLoaded("BanditCampPath_1") do
             if not quest:NewScriptFrame() then return end
         end
+        if quest:IsActiveThreadTerminating() then return end
         quest:SetStateBool("PathReached", true)
     end
     isRegionLoaded = quest:IsRegionLoaded("BanditCampPathEntrance")
@@ -33,6 +34,8 @@ end
 
 -- Q_BanditCampHoldingScript.OnPersist (retail 0x00d12c20)
 function OnPersist(quest, context)
-    quest:SetStateBool("PathReached", quest:PersistTransferBool(context, "PathReached", quest:GetStateBool("PathReached")))
+    local pathReached = quest:GetStateBool("PathReached") or false
+    pathReached = quest:PersistTransferBool(context, "PathReached", pathReached)
+    quest:SetStateBool("PathReached", pathReached)
 end
 

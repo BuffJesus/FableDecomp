@@ -1,0 +1,74 @@
+{
+  "quest": "V_BookCollecting",
+  "host": "V_BookCollecting",
+  "maps": "BowerstoneSlums$",
+  "legs": {},
+  "enemyNames": [],
+  "clear": false,
+  "answer": "yes",
+  "failed": "false",
+  "steps": [
+    {
+      "name": "fresh reload verifies first comment before second grant",
+      "do": [
+        "Runner.commentIndex=quest:ReadGlobalGameData(1252); Runner.lastRequested=-1; assert(quest:GetStateInt('BooksDonated')==2 and quest:GetStateInt('GoodBooksDonated')==2); assert(not quest:GetStateBool('ReadingBook') and not quest:IsInCutscene() and not quest:IsInMovieSequence()); assert(quest:GetStateInt('LastBookRequested')==Runner.lastRequested); assert(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,Runner.commentIndex),quest:GetHero())); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do local expected=(i<2 or (name=='BookOwned' and i==Runner.commentIndex)); assert(quest:GetStateFlagVectorAt(name,i)==expected,name..'['..i..']') end end; for i=0,1 do assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,i),quest:GetHero())) end; Runner.commentIndex=Runner.commentIndex+1; assert(Runner.commentIndex<quest:ReadGlobalGameData(1256)); assert(not quest:GetStateFlagVectorAt('BookOwned',Runner.commentIndex)); Runner.commentLoaded=true"
+      ],
+      "until": "Runner.commentLoaded==true",
+      "timeout": 30,
+      "tries": 1
+    },
+    {
+      "name": "grant second comment book and finish tutorial before approach",
+      "do": [
+        "local key=quest:ReadGlobalGameDataStringAt(0x4d4,Runner.commentIndex); assert(key~=''); if not quest:IsObjectInThingsPossession(key,quest:GetHero()) then quest:GiveHeroObject(key,1) end; assert(quest:IsObjectInThingsPossession(key,quest:GetHero()))"
+      ],
+      "until": "quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,Runner.commentIndex),quest:GetHero())",
+      "timeout": 100,
+      "tries": 2
+    },
+    {
+      "name": "teacher comments on newly acquired second comment book",
+      "do": [
+        "quest:SetTimeOfDay(12.0)"
+      ],
+      "talk": "BS_Teacher",
+      "talkLabel": "Mr. Gout - Teacher",
+      "talkSides": [
+        [
+          0,
+          -2
+        ],
+        [
+          -2,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "until": "quest:GetStateFlagVectorAt('BookOwned',Runner.commentIndex) and not quest:IsInCutscene() and not quest:IsInMovieSequence()",
+      "timeout": 140,
+      "tries": 2
+    },
+    {
+      "name": "verify both comment books retained and save",
+      "do": [
+        "assert(quest:GetStateInt('BooksDonated')==2 and quest:GetStateInt('GoodBooksDonated')==2); assert(not quest:GetStateBool('ReadingBook') and not quest:IsInCutscene() and not quest:IsInMovieSequence()); assert(quest:GetStateInt('LastBookRequested')==Runner.lastRequested); assert(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,Runner.commentIndex),quest:GetHero())); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do local expected=(i<2 or (name=='BookOwned' and (i==Runner.commentIndex or i==Runner.commentIndex-1))); assert(quest:GetStateFlagVectorAt(name,i)==expected,name..'['..i..']') end end; for i=0,1 do assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,i),quest:GetHero())) end; assert(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,Runner.commentIndex-1),quest:GetHero())); quest:AutoSave(); Runner.secondCommentSaved=true"
+      ],
+      "until": "Runner.secondCommentSaved==true",
+      "timeout": 30,
+      "tries": 1
+    }
+  ],
+  "done": "Runner.secondCommentSaved==true",
+  "stateStatus": "'CommentIndex='..tostring(Runner.commentIndex)..' Accepted='..tostring(quest:ReadGlobalGameData(1252))..' CommentEnd='..tostring(quest:ReadGlobalGameData(1256))..' BooksDonated='..tostring(quest:GetStateInt('BooksDonated'))..' GoodBooks='..tostring(quest:GetStateInt('GoodBooksDonated'))..' Movie='..tostring(quest:IsInMovieSequence())..' Reading='..tostring(quest:GetStateBool('ReadingBook'))..' LastRequested='..tostring(quest:GetStateInt('LastBookRequested'))",
+  "pauseSteps": [
+    "clear",
+    "key ENTER"
+  ]
+}

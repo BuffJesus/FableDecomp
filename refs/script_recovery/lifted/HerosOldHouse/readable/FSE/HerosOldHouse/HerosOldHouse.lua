@@ -28,15 +28,19 @@ function Main(quest)
         isRegionLoaded = false
         ::FLOW_past_lab_00d8a156::
         if isRegionLoaded then
+            if quest:IsActiveThreadTerminating() then return end
             if quest:GetStateBool("Helping") then
-                quest:SetQuestAsFailed(quest:GetActiveQuestName(), false, "", true)
+                if quest:IsActiveThreadTerminating() then return end
+                local pQuestName = quest:GetActiveQuestName()
+                quest:SetQuestAsFailed(pQuestName, false, "", true)
                 predicateResult = true
                 quest:SetStateBool("Helping", false)
             end
         end
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+    local getActiveQuestName = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(getActiveQuestName, 0)
 end
 
 -- Q_HerosOldHouse.Init (retail 0x00d89da0)
@@ -50,26 +54,47 @@ end
 
 -- Q_HerosOldHouse.OnPersist (retail 0x00d8ab10)
 function OnPersist(quest, context)
-    quest:SetStateBool("Helping", quest:PersistTransferBool(context, "Helping", quest:GetStateBool("Helping")))
-    quest:SetStateBool("Helped", quest:PersistTransferBool(context, "Helped", quest:GetStateBool("Helped")))
-    quest:SetStateBool("BootyDugUp", quest:PersistTransferBool(context, "BootyDugUp", quest:GetStateBool("BootyDugUp")))
+    local helping = quest:GetStateBool("Helping") or false
+    helping = quest:PersistTransferBool(context, "Helping", helping)
+    quest:SetStateBool("Helping", helping)
+    local helped = quest:GetStateBool("Helped") or false
+    helped = quest:PersistTransferBool(context, "Helped", helped)
+    quest:SetStateBool("Helped", helped)
+    local bootyDugUp = quest:GetStateBool("BootyDugUp") or false
+    bootyDugUp = quest:PersistTransferBool(context, "BootyDugUp", bootyDugUp)
+    quest:SetStateBool("BootyDugUp", bootyDugUp)
 end
 
 -- Q_HerosOldHouse.WatchForBooty (retail 0x00d8a240)
 function WatchForBooty(quest)
     local hiddenBooty = quest:GetThingWithScriptName("HiddenBooty")
+    local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
     repeat
-        if quest:IsActiveThreadTerminating() then return end
-        while not quest:IsRegionLoaded("OakBay") do
-            if not quest:NewScriptFrame() then return end
+        if isActiveThreadTerminating then
+            hiddenBooty = nil
+            return
+        end
+        if not quest:IsRegionLoaded("OakBay") then
+            if quest:IsActiveThreadTerminating() then hiddenBooty = nil; return end
+            while not quest:IsRegionLoaded("OakBay") do
+                if not quest:NewScriptFrame() then return end
+            end
+            if quest:IsActiveThreadTerminating() then return end
         end
         if quest:IsDiggingSpotEnabled(hiddenBooty) then
-            quest:NewScriptFrame()
+            quest:NewScriptFrame();
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating();
         else
-            if not quest:IsActiveThreadTerminating() then quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02", "", "OakBay"); return end
+            if not quest:IsActiveThreadTerminating() then
+                local pQuestName = quest:GetActiveQuestName()
+                quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_HEROS_OLD_HOUSE_OBJECTIVE_02", "", "OakBay")
+                return
+            end
             do return end
             quest:NewScriptFrame()
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         end
+        ::continue_1::
     until false
 end
 

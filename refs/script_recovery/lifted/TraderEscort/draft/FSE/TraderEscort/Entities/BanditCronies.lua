@@ -36,10 +36,9 @@ function Main(quest, me)
         if not bVar3 then
             iVar1 = quest:ReadGlobalGameData(0x3b0)
             iVar2 = quest:ReadGlobalGameData(0x3ac)
-            uVar5 = math.random(0, 32767)
-            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0x3ac) + (uVar5 % (uint)(iVar1 - iVar2 >> 2)) * 4),(int)&xStack_18);
-            -- TODO(native): CCharString::CCharString(&xStack_14,&xStack_18);
-            r1 = quest:PlaySoundOnThing(me, nil --[[missing]])
+            uVar5 = quest:RetailRandModulo(32768)
+            local sampledSound = quest:ReadGlobalGameDataDefStringAt(0x3ac, uVar5 % ((iVar1 - iVar2) >> 2))
+            r1 = quest:PlaySoundOnThing(me, sampledSound)
             pCVar4 = quest:GetHero()
             quest:GiveThingBestEnemyTarget(me, pCVar4)
             repeat

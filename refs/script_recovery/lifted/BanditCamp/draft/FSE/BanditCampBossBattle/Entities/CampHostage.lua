@@ -56,7 +56,7 @@ function Main(quest, me)
                 iVar5 = quest:AddNewConversation(me, false, false)
                 pCVar7 = quest:GetHero()
                 quest:AddPersonToConversation(iVar5, pCVar7)
-                me:PlayAnimation("CS_SHOUT_FOR_HELP", false, false, false, true, true, false, false)
+                resources:PlayAnimationWithNativeArgument5(xStack_30, "CS_SHOUT_FOR_HELP", false, false, false, true, false, false)
                 native_arg_switch_1 = u_stk_6c
                 repeat
                     if native_arg_switch_1 == 0 then
@@ -127,6 +127,13 @@ function Main(quest, me)
                         pcVar8 = "TEXT_QST_009_HOSTAGE_HELP"
                         pCVar7 = quest:GetHero()
                         r1 = me:Speak(pCVar7, pcVar8, iVar6, (iVar5 ~= 0), (iVar9 ~= 0), (iVar10 ~= 0))
+                        if not r1 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_20)
+                            quest:DeregisterTimer(i_stk_70)
+                            resources:ReleaseResource(xStack_30)
+                            return
+                        end
                         iVar6 = me:IsPerformingScriptTask()
                         cVar4 = iVar6
                         while cVar4 do
@@ -189,6 +196,13 @@ function Main(quest, me)
                         pcVar8 = "TEXT_QST_009_HOSTAGE_CLOSE"
                         pCVar7 = quest:GetHero()
                         r2 = me:Speak(pCVar7, pcVar8, iVar6, (iVar5 ~= 0), (iVar9 ~= 0), (iVar10 ~= 0))
+                        if not r2 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_10)
+                            quest:DeregisterTimer(i_stk_70)
+                            resources:ReleaseResource(xStack_30)
+                            return
+                        end
                         iVar6 = me:IsPerformingScriptTask()
                         cVar4 = iVar6
                         while cVar4 do

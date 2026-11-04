@@ -1,0 +1,59 @@
+diff --git a/FableScriptExtender/LuaManager.cpp b/FableScriptExtender/LuaManager.cpp
+index 070b994..1729557 100644
+--- a/FableScriptExtender/LuaManager.cpp
++++ b/FableScriptExtender/LuaManager.cpp
+@@ -218,6 +218,11 @@ void LuaManager::RegisterBindingsInState(sol::state& lua, LuaQuestHost* pQuestHo
+     questState_type["WithRetailResources"] = [](LuaQuestState& self, sol::protected_function callback) {
+         return WithRetailResources(self.GetGameInterface(), callback);
+     };
++    questState_type["RegisterQuestConsciousCondition"] = [](LuaQuestState& self, sol::object actor) {
++        if (!actor.valid() || actor.get_type() != sol::type::userdata || !actor.is<CScriptThing*>())
++            throw std::runtime_error("Quest conscious condition requires a Thing");
++        self.RegisterQuestConsciousCondition(actor.as<CScriptThing*>());
++    };
+     questState_type["RegisterBoundConsciousCondition"] = [pEntityHost](LuaQuestState&) {
+         if (!pEntityHost) throw std::runtime_error("Conscious condition requires an entity VM");
+         RegisterRetailConsciousCondition(pEntityHost, pEntityHost->GetParentScript_Stub(), &pEntityHost->m_Me);
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index 9e26a10..3df9c7a 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -255,6 +255,26 @@ static sol::object MarshalThreadArg(const sol::object& arg, lua_State* targetL)
+         + std::string(sol::type_name(arg.lua_state(), arg.get_type())) + ")");
+ }
+ 
++void LuaQuestState::RegisterQuestConsciousCondition(CScriptThing* actor) {
++    if (!m_pParentHost || m_pParentHost->IsClosing() || !actor)
++        throw std::runtime_error("Conscious condition requires a live quest host and Thing");
++    if (!g_fableBase || !RetailThing_Copy_API || !RetailThing_Destroy_API)
++        throw std::runtime_error("Retail quest condition APIs unavailable");
++    void* active = nullptr;
++    std::memcpy(&active, reinterpret_cast<const char*>(&m_pParentHost->base) + 0x2c, sizeof(active));
++    if (!active)
++        throw std::runtime_error("Quest condition requires an active native thread");
++    struct Condition {
++        void** table;
++        CScriptThing thing{};
++        ~Condition() { RetailThing_Destroy_API(&thing); }
++    } condition{ASLR<void**>(0x012C2FE8)};
++    static_assert(offsetof(Condition, thing) == 4 && sizeof(Condition) == 16, "Retail x86 condition layout");
++    RetailThing_Copy_API(&condition.thing, actor);
++    using Register = void(__thiscall*)(CScriptBase_Retail*, const void*);
++    ASLR<Register>(0x00CB7920)(&m_pParentHost->base, &condition);
++}
++
+ void LuaQuestState::KillSpawnedFunction(const std::string& functionName, int identifier) {
+     if (!m_pParentHost || m_pParentHost->IsClosing())
+         throw std::runtime_error("Quest host unavailable for spawned-function control");
+diff --git a/FableScriptExtender/LuaQuestState.h b/FableScriptExtender/LuaQuestState.h
+index a0977f7..e1f0589 100644
+--- a/FableScriptExtender/LuaQuestState.h
++++ b/FableScriptExtender/LuaQuestState.h
+@@ -100,6 +100,7 @@ public:
+     void Log(const std::string& message);
+     void CreateThread(const std::string& luaFunctionName, sol::table args);
+     void KillSpawnedFunction(const std::string& functionName, int identifier);
++    void RegisterQuestConsciousCondition(CScriptThing* actor);
+     void ShowMessage(const std::string& message, float duration);
+     void ActivateQuest(const std::string& questName);
+     void ActivateQuestWithoutLoadingResources(const std::string& questName);

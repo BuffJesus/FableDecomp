@@ -632,5 +632,88 @@
     "pdbMembersUnused": [],
     "nestedPdbMembers": {}
   },
-  "entities": {}
+  "entities": {},
+  "reviewedThingOutputScopes": {
+    "0x00eea7c0": {
+      "address": "0x00EEA7C0",
+      "end": "0x00EEADA2",
+      "sourceSha256": "fa8b0b423cc345c5810ec8c76028172a53b5ce3a8b20b7bea7c20b364f8e2022",
+      "nativeSha256": "56ee091bc19e5bce4a543b6d51b9a953ea58d825ba0ba20822914e09694260df",
+      "anchors": {
+        "0xeeaab7": "508d44241850ff97fc080000",
+        "0xeead80": "8d4c2414e8b7fa5bff8d4c2430e8eecd7fff8d4c2420e835c78fff"
+      },
+      "dependencies": {
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_dig_horizontal_distance_20261009/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_dig_horizontal_distance_20261009/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_dig_horizontal_distance_20261009/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "83d924f226af312090e032cc18ecffc5e767bd13fd633ba9dae1c9adc2c5c0dd"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_dig_horizontal_distance_20261009/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "e0fe81c51a0d848d6831856ca9e77f96f348a1decf6dd42a982b3fa104fe5b55"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_dig_horizontal_distance_20261009/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "8d38d428bc815b29f2ef73fc77a1b9d5a564b59b8a5ce71155b1afac54c89616",
+      "recoveredSha256": "8cfd30d9a4ece0f61df421f79ba40d990d4b6c90cb86b40cb8a3c31533033366",
+      "operations": [
+        {
+          "before": "    local resources = quest:RetailResources()",
+          "after": "    return quest:WithRetailResources(function(resources)\n    local digSpotOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "    r1 = quest:GetNearestEnabledDiggingSpot(pCVar6)",
+          "after": "    r1 = quest:GetNearestEnabledDiggingSpot(pCVar6)\n    digSpotOwner = resources:TrackThingOutput(r1)",
+          "count": 1
+        },
+        {
+          "before": "    resources:DestroyMovie(xStack_20)",
+          "after": "    resources:RetireThingOutput(digSpotOwner); digSpotOwner = 0\n    resources:DestroyMovie(xStack_20)",
+          "count": 1
+        },
+        {
+          "before": "    resources:ReleaseResource(xStack_30)\nend\n",
+          "after": "    resources:ReleaseResource(xStack_30)\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "TrackThingOutput",
+        "RetireThingOutput"
+      ]
+    }
+  },
+  "reviewedQuestConsciousConditions": {
+    "0x00eea7c0": {
+      "schema": "reviewed-quest-conscious-condition/1",
+      "address": "0x00eea7c0",
+      "role": "Main",
+      "sourceSha256": "fa8b0b423cc345c5810ec8c76028172a53b5ce3a8b20b7bea7c20b364f8e2022",
+      "nativeSha256": "56ee091bc19e5bce4a543b6d51b9a953ea58d825ba0ba20822914e09694260df",
+      "operation": "RegisterQuestConsciousCondition",
+      "nativeThreadOffset": "0x2c",
+      "nativeVTable": "0x012c2fe8",
+      "contract": "Native16-byte conscious condition, clone retains counted Thing; caller local destroyed before first frame. No Lua polling.",
+      "sdkMethodSha256": "72a8314f9e5727faae53be26db7075582fa6cdd6c8cdc54f9d6b4b42b771198e",
+      "sdkBindingSha256": "f534880bb9a740bc59d51afd3a029bc508c831f5af321e46989b9c1521f3cad7"
+    }
+  }
 }

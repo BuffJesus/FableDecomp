@@ -1,9 +1,26 @@
 -- Readable native conversion: BB_BeardyBaldyMan. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
-local GROUP_SELECT_FIRST, GROUP_SELECT_RANDOM_NO_REPEAT = 0, 2  -- ETextGroupSelectionMethod
-
 local ENTITY_MOVE_RUN = 1  -- EScriptEntityMoveType (Ego_r.pdb)
+
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    BeardyBaldyHaircutStyle1 = 1104,  -- 'OBJECT_HERO_HAIR_BASIN_01'
+    BeardyBaldyHaircutCard1 = 1108,  -- 'OBJECT_HAIRCUT_CARD_MOP'
+    BeardyBaldyHaircutStyle2 = 1112,  -- 'OBJECT_HERO_HAIR_MOHAWK_01'
+    BeardyBaldyHaircutCard2 = 1116,  -- 'OBJECT_HAIRCUT_CARD_07'
+    BeardyBaldyBeardStyle1 = 1120,  -- 'OBJECT_HERO_BEARD_MUTTON_01'
+    BeardyBaldyBeardCard1 = 1124,  -- 'OBJECT_BEARD_CARD_04'
+    BeardyBaldyBeardStyle2 = 1128,  -- 'OBJECT_HERO_BEARD_LONG_01'
+    BeardyBaldyBeardCard2 = 1132,  -- 'OBJECT_BEARD_CARD_05'
+    BeardyBaldyTashStyle1 = 1136,  -- 'OBJECT_HERO_TASHTRADER_01'
+    BeardyBaldyTashCard1 = 1140,  -- 'OBJECT_TASH_CARD_02'
+    BeardyBaldyTashStyle2 = 1144,  -- 'OBJECT_HERO_TASHSHERIFF_01'
+    BeardyBaldyTashCard2 = 1148,  -- 'OBJECT_TASH_CARD_04'
+    BeardyBaldyRewardObjectFullComplete = 1152,  -- 'OBJECT_TATTOO_CARD_BS_BACK_01'
+    BeardyBaldyRewardObjectHalfComplete = 1156,  -- 'OBJECT_BEARD_CARD_08'
+    BeardyBaldyExperience = 1160,  -- 100
+}
 
 local helpers = require("V_BeardyBaldy.native_quest_helpers")
 
@@ -12,20 +29,11 @@ local lastRandomSpeechIdx1, lastRandomSpeechIdx2
 
 -- BB_BeardyBaldyMan.Main (retail 0x00e50fd0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult2, scratchValue3, p0, this_00
+    local scratchValue, predicateResult4, questionAnswer, addNewConversation, p0, hero, hero2
+    local getStateString, line, scratchValue22
     local resource = resources:NewResource()
-    if this_00 ~= nil then
-        -- TODO(native): xStack_1c8._4_4_ = *(undefined4 *)(this + 0xc);
-        if nil ~= nil then
-            -- TODO(native): *xStack_1c8 = *xStack_1c8 + 1;
-        end
-        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript> (this_00,pCVar9,0);
-        -- TODO(native): *(code **)(this_00 + 0x34) = NScript::CV_BeardyBaldyScript::WatchForAttack;
-        -- TODO(native): *(undefined4 *)(this_00 + 0x38) = uVar1;
-    end
-    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);
+    quest:CreateThread("WatchForAttack", {args = {me}})  -- native parent-quest worker WatchForAttack, the entity's own thing captured
     scratchValue = quest:IsActiveThreadTerminating()
     repeat
         if scratchValue then
@@ -35,19 +43,21 @@ function Main(quest, me)
         if not quest:GetStateBool("AttackedByHero") then
             if quest:GetTimer(quest:GetStateInt("RandomSpeechTimer")) == 0 then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                local scratchValue47 = GetRandomSpeech(quest, me)
+                local scratchValue25 = GetRandomSpeech(quest, me)
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
-                quest:EntitySetFacingAngleTowardsThing(hero, me, false)
+                scratchValue = false
+                local pThing = quest:GetHero()
+                quest:EntitySetFacingAngleTowardsThing(pThing, me, false)
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
                 if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
-                local addNewConversation = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(addNewConversation, hero)
-                quest:AddLineToConversation(addNewConversation, scratchValue47, me, hero, false)
+                addNewConversation = quest:AddNewConversation(me, false, false)
+                local hero3 = quest:GetHero()
+                quest:AddPersonToConversation(addNewConversation, hero3)
+                hero2 = quest:GetHero()
+                quest:AddLineToConversation(addNewConversation, scratchValue25, me, hero2, false)
                 helpers.ResetRandomSpeechTime(quest, me)
                 goto LAB_00e51417
-                resources:ReleaseResource(resource)
-                return
             end
         else
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
@@ -69,8 +79,16 @@ function Main(quest, me)
                 resources:ReleaseResource(resource)
                 return
             end
-            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                me:Speak(hero, "TEXT_QST_014_ATTACK", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+            hero = nil
+            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                line = "TEXT_QST_014_ATTACK"
+                hero = quest:GetHero()
+                if not me:Speak(hero, line, 2, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    resources:ReleaseResource(resource)
+                    return
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
@@ -94,12 +112,13 @@ function Main(quest, me)
             resources:DestroyMovie(movie)
         end
         ::LAB_00e51417::
-        scratchValue3 = quest:GetStateInt("QuestPhase")
-        if scratchValue3 == 0 then
+        local questPhase = quest:GetStateInt("QuestPhase")
+        if questPhase == 0 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
+                local position = me:GetPos()
+                helpers.SetWanderPointAndDistance(quest, me, me, position)
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -108,74 +127,129 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(true)
                 resources:PrepareResource(resource)
                 while not resources:TryAcquire(resource, me, 4) do
-                    if not quest:NewScriptFrame(me) then goto LAB_00e53600 end
+                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
+                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
                 if quest:GetStateBool("Phase1RequirementsComplete") then
                     if not quest:IsActiveThreadTerminating() then
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_014_PHASE1_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e53600 end
-                            if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE1_REMINDER"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 2, false, true, false) then
+                                goto FLOW_past_lab_00e51c43
+                            end
+                            while me:IsPerformingScriptTask() do
+                                if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
+                            end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
                         end
                         goto LAB_00e51c43
                     end
-                    goto LAB_00e53600
+                    goto FLOW_past_lab_00e51c43
                 end
                 if not quest:IsActiveThreadTerminating() then
                     if not quest:GetStateBool("IntroComplete") then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_014_PHASE1_INTRO1", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e53600 end
-                            if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE1_INTRO1"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 0, false, true, false) then
+                                goto FLOW_past_lab_00e51c43
+                            end
+                            while me:IsPerformingScriptTask() do
+                                if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
+                            end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
                         end
                         quest:SetStateBool("IntroComplete", true)
                     else
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_014_PHASE1_INTRO_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e53600 end
-                            if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE1_INTRO_REMINDER"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 2, false, true, false) then
+                                goto FLOW_past_lab_00e51c43
+                            end
+                            while me:IsPerformingScriptTask() do
+                                if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
+                            end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
                         end
                     end
                     quest:GiveHeroYesNoQuestion("TEXT_QST_014_QUEST_ON_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                    scratchValue3 = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while scratchValue3 < 0 do
-                        if not quest:NewScriptFrame(me) then goto LAB_00e53600 end
-                        scratchValue3 = quest:MsgIsQuestionAnsweredYesOrNo()
+                    questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while questionAnswer < 0 do
+                        if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
+                        questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                     if not quest:IsActiveThreadTerminating() then
                         helpers.ResetRandomSpeechTime(quest, me)
                         scratchValue = quest:IsActiveThreadTerminating()
-                        if scratchValue3 == 1 then
+                        if questionAnswer == 1 then
                             if scratchValue then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie4)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_014_PHASE1_INTRO2", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e53600 end
-                                if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
+                            hero = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                line = "TEXT_QST_014_PHASE1_INTRO2"
+                                hero = quest:GetHero()
+                                if not me:Speak(hero, line, 0, false, true, false) then
+                                    goto FLOW_past_lab_00e51c43
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
+                                end
+                                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
                             end
-                            predicateResult2 = quest:IsActiveThreadTerminating()
-                            if quest:IsWearingHairstyle(hero, quest:ReadGlobalGameDataString(1104)) then
-                                if predicateResult2 then goto LAB_00e53600 end
-                                quest:GiveHeroObject(quest:ReadGlobalGameDataString(1116), -1, false)
-                                quest:SetStateString("RequiredHairdo", quest:ReadGlobalGameDataString(1112))
+                            local scratchValue18 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyHaircutStyle1)
+                            hero = quest:GetHero()
+                            scratchValue = quest:IsWearingHairstyle(hero, scratchValue18)
+                            local predicateResult2 = quest:IsActiveThreadTerminating()
+                            if scratchValue then
+                                if predicateResult2 then goto FLOW_past_lab_00e51c43 end
+                                local scratchValue9 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyHaircutCard2)
+                                quest:GiveHeroObject(scratchValue9, -1, false)
+                                local scratchValue8 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyHaircutStyle2)
+                                quest:SetStateString("RequiredHairdo", scratchValue8)
                             else
-                                if predicateResult2 then goto LAB_00e53600 end
-                                quest:GiveHeroObject(quest:ReadGlobalGameDataString(1108), -1, false)
-                                quest:SetStateString("RequiredHairdo", quest:ReadGlobalGameDataString(1104))
+                                if predicateResult2 then goto FLOW_past_lab_00e51c43 end
+                                local scratchValue16 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyHaircutCard1)
+                                quest:GiveHeroObject(scratchValue16, -1, false)
+                                local scratchValue14 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyHaircutStyle1)
+                                quest:SetStateString("RequiredHairdo", scratchValue14)
                             end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_014_PHASE1_INTRO3", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e53600 end
-                                if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
+                            hero = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                line = "TEXT_QST_014_PHASE1_INTRO3"
+                                hero = quest:GetHero()
+                                if not me:Speak(hero, line, 0, false, true, false) then
+                                    goto FLOW_past_lab_00e51c43
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
+                                end
+                                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
                             end
                             quest:SetStateBool("Phase1RequirementsComplete", true)
                         else
-                            if scratchValue then goto LAB_00e53600 end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_014_PHASE1_DENIED", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e53600 end
-                                if quest:IsActiveThreadTerminating() then goto LAB_00e53600 end
+                            if scratchValue then goto FLOW_past_lab_00e51c43 end
+                            hero = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                line = "TEXT_QST_014_PHASE1_DENIED"
+                                hero = quest:GetHero()
+                                if not me:Speak(hero, line, 2, false, true, false) then
+                                    goto FLOW_past_lab_00e51c43
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e51c43 end
+                                end
+                                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e51c43 end
                             end
                         end
                         goto LAB_00e51c43
@@ -188,22 +262,26 @@ function Main(quest, me)
                 resources:DestroyMovie(movie4)
                 goto LAB_00e51c6f
                 ::FLOW_past_lab_00e51c43::
-                ::LAB_00e53600::
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie4)
                 resources:ReleaseResource(resource)
                 return
             end
             ::LAB_00e51c6f::
-            if not quest:GetStateBool("Phase1RequirementsComplete") then quest:NewScriptFrame(me); scratchValue = quest:IsActiveThreadTerminating(); goto continue_3 end
+            if not quest:GetStateBool("Phase1RequirementsComplete") then
+                quest:NewScriptFrame(me);
+                scratchValue = quest:IsActiveThreadTerminating();
+                goto continue_3
+            end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             quest:SetStateInt("QuestPhase", 1)
             quest:SetStateBool("InitialisePhase", true)
-        elseif scratchValue3 then
+        elseif questPhase == 1 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
+                local position2 = me:GetPos()
+                helpers.SetWanderPointAndDistance(quest, me, me, position2)
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -233,15 +311,25 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    if quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
+                    getStateString = quest:GetStateString("RequiredHairdo")
+                    hero = quest:GetHero()
+                    if quest:IsWearingHairstyle(hero, getStateString) then
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie3)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_014_PHASE2_INTRO1", GROUP_SELECT_FIRST, false, true, false)
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE2_INTRO1"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 0, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie3)
+                                resources:ReleaseResource(resource)
+                                return
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
@@ -258,28 +346,43 @@ function Main(quest, me)
                                 return
                             end
                         end
-                        predicateResult2 = quest:IsActiveThreadTerminating()
-                        if quest:IsWearingHairstyle(hero, quest:ReadGlobalGameDataString(1120)) then
-                            if predicateResult2 then
+                        local scratchValue13 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyBeardStyle1)
+                        hero = quest:GetHero()
+                        scratchValue = quest:IsWearingHairstyle(hero, scratchValue13)
+                        local predicateResult3 = quest:IsActiveThreadTerminating()
+                        if scratchValue then
+                            if predicateResult3 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie3)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            quest:GiveHeroObject(quest:ReadGlobalGameDataString(1132), -1, false)
-                            quest:SetStateString("RequiredBeard", quest:ReadGlobalGameDataString(1128))
+                            local scratchValue17 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyBeardCard2)
+                            quest:GiveHeroObject(scratchValue17, -1, false)
+                            local scratchValue12 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyBeardStyle2)
+                            quest:SetStateString("RequiredBeard", scratchValue12)
                         else
-                            if predicateResult2 then
+                            if predicateResult3 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(movie3)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            quest:GiveHeroObject(quest:ReadGlobalGameDataString(1124), -1, false)
-                            quest:SetStateString("RequiredBeard", quest:ReadGlobalGameDataString(1120))
+                            local scratchValue19 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyBeardCard1)
+                            quest:GiveHeroObject(scratchValue19, -1, false)
+                            local scratchValue10 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyBeardStyle1)
+                            quest:SetStateString("RequiredBeard", scratchValue10)
                         end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_014_PHASE2_INTRO2", GROUP_SELECT_FIRST, false, true, false)
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE2_INTRO2"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 0, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie3)
+                                resources:ReleaseResource(resource)
+                                return
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
@@ -304,8 +407,16 @@ function Main(quest, me)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_014_PHASE2_WRONG_HAIR", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE2_WRONG_HAIR"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 2, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie3)
+                                resources:ReleaseResource(resource)
+                                return
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
@@ -330,8 +441,16 @@ function Main(quest, me)
                         resources:ReleaseResource(resource)
                         return
                     end
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        me:Speak(hero, "TEXT_QST_014_PHASE2_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+                    hero = nil
+                    if resources:ResourceThingHealthAbove(resource, 0.0) then
+                        line = "TEXT_QST_014_PHASE2_REMINDER"
+                        hero = quest:GetHero()
+                        if not me:Speak(hero, line, 2, false, true, false) then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(movie3)
+                            resources:ReleaseResource(resource)
+                            return
+                        end
                         while me:IsPerformingScriptTask() do
                             quest:NewScriptFrame(me)
                             if quest:IsActiveThreadTerminating() then
@@ -358,11 +477,12 @@ function Main(quest, me)
                 quest:SetStateInt("QuestPhase", 2)
                 quest:SetStateBool("InitialisePhase", true)
             end
-        elseif scratchValue3 == 2 then
+        elseif questPhase == 2 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
+                local position3 = me:GetPos()
+                helpers.SetWanderPointAndDistance(quest, me, me, position3)
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -371,62 +491,105 @@ function Main(quest, me)
                 quest:PauseAllNonScriptedEntities(true)
                 resources:PrepareResource(resource)
                 while not resources:TryAcquire(resource, me, 4) do
-                    if not quest:NewScriptFrame(me) then goto LAB_00e5276b end
+                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
                 end
-                if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
+                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
                 if not quest:GetStateBool("Phase3RequirementsComplete") then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
-                    -- TODO(native): bVar6 = IsHeroWearingBeard(quest, me, *(this + 0x14))
-                    scratchValue = nil --[[unresolved native value]]
-                    if not scratchValue then
+                    if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
+                    if not IsHeroWearingBeard(quest, me) then
                         if not quest:IsActiveThreadTerminating() then
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_014_PHASE3_NO_BEARD", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e5276b end
+                            hero = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                line = "TEXT_QST_014_PHASE3_NO_BEARD"
+                                hero = quest:GetHero()
+                                if not me:Speak(hero, line, 2, false, true, false) then
+                                    goto FLOW_past_lab_00e52d54
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                                end
                                 goto LAB_00e52d54
                             end
                             goto LAB_00e52d63
                         end
-                        goto LAB_00e5276b
+                        goto FLOW_past_lab_00e52d54
                     end
-                    if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
-                        goto LAB_00e52a37
+                    getStateString = quest:GetStateString("RequiredHairdo")
+                    hero = quest:GetHero()
+                    if quest:IsWearingHairstyle(hero, getStateString) then
+                        goto FLOW_past_lab_00e52a37
                     end
-                    goto FLOW_past_lab_00e52a37
                     ::LAB_00e52a37::
-                    if quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
-                        if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredBeard")) then
+                    getStateString = quest:GetStateString("RequiredHairdo")
+                    hero = quest:GetHero()
+                    if quest:IsWearingHairstyle(hero, getStateString) then
+                        getStateString = quest:GetStateString("RequiredBeard")
+                        hero = quest:GetHero()
+                        if not quest:IsWearingHairstyle(hero, getStateString) then
                             if not quest:IsActiveThreadTerminating() then
-                                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                    if not me:Speak(hero, "TEXT_QST_014_PHASE3_WRONG_BEARD", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e5276b end
+                                hero = nil
+                                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                    line = "TEXT_QST_014_PHASE3_WRONG_BEARD"
+                                    hero = quest:GetHero()
+                                    if not me:Speak(hero, line, 2, false, true, false) then
+                                        goto FLOW_past_lab_00e52d54
+                                    end
+                                    while me:IsPerformingScriptTask() do
+                                        if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                                    end
                                     goto LAB_00e52d54
                                 end
                                 goto LAB_00e52d63
                             end
-                            goto LAB_00e5276b
+                            goto FLOW_past_lab_00e52d54
                         end
                     end
-                    if quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
+                    getStateString = quest:GetStateString("RequiredHairdo")
+                    hero = quest:GetHero()
+                    if quest:IsWearingHairstyle(hero, getStateString) then
                         goto LAB_00e52c5e
                     else
-                        if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredBeard")) then goto LAB_00e52c5e end
+                        getStateString = quest:GetStateString("RequiredBeard")
+                        hero = quest:GetHero()
+                        if not quest:IsWearingHairstyle(hero, getStateString) then goto LAB_00e52c5e end
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(movie5)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_014_PHASE3_WRONG_HAIR", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e5276b end
-                            if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE3_WRONG_HAIR"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 2, false, true, false) then
+                                goto FLOW_past_lab_00e52d54
+                            end
+                            while me:IsPerformingScriptTask() do
+                                if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                            end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
                         end
                     end
                     goto FLOW_past_lab_00e52c5e
                     ::LAB_00e52c5e::
-                    if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredHairdo")) then
-                        if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredBeard")) then
-                            if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_014_PHASE3_WRONG_HAIR_AND_BEARD", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e5276b end
+                    getStateString = quest:GetStateString("RequiredHairdo")
+                    hero = quest:GetHero()
+                    if not quest:IsWearingHairstyle(hero, getStateString) then
+                        getStateString = quest:GetStateString("RequiredBeard")
+                        hero = quest:GetHero()
+                        if not quest:IsWearingHairstyle(hero, getStateString) then
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
+                            hero = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                line = "TEXT_QST_014_PHASE3_WRONG_HAIR_AND_BEARD"
+                                hero = quest:GetHero()
+                                if not me:Speak(hero, line, 2, false, true, false) then
+                                    goto FLOW_past_lab_00e52d54
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                                end
                                 goto LAB_00e52d54
                             end
                         end
@@ -441,68 +604,117 @@ function Main(quest, me)
                     resources:DestroyMovie(movie5)
                     goto LAB_00e52d8f
                     ::FLOW_past_lab_00e52d63::
-                    if not quest:IsWearingHairstyle(hero, quest:GetStateString("RequiredBeard")) then goto LAB_00e52a37 end
-                    if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_014_PHASE3_INTRO1", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5276b end
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
+                    getStateString = quest:GetStateString("RequiredBeard")
+                    hero = quest:GetHero()
+                    if not quest:IsWearingHairstyle(hero, getStateString) then goto LAB_00e52a37 end
+                    if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
+                    hero = nil
+                    if resources:ResourceThingHealthAbove(resource, 0.0) then
+                        line = "TEXT_QST_014_PHASE3_INTRO1"
+                        hero = quest:GetHero()
+                        if not me:Speak(hero, line, 0, false, true, false) then
+                            goto FLOW_past_lab_00e52d54
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                        end
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
                     end
                     if not helpers.IsHeroWearingAnyTash(quest, me) then
                         if not quest:IsActiveThreadTerminating() then
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_014_PHASE3_INTRO3", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5276b end
-                                if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
+                            hero = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                line = "TEXT_QST_014_PHASE3_INTRO3"
+                                hero = quest:GetHero()
+                                if not me:Speak(hero, line, 0, false, true, false) then
+                                    goto FLOW_past_lab_00e52d54
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                                end
+                                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
                             end
                             goto LAB_00e52838
                         end
-                        goto LAB_00e5276b
+                        goto FLOW_past_lab_00e52d54
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            if not me:Speak(hero, "TEXT_QST_014_PHASE3_INTRO2", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5276b end
-                            if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
+                        hero = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_PHASE3_INTRO2"
+                            hero = quest:GetHero()
+                            if not me:Speak(hero, line, 0, false, true, false) then
+                                goto FLOW_past_lab_00e52d54
+                            end
+                            while me:IsPerformingScriptTask() do
+                                if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                            end
+                            if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
                         end
-                        goto LAB_00e52838
-                    end
-                    goto FLOW_past_lab_00e52838
-                    ::LAB_00e52838::
-                    predicateResult2 = quest:IsActiveThreadTerminating()
-                    if quest:IsWearingHairstyle(hero, quest:ReadGlobalGameDataString(1136)) then
-                        if predicateResult2 then goto LAB_00e5276b end
-                        quest:GiveHeroObject(quest:ReadGlobalGameDataString(1148), -1, false)
-                        quest:SetStateString("RequiredTash", quest:ReadGlobalGameDataString(1144))
                     else
-                        if predicateResult2 then goto LAB_00e5276b end
-                        quest:GiveHeroObject(quest:ReadGlobalGameDataString(1140), -1, false)
-                        quest:SetStateString("RequiredTash", quest:ReadGlobalGameDataString(1136))
+                        goto FLOW_past_lab_00e52838
                     end
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_014_PHASE3_INTRO4", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e5276b end
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
+                    ::LAB_00e52838::
+                    scratchValue22 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyTashStyle1)
+                    hero = quest:GetHero()
+                    scratchValue = quest:IsWearingHairstyle(hero, scratchValue22)
+                    predicateResult4 = quest:IsActiveThreadTerminating()
+                    if scratchValue then
+                        if predicateResult4 then goto FLOW_past_lab_00e52d54 end
+                        local scratchValue21 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyTashCard2)
+                        quest:GiveHeroObject(scratchValue21, -1, false)
+                        local scratchValue20 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyTashStyle2)
+                        quest:SetStateString("RequiredTash", scratchValue20)
+                    else
+                        if predicateResult4 then goto FLOW_past_lab_00e52d54 end
+                        local scratchValue11 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyTashCard1)
+                        quest:GiveHeroObject(scratchValue11, -1, false)
+                        local scratchValue15 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyTashStyle1)
+                        quest:SetStateString("RequiredTash", scratchValue15)
+                    end
+                    hero = nil
+                    if resources:ResourceThingHealthAbove(resource, 0.0) then
+                        line = "TEXT_QST_014_PHASE3_INTRO4"
+                        hero = quest:GetHero()
+                        if not me:Speak(hero, line, 0, false, true, false) then
+                            goto FLOW_past_lab_00e52d54
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                        end
+                        if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
                     end
                     quest:SetStateBool("Phase3RequirementsComplete", true)
                     goto LAB_00e52d63
                     ::FLOW_past_lab_00e52838::
                 else
-                    if quest:IsActiveThreadTerminating() then goto LAB_00e5276b end
-                    if quest:GetHealth(resources:ScriptThing(resource)) <= 0.0 then
+                    if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
+                    hero = nil
+                    if not resources:ResourceThingHealthAbove(resource, 0.0) then
                         resources:PrepareResource(resource)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(movie5)
                         goto LAB_00e52d8f
                     end
-                    if not me:Speak(hero, "TEXT_QST_014_PHASE3_REMINDER", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false) then goto LAB_00e5276b end
+                    line = "TEXT_QST_014_PHASE3_REMINDER"
+                    hero = quest:GetHero()
+                    if not me:Speak(hero, line, 2, false, true, false) then
+                        goto FLOW_past_lab_00e52d54
+                    end
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00e52d54 end
+                    end
                     goto LAB_00e52d54
                 end
                 goto FLOW_past_lab_00e52d54
                 ::LAB_00e52d54::
-                if quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e52d54 end
-                resources:PrepareResource(resource)
-                quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie5)
-                goto LAB_00e52d8f
+                if not (quest:IsActiveThreadTerminating()) then
+                    resources:PrepareResource(resource)
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie5)
+                    goto LAB_00e52d8f
+                end
                 ::FLOW_past_lab_00e52d54::
-                ::LAB_00e5276b::
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie5)
                 resources:ReleaseResource(resource)
@@ -514,11 +726,12 @@ function Main(quest, me)
                 quest:SetStateInt("QuestPhase", 3)
                 quest:SetStateBool("InitialisePhase", true)
             end
-        elseif scratchValue3 == 3 then
+        elseif questPhase == 3 then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             if quest:GetStateBool("InitialisePhase") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                helpers.SetWanderPointAndDistance(quest, me, me, me:GetPos())
+                local position4 = me:GetPos()
+                helpers.SetWanderPointAndDistance(quest, me, me, position4)
                 quest:SetStateBool("InitialisePhase", false)
             end
             if me:IsTalkedToByHero() then
@@ -542,13 +755,20 @@ function Main(quest, me)
                     return
                 end
                 if quest:GetStateBool("AllHairChanged") then
-                    -- TODO(native): bVar6 = IsHeroWearingBeard(quest, me, *(this + 0x14))
-                    scratchValue = nil --[[unresolved native value]]
-                    local sequence1 = scratchValue and helpers.IsHeroWearingAnyTash(quest, me) and helpers.IsHeroWearingAnyOddHairdo(quest, me)
-                    if sequence1 then
+                    scratchValue = IsHeroWearingBeard(quest, me)
+                    local sequence = scratchValue and helpers.IsHeroWearingAnyTash(quest, me) and helpers.IsHeroWearingAnyOddHairdo(quest, me)
+                    if sequence then
                         if quest:IsActiveThreadTerminating() then goto LAB_00e53630 end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_014_END_FINALE1", GROUP_SELECT_FIRST, false, true, false)
+                        hero2 = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_END_FINALE1"
+                            hero2 = quest:GetHero()
+                            if not me:Speak(hero2, line, 0, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie2)
+                                resources:ReleaseResource(resource)
+                                return
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
@@ -560,14 +780,23 @@ function Main(quest, me)
                             end
                             if quest:IsActiveThreadTerminating() then goto LAB_00e53630 end
                         end
-                        quest:GiveHeroObject(quest:ReadGlobalGameDataString(1152), -1, false)
+                        local scratchValue23 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyRewardObjectFullComplete)
+                        quest:GiveHeroObject(scratchValue23, -1, false)
                         quest:SetStateBool("QuestComplete", true)
                         goto LAB_00e532e3
                     else
                         if 3 < quest:GetStateInt("IncorrectHairComboCount") and quest:GetStateBool("AllHairChanged") then
                             if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie2); resources:ReleaseResource(resource); return end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                                if not me:Speak(hero, "TEXT_QST_014_END_FINALE2", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e53630 end
+                            hero2 = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                line = "TEXT_QST_014_END_FINALE2"
+                                hero2 = quest:GetHero()
+                                if not me:Speak(hero2, line, 0, false, true, false) then
+                                    goto LAB_00e53630
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto LAB_00e53630 end
+                                end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(movie2)
@@ -575,18 +804,23 @@ function Main(quest, me)
                                     return
                                 end
                             end
-                            quest:GiveHeroObject(quest:ReadGlobalGameDataString(1156), -1, false)
+                            local scratchValue24 = quest:ReadGlobalGameDataString(SCRIPT_DEF.BeardyBaldyRewardObjectHalfComplete)
+                            quest:GiveHeroObject(scratchValue24, -1, false)
                             quest:SetStateBool("QuestComplete", true)
                             goto LAB_00e532e3
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie2)
-                            resources:ReleaseResource(resource)
-                            return
                         end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e53630 end
                         quest:SetStateInt("IncorrectHairComboCount", quest:GetStateInt("IncorrectHairComboCount") + 1)
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                            me:Speak(hero, "TEXT_QST_014_END_WRONG", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+                        hero2 = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            line = "TEXT_QST_014_END_WRONG"
+                            hero2 = quest:GetHero()
+                            if not me:Speak(hero2, line, 2, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(movie2)
+                                resources:ReleaseResource(resource)
+                                return
+                            end
                             while me:IsPerformingScriptTask() do
                                 quest:NewScriptFrame(me)
                                 if quest:IsActiveThreadTerminating() then
@@ -612,8 +846,16 @@ function Main(quest, me)
                     resources:ReleaseResource(resource)
                     return
                 end
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                    me:Speak(hero, "TEXT_QST_014_END_NO_TASH", GROUP_SELECT_RANDOM_NO_REPEAT, false, true, false)
+                hero2 = nil
+                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                    line = "TEXT_QST_014_END_NO_TASH"
+                    hero2 = quest:GetHero()
+                    if not me:Speak(hero2, line, 2, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie2)
+                        resources:ReleaseResource(resource)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
@@ -637,7 +879,7 @@ function Main(quest, me)
             end
             if quest:GetStateBool("QuestComplete") then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                quest:GiveHeroExperience(quest:ReadGlobalGameData(1160))
+                quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.BeardyBaldyExperience))
                 quest:ClearThingHasInformation(me)
                 resources:PrepareResource(resource)
                 while not resources:TryAcquire(resource, me, 4) do
@@ -650,27 +892,28 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 local exitPoint = quest:GetNearestWithScriptName(me, "M_BB_ExitPoint")
                 if exitPoint ~= nil and exitPoint:IsAlive() then
-                    if quest:IsActiveThreadTerminating() then goto LAB_00e53647 end
-                    if not resources:ScriptThing(resource):IsNull() then
-                        if quest:IsActiveThreadTerminating() then goto LAB_00e53647 end
-                        if not (exitPoint ~= nil and not exitPoint:IsNull()) then
-                            p0 = {x = 0, y = 0, z = 0}
-                        else
-                            p0 = exitPoint:GetPos()
+                    if not (quest:IsActiveThreadTerminating()) then
+                        if not resources:ScriptThing(resource):IsNull() then
+                            if quest:IsActiveThreadTerminating() then goto LAB_00e53647 end
+                            if not (exitPoint ~= nil and not exitPoint:IsNull()) then
+                                p0 = {x = 0, y = 0, z = 0}
+                            else
+                                p0 = exitPoint:GetPos()
+                            end
+                            me:MoveToPosition(p0, 1.0, ENTITY_MOVE_RUN, false, true)
                         end
-                        me:MoveToPosition(p0, 1.0, ENTITY_MOVE_RUN, false, true)
-                    end
-                    scratchValue = quest:IsDistanceBetweenThingsUnder(me, exitPoint, 2.0)
-                    while true do
-                        local predicateResult = not scratchValue and not quest:MsgOnRegionLoaded()
-                        if not predicateResult then break end
-                        if not quest:NewScriptFrame(me) then goto LAB_00e53647 end
                         scratchValue = quest:IsDistanceBetweenThingsUnder(me, exitPoint, 2.0)
+                        while true do
+                            local predicateResult = not scratchValue and not quest:MsgOnRegionLoaded()
+                            if not predicateResult then break end
+                            if not quest:NewScriptFrame(me) then goto LAB_00e53647 end
+                            scratchValue = quest:IsDistanceBetweenThingsUnder(me, exitPoint, 2.0)
+                        end
+                        if quest:IsActiveThreadTerminating() then goto LAB_00e53647 end
+                        quest:FadeOutAndKillEntity(me, false, 1.0, true)
+                        quest:SetStateBool("BeardyBaldyLeft", true)
+                        goto LAB_00e534c2
                     end
-                    if quest:IsActiveThreadTerminating() then goto LAB_00e53647 end
-                    quest:FadeOutAndKillEntity(me, false, 1.0, true)
-                    quest:SetStateBool("BeardyBaldyLeft", true)
-                    goto LAB_00e534c2
                     ::LAB_00e53647::
                     resources:ReleaseResource(resource)
                     return
@@ -703,51 +946,30 @@ end
 -- BB_BeardyBaldyMan.IsHeroWearingBeard (retail 0x00e53670)
 -- E53670: bsim names this body NScript::CV_BordelloScript::IsHeroWearingBeard (a homologous script member); no PDB name
 function IsHeroWearingBeard(quest, me)
-    local flags, predicateResult
+    local flags, scratchValue, predicateResult
+    predicateResult = true
     local hero = quest:GetHero()
-    flags = 1
     if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_01") then
-        flags = 3
-        if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_02") then
-            flags = 7
-            if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_03") then
-                flags = 15
-                if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_MUTTON_01") then
-                    flags = 31
-                    if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_LONG_01") then
-                        flags = 63
-                        if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_CHIN_01") then
-                            flags = 127
-                            if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_TRAMP_01") then
-                                flags = 255
-                                predicateResult = false
-                                if not quest:IsWearingHairstyle(hero, "OBJECT_HERO_BEARD_WATSON_01") then goto LAB_00e53856 end
+        local hero2 = quest:GetHero()
+        if not quest:IsWearingHairstyle(hero2, "OBJECT_HERO_BEARD_02") then
+            local hero3 = quest:GetHero()
+            if not quest:IsWearingHairstyle(hero3, "OBJECT_HERO_BEARD_03") then
+                local hero4 = quest:GetHero()
+                if not quest:IsWearingHairstyle(hero4, "OBJECT_HERO_BEARD_MUTTON_01") then
+                    local hero5 = quest:GetHero()
+                    if not quest:IsWearingHairstyle(hero5, "OBJECT_HERO_BEARD_LONG_01") then
+                        local hero6 = quest:GetHero()
+                        if not quest:IsWearingHairstyle(hero6, "OBJECT_HERO_BEARD_CHIN_01") then
+                            local hero7 = quest:GetHero()
+                            if not quest:IsWearingHairstyle(hero7, "OBJECT_HERO_BEARD_TRAMP_01") then
+                                local hero8 = quest:GetHero()
+                                predicateResult = not not quest:IsWearingHairstyle(hero8, "OBJECT_HERO_BEARD_WATSON_01")
                             end
                         end
                     end
                 end
             end
         end
-    end
-    predicateResult = true
-    ::LAB_00e53856::
-    if flags & 128 ~= 0 then
-        flags = flags & 127
-    end
-    if flags & 64 ~= 0 then
-        flags = flags & 191
-    end
-    if flags & 32 ~= 0 then
-        flags = flags & 223
-    end
-    if flags & 16 ~= 0 then
-        flags = flags & 239
-    end
-    if flags & 8 ~= 0 then
-        flags = flags & 247
-    end
-    if flags & 4 ~= 0 then
-        flags = flags & 251
     end
     return predicateResult
 end
@@ -756,22 +978,18 @@ end
 -- E53CB0: bsim names this body NScript::CV_ArcheryCompetitionScript::CAC_Owner::GetRandomSpeech (a homologous script member); no PDB name
 function GetRandomSpeech(quest, me)
     local predicateResult = quest:IsActiveThreadTerminating()
-    repeat
-        if predicateResult then
+    while not predicateResult do
+        local randomChoice = quest:RetailRandModulo(10)
+        if (randomChoice ~= lastRandomSpeechIdx1) and (randomChoice ~= lastRandomSpeechIdx2) then
+            if quest:IsActiveThreadTerminating() then return "" end
+            lastRandomSpeechIdx2 = lastRandomSpeechIdx1
+            lastRandomSpeechIdx1 = randomChoice
+            if not quest:IsActiveThreadTerminating() then return (quest:GetStateString("RandomSpeech_" .. randomChoice)) end
             return ""
         end
-        ::FLOW_after_lab_00e53d52::
-        local scratchValue = math.random(0, 32767) % 10
-        if not ((scratchValue ~= lastRandomSpeechIdx1) and (scratchValue ~= lastRandomSpeechIdx2)) then quest:NewScriptFrame(me); predicateResult = quest:IsActiveThreadTerminating(); goto continue_1 end
-        if quest:IsActiveThreadTerminating() then do return "" end; goto FLOW_after_lab_00e53d52 end
-        lastRandomSpeechIdx2 = lastRandomSpeechIdx1
-        lastRandomSpeechIdx1 = scratchValue
-        if not quest:IsActiveThreadTerminating() then do return quest:GetStateString("RandomSpeech_" .. scratchValue) end; goto FLOW_after_lab_00e53d52 end
-        do return "" end
-        goto FLOW_after_lab_00e53d52
         quest:NewScriptFrame(me)
         predicateResult = quest:IsActiveThreadTerminating()
-        ::continue_1::
-    until false
+    end
+    return ""
 end
 

@@ -24,7 +24,8 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    me:MoveToPosition(quest:GetThingWithScriptName("GuardingDoorMarkerLeft"):GetPos(), 1.0, ENTITY_MOVE_RUN, false, true)
+    local p0 = quest:GetThingWithScriptName("GuardingDoorMarkerLeft"):GetPos()
+    me:MoveToPosition(p0, 1.0, ENTITY_MOVE_RUN, false, true)
     while me:IsPerformingScriptTask() do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end

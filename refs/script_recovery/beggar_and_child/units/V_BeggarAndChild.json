@@ -767,5 +767,974 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedStackScalarAliases": {
+    "0x00e5b3b0": {
+      "nativeSha256": "833c1fd0ec569ef2e53a1f73b276f7480727b2b0f7f904e2175692638e4ea636",
+      "sourceSha256": "ce00895582175a7574fb38f4f82c6af5a58e52022221ffd6b523110acd48382f",
+      "nativeInstructions": {
+        "0x00e5b4e2": "56",
+        "0x00e5b4e3": "56",
+        "0x00e5b4e4": "56",
+        "0x00e5b4e5": "53",
+        "0x00e5b4e6": "c644245200",
+        "0x00e5b4f4": "ff90a0050000",
+        "0x00e5bd4f": "8a442442",
+        "0x00e5bd53": "84c0",
+        "0x00e5bd57": "0f85e0000000",
+        "0x00e5bd76": "51",
+        "0x00e5bd7b": "c644244601",
+        "0x00e5bd80": "e80bb798ff",
+        "0x00E5B4E2": "56",
+        "0x00E5B4E3": "56",
+        "0x00E5B4E4": "56",
+        "0x00E5B4E5": "53",
+        "0x00E5B4E6": "c644245200",
+        "0x00E5B4EB": "c644245300",
+        "0x00E5B4F0": "89742468",
+        "0x00E5B4F4": "ff90a0050000",
+        "0x00E5B6EA": "8a442443",
+        "0x00E5B6EE": "84c0",
+        "0x00E5B6F0": "0f85b3050000",
+        "0x00E5B6F6": "8b5514",
+        "0x00E5B6F9": "8a424c",
+        "0x00E5B6FC": "84c0",
+        "0x00E5B6FE": "0f85a5050000",
+        "0x00E5B713": "8d4c245c",
+        "0x00E5B717": "c644244301",
+        "0x00E5B71C": "e85fecb3ff",
+        "0x00E5CC0D": "8b442458",
+        "0x00E5CC11": "8b4d04",
+        "0x00E5CC14": "6a00",
+        "0x00E5CC16": "40",
+        "0x00E5CC17": "6a00",
+        "0x00E5CC19": "89442460",
+        "0x00E5CC1D": "8b01",
+        "0x00E5CC1F": "53",
+        "0x00E5CC20": "ff90b0050000",
+        "0x00E5CC42": "8b442458",
+        "0x00E5CC46": "48",
+        "0x00E5CC47": "83f803",
+        "0x00E5CC4A": "0f870a010000",
+        "0x00E5CC50": "ff248504cfe500"
+      },
+      "alias": "friendReplySelected",
+      "edits": [
+        [
+          "xStack_164 = (undefined **)(uint)(uVar2 & 0xffff);",
+          "friendReplySelected = false;"
+        ],
+        [
+          "uStack_158._2_1_ == '\\0'",
+          "!friendReplySelected"
+        ],
+        [
+          "uStack_158._0_3_ = CONCAT12(1,(undefined2)uStack_158);",
+          "friendReplySelected = true;"
+        ],
+        [
+          "xStack_128 = 0;",
+          "belchCount = 0; initialReplySelected = false;"
+        ],
+        [
+          "xStack_128._3_1_ != '\\0'",
+          "initialReplySelected"
+        ],
+        [
+          "xStack_128 = CONCAT13(1,(undefined3)xStack_128);",
+          "initialReplySelected = true;"
+        ],
+        [
+          "iStack_134 = iStack_134 + 1;",
+          "belchCount = belchCount + 1;"
+        ],
+        [
+          "switch(iStack_134)",
+          "switch(belchCount)"
+        ]
+      ],
+      "review": "Native byte at balanced ESP+42: E5B4E6 clears it after four pushes (+52), E5BD4F tests it, E5BD7B sets it after one push (+46). Set precedes health gate, so selected does not imply speech played. Other scalar/resource lifetimes remain unresolved.",
+      "additionalAliases": [
+        "belchCount",
+        "initialReplySelected"
+      ]
+    },
+    "0x00e58d40": {
+      "nativeSha256": "8ddad84fd020715da36d8d3d71a6d9f4770438dc07895e52faa129b726ee848a",
+      "sourceSha256": "386dedfcac8db0a708a0d6fb41b3cb5ca3431ca96a7bc84b99db078b5a86c1aa",
+      "alias": "initialReplySelected",
+      "nativeInstructions": {
+        "0x00E58E72": "57",
+        "0x00E58E73": "57",
+        "0x00E58E74": "57",
+        "0x00E58E75": "56",
+        "0x00E58E76": "c644244b00",
+        "0x00E58E7B": "897c2450",
+        "0x00E58E7F": "ff90a0050000",
+        "0x00E5905D": "8a44243b",
+        "0x00E59061": "84c0",
+        "0x00E59063": "0f85be0a0000",
+        "0x00E59069": "8b5514",
+        "0x00E5906C": "8a424f",
+        "0x00E5906F": "84c0",
+        "0x00E59071": "0f85b00a0000",
+        "0x00E59077": "8bcd",
+        "0x00E59079": "e8b2ca0d00",
+        "0x00E5907E": "84c0",
+        "0x00E59080": "0f8515210000",
+        "0x00E59086": "8b4514",
+        "0x00E59089": "8b4854",
+        "0x00E5908C": "85c9",
+        "0x00E5908E": "c644243b01",
+        "0x00E59093": "8bcd",
+        "0x00E59095": "0f840d050000",
+        "0x00E5909B": "e890ca0d00",
+        "0x00E590A0": "84c0",
+        "0x00E590A2": "0f85f3200000",
+        "0x00E5B045": "8b5c2440",
+        "0x00E5B049": "8b4d04",
+        "0x00E5B04C": "8b01",
+        "0x00E5B04E": "6a00",
+        "0x00E5B050": "6a00",
+        "0x00E5B052": "8d7d08",
+        "0x00E5B055": "43",
+        "0x00E5B056": "57",
+        "0x00E5B057": "895c244c",
+        "0x00E5B05B": "ff90b0050000",
+        "0x00E5B061": "8b4d04",
+        "0x00E5B064": "8bf0",
+        "0x00E5B066": "8b01",
+        "0x00E5B068": "8bd1",
+        "0x00E5B06A": "8b1a",
+        "0x00E5B06C": "ff9018010000",
+        "0x00E5B072": "8b4d04",
+        "0x00E5B075": "50",
+        "0x00E5B076": "56",
+        "0x00E5B077": "ff93b4050000",
+        "0x00E5B07D": "8b442440",
+        "0x00E5B081": "48",
+        "0x00E5B082": "6aff",
+        "0x00E5B084": "0f8484000000",
+        "0x00E5B08A": "48",
+        "0x00E5B08B": "7442"
+      },
+      "edits": [
+        [
+          "xStack_210 = (undefined **)((uint)xStack_210 & 0xffffff);",
+          "initialReplySelected = false;"
+        ],
+        [
+          "cStack_1f5 == '\\0'",
+          "!initialReplySelected"
+        ],
+        [
+          "cStack_1f5 = '\\x01';",
+          "initialReplySelected = true;"
+        ],
+        [
+          "      xStack_1e4 = 0;",
+          "      battleCryReplyCount = 0;"
+        ],
+        [
+          "iStack_1f0 = iStack_1f0 + 1;",
+          "battleCryReplyCount = (battleCryReplyCount + 1) & 0xffffffff;"
+        ],
+        [
+          "iStack_204 == 1",
+          "battleCryReplyCount == 1"
+        ],
+        [
+          "iStack_204 == 2",
+          "battleCryReplyCount == 2"
+        ]
+      ],
+      "additionalAliases": [
+        "battleCryReplyCount"
+      ]
+    }
+  },
+  "reviewedResourceLifetimes": {
+    "0x00e5b3b0": {
+      "nativeSha256": "833c1fd0ec569ef2e53a1f73b276f7480727b2b0f7f904e2175692638e4ea636",
+      "sourceSha256": "ce00895582175a7574fb38f4f82c6af5a58e52022221ffd6b523110acd48382f",
+      "entrySlot": -356,
+      "alias": "entityControl",
+      "constructorHandle": "xStack_164",
+      "nativeInstructions": {
+        "0x00E5B403": "8d4c241c",
+        "0x00E5B407": "e874efb3ff",
+        "0x00E5B40C": "8d4c241c",
+        "0x00E5B410": "c744241c4c092701",
+        "0x00E5B418": "89742424",
+        "0x00E5B41C": "89742428",
+        "0x00E5B420": "e8946fe7ff",
+        "0x00E5CD9A": "8d4c241c",
+        "0x00E5CD9E": "e81656e7ff",
+        "0x00E5B784": "8d4c2420",
+        "0x00E5B788": "e803bd98ff",
+        "0x00E5B93C": "8d4c2420",
+        "0x00E5B940": "e84bbb98ff",
+        "0x00E5BB79": "8d4c2420",
+        "0x00E5BB7D": "e80eb998ff",
+        "0x00E5BD77": "8d4c2420",
+        "0x00E5BD7B": "c644244601",
+        "0x00E5BD80": "e80bb798ff",
+        "0x00E5BE57": "8d4c2420",
+        "0x00E5BE5B": "e830b698ff",
+        "0x00E5BF13": "8d4c2420",
+        "0x00E5BF17": "e874b598ff",
+        "0x00E5BFD6": "8d4c2420",
+        "0x00E5BFDA": "e8b1b498ff",
+        "0x00E5C18C": "8d4c2420",
+        "0x00E5C190": "e8fbb298ff",
+        "0x00E5C3C9": "8d4c2420",
+        "0x00E5C3CD": "e8beb098ff",
+        "0x00E5CE43": "8d4c241c",
+        "0x00E5CE47": "e884a698ff",
+        "0x00E5B437": "6a04",
+        "0x00E5B439": "8d542420",
+        "0x00E5B43D": "52",
+        "0x00E5B43E": "53",
+        "0x00E5B43F": "ff5020",
+        "0x00E5B462": "6a04",
+        "0x00E5B464": "8d442420",
+        "0x00E5B468": "50",
+        "0x00E5B469": "53",
+        "0x00E5B46A": "ff5220",
+        "0x00E5B429": "8d4c241c",
+        "0x00E5B42D": "e83e73e7ff",
+        "0x00E5B4C4": "8d542458",
+        "0x00E5B4C8": "52",
+        "0x00E5B4C9": "8d542430",
+        "0x00E5B4CD": "52",
+        "0x00E5B4CE": "ff9020010000",
+        "0x00E5CDA7": "8d4c241c",
+        "0x00E5CDAB": "e8c059e7ff",
+        "0x00E5CE3A": "8d4c242c",
+        "0x00E5CE3E": "e8fdd964ff"
+      },
+      "receivers": {
+        "NewResource": [
+          {
+            "lea": "0x00E5B403",
+            "call": "0x00E5B407",
+            "entryEspDelta": -384
+          }
+        ],
+        "PrepareResource": [
+          {
+            "lea": "0x00E5B40C",
+            "call": "0x00E5B420",
+            "entryEspDelta": -384
+          },
+          {
+            "lea": "0x00E5CD9A",
+            "call": "0x00E5CD9E",
+            "entryEspDelta": -384
+          }
+        ],
+        "ScriptThing": [
+          {
+            "lea": "0x00E5B784",
+            "call": "0x00E5B788",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5B93C",
+            "call": "0x00E5B940",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5BB79",
+            "call": "0x00E5BB7D",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5BD77",
+            "call": "0x00E5BD80",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5BE57",
+            "call": "0x00E5BE5B",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5BF13",
+            "call": "0x00E5BF17",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5BFD6",
+            "call": "0x00E5BFDA",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5C18C",
+            "call": "0x00E5C190",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5C3C9",
+            "call": "0x00E5C3CD",
+            "entryEspDelta": -388
+          }
+        ],
+        "ReleaseResource": [
+          {
+            "lea": "0x00E5CE43",
+            "call": "0x00E5CE47",
+            "entryEspDelta": -384
+          }
+        ],
+        "TryAcquire": [
+          {
+            "lea": "0x00E5B439",
+            "call": "0x00E5B43F",
+            "entryEspDelta": -388
+          },
+          {
+            "lea": "0x00E5B464",
+            "call": "0x00E5B46A",
+            "entryEspDelta": -388
+          }
+        ]
+      },
+      "sourceHandles": {
+        "ReleaseResource": [
+          "xStack_164"
+        ],
+        "TryAcquire": [
+          "xStack_164",
+          "xStack_164"
+        ],
+        "PrepareResource": [
+          "xStack_164",
+          "xStack_164"
+        ],
+        "ScriptThing": [
+          "xStack_150",
+          "xStack_150",
+          "xStack_150",
+          "xStack_150",
+          "xStack_13c",
+          "xStack_13c",
+          "xStack_13c",
+          "xStack_13c",
+          "xStack_150"
+        ]
+      }
+    },
+    "0x00e58d40": {
+      "nativeSha256": "8ddad84fd020715da36d8d3d71a6d9f4770438dc07895e52faa129b726ee848a",
+      "sourceSha256": "386dedfcac8db0a708a0d6fb41b3cb5ca3431ca96a7bc84b99db078b5a86c1aa",
+      "entrySlot": -528,
+      "alias": "entityControl",
+      "constructorHandle": "xStack_210",
+      "nativeInstructions": {
+        "0x00E58D93": "8d4c2414",
+        "0x00E58D97": "e8e415b4ff",
+        "0x00E58D9C": "8d4c2414",
+        "0x00E58DA0": "c74424144c092701",
+        "0x00E58DA8": "897c241c",
+        "0x00E58DAC": "897c2420",
+        "0x00E58DB0": "e80496e7ff",
+        "0x00E5B185": "8d4c2414",
+        "0x00E5B189": "e82b72e7ff",
+        "0x00E59104": "8d4c2418",
+        "0x00E59108": "e883e398ff",
+        "0x00E592BC": "8d4c2418",
+        "0x00E592C0": "e8cbe198ff",
+        "0x00E594FA": "8d4c2418",
+        "0x00E594FE": "e88ddf98ff",
+        "0x00E59611": "8d4c2418",
+        "0x00E59615": "e876de98ff",
+        "0x00E597BF": "8d4c2418",
+        "0x00E597C3": "e8c8dc98ff",
+        "0x00E599F9": "8d4c2418",
+        "0x00E599FD": "e88eda98ff",
+        "0x00E59BDE": "8d4c2418",
+        "0x00E59BE2": "e8a9d898ff",
+        "0x00E59CAE": "8d4c2418",
+        "0x00E59CB2": "e8d9d798ff",
+        "0x00E59E5C": "8d4c2418",
+        "0x00E59E60": "e82bd698ff",
+        "0x00E5A08E": "8d4c2418",
+        "0x00E5A092": "e8f9d398ff",
+        "0x00E5A1D6": "8d4c2418",
+        "0x00E5A1DA": "e8b1d298ff",
+        "0x00E5A3B0": "8d4c2418",
+        "0x00E5A3B4": "e8d7d098ff",
+        "0x00E5A5E9": "8d4c2418",
+        "0x00E5A5ED": "e89ece98ff",
+        "0x00E5B1A4": "8d4c2414",
+        "0x00E5B1A8": "e823c398ff",
+        "0x00E58DC7": "6a04",
+        "0x00E58DC9": "8d542418",
+        "0x00E58DCD": "52",
+        "0x00E58DCE": "56",
+        "0x00E58DCF": "ff5020",
+        "0x00E58DF2": "6a04",
+        "0x00E58DF4": "8d442418",
+        "0x00E58DF8": "50",
+        "0x00E58DF9": "56",
+        "0x00E58DFA": "ff5220",
+        "0x00E58DB9": "8d4c2414",
+        "0x00E58DBD": "e8ae99e7ff",
+        "0x00E5B192": "8d4c2414",
+        "0x00E5B196": "e8d575e7ff"
+      },
+      "receivers": {
+        "NewResource": [
+          {
+            "lea": "0x00E58D93",
+            "call": "0x00E58D97",
+            "entryEspDelta": -548
+          }
+        ],
+        "PrepareResource": [
+          {
+            "lea": "0x00E58D9C",
+            "call": "0x00E58DB0",
+            "entryEspDelta": -548
+          },
+          {
+            "lea": "0x00E5B185",
+            "call": "0x00E5B189",
+            "entryEspDelta": -548
+          }
+        ],
+        "ScriptThing": [
+          {
+            "lea": "0x00E59104",
+            "call": "0x00E59108",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E592BC",
+            "call": "0x00E592C0",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E594FA",
+            "call": "0x00E594FE",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E59611",
+            "call": "0x00E59615",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E597BF",
+            "call": "0x00E597C3",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E599F9",
+            "call": "0x00E599FD",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E59BDE",
+            "call": "0x00E59BE2",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E59CAE",
+            "call": "0x00E59CB2",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E59E5C",
+            "call": "0x00E59E60",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E5A08E",
+            "call": "0x00E5A092",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E5A1D6",
+            "call": "0x00E5A1DA",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E5A3B0",
+            "call": "0x00E5A3B4",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E5A5E9",
+            "call": "0x00E5A5ED",
+            "entryEspDelta": -552
+          }
+        ],
+        "ReleaseResource": [
+          {
+            "lea": "0x00E5B1A4",
+            "call": "0x00E5B1A8",
+            "entryEspDelta": -548
+          }
+        ],
+        "TryAcquire": [
+          {
+            "lea": "0x00E58DC9",
+            "call": "0x00E58DCF",
+            "entryEspDelta": -552
+          },
+          {
+            "lea": "0x00E58DF4",
+            "call": "0x00E58DFA",
+            "entryEspDelta": -552
+          }
+        ]
+      },
+      "sourceHandles": {
+        "ReleaseResource": [
+          "xStack_210"
+        ],
+        "PrepareResource": [
+          "xStack_210",
+          "xStack_210"
+        ],
+        "ScriptThing": [
+          "xStack_210",
+          "0x0",
+          "0x0",
+          "xStack_210",
+          "xStack_1fc",
+          "xStack_1fc",
+          "xStack_1fc",
+          "0x0",
+          "0x0",
+          "xStack_1fc",
+          "xStack_1fc",
+          "xStack_210",
+          "xStack_210"
+        ],
+        "TryAcquire": [
+          "xStack_210",
+          "xStack_210"
+        ]
+      },
+      "prepareGuards": [
+        {
+          "handle": "xStack_210",
+          "prepareIndex": 1
+        }
+      ]
+    }
+  },
+  "reviewedTemporaryCleanup": {
+    "0x00e58d40": {
+      "nativeSha256": "8ddad84fd020715da36d8d3d71a6d9f4770438dc07895e52faa129b726ee848a",
+      "sourceSha256": "386dedfcac8db0a708a0d6fb41b3cb5ca3431ca96a7bc84b99db078b5a86c1aa",
+      "groups": [
+        {
+          "flagSet": "uVar13 = xStack_1e4 | 1;\n        xStack_1e4 = uVar13;",
+          "guardBlock": "if ((uVar13 & 1) != 0) {\n          xStack_1e4 = uVar13 & 0xfffffffe;\n          std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\n                    (xStack_c0);\n        }",
+          "nativeInstructions": {
+            "0x00E58F34": "6aff",
+            "0x00E58F36": "68c8d12501",
+            "0x00E58F3B": "8d8c246c010000",
+            "0x00E58F42": "e8a95cb4ff",
+            "0x00E58F47": "8b5c2430",
+            "0x00E58F4B": "8b17",
+            "0x00E58F4D": "8d842464010000",
+            "0x00E58F54": "83cb01",
+            "0x00E58F57": "50",
+            "0x00E58F58": "8bcf",
+            "0x00E58F5A": "895c2434",
+            "0x00E58F5E": "ff5254",
+            "0x00E59003": "f6c301",
+            "0x00E59006": "7413",
+            "0x00E59008": "83e3fe",
+            "0x00E5900B": "8d8c2464010000",
+            "0x00E59012": "895c2430",
+            "0x00E59016": "e8c55ab4ff"
+          },
+          "review": "CCharString SCRIPT_NAME_HERO temporary mask 1; constructor 99EBF0, message slot54, conditional matching destructor99EAE0; balanced-ESP string slots 164/14c/d8. Lua message receiver lowering consumes immutable hero name; only compiler cleanup scaffolding is removed."
+        },
+        {
+          "flagSet": "uVar13 = xStack_1e4 | 8;\n            xStack_1e4 = uVar13;",
+          "guardBlock": "if ((uVar13 & 8) != 0) {\n              xStack_1e4 = uVar13 & 0xfffffff7;\n              std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\n                        (&xStack_d8);\n            }",
+          "nativeInstructions": {
+            "0x00E5A80D": "6aff",
+            "0x00E5A80F": "68c8d12501",
+            "0x00E5A814": "8d8c2454010000",
+            "0x00E5A81B": "e8d043b4ff",
+            "0x00E5A820": "8b5c2430",
+            "0x00E5A824": "8b17",
+            "0x00E5A826": "8d84244c010000",
+            "0x00E5A82D": "83cb08",
+            "0x00E5A830": "50",
+            "0x00E5A831": "8bcf",
+            "0x00E5A833": "895c2434",
+            "0x00E5A837": "ff5254",
+            "0x00E5A8E0": "f6c308",
+            "0x00E5A8E3": "7413",
+            "0x00E5A8E5": "83e3f7",
+            "0x00E5A8E8": "8d8c244c010000",
+            "0x00E5A8EF": "895c2430",
+            "0x00E5A8F3": "e8e841b4ff"
+          },
+          "review": "CCharString SCRIPT_NAME_HERO temporary mask 8; constructor 99EBF0, message slot54, conditional matching destructor99EAE0; balanced-ESP string slots 164/14c/d8. Lua message receiver lowering consumes immutable hero name; only compiler cleanup scaffolding is removed."
+        },
+        {
+          "flagSet": "uVar13 = xStack_1e4 | 0x40;\n          xStack_1e4 = uVar13;",
+          "guardBlock": "if ((uVar13 & 0x40) != 0) {\n            xStack_1e4 = uVar13 & 0xffffffbf;\n            std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\n                      (&xStack_14c);\n          }",
+          "nativeInstructions": {
+            "0x00E5AD39": "6aff",
+            "0x00E5AD3B": "68c8d12501",
+            "0x00E5AD40": "8d8c24e0000000",
+            "0x00E5AD47": "e8a43eb4ff",
+            "0x00E5AD4C": "8b5c2430",
+            "0x00E5AD50": "8b16",
+            "0x00E5AD52": "8d8424d8000000",
+            "0x00E5AD59": "83cb40",
+            "0x00E5AD5C": "50",
+            "0x00E5AD5D": "8bce",
+            "0x00E5AD5F": "895c2434",
+            "0x00E5AD63": "ff5254",
+            "0x00E5AE17": "f6c340",
+            "0x00E5AE1A": "7413",
+            "0x00E5AE1C": "83e3bf",
+            "0x00E5AE1F": "8d8c24d8000000",
+            "0x00E5AE26": "895c2430",
+            "0x00E5AE2A": "e8b13cb4ff"
+          },
+          "review": "CCharString SCRIPT_NAME_HERO temporary mask 0x40; constructor 99EBF0, message slot54, conditional matching destructor99EAE0; balanced-ESP string slots 164/14c/d8. Lua message receiver lowering consumes immutable hero name; only compiler cleanup scaffolding is removed."
+        }
+      ]
+    }
+  },
+  "reviewedMovieMembers": {
+    "0x00e58d40": {
+      "nativeSha256": "8ddad84fd020715da36d8d3d71a6d9f4770438dc07895e52faa129b726ee848a",
+      "sourceSha256": "386dedfcac8db0a708a0d6fb41b3cb5ca3431ca96a7bc84b99db078b5a86c1aa",
+      "nativeInstructions": {
+        "0x00E58D40": "81ec14020000",
+        "0x00E58D46": "53",
+        "0x00E58D47": "55",
+        "0x00E58D48": "56",
+        "0x00E58D49": "8be9",
+        "0x00E58D4B": "57",
+        "0x00E58D4C": "8d7508",
+        "0x00E58D4F": "33ff",
+        "0x00E58D51": "56",
+        "0x00E58D52": "8d4c246c",
+        "0x00E590A8": "8d4c2474",
+        "0x00E590AC": "e8afea88ff",
+        "0x00E590B1": "6aff",
+        "0x00E590B3": "680ed72201",
+        "0x00E590B8": "8d8c2474010000",
+        "0x00E590BF": "e82c5bb4ff",
+        "0x00E590C4": "8b4d04",
+        "0x00E590C7": "8b11",
+        "0x00E590C9": "8d442474",
+        "0x00E590CD": "50",
+        "0x00E590CE": "8d842470010000",
+        "0x00E590D5": "50",
+        "0x00E590D6": "ff92c8050000",
+        "0x00E59435": "8d4c2474",
+        "0x00E59439": "e842e788ff",
+        "0x00E594DC": "8d4c2474",
+        "0x00E594E0": "e9be050000",
+        "0x00E5959F": "8d4c2474",
+        "0x00E595A3": "e9fb040000",
+        "0x00E595B5": "8d4c2464",
+        "0x00E595B9": "e8a2e588ff",
+        "0x00E595BE": "6aff",
+        "0x00E595C0": "680ed72201",
+        "0x00E595C5": "8d8c2430010000",
+        "0x00E595CC": "e81f56b4ff",
+        "0x00E595D1": "8b4d04",
+        "0x00E595D4": "8b01",
+        "0x00E595D6": "8d542464",
+        "0x00E595DA": "52",
+        "0x00E595DB": "8d94242c010000",
+        "0x00E595E2": "52",
+        "0x00E595E3": "ff90c8050000",
+        "0x00E59941": "8d4c2464",
+        "0x00E59945": "e836e288ff",
+        "0x00E59A9F": "8d4c2464",
+        "0x00E59AA3": "e8d8e088ff",
+        "0x00E59B55": "8d4c2444",
+        "0x00E59B59": "e82208b4ff",
+        "0x00E59B5E": "6aff",
+        "0x00E59B60": "680ed72201",
+        "0x00E59B65": "8d8c24cc000000",
+        "0x00E59B6C": "c744244cf40e2601",
+        "0x00E59B74": "89742454",
+        "0x00E59B78": "89742458",
+        "0x00E59B7C": "e86f50b4ff",
+        "0x00E59B81": "8b4d04",
+        "0x00E59B84": "8b01",
+        "0x00E59B86": "8d542444",
+        "0x00E59B8A": "52",
+        "0x00E59B8B": "8d9424c8000000",
+        "0x00E59B92": "52",
+        "0x00E59B93": "ff90c8050000",
+        "0x00E59C86": "8d4c2444",
+        "0x00E59C8A": "e8f1de88ff",
+        "0x00E59FD9": "8d4c2444",
+        "0x00E59FDD": "e89edb88ff",
+        "0x00E5A132": "8d4c2444",
+        "0x00E5A136": "e845da88ff",
+        "0x00E5A14D": "8d4c2454",
+        "0x00E5A151": "e82a02b4ff",
+        "0x00E5A156": "6aff",
+        "0x00E5A158": "680ed72201",
+        "0x00E5A15D": "8d8c24ec000000",
+        "0x00E5A164": "c744245cf40e2601",
+        "0x00E5A16C": "89742464",
+        "0x00E5A170": "89742468",
+        "0x00E5A174": "e8774ab4ff",
+        "0x00E5A179": "8b4d04",
+        "0x00E5A17C": "8b01",
+        "0x00E5A17E": "8d542454",
+        "0x00E5A182": "52",
+        "0x00E5A183": "8d9424e8000000",
+        "0x00E5A18A": "52",
+        "0x00E5A18B": "ff90c8050000",
+        "0x00E5A27F": "8d4c2454",
+        "0x00E5A283": "e8f8d888ff",
+        "0x00E5A531": "8d4c2454",
+        "0x00E5A535": "e846d688ff",
+        "0x00E5A683": "8b17",
+        "0x00E5A685": "6a00",
+        "0x00E5A687": "8bcf",
+        "0x00E5A689": "ff92ec050000",
+        "0x00E5A68F": "8d4c245c",
+        "0x00E5A693": "e818d488ff",
+        "0x00E5A698": "8d4c2454",
+        "0x00E5A69C": "c74424548c002601",
+        "0x00E5A6A4": "e887fdb3ff",
+        "0x00E5B1C4": "8d4c2474",
+        "0x00E5B1C8": "e8b3c988ff",
+        "0x00E5B1DB": "8d4c2464",
+        "0x00E5B1DF": "e89cc988ff",
+        "0x00E5B1F1": "8d4c2444",
+        "0x00E5B1F5": "e886c988ff",
+        "0x00E5B207": "8d4c2444",
+        "0x00E5B20B": "e870c988ff",
+        "0x00E5B21D": "8d4c2454",
+        "0x00E5B221": "e85ac988ff",
+        "0x00E5B23D": "8d4c2454",
+        "0x00E5B241": "e83ac988ff"
+      },
+      "stackReceiverAliases": [
+        {
+          "old": "xStack_1ac",
+          "new": "xStack_1c0",
+          "count": 3,
+          "entrySlot": -448,
+          "frameBytes": 548,
+          "constructorSite": "0x00E595B9",
+          "constructorTarget": "0x006e7b60",
+          "receiverLeas": [
+            "0x00E595B5",
+            "0x00E59941",
+            "0x00E59A9F",
+            "0x00E5B1DB"
+          ],
+          "phiVariable": "this_00",
+          "phiCount": 1
+        },
+        {
+          "old": "xStack_19c",
+          "new": "xStack_1b0",
+          "count": 4,
+          "entrySlot": -432,
+          "frameBytes": 548,
+          "constructorSite": "0x00E590AC",
+          "constructorTarget": "0x006e7b60",
+          "receiverLeas": [
+            "0x00E590A8",
+            "0x00E59435",
+            "0x00E594DC",
+            "0x00E5959F",
+            "0x00E5B1C4"
+          ],
+          "phiVariable": "this_00",
+          "phiCount": 2
+        },
+        {
+          "old": "xStack_1cc",
+          "new": "xStack_1e0",
+          "count": 2,
+          "entrySlot": -480,
+          "frameBytes": 548,
+          "constructorSite": "0x00E59B59",
+          "constructorTarget": "0x0099a380",
+          "receiverLeas": [
+            "0x00E59B55",
+            "0x00E59C86",
+            "0x00E59FD9",
+            "0x00E5A132",
+            "0x00E5B1F1",
+            "0x00E5B207"
+          ]
+        },
+        {
+          "old": "xStack_1bc",
+          "new": "xStack_1d0",
+          "count": 1,
+          "entrySlot": -464,
+          "frameBytes": 548,
+          "constructorSite": "0x00E5A151",
+          "constructorTarget": "0x0099a380",
+          "receiverLeas": [
+            "0x00E5A14D",
+            "0x00E5A27F",
+            "0x00E5A531",
+            "0x00E5B21D",
+            "0x00E5B23D"
+          ]
+        }
+      ],
+      "review": "Four movie objects at balanced ESP64/74/44/54 (frame548); decompiler cleanup operands drift20 bytes. Initial offer alternatives merge ECX at E59AA3. Correct typed receiver casts before cleanup-tail equivalence so distinct native movie slots cannot merge their exit labels. Preserve the three ECX join stores that destructor-name noise previously removed."
+    },
+    "0x00e5b3b0": {
+      "nativeSha256": "833c1fd0ec569ef2e53a1f73b276f7480727b2b0f7f904e2175692638e4ea636",
+      "sourceSha256": "ce00895582175a7574fb38f4f82c6af5a58e52022221ffd6b523110acd48382f",
+      "nativeInstructions": {
+        "0x00E5B3B0": "81ec70010000",
+        "0x00E5B3B6": "53",
+        "0x00E5B3B7": "55",
+        "0x00E5B3B8": "56",
+        "0x00E5B3B9": "8be9",
+        "0x00E5B3BB": "57",
+        "0x00E5B3BC": "8d5d08",
+        "0x00E5B3BF": "33f6",
+        "0x00E5B3C1": "53",
+        "0x00E5B3C2": "8d4c2464",
+        "0x00E5B713": "8d4c245c",
+        "0x00E5B717": "c644244301",
+        "0x00E5B71C": "e85fecb3ff",
+        "0x00E5B721": "6aff",
+        "0x00E5B723": "680ed72201",
+        "0x00E5B728": "8d8c2408010000",
+        "0x00E5B72F": "c7442464f40e2601",
+        "0x00E5B737": "8974246c",
+        "0x00E5B73B": "89742470",
+        "0x00E5B73F": "e8ac34b4ff",
+        "0x00E5B744": "8b4d04",
+        "0x00E5B747": "8b01",
+        "0x00E5B749": "8d54245c",
+        "0x00E5B74D": "52",
+        "0x00E5B74E": "8d942404010000",
+        "0x00E5B755": "52",
+        "0x00E5B756": "ff90c8050000",
+        "0x00E5BAC4": "8d4c245c",
+        "0x00E5BAC8": "e8b3c088ff",
+        "0x00E5BACD": "e968130000",
+        "0x00E5BC9B": "8d4c245c",
+        "0x00E5BC9F": "e8dcbe88ff",
+        "0x00E5BCA4": "e9e6070000",
+        "0x00E5BCB8": "8d4c2448",
+        "0x00E5BCBC": "e8bfe6b3ff",
+        "0x00E5BCC1": "6aff",
+        "0x00E5BCC3": "680ed72201",
+        "0x00E5BCC8": "8d8c2498000000",
+        "0x00E5BCCF": "c7442450f40e2601",
+        "0x00E5BCD7": "89742458",
+        "0x00E5BCDB": "8974245c",
+        "0x00E5BCDF": "e80c2fb4ff",
+        "0x00E5BCE4": "8b4d04",
+        "0x00E5BCE7": "8b01",
+        "0x00E5BCE9": "8d542448",
+        "0x00E5BCED": "52",
+        "0x00E5BCEE": "8d942494000000",
+        "0x00E5BCF5": "52",
+        "0x00E5BCF6": "ff90c8050000",
+        "0x00E5BE2F": "8d4c2448",
+        "0x00E5BE33": "e848bd88ff",
+        "0x00E5BE38": "e9fd0f0000",
+        "0x00E5C314": "8d4c2448",
+        "0x00E5C318": "e863b888ff",
+        "0x00E5C31D": "e9180b0000",
+        "0x00E5C469": "8b17",
+        "0x00E5C46B": "6a00",
+        "0x00E5C46D": "8bcf",
+        "0x00E5C46F": "ff92ec050000",
+        "0x00E5C475": "8d4c2450",
+        "0x00E5C479": "e832b688ff",
+        "0x00E5C47E": "8d4c2448",
+        "0x00E5C482": "c74424488c002601",
+        "0x00E5C48A": "e8a1dfb3ff",
+        "0x00E5CE63": "8d4c245c",
+        "0x00E5CE67": "e814ad88ff",
+        "0x00E5CE6C": "ebcc",
+        "0x00E5CE96": "8d4c2448",
+        "0x00E5CE9A": "e8e1ac88ff",
+        "0x00E5CE9F": "eb99"
+      },
+      "stackReceiverAliases": [
+        {
+          "old": "xStack_124",
+          "new": "xStack_138",
+          "count": 2,
+          "entrySlot": -312,
+          "frameBytes": 384,
+          "constructorSite": "0x00E5BCBC",
+          "constructorTarget": "0x0099a380",
+          "receiverLeas": [
+            "0x00E5BCB8",
+            "0x00E5BE2F",
+            "0x00E5CE96"
+          ],
+          "scopeStart": "((CBaseIntelligentPointer *)xStack_138);",
+          "scopeEnd": "((CBaseIntelligentPointer *)xStack_124);"
+        },
+        {
+          "old": "xStack_110",
+          "new": "xStack_138",
+          "count": 1,
+          "entrySlot": -312,
+          "frameBytes": 384,
+          "constructorSite": "0x00E5BCBC",
+          "constructorTarget": "0x0099a380",
+          "receiverLeas": [
+            "0x00E5BCB8",
+            "0x00E5C314"
+          ],
+          "scopeStart": "((CBaseIntelligentPointer *)xStack_138);",
+          "scopeEnd": "((CBaseIntelligentPointer *)xStack_124);"
+        },
+        {
+          "old": "xStack_110",
+          "new": "xStack_124",
+          "count": 2,
+          "entrySlot": -292,
+          "frameBytes": 384,
+          "constructorSite": "0x00E5B71C",
+          "constructorTarget": "0x0099a380",
+          "receiverLeas": [
+            "0x00E5B713",
+            "0x00E5BAC4",
+            "0x00E5CE63"
+          ],
+          "scopeStart": "((CBaseIntelligentPointer *)xStack_124);"
+        },
+        {
+          "old": "xStack_fc",
+          "new": "xStack_124",
+          "count": 1,
+          "entrySlot": -292,
+          "frameBytes": 384,
+          "constructorSite": "0x00E5B71C",
+          "constructorTarget": "0x0099a380",
+          "receiverLeas": [
+            "0x00E5B713",
+            "0x00E5BC9B"
+          ],
+          "scopeStart": "((CBaseIntelligentPointer *)xStack_124);"
+        }
+      ],
+      "review": "Two mutually exclusive native movie objects, balanced ESP48/5c with384-byte frame. Cleanup exports drift20 or40 bytes. The reused restored xStack_110 names different native movie receivers in the repeat and initial-offer source regions, so exact constructor boundaries scope its aliases. Recover before cleanup-tail equivalence; retain the existing inlined member/base destructor of ESP48."
+    }
   }
 }

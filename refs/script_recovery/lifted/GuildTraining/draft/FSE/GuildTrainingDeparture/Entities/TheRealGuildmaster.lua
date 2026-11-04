@@ -116,6 +116,12 @@ function Main(quest, me)
                         p1 = "TEXT_QST_028_GUILDMASTER_WOODS_DEPARTURE_MOAN"
                         pCVar6 = quest:GetHero()
                         r1 = me:Speak(pCVar6, p1, iVar8, (iVar10 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                        if not r1 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_20)
+                            resources:ReleaseResource(xStack_30)
+                            return
+                        end
                         iVar8 = me:IsPerformingScriptTask()
                         cVar5 = iVar8
                         while cVar5 do

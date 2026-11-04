@@ -11,14 +11,17 @@ local rockTrollSpawned
 
 -- RockTrollTrigger.Main (retail 0x00e0ad40)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     quest:NewScriptFrame(me)
+    local isDistanceBetweenThingsUnder
     if quest:IsActiveThreadTerminating() then return end
     local f_CVar = quest:ReadGlobalGameData(SCRIPT_DEF.TE_EarthTrollTriggerDistance)
-    -- TODO(native): xStack_34 = CVar2;
-    while not quest:IsDistanceBetweenThingsUnder(me, hero, f_CVar) do
+    local hero = quest:GetHero()
+    isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, f_CVar)
+    while not isDistanceBetweenThingsUnder do
         if not quest:NewScriptFrame(me) then return end
+        local hero2 = quest:GetHero()
+        isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero2, f_CVar)
     end
     if quest:IsActiveThreadTerminating() then return end
     if rockTrollSpawned then quest:RemoveThing(me, false, true); return end
@@ -27,7 +30,8 @@ function Main(quest, me)
     if quest:GetStateBool("ShownEarthTroll") then quest:RemoveThing(me, false, true); return end
     if quest:IsActiveThreadTerminating() then return end
     local resource = resources:NewResource()
-    resources:TryAcquire(resource, hero, 4)
+    local hero3 = quest:GetHero()
+    resources:TryAcquire(resource, hero3, 4)
     local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     local movie = resources:StartMovie("")

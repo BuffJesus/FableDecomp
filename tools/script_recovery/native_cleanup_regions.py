@@ -134,6 +134,19 @@ def _walk(lines, start, emitted, blocks, seen=()):
             if cm.group('label') in seen:
                 return None
             return body + [('label', cm.group('label'))], j, ('todo', cm.group('label')), crossed
+        if s.startswith('-- reviewed native interface-table staging: '):
+            reviewed = re.fullmatch(r'-- reviewed native interface-table staging: ([A-Za-z_]\w*) = \*([A-Za-z_]\w*)', s)
+            following = lines[j + 1].strip() if j + 1 < len(lines) else ''
+            if not reviewed or following != reviewed[1] + ' = nil --[[reviewed native interface-table staging]]':
+                return None
+            from tools.script_recovery.readable_lua import tokens
+            text = '\n'.join(lines)
+            offset = sum(len(line) + 1 for line in lines[:j]) + len(lines[j]) - len(lines[j].lstrip())
+            actual = next((t for t in tokens(text) if t.start() <= offset < t.end()), None)
+            if actual is None or actual.lastgroup != 'comment' or actual.start() != offset or actual[0].rstrip() != s:
+                return None
+            j += 1
+            continue
         if not s or s.startswith('--'):
             if s and not (s.startswith('-- TODO(native)') or s.startswith('-- LAB_')):
                 return None
@@ -289,7 +302,7 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
             return target is not None and scopes[site][:len(scopes[target])] == scopes[target]
 
         # replace the in-place regions with a call + return, and the jumps with call + return
-        new_lines, i = [], 0
+        new_lines, mark_candidates, i = [], [], 0
         while i < len(lines):
             line = lines[i]
             lm = LABEL_LINE.match(line)
@@ -303,13 +316,22 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
             m = EARLY_RETURN.match(line)
             if m and m.group('label') in wanted and reachable(m.group('label'), i):
                 cond = m.group('cond') or ''; label = m.group('label')
-                new_lines.append(f"{m.group('ind')}{cond}{_call(label, regions)}{_exit(label, regions)}"
-                                 f"{' end' if cond else ''}{_gap(label, regions)}")
+                baseline = (f"{m.group('ind')}{cond}{_call(label, regions)}{_exit(label, regions)}"
+                            f"{' end' if cond else ''}{_gap(label, regions)}")
+                new_lines.append(baseline)
+                terminal = regions[label][3]
+                if not _is_return(terminal) and terminal[0] == 'mark':
+                    mark_candidates.append((baseline, f"{m.group('ind')}{cond}{_call(label, regions)}"
+                                             f"goto {terminal[1]}{' end' if cond else ''}"))
                 i += 1; continue
             m = INLINE_GOTO.match(line) or COMMENT_GOTO.match(line)
             if m and m.group('label') in wanted and reachable(m.group('label'), i):
                 label = m.group('label')
-                new_lines.append(f"{m.group('ind')}{_call(label, regions)}{_exit(label, regions)}{_gap(label, regions)}")
+                baseline = f"{m.group('ind')}{_call(label, regions)}{_exit(label, regions)}{_gap(label, regions)}"
+                new_lines.append(baseline)
+                terminal = regions[label][3]
+                if not _is_return(terminal) and terminal[0] == 'mark':
+                    mark_candidates.append((baseline, f"{m.group('ind')}{_call(label, regions)}goto {terminal[1]}"))
                 i += 1; continue
             new_lines.append(line)
             i += 1
@@ -328,7 +350,32 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
             defs.extend('        ' + s for s in body)
             defs.append('    end')
             report[label] = body
-        joined = '\n'.join(new_lines[:head_end] + defs + new_lines[head_end:])
+        # Definitions must follow the locals referenced by their bodies. Keep
+        # initialization in place; moving it could change effects or bindings.
+        from tools.script_recovery.readable_lua import tokens
+        referenced = {t[0] for label in wanted for t in tokens('\n'.join(expand(label)))
+                      if t.lastgroup == 'identifier'}
+        local_scopes = _scopes(new_lines)
+        declarations = {}
+        for index, raw in enumerate(new_lines):
+            match = re.match(r'^\s*local ([A-Za-z_]\w*(?:\s*,\s*[A-Za-z_]\w*)*)\s*(?:=|$)', raw)
+            if match:
+                for name in re.findall(r'[A-Za-z_]\w*', match[1]):
+                    if name in referenced:
+                        declarations.setdefault(name, []).append(index)
+        closure_names = {_name(label, regions) for label in wanted if expand(label)}
+        call_sites = [index for index, raw in enumerate(new_lines)
+                      if any(re.search(r'\b'+re.escape(name)+r'\(', raw) for name in closure_names)]
+        ambiguous = any(len(indices) != 1 or local_scopes[indices[0]] != (0,)
+                        for indices in declarations.values())
+        insertion = max([head_end, *(indices[0]+1 for indices in declarations.values())])
+        if ambiguous or (call_sites and insertion > min(call_sites)):
+            # Preserve the marked native gap when lexical capture is ambiguous.
+            for label in wanted:
+                report.pop(label, None)
+            out.append(chunk)
+            continue
+        joined = '\n'.join(new_lines[:insertion] + defs + new_lines[insertion:])
         # a region with nothing left to run defines no function: its call sites go too (V_BeardyBaldy
         # WatchForAttack 0x00E53D90, whose only epilogue was a by-value thing release, called a nil helper)
         for name in empty:
@@ -341,5 +388,17 @@ def hoist_cleanup_regions(source: str) -> tuple[str, dict]:
             r'(?m)^(?P<ind>[ \t]*)(?P<exit>(?:__cleanup_\w+\(\); )?return)'
             r'(?P<comment>[ \t]*(?:--[^\n]*)?)\n(?=(?P=ind)::)',
             lambda m: f'{m["ind"]}do {m["exit"]} end{m["comment"]}\n', joined)
+        if mark_candidates:
+            # A region's cleanup may end at a label the lifter emitted. Try the
+            # exact continuation after hoisting; keep the marked return if Lua
+            # rejects a jump into a local's scope or a sibling block.
+            from tools.script_recovery.benchmark_lifter import LuaSyntaxChecker
+            checker = LuaSyntaxChecker()
+            for baseline, continuation in mark_candidates:
+                if baseline not in joined:
+                    continue
+                proposed = joined.replace(baseline, continuation, 1)
+                if checker.check({'cleanup-continuation.lua': proposed})['ok']:
+                    joined = proposed
         out.append(joined)
     return ''.join(out), report

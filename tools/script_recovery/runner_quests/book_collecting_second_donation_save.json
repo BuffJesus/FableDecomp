@@ -1,0 +1,58 @@
+{
+  "quest": "V_BookCollecting",
+  "host": "V_BookCollecting",
+  "maps": "BowerstoneSlums$",
+  "legs": {},
+  "enemyNames": [],
+  "clear": false,
+  "answer": "yes",
+  "steps": [
+    {
+      "name": "verify actual donation without writes",
+      "do": [
+        "assert(quest:GetStateBool('DoneIntro')); assert(quest:GetStateInt('BooksInGame')==40); assert(quest:GetStateInt('BooksDonated')==1); assert(quest:GetStateInt('GoodBooksDonated')==1); assert(not quest:GetStateBool('ReadingBook')); assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero()), 'donated book still in inventory'); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do assert(quest:GetStateFlagVectorAt(name,i)==(i==0),name..'['..i..']') end end; Runner.donationLoaded=true"
+      ],
+      "until": "Runner.donationLoaded==true",
+      "timeout": 30,
+      "tries": 1
+    },
+    {
+      "name": "donate book one after fresh reload",
+      "do": [
+        "quest:SetTimeOfDay(12.0)",
+        "local key=quest:ReadGlobalGameDataStringAt(0x4d4,1); assert(key~=''); if not quest:GetStateFlagVectorAt('BookDonated',1) and not quest:IsObjectInThingsPossession(key,quest:GetHero()) then quest:GiveHeroObject(key,1) end; assert(quest:GetStateFlagVectorAt('BookDonated',1) or quest:IsObjectInThingsPossession(key,quest:GetHero()),'second book grant not observed')"
+      ],
+      "talk": "BS_Teacher",
+      "talkLabel": "Mr. Gout - Teacher",
+      "talkSides": [
+        [
+          0,
+          1.1
+        ],
+        [
+          0,
+          -1.1
+        ],
+        [
+          -1.1,
+          0
+        ]
+      ],
+      "until": "quest:GetStateFlagVectorAt('BookDonated',1) and quest:GetStateInt('BooksDonated')==2 and not quest:GetStateBool('ReadingBook') and not quest:IsInCutscene() and not quest:IsInMovieSequence() and not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,1),quest:GetHero())",
+      "timeout": 160,
+      "tries": 3
+    },
+    {
+      "name": "verify and save two actual donations",
+      "do": [
+        "assert(quest:GetStateBool('DoneIntro')); assert(quest:GetStateInt('BooksInGame')==40); assert(quest:GetStateInt('BooksDonated')==2); assert(quest:GetStateInt('GoodBooksDonated')==2); assert(not quest:GetStateBool('ReadingBook')); assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero()), 'donated book still in inventory'); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do assert(quest:GetStateFlagVectorAt(name,i)==(i<2),name..'['..i..']') end end; assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,1),quest:GetHero()),'second donated book still in inventory'); quest:AutoSave(); Runner.secondDonationSaved=true"
+      ],
+      "until": "Runner.secondDonationSaved==true",
+      "timeout": 30,
+      "tries": 1
+    }
+  ],
+  "done": "Runner.secondDonationSaved==true",
+  "failed": "false",
+  "stateStatus": "'DoneIntro='..tostring(quest:GetStateBool('DoneIntro'))..' BooksDonated='..tostring(quest:GetStateInt('BooksDonated'))..' Time='..tostring(quest:GetTimeOfDay())..' BooksInGame='..tostring(quest:GetStateInt('BooksInGame'))..' FirstBook='..quest:ReadGlobalGameDataStringAt(0x4d4,0)..' Donated0='..tostring(quest:GetStateFlagVectorAt('BookDonated',0))..' Owned0='..tostring(quest:GetStateFlagVectorAt('BookOwned',0))..' Reading='..tostring(quest:GetStateBool('ReadingBook'))..' Inventory0='..tostring(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero()))..' GoodBooks='..tostring(quest:GetStateInt('GoodBooksDonated'))..' Inventory1='..tostring(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,1),quest:GetHero()))..' Donated1='..tostring(quest:GetStateFlagVectorAt('BookDonated',1))"
+}

@@ -1,4 +1,4 @@
-# Full guardian sister info native conversion coverage
+# Reviewed Maze cleanup scalar separation
 
 Compilation is not behavioral parity. Missing bodies and unresolved operations prevent completion.
 
@@ -7,7 +7,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | QS_GuardianSisterInfo | QS_GuardianSisterInfo | Main | 0x00e25ab0 | True | 0 |
 | QS_GuardianSisterInfo | QS_GuardianSisterInfo | Init | 0x00e25a00 | True | 0 |
 | QS_GuardianSisterInfo | QS_GuardianSisterInfo | OnPersist | 0x00e25f40 | True | 0 |
-| QS_GuardianSisterInfo | MazeAtTavern | Main | 0x00e25f70 | True | 1 |
+| QS_GuardianSisterInfo | MazeAtTavern | Main | 0x00e25f70 | True | 0 |
 | QS_GuardianSisterInfo | MazeAtTavern | Init | 0x00e25d20 | True | 0 |
 | QS_GuardianSisterInfo | MazeAtTavern | OnPersist | 0x00cdebc0 | True | 0 |
 | QS_GuardianSisterInfo | MazeAtTavern | OnPredicateFail | 0x00e25d30 | True | 0 |
@@ -19,4 +19,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | QS_GuardianSisterInfo2_SisterInBanditCamp | MazeAtTavern | OnPersist | 0x00cdebc0 | True | 0 |
 | QS_GuardianSisterInfo2_SisterInBanditCamp | MazeAtTavern | OnPredicateFail | 0x00e26ba0 | True | 0 |
 
-Summary: `{"owners": 4, "functions": 14, "missing": 0, "functionSyntaxPassed": 14, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 4}`
+Summary: `{"owners": 4, "functions": 14, "missing": 0, "functionSyntaxPassed": 14, "fileSyntaxPassed": 4, "fileSyntaxChecked": 4, "todo": 3}`

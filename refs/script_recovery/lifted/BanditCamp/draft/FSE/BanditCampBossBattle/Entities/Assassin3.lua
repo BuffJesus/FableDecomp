@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, bVar4, bVar5, bVar6, cVar7, fVar2, fret_0, fret_00, iVar10, iVar11, iVar12, iVar13, p0, pCVar8, pcVar9, r1, r2, this_00, xStack_10, xStack_20, xStack_30, x_stk_3c, x_stk_48
+    local bVar3, bVar4, bVar5, bVar6, cVar7, fVar2, fret_0, fret_00, iVar10, iVar11, iVar12, iVar13, p0, pCVar8, pcVar9, r1, r2, xStack_10, xStack_20, xStack_30, x_stk_3c, x_stk_48
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -95,6 +95,12 @@ function Main(quest, me)
                         pcVar9 = "TEXT_QST_009_ASSASSIN3_REPEAT"
                         pCVar8 = quest:GetHero()
                         r1 = me:Speak(pCVar8, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                        if not r1 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_10)
+                            resources:ReleaseResource(xStack_30)
+                            return
+                        end
                         iVar10 = me:IsPerformingScriptTask()
                         cVar7 = iVar10
                         while cVar7 do
@@ -121,7 +127,7 @@ function Main(quest, me)
                         end
                     end
                     quest:PauseAllNonScriptedEntities(false)
-                    this_00 = xStack_10
+                    resources:DestroyMovie(xStack_10)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
@@ -140,6 +146,12 @@ function Main(quest, me)
                         pcVar9 = "TEXT_QST_009_ASSASSIN3_INTRO"
                         pCVar8 = quest:GetHero()
                         r2 = me:Speak(pCVar8, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                        if not r2 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_20)
+                            resources:ReleaseResource(xStack_30)
+                            return
+                        end
                         iVar10 = me:IsPerformingScriptTask()
                         cVar7 = iVar10
                         while cVar7 do
@@ -167,7 +179,7 @@ function Main(quest, me)
                     end
                     bVar4 = true
                     quest:PauseAllNonScriptedEntities(false)
-                    this_00 = xStack_20
+                    resources:DestroyMovie(xStack_20)
                 end
             end
             cVar7 = quest:GetStateBool("AssassinsUnderAttack")

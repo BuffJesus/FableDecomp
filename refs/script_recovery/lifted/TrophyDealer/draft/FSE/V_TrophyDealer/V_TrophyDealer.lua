@@ -10,8 +10,6 @@ function Main(quest)
     quest:FinalizeEntityBindings()
     quest:ActivateQuestWithoutLoadingResources("V_SingingStones")
     quest:CreateThread("HilightGuildTeleporter")  -- native thread body NScript::CV_TrophyDealerScript::HilightGuildTeleporter: lift it as function HilightGuildTeleporter(quest)
-    if not bVar3 then
-    end
     local bVar3 = quest:IsRegionLoaded("Witchwood1")
     while true do
         if bVar3 then

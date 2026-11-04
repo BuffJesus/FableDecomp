@@ -49,8 +49,7 @@ function Main(quest, me)
             quest:EntitySetAlpha(me, 1.0, true)
             i_stk_30 = quest:RegisterTimer()
             r1 = quest:GetThingWithScriptName("FireHeart")
-            -- TODO(native): r2 = quest:AddQuestInfoBarHealth(r1, &0xff00ff00, "HUD_ICON_FIRE_HEART", 1.0)
-            r2 = nil --[[unresolved native value]]
+            r2 = quest:AddQuestInfoBarHealth(r1, {R = 0, G = 255, B = 0, A = 255}, "HUD_ICON_FIRE_HEART", 1.0)
             timerId = quest:RegisterTimer()
             xStack_2c = timerId
             quest:SetTimer(timerId, 3)

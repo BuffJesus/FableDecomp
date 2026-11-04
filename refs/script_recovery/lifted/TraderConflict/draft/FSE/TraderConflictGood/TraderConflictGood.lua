@@ -57,7 +57,7 @@ function Main(quest)
                 if bVar10 then
                     return
                 end
-                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), nil --[[operand lost by the decompiler]])
+                quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), 10.0)
                 quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), false)
                 quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (iVar9) / 0xc), "FACTION_BANDITS")
                 uVar8 = uVar8 + 1
@@ -245,7 +245,7 @@ function WatchForRegionTransitions(quest)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00dfca72 end
-                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), nil --[[operand lost by the decompiler]])
+                    quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), 10.0)
                     quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), false)
                     quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (iVar5) / 0xc), "FACTION_BANDITS")
                     uVar4 = uVar4 + 1
@@ -349,7 +349,7 @@ function WatchForHittingEnemies(quest)
                             else
                                 pCVar7 = quest:GetStateListAt("AllCreatures", (iVar9) / 0xc)
                                 pThing1 = quest:GetHero()
-                                bVar4 = quest:IsThingAwareOfOtherThingInAnyWay(pThing1, nil --[[missing]])
+                                bVar4 = quest:IsThingAwareOfOtherThingInAnyWay(pThing1, pCVar7)
                                 if bVar4 then goto LAB_00dfc811 end
                             end
                             goto FLOW_past_lab_00dfc811
@@ -705,11 +705,13 @@ function UpdateLiveEnemies(quest)
 end
 
 function AttackPeople(quest)
-    local bVar2, cVar3, ctr_38, dist, elem_1, iVar4, iVar7, i_stk_3c, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, piStack_14, puVar6, r1, this_00, xStack_24, xStack_38, x_stk_c
-    local alive = true
+    return quest:WithRetailResources(function(resources)
+    local traderOwner = 0
+    local bVar2, cVar3, ctr_38, dist, elem_1, iVar4, iVar7, i_stk_3c, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar1, pCVar5, pTarget, puVar6, r1, this_00, xStack_24, xStack_38, x_stk_c
     local function __cleanup_LAB_00dfdd34()
-        quest:DeregisterTimer(i_stk_3c)
+        resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
     end
+    local alive = true
     UpdateLiveEnemies(quest)
     xStack_24 = quest:GetStateListCopy("AllCreatures")
     iVar4 = quest:RegisterTimer()
@@ -724,7 +726,7 @@ function AttackPeople(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if bVar2 then
-            quest:DeregisterTimer(i_stk_3c)
+            resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
             goto LAB_00dfde13
         end
         ctr_38 = 0
@@ -734,16 +736,17 @@ function AttackPeople(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then
-                    quest:DeregisterTimer(i_stk_3c)
+                    resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
                     goto LAB_00dfde13
                 end
                 r1 = quest:GetNearestWithScriptName(xStack_24[(iVar7) / 0xc + 1], "TraderToRescue")
+                traderOwner = resources:TrackThingOutput(r1)
                 bVar2 = quest:IsEntityFollowingHero(r1)
                 if not bVar2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then __cleanup_LAB_00dfdd34(); return end
-                    x_stk_c = nil
+                    if traderOwner ~= 0 then resources:AssignThingOutput(traderOwner, nil) end
                 end
                 dist = 15.0
                 pCVar1 = xStack_24[(iVar7) / 0xc + 1]
@@ -773,7 +776,7 @@ function AttackPeople(quest)
                 pCVar1 = ctr_38
                 if bVar2 then
                     -- LAB_00dfdc54: (native jump target)
-                    quest:DeregisterTimer(i_stk_3c)
+                    resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
                     return
                 end
                 bVar2 = quest:IsDistanceBetweenThingsUnder(xStack_24[ctr_38 + 1], r1, 15.0)
@@ -791,16 +794,15 @@ function AttackPeople(quest)
                         native_arg_sequence_2 = false
                     end
                     if native_arg_sequence_2 then
-                        if piStack_14 ~= nil then
+                        if r1 ~= nil then
                             native_arg_sequence_2 = true
                         else
                             native_arg_sequence_2 = false
                         end
                     end
                     if native_arg_sequence_2 then
-                        -- TODO(native): cVar3 = (**(*piStack_14 + 0x12c))()
-                        cVar3 = nil --[[unresolved native value]]
-                        if cVar3 ~= 0 then
+                        cVar3 = (r1 ~= nil and r1:IsAlive())
+                        if cVar3 then
                             native_arg_sequence_2 = true
                         else
                             native_arg_sequence_2 = false
@@ -817,7 +819,7 @@ function AttackPeople(quest)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if bVar2 then
-                            quest:DeregisterTimer(i_stk_3c)
+                            resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
                             return
                         end
                         iVar7 = quest:AddNewConversation(xStack_24[pCVar1 + 1], false, false)
@@ -841,7 +843,7 @@ function AttackPeople(quest)
                         bVar2 = not alive
                         if bVar2 then
                             -- LAB_00dfdc8a: (native jump target)
-                            quest:DeregisterTimer(i_stk_3c)
+                            resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
                             return
                         end
                         iVar7 = quest:AddNewConversation(xStack_24[pCVar1 + 1], false, false)
@@ -859,14 +861,7 @@ function AttackPeople(quest)
                 ::FLOW_past_lab_00dfda32::
                 quest:MiniMapAddMarker(xStack_24[pCVar1 + 1], "HUD_ORB_RED_SMALL")
                 puVar6 = 0
-                if #xStack_24 ~= 0 then
-                    bVar2 = xStack_24[pCVar1 + 1]:IsEqualTo(xStack_24[puVar6 + 1])
-                    if bVar2 then
-                        table.remove(xStack_24, puVar6 + 1)
-                        break
-                    end
-                    goto FLOW_after_lab_00dfda90
-                end
+                if #xStack_24 ~= 0 then goto LAB_00dfda90 end
                 goto LAB_00dfdabb
                 ::FLOW_past_lab_00dfd841::
                 pCVar1 = xStack_24[(iVar7) / 0xc + 1]
@@ -881,6 +876,8 @@ function AttackPeople(quest)
                     iVar4 = ((this_00 ~= p0) and 1 or 0)
                     if iVar4 ~= 0 then goto LAB_00dfd841 end
                 end
+                resources:RetireThingOutput(traderOwner)
+                traderOwner = 0
                 ctr_38 = ctr_38 + 1
                 iVar7 = iVar7 + 0xc
                 iVar4 = i_stk_3c
@@ -893,40 +890,41 @@ function AttackPeople(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then
-        quest:DeregisterTimer(i_stk_3c)
+        resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
     else
         if quest:GetStateBool("EnteredNewRegion") then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
             if bVar2 then
-                quest:DeregisterTimer(i_stk_3c)
+                resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
                 goto LAB_00dfde13
             end
             quest:SetStateBool("EnteredNewRegion", false)
         end
-        quest:DeregisterTimer(i_stk_3c)
+        resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
     end
     ::LAB_00dfde13::
     do return end
+    ::LAB_00dfda90::
     while true do
-        puVar6 = puVar6 + 1
-        if not (puVar6 ~= #xStack_24) then break end
-        -- LAB_00dfda90: (native jump target)
         bVar2 = xStack_24[pCVar1 + 1]:IsEqualTo(xStack_24[puVar6 + 1])
         if bVar2 then
             table.remove(xStack_24, puVar6 + 1)
             break
         end
+        puVar6 = puVar6 + 1
+        if not (puVar6 ~= #xStack_24) then break end
     end
-    ::FLOW_after_lab_00dfda90::
     ::LAB_00dfdabb::
+    resources:RetireThingOutput(traderOwner)
+    traderOwner = 0
     r1 = nil
     iVar4 = i_stk_3c
     ::LAB_00dfdaff::
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if bVar2 then
-        quest:DeregisterTimer(i_stk_3c)
+        resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
     else
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
@@ -947,7 +945,7 @@ function AttackPeople(quest)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then
-                    quest:DeregisterTimer(i_stk_3c)
+                    resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
                     return
                 end
                 alive = quest:NewScriptFrame()
@@ -958,12 +956,13 @@ function AttackPeople(quest)
                     goto LAB_00dfd643
                 end
             end
-            quest:DeregisterTimer(i_stk_3c)
+            resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
             return
         end
-        quest:DeregisterTimer(i_stk_3c)
+        resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)
     end
     goto LAB_00dfde13
+    end)
 end
 
 function helper_DFDED0(quest, native_arg_strParam_1)

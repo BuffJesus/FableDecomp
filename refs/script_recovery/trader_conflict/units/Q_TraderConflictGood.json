@@ -1010,5 +1010,178 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedTraderAwareness": {
+    "0x00dfc630": {
+      "sourceSha256": "ebfdbf566859931cf06305e0b26e19dfb97db5bba268dd8b7d82ec2f7da8dab8",
+      "nativeSha256": "73d113a669867be57de5c570e6803555b63d26b999ff72a8804ce1959f89ec77"
+    }
+  },
+  "reviewedStackScalarAliases": {
+    "0x00dfd600": {
+      "alias": "local_attackTrader",
+      "nativeSha256": "043f716d44dc6f14037f61d33eb140d731d40ad967e354392a477ea262e15c47",
+      "sourceSha256": "d74fd43d323225c53da5843c8d22d92ea91f7305fe78a32ccef8848968de7ff5",
+      "nativeInstructions": {
+        "0x00dfd6cf": "8b4e40",
+        "0x00dfd6d2": "8b11",
+        "0x00dfd6d4": "8d44241c",
+        "0x00dfd6d8": "50",
+        "0x00dfd6d9": "8b442430",
+        "0x00dfd6dd": "03c7",
+        "0x00dfd6df": "50",
+        "0x00dfd6e0": "8d442440",
+        "0x00dfd6e4": "50",
+        "0x00dfd6e5": "ff9234010000",
+        "0x00dfd6eb": "8d4c241c",
+        "0x00dfd6ef": "e8ec13baff",
+        "0x00dfd6f4": "8b4e40",
+        "0x00dfd6f7": "8b11",
+        "0x00dfd6f9": "8d442438",
+        "0x00dfd6fd": "50",
+        "0x00dfd6fe": "ff92a8030000",
+        "0x00dfd704": "84c0",
+        "0x00dfd850": "8b7c2418",
+        "0x00dfd854": "8b4c242c",
+        "0x00dfd858": "8d3c7f",
+        "0x00dfd85b": "c1e702",
+        "0x00dfd85e": "6800007041",
+        "0x00dfd863": "03cf",
+        "0x00dfd865": "8d54243c",
+        "0x00dfd869": "e8910aecff",
+        "0x00dfd86e": "84c0",
+        "0x00dfd870": "0f85fd000000",
+        "0x00dfd876": "8b4e40",
+        "0x00dfd879": "8b11",
+        "0x00dfd87b": "8d442438",
+        "0x00dfd87f": "50",
+        "0x00dfd880": "8b442430",
+        "0x00dfd884": "03c7",
+        "0x00dfd886": "50",
+        "0x00dfd887": "ff92f0090000",
+        "0x00dfd88d": "84c0",
+        "0x00dfd88f": "7418",
+        "0x00dfd891": "8b4c243c",
+        "0x00dfd895": "85c9",
+        "0x00dfd897": "7410",
+        "0x00dfd899": "8b11",
+        "0x00dfd89b": "ff922c010000",
+        "0x00dfd8a1": "84c0",
+        "0x00dfd8a3": "0f85ca000000"
+      },
+      "edits": [
+        [
+          "xStack_18",
+          "local_attackTrader"
+        ],
+        [
+          "(piStack_14 != (int *)0x0)",
+          "(local_attackTrader != (CScriptThing_bv *)0x0)"
+        ],
+        [
+          "(**(code **)(*piStack_14 + 300))()",
+          "CScriptThing::IsAlive((CScriptThing_bv *)&local_attackTrader)"
+        ]
+      ],
+      "editCounts": [
+        12,
+        1,
+        1
+      ],
+      "review": "Candidate only: SP38 CScriptThing returned by GetNearestWithScriptName; SP3C implementation null check and slot12C IsAlive at DFD891..DFD8A3. Preserve distance and awareness short circuit. Earlier conditional reference-backed target clearing remains separate unresolved behavior; do not claim full AttackPeople equivalence."
+    }
+  },
+  "reviewedThingOutputScopes": {
+    "0x00dfd600": {
+      "address": "0x00DFD600",
+      "end": "0x00DFDE28",
+      "sourceSha256": "d74fd43d323225c53da5843c8d22d92ea91f7305fe78a32ccef8848968de7ff5",
+      "nativeSha256": "043f716d44dc6f14037f61d33eb140d731d40ad967e354392a477ea262e15c47",
+      "anchors": {
+        "0xdfd6df": "508d44244050ff9234010000",
+        "0xdfd708": "8bcee831a2ebff84c00f853d0500008d4c2444e8b0cbb9ff8b44244033db3bc3c74424448c8c2301895c2448895c244c7425ff088b442440391875138b4808ff50048b4c244051e86812e0ff83c404895c243c895c24408d4c2444e8d8d06aff",
+        "0xdfd805": "8d4c2438e832d06aff",
+        "0xdfdabb": "8b44244033ff3bc7c74424388c8c2301741dff088b442440393875138b4808ff50048b44244050e8d50ee0ff83c4048d4c2438897c243c897c2440e8e5c7b9ff8b7c2414",
+        "0xdfdc54": "8d4c2438e8e3cb6aff",
+        "0xdfdc8a": "8d4c2438e8adcb6aff"
+      },
+      "dependencies": {
+        "0x8ab980": {
+          "length": 74,
+          "sha256": "eea8f5b4daeb6d005ce07f2af99585aa47e28ea567d4ec3ed1dfbfab68e0eae0"
+        },
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "83d924f226af312090e032cc18ecffc5e767bd13fd633ba9dae1c9adc2c5c0dd"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "b4732cddade3e2b46ec842285ac2ad773be5d13b1e74b755c2e7c2b375a92558"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_online_score_20261008/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "0cfeab0195d0b265433e0bda7f0e883c05d6a0f234248aff88038363219ac886",
+      "recoveredSha256": "2118d29e2fc11dfbe8ffed1be0153391981be831acfcc2cce4c8e4cba3ca1e5f",
+      "operations": [
+        {
+          "before": "function AttackPeople(quest)\n",
+          "after": "function AttackPeople(quest)\n    return quest:WithRetailResources(function(resources)\n    local traderOwner = 0\n",
+          "count": 1
+        },
+        {
+          "before": "                r1 = quest:GetNearestWithScriptName(xStack_24[(iVar7) / 0xc + 1], \"TraderToRescue\")",
+          "after": "                r1 = quest:GetNearestWithScriptName(xStack_24[(iVar7) / 0xc + 1], \"TraderToRescue\")\n                traderOwner = resources:TrackThingOutput(r1)",
+          "count": 1
+        },
+        {
+          "before": "                    x_stk_c = nil",
+          "after": "                    if traderOwner ~= 0 then resources:AssignThingOutput(traderOwner, nil) end",
+          "count": 1
+        },
+        {
+          "before": "                ctr_38 = ctr_38 + 1",
+          "after": "                resources:RetireThingOutput(traderOwner)\n                traderOwner = 0\n                ctr_38 = ctr_38 + 1",
+          "count": 1
+        },
+        {
+          "before": "    r1 = nil",
+          "after": "    resources:RetireThingOutput(traderOwner)\n    traderOwner = 0\n    r1 = nil",
+          "count": 1
+        },
+        {
+          "before": "quest:DeregisterTimer(i_stk_3c)",
+          "after": "resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)",
+          "count": 13
+        },
+        {
+          "before": "    goto LAB_00dfde13\nend\n",
+          "after": "    goto LAB_00dfde13\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "TrackThingOutput",
+        "AssignThingOutput",
+        "RetireThingOutput"
+      ],
+      "scope": "Restore conditional owned-target empty assignment and native retirement boundaries; complete mission and vector ownership remain outside this row."
+    }
   }
 }

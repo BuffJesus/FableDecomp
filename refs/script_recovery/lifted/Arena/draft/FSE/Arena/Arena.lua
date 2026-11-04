@@ -3,7 +3,7 @@
 
 function Main(quest)
     local resources = quest:RetailResources()
-    local angle, b2, bVar16, bVar21, cVar2, c_stk_23d, iVar22, iVar6, i_stk_2b8, native_arg_switch_3, native_arg_switch_4, pCVar10, pCVar13, pCVar3, pCVar7, pCVar8, pOther, pcVar23, pppuVar19, r1, r10, r11, r12, r13, r14, r15, r16, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_1d8, xStack_1e8, xStack_1f8, xStack_220, xStack_22c, xStack_250, xStack_25c, xStack_268, xStack_26c, xStack_27c, xStack_28c, xStack_298, xStack_2ac, xStack_40, xStack_50
+    local angle, b2, bVar16, bVar21, cVar2, c_stk_23d, iVar22, iVar6, i_stk_2b8, native_arg_switch_3, native_arg_switch_4, pCVar10, pCVar3, pCVar7, pCVar8, pOther, pcVar23, pppuVar19, r1, r10, r11, r12, r13, r14, r15, r16, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar20, xStack_1d8, xStack_1e8, xStack_1f8, xStack_220, xStack_22c, xStack_250, xStack_25c, xStack_268, xStack_26c, xStack_27c, xStack_28c, xStack_298, xStack_2ac, xStack_40, xStack_50
     local alive = true
     pCVar3 = quest:GetActiveQuestName()
     quest:SetQuestCardObjective(pCVar3, "TEXT_QUEST_ARENA_OBJECTIVE_01", "Arena", "KnotholeGlade")
@@ -479,7 +479,7 @@ function Main(quest)
                 pCVar7 = quest:GetThingWithScriptName("FlickPoint")
                 bVar16 = false
                 pCVar10 = pCVar7:GetPos()
-                r12 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "CellWhisper")
+                r12 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "CellWhisper", bVar16)
                 goto LAB_00f119fc
             end
         end
@@ -547,7 +547,7 @@ function Main(quest)
                         pCVar7 = quest:GetThingWithScriptName("FlickPoint")
                         bVar16 = false
                         pCVar10 = pCVar7:GetPos()
-                        r14 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "CellWhisper")
+                        r14 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "CellWhisper", bVar16)
                         goto LAB_00f11d57
                     end
                 end
@@ -660,7 +660,8 @@ function Main(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar16 = not alive
             if bVar16 then goto LAB_00f13e6c end
-            uVar11 = math.random(0, 32767)
+            xStack_26c = "CS_ARENA_ROUND_BEGIN_WHISPER_GENERIC"
+            uVar11 = quest:RetailRandModulo(32768)
             uVar11 = uVar11 & 0x80000003
             if uVar11 < 0 then
                 uVar11 = (uVar11 - 1 | 0xfffffffc) + 1
@@ -694,7 +695,8 @@ function Main(quest)
             if bVar16 then goto LAB_00f13e9c end
             this_00 = quest:GetStateThing("Whisper")
             pCVar7 = quest:GetThingWithScriptName("WhisperAlly")
-            -- TODO(native): CScriptThing::operator=(this_00,(int)pCVar7);
+            quest:SetStateThing("Whisper", pCVar7)
+            this_00 = quest:GetStateThing("Whisper")
             cVar2 = (this_00 ~= nil and this_00:IsAlive())
             if not cVar2 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -703,8 +705,9 @@ function Main(quest)
                     pCVar7 = quest:GetThingWithScriptName("ARENA_WhisperStartPoint")
                     bVar16 = false
                     pCVar10 = pCVar7:GetPos()
-                    pCVar7 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "WhisperAlly")
-                    -- TODO(native): CScriptThing::operator=(this_00,(int)pCVar7);
+                    pCVar7 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "WhisperAlly", bVar16)
+                    quest:SetStateThing("Whisper", pCVar7)
+                    this_00 = quest:GetStateThing("Whisper")
                     goto LAB_00f123aa
                 end
                 goto LAB_00f13e45
@@ -844,7 +847,7 @@ function Main(quest)
                     xStack_26c = "CS_ARENA_ROUND_1"
                     b2 = false
                     uVar20 = false
-                    iVar22 = math.random(0, 32767)
+                    iVar22 = quest:RetailRandModulo(32768)
                     iVar22 = GetFanfareMusic(quest, iVar22 % 10)
                     quest:OverrideMusic(iVar22, uVar20, b2)
                     goto FLOW_native_label_2
@@ -1132,7 +1135,7 @@ function Main(quest)
                     pCVar7 = quest:GetThingWithScriptName("FlickPoint")
                     bVar16 = false
                     pCVar10 = pCVar7:GetPos()
-                    r15 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "CellWhisper")
+                    r15 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_ARENA", pCVar10, "CellWhisper", bVar16)
                 end
             end
             ::LAB_00f13a09::
@@ -1216,8 +1219,7 @@ function Main(quest)
                 xStack_298 = resources:NewActorMap()
                 resources:SetActor(xStack_298, "Hero", xStack_27c)
                 resources:SetActor(xStack_298, "Roth", xStack_28c)
-                pCVar13 = helper_F14250(quest)
-                if pCVar13[0x74] == 0x1 then
+                if quest:GetMasterGameState("WhisperKilledByHero") then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar16 = not alive
                     if bVar16 then
@@ -1335,7 +1337,7 @@ function Init(quest)
         if bVar1 then
             return
         end
-        -- TODO(native): this[iVar2 + 0xe2] = (CQ_ArenaScript)0x0;
+        quest:SetStateBool(("ArenaSpawnNeeded_" .. iVar2), false)
         iVar2 = iVar2 + 1
     until not (iVar2 < 0x10)
     alive = not quest:IsActiveThreadTerminating()
@@ -1445,15 +1447,9 @@ function WatchForTermination(quest)
 end
 
 function CrowdChecker(quest)
-    local aiStack_c, bVar2, c_stk_151, elem_1, iStack_138, iStack_f4, iVar3, iVar4, i_stk_114, i_stk_158, i_stk_15c, i_stk_fc, native_arg_sequence_1, native_arg_switch_2, native_arg_switch_3, native_arg_switch_4, pCVar6, pPos, puVar1, puVar8, pu_stk_14c, r1, r2, uVar5, uVar9, xStack_150, xStack_c0
+    local aiStack_c, bVar2, c_stk_151, elem_1, iStack_138, iStack_f4, iVar3, iVar4, i_stk_114, i_stk_158, i_stk_15c, i_stk_fc, native_arg_sequence_1, native_arg_switch_2, native_arg_switch_3, native_arg_switch_4, pCVar6, pPos, puVar1, puVar8, pu_stk_14c, r1, r2, uVar5, uVar9, xStack_12c, xStack_150, xStack_c0
     local alive = true
-    -- TODO(native): aiStack_c[0] = 0;
-    -- TODO(native): aiStack_c[1] = 200;
-    -- TODO(native): aiStack_c[2] = 400;
-    local function __cleanup_LAB_00f1e552()
-        quest:DeregisterTimer(i_stk_15c)
-        quest:DeregisterTimer(i_stk_158)
-    end
+    aiStack_c = {0, 200, 400}
     iVar3 = quest:RegisterTimer()
     i_stk_158 = iVar3
     quest:SetTimer(i_stk_158, 0)
@@ -1462,135 +1458,143 @@ function CrowdChecker(quest)
     i_stk_114 = -1
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
-    while true do
-        pu_stk_14c = puVar8
-        if not (not bVar2) then break end
-        bVar2 = quest:IsLevelLoaded("ArenaCells")
-        if bVar2 then
-            repeat
-                alive = quest:NewScriptFrame()
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                puVar8 = 0
-                if bVar2 then goto LAB_00f1e423 end
-                uVar9 = 0
-                r1 = quest:GetThingWithScriptName("CellsExitToArena")
-                bVar2 = quest:IsLevelLoaded("ArenaCells")
-                if bVar2 then
-                    repeat
-                        alive = quest:NewScriptFrame()
-                        alive = not quest:IsActiveThreadTerminating()
-                        bVar2 = not alive
-                        if bVar2 then
-                            r1 = nil
-                            goto LAB_00f1eba3
-                        end
-                        iVar4 = math.random(0, 32767)
-                        iVar4 = iVar4 % 3
-                        if iVar4 == 0 then
-                            uVar9 = quest:PlayCriteriaSoundOnThing(r1, "ARENA_HECKLE_BIG_MUFFLED_LOOP")
-                        else
-                            if iVar4 == 1 then
-                                uVar9 = quest:PlayCriteriaSoundOnThing(r1, "ARENA_APPLAUSE_MEDIUM_MUFFLED_LOOP")
-                                goto LAB_00f1cf00
-                            end
-                            if iVar4 == 2 then
-                                uVar9 = quest:PlayCriteriaSoundOnThing(r1, "ARENA_CHANT_MUFFLED_LOOP")
-                                goto LAB_00f1cf00
-                            end
-                        end
-                        ::LAB_00f1cf00::
-                        i_stk_fc = math.random(0, 32767)
-                        i_stk_fc = i_stk_fc % 10
-                        quest:Pause(i_stk_fc + 2.0)
-                        quest:StopSound(uVar9)
-                        bVar2 = quest:IsLevelLoaded("ArenaCells")
-                    until not (bVar2)
-                end
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                r1 = nil
-                if bVar2 then
-                    goto LAB_00f1eba3
-                end
-                bVar2 = quest:IsLevelLoaded("ArenaCells")
-            until not (bVar2)
-        end
-        alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
-        if bVar2 then
-            __cleanup_LAB_00f1e552()
-            return
-        end
-        bVar2 = quest:IsLevelLoaded("Arena")
-        if bVar2 then
+    ::FLOW_loop_head_lab_00f1e382::
+    pu_stk_14c = puVar8
+    if not (not bVar2) then goto FLOW_loop_exit_lab_00f1e382 end
+    bVar2 = quest:IsLevelLoaded("ArenaCells")
+    if bVar2 then
+        repeat
+            alive = quest:NewScriptFrame()
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
-            if not bVar2 then
-                i_stk_fc = quest:AddQuestInfoBar(400.0, 0.0, {R = 255, G = 255, B = 0, A = 255}, {R = 255, G = 255, B = 0, A = 255}, "HUD_EXPR_CLAP", "", 1.0)
-                quest:DisplayQuestInfo(true)
-                xStack_150 = quest:GetAllThingsWithScriptName("CrowdSoundSource")
-                -- TODO(native): Vector_ZeroInit(#xStack_150);
-                iStack_138 = quest:GetAllThingsWithDefName("OBJECT_ARENA_AUDIENCE_01")
-                c_stk_151 = 0
-                bVar2 = quest:IsLevelLoaded("Arena")
-                if bVar2 then
-                    -- LAB_00f1d1e0: (native jump target)
+            puVar8 = 0
+            if bVar2 then goto LAB_00f1e423 end
+            uVar9 = 0
+            r1 = quest:GetThingWithScriptName("CellsExitToArena")
+            bVar2 = quest:IsLevelLoaded("ArenaCells")
+            if bVar2 then
+                repeat
                     alive = quest:NewScriptFrame()
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then
-                        quest:DeregisterTimer(i_stk_15c)
-                        quest:DeregisterTimer(i_stk_158)
-                        return
+                        r1 = nil
+                        goto LAB_00f1eba3
                     end
-                    if (not quest:GetStateBool("PauseCrowdChecker")) or (c_stk_151 == 0) then goto LAB_00f1d2e6 end
-                    alive = not quest:IsActiveThreadTerminating()
-                    bVar2 = not alive
-                    if not bVar2 then
-                        repeat
-                            if not quest:GetStateBool("PauseCrowdChecker") then
-                                goto LAB_00f1d260
-                            else
-                                bVar2 = quest:IsLevelLoaded("Arena")
-                                if not bVar2 then goto LAB_00f1d260 end
-                                bVar2 = true
-                            end
-                            goto FLOW_past_lab_00f1d260
-                            ::LAB_00f1d260::
-                            bVar2 = false
-                            ::FLOW_past_lab_00f1d260::
-                            if not bVar2 then goto LAB_00f1d2d7 end
-                            alive = quest:NewScriptFrame()
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar2 = not alive
-                            if bVar2 then
-                                quest:DeregisterTimer(i_stk_15c)
-                                quest:DeregisterTimer(i_stk_158)
-                                return
-                            end
-                        until false
+                    iVar4 = quest:RetailRandModulo(3)
+                    if iVar4 == 0 then
+                        uVar9 = quest:PlayCriteriaSoundOnThing(r1, "ARENA_HECKLE_BIG_MUFFLED_LOOP")
+                    else
+                        if iVar4 == 1 then
+                            uVar9 = quest:PlayCriteriaSoundOnThing(r1, "ARENA_APPLAUSE_MEDIUM_MUFFLED_LOOP")
+                            goto LAB_00f1cf00
+                        end
+                        if iVar4 == 2 then
+                            uVar9 = quest:PlayCriteriaSoundOnThing(r1, "ARENA_CHANT_MUFFLED_LOOP")
+                            goto LAB_00f1cf00
+                        end
                     end
-                    goto LAB_00f1eb80
-                end
-                -- LAB_00f1e382: (native jump target)
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if not bVar2 then
-                    quest:RemoveQuestInfoElement(i_stk_fc)
-                    quest:DisplayQuestInfo(false)
-                    goto LAB_00f1e3c7
-                end
-                ::LAB_00f1eb80::
+                    ::LAB_00f1cf00::
+                    i_stk_fc = quest:RetailRandModulo(32768)
+                    i_stk_fc = i_stk_fc % 10
+                    quest:Pause(i_stk_fc + 2.0)
+                    quest:StopSound(uVar9)
+                    bVar2 = quest:IsLevelLoaded("ArenaCells")
+                until not (bVar2)
             end
-            goto LAB_00f1eba3
-        end
-        ::LAB_00f1e3c7::
-        alive = quest:NewScriptFrame()
+            alive = not quest:IsActiveThreadTerminating()
+            bVar2 = not alive
+            r1 = nil
+            if bVar2 then
+                goto LAB_00f1eba3
+            end
+            bVar2 = quest:IsLevelLoaded("ArenaCells")
+        until not (bVar2)
+    end
+    alive = not quest:IsActiveThreadTerminating()
+    bVar2 = not alive
+    if bVar2 then
+        -- LAB_00f1e552: (native jump target)
+        quest:DeregisterTimer(i_stk_15c)
+        quest:DeregisterTimer(i_stk_158)
+        return
+    end
+    bVar2 = quest:IsLevelLoaded("Arena")
+    if bVar2 then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
+        if not bVar2 then
+            i_stk_fc = quest:AddQuestInfoBar(400.0, 0.0, {R = 255, G = 255, B = 0, A = 255}, {R = 255, G = 255, B = 0, A = 255}, "HUD_EXPR_CLAP", "", 1.0)
+            quest:DisplayQuestInfo(true)
+            xStack_150 = quest:GetAllThingsWithScriptName("CrowdSoundSource")
+            xStack_12c = (function(n) local t = {}; for i = 1, n do t[i] = 0 end; return t end)(#xStack_150)
+            iStack_138 = quest:GetAllThingsWithDefName("OBJECT_ARENA_AUDIENCE_01")
+            c_stk_151 = 0
+            bVar2 = quest:IsLevelLoaded("Arena")
+            if bVar2 then
+                goto LAB_00f1d1e0
+            end
+            goto FLOW_hoist_lab_00f1d1e0_1
+        end
+        goto FLOW_hoist_lab_00f1d1e0_2
     end
-    ::FLOW_after_lab_00f1e382::
+    goto FLOW_past_lab_00f1d1e0
+    ::LAB_00f1d1e0::
+    alive = quest:NewScriptFrame()
+    alive = not quest:IsActiveThreadTerminating()
+    bVar2 = not alive
+    if bVar2 then
+        quest:DeregisterTimer(i_stk_15c)
+        quest:DeregisterTimer(i_stk_158)
+        return
+    end
+    if (not quest:GetStateBool("PauseCrowdChecker")) or (c_stk_151 == 0) then goto LAB_00f1d2e6 end
+    alive = not quest:IsActiveThreadTerminating()
+    bVar2 = not alive
+    if not bVar2 then
+        repeat
+            if not quest:GetStateBool("PauseCrowdChecker") then
+                goto LAB_00f1d260
+            else
+                bVar2 = quest:IsLevelLoaded("Arena")
+                if not bVar2 then goto LAB_00f1d260 end
+                bVar2 = true
+            end
+            goto FLOW_past_lab_00f1d260
+            ::LAB_00f1d260::
+            bVar2 = false
+            ::FLOW_past_lab_00f1d260::
+            if not bVar2 then goto LAB_00f1d2d7 end
+            alive = quest:NewScriptFrame()
+            alive = not quest:IsActiveThreadTerminating()
+            bVar2 = not alive
+            if bVar2 then
+                quest:DeregisterTimer(i_stk_15c)
+                quest:DeregisterTimer(i_stk_158)
+                return
+            end
+        until false
+    end
+    goto LAB_00f1eb80
+    ::FLOW_hoist_lab_00f1d1e0_1::
+    -- LAB_00f1e382: (native jump target)
+    alive = not quest:IsActiveThreadTerminating()
+    bVar2 = not alive
+    if not bVar2 then
+        quest:RemoveQuestInfoElement(i_stk_fc)
+        quest:DisplayQuestInfo(false)
+        goto LAB_00f1e3c7
+    end
+    ::LAB_00f1eb80::
+    ::FLOW_hoist_lab_00f1d1e0_2::
+    goto LAB_00f1eba3
+    ::FLOW_past_lab_00f1d1e0::
+    ::LAB_00f1e3c7::
+    alive = quest:NewScriptFrame()
+    alive = not quest:IsActiveThreadTerminating()
+    bVar2 = not alive
+    goto FLOW_loop_head_lab_00f1e382
+    ::FLOW_loop_exit_lab_00f1e382::
     ::LAB_00f1eba3::
     quest:DeregisterTimer(i_stk_15c)
     quest:DeregisterTimer(i_stk_158)
@@ -1612,7 +1616,9 @@ function CrowdChecker(quest)
     bVar2 = not alive
     if bVar2 then
         -- LAB_00f1e547: (native jump target)
-        __cleanup_LAB_00f1e552(); return
+        quest:DeregisterTimer(i_stk_15c)
+        quest:DeregisterTimer(i_stk_158)
+        return
     end
     quest:UpdateQuestInfoBar(i_stk_fc, quest:GetStateInt("NewCrowdPoints"), -1.0, -1.0)
     iVar4 = quest:GetTimer(i_stk_158)
@@ -1634,7 +1640,7 @@ function CrowdChecker(quest)
                 quest:DeregisterTimer(i_stk_158)
                 return
             end
-            if (aiStack_c[iVar3] <= quest:GetStateInt("NewCrowdPoints")) or (iVar3 == 0) then
+            if (aiStack_c[(iVar3) + 1] <= quest:GetStateInt("NewCrowdPoints")) or (iVar3 == 0) then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 iVar4 = iVar3
@@ -1690,11 +1696,10 @@ function CrowdChecker(quest)
                         quest:DeregisterTimer(i_stk_158)
                         return
                     end
-                    -- TODO(native): quest:StopSound(*(xStack_12c + uVar9 * 4))
+                    quest:StopSound(xStack_12c[(uVar9) + 1])
                     quest:Pause(0.2)
-                    -- TODO(native): puStack_10 = (uint *)((int)xStack_12c + uVar9 * 4);
                     uVar5 = quest:PlayCriteriaSoundOnThing(xStack_150[(iVar4) / 0xc + 1], quest:GetStateString(("CrowdLoopTags_" .. iVar3 .. "_" .. i_stk_114)))
-                    -- TODO(native): *puStack_10 = uVar5;
+                    xStack_12c[(uVar9) + 1] = uVar5
                     c_stk_151 = 0
                     quest:Pause(0.3)
                     uVar9 = uVar9 + 1
@@ -1732,7 +1737,7 @@ function CrowdChecker(quest)
                         return
                     end
                     if i_stk_114 == 0 then
-                        uVar5 = math.random(0, 32767)
+                        uVar5 = quest:RetailRandModulo(32768)
                         uVar5 = uVar5 & 0x80000001
                         bVar2 = uVar5 == 0
                         if uVar5 < 0 then
@@ -1759,7 +1764,7 @@ function CrowdChecker(quest)
                         end
                     else
                         if i_stk_114 == 1 then
-                            uVar5 = math.random(0, 32767)
+                            uVar5 = quest:RetailRandModulo(32768)
                             uVar5 = uVar5 & 0x80000001
                             bVar2 = uVar5 == 0
                             if uVar5 < 0 then
@@ -1838,7 +1843,7 @@ function CrowdChecker(quest)
         c_stk_151 = 1
         r2 = quest:GetThingWithScriptName("SingleShouter")
         xStack_c0 = quest:PlayCriteriaSoundOnThing(r2, quest:GetStateString(("CrowdLoopTags_" .. iStack_f4 .. "_" .. i_stk_114)))
-        iVar4 = math.random(0, 32767)
+        iVar4 = quest:RetailRandModulo(32768)
         quest:SetTimer(i_stk_15c, iVar4 % quest:ReadGlobalGameData(0xa68) + quest:ReadGlobalGameData(0xa64))
         iVar4 = quest:AddNewConversation(r2, false, false)
         pCVar6 = quest:GetHero()
@@ -1918,7 +1923,7 @@ function CrowdChecker(quest)
             quest:DeregisterTimer(i_stk_158)
             return
         end
-        uVar9 = math.random(0, 32767)
+        uVar9 = quest:RetailRandModulo(32768)
         uVar9 = uVar9 & 0x80000001
         bVar2 = uVar9 == 0
         if uVar9 < 0 then
@@ -2143,17 +2148,12 @@ function CrowdChecker(quest)
         if not bVar2 then
             quest:RemoveQuestInfoElement(i_stk_fc)
             quest:DisplayQuestInfo(false)
-            goto LAB_00f1e3c7_c2
+            goto LAB_00f1e3c7
         end
-        -- LAB_00f1eb80_c2: (native jump target)
+        -- LAB_00f1eb80_c3: (native jump target)
         goto LAB_00f1eba3
-        ::LAB_00f1e3c7_c2::
-        alive = quest:NewScriptFrame()
-        alive = not quest:IsActiveThreadTerminating()
-        bVar2 = not alive
-        goto FLOW_after_lab_00f1e382
     end
-    -- TODO(native): goto LAB_00f1d1e0
+    goto LAB_00f1d1e0
 end
 
 function InitialiseVariables(quest)
@@ -2189,9 +2189,8 @@ function AnimateCrowd(quest)
         iVar5 = 0
         i_stk_1c = iVar4
         repeat
-            xStack_18 = nil
-            -- TODO(native): xStack_18._4_4_ = *(undefined4 *)(iVar5 + 4 + (int)xStack_c);
-            iVar4 = math.random(0, 32767)
+            xStack_18 = xStack_c[iVar5 / 0xc + 1]
+            iVar4 = quest:RetailRandModulo(32768)
             native_arg_switch_1 = iVar4 % 6
             repeat
                 if native_arg_switch_1 == 0 then
@@ -2292,7 +2291,7 @@ function PlayWave(quest)
         if value >= 2147483648 then value = value - 4294967296 end
         return value
     end
-    local b1, b2, bVar20, bVar3, c_stk_13d, c_stk_fd, creatureCounterIds, creatureGroupIndex, creatureType, ctr_10c, ctr_fc, fVar18, f_stk_ec, f_stk_f0, iVar12, iVar4, iVar6, i_stk_15c, i_stk_84, i_stk_b4, i_stk_b8, i_stk_c0, i_stk_d0, i_stk_e8, initialCreatureCounts, native_arg_sequence_1, pCVar13, pCVar19, pCVar5, pCVar7, pQuestionText, piVar10, pvVar8, r1, r2, r3, replacementCounterId, savedCreatureGroupIndex, totalCreaturesIndex, totalCreaturesIndex2, uVar11, uVar9, xStack_118, xStack_124, xStack_130, xStack_9c, xStack_a0, xStack_b0, xStack_c0, xStack_e4, xStack_f4, x_stk_104, x_stk_cc
+    local b1, b2, bVar20, bVar3, c_stk_13d, c_stk_fd, creatureCounterIds, creatureGroupIndex, creatureType, ctr_10c, ctr_fc, fVar18, f_stk_ec, f_stk_f0, iVar12, iVar4, iVar6, i_stk_15c, i_stk_84, i_stk_b4, i_stk_b8, i_stk_c0, i_stk_d0, i_stk_e8, initialCreatureCounts, native_arg_sequence_1, pCVar13, pCVar19, pCVar5, pCVar7, pQuestionText, piVar10, pvVar8, r1, r2, r3, replacementCounterId, rewardDefinition, rewardIndex, rewardOffset, rewardPosition, rewardTurns, savedCreatureGroupIndex, totalCreaturesIndex, totalCreaturesIndex2, uVar11, uVar9, xStack_118, xStack_124, xStack_130, xStack_9c, xStack_a0, xStack_b0, xStack_c0, xStack_e4, xStack_f4, x_stk_104, x_stk_cc
     local alive = true
     r1 = quest:GetThingWithScriptName("ARENA_SpawnPoint")
     r2 = quest:GetThingWithScriptName("BigCreatureSpawnPoint")
@@ -2390,19 +2389,19 @@ function PlayWave(quest)
     pCVar5 = quest:GetHero()
     r3 = quest:GetFurthestWithScriptName(pCVar5, "ArenaSpawn")
     if not (r3 ~= nil and not r3:IsNull()) then
-        -- TODO(native): CCharString::CCharString(xStack_a0,(CCharString *)&DAT_0143e8ec);
+        xStack_a0 = ""
     else
         xStack_a0 = r3:GetDataString()
     end
     iVar4 = parseGameInteger(xStack_a0)
     i_stk_b4 = iVar4
-    x_stk_104 = (iVar4 + -1)
+    x_stk_104 = ((iVar4 + -1) & 0xffffffff)
     c_stk_fd = 1
     if x_stk_104 == 0xffffffff then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
-            x_stk_104 = (iVar6 + -1)
+            x_stk_104 = ((iVar6 + -1) & 0xffffffff)
             goto LAB_00f1f37d
         end
         goto LAB_00f2116f
@@ -2488,7 +2487,7 @@ function PlayWave(quest)
                                                         creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                                         bVar3 = true
                                                         pCVar13 = xStack_130[(iVar4) / 0xc + 1]:GetPos()
-                                                        pCVar5 = quest:CreateCreature(creatureType, pCVar13, "ArenaEnemy")
+                                                        pCVar5 = quest:CreateCreature(creatureType, pCVar13, "ArenaEnemy", bVar3)
                                                         xStack_e4 = pCVar5
                                                         goto LAB_00f1fcce
                                                     end
@@ -2523,7 +2522,7 @@ function PlayWave(quest)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
                                                     if not bVar3 then
-                                                        uVar11 = math.random(0, 32767)
+                                                        uVar11 = quest:RetailRandModulo(32768)
                                                         uVar11 = uVar11 & 0x80000001
                                                         bVar3 = uVar11 == 0
                                                         if uVar11 < 0 then
@@ -2568,14 +2567,14 @@ function PlayWave(quest)
                                         i_stk_d0 = iVar4 + 0xc
                                     until not (i_stk_e8 < iVar6)
                                 end
-                                x_stk_104 = (x_stk_104 + -1)
+                                x_stk_104 = ((x_stk_104 + -1) & 0xffffffff)
                                 if x_stk_104 == 0xffffffff then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then
                                         goto LAB_00f20cc5
                                     end
-                                    x_stk_104 = (iVar6 + -1)
+                                    x_stk_104 = ((iVar6 + -1) & 0xffffffff)
                                 end
                                 c_stk_fd = 1
                             else
@@ -2605,7 +2604,7 @@ function PlayWave(quest)
                                                         creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                                         pCVar19 = "ArenaEnemy"
                                                         pCVar13 = xStack_130[(iVar4) / 0xc + 1]:GetPos()
-                                                        pCVar5 = quest:CreateCreature(creatureType, pCVar13, "ArenaEnemy")
+                                                        pCVar5 = quest:CreateCreature(creatureType, pCVar13, "ArenaEnemy", true)
                                                         xStack_c0 = pCVar5
                                                         goto LAB_00f1f934
                                                     end
@@ -2626,7 +2625,7 @@ function PlayWave(quest)
                                                 goto FLOW_past_lab_00f1f934
                                                 ::LAB_00f1f934::
                                                 quest:ResetCreatureCreationDelayFrames()
-                                                quest:EntitySetCutsceneBehaviour(pCVar5, 1)
+                                                quest:EntitySetCutsceneBehaviour(xStack_c0, 1)
                                                 pCVar5 = quest:GetThingWithScriptName("WhisperAlly")
                                                 c_stk_13d = (pCVar5 ~= nil and pCVar5:IsAlive())
                                                 if not c_stk_13d then
@@ -2640,7 +2639,7 @@ function PlayWave(quest)
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar3 = not alive
                                                     if not bVar3 then
-                                                        uVar11 = math.random(0, 32767)
+                                                        uVar11 = quest:RetailRandModulo(32768)
                                                         uVar11 = uVar11 & 0x80000001
                                                         bVar3 = uVar11 == 0
                                                         if uVar11 < 0 then
@@ -2651,7 +2650,7 @@ function PlayWave(quest)
                                                             bVar3 = not alive
                                                             if not bVar3 then
                                                                 pCVar5 = quest:GetThingWithScriptName("WhisperAlly")
-                                                                quest:GiveThingBestEnemyTarget(pCVar5, r3)
+                                                                quest:GiveThingBestEnemyTarget(xStack_c0, pCVar5)
                                                                 goto LAB_00f1fa91
                                                             end
                                                         else
@@ -2666,7 +2665,7 @@ function PlayWave(quest)
                                                 end
                                                 goto FLOW_past_lab_00f1fa88
                                                 ::LAB_00f1fa88::
-                                                quest:GiveThingBestEnemyTarget(pCVar5, r2)
+                                                quest:GiveThingBestEnemyTarget(xStack_c0, pCVar5)
                                                 goto LAB_00f1fa91
                                                 ::FLOW_past_lab_00f1fa88::
                                                 goto FLOW_past_lab_00f1fa91
@@ -2733,8 +2732,8 @@ function PlayWave(quest)
                                             creatureType = quest:GetStateString(("Rounds_" .. quest:GetStateInt("ArenaRound") .. "_Waves_" .. quest:GetStateInt("ArenaRoundWave") .. "_Creatures_" .. savedCreatureGroupIndex .. "_CreatureType"))
                                             uVar9 = xStack_118[(iVar4) / 0xc + 1]:GetPos()
                                             savedCreatureGroupIndex = creatureGroupIndex
-                                            iVar6 = quest:CreateCreatureNearby(creatureType, uVar9, iVar4, "ArenaEnemy")
-                                            -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_f4,iVar6);
+                                            iVar6 = quest:CreateCreatureNearby(creatureType, uVar9, 1.0, "ArenaEnemy")
+                                            xStack_f4 = iVar6
                                             quest:ResetCreatureCreationDelayFrames()
                                             iVar6 = i_stk_c0
                                         end
@@ -2758,7 +2757,6 @@ function PlayWave(quest)
                     quest:DeregisterTimer(i_stk_15c)
                     r2 = nil
                     r1 = nil
-                    -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
                     return
                 end
                 ctr_10c = ctr_10c + 1
@@ -2784,7 +2782,6 @@ function PlayWave(quest)
             quest:DeregisterTimer(i_stk_15c)
             r2 = nil
             r1 = nil
-            -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
             return
         end
         iVar6 = quest:GetStateInt(("TotalCreatures_" .. totalCreaturesIndex2))
@@ -2816,7 +2813,6 @@ function PlayWave(quest)
         quest:DeregisterTimer(i_stk_15c)
         r2 = nil
         r1 = nil
-        -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
         return
     end
     quest:DisplayQuestInfo(true)
@@ -2838,7 +2834,6 @@ function PlayWave(quest)
         quest:DeregisterTimer(i_stk_15c)
         r2 = nil
         r1 = nil
-        -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
         return
     end
     while 0 < iVar4 do
@@ -2912,7 +2907,6 @@ function PlayWave(quest)
     quest:DeregisterTimer(i_stk_15c)
     r2 = nil
     r1 = nil
-    -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
     do return end
     ::LAB_00f207f4::
     r3 = nil
@@ -2955,8 +2949,8 @@ function PlayWave(quest)
         if bVar3 then goto LAB_00f20ca1 end
         quest:SetStateInt("ArenaRound", quest:GetStateInt("ArenaRound") + 1)
         quest:SetStateInt("ArenaRoundWave", 0)
-        if quest:GetStateInt("NewCrowdPoints") / 100 < 6 then
-            if 0 < quest:GetStateInt("NewCrowdPoints") / 100 then goto LAB_00f20ce5 end
+        if quest:GetStateInt("NewCrowdPoints") < 600 then
+            if 100 <= quest:GetStateInt("NewCrowdPoints") then goto LAB_00f20ce5 end
             goto LAB_00f20e68
         else
             alive = not quest:IsActiveThreadTerminating()
@@ -2972,7 +2966,7 @@ function PlayWave(quest)
         quest:Pause(1.0)
         b2 = false
         b1 = false
-        iVar6 = math.random(0, 32767)
+        iVar6 = quest:RetailRandModulo(32768)
         iVar6 = GetFanfareMusic(quest, iVar6 % 10)
         quest:OverrideMusic(iVar6, b1, b2)
         quest:Pause(5.0)
@@ -3036,7 +3030,7 @@ function PlayWave(quest)
         else
             bVar3 = true
             pQuestionText = GetEndRoundQuestion(quest)
-            quest:GiveHeroYesNoQuestion("TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_YES", "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_NO", "", pvVar8, (pQuestionText ~= 0))
+            quest:GiveHeroYesNoQuestion(pQuestionText, "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_YES", "TEXT_QST_005_V2_ARENA_END_ROUND_QUESTION_NO", "", true)
             iVar4 = quest:MsgIsQuestionAnsweredYesOrNo()
             while iVar4 < 0 do
                 alive = quest:NewScriptFrame()
@@ -3056,7 +3050,7 @@ function PlayWave(quest)
             bVar3 = not alive
             if iVar4 == 1 then
                 if not bVar3 then
-                    quest:SetStateInt("GoldMultiplier", quest:GetStateInt("GoldMultiplier") + 1)
+                    quest:SetStateInt("GoldMultiplier", ((quest:GetStateInt("GoldMultiplier") + 1 + 2147483648) % 4294967296 - 2147483648))
                     -- LAB_00f21107: (native jump target)
                     quest:FadeScreenOut(0.5, 0.5)
                     quest:Pause(0.5)
@@ -3120,19 +3114,17 @@ function PlayWave(quest)
         if not bVar3 then
             iVar4 = quest:ReadGlobalGameData(0xa70)
             iVar6 = quest:ReadGlobalGameData(0xa6c)
-            uVar11 = math.random(0, 32767)
+            uVar11 = quest:RetailRandModulo(32768)
+            rewardIndex = uVar11 % ((iVar4 - iVar6) >> 2)
             x_stk_cc = nil
-            f_stk_f0 = 0.0
-            f_stk_ec = 5.0
-            iVar12 = math.random(0, 32767)
-            -- TODO(native): fStack_d8 = (float)(iVar12 % 0x168) * 0.0027777778450399637;
-            -- TODO(native): Math_CartesianToSpherical(xStack_f4,(int)fStack_d8);
+            iVar12 = quest:RetailRandModulo(32768)
+            rewardTurns = (iVar12 % 0x168) * 0.0027777778450399637
+            rewardOffset = quest:RotateVectorHorizontal({x = 14.0, y = 0.0, z = 5.0}, rewardTurns)
             pCVar5 = quest:GetThingWithScriptName("ARENA_CentrePoint")
             pCVar13 = pCVar5:GetPos()
-            -- TODO(native): xStack_e4._4_4_ = f_stk_f0 + pCVar13.y;
-            -- TODO(native): xStack_e4._0_4_ = (float)xStack_f4 + pCVar13.x;
-            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(quest:ReadGlobalGameData(0xa6c) + (uVar11 % (uint)(iVar4 - iVar6 >> 2)) * 4),(int)&xStack_108);
-            pCVar5 = quest:CreateObject("", pCVar13, "ArenaEnemy")
+            rewardPosition = {x = rewardOffset.x + pCVar13.x, y = rewardOffset.y + pCVar13.y, z = rewardOffset.z + pCVar13.z}
+            rewardDefinition = quest:ReadGlobalGameDataDefStringAt(0xa6c, rewardIndex)
+            pCVar5 = quest:CreateObject(rewardDefinition, rewardPosition, "")
             x_stk_cc = pCVar5
             goto LAB_00f20e68
         end
@@ -3153,11 +3145,10 @@ function PlayWave(quest)
     quest:DeregisterTimer(i_stk_15c)
     r2 = nil
     r1 = nil
-    -- TODO(native): iVar4 = NHeroInformationScreens::CBase::CBase__at99a2e0((CBase *)xStack_14c);
 end
 
 function GivePrizeFund(quest)
-    local b2, bVar3, conversationID, native_arg_switch_2, pCVar4, pCVar5, pOther
+    local b2, bVar3, conversationID, native_arg_switch_2, pCVar4, pCVar5, pOther, xStack_4, xStack_8
     local alive = true
     b2 = false
     bVar3 = true
@@ -3165,53 +3156,55 @@ function GivePrizeFund(quest)
     conversationID = quest:AddNewConversation(pCVar4, bVar3, b2)
     pCVar4 = quest:GetHero()
     quest:AddPersonToConversation(conversationID, pCVar4)
+    xStack_4 = ""
+    xStack_8 = ""
     native_arg_switch_2 = quest:GetStateInt("GoldMultiplier")
     repeat
         if native_arg_switch_2 == 0 then
             quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 100)
-            -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND1_PRIZE");
+            xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND1_PRIZE"
             pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND1_PRIZE_LATER"
             break
         else
             if native_arg_switch_2 == 1 then
                 quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 500)
-                -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND2_PRIZE");
+                xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND2_PRIZE"
                 pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND2_PRIZE_LATER"
                 break
             else
                 if native_arg_switch_2 == 2 then
                     quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 1000)
-                    -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND3_PRIZE");
+                    xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND3_PRIZE"
                     pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND3_PRIZE_LATER"
                     break
                 else
                     if native_arg_switch_2 == 3 then
                         quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 2000)
-                        -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND4_PRIZE");
+                        xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND4_PRIZE"
                         pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND4_PRIZE_LATER"
                         break
                     else
                         if native_arg_switch_2 == 4 then
                             quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 3000)
-                            -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND5_PRIZE");
+                            xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND5_PRIZE"
                             pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND5_PRIZE_LATER"
                             break
                         else
                             if native_arg_switch_2 == 5 then
                                 quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 4000)
-                                -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND6_PRIZE");
+                                xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND6_PRIZE"
                                 pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND6_PRIZE_LATER"
                                 break
                             else
                                 if native_arg_switch_2 == 6 then
                                     quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 8000)
-                                    -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND7_PRIZE");
+                                    xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND7_PRIZE"
                                     pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND7_PRIZE_LATER"
                                     break
                                 else
                                     if native_arg_switch_2 == 7 then
                                         quest:SetStateInt("GoldTotal", quest:GetStateInt("GoldTotal") + 10000)
-                                        -- TODO(native): CCharString::operator= (&xStack_4,"TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND8_PRIZE");
+                                        xStack_4 = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND8_PRIZE"
                                         pOther = "TEXT_QST_005_V2_ARENA_KEEPER_POST_ROUND8_PRIZE_LATER"
                                         break
                                     else
@@ -3225,13 +3218,14 @@ function GivePrizeFund(quest)
             end
         end
     until not (false)
+    xStack_8 = pOther
     ::FLOW_native_label_1::
     pCVar4 = quest:GetHero()
     pCVar5 = quest:GetHero()
-    quest:AddLineToConversation(conversationID, "", pCVar5, pCVar4, false)
+    quest:AddLineToConversation(conversationID, xStack_4, pCVar5, pCVar4, false)
     pCVar4 = quest:GetHero()
     pCVar5 = quest:GetHero()
-    quest:AddLineToConversation(conversationID, pOther, pCVar5, pCVar4, false)
+    quest:AddLineToConversation(conversationID, xStack_8, pCVar5, pCVar4, false)
     bVar3 = quest:IsConversationActive(conversationID)
     if bVar3 then
         repeat

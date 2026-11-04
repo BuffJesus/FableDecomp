@@ -286,51 +286,50 @@ function CheckAnyBanditsKilled(quest)
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
     if not bVar2 then
-        while true do
-            iStack_c = {}
-            -- TODO(native): ::__EH_epilog3(auStack_4,(int)&uStack_15,0);
-            this_00 = quest:GetHero()
-            iStack_c = this_00:MsgGetThingsKilledGroups()
-            bVar2 = #iStack_c ~= 0
-            if bVar2 then break end
-            -- LAB_00d034ad: (native jump target)
-            if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (v_stk_10 ~= 0) then
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00d03564 end
-                quest:SetMasterGameState("BanditCampKillNoBandits", false)
-            end
+        ::FLOW_loop_head_lab_00d034ad::
+        iStack_c = {}
+        this_00 = quest:GetHero()
+        iStack_c = this_00:MsgGetThingsKilledGroups()
+        bVar2 = #iStack_c ~= 0
+        if bVar2 then goto FLOW_loop_exit_lab_00d034ad end
+        ::LAB_00d034ad::
+        if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (v_stk_10 ~= 0) then
+            alive = not quest:IsActiveThreadTerminating()
+            bVar2 = not alive
+            if bVar2 then goto LAB_00d03564 end
+            quest:SetMasterGameState("BanditCampKillNoBandits", false)
+        end
+        native_arg_sequence_1 = false
+        if not quest:GetMasterGameState("BanditCampKillManyBandits") then
+            native_arg_sequence_1 = true
+        else
             native_arg_sequence_1 = false
-            if not quest:GetMasterGameState("BanditCampKillManyBandits") then
+        end
+        if native_arg_sequence_1 then
+            xStack_14 = v_stk_10
+            if quest:ReadGlobalGameDataFloat(0xe88) <= xStack_14 then
                 native_arg_sequence_1 = true
             else
                 native_arg_sequence_1 = false
             end
-            if native_arg_sequence_1 then
-                xStack_14 = v_stk_10
-                if quest:ReadGlobalGameDataFloat(0xe88) <= xStack_14 then
-                    native_arg_sequence_1 = true
-                else
-                    native_arg_sequence_1 = false
-                end
-            end
-            if native_arg_sequence_1 then
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00d03564 end
-                quest:SetMasterGameState("BanditCampKillManyBandits", true)
-                max = -1
-                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - xStack_14))
-                quest:UpdateQuestInfoCounter(iVar5, iVar4, max)
-            end
-            alive = quest:NewScriptFrame()
+        end
+        if native_arg_sequence_1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar2 = not alive
-            if bVar2 then
-                return
-            end
+            if bVar2 then goto LAB_00d03564 end
+            quest:SetMasterGameState("BanditCampKillManyBandits", true)
+            max = -1
+            iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - xStack_14))
+            quest:UpdateQuestInfoCounter(iVar5, iVar4, max)
         end
-        ::FLOW_after_lab_00d034ad::
+        alive = quest:NewScriptFrame()
+        alive = not quest:IsActiveThreadTerminating()
+        bVar2 = not alive
+        if bVar2 then
+            return
+        end
+        goto FLOW_loop_head_lab_00d034ad
+        ::FLOW_loop_exit_lab_00d034ad::
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
@@ -347,40 +346,7 @@ function CheckAnyBanditsKilled(quest)
                 until not (uVar6 < (#iStack_c))
             end
             iStack_c = {}
-            if (quest:GetMasterGameState("BanditCampKillNoBandits")) and (v_stk_10 ~= 0) then
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00d03564 end
-                quest:SetMasterGameState("BanditCampKillNoBandits", false)
-            end
-            native_arg_sequence_1 = false
-            if not quest:GetMasterGameState("BanditCampKillManyBandits") then
-                native_arg_sequence_1 = true
-            end
-            if native_arg_sequence_1 then
-                xStack_14 = v_stk_10
-                if quest:ReadGlobalGameDataFloat(0xe88) <= xStack_14 then
-                    native_arg_sequence_1 = true
-                else
-                    native_arg_sequence_1 = false
-                end
-            end
-            if native_arg_sequence_1 then
-                alive = not quest:IsActiveThreadTerminating()
-                bVar2 = not alive
-                if bVar2 then goto LAB_00d03564 end
-                quest:SetMasterGameState("BanditCampKillManyBandits", true)
-                max = -1
-                iVar4 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xe88) - xStack_14))
-                quest:UpdateQuestInfoCounter(iVar5, iVar4, max)
-            end
-            alive = quest:NewScriptFrame()
-            alive = not quest:IsActiveThreadTerminating()
-            bVar2 = not alive
-            if bVar2 then
-                return
-            end
-            goto FLOW_after_lab_00d034ad
+            goto LAB_00d034ad
         end
         ::LAB_00d03564::
     end

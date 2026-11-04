@@ -1,0 +1,244 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index ad6b389..42ab64b 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ #include "retail_barrel_watch_snapshot.h"
+ #include "retail_thing_position_list.h"
++#include "retail_wide_text_arguments.h"
+ #include "retail_float_math.h"
+ #include "retail_distance_math.h"
+ #include "retail_position_pair.h"
+@@ -56,6 +57,29 @@ inline sol::table ReadRetailThingPositionPair(CScriptThing* first, CScriptThing*
+     return lua.create_table_with("first", a, "second", b);
+ }
+ 
++inline RetailWideTextAPIs RetailWideTextAPIsForGame() {
++    RetailWideTextAPIs api;
++    api.construct = ASLR<RetailWideTextAPIs::Construct>(0x0099AED0);
++    api.formatInteger = ASLR<RetailWideTextAPIs::FormatInteger>(0x0099BA70);
++    api.copy = ASLR<RetailWideTextAPIs::Copy>(0x0099B720);
++    api.destroy = ASLR<RetailWideTextAPIs::Destroy>(0x0099B510);
++    api.append = ASLR<RetailWideTextAPIs::Append>(0x004128A0);
++    api.destroyVector = ASLR<RetailWideTextAPIs::DestroyVector>(0x00412130);
++    api.constructKey = reinterpret_cast<RetailWideTextAPIs::ConstructKey>(CCharString_Construct_Literal);
++    api.destroyKey = reinterpret_cast<RetailWideTextAPIs::DestroyKey>(CCharString_Destroy);
++    api.formatText = reinterpret_cast<RetailWideTextAPIs::FormatText>(GetFormattedString_API);
++    api.assign = ASLR<RetailWideTextAPIs::Copy>(0x0099B7D0);
++    api.assignText = ASLR<RetailWideTextAPIs::AssignText>(0x0099B800);
++    return api;
++}
++
++inline RetailWideTextValue* ResolveRetailGlobalWideText(unsigned address) {
++    // Only reviewed static wide-string objects are writable through this API.
++    if (address != 0x0143E908)
++        throw std::runtime_error("Unknown retail global wide-text object");
++    return ASLR<RetailWideTextValue*>(address);
++}
++
+ class LuaRetailResources {
+ public:
+     explicit LuaRetailResources(CGameScriptInterfaceBase* game) : m_game(game) {
+@@ -1054,6 +1078,13 @@ void DestroyText(unsigned id) { Release(id, Kind::Text); }
+         return {x.as<float>(), y.as<float>(), z.as<float>()};
+     }
+ 
++    std::shared_ptr<RetailWideTextArguments> NewWideTextArguments() {
++        auto& entry = Add(Kind::WideTextArguments);
++        entry.wideTextArguments = std::make_shared<RetailWideTextArguments>(m_game, RetailWideTextAPIsForGame());
++        entry.live = true;
++        return entry.wideTextArguments;
++    }
++
+     std::shared_ptr<RetailThingPositionList> NewThingPositionList() {
+         auto& entry=Add(Kind::ThingPositionList);
+         entry.positionList=std::make_shared<RetailThingPositionList>(m_game);
+@@ -2208,7 +2239,7 @@ void InitializeVictimActor(CScriptThing* actor) {
+     }
+ 
+ private:
+-    enum class Kind { Resource, ActorMap, Movie, Thing, Text, TheresaGuardVector, TheresaPresented, BarrelWatchSnapshot, ThingPositionList, StringMap, ThingOutput };
++    enum class Kind { Resource, ActorMap, Movie, Thing, Text, TheresaGuardVector, TheresaPresented, BarrelWatchSnapshot, ThingPositionList, WideTextArguments, StringMap, ThingOutput };
+     struct Entry {
+         explicit Entry(Kind k) : kind(k) {}
+         Kind kind;
+@@ -2225,6 +2256,7 @@ private:
+         std::shared_ptr<RetailTheresaGuardVector> guardVector;
+         std::shared_ptr<RetailBarrelWatchSnapshot> barrelSnapshot;
+         std::shared_ptr<RetailThingPositionList> positionList;
++        std::shared_ptr<RetailWideTextArguments> wideTextArguments;
+         void* map = nullptr;
+     };
+     void CheckOpen() const {
+@@ -2295,6 +2327,7 @@ private:
+         case Kind::TheresaPresented: CCharString_Destroy(&e.text); break;
+         case Kind::BarrelWatchSnapshot: try { e.barrelSnapshot->Close(); } catch(...) {} break;
+         case Kind::ThingPositionList: try { e.positionList->Close(); } catch(...) {} break;
++        case Kind::WideTextArguments: try { e.wideTextArguments->Close(); } catch(...) {} break;
+         case Kind::TheresaGuardVector: try { e.guardVector->Close(); } catch(...) {} break;
+         }
+         e.live = false;
+@@ -2309,6 +2342,25 @@ private:
+ };
+ 
+ inline void RegisterRetailResources(sol::state& lua) {
++    auto wideText = lua.new_usertype<RetailWideTextArguments>("RetailWideTextArguments", sol::no_constructor);
++    wideText["AppendInteger"] = [](RetailWideTextArguments& args, sol::object value) {
++        auto* state = value.lua_state();
++        value.push();
++        const bool isInteger = lua_isinteger(state, -1) != 0;
++        const lua_Integer integer = isInteger ? lua_tointeger(state, -1) : 0;
++        lua_pop(state, 1);
++        if (!isInteger || integer < -2147483647LL - 1 || integer > 2147483647LL)
++            throw std::runtime_error("Retail integer text requires a signed32 Lua integer");
++        args.AppendInteger(static_cast<std::int32_t>(integer));
++    };
++    wideText["FormatGlobalText"] = [](RetailWideTextArguments& args, unsigned address, const std::string& key) {
++        args.FormatInto(ResolveRetailGlobalWideText(address), key);
++    };
++    wideText["ClearGlobalText"] = [](RetailWideTextArguments& args, unsigned address) {
++        args.ClearInto(ResolveRetailGlobalWideText(address));
++    };
++    wideText["Count"] = &RetailWideTextArguments::Count;
++    wideText["Close"] = &RetailWideTextArguments::Close;
+     auto positions=lua.new_usertype<RetailThingPositionList>("RetailThingPositionList",sol::no_constructor);
+     positions["Clear"]=&RetailThingPositionList::Clear;
+     positions["FillScriptName"]=&RetailThingPositionList::FillScriptName;
+@@ -2362,6 +2414,7 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["ArcCosTurns"] = &LuaRetailResources::ArcCosTurns;
+     type["CosTurnsLessThan"] = &LuaRetailResources::CosTurnsLessThan;
+     type["NewThingPositionList"] = &LuaRetailResources::NewThingPositionList;
++    type["NewWideTextArguments"] = &LuaRetailResources::NewWideTextArguments;
+     type["RewardRemainingBarrel"] = &LuaRetailResources::RewardRemainingBarrel;
+     type["SpawnBarrelBeetle"] = &LuaRetailResources::SpawnBarrelBeetle;
+     type["TryAcquirePostAttackHero"] = &LuaRetailResources::TryAcquirePostAttackHero;
+diff --git a/FableScriptExtender/retail_wide_text_arguments.h b/FableScriptExtender/retail_wide_text_arguments.h
+new file mode 100644
+index 0000000..1c72dc0
+--- /dev/null
++++ b/FableScriptExtender/retail_wide_text_arguments.h
+@@ -0,0 +1,123 @@
++#pragma once
++#include <cstdint>
++#include <stdexcept>
++#include <string>
++
++struct RetailWideTextValue { void* data = nullptr; };
++struct RetailNarrowTextKey { void* data = nullptr; };
++struct RetailWideTextVector {
++    RetailWideTextValue* begin = nullptr;
++    RetailWideTextValue* end = nullptr;
++    RetailWideTextValue* capacity = nullptr;
++};
++static_assert(sizeof(RetailWideTextValue) == 4, "Retail wide strings are one Win32 pointer");
++static_assert(sizeof(RetailNarrowTextKey) == 4, "Retail narrow strings are one Win32 pointer");
++static_assert(sizeof(RetailWideTextVector) == 12, "Retail vector layout is three Win32 pointers");
++static_assert(sizeof(wchar_t) == 2, "Retail wide text is UTF-16");
++
++struct RetailWideTextAPIs {
++    using Construct = RetailWideTextValue* (__thiscall*)(RetailWideTextValue*);
++    using FormatInteger = void (__cdecl*)(RetailWideTextValue*, const wchar_t*, ...);
++    using Copy = RetailWideTextValue* (__thiscall*)(RetailWideTextValue*, const RetailWideTextValue*);
++    using Destroy = void (__thiscall*)(RetailWideTextValue*);
++    using Append = void (__thiscall*)(RetailWideTextVector*, const RetailWideTextValue*);
++    using DestroyVector = void (__thiscall*)(RetailWideTextVector*);
++    using ConstructKey = RetailNarrowTextKey* (__thiscall*)(RetailNarrowTextKey*, const char*, int);
++    using DestroyKey = void (__thiscall*)(RetailNarrowTextKey*);
++    using FormatText = RetailWideTextValue* (__thiscall*)(void*, RetailWideTextValue*, const RetailNarrowTextKey*, const RetailWideTextVector*);
++    using AssignText = RetailWideTextValue* (__thiscall*)(RetailWideTextValue*, const wchar_t*);
++    Construct construct = nullptr;
++    FormatInteger formatInteger = nullptr;
++    Copy copy = nullptr;
++    Destroy destroy = nullptr;
++    Append append = nullptr;
++    DestroyVector destroyVector = nullptr;
++    ConstructKey constructKey = nullptr;
++    DestroyKey destroyKey = nullptr;
++    FormatText formatText = nullptr;
++    Copy assign = nullptr;
++    AssignText assignText = nullptr;
++};
++
++// Native vector storage owns its wide values until explicit Close. Formatting
++// into a global copies its value; closing this vector never clears that global.
++class RetailWideTextArguments {
++public:
++    RetailWideTextArguments(void* game, RetailWideTextAPIs api) : m_game(game), m_api(api) {
++        if (!game || !api.construct || !api.formatInteger || !api.copy || !api.destroy ||
++            !api.append || !api.destroyVector || !api.constructKey || !api.destroyKey ||
++            !api.formatText || !api.assign || !api.assignText)
++            throw std::runtime_error("Retail wide-text API is unavailable");
++    }
++    ~RetailWideTextArguments() { try { Close(); } catch (...) {} }
++    RetailWideTextArguments(const RetailWideTextArguments&) = delete;
++    RetailWideTextArguments& operator=(const RetailWideTextArguments&) = delete;
++
++    void AppendInteger(std::int32_t value) {
++        CheckOpen();
++        RetailWideTextValue formatted{}, copied{};
++        bool formattedLive = false, copiedLive = false;
++        try {
++            m_api.construct(&formatted); formattedLive = true;
++            m_api.formatInteger(&formatted, L"%d", value);
++            m_api.copy(&copied, &formatted); copiedLive = true;
++            formattedLive = false; m_api.destroy(&formatted);
++            m_api.append(&m_values, &copied);
++            copiedLive = false; m_api.destroy(&copied);
++        } catch (...) {
++            if (copiedLive) try { m_api.destroy(&copied); } catch (...) {}
++            if (formattedLive) try { m_api.destroy(&formatted); } catch (...) {}
++            throw;
++        }
++    }
++
++    void FormatInto(RetailWideTextValue* target, const std::string& key) {
++        CheckOpen();
++        if (!target) throw std::runtime_error("Retail global wide-text target is null");
++        if (key.find('\0') != std::string::npos)
++            throw std::runtime_error("Retail text key contains a null byte");
++        RetailNarrowTextKey nativeKey{};
++        RetailWideTextValue result{};
++        bool keyLive = false, resultLive = false;
++        try {
++            m_api.constructKey(&nativeKey, key.c_str(), -1); keyLive = true;
++            auto* returned = m_api.formatText(m_game, &result, &nativeKey, &m_values);
++            resultLive = true;
++            m_api.assign(target, returned);
++            resultLive = false; m_api.destroy(&result);
++            keyLive = false; m_api.destroyKey(&nativeKey);
++        } catch (...) {
++            if (resultLive) try { m_api.destroy(&result); } catch (...) {}
++            if (keyLive) try { m_api.destroyKey(&nativeKey); } catch (...) {}
++            throw;
++        }
++    }
++
++    void ClearInto(RetailWideTextValue* target) {
++        CheckOpen();
++        if (!target) throw std::runtime_error("Retail global wide-text target is null");
++        m_api.assignText(target, L"");
++    }
++
++    unsigned Count() const {
++        CheckOpen();
++        return static_cast<unsigned>((reinterpret_cast<std::uintptr_t>(m_values.end) -
++            reinterpret_cast<std::uintptr_t>(m_values.begin)) / sizeof(RetailWideTextValue));
++    }
++
++    void Close() {
++        if (m_closed) return;
++        m_closed = true;
++        m_api.destroyVector(&m_values);
++        m_values = {};
++    }
++
++private:
++    void CheckOpen() const {
++        if (m_closed) throw std::runtime_error("Retail wide-text arguments are closed");
++    }
++    void* m_game;
++    RetailWideTextAPIs m_api;
++    RetailWideTextVector m_values{};
++    bool m_closed = false;
++};

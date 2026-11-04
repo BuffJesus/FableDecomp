@@ -810,5 +810,100 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedTemporaryCleanup": {
+    "0x00d61d20": {
+      "nativeSha256": "074e510834bbb7ef943f4475f26d9f7a141b6a264e3f896c06f088610463c106",
+      "sourceSha256": "67812694d87eb6bac8eb2b5cbb5f1e642eed5787c101656c4a95c3dd31b2e0be",
+      "reason": "MSVC bit8 guards local_24 WatchForTermination CCharString destructor; constructor and destruction paired; Lua strings need no native lifetime bookkeeping. Ghidra CVar5 cleanup word copies reused local_24 string on delayed-load loop; removal changes no native engine/thread operation.",
+      "groups": [
+        {
+          "flagSet": "CVar5 = (CCharString_bv)((uint)CVar5 | 8);",
+          "guardBlock": "if (((uint)CVar5 & 8) != 0) {\n          CVar5 = (CCharString_bv)((uint)CVar5 & 0xfffffff7);\n          std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\n                    (&xStack_24);\n        }",
+          "nativeInstructions": {
+            "0x00d61f30": "6aff",
+            "0x00d61f32": "68b0842c01",
+            "0x00d61f37": "8d4c241c",
+            "0x00d61f3b": "e8b0ccc3ff",
+            "0x00d61f49": "83cb08",
+            "0x00d61f87": "f6c308",
+            "0x00d61f8a": "740c",
+            "0x00d61f8c": "8d4c2414",
+            "0x00d61f90": "83e3f7",
+            "0x00d61f93": "e848cbc3ff"
+          }
+        }
+      ],
+      "hookInputNote": "The existing cleanup hook runs after stack-name restoration/local_24->xStack_24 and std template-line joining. Guard span captured at that hook; original exported source hash and native anchors unchanged."
+    }
+  },
+  "reviewedMovieMembers": {
+    "0x00d62480": {
+      "nativeSha256": "be063b420d7c78e2d9839af8bc3f437b573fa3e07c9858fb5d58af99f65b28f9",
+      "sourceSha256": "d29c9c4289530a4b25cb52bb20cee3662b2e3c88c413e10288c9832811bb0a97",
+      "reason": "Two attack dialogue branches release their distinct movie counted-pointer member, change to base vtable and join one base destructor. Generic movie phi cleanup is available but requires pinned registered evidence; omitted row loses normal movie destruction in both Lua forms. Source names paired through callOrder; numerical Ghidra slot names do not equal native frame offsets.",
+      "nativeInstructions": {
+        "0x00d62a7b": "8b01",
+        "0x00d62a7d": "8d542464",
+        "0x00d62a81": "52",
+        "0x00d62a82": "8d9424dc000000",
+        "0x00d62a89": "52",
+        "0x00d62a8a": "ff90c8050000",
+        "0x00d62a90": "8d8c24d8000000",
+        "0x00d62bbc": "8b4500",
+        "0x00d62bbf": "6a00",
+        "0x00d62bc1": "8bcd",
+        "0x00d62bc3": "ff90ec050000",
+        "0x00d62bc9": "8d4c246c",
+        "0x00d62bcd": "e8de4e98ff",
+        "0x00d62bd2": "c74424648c002601",
+        "0x00d628cb": "8b11",
+        "0x00d628cd": "8d8424e0000000",
+        "0x00d628d4": "50",
+        "0x00d628d5": "8d842484000000",
+        "0x00d628dc": "50",
+        "0x00d628dd": "ff92c8050000",
+        "0x00d628e3": "8d8c2480000000",
+        "0x00d62a0d": "8b5500",
+        "0x00d62a10": "6a00",
+        "0x00d62a12": "8bcd",
+        "0x00d62a14": "ff92ec050000",
+        "0x00d62a1a": "8d8c24e8000000",
+        "0x00d62a21": "e88a5098ff",
+        "0x00d62a26": "c78424e00000008c002601",
+        "0x00d62bda": "8d4c2464",
+        "0x00d62bde": "e84d78c3ff",
+        "0x00d62be3": "8b4e04"
+      },
+      "sharedBaseDestructors": [
+        {
+          "object": "xStack_138",
+          "member": "xStack_130",
+          "entrySlot": -312,
+          "frameBytes": 412,
+          "startSites": [
+            "0x00D62A8A"
+          ],
+          "releaseSites": [
+            "0x00D62BCD"
+          ]
+        },
+        {
+          "object": "xStack_bc",
+          "member": "xStack_b4",
+          "entrySlot": -188,
+          "frameBytes": 412,
+          "startSites": [
+            "0x00D628DD"
+          ],
+          "releaseSites": [
+            "0x00D62A21"
+          ]
+        }
+      ],
+      "baseDestructorSites": [
+        "0x00D62BDE"
+      ]
+    }
   }
 }

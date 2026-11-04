@@ -1,0 +1,46 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 89c98ab..674124f 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1401,6 +1401,21 @@ bool IsDistanceBetweenThingsUnder(CScriptThing* first, CScriptThing* second, flo
+     using Distance = bool(__fastcall*)(CScriptThing*, CScriptThing*, float);
+     return ASLR<Distance>(0x00CBE2FF)(first, second, range);
+ }
++bool IsHorizontalDistanceBetweenThingsUnder(CScriptThing* first, CScriptThing* second, float range) {
++    CheckOpen();
++    using Distance = bool(__fastcall*)(CScriptThing*, CScriptThing*, float);
++    // Native 2D predicate owns alive checks, getter order, XY snapshots and
++    // strict x87 comparison. A Lua nil denotes an empty native Thing wrapper.
++    CScriptThing empty{};
++    empty.pVTable = g_pCScriptThingVTable;
++    if ((!first || !second) && !empty.pVTable)
++        throw std::runtime_error("Retail empty Thing vtable unavailable");
++    first = first ? first : &empty;
++    second = second ? second : &empty;
++    auto predicate = ASLR<Distance>(0x00CBE371);
++    if (!predicate) throw std::runtime_error("Retail horizontal distance predicate unavailable");
++    return predicate(first, second, range);
++}
+ struct BullyNativeLiteral {
+     CCharString value{};
+     explicit BullyNativeLiteral(const char* text) { CCharString_Construct_Literal(&value, text, -1); }
+@@ -2477,6 +2492,19 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["InitializeWifeActor"] = &LuaRetailResources::InitializeWifeActor;
+     type["IsActorPositionOnScreen"] = &LuaRetailResources::IsActorPositionOnScreen;
+     type["IsDistanceBetweenThingsUnder"] = &LuaRetailResources::IsDistanceBetweenThingsUnder;
++    type["IsHorizontalDistanceBetweenThingsUnder"] = [](LuaRetailResources& resources, sol::object first, sol::object second, sol::object range) {
++        auto thing = [](const sol::object& value) -> CScriptThing* {
++            if (!value.valid() || value.get_type() == sol::type::nil) return nullptr;
++            if (value.get_type() != sol::type::userdata || !value.is<CScriptThing*>())
++                throw std::runtime_error("Retail horizontal distance requires Things or nil");
++            return value.as<CScriptThing*>();
++        };
++        if (!range.valid() || range.get_type() != sol::type::number)
++            throw std::runtime_error("Retail horizontal distance range requires a number");
++        auto* firstThing = thing(first);
++        auto* secondThing = thing(second);
++        return resources.IsHorizontalDistanceBetweenThingsUnder(firstThing, secondThing, range.as<float>());
++    };
+     type["IsDistanceOver"] = &LuaRetailResources::IsDistanceOver;
+     type["IsDistanceUnderThing"] = &LuaRetailResources::IsDistanceUnderThing;
+     type["IsTalkedToByHero"] = &LuaRetailResources::IsTalkedToByHero;

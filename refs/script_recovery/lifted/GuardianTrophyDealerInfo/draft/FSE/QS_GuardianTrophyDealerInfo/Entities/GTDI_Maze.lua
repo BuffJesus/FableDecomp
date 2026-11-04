@@ -165,7 +165,7 @@ function Main(quest, me)
     ::LAB_00e28c3f::
     quest:PauseAllNonScriptedEntities(false)
     ::LAB_00e28c85::
-    resources:ReleaseResource(this_00)
+    resources:DestroyMovie(this_00)
     goto LAB_00e28c8a
     ::LAB_00e28460::
     while true do
@@ -308,6 +308,9 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_077_MAZE_REPEAT"
                                 pCVar8 = quest:GetHero()
                                 r1 = me:Speak(pCVar8, pcVar13, iVar14, (iVar18 ~= 0), (iVar16 ~= 0), (iVar19 ~= 0))
+                                if not r1 then
+                                    goto LAB_00e28c3f
+                                end
                                 iVar14 = me:IsPerformingScriptTask()
                                 cVar6 = iVar14
                                 while cVar6 do
@@ -333,6 +336,9 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_077_MAZE_ON_HIT"
                             pCVar8 = quest:GetHero()
                             r2 = me:Speak(pCVar8, pcVar13, iVar14, (iVar18 ~= 0), (iVar16 ~= 0), (iVar19 ~= 0))
+                            if not r2 then
+                                goto LAB_00e28c3f
+                            end
                             iVar14 = me:IsPerformingScriptTask()
                             cVar6 = iVar14
                             while cVar6 do
@@ -377,6 +383,10 @@ function Main(quest, me)
                         pcVar13 = "TEXT_QST_077_MAZE_REPEAT"
                         pCVar8 = quest:GetHero()
                         r3 = me:Speak(pCVar8, pcVar13, iVar14, (iVar18 ~= 0), (iVar16 ~= 0), (iVar19 ~= 0))
+                        if not r3 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto LAB_00e28c81
+                        end
                         iVar14 = me:IsPerformingScriptTask()
                         cVar6 = iVar14
                         while cVar6 do

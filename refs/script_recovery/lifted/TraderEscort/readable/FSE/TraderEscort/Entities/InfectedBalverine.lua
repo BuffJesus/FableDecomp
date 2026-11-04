@@ -24,9 +24,11 @@ function Main(quest, me)
     repeat
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
         if not me:IsPerformingScriptTask() then
-            me:PlayLoopingAnimation("ST_MUNCH", -1, false, false, false)
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            resources:PlayLoopingAnimation(resource, "ST_MUNCH", -1, false, false, false, true, true, false, false)
         end
-        if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), v_stk_24_2) then
+        local thing = quest:GetHero()
+        if quest:IsDistanceBetweenThingsUnder(me, thing, v_stk_24_2) then
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
             me:ClearAllActionsIncludingLoopingAnimations()
             predicateResult7 = true

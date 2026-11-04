@@ -1,5 +1,489 @@
 {
   "schema": "quest-unit-evidence/1",
+  "reviewedTimerOperands": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "luaSha256": "e6339e934a0b2b068cab9a5ff6aef879b1c52bfb2127831783b94ed7f2fb931b",
+      "spanBegin": "            iVar7 = quest:GetTimer(4)",
+      "spanEnd": "            xStack_124_b3 = me:IsTalkedToByHero()\n            if xStack_124_b3 then\n                alive = not quest:IsActiveThreadTerminating()\n                bVar3 = not alive\n                if bVar3 then break end",
+      "nativeWitnesses": [
+        {
+          "address": "0xe3bcdd",
+          "size": 46,
+          "sha256": "dd58e421222e833f9547f5891f64d28735d69bdb3aae985e71b89962719a9539"
+        },
+        {
+          "address": "0x99e4b0",
+          "size": 15,
+          "sha256": "38179c19e44630e074ee6f21daa0d5c804a503009c57b443f53f87ca6df50e63"
+        },
+        {
+          "address": "0xe3ce13",
+          "size": 84,
+          "sha256": "aaa074e686fee5db6298e6b5d4c6a6855b2246b9d77014f7d434d0498bbf2ad9"
+        }
+      ],
+      "replacements": [
+        {
+          "old": "quest:GetTimer(4)",
+          "new": "quest:GetTimer(i_stk_1a8)",
+          "count": 1
+        },
+        {
+          "old": "quest:SetTimer(4, fVar19)",
+          "new": "quest:SetTimer(i_stk_1a8, 4)",
+          "count": 1
+        }
+      ],
+      "evidence": {
+        "registeredTimerAlias": "i_stk_1a8",
+        "balancedStackOffset": 24,
+        "querySite": "0xe3ce20",
+        "resetSite": "0xe3ce61",
+        "resetDuration": 4,
+        "nativeRegistrationReport": "native_registration_results.json",
+        "nativePollingReport": "native_timer_results.json",
+        "note": "Post-W108 phase;only PlayerOwned polling query and conditional reset operands. Radius8,distance/termination predicates and yields remain unchanged."
+      }
+    }
+  },
+  "reviewedCleanupOperands": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "luaSha256": "86db0c247958215b521f45fdba2ba188d88e221924438c7ff869333c387af61b",
+      "spanBegin": "                            pcVar14 = \"TEXT_QST_B13_MAGICMAN_PIMPING\"",
+      "spanEnd": "    ::LAB_00e44903::",
+      "nativeWitnesses": [
+        {
+          "address": "0xe40edf",
+          "size": 150,
+          "sha256": "5bfac8d5889ed6753b1ff8502989c2cf02e058217d99558d9de378f94d220c86"
+        },
+        {
+          "address": "0xe40f75",
+          "size": 53,
+          "sha256": "8075f1d55e8dfa14d7b56929f8b80eaa7ec9c40b9691556b37e9e813a420b6d1"
+        },
+        {
+          "address": "0xe41568",
+          "size": 97,
+          "sha256": "b9da3a3fbe11ea7620135d39b5463d43d90d1c1655a0be5482c3cb066dd8f6c1"
+        },
+        {
+          "address": "0xe41711",
+          "size": 103,
+          "sha256": "de6c2c2ef2d48fb5a39cfa862edd645688972be0108e8098fe6d19f7c7014e49"
+        },
+        {
+          "address": "0xe445b8",
+          "size": 93,
+          "sha256": "89a3abc2ff7ed77590ed01a7bd297acdc6ff44373a56d3e6b869711cd1824029"
+        },
+        {
+          "address": "0xe446ea",
+          "size": 58,
+          "sha256": "80705b6f50f891dbe024e2f58442e4e314317b48b281a88f1fe747a30461670e"
+        },
+        {
+          "address": "0xe44950",
+          "size": 24,
+          "sha256": "6175b309083515340e31d4c5005a40b39caa8a369f8742cbe45ed2a57330df90"
+        },
+        {
+          "address": "0xe44968",
+          "size": 24,
+          "sha256": "9cc97e7d3caeeacf704aa31e3749cbe32e06e5b7d709527ae4e0789f2399c9ee"
+        },
+        {
+          "address": "0x6e7ab0",
+          "size": 53,
+          "sha256": "23707643d74133867908da322ba37d39576eb0cb9001a73db24903f73725b556"
+        },
+        {
+          "address": "0x6e7b80",
+          "size": 66,
+          "sha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+        },
+        {
+          "address": "0x7e74d0",
+          "size": 66,
+          "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+        },
+        {
+          "address": "0x99a430",
+          "size": 56,
+          "sha256": "1d75d831d3f6e008489a4847244a3e123b663f8f7de361ca3f15fc938a470796"
+        },
+        {
+          "address": "0xe41cd1",
+          "size": 97,
+          "sha256": "d3a85c49d8b954b1c53392f7675731a2376faab9961ccbfef59760a753bec70d"
+        },
+        {
+          "address": "0xe41e89",
+          "size": 93,
+          "sha256": "0ea92682d779cc93140e497084cc5d352b1d6565d50cb0c6bc95b9a341bbde9d"
+        },
+        {
+          "address": "0xe41fa0",
+          "size": 84,
+          "sha256": "d60de0a03535b604c81415780070344989ccb9a628d0d1c973895c25405729c1"
+        },
+        {
+          "address": "0xe4468c",
+          "size": 152,
+          "sha256": "12f210fe1c89dfddcd65f483ff7312218d97db2c181b07ec3a979359841921c3"
+        },
+        {
+          "address": "0xe4474c",
+          "size": 162,
+          "sha256": "8b0bd47d84a5b321593f7fa214a0caa6a3175dd30ae8f0d8ff8c4bf786b6c3ad"
+        },
+        {
+          "address": "0xe41809",
+          "size": 115,
+          "sha256": "a6e5ab5c2ec8c05cbc6be5a8c209514b481236ee90f7d99d69fbff295a5dc07e"
+        },
+        {
+          "address": "0xe41992",
+          "size": 115,
+          "sha256": "84507ff52f7c174068efde1cb41fc08125098c11fce53dedf425c3efa9057ea7"
+        },
+        {
+          "address": "0xe44615",
+          "size": 42,
+          "sha256": "6744c1acd74f3d84dcc4ae9c422639340be14c7dcf7d77d49cbfd02778bec955"
+        },
+        {
+          "address": "0xe448a1",
+          "size": 38,
+          "sha256": "7e8ed0eb29b7e0307721945fa985aaf49469a3bea60fabfe5c7f847f45ea44e6"
+        },
+        {
+          "address": "0xe4451f",
+          "size": 18,
+          "sha256": "83ace8b7d2c87d4239cd69d27ced7bb2fa2b650767ffa03ae717e2e6421de958"
+        },
+        {
+          "address": "0xe41b30",
+          "size": 23,
+          "sha256": "45a35ea6b4416bdd1766b7599df08c034beb52cee95ec38a16605d95719db1eb"
+        },
+        {
+          "address": "0xe4463f",
+          "size": 47,
+          "sha256": "e51606d67385b70385830956d5f5ee829e8209a3c015e7281f77333e8a74d717"
+        },
+        {
+          "address": "0xe44862",
+          "size": 43,
+          "sha256": "c9f152b772d13552d20fa6a8178a7ff41d87d5764bc9d3e4c834783076ddb128"
+        },
+        {
+          "address": "0xe44353",
+          "size": 27,
+          "sha256": "3ac1406ff7e9efaa5ae3c2ebc38fb9fd455b6848c181bea6c519e0d15ef20da1"
+        },
+        {
+          "address": "0xe4491d",
+          "size": 24,
+          "sha256": "66e8d0d7b0f54076bc65cc6bddace528703fda1fa789666e82e7468ada15e96c"
+        },
+        {
+          "address": "0xe4450d",
+          "size": 36,
+          "sha256": "8471e481cf105c539c82653f5cec3005f93c014eecde247a8914df70cbd29449"
+        },
+        {
+          "address": "0xcd4470",
+          "size": 20,
+          "sha256": "ac782bca8e7eb5e9e8f7c6726c7d40dd2b0942446a3ff2fa6c657959c966454d"
+        }
+      ],
+      "replacements": [
+        {
+          "old": "                                    quest:PauseAllNonScriptedEntities(false)\n                                    quest:DeregisterTimer(me)\n                                    quest:DeregisterTimer(iVar18)\n                                    -- TODO(native): goto LAB_00e446ea",
+          "new": "                                    quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_340)\n                                    quest:DeregisterTimer(timerId)\n                                    quest:DeregisterTimer(i_stk_378)\n                                    resources:ReleaseResource(xStack_364)\n                                    return",
+          "count": 1
+        },
+        {
+          "old": "                                quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_2f8)\n                                quest:DeregisterTimer(me)\n                                quest:DeregisterTimer(iVar18)\n                                -- LAB_00e446ea: (native jump target)\n                                return",
+          "new": "                                quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_2f8)\n                                quest:DeregisterTimer(timerId)\n                                quest:DeregisterTimer(i_stk_378)\n                                resources:ReleaseResource(xStack_364)\n                                return",
+          "count": 1
+        },
+        {
+          "old": "                                    quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_2f8)\n                                    quest:DeregisterTimer(iVar21)\n                                    quest:DeregisterTimer(me)\n                                    return",
+          "new": "                                    quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_2f8)\n                                    quest:DeregisterTimer(timerId)\n                                    quest:DeregisterTimer(i_stk_378)\n                                    resources:ReleaseResource(xStack_364)\n                                    return",
+          "count": 1
+        },
+        {
+          "old": "    ::LAB_00e44615::\n    quest:PauseAllNonScriptedEntities(false)\n    resources:DestroyMovie(xStack_330)",
+          "new": "    ::LAB_00e44615::\n    quest:PauseAllNonScriptedEntities(false)\n    resources:DestroyMovie(xStack_340)",
+          "count": 1
+        },
+        {
+          "old": "                                if bVar5 then\n                                    quest:PauseAllNonScriptedEntities(false)\n                                    this_00 = xStack_340\n                                    goto LAB_00e44862\n                                end",
+          "new": "                                if bVar5 then\n                                    quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_340)\n                                    goto LAB_00e44862\n                                end",
+          "count": 1
+        },
+        {
+          "old": "quest:PauseAllNonScriptedEntities((fVar23 ~= 0))",
+          "new": "quest:PauseAllNonScriptedEntities(false)",
+          "count": 1
+        }
+      ],
+      "evidence": {
+        "first_native_interrupt": "0xe41751 -> 0xe445b8",
+        "movie_balanced_stack": 72,
+        "second_timer_balanced_stack": 24,
+        "first_timer_balanced_stack": 28,
+        "local_balanced_stack": 36,
+        "generated_exits": [
+          "synthetic immediate failed-Speak guard",
+          "original loop interruption"
+        ],
+        "source_cleanup_blocks": 1,
+        "note": "Complete first-PIMPING native interruption block only,before later speech-guard emission. Later E4468C movie excluded. Native void Speak has no immediate-failure branch;later synthetic guard must inherit this retirement contract and is independently tested. No predicate,yield or normal-path change.",
+        "attacked_abort_extension": {
+          "branches": [
+            "0xe41ec6 -> 0xe4468c",
+            "0xe41fe1 -> 0xe4474c"
+          ],
+          "movie_balanced_stack": 144,
+          "local_balanced_stack": 36,
+          "second_timer_balanced_stack": 24,
+          "first_timer_balanced_stack": 28,
+          "added_native_cleanup_blocks": 2,
+          "added_generated_cleanup_exits": 4,
+          "note": "Only first attacked-female/male loops. Original W111 first-PIMPING cleanup unchanged. Synthetic immediate speech guards separately modeled,not native void-Speak return claims. Later repeated attacked speech paths remain excluded."
+        },
+        "first_movie_shared_tail_extension": {
+          "original_branches": [
+            "0xe41869 -> 0xe44615",
+            "0xe419f2 -> 0xe44615"
+          ],
+          "movie_balanced_stack": 72,
+          "movie_member_stack": 80,
+          "shared_tail": "0xe44615 -> 0xe448a1 -> 0xe4451f/0xe44528",
+          "source_movie_operand_replacements": 1,
+          "affected_generated_guarded_exits": 4,
+          "note": "Only shared44615 movie identity changed from later beer330 to first340. Existing W111/W112 cleanup replacements unchanged. Timers/local retirement,predicates,yields and other movies unchanged. Two native loop interruptions plus two separately modeled synthetic failed-Speak guards;no native void-Speak return claim."
+        },
+        "first_chatter_abort_extension": {
+          "original_branch": "0xe41b41 -> 0xe4463f",
+          "movie_stack": 72,
+          "movie_member_stack": 80,
+          "temporary_chatter_string_stack": 120,
+          "unpause_literal_zero": "0xe4464a",
+          "source_cleanup_block_replacements": 1,
+          "affected_generated_guarded_exits": 2,
+          "note": "First-chatter loop and separately modeled synthetic failed-Speak guard retire the live first movie before existing timer/local cleanup. Prior four replacements preserved. CString destruction remains implicit in Lua;native CString callback is doubled. No native Speak-return or gameplay claim."
+        },
+        "final_beer_existing_deeds_pause_extension": {
+          "original_zero_push": "0xe44366",
+          "original_branch": "0xe44368 -> 0xe4491d",
+          "pause_call": "0xe44921",
+          "movie_stack": 104,
+          "movie_destructor": "0xe4492b",
+          "timer_destructor": "0xcd4470,20bytes,twice",
+          "source_operand_replacements": 1,
+          "note": "Final-beer existing-deeds interruption unpauses with original literal0 instead of reused/uninitialized distance float. Prior five replacements preserved. Movie/timer/local cleanup unchanged;native body execution includes actual timer wrappers. No engine heap,exception or gameplay proof."
+        }
+      }
+    },
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "luaSha256": "286dd5a5a7233b616315b3e30809cc395ab8c6bf4594eab125a91981242fe3da",
+      "spanBegin": "::LAB_00e3bf28::",
+      "spanEnd": "::FLOW_past_lab_00e3bf28::",
+      "nativeWitnesses": [
+        {
+          "address": "0xe3bf71",
+          "size": 45,
+          "sha256": "6d011922875af37e9598d1a6aa8beefe55b8f4a7a4e0124fd7747c47053387b2"
+        },
+        {
+          "address": "0xe3c096",
+          "size": 35,
+          "sha256": "8195b9bc558b23bb2b90d2e02cf817bba0f3302414793b26ab432a5de1b3eaa5"
+        },
+        {
+          "address": "0xe3d078",
+          "size": 61,
+          "sha256": "0dff70e9a97860f0247dfc977aa51bb7c298fee9baae9857add1ba8f134bd971"
+        },
+        {
+          "address": "0xe3d0c0",
+          "size": 24,
+          "sha256": "405b29f544dac83e81eb7f19b75d780263115aa510d14a84c442fcc493f970d6"
+        },
+        {
+          "address": "0xe3e2ea",
+          "size": 32,
+          "sha256": "cca4c8628a42d8ea6a80b6d2ae44787a88a3939773fd8ac29b52148cfcb35d7c"
+        },
+        {
+          "address": "0xcd4470",
+          "size": 20,
+          "sha256": "ac782bca8e7eb5e9e8f7c6726c7d40dd2b0942446a3ff2fa6c657959c966454d"
+        },
+        {
+          "address": "0x6e7ab0",
+          "size": 53,
+          "sha256": "23707643d74133867908da322ba37d39576eb0cb9001a73db24903f73725b556"
+        },
+        {
+          "address": "0x6e7b80",
+          "size": 66,
+          "sha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+        },
+        {
+          "address": "0x99a430",
+          "size": 56,
+          "sha256": "1d75d831d3f6e008489a4847244a3e123b663f8f7de361ca3f15fc938a470796"
+        },
+        {
+          "address": "0x7e74d0",
+          "size": 66,
+          "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+        }
+      ],
+      "replacements": [
+        {
+          "old": "resources:DestroyMovie(xStack_cc)",
+          "new": "resources:DestroyMovie(xStack_dc)",
+          "count": 2
+        },
+        {
+          "old": "quest:DeregisterTimer(xStack_160)",
+          "new": "quest:DeregisterTimer(i_stk_1a8)",
+          "count": 1
+        },
+        {
+          "old": "resources:DestroyMovie(xStack_160)",
+          "new": "resources:ReleaseResource(madameResource)",
+          "count": 1
+        },
+        {
+          "old": "                    goto LAB_00e3e2ea",
+          "new": "                    pCVar10 = xStack_dc\n                    goto LAB_00e3e2ea",
+          "count": 1
+        }
+      ],
+      "evidence": {
+        "movieBalancedStackOffset": 176,
+        "timerBalancedStackOffset": 24,
+        "localBalancedStackOffset": 28,
+        "normalComparison": "native_normal_cleanup_results.json",
+        "sharedComparison": "native_shared_cleanup_results.json",
+        "note": "Reviewed beer span only. Shared predecessor prepares the movie receiver before entering destruction; timer and local stay distinct."
+      }
+    }
+  },
+  "reviewedTerminalResourceCleanup": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "luaSha256": "4645b26129e3afd616dc1663d90dbde72622a67cf6936deffaffa6be0e2c9f5a",
+      "nativeInstructions": {
+        "0xe3eb63": "8d4c2418",
+        "0xe3eb67": "e814b8b5ff",
+        "0xe3ec71": "8bcd",
+        "0xe3ec73": "e8b86e0f00",
+        "0xe3ec78": "84c0",
+        "0xe3ec7a": "0f8590160000",
+        "0xe40310": "8b442424",
+        "0xe40314": "3bc7",
+        "0xe40316": "741d",
+        "0xe40318": "ff08",
+        "0xe4031a": "8b442424",
+        "0xe4031e": "3938",
+        "0xe40320": "7513",
+        "0xe40322": "8b4808",
+        "0xe40325": "ff5004",
+        "0xe40328": "8b4c2424",
+        "0xe4032c": "51",
+        "0xe4032d": "e88ae6dbff",
+        "0xe40332": "83c404",
+        "0xe40335": "8d4c2418",
+        "0xe40339": "897c2420",
+        "0xe4033d": "897c2424",
+        "0xe40341": "c74424188c002601",
+        "0xe40349": "e8e2a0b5ff"
+      },
+      "nativeCalls": {
+        "0xe3eb67": "0x99a380",
+        "0xe3ec73": "0xf35b30",
+        "0xe40349": "0x99a430"
+      },
+      "terminationBranch": "0xe3ec7a",
+      "cleanupEntry": "0xe40310",
+      "inlineCleanupStart": "0xe40310",
+      "constructorReceiver": "0xe3eb63",
+      "cleanupReceiver": "0xe40335",
+      "balancedStackSlot": 24,
+      "equivalentDestructorBodies": [
+        {
+          "address": "0xe40310",
+          "size": 62,
+          "sha256": "922a72584bc8722162d36e0203751221b411dd358ac2fadfd6c0d7c0288752aa"
+        },
+        {
+          "address": "0x7e74d0",
+          "size": 66,
+          "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+        },
+        {
+          "address": "0x99a430",
+          "size": 56,
+          "sha256": "1d75d831d3f6e008489a4847244a3e123b663f8f7de361ca3f15fc938a470796"
+        }
+      ],
+      "alias": "ladyResource",
+      "constructorHandle": "x_stk_188",
+      "pollLabel": "LADY_POLL",
+      "terminationFlag": "bVar5",
+      "splitCleanup": {
+        "entry": "0xe40364",
+        "movieAlias": "xStack_190",
+        "pairCount": 2,
+        "nativeCalls": {
+          "0xe40368": "0x6e7ab0",
+          "0xe40379": "0x99a430",
+          "0xe40382": "0x7e74d0"
+        },
+        "nativeInstructions": {
+          "0xe40364": "8d4c2430",
+          "0xe40368": "e843778aff",
+          "0xe4036d": "8d4c2428",
+          "0xe40371": "c74424288c002601",
+          "0xe40379": "e8b2a0b5ff",
+          "0xe4037e": "8d4c2418",
+          "0xe40382": "e849719aff"
+        },
+        "bodies": [
+          {
+            "address": "0xe40364",
+            "size": 35,
+            "sha256": "99dfc26df852b8a85b8222d992e1460c1172647cdcaf04ace8df3a08a24e07b7"
+          },
+          {
+            "address": "0x6e7ab0",
+            "size": 53,
+            "sha256": "23707643d74133867908da322ba37d39576eb0cb9001a73db24903f73725b556"
+          },
+          {
+            "address": "0x6e7b80",
+            "size": 66,
+            "sha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+          }
+        ]
+      }
+    }
+  },
   "script": "V_Bordello",
   "package": "V_Bordello",
   "nativeClass": "NScript::CV_BordelloScript",
@@ -1159,6 +1643,2453 @@
       "timers": [],
       "resourceFields": {},
       "arrays": []
+    }
+  },
+  "reviewedResourceThingReceivers": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "anchorConstructor": "0x00E40EE3",
+      "anchorTarget": "0x0099A380",
+      "anchorSlot": -868,
+      "getterTarget": "0x007E7490",
+      "printedReceiver": "(CScriptGameResourceObjectScriptedThingBase *)&pCStack_3b0",
+      "getterReceiverDisplacement": 40,
+      "sites": [
+        "0x00E4168A",
+        "0x00E417A5",
+        "0x00E41932",
+        "0x00E41A74",
+        "0x00E41E02",
+        "0x00E41F1D",
+        "0x00E421C5",
+        "0x00E422BC",
+        "0x00E423B1",
+        "0x00E424A9",
+        "0x00E4259E",
+        "0x00E42699",
+        "0x00E42800",
+        "0x00E42F81",
+        "0x00E43076",
+        "0x00E43158",
+        "0x00E4321B",
+        "0x00E4331F",
+        "0x00E434D5",
+        "0x00E4364D",
+        "0x00E43716",
+        "0x00E43A47",
+        "0x00E43B22",
+        "0x00E43D83",
+        "0x00E43E8E",
+        "0x00E43F89",
+        "0x00E4407E",
+        "0x00E44179",
+        "0x00E4426E",
+        "0x00E443CD"
+      ]
+    }
+  },
+  "reviewedStackScalarAliases": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "alias": "chatterCounter",
+      "nativeInstructions": {
+        "0x00E40FAA": "b801000000",
+        "0x00E40FAF": "8944247c",
+        "0x00E40FB3": "89442444",
+        "0x00E41A2A": "8b54247c",
+        "0x00E41A2E": "83fa04",
+        "0x00E41A33": "ba01000000",
+        "0x00E41A38": "8954247c",
+        "0x00E41A4E": "8d4c247c",
+        "0x00E41A70": "8d4c2428",
+        "0x00E41B63": "8b44247c",
+        "0x00E41B67": "40",
+        "0x00E41B6C": "8944247c"
+      },
+      "edits": [
+        [
+          "uStack_318 = 1;",
+          "chatterCounter = 1;"
+        ],
+        [
+          "if (4 < iStack_358)",
+          "if (4 < chatterCounter)"
+        ],
+        [
+          "iStack_358 = 1;",
+          "chatterCounter = 1;"
+        ],
+        [
+          "&xStack_1a0,iStack_358",
+          "&xStack_1a0,chatterCounter"
+        ],
+        [
+          "iStack_358 = iStack_358 + 1;",
+          "chatterCounter = chatterCounter + 1;"
+        ]
+      ]
+    }
+  },
+  "reviewedStackValueAliases": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "nativeInstructions": {
+        "0x00E40FAA": "b801000000",
+        "0x00E40FAF": "8944247c",
+        "0x00E40FB3": "89442444",
+        "0x00E413FD": "8b542444",
+        "0x00E41464": "c744244401000000",
+        "0x00E414A6": "8b7c2444",
+        "0x00E41506": "47",
+        "0x00E41508": "897c244c",
+        "0x00E42CF6": "8b542444",
+        "0x00E42D5B": "c744244401000000",
+        "0x00E42D9D": "8b7c2444",
+        "0x00E42DFD": "47",
+        "0x00E42DFF": "897c244c"
+      },
+      "conversionTarget": "0x0099F830",
+      "conversionSites": {
+        "0x00E4140A": "iStack_350",
+        "0x00E414B7": "(int)ppuStack_364",
+        "0x00E42D01": "iStack_350",
+        "0x00E42DAE": "(int)ppuStack_364"
+      },
+      "edits": [
+        [
+          "ppuVar4 = xStack_364;",
+          "ppuVar4 = iStack_350;",
+          2
+        ],
+        [
+          "(int)xStack_364",
+          "iStack_350",
+          2
+        ]
+      ]
+    }
+  },
+  "reviewedMagicmanTaskLoop": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "nativeInstructions": {
+        "0x00E428AD": "7425",
+        "0x00E428B5": "ff501c",
+        "0x00E428BA": "e871320f00",
+        "0x00E428C1": "0f85761f0000",
+        "0x00E428C7": "8d4c2424",
+        "0x00E428CB": "e8804b9aff",
+        "0x00E428D2": "75dc",
+        "0x00E428D6": "e855320f00",
+        "0x00E428DD": "0f85aa1f0000",
+        "0x00E4484C": "e85f328aff",
+        "0x00E4485D": "e8ce5bb5ff"
+      },
+      "memberRelease": "0x00E4484C",
+      "baseRelease": "0x00E4485D",
+      "diagnostic": "verify cleanup at LAB_00e428d4 (lifted as early return)"
+    }
+  },
+  "reviewedMagicmanPauseBool": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "liftedCallCount": 10,
+      "nativeInstructions": {
+        "0x00E417D2": "33f6",
+        "0x00E41869": "0f85a62d0000",
+        "0x00E4195F": "33f6",
+        "0x00E419F2": "0f851d2c0000",
+        "0x00E4282D": "33f6",
+        "0x00E428C1": "0f85761f0000",
+        "0x00E428DD": "0f85aa1f0000",
+        "0x00E44617": "56",
+        "0x00E4461A": "ff92ec050000",
+        "0x00E4483F": "56",
+        "0x00E44842": "ff90ec050000",
+        "0x00E4488D": "56",
+        "0x00E44892": "ff92ec050000"
+      }
+    }
+  },
+  "reviewedBordelloClientSexCount": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "nativeInstructions": {
+        "0x00E45FA1": "ff9668030000",
+        "0x00E45FAA": "40",
+        "0x00E45FAB": "50",
+        "0x00E45FAC": "ff966c030000"
+      }
+    }
+  },
+  "reviewedBordelloClientPause": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "pauseCalls": [
+        [
+          "0x00E465C9",
+          "0x00E465CB"
+        ],
+        [
+          "0x00E465F7",
+          "0x00E465F9"
+        ],
+        [
+          "0x00E46625",
+          "0x00E46627"
+        ],
+        [
+          "0x00E46653",
+          "0x00E46655"
+        ]
+      ],
+      "nativeInstructions": {
+        "0x00E465C9": "6a00",
+        "0x00E465CB": "ff90ec050000",
+        "0x00E465F7": "6a00",
+        "0x00E465F9": "ff92ec050000",
+        "0x00E46625": "6a00",
+        "0x00E46627": "ff92ec050000",
+        "0x00E46653": "6a00",
+        "0x00E46655": "ff90ec050000"
+      }
+    }
+  },
+  "reviewedBordelloClientResource": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "diagnostic": "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\"",
+      "nativeCalls": {
+        "0x00E44EF7": "0x0099A380",
+        "0x00E45FCD": "0x008ABD10",
+        "0x00E46146": "0x007E7490",
+        "0x00E462A9": "0x007E7490"
+      },
+      "nativeInstructions": {
+        "0x00E44EF3": "8d4c2414",
+        "0x00E44EF7": "e88454b5ff",
+        "0x00E45FBF": "8d4c2414",
+        "0x00E45FC3": "51",
+        "0x00E45FC4": "8b4d14",
+        "0x00E45FC7": "81c1a4000000",
+        "0x00E45FCD": "e83e5da6ff",
+        "0x00E46141": "52",
+        "0x00E46142": "8d4c2418",
+        "0x00E46146": "e845139aff",
+        "0x00E462A4": "51",
+        "0x00E462A5": "8d4c2418",
+        "0x00E462A9": "e8e2119aff"
+      }
+    }
+  },
+  "reviewedBordelloClientFlags": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "stores": {
+        "0x00E450C5": [
+          67,
+          1
+        ],
+        "0x00E453CB": [
+          99,
+          0
+        ],
+        "0x00E453D2": [
+          99,
+          1
+        ]
+      },
+      "nativeInstructions": {
+        "0x00E4503E": "88442443",
+        "0x00E45050": "8a442443",
+        "0x00E450C5": "c644244301",
+        "0x00E453CB": "c644246300",
+        "0x00E453D0": "eb05",
+        "0x00E453D2": "c644246301",
+        "0x00E45416": "8a442463",
+        "0x00E4541A": "84c0",
+        "0x00E4541C": "0f8416020000"
+      }
+    }
+  },
+  "reviewedBordelloClientPosition": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "diagnostic": "unlifted: puVar8 = (**(*xStack_e4 + 0x18))()",
+      "nativeInstructions": {
+        "0x00E45074": "8b4c242c",
+        "0x00E45078": "85c9",
+        "0x00E4507A": "7507",
+        "0x00E4507C": "b8e0e84301",
+        "0x00E45083": "8b01",
+        "0x00E45085": "ff5018",
+        "0x00E45724": "8b4c242c",
+        "0x00E45728": "85c9",
+        "0x00E4572A": "7507",
+        "0x00E4572C": "b8e0e84301",
+        "0x00E45733": "8b11",
+        "0x00E45735": "ff5218"
+      }
+    }
+  },
+  "reviewedBordelloClientRelease": {
+    "0x00e3b230": {
+      "nativeSha256": "2be4bc45c9f9152eb5c5feaa209790195f224e522cb524208c2bcd3b832f56eb",
+      "sourceSha256": "add8abf4d1ab77f43e5895e6676d0eccba3f539553100be47fd8155fc1966516",
+      "nativeInstructions": {
+        "0x00E3B230": "8b4114",
+        "0x00E3B233": "ff4854",
+        "0x00E3B236": "8b4120",
+        "0x00E3B239": "8b4914",
+        "0x00E3B23C": "c644085800",
+        "0x00E3B241": "c3"
+      }
+    }
+  },
+  "reviewedMadameHitFlags": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "stores": {
+        "0x00E3CB35": [
+          19,
+          0
+        ],
+        "0x00E3CB3C": [
+          19,
+          1
+        ],
+        "0x00E3E063": [
+          19,
+          0
+        ],
+        "0x00E3E06A": [
+          19,
+          1
+        ]
+      },
+      "nativeInstructions": {
+        "0x00E3CB35": "c644241300",
+        "0x00E3CB3C": "c644241301",
+        "0x00E3CB92": "8a442413",
+        "0x00E3CB96": "84c0",
+        "0x00E3CB98": "0f8449020000",
+        "0x00E3E063": "c644241300",
+        "0x00E3E06A": "c644241301",
+        "0x00E3E0C3": "8a442413",
+        "0x00E3E0C7": "84c0",
+        "0x00E3E0C9": "0f84e1010000"
+      }
+    }
+  },
+  "reviewedMadamePresentedItem": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "sidecarSource": "refs/script_recovery/new_oakvale_intro/runtime_evidence/session-start-20260912/forge-source/LuaEntityAPI.cpp",
+      "sidecarSha256": "f9ee03f2d53da413cf910fbc6e3ccf4453983bae809f5fe62ec983d222a72348",
+      "itemNameAddress": "0x012E4058",
+      "itemName": "OBJECT_BEER_TANKARD",
+      "nativeInstructions": {
+        "0x00E3BEDC": "ff928c000000",
+        "0x00E3BEEA": "8b442414",
+        "0x00E3BEF0": "751a",
+        "0x00E3BF03": "f3a6",
+        "0x00E3BF05": "7421",
+        "0x00E3BF0E": "ba58402e01",
+        "0x00E3BF13": "e858565dff",
+        "0x00E3BF1E": "88442413",
+        "0x00E3BF22": "0f8491010000"
+      }
+    }
+  },
+  "reviewedMadameBeerHealth": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "zeroAddress": "0x0122DEDC",
+      "nativeInstructions": {
+        "0x00E3BFC1": "ff9720040000",
+        "0x00E3BFC7": "d81ddcde2201",
+        "0x00E3BFCD": "c644241301",
+        "0x00E3BFD4": "f6c441",
+        "0x00E3BFD7": "7405",
+        "0x00E3BFD9": "c644241300",
+        "0x00E3BFEA": "8a442413",
+        "0x00E3BFEE": "84c0",
+        "0x00E3BFF0": "7462",
+        "0x00E3C00F": "e87cb39aff"
+      }
+    }
+  },
+  "reviewedMadameResourceAlias": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "constructorSite": "0x00E3BC4D",
+      "getterTarget": "0x007E7490",
+      "getterSites": [
+        "0x00E3BFB8",
+        "0x00E3C224",
+        "0x00E3C3D0",
+        "0x00E3C498",
+        "0x00E3C7E3",
+        "0x00E3C9D6",
+        "0x00E3CCB0",
+        "0x00E3CFBF",
+        "0x00E3D21B",
+        "0x00E3D3CD",
+        "0x00E3D4BF",
+        "0x00E3D58D",
+        "0x00E3D64E",
+        "0x00E3D707",
+        "0x00E3D7E7",
+        "0x00E3D8C8",
+        "0x00E3D98B",
+        "0x00E3DB35",
+        "0x00E3DCE0",
+        "0x00E3DE4E",
+        "0x00E3DF11",
+        "0x00E3E1CC"
+      ]
+    }
+  },
+  "reviewedBordelloLadySetup": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeInstructions": {
+        "0x00E3EB1C": "8d7508",
+        "0x00E3EB1F": "33ff",
+        "0x00E3EB96": "56",
+        "0x00E3EB97": "ff9034090000",
+        "0x00E3EBA8": "83ec0c",
+        "0x00E3EBAB": "54",
+        "0x00E3EBAE": "ff501c",
+        "0x00E3EBB1": "83ec0c",
+        "0x00E3EBD9": "ff92ec0b0000",
+        "0x00E3EBDF": "57",
+        "0x00E3EC08": "ff92f80b0000",
+        "0x00E3EC0E": "6800008041",
+        "0x00E3EC3B": "ff92040c0000",
+        "0x00E3EC41": "6a04",
+        "0x00E3EC54": "8b4d0c",
+        "0x00E3EC57": "894804",
+        "0x00E3EC5A": "8b4d10",
+        "0x00E3EC6B": "ff92400c0000"
+      },
+      "diagnostics": [
+        "SetCreatureBrain: missing spCreature (1 args for 2 params)",
+        "SetWanderCentrePoint: missing spThing, pos (0 args for 2 params)",
+        "SetWanderMinDistance: missing spThing (1 args for 2 params)",
+        "SetWanderMaxDistance: missing spThing (1 args for 2 params)",
+        "SetScriptingStateGroup: missing spThing (1 args for 2 params)"
+      ]
+    }
+  },
+  "reviewedBordelloLadyCrime": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeInstructions": {
+        "0x00E3ECB5": "8b4514",
+        "0x00E3ECBD": "83c05c",
+        "0x00E3ECC0": "50",
+        "0x00E3ECC1": "ff9220020000"
+      },
+      "diagnostic": "IsReportedOrUnreportedCrimeKnown: missing spVillage (0 args for 1 params)"
+    }
+  },
+  "reviewedBordelloLadyInformation": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeCall": "0x00E400B2",
+      "liftedCallCount": 2,
+      "nativeInstructions": {
+        "0x00E400A5": "8b4d04",
+        "0x00E400A8": "c6452401",
+        "0x00E400AE": "8d7508",
+        "0x00E400B1": "56",
+        "0x00E400B2": "ff92a4050000"
+      },
+      "diagnostic": "ClearThingHasInformation: missing pThing (0 args for 1 params)"
+    }
+  },
+  "reviewedBordelloLadyPersonality": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "bindingSource": "refs/script_recovery/new_oakvale_intro/runtime_evidence/session-start-20260912/forge-source/LuaQuestState.cpp",
+      "bindingSha256": "5c0f2c561f586a8934aea49dc3616c73208307db62986b7d24e2db2d3d8ad268",
+      "nativeCall": "0x00E400D9",
+      "literalAddress": "0x012E422C",
+      "liftedCallCount": 2,
+      "nativeInstructions": {
+        "0x00E400AE": "8d7508",
+        "0x00E400B8": "6aff",
+        "0x00E400BA": "682c422e01",
+        "0x00E400C6": "e825ebb5ff",
+        "0x00E400D0": "8d942488000000",
+        "0x00E400D7": "52",
+        "0x00E400D8": "56",
+        "0x00E400D9": "ff90ac090000",
+        "0x00E400E6": "e8f5e9b5ff"
+      },
+      "diagnostic": "EntitySetPersonalityOverride: not in FSE manifest"
+    }
+  },
+  "reviewedBordelloLadyPauseBool": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeCall": "0x00E40397",
+      "nativeInstructions": {
+        "0x00E3EB1F": "33ff",
+        "0x00E3EDD3": "84c0",
+        "0x00E3EDD5": "0f85b7150000",
+        "0x00E40392": "8b03",
+        "0x00E40394": "57",
+        "0x00E40397": "ff90ec050000"
+      },
+      "diagnostic": "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)"
+    }
+  },
+  "reviewedBordelloLadyHealth": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeCalls": [
+        "0x00E3EE1B",
+        "0x00E3EF5A",
+        "0x00E3F07E",
+        "0x00E3F289",
+        "0x00E3F526",
+        "0x00E3F653",
+        "0x00E3F77B",
+        "0x00E3F877",
+        "0x00E3FA9E",
+        "0x00E3FE0B",
+        "0x00E3FF0A"
+      ],
+      "diagnostic": "GetHealth: missing pThing (0 args for 1 params)"
+    }
+  },
+  "reviewedBordelloLadySkippable": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeCallsInSourceOrder": [
+        "0x00E3F467",
+        "0x00E3FD6B",
+        "0x00E3FC58",
+        "0x00E3F4B9"
+      ],
+      "diagnostic": "SetCutsceneSkippable: missing bIsSkippable (0 args for 1 params)"
+    }
+  },
+  "reviewedBordelloLadySexCount": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeInstructions": {
+        "0x00E3FD81": "ff9668030000",
+        "0x00E3FD8A": "40",
+        "0x00E3FD8B": "50",
+        "0x00E3FD8C": "ff966c030000"
+      },
+      "diagnostic": "SetNumberOfTimesHeroHasHadSex: missing count (0 args for 1 params)"
+    }
+  },
+  "reviewedBordelloLadyNameLoad": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "initNativeSha256": "fa81f6f411eac5bf8b3eb86b0ced465731b258d8b8924b30b31b363b8167c2da",
+      "initSourceSha256": "f3b9a684162def2e94f4eaea89f97bb9a321564c14e748fcd9080a65f5864865",
+      "diagnostic": "unlifted: CVar3 = *ENTITYSTATE_GetString(\"Name\")"
+    }
+  },
+  "reviewedBordelloPausedSkipBinding": {
+    "0x00e3e720": {
+      "nativeSha256": "30529b815fa473ac1baf64c38ff3669f88c3eccd166ac71e8c79f1bfbd08a2e4",
+      "sourceSha256": "ecadb9692ef79147bcc8f175a45205b2dda41cc03ddaebb02e39155f1e9d79a6",
+      "bindingPatch": "tools/script_recovery/sidecar_patches/novi-zzzzzzzzzzzzzzzzzzzzz-cutscene-skip-paused.patch",
+      "bindingPatchSha256": "87dd915518262fc87a94d0a8efc0b630387a8fd218a8525341490b2fdcb370c2",
+      "nativeInstructions": {
+        "0x00E3E9F8": "6a01",
+        "0x00E3E9FA": "ff9010060000",
+        "0x00E3EA02": "33ed",
+        "0x00E3EA27": "7425",
+        "0x00E3EA53": "55",
+        "0x00E3EA54": "ff9210060000"
+      }
+    }
+  },
+  "reviewedMadamePushable": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "nativeInstructions": {
+        "0x00E3BBFF": "57",
+        "0x00E3BC11": "8b4d0c",
+        "0x00E3BC14": "894804",
+        "0x00E3BC17": "8b4d10",
+        "0x00E3BC1A": "3bcf",
+        "0x00E3BC1C": "894808",
+        "0x00E3BC1F": "7402",
+        "0x00E3BC21": "ff01",
+        "0x00E3BC28": "ff92300d0000"
+      },
+      "diagnostic": "SetIsPushableByHero: missing spThing (1 args for 2 params)"
+    }
+  },
+  "reviewedMadameCameraPoint": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "sites": [
+        {
+          "nameLiteralSite": "0x00E3C1D9",
+          "targetPushSite": "0x00E3C1F8",
+          "callSite": "0x00E3C201",
+          "callBytes": "ff9278060000"
+        },
+        {
+          "nameLiteralSite": "0x00E3C79B",
+          "targetPushSite": "0x00E3C7BA",
+          "callSite": "0x00E3C7C3",
+          "callBytes": "ff9078060000"
+        },
+        {
+          "nameLiteralSite": "0x00E3C95A",
+          "targetPushSite": "0x00E3C976",
+          "callSite": "0x00E3C97C",
+          "callBytes": "ff9278060000"
+        },
+        {
+          "nameLiteralSite": "0x00E3CC6B",
+          "targetPushSite": "0x00E3CC87",
+          "callSite": "0x00E3CC90",
+          "callBytes": "ff9278060000"
+        },
+        {
+          "nameLiteralSite": "0x00E3CF60",
+          "targetPushSite": "0x00E3CF7C",
+          "callSite": "0x00E3CF82",
+          "callBytes": "ff9278060000"
+        },
+        {
+          "nameLiteralSite": "0x00E3E18A",
+          "targetPushSite": "0x00E3E1A6",
+          "callSite": "0x00E3E1AC",
+          "callBytes": "ff9278060000"
+        }
+      ]
+    }
+  },
+  "reviewedMagicmanConversation": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "bindingSource": "refs/script_recovery/new_oakvale_intro/runtime_evidence/session-start-20260912/forge-source/LuaQuestState.cpp",
+      "bindingSha256": "5c0f2c561f586a8934aea49dc3616c73208307db62986b7d24e2db2d3d8ad268",
+      "rawCall": "(*(code *)ppuStack_308[0x16e])();",
+      "nativeInstructions": {
+        "0x00E40E8C": "8d5d08",
+        "0x00E41483": "ff9718010000",
+        "0x00E414AA": "50",
+        "0x00E414AB": "53",
+        "0x00E414AC": "6a00",
+        "0x00E414D1": "50",
+        "0x00E414D9": "56",
+        "0x00E414DA": "ff90b8050000",
+        "0x00E42D7A": "ff9718010000",
+        "0x00E42DA1": "50",
+        "0x00E42DA2": "53",
+        "0x00E42DA3": "6a00",
+        "0x00E42DC8": "50",
+        "0x00E42DD0": "56",
+        "0x00E42DD1": "ff90b8050000"
+      },
+      "sites": [
+        "0x00E414DA",
+        "0x00E42DD1"
+      ],
+      "patterns": [
+        {
+          "assignments": [
+            "__push3 = quest:AddNewConversation(me, false, false)",
+            "__push4 = quest:GetHero()",
+            "__push5 = (\"TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0\" .. pCVar10)"
+          ],
+          "remove": [
+            "-- TODO(native): xStack_308 = (undefined **)**(int **)(this + 4);",
+            "-- TODO(native): xStack_344 = (int *)(*(code *)xStack_308[0x46])();"
+          ],
+          "call": "-- TODO(native): (*(code *)xStack_308[0x16e])(__push3,__push5,0,(this + 8),__unknown_push);",
+          "replacement": "quest:AddLineToConversation(__push3, __push5, me, __push4, false)"
+        },
+        {
+          "assignments": [
+            "__push17 = quest:AddNewConversation(me, false, false)",
+            "__push18 = quest:GetHero()",
+            "__push19 = (\"TEXT_QST_B13_MAGICMAN_TALKING_OUT_LOUD_0\" .. pCVar10)"
+          ],
+          "remove": [
+            "-- TODO(native): xStack_2bc = (undefined **)**(int **)(this + 4);",
+            "-- TODO(native): xStack_344 = (int *)(*(code *)xStack_2bc[0x46])();"
+          ],
+          "call": "-- TODO(native): (*(code *)xStack_2bc[0x16e])(__push17,__push19,0,(this + 8),__unknown_push);",
+          "replacement": "quest:AddLineToConversation(__push17, __push19, me, __push18, false)"
+        }
+      ]
+    }
+  },
+  "reviewedFinalBeerMovie": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "nativeInstructions": {
+        "0x00E43D33": "8d8424b0000000",
+        "0x00E43D3B": "ff92c8050000",
+        "0x00E43E6F": "8d4c2468",
+        "0x00E43E73": "e8083d8aff",
+        "0x00E444BE": "8d4c2468",
+        "0x00E444C2": "e8b9368aff",
+        "0x00E4490F": "8d4c2468",
+        "0x00E44913": "e868328aff",
+        "0x00E44927": "8d4c2468",
+        "0x00E4492B": "e850328aff",
+        "0x00E44941": "8d4c2468",
+        "0x00E44945": "e836328aff"
+      },
+      "startSite": "0x00E43D3B",
+      "startStack": -784,
+      "cleanupSites": [
+        {
+          "site": "0x00E43E73",
+          "stack": -780
+        },
+        {
+          "site": "0x00E444C2",
+          "stack": -764
+        },
+        {
+          "site": "0x00E44913",
+          "stack": -780
+        },
+        {
+          "site": "0x00E4492B",
+          "stack": -784
+        },
+        {
+          "site": "0x00E44945",
+          "stack": -764
+        }
+      ],
+      "rawObject": "ppuStack_360",
+      "rawCleanup": "(aCStack_32c);",
+      "rawLabels": [
+        "LAB_00e43e65:",
+        "LAB_00e44903:"
+      ],
+      "luaStart": "xStack_310 = resources:StartMovie(\"\")",
+      "luaWrongCleanup": "resources:DestroyMovie(xStack_2fc)",
+      "luaWrongCount": 2,
+      "luaCorrectCleanup": "resources:DestroyMovie(xStack_310)",
+      "luaCorrectCount": 2,
+      "luaNormalCleanup": "resources:DestroyMovie(xStack_2fc)"
+    }
+  },
+  "reviewedAttackedMovie": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "nativeInstructions": {
+        "0x00E4395D": "8d8424f0000000",
+        "0x00E43965": "ff92c8050000",
+        "0x00E43AF3": "8d8c2480000000",
+        "0x00E43AFA": "e881408aff",
+        "0x00E43BDC": "8d8c2488000000",
+        "0x00E43BE3": "e8c83e8aff",
+        "0x00E448F2": "8d8c2480000000",
+        "0x00E448F9": "e882328aff"
+      },
+      "startSite": "0x00E43965",
+      "startStack": -760,
+      "cleanupSites": [
+        {
+          "site": "0x00E43AFA",
+          "target": "0x006E7B80",
+          "stack": -740
+        },
+        {
+          "site": "0x00E43BE3",
+          "target": "0x006E7AB0",
+          "stack": -752
+        },
+        {
+          "site": "0x00E448F9",
+          "target": "0x006E7B80",
+          "stack": -740
+        }
+      ],
+      "rawObject": "appuStack_314",
+      "rawMember": "uStack_30c",
+      "rawLabels": [
+        "LAB_00e43ae7:",
+        "LAB_00e448e6:"
+      ],
+      "luaStart": "xStack_2f8_2 = resources:StartMovie(\"\")",
+      "luaWrongCleanup": "resources:DestroyMovie(xStack_2e4)",
+      "luaWrongCount": 6,
+      "luaNormalCleanup": "resources:DestroyMovie(xStack_2f8_2)"
+    }
+  },
+  "reviewedMovieScopes": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "nativeInstructions": {
+        "0x00E42E92": "8d442434",
+        "0x00E42E9F": "ff92c8050000",
+        "0x00E4302F": "8d4c2434",
+        "0x00E43033": "e8484b8aff",
+        "0x00E437CC": "8d4c243c",
+        "0x00E437D0": "e8db428aff",
+        "0x00E448D8": "8d4c2434",
+        "0x00E448DC": "e89f328aff"
+      },
+      "startSite": "0x00E42E9F",
+      "startStack": -836,
+      "cleanupSites": [
+        {
+          "site": "0x00E43033",
+          "target": "0x006E7B80",
+          "stack": -816
+        },
+        {
+          "site": "0x00E437D0",
+          "target": "0x006E7AB0",
+          "stack": -828
+        },
+        {
+          "site": "0x00E448DC",
+          "target": "0x006E7B80",
+          "stack": -816
+        }
+      ],
+      "rawObject": "ppuStack_360",
+      "rawMember": "iStack_358",
+      "rawLabels": [
+        "LAB_00e43023:",
+        "LAB_00e437b3:",
+        "LAB_00e448cc:"
+      ],
+      "luaStart": "xStack_344 = resources:StartMovie(\"\")",
+      "luaSharedCleanup": "resources:DestroyMovie(xStack_330)",
+      "luaSharedCount": 16,
+      "luaNormalCleanup": "resources:DestroyMovie(xStack_344)",
+      "luaName": "trickingMovie"
+    }
+  },
+  "reviewedPresentedItemNames": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "sidecarSource": "refs/script_recovery/new_oakvale_intro/runtime_evidence/session-start-20260912/forge-source/LuaEntityAPI.cpp",
+      "sidecarSha256": "f9ee03f2d53da413cf910fbc6e3ccf4453983bae809f5fe62ec983d222a72348",
+      "itemNameAddress": "0x012E4058",
+      "itemName": "OBJECT_BEER_TANKARD",
+      "nativeInstructions": {
+        "0x00E42041": "8d442414",
+        "0x00E42048": "ff928c000000",
+        "0x00E42056": "8b442414",
+        "0x00E4207A": "ba58402e01",
+        "0x00E4207F": "e8ecf45cff",
+        "0x00E4208E": "0f84be080000",
+        "0x00E43C01": "8d442414",
+        "0x00E43C08": "ff928c000000",
+        "0x00E43C16": "8b442414",
+        "0x00E43C3A": "ba58402e01",
+        "0x00E43C3F": "e82cd95cff",
+        "0x00E43C4E": "0f8473080000"
+      },
+      "sites": [
+        {
+          "poll": "0x00E42048",
+          "compare": "0x00E4207F",
+          "label": "LAB_00e42094"
+        },
+        {
+          "poll": "0x00E43C08",
+          "compare": "0x00E43C3F",
+          "label": "LAB_00e43c54"
+        }
+      ]
+    }
+  },
+  "reviewedMovieMembers": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "nativeInstructions": {
+        "0x00E41D10": "8d842490000000",
+        "0x00E41D20": "ff92c8050000",
+        "0x00E4201C": "8d8c2498000000",
+        "0x00E42023": "e8885a8aff",
+        "0x00E420DF": "8d542458",
+        "0x00E420EC": "ff90c8050000",
+        "0x00E42938": "8d4c2460",
+        "0x00E4293C": "e86f518aff",
+        "0x00E4469E": "e80d348aff",
+        "0x00E4484C": "e85f328aff"
+      },
+      "pairs": [
+        {
+          "rawObject": "appuStack_304",
+          "rawMember": "uStack_2fc",
+          "startSite": "0x00E41D20",
+          "cleanupSite": "0x00E42023",
+          "startStack": -760,
+          "cleanupStack": -732,
+          "restoredObject": "xStack_2f8",
+          "restoredMembers": [
+            "xStack_2dc",
+            "xStack_2e4"
+          ],
+          "startMarker": "xStack_2f8[0] = &PTR__scalar_deleting_destructor__01260ef4;",
+          "memberCounts": [
+            4,
+            7
+          ],
+          "endMarker": "LAB_00e4203f:"
+        },
+        {
+          "rawObject": "appuStack_33c",
+          "rawMember": "uStack_334",
+          "startSite": "0x00E420EC",
+          "cleanupSite": "0x00E4293C",
+          "startStack": -816,
+          "cleanupStack": -788,
+          "restoredObject": "xStack_330",
+          "restoredMembers": [
+            "xStack_314",
+            "xStack_31c"
+          ],
+          "startMarker": "xStack_330[0] = &PTR__scalar_deleting_destructor__01260ef4;",
+          "memberCounts": [
+            3,
+            4
+          ]
+        }
+      ]
+    }
+  },
+  "reviewedTemporaryCleanup": {
+    "0x00e40e80": {
+      "nativeSha256": "b5ea2b9a96be2fc16dbb3c29523ffcb4c890b2abcf070f16fa40e5321601397b",
+      "sourceSha256": "d48d19419ed8eae1bb6a310db007b8a754ca84d568c83399092deae1e091a100",
+      "nativeInstructions": {
+        "0x00E418A5": "6aff",
+        "0x00E418AC": "8d8c2408010000",
+        "0x00E418B3": "e838d3b5ff",
+        "0x00E418B8": "834c242020",
+        "0x00E418E8": "f644242020",
+        "0x00E418EF": "8b442420",
+        "0x00E418F3": "83e0df",
+        "0x00E418F6": "8d8c2400010000",
+        "0x00E418FD": "89442420",
+        "0x00E41901": "e8dad1b5ff"
+      },
+      "flagSet": "xStack_350 = (CScriptThing_bv *)((uint)xStack_350 | 0x20);",
+      "guard": "if (((uint)xStack_350 & 0x20) != 0) {",
+      "guardParts": [
+        "xStack_350 = (CScriptThing_bv *)((uint)xStack_350 & 0xffffffdf);",
+        "std::_Cons_val<",
+        "(xStack_288);"
+      ]
+    }
+  },
+  "reviewedBordelloLadyResource": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeInstructions": {
+        "0x00E3EB63": "8d4c2418",
+        "0x00E3F35B": "8d4c2418",
+        "0x00E3F35F": "51",
+        "0x00E3F360": "8b4d14",
+        "0x00E3F363": "81c1a4000000",
+        "0x00E3FB7C": "8d4c2418",
+        "0x00E3FB80": "51",
+        "0x00E3FB81": "8b4d14",
+        "0x00E3FB84": "81c1a4000000"
+      },
+      "nativeCalls": {
+        "0x00E3EB67": "0x0099A380",
+        "0x00E3F369": "0x008ABD10",
+        "0x00E3FB8A": "0x008ABD10"
+      },
+      "getterSites": [
+        "0x00E3EE12",
+        "0x00E3EF51",
+        "0x00E3F075",
+        "0x00E3F280",
+        "0x00E3F51D",
+        "0x00E3F64A",
+        "0x00E3F772",
+        "0x00E3F86E",
+        "0x00E3FA95",
+        "0x00E3FE02",
+        "0x00E3FF01"
+      ],
+      "diagnostic": "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\""
+    }
+  },
+  "reviewedBordelloLadyResourceLifetime": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "acquireSites": [
+        "0x00E3ED9A",
+        "0x00E3EDC5",
+        "0x00E40219",
+        "0x00E40244"
+      ],
+      "localResourceCalls": {
+        "0x00E3ED88": "0x00CD2770",
+        "0x00E3F744": "0x007E74D0",
+        "0x00E40067": "0x00CD2770",
+        "0x00E40207": "0x00CD2770",
+        "0x00E402F4": "0x00CD2770",
+        "0x00E40382": "0x007E74D0"
+      },
+      "movieDestructorSite": "0x00E4007E"
+    }
+  },
+  "reviewedBordelloLadyQuestions": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "questionSites": [
+        "0x00e3f1d3",
+        "0x00e3f9cb"
+      ],
+      "nativeArgumentWindows": {
+        "0x00e3f159": "6aff680ed722018d8c24b4000000e884fab5ff6aff686c212c018d4c245ce874fab5ff6aff6888212c018d8c248c000000e861fab5ff6aff68f8432e018d4c2454e851fab5ff8b45048b306a018d8c24b0000000518d54245c528d842490000000508d4c245c518d942404010000528bcde8011200008b4d0450ff96c8010000",
+        "0x00e3f957": "6aff680ed722018d4c2458e889f2b5ff6aff686c212c018d4c2450e879f2b5ff6aff6888212c018d4c2448e869f2b5ff6aff68e8422e018d8c2484000000e856f2b5ff8b4d048b316a018d542454528d442450508d4c244c518d94248c000000528d8424dc000000508bcde8090a00008b4d0450ff96c8010000"
+      },
+      "evidence": "Each path constructs empty/NO/YES/suffix strings, pushes true and the three button strings, calls GetLHTSTag at 0x00e403d0, then pushes its returned question into GSI slot 0x1c8."
+    }
+  },
+  "reviewedBordelloLadyReturn": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeWindows": {
+        "0x00e3ec80": "6aff68c8d125018d8c24a8000000e85dffb5ff8b7424388b450883ce018d8c24a0000000897424388d7508518bceff506c84c0741a8b45148b4d048b1183c05c50ff922002000084c07504b301eb0232dbf64424380174178b44243883e0fe8d8c24a000000089442438e8f1fdb5ff84db0f848e130000",
+        "0x00e4006c": "8b4c24148b116a00ff92ec0500008d4c2428e8fd7a8aff33ff",
+        "0x00e400eb": "6aff68c8d125018d4c2444e8f5eab5ff8b5c24388b45088d4c243c8d75085183cb028bce895c243cff505484c075696aff68c8d125018d8c24a0000000e8c3eab5ff8b168d84249800000083cb04508bce895c243cff92a800000084c074326aff68c8d125018d8c2498000000e893eab5ff8b168d8424900000005083cb086a0e8bce895c2440ff92a400000084c07407c644241300eb05c644241301f6c308741383e3f78d8c2490000000895c2438e840e9b5fff6c304741383e3fb8d8c2498000000895c2438e828e9b5fff6c302741083e3fd8d4c243c895c2438e813e9b5ff8a44241384c00f8420010000",
+        "0x00e402f9": "8b4d048b01ff501c8bcde828580f0084c00f8470e9ffff"
+      },
+      "evidence": "E40074 unpauses entities, E4007E destroys the movie, E401D3 gates hit reaction, and E4030A returns to E3EC80 talk/crime polling unless terminating."
+    }
+  },
+  "reviewedBordelloLadyPayment": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "evidence": "E3FB6B reads entity +0x20 GoldRequired, E3FB73 negates EAX, E3FB75 pushes it, E3FB76 calls GiveHeroGold (GSI+0x1f8)."
+    }
+  },
+  "reviewedBordelloLadyCutsceneMap": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "nativeSetup": "6aff68d4432e018d4c2468e851f0b5ff8d752856bab8432e018d8c24dc000000e8dcfab5ff8b4d14508d5424645281c1b4000000e838cbb6ff8bc8e8e1f3b5ff",
+      "evidence": "E3FB91 constructs $SEXTALK at native frame+0x60; E3FBBC pushes that key for the parent quest map at +0xb4, indexed at E3FBC3, followed by CCharString assignment E3FBCA."
+    }
+  },
+  "reviewedLiftedInterfaceCalls": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "luaSha256": "ca1b721953b1e056d50ba93a70e1836d2a15571d65e0c0777e861ac36f156dde",
+      "slot": "0x5ec",
+      "target": "0x890ab0",
+      "method": "PauseAllNonScriptedEntities",
+      "calleeBytes": "538b5c2408568bf18b4e048b0153ff500c8bc8e8f8e4c8ff84db741f8b4e048b",
+      "receiverOrigin": {
+        "bind": "0xe3eb19",
+        "load": "0xe3ed64",
+        "save": "0xe3ed6d",
+        "balancedStackOffset": 20
+      },
+      "nativeInstructions": {
+        "0xe3eb19": "8be9",
+        "0xe3eb1f": "33ff",
+        "0xe3ed64": "8b5d04",
+        "0xe3ed69": "6a01",
+        "0xe3ed6b": "8bcb",
+        "0xe3ed6d": "895c2418",
+        "0xe3ed71": "ff92ec050000",
+        "0xe3eee8": "8b4c2414",
+        "0xe3eeec": "8b11",
+        "0xe3eeee": "6a00",
+        "0xe3eef0": "ff92ec050000",
+        "0xe3f488": "33ff",
+        "0xe3f729": "8b4c2414",
+        "0xe3f72d": "8b01",
+        "0xe3f72f": "6a00",
+        "0xe3f731": "ff90ec050000",
+        "0xe4039f": "8b13",
+        "0xe403a1": "57",
+        "0xe403a2": "8bcb",
+        "0xe403a4": "ff92ec050000",
+        "0xe403af": "8b03",
+        "0xe403b1": "57",
+        "0xe403b2": "8bcb",
+        "0xe403b4": "e978f3ffff",
+        "0xe403b9": "8b13",
+        "0xe403bb": "6a00",
+        "0xe403bd": "8bcb",
+        "0xe403bf": "ff92ec050000"
+      },
+      "calls": [
+        {
+          "site": "0xe3eef0",
+          "statement": "(*(code *)(*pppuVar28)[0x17b])();",
+          "diagnosticCount": 2,
+          "setups": [
+            [
+              "0xe3eee8",
+              "0xe3eeec",
+              "0xe3eeee"
+            ]
+          ]
+        },
+        {
+          "site": "0xe3f731",
+          "statement": "(*(code *)ppuVar13[0x17b])();",
+          "diagnosticCount": 1,
+          "setups": [
+            [
+              "0xe3f729",
+              "0xe3f72d",
+              "0xe3f72f"
+            ],
+            [
+              "0xe403af",
+              "0xe403b1",
+              "0xe403b2",
+              "0xe403b4"
+            ]
+          ]
+        },
+        {
+          "site": "0xe403bf",
+          "statement": "(**(code **)(*piVar1 + 0x5ec))();",
+          "diagnosticCount": 1,
+          "setups": [
+            [
+              "0xe403b9",
+              "0xe403bb",
+              "0xe403bd"
+            ]
+          ]
+        },
+        {
+          "site": "0xe403a4",
+          "printedCall": "quest:PauseAllNonScriptedEntities((fVar18 ~= 0))",
+          "setups": [
+            [
+              "0xe4039f",
+              "0xe403a1",
+              "0xe403a2"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "reviewedCleanupJoinLabels": {
+    "0x00e3e720": {
+      "address": "0x00e3e720",
+      "nativeSha256": "30529b815fa473ac1baf64c38ff3669f88c3eccd166ac71e8c79f1bfbd08a2e4",
+      "sourceSha256": "ecadb9692ef79147bcc8f175a45205b2dda41cc03ddaebb02e39155f1e9d79a6",
+      "luaBodySha256": "977a79d7a6ae24a441e7ab12db6bf80e6b4a874139a58685108afd91ad657a2a",
+      "joins": [
+        {
+          "label": "LAB_00e3ea29",
+          "entry": "0x00e3ea29",
+          "endExclusive": "0x00e3ea4e",
+          "bytes": "8d4c2418e87ed5e9ff8d4c2424e8958a9aff8d4c2438e89c00b6ff5f5e5d5b83c424c20800",
+          "edges": [
+            {
+              "site": "0x00e3e9f1",
+              "mnemonic": "jne",
+              "bytes": "7536",
+              "kind": "branch"
+            },
+            {
+              "site": "0x00e3ea27",
+              "mnemonic": "je",
+              "bytes": "7425",
+              "kind": "fallthrough"
+            }
+          ],
+          "calls": [
+            {
+              "site": "0x00e3ea2d",
+              "target": "0x00cdbfb0",
+              "depth": 52,
+              "ecxStack": -28
+            },
+            {
+              "site": "0x00e3ea36",
+              "target": "0x007e74d0",
+              "depth": 52,
+              "ecxStack": -16
+            },
+            {
+              "site": "0x00e3ea3f",
+              "target": "0x0099eae0",
+              "depth": 52,
+              "ecxStack": 4
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reviewedArgumentTemporaries": {
+    "0x00e3bb70": {
+      "nativeSha256": "5e98762a54d6fbfb342e0ce0b42ae68306b9f6d2c4422d526c80d5337c5b5f98",
+      "sourceSha256": "421e8d8a78f41bef544c97e097a845f0aff27cddaaa8ebf696435ef3f1b64ff5",
+      "spanBegin": "0x00e3bbff",
+      "spanEnd": "0x00e3bc49",
+      "spanBytes": "5783ec0c8bc4c70010172301c7008c8c23018b4d0c8948048b4d103bcf8948087402ff018b4d048b11ff92300d00008b4d048b01575753ff90140800008b4d048b115753ff9238080000",
+      "scopeBegin": "    uVar20 = 0\n    ctr_140 = nil\n",
+      "scopeEnd": "    xStack_174 = resources:NewResource()\n",
+      "luaScopeSha256": "736c9b484ac0f00f5178254248445caac8207a6ceadfc39d81a8c655e7f19d30",
+      "uninitializedAlias": "xStack_174",
+      "calls": [
+        {
+          "site": "0x00e3bc28",
+          "slot": "0xd30",
+          "bytes": "ff92300d0000"
+        },
+        {
+          "site": "0x00e3bc36",
+          "slot": "0x814",
+          "bytes": "ff9014080000"
+        },
+        {
+          "site": "0x00e3bc43",
+          "slot": "0x838",
+          "bytes": "ff9238080000"
+        }
+      ],
+      "edits": [
+        {
+          "source": "    -- TODO(native): xStack_174 = *(undefined ***)(this + 0x10);\n    if xStack_174 ~= nil then\n        -- TODO(native): *xStack_174 = *xStack_174 + 1;\n    end\n",
+          "diagnostics": [
+            "unlifted: xStack_174 = *(undefined ***)(this + 0x10);",
+            "unlifted: *xStack_174 = *xStack_174 + 1;"
+          ]
+        },
+        {
+          "source": "    -- TODO(native): xStack_124._0_3_ = 0;\n    -- TODO(native): xStack_124_b3 = '\\0';\n",
+          "diagnostics": [
+            "unlifted: xStack_124._0_3_ = 0;",
+            "unlifted: xStack_124_b3 = '\\0';"
+          ]
+        }
+      ]
+    },
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "spanBegin": "0x00e3eba6",
+      "spanEnd": "0x00e3ec71",
+      "spanBytes": "8b0683ec0c548bceff501c83ec0c8bc4c70010172301c7008c8c23018b4d0c8948048b4d103bcf8948087402ff018b4d048b11ff92ec0b00005783ec0c8bc4c70010172301c7008c8c23018b4d0c8948048b4d103bcf8948087402ff018b4d048b11ff92f80b0000680000804183ec0c8bc4c70010172301c7008c8c23018b4d0c8948048b4d103bcf8948087402ff018b4d048b11ff92040c00006a0483ec0c8bc4c70010172301c7008c8c23018b4d0c8948048b4d103bcf8948087402ff018b4d048b11ff92400c0000",
+      "scopeBegin": "        r1 = me:GetHomePos()\n",
+      "scopeEnd": "        alive = not quest:IsActiveThreadTerminating()\n        bVar5 = not alive\n        ::LADY_POLL::\n",
+      "luaScopeSha256": "81752090f685a11b4edd96e144b5da982626052f67bb591e41b692c7845f17f9",
+      "uninitializedAlias": "xStack_1a0",
+      "privateStateFactorySha256": "a8b453eb274fe4279f96f875a859fa93299d855ad3eb3e3a0813ea001dda8ce9",
+      "edits": [
+        {
+          "source": "        -- TODO(native): xStack_1a0 = *(undefined ***)(this + 0x10);\n        if xStack_1a0 ~= nil then\n            -- TODO(native): *xStack_1a0 = *xStack_1a0 + 1;\n        end\n",
+          "diagnostics": [
+            "unlifted: xStack_1a0 = *(undefined ***)(this + 0x10);",
+            "unlifted: *xStack_1a0 = *xStack_1a0 + 1;"
+          ]
+        },
+        {
+          "source": "        -- TODO(native): xStack_1a0 = *(undefined ***)(this + 0x10);\n        if xStack_1a0 ~= nil then\n            -- TODO(native): *xStack_1a0 = (undefined *)((int)*xStack_1a0 + 1);\n        end\n",
+          "diagnostics": [
+            "unlifted: xStack_1a0 = *(undefined ***)(this + 0x10);",
+            "unlifted: *xStack_1a0 = (undefined *)((int)*xStack_1a0 + 1);"
+          ]
+        },
+        {
+          "kind": "unusedPrivateStateRead",
+          "source": "        xStack_15c = __native_entity_state:GetStateInt(\"self_0xc\")\n",
+          "diagnostics": [
+            "unnamed field 0xc"
+          ]
+        },
+        {
+          "kind": "unusedPrivateStateRead",
+          "source": "        xStack_1a0 = __native_entity_state:GetStateInt(\"self_0xc\")\n",
+          "diagnostics": [
+            "unnamed field 0xc"
+          ]
+        }
+      ],
+      "calls": [
+        {
+          "site": "0x00e3ebae",
+          "slot": "0x1c",
+          "bytes": "ff501c"
+        },
+        {
+          "site": "0x00e3ebd9",
+          "slot": "0xbec",
+          "bytes": "ff92ec0b0000"
+        },
+        {
+          "site": "0x00e3ec08",
+          "slot": "0xbf8",
+          "bytes": "ff92f80b0000"
+        },
+        {
+          "site": "0x00e3ec3b",
+          "slot": "0xc04",
+          "bytes": "ff92040c0000"
+        },
+        {
+          "site": "0x00e3ec6b",
+          "slot": "0xc40",
+          "bytes": "ff92400c0000"
+        }
+      ]
+    }
+  },
+  "reviewedRestoredCallDiagnostics": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "luaBodySha256": "7d2fa0b6ae132be5c6838e0cb0ae2d868a263ab4be0d44d5e9670edcea4581cf",
+      "slot": "0x5ec",
+      "target": "0x890ab0",
+      "method": "PauseAllNonScriptedEntities",
+      "calleeBytes": "538b5c2408568bf18b4e048b0153ff500c8bc8e8f8e4c8ff84db741f8b4e048b4968680000803f68efbeefbe68ffff0000e88a56c3ff5e5bc204008b56048b4a6868efbeefbee84556c3ff5e5bc20400",
+      "savedReceiverOffset": 20,
+      "nativeInstructions": {
+        "0xe4006c": "8b4c2414",
+        "0xe40070": "8b11",
+        "0xe40072": "6a00",
+        "0xe40074": "ff92ec050000"
+      },
+      "calls": [
+        {
+          "site": "0xe40074",
+          "diagnostic": "unlifted: (*(code *)(*pppuVar28)[0x17b])();",
+          "luaRegion": "            ::FLOW_past_lab_00e40044::\n            quest:PauseAllNonScriptedEntities(false)\n            resources:DestroyMovie(xStack_190)"
+        }
+      ],
+      "evidenceScope": "Lua calls already restored by reviewedLiftedInterfaceCalls and reviewedBordelloLadyReturn.32 new nativecaller/GSI/worldbody and10actualSDK/sol cases;wholeMain/interveningCFG/host/gameplay unproved."
+    }
+  },
+  "reviewedNumericConditions": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "comparison": {
+        "site": "0xe4500f",
+        "target": "0x411570",
+        "bytes": "538a0184c07505803a00740c8a1a3ac37c0a7f0d4142ebe933c05bc383c8ff5bc3b8010000005bc3cccccccccccccccc8b542404568b312bf28da424000000008a041684c07505803a00740b8a0a3ac17c147f2242ebe933c033c985c00f94c18ac15ec2040083c8ff33c985c00f94c18ac15ec20400b80100000033c985c00f"
+      },
+      "nativeInstructions": {
+        "0xe4500f": "e85cc55cff",
+        "0xe45014": "8bd8",
+        "0xe45016": "f7db",
+        "0xe45018": "1adb",
+        "0xe4501a": "fec3",
+        "0xe45025": "84db",
+        "0xe45027": "0f84ba060000"
+      },
+      "edits": [
+        {
+          "local": "cVar5",
+          "luaScope": "    iVar12 = ((pCVar7 == \"CREATURE_BS_VILLAGER_FEMALE\") and 0 or 1)\n    cVar5 = (not (iVar12 ~= 0)) and 1 or 0\n    if not cVar5 then",
+          "luaScopeSha256": "28e1f21023d353edac3578913bb4bd447adf4492068b4db35007d5f5f07e42ee",
+          "normalization": [
+            "0xe45014",
+            "0xe45016",
+            "0xe45018",
+            "0xe4501a"
+          ],
+          "test": "0xe45025",
+          "branch": "0xe45027",
+          "zeroTarget": "0xe456e7"
+        }
+      ],
+      "evidenceScope": "18original/currentLua cases prove16wrongnonmatchingbranches;actual411570comparison,hiddenGetDefName/CStringdtor fixtures. Onlynumericzero test changes;otherClientMain operands/host/gameplay remainseparategates."
+    }
+  },
+  "reviewedThingResults": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "luaBodySha256": "bb22266694a7169824c1567afdbfb79dcb13ad32dd845724f89aa9ce999350dd",
+      "actorLocal": "me",
+      "actorOffset": 8,
+      "scriptBind": "0xe44ea9",
+      "lookup": {
+        "slot": "0x120",
+        "target": "0x8a7d60",
+        "bytes": "83ec0c8b44241453565733db8bf1508d4c2424895c2410895c2414895c2418e8ac6e0f008b46048d4c240c518b48208d54242452e8c75ad4ff8d4c2420e83e6d0f008b7c240c3b7c24108b74241c752b8bcee819250f003bfbc7068c8c2301895e04895e08742557e8476c350083c4045f8bc65e5b83c40cc208008b0f56e86d00c2ff57e82b6c350083c4045f8bc65e5b83c40cc20800cccccccccccccccccc83ec0c8b44241455565733ed8bf1508d4c2424896c2410896c2414896c2418e80c6e0f008b46048d4c240c518b48208d54242452e8275ad4ff8d4c2420e89e6c0f008b7c240c8b4424103bf875198b74241c8bcee877240f00c7068c8c230189"
+      },
+      "bindings": [
+        {
+          "site": "0xe44f8f",
+          "name": "M_ClientStand",
+          "local": "r1",
+          "setup": [
+            "0xe44f80",
+            "0xe44f83",
+            "0xe44f85",
+            "0xe44f89",
+            "0xe44f8a",
+            "0xe44f8e"
+          ],
+          "nameCtor": "0xe44f7b",
+          "nameSetup": [
+            "0xe44f70",
+            "0xe44f72",
+            "0xe44f77"
+          ]
+        },
+        {
+          "site": "0xe44fbd",
+          "name": "M_ClientSpawn",
+          "local": "r2",
+          "setup": [
+            "0xe44fae",
+            "0xe44fb1",
+            "0xe44fb3",
+            "0xe44fb7",
+            "0xe44fb8",
+            "0xe44fbc"
+          ],
+          "nameCtor": "0xe44fa9",
+          "nameSetup": [
+            "0xe44f9e",
+            "0xe44fa0",
+            "0xe44fa5"
+          ]
+        }
+      ],
+      "distanceTarget": "0xcbe2ff",
+      "distanceBytes": "56578bf98b078bf2ff902c01000084c074598b068bceff902c01000084c0744b8b068bceff50188bf08b078bcfff5018d900d826d94004d86604d94008d86608d9c0d8c9d9c3d8ccdec1d9c2d8cbdec1d944240cd84c240cded9ddd8dfe0ddd8f6c441ddd87504b001eb0232c05f5ec20400",
+      "distances": [
+        {
+          "site": "0xe4575b",
+          "setup": [
+            "0xe4574d",
+            "0xe45750",
+            "0xe45755",
+            "0xe45757"
+          ],
+          "luaBefore": "quest:IsDistanceBetweenThingsUnder(0x0, me, 5.0)"
+        },
+        {
+          "site": "0xe4671b",
+          "setup": [
+            "0xe4670f",
+            "0xe46714",
+            "0xe46717"
+          ],
+          "luaBefore": "quest:IsDistanceBetweenThingsUnder(r2, me, 5.0)"
+        },
+        {
+          "site": "0xe450a9",
+          "setup": [
+            "0xe4509d",
+            "0xe450a2",
+            "0xe450a6"
+          ],
+          "luaBefore": "quest:IsDistanceBetweenThingsUnder(me, 0x0, 5.0)"
+        }
+      ],
+      "moveTarget": "0x7e72f0",
+      "moveBytes": "8b490885c974058b01ff6010c21400",
+      "movements": [
+        {
+          "site": "0xe45748",
+          "dataLoad": "0xe45724",
+          "nullTest": "0xe45728",
+          "nonnullJump": "0xe4572a",
+          "zeroLoad": "0xe4572c",
+          "zeroJump": "0xe45731",
+          "tableLoad": "0xe45733",
+          "getPos": "0xe45735",
+          "arguments": [
+            "0xe45738",
+            "0xe4573a",
+            "0xe4573c",
+            "0xe4573e",
+            "0xe45743",
+            "0xe45744"
+          ]
+        },
+        {
+          "site": "0xe4670a",
+          "dataLoad": "0xe4659b",
+          "nullTest": "0xe4659f",
+          "nonnullJump": "0xe465a1",
+          "zeroLoad": "0xe465a7",
+          "zeroJump": "0xe465ac",
+          "tableLoad": "0xe466f5",
+          "getPos": "0xe466f7",
+          "arguments": [
+            "0xe466fa",
+            "0xe466fc",
+            "0xe466fe",
+            "0xe46700",
+            "0xe46705",
+            "0xe46706"
+          ]
+        },
+        {
+          "site": "0xe45098",
+          "dataLoad": "0xe45074",
+          "nullTest": "0xe45078",
+          "nonnullJump": "0xe4507a",
+          "zeroLoad": "0xe4507c",
+          "zeroJump": "0xe45081",
+          "tableLoad": "0xe45083",
+          "getPos": "0xe45085",
+          "arguments": [
+            "0xe45088",
+            "0xe4508a",
+            "0xe4508c",
+            "0xe4508e",
+            "0xe45093",
+            "0xe45094"
+          ]
+        }
+      ],
+      "nativeInstructions": {
+        "0xe44ea9": "8be9",
+        "0xe44f70": "6aff",
+        "0xe44f72": "688c4a2e01",
+        "0xe44f77": "8d4c244c",
+        "0xe44f7b": "e8709cb5ff",
+        "0xe44f80": "8b4d04",
+        "0xe44f83": "8b11",
+        "0xe44f85": "8d442444",
+        "0xe44f89": "50",
+        "0xe44f8a": "8d44242c",
+        "0xe44f8e": "50",
+        "0xe44f8f": "ff9220010000",
+        "0xe44f9e": "6aff",
+        "0xe44fa0": "68103a2e01",
+        "0xe44fa5": "8d4c244c",
+        "0xe44fa9": "e8429cb5ff",
+        "0xe44fae": "8b4d04",
+        "0xe44fb1": "8b11",
+        "0xe44fb3": "8d442444",
+        "0xe44fb7": "50",
+        "0xe44fb8": "8d442438",
+        "0xe44fbc": "50",
+        "0xe44fbd": "ff9220010000",
+        "0xe45074": "8b4c242c",
+        "0xe45078": "85c9",
+        "0xe4507a": "7507",
+        "0xe4507c": "b8e0e84301",
+        "0xe45081": "eb05",
+        "0xe45083": "8b01",
+        "0xe45085": "ff5018",
+        "0xe45088": "6a01",
+        "0xe4508a": "6a00",
+        "0xe4508c": "6a00",
+        "0xe4508e": "680000803f",
+        "0xe45093": "50",
+        "0xe45094": "8d4c2428",
+        "0xe45098": "e853229aff",
+        "0xe4509d": "680000a040",
+        "0xe450a2": "8d54242c",
+        "0xe450a6": "8d4d08",
+        "0xe450a9": "e85192e7ff",
+        "0xe45724": "8b4c242c",
+        "0xe45728": "85c9",
+        "0xe4572a": "7507",
+        "0xe4572c": "b8e0e84301",
+        "0xe45731": "eb05",
+        "0xe45733": "8b11",
+        "0xe45735": "ff5218",
+        "0xe45738": "6a01",
+        "0xe4573a": "6a00",
+        "0xe4573c": "6a00",
+        "0xe4573e": "680000803f",
+        "0xe45743": "50",
+        "0xe45744": "8d4c2428",
+        "0xe45748": "e8a31b9aff",
+        "0xe4574d": "8d7508",
+        "0xe45750": "680000a040",
+        "0xe45755": "8bd6",
+        "0xe45757": "8d4c242c",
+        "0xe4575b": "e89f8be7ff",
+        "0xe4659b": "8b4c2438",
+        "0xe4659f": "85c9",
+        "0xe465a1": "0f854e010000",
+        "0xe465a7": "b8e0e84301",
+        "0xe465ac": "e949010000",
+        "0xe466f5": "8b11",
+        "0xe466f7": "ff5218",
+        "0xe466fa": "6a01",
+        "0xe466fc": "6a00",
+        "0xe466fe": "6a00",
+        "0xe46700": "680000803f",
+        "0xe46705": "50",
+        "0xe46706": "8d4c2428",
+        "0xe4670a": "e8e10b9aff",
+        "0xe4670f": "680000a040",
+        "0xe46714": "8d5508",
+        "0xe46717": "8d4c2438",
+        "0xe4671b": "e8df7be7ff"
+      },
+      "evidenceScope": "128native hiddenlookup calls/192actualdistancehelpers/96native movementwindows and97actualSDK/sol cases;lookup/getters/control consumers arefixtures,ownership/fullMain/host/gameplay unproved."
+    }
+  },
+  "reviewedStringOperands": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "luaBodySha256": "34fa4af5fda55d2a4ac28fad4f4e5ed06ad7b7f09442add8bb853e444eba7f64",
+      "helpers": {
+        "integer": {
+          "address": "0x99f830",
+          "bytes": "51568bf18b0d00d83b01528d4424084168e85d260150c744241000000000890d00d83b01e897f9ffffc706000000008b0d00d83b0183c40c41890d00d83b018d4c24043bce7419833e0074078bcee82df1ffff8b44240485c074058906ff400d8d4c2404e817f1ffffff0d00d83b018bc65e59c3"
+        },
+        "prefix": {
+          "address": "0x99f690",
+          "bytes": "51538bd98b0d00d83b01578bfa4185ffc744240800000000890d00d83b01742e803f007429566a11e85df325008bf083c40485f67411578bcee8c20e0000c7460d01000000eb0233f68974240c5e8b442410508d4c240ce8b4f9ffffc70300000000ff0500d83b018d4c24083bcb7419833b0074078bcbe8a4f2ffff8b44240885c074058903ff400d8d4c2408e88ef2ffffff0d00d83b015f8bc35b59c20400"
+        },
+        "literalSuffix": {
+          "address": "0x99f600",
+          "bytes": "51ff0500d83b018d04243bd0568bf1c74424040000000074118b1285d2740b8b420d408954240489420d8b4c240c518d4c2408e8c8faffffc706000000008b0d00d83b01418d5424043bd6890d00d83b017419833e0074078bcee851f3ffff8b44240485c074058906ff400d8d4c2404e83bf3ffffff0d00d83b018bc65e59c20400"
+        },
+        "stringSuffix": {
+          "address": "0x99f570",
+          "bytes": "51ff0500d83b018d04243bd0568bf1c74424040000000074118b1285d2740b8b420d408954240489420d8b4c240c518d4c2408e8f8faffffc706000000008b0d00d83b01418d5424043bd6890d00d83b017419833e0074078bcee8e1f3ffff8b44240485c074058906ff400d8d4c2404e8cbf3ffffff0d00d83b018bc65e59c20400"
+        },
+        "accessor": {
+          "address": "0x99e4c0",
+          "bytes": "8b0185c07506b8f4aa2901c38b00c3"
+        },
+        "speak": {
+          "address": "0x7e7390",
+          "bytes": "8b490885c974058b01ff6034c21800"
+        }
+      },
+      "speechOrder": [
+        "0x00E45904",
+        "0x00E46302",
+        "0x00E45CC2",
+        "0x00E45F40",
+        "0x00E4619F",
+        "0x00E4644F",
+        "0x00E468BD",
+        "0x00E452AF",
+        "0x00E45588"
+      ],
+      "nativeInstructions": {
+        "0xe45826": "8b5528",
+        "0xe45829": "8d4c244c",
+        "0xe4582d": "e8fe9fb5ff",
+        "0xe45832": "8b5520",
+        "0xe45835": "50",
+        "0xe45836": "68644a2e01",
+        "0xe4583b": "42",
+        "0xe4583c": "8d8c2488000000",
+        "0xe45843": "e8e89fb5ff",
+        "0xe45848": "50",
+        "0xe45849": "ba504a2e01",
+        "0xe4584e": "8d8c2490000000",
+        "0xe45855": "e8369eb5ff",
+        "0xe4585a": "8bd0",
+        "0xe4585c": "8d8c2484000000",
+        "0xe45863": "e8989db5ff",
+        "0xe45868": "8bd0",
+        "0xe4586a": "8d4c2428",
+        "0xe4586e": "e8fd9cb5ff",
+        "0xe458e0": "8b7d04",
+        "0xe458e3": "6a00",
+        "0xe458e5": "6a01",
+        "0xe458e7": "6a00",
+        "0xe458e9": "6a00",
+        "0xe458eb": "8d4c2434",
+        "0xe458ef": "e8cc8bb5ff",
+        "0xe458f4": "8b17",
+        "0xe458f6": "50",
+        "0xe458f7": "8bcf",
+        "0xe458f9": "ff9218010000",
+        "0xe458ff": "50",
+        "0xe45900": "8d4c242c",
+        "0xe45904": "e8871a9aff",
+        "0xe467d6": "8b5528",
+        "0xe467d9": "8d8c249c000000",
+        "0xe467e0": "e84b90b5ff",
+        "0xe467e5": "8b5520",
+        "0xe467e8": "50",
+        "0xe467e9": "68c4492e01",
+        "0xe467ee": "42",
+        "0xe467ef": "8d8c2498000000",
+        "0xe467f6": "e83590b5ff",
+        "0xe467fb": "50",
+        "0xe467fc": "ba504a2e01",
+        "0xe46801": "8d8c24a0000000",
+        "0xe46808": "e8838eb5ff",
+        "0xe4680d": "8bd0",
+        "0xe4680f": "8d8c24a0000000",
+        "0xe46816": "e8e58db5ff",
+        "0xe4681b": "8bd0",
+        "0xe4681d": "8d4c2448",
+        "0xe46821": "e84a8db5ff",
+        "0xe46899": "8b7d04",
+        "0xe4689c": "6a00",
+        "0xe4689e": "6a01",
+        "0xe468a0": "6a00",
+        "0xe468a2": "6a00",
+        "0xe468a4": "8d4c2454",
+        "0xe468a8": "e8137cb5ff",
+        "0xe468ad": "50",
+        "0xe468ae": "8b07",
+        "0xe468b0": "8bcf",
+        "0xe468b2": "ff9018010000",
+        "0xe468b8": "50",
+        "0xe468b9": "8d4c242c",
+        "0xe468bd": "e8ce0a9aff",
+        "0xe451d4": "8b5528",
+        "0xe451d7": "8d8c2488000000",
+        "0xe451de": "e84da6b5ff",
+        "0xe451e3": "8b5520",
+        "0xe451e6": "50",
+        "0xe451e7": "68844a2e01",
+        "0xe451ec": "42",
+        "0xe451ed": "8d8c2494000000",
+        "0xe451f4": "e837a6b5ff",
+        "0xe451f9": "50",
+        "0xe451fa": "ba704a2e01",
+        "0xe451ff": "8d4c2478",
+        "0xe45203": "e888a4b5ff",
+        "0xe45208": "8bd0",
+        "0xe4520a": "8d4c2454",
+        "0xe4520e": "e8eda3b5ff",
+        "0xe45213": "8bd0",
+        "0xe45215": "8d4c244c",
+        "0xe45219": "e852a3b5ff",
+        "0xe4528b": "8b7d04",
+        "0xe4528e": "6a00",
+        "0xe45290": "6a01",
+        "0xe45292": "6a00",
+        "0xe45294": "6a00",
+        "0xe45296": "8d4c2458",
+        "0xe4529a": "e82192b5ff",
+        "0xe4529f": "50",
+        "0xe452a0": "8b07",
+        "0xe452a2": "8bcf",
+        "0xe452a4": "ff9018010000",
+        "0xe452aa": "50",
+        "0xe452ab": "8d4c242c",
+        "0xe452af": "e8dc209aff"
+      },
+      "edits": [
+        {
+          "site": "0x00E45904",
+          "frameOffset": 36,
+          "indexField": 32,
+          "lineField": 40,
+          "prefix": "TEXT_QST_B13_CLIENT",
+          "suffix": "_ENTER_0",
+          "producer": [
+            "0xe45826",
+            "0xe45829",
+            "0xe4582d",
+            "0xe45832",
+            "0xe45835",
+            "0xe45836",
+            "0xe4583b",
+            "0xe4583c",
+            "0xe45843",
+            "0xe45848",
+            "0xe45849",
+            "0xe4584e",
+            "0xe45855",
+            "0xe4585a",
+            "0xe4585c",
+            "0xe45863",
+            "0xe45868",
+            "0xe4586a",
+            "0xe4586e"
+          ],
+          "consumer": [
+            "0xe458e0",
+            "0xe458e3",
+            "0xe458e5",
+            "0xe458e7",
+            "0xe458e9",
+            "0xe458eb",
+            "0xe458ef",
+            "0xe458f4",
+            "0xe458f6",
+            "0xe458f7",
+            "0xe458f9",
+            "0xe458ff",
+            "0xe45900",
+            "0xe45904"
+          ],
+          "resultLocal": "stack0xfffffee0",
+          "luaBefore": "pvVar11 = x_stk_108",
+          "luaScope": "                stack0xfffffee0 = (pCVar9 .. pCVar7)\n                xStack_40 = resources:ScriptThing(xStack_118)\n                pCVar10 = xStack_40\n                fVar16 = quest:GetHealth(pCVar10)\n                fVar2 = 0.0\n                if fVar2 < fVar16 then\n                    iVar21 = 0\n                    iVar19 = 1\n                    iVar18 = 0\n                    iVar17 = 0\n                    pvVar11 = x_stk_108\n                    iVar12 = quest:GetHero()\n                    r3 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))",
+          "luaScopeSha256": "032926b59c7d341dc679267ae1b810ffda629af9c7eda37fe1c7350a10f06be8"
+        },
+        {
+          "site": "0x00E468BD",
+          "frameOffset": 68,
+          "indexField": 32,
+          "lineField": 40,
+          "prefix": "TEXT_QST_B13_CLIENT",
+          "suffix": "_LEAVE_0",
+          "producer": [
+            "0xe467d6",
+            "0xe467d9",
+            "0xe467e0",
+            "0xe467e5",
+            "0xe467e8",
+            "0xe467e9",
+            "0xe467ee",
+            "0xe467ef",
+            "0xe467f6",
+            "0xe467fb",
+            "0xe467fc",
+            "0xe46801",
+            "0xe46808",
+            "0xe4680d",
+            "0xe4680f",
+            "0xe46816",
+            "0xe4681b",
+            "0xe4681d",
+            "0xe46821"
+          ],
+          "consumer": [
+            "0xe46899",
+            "0xe4689c",
+            "0xe4689e",
+            "0xe468a0",
+            "0xe468a2",
+            "0xe468a4",
+            "0xe468a8",
+            "0xe468ad",
+            "0xe468ae",
+            "0xe468b0",
+            "0xe468b2",
+            "0xe468b8",
+            "0xe468b9",
+            "0xe468bd"
+          ],
+          "resultLocal": "xStack_e4",
+          "luaBefore": "pvVar11 = xStack_e8_2",
+          "luaScope": "                            xStack_e4 = (pCVar9 .. pCVar7)\n                            xStack_8c = resources:ScriptThing(xStack_118)\n                            pCVar10 = xStack_8c\n                            fVar16 = quest:GetHealth(pCVar10)\n                            fVar2 = 0.0\n                            if fVar2 < fVar16 then\n                                iVar19 = 0\n                                iVar18 = 1\n                                iVar17 = 0\n                                iVar12 = 0\n                                pvVar11 = xStack_e8_2\n                                iVar6 = quest:GetHero()\n                                r9 = me:Speak(iVar6, pvVar11, iVar12, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))",
+          "luaScopeSha256": "2b54592a80856208893d4e20aa184294ccaa6f6c4349d902c99d40c0fe06534a"
+        },
+        {
+          "site": "0x00E452AF",
+          "frameOffset": 72,
+          "indexField": 32,
+          "lineField": 40,
+          "prefix": "TEXT_QST_B13_WOMAN",
+          "suffix": "_CHAT_0",
+          "producer": [
+            "0xe451d4",
+            "0xe451d7",
+            "0xe451de",
+            "0xe451e3",
+            "0xe451e6",
+            "0xe451e7",
+            "0xe451ec",
+            "0xe451ed",
+            "0xe451f4",
+            "0xe451f9",
+            "0xe451fa",
+            "0xe451ff",
+            "0xe45203",
+            "0xe45208",
+            "0xe4520a",
+            "0xe4520e",
+            "0xe45213",
+            "0xe45215",
+            "0xe45219"
+          ],
+          "consumer": [
+            "0xe4528b",
+            "0xe4528e",
+            "0xe45290",
+            "0xe45292",
+            "0xe45294",
+            "0xe45296",
+            "0xe4529a",
+            "0xe4529f",
+            "0xe452a0",
+            "0xe452a2",
+            "0xe452a4",
+            "0xe452aa",
+            "0xe452ab",
+            "0xe452af"
+          ],
+          "resultLocal": "xStack_e0",
+          "luaBefore": "pvVar11 = xStack_e4",
+          "luaScope": "                xStack_e0 = (pCVar9 .. pCVar7)\n                xStack_30 = resources:ScriptThing(xStack_118)\n                pCVar10 = xStack_30\n                fVar16 = quest:GetHealth(pCVar10)\n                fVar2 = 0.0\n                if fVar2 < fVar16 then\n                    iVar21 = 0\n                    iVar19 = 1\n                    iVar18 = 0\n                    iVar17 = 0\n                    pvVar11 = xStack_e4\n                    iVar12 = quest:GetHero()\n                    r10 = me:Speak(iVar12, pvVar11, iVar17, (iVar18 ~= 0), (iVar19 ~= 0), (iVar21 ~= 0))",
+          "luaScopeSha256": "fdfde30f973e80f63178c1bdc05ebbd2f9fbef04985a067a21a988a8be2975d7"
+        }
+      ],
+      "evidenceScope": "56 first-clamp/originalcaller and384 eight-dynamic-key caller cases;18exactSDK/sol binding cases. CString producers/GetHero/control are explicit boundaries;no fullMain/heap/host/gameplay proof. Only3wrongaliases restored;5otherdynamic and1fixed speech unchanged."
+    }
+  },
+  "reviewedLuaScalarAliases": {
+    "0x00e44ea0": {
+      "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+      "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+      "textSha256": "ea800b4af1276711e1ef9b6bf6e47d918d3a75568b5063e730ebc7efc55a6b0c",
+      "alias": "registeredTimerID",
+      "nativeInstructions": {
+        "0xe44fa9": "e8429cb5ff",
+        "0xe44fae": "8b4d04",
+        "0xe44fb1": "8b11",
+        "0xe44fb3": "8d442444",
+        "0xe44fb7": "50",
+        "0xe44fb8": "8d442438",
+        "0xe44fbc": "50",
+        "0xe44fbd": "ff9220010000",
+        "0xe44fc3": "8d4c2444",
+        "0xe44fc7": "e8149bb5ff",
+        "0xe44fcc": "8b0df8e84301",
+        "0xe44fd2": "8b11",
+        "0xe44fd4": "ff925c010000",
+        "0xe44fda": "8d4c244c",
+        "0xe44fde": "89442410",
+        "0xe4598e": "0f8537100000",
+        "0xe45994": "8d4c2414",
+        "0xe45998": "e81ccae8ff",
+        "0xe4599d": "84c0",
+        "0xe4599f": "7409",
+        "0xe459a1": "8d4c2414",
+        "0xe459a5": "e8c6cde8ff",
+        "0xe459aa": "8b0df8e84301",
+        "0xe459b0": "8b542410",
+        "0xe459b4": "8b01",
+        "0xe459b6": "6a78",
+        "0xe459b8": "52",
+        "0xe459b9": "ff9064010000",
+        "0xe459bf": "837d1c02",
+        "0xe459c3": "0f851a0b0000",
+        "0xe459c9": "8da42400000000",
+        "0xe459d0": "8b4d04",
+        "0xe459d3": "8b01",
+        "0xe459d5": "ff501c",
+        "0xe459d8": "8bcd",
+        "0xe459da": "e851010f00",
+        "0xe459df": "84c0",
+        "0xe459e1": "0f85e40f0000",
+        "0xe459e7": "8b0df8e84301",
+        "0xe459ed": "8b442410",
+        "0xe459f1": "8b11",
+        "0xe459f3": "50",
+        "0xe459f4": "ff9268010000",
+        "0xe459fa": "85c0",
+        "0xe459fc": "740a",
+        "0xe45633": "e848258aff",
+        "0xe45638": "8b4d04",
+        "0xe4563b": "8b11",
+        "0xe4563d": "ff521c",
+        "0xe45640": "8bcd",
+        "0xe45642": "e8e9040f00",
+        "0xe45647": "84c0",
+        "0xe45649": "0f8401faffff",
+        "0xe4564f": "8b0df8e84301",
+        "0xe45655": "8b542410",
+        "0xe45659": "8b01",
+        "0xe4565b": "52",
+        "0xe4565c": "ff9060010000",
+        "0xe45662": "e96d130000",
+        "0xe45667": "8d4c2448",
+        "0xe45c2d": "6a00",
+        "0xe45c2f": "8bce",
+        "0xe45c31": "ff90ec050000",
+        "0xe45c37": "8d4c2458",
+        "0xe45c3b": "e8701e8aff",
+        "0xe45c40": "8d4c2450",
+        "0xe45c44": "c74424508c002601",
+        "0xe45c4c": "e8df47b5ff",
+        "0xe45c51": "8b0df8e84301",
+        "0xe45c57": "8b442410",
+        "0xe45c5b": "8b11",
+        "0xe45c5d": "50",
+        "0xe45c5e": "ff9260010000",
+        "0xe45c64": "e96b0d0000",
+        "0xe45c69": "8d4c2424",
+        "0xe469a7": "ff90ec050000",
+        "0xe469ad": "8d4c2450",
+        "0xe469b1": "e8ca118aff",
+        "0xe469b6": "eb13",
+        "0xe469b8": "8b4d04",
+        "0xe469bb": "8b01",
+        "0xe469bd": "ff501c",
+        "0xe469c0": "8bcd",
+        "0xe469c2": "e869f10e00",
+        "0xe469c7": "84c0",
+        "0xe469c9": "74ed",
+        "0xe469cb": "8d4c2410",
+        "0xe469cf": "e89cdae8ff",
+        "0xe469d4": "8d4c2434",
+        "0xe469d8": "e8633e66ff",
+        "0xe45036": "0f858f190000",
+        "0xe4503c": "8bcd",
+        "0xe4503e": "88442443",
+        "0xe45042": "e8e90a0f00",
+        "0xe45047": "84c0",
+        "0xe45049": "0f8500060000",
+        "0xe4504f": "90",
+        "0xe45050": "8a442443",
+        "0xe45054": "84c0",
+        "0xe45056": "7577",
+        "0xe450bb": "0f850a190000",
+        "0xe450c1": "8d4c2414",
+        "0xe450c5": "c644244301",
+        "0xe450ca": "e8a1d6e8ff",
+        "0xe450cf": "6aff",
+        "0xe452ee": "0f8573030000",
+        "0xe452f4": "8b4d28",
+        "0xe452f7": "8a442443",
+        "0xe452fb": "41",
+        "0xe452fc": "84c0",
+        "0xe453c7": "84c0",
+        "0xe453c9": "7407",
+        "0xe453cb": "c644246300",
+        "0xe453d0": "eb05",
+        "0xe453d2": "c644246301",
+        "0xe453d7": "f6c304",
+        "0xe453da": "7410",
+        "0xe4540d": "895c2424",
+        "0xe45411": "e8ca96b5ff",
+        "0xe45416": "8a442463",
+        "0xe4541a": "84c0",
+        "0xe4541c": "0f8416020000",
+        "0xe455eb": "84c0",
+        "0xe455ed": "0f85ba000000",
+        "0xe455f3": "8a442443",
+        "0xe455f7": "84c0",
+        "0xe455f9": "7425",
+        "0xe4502d": "8bcd",
+        "0xe4502f": "e8fc0a0f00",
+        "0xe45034": "84c0"
+      },
+      "edits": [
+        [
+          "local __push1,",
+          "local registeredTimerID, __push1,"
+        ],
+        [
+          "iVar6 = quest:RegisterTimer()",
+          "registeredTimerID = quest:RegisterTimer()"
+        ],
+        [
+          "quest:SetTimer(iVar6,",
+          "quest:SetTimer(registeredTimerID,"
+        ],
+        [
+          "quest:GetTimer(iVar6)",
+          "quest:GetTimer(registeredTimerID)"
+        ],
+        [
+          "quest:DeregisterTimer(iVar6)",
+          "quest:DeregisterTimer(registeredTimerID)"
+        ],
+        [
+          "xStack_e0_b3",
+          "clientAtStand"
+        ],
+        [
+          "xStack_e8_2_b3 ~= 0",
+          "clientAtStand"
+        ]
+      ],
+      "editCounts": [
+        1,
+        1,
+        1,
+        1,
+        3,
+        4,
+        2
+      ],
+      "nativeEvidence": {
+        "registeredFrameOffset": 16,
+        "registrationSite": "0xe44fd4",
+        "storeSite": "0xe44fde",
+        "setSite": "0xe459b9",
+        "getSite": "0xe459f4",
+        "directCleanupSites": [
+          "0xe4565c",
+          "0xe45c5e"
+        ],
+        "destructorSite": "0xe469cf",
+        "destructorAddress": "0xcd4470",
+        "destructorBytes": "8bc18b0df8e843018b008b1150ff9260010000c3"
+      },
+      "evidenceScope": "120originalcaller fragments/20actualdestructors;1941instructionCFG proves exactlyoncecleanup afterconstruction;24actualSDK/solcases showwrongtypes coerce0. OnlyregisteredscalarID isisolated;otheriVar6registerlifetimes remainexact. Realregistry/current-global-vs-capturedSDKinterface/fullMain/host/gameplay unproved. W127addsonebooleanstandlifetime:5originalinitialguard/15reader/2store cases,4completefemale-readable chathit experiments;sameframe+43. Originalcontrolcalls/engine/fullMain/gameplay remainunproved.",
+      "nativeDependencies": [
+        {
+          "address": "0xcd4470",
+          "bytes": "8bc18b0df8e843018b008b1150ff9260010000c3"
+        }
+      ],
+      "additionalAliases": [
+        "clientAtStand"
+      ],
+      "standByteEvidence": {
+        "frameOffset": 67,
+        "initialStore": "0xe4503e",
+        "arrivalStore": "0xe450c5",
+        "initialGuard": "0xe45036",
+        "movementReader": "0xe45050",
+        "chatReader": "0xe452f7",
+        "hitReader": "0xe455f3",
+        "booleanProducers": [
+          false,
+          true
+        ],
+        "restoredBooleanConditions": 2
+      }
+    }
+  },
+  "reviewedTemporaryMaskDiagnostics": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "luaBodySha256": "7d2fa0b6ae132be5c6838e0cb0ae2d868a263ab4be0d44d5e9670edcea4581cf",
+      "maskFrameOffset": 56,
+      "literal": "SCRIPT_NAME_HERO",
+      "literalAddress": "0x125d1c8",
+      "constructor": {
+        "address": "0x99ebf0",
+        "bytes": "568bf1c70600000000ff0500d83b01833e0074078bcee8a5fdffff8b44240885"
+      },
+      "destructor": {
+        "address": "0x99eae0",
+        "bytes": "e8cbfeffffff0d00d83b01c3cccccccc538bd98b0385c0744383780d017e3d56"
+      },
+      "groups": [
+        {
+          "bit": 1,
+          "stringFrameOffset": 160,
+          "constructor": "0xe3ec8e",
+          "set": "0xe3ec9a",
+          "setStore": "0xe3eca4",
+          "setArgumentDepth": 0,
+          "test": "0xe3ecd1",
+          "skip": "0xe3ecd6",
+          "clear": "0xe3ecdc",
+          "clearStore": "0xe3ece6",
+          "destructorReceiver": "0xe3ecdf",
+          "destructor": "0xe3ecea"
+        },
+        {
+          "bit": 2,
+          "stringFrameOffset": 60,
+          "constructor": "0xe400f6",
+          "set": "0xe4010a",
+          "setStore": "0xe4010f",
+          "setArgumentDepth": 4,
+          "test": "0xe401b8",
+          "skip": "0xe401bb",
+          "clear": "0xe401bd",
+          "clearStore": "0xe401c4",
+          "destructorReceiver": "0xe401c0",
+          "destructor": "0xe401c8"
+        },
+        {
+          "bit": 4,
+          "stringFrameOffset": 152,
+          "constructor": "0xe40128",
+          "set": "0xe40136",
+          "setStore": "0xe4013c",
+          "setArgumentDepth": 4,
+          "test": "0xe401a0",
+          "skip": "0xe401a3",
+          "clear": "0xe401a5",
+          "clearStore": "0xe401af",
+          "destructorReceiver": "0xe401a8",
+          "destructor": "0xe401b3"
+        },
+        {
+          "bit": 8,
+          "stringFrameOffset": 144,
+          "constructor": "0xe40158",
+          "set": "0xe40167",
+          "setStore": "0xe4016e",
+          "setArgumentDepth": 8,
+          "test": "0xe40188",
+          "skip": "0xe4018b",
+          "clear": "0xe4018d",
+          "clearStore": "0xe40197",
+          "destructorReceiver": "0xe40190",
+          "destructor": "0xe4019b"
+        }
+      ],
+      "nativeInstructions": {
+        "0xe3ec80": "6aff",
+        "0xe3ec82": "68c8d12501",
+        "0xe3ec87": "8d8c24a8000000",
+        "0xe3ec8e": "e85dffb5ff",
+        "0xe3ec9a": "83ce01",
+        "0xe3eca4": "89742438",
+        "0xe3ecd1": "f644243801",
+        "0xe3ecd6": "7417",
+        "0xe3ecdc": "83e0fe",
+        "0xe3ecdf": "8d8c24a0000000",
+        "0xe3ece6": "89442438",
+        "0xe3ecea": "e8f1fdb5ff",
+        "0xe400eb": "6aff",
+        "0xe400ed": "68c8d12501",
+        "0xe400f2": "8d4c2444",
+        "0xe400f6": "e8f5eab5ff",
+        "0xe4010a": "83cb02",
+        "0xe4010f": "895c243c",
+        "0xe4011a": "6aff",
+        "0xe4011c": "68c8d12501",
+        "0xe40121": "8d8c24a0000000",
+        "0xe40128": "e8c3eab5ff",
+        "0xe40136": "83cb04",
+        "0xe4013c": "895c243c",
+        "0xe4014a": "6aff",
+        "0xe4014c": "68c8d12501",
+        "0xe40151": "8d8c2498000000",
+        "0xe40158": "e893eab5ff",
+        "0xe40167": "83cb08",
+        "0xe4016e": "895c2440",
+        "0xe40188": "f6c308",
+        "0xe4018b": "7413",
+        "0xe4018d": "83e3f7",
+        "0xe40190": "8d8c2490000000",
+        "0xe40197": "895c2438",
+        "0xe4019b": "e840e9b5ff",
+        "0xe401a0": "f6c304",
+        "0xe401a3": "7413",
+        "0xe401a5": "83e3fb",
+        "0xe401a8": "8d8c2498000000",
+        "0xe401af": "895c2438",
+        "0xe401b3": "e828e9b5ff",
+        "0xe401b8": "f6c302",
+        "0xe401bb": "7410",
+        "0xe401bd": "83e3fd",
+        "0xe401c0": "8d4c243c",
+        "0xe401c4": "895c2438",
+        "0xe401c8": "e813e9b5ff"
+      },
+      "nativeSourceFragments": [
+        "uStack_1bc = uStack_1bc & 0xfffffffe;",
+        "uVar15 = uStack_1bc | 2;",
+        "uStack_1bc = uVar15 & 0xfffffffd;"
+      ],
+      "luaPredicates": {
+        "me:IsTalkedToByHero()": 1,
+        "quest:IsReportedOrUnreportedCrimeKnown(": 1,
+        "me:MsgIsHitByHero()": 2,
+        "me:MsgIsHitByAnySpecialAbilityFromHero()": 2,
+        "me:MsgIsHitByHeroSpecialAbility(": 2
+      },
+      "diagnostics": [
+        {
+          "text": "unlifted: xStack_15c = xStack_15c & 0xfffffffe;",
+          "count": 1
+        },
+        {
+          "text": "unlifted: xStack_15c = xStack_15c | 2;",
+          "count": 2
+        },
+        {
+          "text": "unlifted: xStack_15c = uVar15 & 0xfffffffd;",
+          "count": 2
+        }
+      ],
+      "scopeLimit": "SDK methods own method-scoped FableString; original expression keeps prior strings longer. Heap/destructor timing equivalence and deeper dynamic query argument escape are unverified; classification changes no Lua predicates/calls/state/yields.",
+      "evidenceScope": "48 original mask cases/96 composed original wrapper cases/40 actualSDK cases;CString allocation/destruction andDataqueries are explicit fixtures,actualheap/engine/fullMain/gameplay unproved."
+    }
+  },
+  "reviewedRestoredVtableStaging": {
+    "0x00e3eb10": {
+      "nativeSha256": "206cb96baa14524f43f3445d74dfdd8b5c206164daa98e41a12af5a7d0b54f6b",
+      "sourceSha256": "ad7ef16b799810163b937c7513d0a6419853b2a038b9511a81ce5edd72d3e0db",
+      "luaBodySha256": "cfcd34e1ee60099188b72887658d9f2cb655c54571b7971734aaf6a9eec3f72e",
+      "slot": "0x5ec",
+      "target": "0x890ab0",
+      "calleeBytes": "538b5c2408568bf18b4e048b0153ff500c8bc8e8f8e4c8ff84db741f8b4e048b",
+      "method": "PauseAllNonScriptedEntities",
+      "sharedCall": "0xe3f731",
+      "luaCallLabel": "::LAB_00e3f731::",
+      "luaStagingVariable": "ppuVar13",
+      "paths": [
+        {
+          "kind": "preserved-register",
+          "instructions": [
+            "0xe403af",
+            "0xe403b1",
+            "0xe403b2",
+            "0xe403b4"
+          ],
+          "diagnostic": "unlifted: ppuVar13 = *piVar1",
+          "luaLabel": "::LAB_00e403af::",
+          "luaRegion": "::LAB_00e403af::\n            -- TODO(native): ppuVar13 = *piVar1\n            ppuVar13 = nil --[[unresolved native value]]\n            ::LAB_00e3f731::\n            quest:PauseAllNonScriptedEntities(false)\n",
+          "nativeSourceFragment": "ppuVar13 = (undefined **)*piVar1;"
+        },
+        {
+          "kind": "saved-frame",
+          "instructions": [
+            "0xe3f729",
+            "0xe3f72d",
+            "0xe3f72f"
+          ],
+          "diagnostic": "unlifted: ppuVar13 = *pppuVar28",
+          "luaLabel": "::LAB_00e3f729::",
+          "luaRegion": "::LAB_00e3f729::\n            -- TODO(native): ppuVar13 = *pppuVar28\n            ppuVar13 = nil --[[unresolved native value]]\n            goto LAB_00e3f731\n",
+          "nativeSourceFragment": "ppuVar13 = *pppuVar28;"
+        }
+      ],
+      "nativeInstructions": {
+        "0xe3ed64": "8b5d04",
+        "0xe3ed67": "8b13",
+        "0xe3ed69": "6a01",
+        "0xe3ed6b": "8bcb",
+        "0xe3ed6d": "895c2418",
+        "0xe3ed71": "ff92ec050000",
+        "0xe3f729": "8b4c2414",
+        "0xe3f72d": "8b01",
+        "0xe3f72f": "6a00",
+        "0xe3f731": "ff90ec050000",
+        "0xe403af": "8b03",
+        "0xe403b1": "57",
+        "0xe403b2": "8bcb",
+        "0xe403b4": "e978f3ffff"
+      },
+      "receiverProof": {
+        "acceptedEvidenceSha256": "c3e21a348e726d770caa386ff4cef4f1aafb223dd4eab44b80056da2b7733a7a",
+        "savedFrameOffset": 20,
+        "entryFrameOffset": -396,
+        "ordinaryMsvcAbiAssumed": true,
+        "cacheInstructions": [
+          "0xe3ed64",
+          "0xe3ed67",
+          "0xe3ed69",
+          "0xe3ed6b",
+          "0xe3ed6d",
+          "0xe3ed71"
+        ]
+      },
+      "scopeLimit": "Ordinary MSVC x86 callee-save/no arbitrary caller-frame writes assumed. Earlier Brain API borrowed CString nonretention remains unverified; original bounded pause cases use explicit GetWorld/clock callbacks and empty actor list. No full Main/heap/fibre/gameplay proof."
+    }
+  },
+  "reviewedHiddenReturnTemporaries": {
+    "0x00e3ac70": {
+      "nativeSha256": "fa81f6f411eac5bf8b3eb86b0ced465731b258d8b8924b30b31b363b8167c2da",
+      "sourceSha256": "f3b9a684162def2e94f4eaea89f97bb9a321564c14e748fcd9080a65f5864865",
+      "luaBodySha256": "947b32f4e7a2048c9c12d57e71ed0b38b8c1ebd0b06e2ae60a5a53217eedf32d",
+      "method": "GetDataString",
+      "slot": 12,
+      "frameBytes": 24,
+      "resultFrameOffset": 20,
+      "resultEntryOffset": -4,
+      "memberOffset": 40,
+      "roles": {
+        "reserve": "0xe3ac70",
+        "saveEbx": "0xe3ac73",
+        "saveEbp": "0xe3ac74",
+        "scriptReceiver": "0xe3ac75",
+        "thingTable": "0xe3ac77",
+        "saveEsi": "0xe3ac7a",
+        "saveEdi": "0xe3ac7b",
+        "outAddress": "0xe3ac7c",
+        "actorAddress": "0xe3ac80",
+        "pushOut": "0xe3ac83",
+        "getterReceiver": "0xe3ac84",
+        "memberAddress": "0xe3ac96",
+        "getterCall": "0xe3ac99",
+        "pushReturned": "0xe3ac9c",
+        "assignmentReceiver": "0xe3ac9d",
+        "assignmentCall": "0xe3ac9f",
+        "destructorReceiver": "0xe3aca4",
+        "destructorCall": "0xe3aca8"
+      },
+      "nativeInstructions": {
+        "0xe3ac70": "83ec08",
+        "0xe3ac73": "53",
+        "0xe3ac74": "55",
+        "0xe3ac75": "8be9",
+        "0xe3ac77": "8b4508",
+        "0xe3ac7a": "56",
+        "0xe3ac7b": "57",
+        "0xe3ac7c": "8d4c2414",
+        "0xe3ac80": "8d7508",
+        "0xe3ac83": "51",
+        "0xe3ac84": "8bce",
+        "0xe3ac96": "8d5d28",
+        "0xe3ac99": "ff500c",
+        "0xe3ac9c": "50",
+        "0xe3ac9d": "8bcb",
+        "0xe3ac9f": "e80c43b6ff",
+        "0xe3aca4": "8d4c2414",
+        "0xe3aca8": "e8333eb6ff"
+      },
+      "helpers": {
+        "getter": {
+          "address": "0x4aa900",
+          "bytes": "8b490485c9568b742408751268ece843018bcee818434f008bc65ec204008b0156ff500c8bc65ec20400"
+        },
+        "assign": {
+          "address": "0x99efb0",
+          "bytes": "56578b7c240c8bf13bfe7415833e007405e8eaf9ffff8b0785c074058906ff400d5f8bc65ec20400"
+        },
+        "destructor": {
+          "address": "0x99eae0",
+          "bytes": "e8cbfeffffff0d00d83b01c3"
+        }
+      },
+      "diagnostic": "unlifted: puStack_1c = v_stk_4;",
+      "nativeSourceFragment": "puStack_1c = local_4;",
+      "nativeOnlyAliases": [
+        "puStack_1c",
+        "v_stk_4"
+      ],
+      "luaRegion": "    pOther = me:GetDataString()\n    this_00 = pOther\n    __native_entity_state:SetStateString(\"Name\", pOther)\n",
+      "acceptedSdkEvidenceSha256": "589edfb22ababd61a880187b6018fa1e119a5919ba29e8d79b396f9e281223fa",
+      "scopeLimit": "Accepted SDK guards destruction after successful native hidden-out return, including empty strings and conversion exceptions. Native getter construction exceptions, deeper engine retention/heap/fibre/gameplay are unverified; global fallback CString runtime contents remain unavailable and were explicit fixtures."
     }
   }
 }

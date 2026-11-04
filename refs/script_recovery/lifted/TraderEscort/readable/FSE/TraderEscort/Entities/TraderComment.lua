@@ -10,7 +10,7 @@ local helpers = require("TraderEscort.native_quest_helpers")
 
 -- TraderComment.Main (retail 0x00e05360)
 function Main(quest, me)
-    local predicateResult, ctr_28, scratchValue3
+    local predicateResult, comment_to_make, comment_type, ctr_28, scratchValue3, speaker
     if not quest:NewScriptFrame(me) then return end
     local darkwoodTrader = quest:GetAllThingsWithScriptName("DarkwoodTrader")
     local scratchValue4 = quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDistance)
@@ -26,7 +26,10 @@ function Main(quest, me)
                 local sequence = scratchValue and quest:IsDistanceBetweenThingsUnder(me, darkwoodTrader[scratchValue3 + 1], scratchValue4)
                 if not sequence then ctr_28 = ctr_28 + 1; scratchValue3 = scratchValue3 + 1; goto continue_1 end
                 if quest:IsActiveThreadTerminating() then return end
-                if helpers.MakeTraderComment(quest, me, me:GetDataString(), darkwoodTrader[scratchValue3 + 1], 1) then
+                speaker = darkwoodTrader[scratchValue3 + 1]
+                comment_type = 1
+                comment_to_make = me:GetDataString()
+                if helpers.MakeTraderComment(quest, me, comment_to_make, speaker, 1) then
                     if quest:IsActiveThreadTerminating() then return end
                     quest:RemoveThing(me, false, true)
                     return
@@ -34,7 +37,7 @@ function Main(quest, me)
                 ctr_28 = ctr_28 + 1
                 scratchValue3 = scratchValue3 + 1
                 ::continue_1::
-            until ctr_28 >= #darkwoodTrader
+            until not (ctr_28 < (#darkwoodTrader))
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00e0557f end
         quest:NewScriptFrame(me)

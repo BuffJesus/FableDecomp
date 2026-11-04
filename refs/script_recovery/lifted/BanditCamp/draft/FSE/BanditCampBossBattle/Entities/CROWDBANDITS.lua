@@ -156,7 +156,7 @@ function Main(quest, me)
                         bVar6 = true
                         pCVar7 = quest:GetHero()
                         quest:EntitySetFacingAngleTowardsThing(me, pCVar7, bVar6)
-                        uVar9 = math.random(0, 32767)
+                        uVar9 = quest:RetailRandModulo(32768)
                         uVar9 = uVar9 & 0x80000001
                         bVar6 = uVar9 == 0
                         if uVar9 < 0 then
@@ -166,22 +166,21 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00d0c28b end
-                        iVar8 = math.random(0, 32767)
-                        iVar8 = iVar8 % 3
+                        iVar8 = quest:RetailRandModulo(3)
                         if iVar8 == 0 then
-                            me:PlayAnimation("SPECIAL_BOAST", false, false, false, true, true, false, false)
+                            resources:PlayAnimationWithNativeArgument5(xStack_20, "SPECIAL_BOAST", false, false, false, true, false, false)
                         else
                             if iVar8 == 1 then
-                                me:PlayAnimation("ST_THREATEN", false, false, false, true, true, false, false)
+                                resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_THREATEN", false, false, false, true, false, false)
                                 goto LAB_00d0b927
                             end
                             if iVar8 == 2 then
-                                me:PlayAnimation("SCRIPT_SHOUT", false, false, false, true, true, false, false)
+                                resources:PlayAnimationWithNativeArgument5(xStack_20, "SCRIPT_SHOUT", false, false, false, true, false, false)
                                 goto LAB_00d0b927
                             end
                         end
                         ::LAB_00d0b927::
-                        uVar9 = math.random(0, 32767)
+                        uVar9 = quest:RetailRandModulo(32768)
                         uVar9 = uVar9 & 0x80000003
                         bVar6 = uVar9 == 0
                         if uVar9 < 0 then
@@ -191,7 +190,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then goto LAB_00d0c28b end
-                            uVar9 = math.random(0, 32767)
+                            uVar9 = quest:RetailRandModulo(32768)
                             uVar9 = uVar9 & 0x80000001
                             if uVar9 < 0 then
                                 uVar9 = (uVar9 - 1 | 0xfffffffe) + 1
@@ -213,7 +212,7 @@ function Main(quest, me)
                                 bVar6 = true
                                 pCVar7 = quest:GetHero()
                                 quest:EntitySetFacingAngleTowardsThing(me, pCVar7, bVar6)
-                                uVar9 = math.random(0, 32767)
+                                uVar9 = quest:RetailRandModulo(32768)
                                 uVar9 = uVar9 & 0x80000001
                                 bVar6 = uVar9 == 0
                                 if uVar9 < 0 then
@@ -223,19 +222,19 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar6 = not alive
                                 if not bVar6 then
-                                    uVar9 = math.random(0, 32767)
+                                    uVar9 = quest:RetailRandModulo(32768)
                                     uVar9 = uVar9 & 0x80000001
                                     if uVar9 < 0 then
                                         uVar9 = (uVar9 - 1 | 0xfffffffe) + 1
                                     end
                                     if uVar9 == 0 then
-                                        me:PlayAnimation("COCKY", false, false, false, true, true, false, false)
+                                        resources:PlayAnimationWithNativeArgument5(xStack_20, "COCKY", false, false, false, true, false, false)
                                     elseif uVar9 == 1 then
-                                        me:PlayAnimation("ST_UNPERTURBED_GESTURE", false, false, false, true, true, false, false)
+                                        resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_UNPERTURBED_GESTURE", false, false, false, true, false, false)
                                         goto LAB_00d0bcdc
                                     end
                                     ::LAB_00d0bcdc::
-                                    uVar9 = math.random(0, 32767)
+                                    uVar9 = quest:RetailRandModulo(32768)
                                     uVar9 = uVar9 & 0x80000001
                                     if uVar9 < 0 then
                                         uVar9 = (uVar9 - 1 | 0xfffffffe) + 1
@@ -256,7 +255,7 @@ function Main(quest, me)
                         bVar6 = true
                         pCVar7 = quest:GetHero()
                         quest:EntitySetFacingAngleTowardsThing(me, pCVar7, bVar6)
-                        uVar9 = math.random(0, 32767)
+                        uVar9 = quest:RetailRandModulo(32768)
                         uVar9 = uVar9 & 0x80000001
                         bVar6 = uVar9 == 0
                         if uVar9 < 0 then
@@ -280,19 +279,19 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00d0c28b end
-                    uVar9 = math.random(0, 32767)
+                    uVar9 = quest:RetailRandModulo(32768)
                     uVar9 = uVar9 & 0x80000001
                     if uVar9 < 0 then
                         uVar9 = (uVar9 - 1 | 0xfffffffe) + 1
                     end
                     if uVar9 == 0 then
-                        me:PlayAnimation("SPECIAL_BOAST", false, false, false, true, true, false, false)
+                        resources:PlayAnimationWithNativeArgument5(xStack_20, "SPECIAL_BOAST", false, false, false, true, false, false)
                     elseif uVar9 == 1 then
-                        me:PlayAnimation("ST_WAVE_SPECIAL_01", false, false, false, true, true, false, false)
+                        resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_WAVE_SPECIAL_01", false, false, false, true, false, false)
                         goto LAB_00d0bacf
                     end
                     ::LAB_00d0bacf::
-                    uVar9 = math.random(0, 32767)
+                    uVar9 = quest:RetailRandModulo(32768)
                     uVar9 = uVar9 & 0x80000007
                     bVar6 = uVar9 == 0
                     if uVar9 < 0 then
@@ -309,7 +308,7 @@ function Main(quest, me)
                         quest:AddLineToConversation(conversationID, "TEXT_QST_009_BOSSFIGHT_TAUNTING", me, pCVar7, false)
                         timerId = xStack_7c
                     end
-                    uVar9 = math.random(0, 32767)
+                    uVar9 = quest:RetailRandModulo(32768)
                     uVar9 = uVar9 & 0x80000003
                     bVar6 = uVar9 == 0
                     if uVar9 < 0 then
@@ -319,7 +318,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00d0c28b end
-                        uVar9 = math.random(0, 32767)
+                        uVar9 = quest:RetailRandModulo(32768)
                         uVar9 = uVar9 & 0x80000001
                         if uVar9 < 0 then
                             uVar9 = (uVar9 - 1 | 0xfffffffe) + 1
@@ -403,7 +402,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if bVar5 then break end
-                uVar9 = math.random(0, 32767)
+                uVar9 = quest:RetailRandModulo(32768)
                 uVar9 = uVar9 & 0x80000001
                 bVar5 = uVar9 == 0
                 if uVar9 < 0 then
@@ -413,22 +412,21 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then break end
-                    iVar8 = math.random(0, 32767)
-                    iVar8 = iVar8 % 3
+                    iVar8 = quest:RetailRandModulo(3)
                     if iVar8 == 0 then
-                        me:PlayAnimation("SPECIAL_BOAST", false, false, false, true, true, false, false)
+                        resources:PlayAnimationWithNativeArgument5(xStack_20, "SPECIAL_BOAST", false, false, false, true, false, false)
                     else
                         if iVar8 == 1 then
-                            me:PlayAnimation("ST_THREATEN", false, false, false, true, true, false, false)
+                            resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_THREATEN", false, false, false, true, false, false)
                             goto LAB_00d0c05b
                         end
                         if iVar8 == 2 then
-                            me:PlayAnimation("SCRIPT_SHOUT", false, false, false, true, true, false, false)
+                            resources:PlayAnimationWithNativeArgument5(xStack_20, "SCRIPT_SHOUT", false, false, false, true, false, false)
                             goto LAB_00d0c05b
                         end
                     end
                     ::LAB_00d0c05b::
-                    uVar9 = math.random(0, 32767)
+                    uVar9 = quest:RetailRandModulo(32768)
                     uVar9 = uVar9 & 0x80000003
                     bVar5 = uVar9 == 0
                     if uVar9 < 0 then
@@ -438,7 +436,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         if bVar5 then break end
-                        uVar9 = math.random(0, 32767)
+                        uVar9 = quest:RetailRandModulo(32768)
                         uVar9 = uVar9 & 0x80000001
                         if uVar9 < 0 then
                             uVar9 = (uVar9 - 1 | 0xfffffffe) + 1

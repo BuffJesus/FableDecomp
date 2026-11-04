@@ -19,7 +19,9 @@ end
 -- V_GuildMaster.GetGuildMasterSpeech (retail 0x00e91f20)
 -- E91F20: bsim names this body NScript::CV_GuildMasterScript::GetGuildMasterSpeech (a homologous script member); no PDB name
 function GetGuildMasterSpeech(quest)
-    local predicateResult, scratchValue, scratchValue2, scratchValue3, scratchValue4
+    local predicateResult, scratchValue, scratchValue2, scratchValue3, retailRandModulo
+    local scratchValue4
+    scratchValue4 = ""
     local getMasterGameState = quest:GetMasterGameState("PostSavePosition")
     if getMasterGameState < 901 then
         if getMasterGameState == 900 then
@@ -282,13 +284,14 @@ function GetGuildMasterSpeech(quest)
         ::FLOW_after_flow_native_label_2_357::
     end
     ::FLOW_after_flow_native_label_2::
+    scratchValue4 = scratchValue3
     local lastDialogueSaid = quest:GetStateString("LastDialogueSaid")
-    if lastDialogueSaid == scratchValue3 then
-        scratchValue4 = math.random(0, 32767)
-        scratchValue4 = scratchValue4 & 0x80000003
-        scratchValue = scratchValue4 == 0
-        if scratchValue4 < 0 then
-            scratchValue = (scratchValue4 - 1 | 0xfffffffc) == 0xffffffff
+    if lastDialogueSaid == scratchValue4 then
+        retailRandModulo = quest:RetailRandModulo(32768)
+        retailRandModulo = retailRandModulo & 0x80000003
+        scratchValue = retailRandModulo == 0
+        if retailRandModulo < 0 then
+            scratchValue = (retailRandModulo - 1 | 0xfffffffc) == 0xffffffff
         end
         if scratchValue then
             if not quest:GetStateBool("GuildMasterDialogue_2") then
@@ -302,14 +305,15 @@ function GetGuildMasterSpeech(quest)
                 scratchValue3 = "TEXT_QST_081_INFO_LOG_BOOK"
             else
                 scratchValue2 = quest:GetHeroTitle()
-                if not ((scratchValue2 ~= 19) or quest:GetStateBool("GuildMasterDialogue_1")) then
-                    quest:SetStateBool("GuildMasterDialogue_1", true)
-                    scratchValue3 = "TEXT_QST_081_INFO_HERO_TITLE"
-                end
+                if scratchValue2 ~= 19 or quest:GetStateBool("GuildMasterDialogue_1") then goto LAB_00e924b3 end
+                quest:SetStateBool("GuildMasterDialogue_1", true)
+                scratchValue3 = "TEXT_QST_081_INFO_HERO_TITLE"
             end
+            scratchValue4 = scratchValue3
         end
     end
-    quest:SetStateString("LastDialogueSaid", scratchValue3)
-    return scratchValue3
+    ::LAB_00e924b3::
+    quest:SetStateString("LastDialogueSaid", scratchValue4)
+    return scratchValue4
 end
 

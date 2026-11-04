@@ -1,5 +1,7 @@
 # Notes for Aeon — 2026-09-24
 
+> Dated findings; no fresh runtime verification.
+
 Since the 2026-09-22 share. The first section is runtime (FSE-level) bugs your FSE very likely shares; the
 patches that fix them in our sidecar are in `sidecar_patches/` (plain `git diff`s of our ForgeFSE fork).
 

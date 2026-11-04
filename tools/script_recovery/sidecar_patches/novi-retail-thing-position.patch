@@ -1,0 +1,43 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 1596ef8..ad6b389 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1001,6 +1001,30 @@ void DestroyText(unsigned id) { Release(id, Kind::Text); }
+         return RetailDistanceMath{}.FromThingToPosition(thing, ReadFloatVector3(position));
+     }
+ 
++    sol::table GetThingPosition(sol::object value, sol::this_state state) {
++        CheckOpen();
++        CScriptThing* actor = nullptr;
++        if (value.valid() && value.get_type() != sol::type::nil) {
++            if (value.get_type() != sol::type::userdata || !value.is<CScriptThing*>())
++                throw std::runtime_error("Retail Thing position requires a Thing or nil");
++            actor = value.as<CScriptThing*>();
++        }
++        const volatile C3DVector* position = nullptr;
++        if (actor) {
++            auto* table = reinterpret_cast<CScriptThingVTable*>(actor->pVTable);
++            if (!table || !table->GetPos)
++                throw std::runtime_error("Retail Thing position getter unavailable");
++            position = table->GetPos(actor);
++        } else {
++            position = ASLR<const volatile C3DVector*>(0x0143E8E0);
++        }
++        if (!position) throw std::runtime_error("Retail Thing position returned a null vector");
++        // Snapshot before creating Lua tables, which can trigger collection.
++        const float x = position->x, y = position->y, z = position->z;
++        sol::state_view lua(state);
++        return lua.create_table_with("x", x, "y", y, "z", z);
++    }
++
+     sol::table NormalizeVector3(sol::table value, sol::this_state state) {
+         CheckOpen();
+         C3DVector input = ReadFloatVector3(value);
+@@ -2332,6 +2356,7 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["NewBarrelWatchSnapshot"] = &LuaRetailResources::NewBarrelWatchSnapshot;
+     type["DistanceBetweenThings"] = &LuaRetailResources::DistanceBetweenThings;
+     type["DistanceFromThingToPosition"] = &LuaRetailResources::DistanceFromThingToPosition;
++    type["GetThingPosition"] = &LuaRetailResources::GetThingPosition;
+     type["NormalizeVector3"] = &LuaRetailResources::NormalizeVector3;
+     type["RotateVector3"] = &LuaRetailResources::RotateVector3;
+     type["ArcCosTurns"] = &LuaRetailResources::ArcCosTurns;

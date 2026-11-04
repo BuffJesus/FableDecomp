@@ -1,9 +1,10 @@
 {
  "schema": "readable-unit/1",
  "unit": "trophy_dealer",
- "draft": "refs/script_recovery/lifted/TrophyDealer/draft",
+ "draft": "refs\\script_recovery\\lifted\\TrophyDealer\\draft",
  "files": {
   "FSE/quests.lua": {
+   "callbackScopes": {},
    "functions": [],
    "locals": [],
    "wrappedDeclarations": 0,
@@ -12,7 +13,10 @@
     "hoistedRequires": 0,
     "entityStateAliased": 0,
     "namedHelpers": 0,
-    "pureLocalFunctions": []
+    "pureLocalFunctions": [],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
     "lines": 2,
@@ -22,6 +26,7 @@
    }
   },
   "FSE/V_TrophyDealer/Entities/DemonDoorFace.lua": {
+   "callbackScopes": {},
    "functions": [
     {
      "function": "Main",
@@ -356,29 +361,29 @@
          42
         ],
         "bVar3_9": [
-         63
+         69
         ],
         "bVar3_10": [
-         74
+         80
         ],
         "bVar3_11": [
-         86
+         92
         ],
         "bVar3_12": [
-         96
+         102
         ],
         "bVar3_13": [
-         103
+         109
         ],
         "bVar3_14": [
-         111,
-         121
+         117,
+         127
         ],
         "bVar3_15": [
-         115
+         121
         ],
         "bVar3_16": [
-         124
+         130
         ]
        }
       },
@@ -390,10 +395,10 @@
          54
         ],
         "iVar8_2": [
-         58
+         64
         ],
         "iVar8_3": [
-         70
+         76
         ]
        }
       },
@@ -408,7 +413,7 @@
          56
         ],
         "pCVar5_3": [
-         108
+         114
         ]
        }
       },
@@ -420,7 +425,7 @@
          53
         ],
         "iVar9_2": [
-         106
+         112
         ]
        }
       },
@@ -429,10 +434,10 @@
        "originalDeclaration": "    local bVar3, cVar4, fVar2, fret_0, iVar8, iVar9, p1, p4, p5, pCVar5, pCVar6, pppuVar12, r1, r2, xStack_10, xStack_20, xStack_30, xStack_3c, xStack_48\n",
        "versions": {
         "pCVar6_1": [
-         89
+         95
         ],
         "pCVar6_2": [
-         141
+         147
         ]
        }
       },
@@ -444,7 +449,7 @@
          44
         ],
         "xStack_20_2": [
-         105
+         111
         ]
        }
       }
@@ -492,15 +497,15 @@
       },
       "iVar9_2": {
        "literal": "4",
-       "definitionLine": 106,
+       "definitionLine": 112,
        "readLines": [
-        109
+        115
        ],
        "basis": "single literal definition dominates every read",
        "previousLines": {
         "3": "    local bVar3_1, bVar3_2, bVar3_3, bVar3_4, bVar3_5, bVar3_6, bVar3_7, bVar3_8, bVar3_9, bVar3_10, bVar3_11, bVar3_12, bVar3_13, bVar3_14, bVar3_15, bVar3_16, cVar4, fret_0, iVar8_2, iVar8_3, iVar9_2, p1, p4, p5, pCVar5_1, pCVar5_2, pCVar5_3, pCVar6_1, pCVar6_2, pppuVar12, r1, r2, xStack_10, xStack_20_1, xStack_20_2, xStack_30, xStack_3c, xStack_48\n",
-        "106": "            iVar9_2 = 4\n",
-        "109": "            resources:TryAcquire(pppuVar12, pCVar5_3, iVar9_2)\n"
+        "112": "            iVar9_2 = 4\n",
+        "115": "            resources:TryAcquire(pppuVar12, pCVar5_3, iVar9_2)\n"
        }
       }
      },
@@ -508,7 +513,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 165,
+     "sourceLine": 171,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -517,7 +522,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 172,
+     "sourceLine": 178,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -526,7 +531,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 175,
+     "sourceLine": 181,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -535,7 +540,7 @@
     },
     {
      "function": "Main",
-     "sourceLine": 9,
+     "sourceLine": 7,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -544,7 +549,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 100,
+     "sourceLine": 110,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -553,7 +558,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 107,
+     "sourceLine": 117,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -562,7 +567,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 110,
+     "sourceLine": 120,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -575,15 +580,15 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 8,
+       "splitLocals": 14,
        "closures": 0,
-       "hero": 1,
+       "hero": 0,
        "cutscenes": 0,
        "staleLabelComments": 2,
        "aliveStaging": 16,
        "exitChecksInlined": 2,
        "frameChecks": 1,
-       "inlinedTemporaries": 21,
+       "inlinedTemporaries": 15,
        "deadDefinitions": 3,
        "guardWrappers": 0,
        "retryLoops": 3,
@@ -591,18 +596,19 @@
        "booleanCompares": 0,
        "conditions": 0,
        "literals": 2,
-       "copies": 0,
+       "copies": 1,
        "selfAssignments": 0,
        "flagClears": 0,
-       "tailGuards": 242,
+       "deadBitmaskStaging": 0,
+       "tailGuards": 162,
        "blockingSpeech": 0,
        "uintFixups": 0,
        "freshGuards": 0,
-       "constantConditions": 1,
+       "constantConditions": 0,
        "emptyElse": 0,
        "unusedClosures": 0,
        "sharedExitTests": 0,
-       "gotoElse": 240,
+       "gotoElse": 160,
        "booleanBranches": 0,
        "booleanJumpChains": 0,
        "elseif": 0,
@@ -612,18 +618,19 @@
        "loopExitJumps": 0,
        "cleanupExitJumps": 5,
        "ifAroundWhile": 0,
-       "deadTerminationChecks": 1,
+       "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 13,
+       "sunkLocals": 26,
        "cleanupClosureNames": 0,
        "parentheses": 7,
        "cosmetics": 0,
        "firstAssignments": 0,
-       "freeSuffixes": 0,
+       "freeSuffixes": 1,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
-       "lines": 144,
+       "lines": 150,
        "temporaries": 34,
        "labels": 1,
        "gotos": 3,
@@ -632,11 +639,11 @@
        "requires": 0
       },
       "after": {
-       "lines": 90,
+       "lines": 102,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
-       "terminationChecks": 11,
+       "terminationChecks": 12,
        "frameChecks": 1,
        "requires": 0
       }
@@ -662,6 +669,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -688,6 +696,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -730,6 +739,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -756,6 +766,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -798,6 +809,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -824,6 +836,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -852,16 +865,33 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
-    ]
+    ],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
-    "lines": 116,
-    "counts": {},
-    "status": "needs-human-review",
-    "findings": []
+    "lines": 126,
+    "counts": {
+     "genericTemporaries": 2
+    },
+    "status": "needs-readability-work",
+    "findings": [
+     {
+      "line": 30,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     },
+     {
+      "line": 31,
+      "category": "genericTemporaries",
+      "text": "scratchValue"
+     }
+    ]
    }
   },
   "FSE/V_TrophyDealer/Entities/TrophyDealerInCave.lua": {
+   "callbackScopes": {},
    "functions": [
     {
      "function": "Main",
@@ -876,7 +906,7 @@
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 1,
-      "declarations": 5,
+      "declarations": 8,
       "decimalLiterals": 0
      }
     },
@@ -1101,7 +1131,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 37,
+     "sourceLine": 40,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1110,7 +1140,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 41,
+     "sourceLine": 44,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1119,7 +1149,7 @@
     },
     {
      "function": "OnPredicateFail",
-     "sourceLine": 44,
+     "sourceLine": 47,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1132,7 +1162,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 5,
+       "splitLocals": 8,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -1140,17 +1170,18 @@
        "aliveStaging": 5,
        "exitChecksInlined": 1,
        "frameChecks": 2,
-       "inlinedTemporaries": 8,
-       "deadDefinitions": 2,
+       "inlinedTemporaries": 2,
+       "deadDefinitions": 5,
        "guardWrappers": 0,
        "retryLoops": 1,
        "booleanMaterialisation": 0,
        "booleanCompares": 0,
        "conditions": 0,
-       "literals": 2,
-       "copies": 0,
+       "literals": 4,
+       "copies": 1,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 1,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1171,12 +1202,13 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 8,
+       "sunkLocals": 14,
        "cleanupClosureNames": 0,
        "parentheses": 1,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1189,7 +1221,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 32,
+       "lines": 35,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -1219,6 +1251,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1245,6 +1278,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1287,6 +1321,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1313,6 +1348,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1355,6 +1391,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1381,6 +1418,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1409,16 +1447,20 @@
     "pureLocalFunctions": [
      "OnPersist",
      "OnPredicateFail"
-    ]
+    ],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
-    "lines": 50,
+    "lines": 53,
     "counts": {},
     "status": "needs-human-review",
     "findings": []
    }
   },
   "FSE/V_TrophyDealer/V_TrophyDealer.lua": {
+   "callbackScopes": {},
    "functions": [
     {
      "function": "Main",
@@ -1429,7 +1471,7 @@
       "byteIndices": 0,
       "voidReturns": 0,
       "nilReleases": 0,
-      "emptyIfs": 1,
+      "emptyIfs": 0,
       "deadStores": 0,
       "unusedAlive": 0,
       "flagTests": 0,
@@ -1636,7 +1678,7 @@
     },
     {
      "function": "Init",
-     "sourceLine": 24,
+     "sourceLine": 25,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1645,7 +1687,7 @@
     },
     {
      "function": "OnPersist",
-     "sourceLine": 28,
+     "sourceLine": 30,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1654,7 +1696,7 @@
     },
     {
      "function": "HilightGuildTeleporter",
-     "sourceLine": 31,
+     "sourceLine": 33,
      "locals": {},
      "splitLocals": {},
      "removedLiteralLocals": {},
@@ -1667,7 +1709,7 @@
     "functions": {
      "Main": {
       "rewrites": {
-       "splitLocals": 3,
+       "splitLocals": 4,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -1675,7 +1717,7 @@
        "aliveStaging": 3,
        "exitChecksInlined": 0,
        "frameChecks": 1,
-       "inlinedTemporaries": 3,
+       "inlinedTemporaries": 2,
        "deadDefinitions": 0,
        "guardWrappers": 1,
        "retryLoops": 0,
@@ -1686,6 +1728,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1706,12 +1749,13 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 0,
+       "sunkLocals": 2,
        "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 2,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1724,7 +1768,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 19,
+       "lines": 20,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -1735,7 +1779,7 @@
      },
      "Init": {
       "rewrites": {
-       "splitLocals": 1,
+       "splitLocals": 2,
        "closures": 0,
        "hero": 0,
        "cutscenes": 0,
@@ -1743,7 +1787,7 @@
        "aliveStaging": 0,
        "exitChecksInlined": 0,
        "frameChecks": 0,
-       "inlinedTemporaries": 1,
+       "inlinedTemporaries": 0,
        "deadDefinitions": 0,
        "guardWrappers": 0,
        "retryLoops": 0,
@@ -1754,6 +1798,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1774,12 +1819,13 @@
        "ifAroundWhile": 0,
        "deadTerminationChecks": 0,
        "controlAcquires": 0,
-       "sunkLocals": 0,
+       "sunkLocals": 2,
        "cleanupClosureNames": 0,
        "parentheses": 0,
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1792,7 +1838,7 @@
        "requires": 0
       },
       "after": {
-       "lines": 3,
+       "lines": 4,
        "temporaries": 0,
        "labels": 0,
        "gotos": 0,
@@ -1822,6 +1868,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1848,6 +1895,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1890,6 +1938,7 @@
        "copies": 0,
        "selfAssignments": 0,
        "flagClears": 0,
+       "deadBitmaskStaging": 0,
        "tailGuards": 0,
        "blockingSpeech": 0,
        "uintFixups": 0,
@@ -1916,6 +1965,7 @@
        "cosmetics": 0,
        "firstAssignments": 0,
        "freeSuffixes": 0,
+       "unreachableReturnJumps": 0,
        "hoistedState": 0
       },
       "before": {
@@ -1943,10 +1993,13 @@
     "namedHelpers": 0,
     "pureLocalFunctions": [
      "OnPersist"
-    ]
+    ],
+    "unusedGeneratedLabels": 0,
+    "literalExitJoins": 0,
+    "literalFlagJoins": 0
    },
    "readability": {
-    "lines": 48,
+    "lines": 50,
     "counts": {},
     "status": "needs-human-review",
     "findings": []

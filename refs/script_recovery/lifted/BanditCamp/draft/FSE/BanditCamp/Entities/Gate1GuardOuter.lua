@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar4, bVar5, cVar6, c_stk_111, c_stk_145, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, iVar15, iVar16, iVar7, iVar8, i_stk_14c, pCVar10, pCVar11, pCVar9, pQuestName, pcVar14, r1, r10, r11, r12, r13, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10c, xStack_134, xStack_144, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_78, x_stk_84, x_stk_90, x_stk_c
+    local bVar4, bVar5, cVar6, c_stk_111, c_stk_145, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, iVar15, iVar16, iVar7, iVar8, i_stk_14c, pCVar10, pCVar9, pQuestName, pcVar14, r1, r10, r11, r12, r13, r2, r3, r4, r5, r6, r7, r8, r9, xStack_10c, xStack_134, xStack_144, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_78, x_stk_84, x_stk_90, x_stk_c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -68,20 +68,14 @@ function Main(quest, me)
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d02851 end
                     c_stk_111 = 1
-                    -- TODO(native): pCVar11 = *(this + 4)
-                    pCVar11 = nil --[[unresolved native value]]
-                    -- TODO(native): pCVar10 = (**(*pCVar11 + 0x118))(pCVar11)
-                    pCVar10 = nil --[[unresolved native value]]
-                    quest:AddLineToConversation(iVar8, "TEXT_QST_009_BANDIT1_CALL_OVER_FIRST", me, r1, false)
+                    pCVar10 = quest:GetHero()
+                    quest:AddLineToConversation(iVar8, "TEXT_QST_009_BANDIT1_CALL_OVER_FIRST", me, pCVar10, false)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00d02851 end
-                    -- TODO(native): pCVar11 = *(this + 4)
-                    pCVar11 = nil --[[unresolved native value]]
-                    -- TODO(native): pCVar10 = (**(*pCVar11 + 0x118))(pCVar11)
-                    pCVar10 = nil --[[unresolved native value]]
-                    quest:AddLineToConversation(iVar8, "TEXT_QST_009_BANDIT1_CALL_OVER_SECOND", me, nil --[[missing]], false)
+                    pCVar10 = quest:GetHero()
+                    quest:AddLineToConversation(iVar8, "TEXT_QST_009_BANDIT1_CALL_OVER_SECOND", me, pCVar10, false)
                 end
                 iVar7 = i_stk_14c
                 quest:SetTimer(i_stk_14c, 10)
@@ -132,6 +126,9 @@ function Main(quest, me)
                         pcVar14 = "TEXT_QST_009_BANDIT1_NO_DISGUISE"
                         pCVar10 = quest:GetHero()
                         r2 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                        if not r2 then
+                            goto LAB_00d0287c
+                        end
                         iVar7 = me:IsPerformingScriptTask()
                         cVar6 = iVar7
                         while cVar6 do
@@ -181,6 +178,9 @@ function Main(quest, me)
                                 pcVar14 = "TEXT_QST_009_BANDIT1_NO_TROUSERS"
                                 pCVar10 = quest:GetHero()
                                 r3 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r3 then
+                                    goto LAB_00d0287c
+                                end
                                 iVar7 = me:IsPerformingScriptTask()
                                 cVar6 = iVar7
                                 while cVar6 do
@@ -215,6 +215,9 @@ function Main(quest, me)
                         pcVar14 = "TEXT_QST_009_BANDIT1_NO_HAT"
                         pCVar10 = quest:GetHero()
                         r4 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                        if not r4 then
+                            goto LAB_00d0287c
+                        end
                         iVar7 = me:IsPerformingScriptTask()
                         cVar6 = iVar7
                         while cVar6 do
@@ -249,6 +252,9 @@ function Main(quest, me)
                                 pcVar14 = "TEXT_QST_009_BANDIT1_NO_BOOTS"
                                 pCVar10 = quest:GetHero()
                                 r5 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r5 then
+                                    goto LAB_00d0287c
+                                end
                                 iVar7 = me:IsPerformingScriptTask()
                                 cVar6 = iVar7
                                 while cVar6 do
@@ -283,6 +289,9 @@ function Main(quest, me)
                             pcVar14 = "TEXT_QST_009_BANDIT1_NO_GLOVES"
                             pCVar10 = quest:GetHero()
                             r6 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r6 then
+                                goto LAB_00d0287c
+                            end
                             iVar7 = me:IsPerformingScriptTask()
                             cVar6 = iVar7
                             while cVar6 do
@@ -319,6 +328,9 @@ function Main(quest, me)
                                 pcVar14 = "TEXT_QST_009_BANDIT1_TRIED_AND_IN"
                                 pCVar10 = quest:GetHero()
                                 r7 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r7 then
+                                    goto LAB_00d0287c
+                                end
                                 iVar7 = me:IsPerformingScriptTask()
                                 cVar6 = iVar7
                                 while cVar6 do
@@ -357,6 +369,9 @@ function Main(quest, me)
                             pcVar14 = "TEXT_QST_009_BANDIT1_GATE_OPEN"
                             pCVar10 = quest:GetHero()
                             r9 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r9 then
+                                goto LAB_00d02870
+                            end
                             iVar7 = me:IsPerformingScriptTask()
                             cVar6 = iVar7
                             while cVar6 do
@@ -395,6 +410,9 @@ function Main(quest, me)
                                 pcVar14 = "TEXT_QST_009_BANDIT1_BANDITS_SLEEPING"
                                 pCVar10 = quest:GetHero()
                                 r10 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r10 then
+                                    goto LAB_00d02870
+                                end
                                 iVar7 = me:IsPerformingScriptTask()
                                 cVar6 = iVar7
                                 while cVar6 do
@@ -429,6 +447,9 @@ function Main(quest, me)
                                 pcVar14 = "TEXT_QST_009_BANDIT1_STRAIGHT_IN"
                                 pCVar10 = quest:GetHero()
                                 r11 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r11 then
+                                    goto LAB_00d0287c
+                                end
                                 iVar7 = me:IsPerformingScriptTask()
                                 cVar6 = iVar7
                                 while cVar6 do
@@ -463,6 +484,9 @@ function Main(quest, me)
                         pcVar14 = "TEXT_QST_009_BANDIT1_NO_SHIRT"
                         pCVar10 = quest:GetHero()
                         r12 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                        if not r12 then
+                            goto LAB_00d0287c
+                        end
                         iVar7 = me:IsPerformingScriptTask()
                         cVar6 = iVar7
                         while cVar6 do
@@ -511,6 +535,11 @@ function Main(quest, me)
                 pcVar14 = "TEXT_QST_009_BANDIT1_ASIDE"
                 pCVar10 = quest:GetHero()
                 r13 = me:Speak(pCVar10, pcVar14, iVar7, (iVar8 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                if not r13 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_10c)
+                    goto LAB_00d02851
+                end
                 iVar7 = me:IsPerformingScriptTask()
                 cVar6 = iVar7
                 while cVar6 do

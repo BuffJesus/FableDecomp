@@ -71,10 +71,14 @@ function Main(quest, me)
                             iVar12 = 0
                             iVar11 = 2
                             pCVar8 = require("V_Bordello.native_quest_helpers").helper_E3E6B0(quest, me)
-                            pCVar8 = (a .. pCVar8)
+                            pCVar8 = ("TEXT_QST_B13_GUARD_ATTACKED" .. pCVar8)
                             p1 = pCVar8
                             pCVar15 = quest:GetHero()
                             r1 = me:Speak(pCVar15, p1, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                            if not r1 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00e40e5a
+                            end
                             iVar11 = me:IsPerformingScriptTask()
                             cVar6 = iVar11
                             while cVar6 do
@@ -195,6 +199,9 @@ function Main(quest, me)
                                 pcVar10 = "TEXT_QST_B13_GUARD_STRANGE_LADY"
                                 pCVar15 = quest:GetHero()
                                 r2 = me:Speak(pCVar15, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                if not r2 then
+                                    goto LAB_00e40673
+                                end
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar6 = iVar11
                                 while cVar6 do
@@ -232,6 +239,9 @@ function Main(quest, me)
                                     pcVar10 = "TEXT_QST_B13_GUARD_FEMALE_NO_ENTRY"
                                     pCVar15 = quest:GetHero()
                                     r3 = me:Speak(pCVar15, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                    if not r3 then
+                                        goto LAB_00e40673
+                                    end
                                     iVar11 = me:IsPerformingScriptTask()
                                     cVar6 = iVar11
                                     while cVar6 do
@@ -260,6 +270,9 @@ function Main(quest, me)
                                     pcVar10 = "TEXT_QST_B13_GUARD_MALE_NO_ENTRY"
                                     pCVar15 = quest:GetHero()
                                     r4 = me:Speak(pCVar15, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                    if not r4 then
+                                        goto LAB_00e40673
+                                    end
                                     iVar11 = me:IsPerformingScriptTask()
                                     cVar6 = iVar11
                                     while cVar6 do
@@ -288,6 +301,9 @@ function Main(quest, me)
                                     pcVar10 = "TEXT_QST_B13_GUARD_GREETING"
                                     pCVar15 = quest:GetHero()
                                     r5 = me:Speak(pCVar15, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                    if not r5 then
+                                        goto LAB_00e40673
+                                    end
                                     iVar11 = me:IsPerformingScriptTask()
                                     cVar6 = iVar11
                                     while cVar6 do
@@ -319,6 +335,9 @@ function Main(quest, me)
                                 pcVar10 = "TEXT_QST_B13_GUARD_HERO_EXHAUSTED"
                                 pCVar15 = quest:GetHero()
                                 r6 = me:Speak(pCVar15, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                                if not r6 then
+                                    goto LAB_00e40673
+                                end
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar6 = iVar11
                                 while cVar6 do
@@ -354,6 +373,8 @@ function Main(quest, me)
                             if not cVar6 then goto LAB_00e40afa_c1 end
                         end
                         c_stk_bd = 0
+                    else
+                        goto LAB_00e40afa_c1
                     end
                     goto FLOW_past_lab_00e40afa_c1
                     ::LAB_00e40afa_c1::
@@ -376,10 +397,14 @@ function Main(quest, me)
                             iVar12 = 0
                             iVar11 = 2
                             pCVar8 = require("V_Bordello.native_quest_helpers").helper_E3E6B0(quest, me)
-                            pCVar8 = (a .. pCVar8)
+                            pCVar8 = ("TEXT_QST_B13_GUARD_ATTACKED" .. pCVar8)
                             p1 = pCVar8
                             pCVar15 = quest:GetHero()
                             r7 = me:Speak(pCVar15, p1, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                            if not r7 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00e40e5a_c1
+                            end
                             iVar11 = me:IsPerformingScriptTask()
                             cVar6 = iVar11
                             while cVar6 do
@@ -411,6 +436,8 @@ function Main(quest, me)
                     native_arg_sequence_1 = false
                     if not quest:GetStateBool("HeroPartying") then
                         native_arg_sequence_1 = true
+                    else
+                        native_arg_sequence_1 = false
                     end
                     if native_arg_sequence_1 then
                         if not quest:GetStateBool("HeroTricking") then
@@ -476,6 +503,9 @@ function Main(quest, me)
                             pcVar10 = "TEXT_QST_B13_GUARD_EMPLOYED_NUNNERY"
                             pCVar15 = quest:GetHero()
                             r8 = me:Speak(pCVar15, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                            if not r8 then
+                                goto LAB_00e40673
+                            end
                             iVar11 = me:IsPerformingScriptTask()
                             cVar6 = iVar11
                             while cVar6 do

@@ -15,9 +15,8 @@ local screamedAtHero
 
 -- FleeingWoman.Main (retail 0x00e0f4e0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, p0_00
+    local isDistanceBetweenThingsUnder, predicateResult, p0_00
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -25,8 +24,14 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-    while not quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerDistance)) do
+    local scratchValue = quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerDistance)
+    local hero = quest:GetHero()
+    isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, scratchValue)
+    while not isDistanceBetweenThingsUnder do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
+        local scratchValue2 = quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerDistance)
+        local hero2 = quest:GetHero()
+        isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero2, scratchValue2)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     local fleeingWomanEscapePos = quest:GetThingWithScriptName("FleeingWomanEscapePos")
@@ -37,12 +42,16 @@ function Main(quest, me)
             return
         end
         if not screamedAtHero then
-            if quest:IsDistanceBetweenThingsUnder(me, hero, quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerScreamsDistance)) then
+            local scratchValue3 = quest:ReadGlobalGameData(SCRIPT_DEF.WB_ScreamingVillagerScreamsDistance)
+            local hero3 = quest:GetHero()
+            if quest:IsDistanceBetweenThingsUnder(me, hero3, scratchValue3) then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
                 screamedAtHero = true
                 local conversationID = quest:AddNewConversation(me, false, false)
-                quest:AddPersonToConversation(conversationID, hero)
-                quest:AddLineToConversation(conversationID, "TEXT_QST_072_WOMAN_FLEES_10", me, hero, false)
+                local hero4 = quest:GetHero()
+                quest:AddPersonToConversation(conversationID, hero4)
+                local hero5 = quest:GetHero()
+                quest:AddLineToConversation(conversationID, "TEXT_QST_072_WOMAN_FLEES_10", me, hero5, false)
             end
         end
         if not me:IsPerformingScriptTask() then
@@ -54,14 +63,18 @@ function Main(quest, me)
             end
             me:MoveToPosition(p0_00, 1.0, ENTITY_MOVE_RUN, false, true)
         end
-        if not quest:IsDistanceBetweenThingsUnder(me, fleeingWomanEscapePos, 2.0) then quest:NewScriptFrame(me); predicateResult = quest:IsActiveThreadTerminating(); goto continue_1 end
-        if not quest:IsActiveThreadTerminating() then
-            quest:FadeOutAndKillEntity(me, true, quest:ReadGlobalGameDataFloat(SCRIPT_DEF.WB_ScreamingVillagerFadeOutTime), true)
+        if not quest:IsDistanceBetweenThingsUnder(me, fleeingWomanEscapePos, 2.0) then
+            quest:NewScriptFrame(me);
+            predicateResult = quest:IsActiveThreadTerminating();
+        else
+            if not quest:IsActiveThreadTerminating() then
+                quest:FadeOutAndKillEntity(me, true, quest:ReadGlobalGameDataFloat(SCRIPT_DEF.WB_ScreamingVillagerFadeOutTime), true)
+            end
+            resources:ReleaseResource(resource)
+            do return end
+            quest:NewScriptFrame(me)
+            predicateResult = quest:IsActiveThreadTerminating()
         end
-        resources:ReleaseResource(resource)
-        do return end
-        quest:NewScriptFrame(me)
-        predicateResult = quest:IsActiveThreadTerminating()
         ::continue_1::
     until false
     resources:ReleaseResource(resource)

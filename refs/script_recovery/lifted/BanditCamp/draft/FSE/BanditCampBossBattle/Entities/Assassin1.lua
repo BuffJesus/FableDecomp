@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar5, cVar6, c_stk_c5, c_stk_c6, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar12, iVar13, i_stk_a0, pCVar7, pcVar9, r1, r2, r3, r4, r5, r6, r7, r8, this_00, xStack_b0, xStack_c4, xStack_d8, xStack_e8, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
+    local bVar5, cVar6, c_stk_c5, c_stk_c6, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, iVar10, iVar11, iVar12, iVar13, i_stk_a0, pCVar7, pcVar9, r1, r2, r3, r4, r5, r6, r7, r8, xStack_b0, xStack_c4, xStack_d8, xStack_e8, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d05880()
         quest:PauseAllNonScriptedEntities(false)
@@ -37,7 +37,7 @@ function Main(quest, me)
         bVar5 = not alive
         if not bVar5 then
             cVar6 = quest:GetStateBool("AssassinsUnderAttack")
-            c_stk_c5 = bVar5
+            c_stk_c5 = (bVar5) and 1 or 0
             while (not cVar6 and (not quest:GetStateBool("AssassinCutsceneTriggered"))) do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -73,7 +73,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         if bVar5 then goto LAB_00d058f3 end
-                        if not c_stk_c5 then
+                        if c_stk_c5 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
                             if not bVar5 then
@@ -91,6 +91,9 @@ function Main(quest, me)
                                     pcVar9 = "TEXT_QST_009_ASSASSIN1_INTRO"
                                     pCVar7 = quest:GetHero()
                                     r1 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    if not r1 then
+                                        goto LAB_00d0584f
+                                    end
                                     iVar10 = me:IsPerformingScriptTask()
                                     cVar6 = iVar10
                                     while cVar6 do
@@ -141,6 +144,9 @@ function Main(quest, me)
                                                         pcVar9 = "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_POOR"
                                                         pCVar7 = quest:GetHero()
                                                         r2 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                                        if not r2 then
+                                                            goto LAB_00d0584f
+                                                        end
                                                         iVar10 = me:IsPerformingScriptTask()
                                                         cVar6 = iVar10
                                                         while cVar6 do
@@ -172,6 +178,9 @@ function Main(quest, me)
                                                     pcVar9 = "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_YES"
                                                     pCVar7 = quest:GetHero()
                                                     r3 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                                    if not r3 then
+                                                        goto LAB_00d0584f
+                                                    end
                                                     iVar10 = me:IsPerformingScriptTask()
                                                     cVar6 = iVar10
                                                     while cVar6 do
@@ -210,6 +219,9 @@ function Main(quest, me)
                                             pcVar9 = "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_NO"
                                             pCVar7 = quest:GetHero()
                                             r4 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                            if not r4 then
+                                                goto LAB_00d0584f
+                                            end
                                             iVar10 = me:IsPerformingScriptTask()
                                             cVar6 = iVar10
                                             while cVar6 do
@@ -234,7 +246,7 @@ function Main(quest, me)
                                     quest:SetStateBool("TalkedToAssassin", true)
                                     c_stk_c5 = 1
                                     quest:PauseAllNonScriptedEntities(false)
-                                    this_00 = xStack_d8
+                                    resources:DestroyMovie(xStack_d8)
                                     goto LAB_00d057a5
                                     ::FLOW_past_lab_00d05364::
                                 end
@@ -294,6 +306,9 @@ function Main(quest, me)
                                     pcVar9 = "TEXT_QST_009_ASSASSIN1_INTRO_QUESTION_YES"
                                     pCVar7 = quest:GetHero()
                                     r5 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    if not r5 then
+                                        __cleanup_LAB_00d05880(); return
+                                    end
                                     iVar10 = me:IsPerformingScriptTask()
                                     cVar6 = iVar10
                                     while cVar6 do
@@ -334,6 +349,9 @@ function Main(quest, me)
                                     pcVar9 = "TEXT_QST_009_ASSASSIN1_REPEAT_QUESTION_POOR"
                                     pCVar7 = quest:GetHero()
                                     r6 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    if not r6 then
+                                        __cleanup_LAB_00d05880(); return
+                                    end
                                     iVar10 = me:IsPerformingScriptTask()
                                     cVar6 = iVar10
                                     while cVar6 do
@@ -361,6 +379,9 @@ function Main(quest, me)
                                 pcVar9 = "TEXT_QST_009_ASSASSIN1_REPEAT_QUESTION_NO"
                                 pCVar7 = quest:GetHero()
                                 r7 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                if not r7 then
+                                    __cleanup_LAB_00d05880(); return
+                                end
                                 iVar10 = me:IsPerformingScriptTask()
                                 cVar6 = iVar10
                                 while cVar6 do
@@ -381,7 +402,7 @@ function Main(quest, me)
                         if bVar5 then __cleanup_LAB_00d05880(); return end
                         ::FLOW_past_lab_00d05774::
                         quest:PauseAllNonScriptedEntities(false)
-                        this_00 = xStack_c4
+                        resources:DestroyMovie(xStack_c4)
                     else
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
@@ -400,6 +421,12 @@ function Main(quest, me)
                             pcVar9 = "TEXT_QST_009_ASSASSIN1_NOT_NEEDED"
                             pCVar7 = quest:GetHero()
                             r8 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            if not r8 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_b0)
+                                resources:ReleaseResource(xStack_e8)
+                                return
+                            end
                             iVar10 = me:IsPerformingScriptTask()
                             cVar6 = iVar10
                             while cVar6 do
@@ -426,7 +453,7 @@ function Main(quest, me)
                             end
                         end
                         quest:PauseAllNonScriptedEntities(false)
-                        this_00 = xStack_b0
+                        resources:DestroyMovie(xStack_b0)
                     end
                     ::LAB_00d057a5::
                 end

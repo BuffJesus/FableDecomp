@@ -14,7 +14,9 @@ for --frames calls, then `IsActiveThreadTerminating` becomes true and `NewScript
 retail-shaped loops unwind. A Lua instruction-count hook aborts loops that never yield a frame.
 
 Findings per function: Lua errors (attempt to index nil, bad argument…), non-yielding loops, methods
-that are not registered in the sidecar DLL, and the call trace of the first frames. This is not a
+that are not registered in the sidecar DLL, and the call trace of the first frames. An optional --definition-fixture models stock CDefString vector counts/strings
+with synthetic begin/end/capacity words; empty vectors and invalid indices are not repaired.
+This is not a
 behavioural oracle — it only proves the code runs under the API shapes the DLL exposes.
 """
 from __future__ import annotations
@@ -35,6 +37,21 @@ DLL_SOURCES = [ROOT / 'work/new-oakvale-original-fse-20260912/sidecar-abi-v2/Fab
 HARNESS = r'''
 local calls, frames, budget = {}, 0, FRAME_BUDGET
 local terminating = false
+local definition_fixture = DEFINITION_FIXTURE
+local conversation_snapshots = {}
+local arena_state = {}
+local function copy_conversations(rows)
+    local out = {}
+    for i, row in ipairs(rows) do
+        local item = { Lines = row.Lines }
+        for _, name in ipairs({"Speaker", "Dialogue", "Animation", "AnimLoop"}) do
+            item[name] = {}
+            for j, value in ipairs(row[name]) do item[name][j] = value end
+        end
+        out[i] = item
+    end
+    return out
+end
 local function record(recv, name, ...)
     calls[#calls + 1] = recv .. ":" .. name
     if #calls > 20000 then error("call trace overflow (loop without frames?)") end
@@ -86,8 +103,78 @@ local quest = setmetatable({}, { __index = function(_, k)
             local flags = {}
             return { Get = function(_, key) return flags[key] or false end, Set = function(_, key, v) flags[key] = v end }
         end
-        if k == "GlobalConversations" then
+        if definition_fixture and definition_fixture.conversations then
+            if k == "GlobalConversations" or k == "SnapshotGlobalConversations" then
+                local name, offset = ...
+                if k == "GlobalConversations" then offset = name end
+                local rows = definition_fixture.conversations[offset]
+                if not rows then error("definition fixture: unknown conversation offset " .. tostring(offset)) end
+                local copy = copy_conversations(rows)
+                if k == "GlobalConversations" then return copy end
+                conversation_snapshots[name] = copy
+                return
+            end
+            if k == "GetStateConversations" then
+                return copy_conversations(conversation_snapshots[select(1, ...)] or {})
+            end
+        end
+        if k == "GlobalConversations" or k == "GetStateConversations" then
             return setmetatable({}, { __index = function() return { Lines = 0, Speaker = {}, Dialogue = {}, Animation = {}, AnimLoop = {} } end })
+        end
+        if definition_fixture and definition_fixture.arena_rounds then
+            if k == "InitialiseArenaRounds" then
+                -- SDK Store overwrites snapshot keys and leaves older keys behind.
+                for name, value in pairs(definition_fixture.arena_rounds) do arena_state[name] = value end
+                return
+            end
+            local name, value = ...
+            if type(name) == "string" and name:match("^Rounds_") then
+                if k == "SetStateInt" then
+                    if type(value) ~= "number" or value % 1 ~= 0 or value < -2147483648 or value > 2147483647 then
+                        error("Arena fixture: integer write outside signed 32-bit fixture domain")
+                    end
+                    arena_state[name] = math.tointeger(value); return
+                end
+                if k == "SetStateBool" then
+                    if type(value) ~= "boolean" then error("Arena fixture: boolean write requires boolean") end
+                    arena_state[name] = value; return
+                end
+                if k == "SetStateString" then
+                    if type(value) ~= "string" then error("Arena fixture: string write requires string") end
+                    arena_state[name] = value; return
+                end
+                local saved = arena_state[name]
+                if k == "GetStateInt" then return math.type(saved) == "integer" and saved or 0 end
+                if k == "GetStateBool" then return type(saved) == "boolean" and saved or false end
+                if k == "GetStateString" then return type(saved) == "string" and saved or "" end
+            end
+        end
+        if k == "ReadGlobalGameData" and definition_fixture then
+            return definition_fixture.words[select(1, ...)] or 1
+        end
+        if k == "ReadGlobalGameDataDefStringAt" and definition_fixture then
+            local offset, index = ...
+            local items = definition_fixture.vectors[offset]
+            if not items then error("definition fixture: unknown vector offset " .. tostring(offset)) end
+            if type(index) ~= "number" or index % 1 ~= 0 or index < 0 or index >= #items then
+                error("definition fixture: string index out of bounds")
+            end
+            return items[index + 1]
+        end
+        if k == "ReadGlobalGameDataStringAt" and definition_fixture and definition_fixture.inline_strings then
+            local offset, index = ...
+            if type(offset) ~= "number" or offset % 1 ~= 0 or offset < -2147483648 or offset > 2147483647
+                    or type(index) ~= "number" or index % 1 ~= 0 or index < -2147483648 or index > 2147483647 then
+                error("definition fixture: inline-string arguments must be signed 32-bit integers")
+            end
+            if offset < 0 or index < 0 then return "" end -- current SDK's early empty-string result
+            local items = definition_fixture.inline_strings[offset]
+            if not items then error("definition fixture: unknown inline-string vector offset " .. tostring(offset)) end
+            if index >= #items then return "" end
+            return items[index + 1]
+        end
+        if k == "ReadGlobalGameDataString" or k == "ReadGlobalGameDataStringAt" or k == "ReadGlobalGameDataDefStringAt" then
+            return "" -- all three bindings return std::string; the explicit vector fixture above enforces its bounds
         end
         if k == "ReadGlobalGameData" then return 1 end   -- a positive tunable (retail divides by some: BeardyBaldy speech timer)   -- a float (GetDistanceBetweenThings is not a thing getter)
         -- numbered script names (`"boy" .. n`, BS_Teacher's opinion loop) exist only for small n: a lookup past them
@@ -107,6 +194,7 @@ local quest = setmetatable({}, { __index = function(_, k)
         if k == "RegisterTimer" or k == "AddNewConversation" or k == "StartAmbientConversation" then return 1 end
         if k == "GetStateString" then return "" end
         if k == "GetStateListCount" then return 0 end
+        if k == "RetailRandModulo" then return 0 end -- native binding returns an integer remainder
         if k == "MsgIsQuestionAnsweredYesOrNo" then return 1 end
         if k == "MsgIsGameInfoClickedPast" or k == "MsgIsTutorialClickedPast" then return true end
         -- the out-thing messages: the sidecar returns the thing, or nil when the message did not fire (not false)
@@ -125,6 +213,8 @@ end })
 RESOURCES = setmetatable({}, { __index = function(_, k)
     return function(self, ...)
         record("resources", k, ...)
+        if k == "DistanceBetweenThings" or k == "DistanceFromThingToPosition" then return 0 end
+        if k == "GetThingPosition" then return {x = 0, y = 0, z = 0} end
         if k == "TryAcquire" or k == "IsAlive" then return true end
         if k == "NewBarrelWatchSnapshot" or k == "NewPresentedItemOutput" then return make_thing(k) end
         -- LuaRetailResources::ScriptThing always returns a thing (empty when nothing is acquired)
@@ -183,7 +273,7 @@ return results
 
 # bindings the converter emits ahead of the sidecar: each is a row in docs/scripts/FSE_UPSTREAM_REQUIREMENTS.md
 # (the retail transfer it stands for is named there). Reported as `pendingMethods`, not counted as problems.
-PENDING_BINDINGS = {'InitialiseArenaRounds',  # compiled source patches; not yet in the installed sidecar
+PENDING_BINDINGS = {'InitialiseArenaRounds',  # fallback when absent from the selected source profile
                     'MemberResource', 'MemberStringMap', 'AssignResource', 'ClearStringMap',
                     'StateListResize', 'StateListSetAt', 'GlobalConversations', 'ReadGlobalGameDataStringAt',
                     'IsDistanceFromPositionUnder'}
@@ -227,15 +317,25 @@ def recorded_parameter_types(unit_name, report_path=None):
     return out
 
 
-def registered_methods():
-    text = ''.join(p.read_text(encoding='utf-8', errors='replace') for p in DLL_SOURCES if p.exists())
-    return set(re.findall(r'(?:_type|quest|thing|type)\["(\w+)"\]', text))
+def registered_methods(source_dir=None):
+    sources = DLL_SOURCES
+    if source_dir is not None:
+        sources = [source_dir / p.name for p in DLL_SOURCES]
+        missing = [str(p) for p in sources if not p.is_file()]
+        if missing:
+            raise ValueError('Incomplete sidecar source profile: ' + ', '.join(missing))
+    text = ''.join(p.read_text(encoding='utf-8', errors='replace') for p in sources if p.exists())
+    from tools.script_recovery.sidecar_registration_sources import included_registrations
+    return set(re.findall(r'(?:_type|quest|thing|type)\["(\w+)"\]', text)) | set(included_registrations(sources))
 
 
 LUA_KEYWORDS = {'and', 'break', 'do', 'else', 'elseif', 'end', 'false', 'for', 'function', 'goto', 'if', 'in',
                 'local', 'nil', 'not', 'or', 'repeat', 'return', 'then', 'true', 'until', 'while'}
+# LuaEntityAPI::MsgIsPresentedWithItem publishes its out-string in this host global.
+# Keep this explicit: accepting arbitrary g_* names would hide unresolved operands.
+HOST_GLOBALS = {'g_PresentedItemName'}
 KNOWN_GLOBALS = {'quest', 'me', 'resources', 'require', 'tostring', 'tonumber', 'math', 'string', 'table', 'pairs',
-                 'ipairs', 'print', 'error', 'assert', 'type', 'select', 'pcall', 'Quest', 'Quests', '_G', 'os'}
+                 'ipairs', 'print', 'error', 'assert', 'type', 'select', 'pcall', 'Quest', 'Quests', '_G', 'os'} | HOST_GLOBALS
 
 
 def free_globals(source):
@@ -262,20 +362,40 @@ def free_globals(source):
 def main():
     a = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     a.add_argument('--unit', default='orchard_farm')
-    a.add_argument('--stage', default='readable')
+    a.add_argument('--stage', help='explicit lifted stage; defaults to the generated readable stage used by packaging')
     a.add_argument('--frames', type=int, default=200)
     a.add_argument('--instructions', type=int, default=2_000_000)
     a.add_argument('--json', type=Path)
     a.add_argument('--package-dir', type=Path, help='smoke this FSE tree instead of a converter unit')
     a.add_argument('--conversion-report', type=Path, help='native parameter types for a scratch/package tree')
+    a.add_argument('--sidecar-source-dir', type=Path,
+                   help='directory containing LuaManager.cpp, NoviUnitBindings.h and LuaRetailResources.h; '
+                        'includes called registration helpers in local quoted headers; static source inspection, not DLL build proof')
+    a.add_argument('--definition-fixture', type=Path,
+                   help='explicit smoke-only CDefString vectors with synthetic x86 pointers; ordinary scalar defaults remain')
     args = a.parse_args()
+    fixture, fixture_metadata = None, None
+    if args.definition_fixture:
+        from tools.script_recovery.definition_vector_fixture import load_fixture, to_lua
+        try:
+            fixture, fixture_metadata = load_fixture(args.definition_fixture)
+        except (ValueError, OSError) as exc:
+            a.error(str(exc))
+        print(f'Definition-vector fixture: {args.definition_fixture} ({len(fixture["vectors"])} vectors; synthetic pointers)')
     from lupa.lua54 import LuaRuntime
     if args.package_dir:
         base = args.package_dir.resolve()
     else:
         u = script_unit(args.unit)
-        base = ROOT / 'refs/script_recovery/lifted' / u['package'] / args.stage / 'FSE'
-    known = registered_methods()
+        if args.stage:
+            base = ROOT / 'refs/script_recovery/lifted' / u['package'] / args.stage / 'FSE'
+        else:
+            from tools.script_recovery.build_unit_playtest_package import readable_dir
+            base = readable_dir(u['package'])
+    try:
+        known = registered_methods(args.sidecar_source_dir)
+    except ValueError as exc:
+        a.error(str(exc))
     native_types = recorded_parameter_types(args.unit, args.conversion_report) if args.conversion_report or not args.package_dir else {}
     report, problems = {}, 0
     for path in sorted(base.rglob('*.lua')):
@@ -285,7 +405,7 @@ def main():
         if not functions:
             continue
         lua = LuaRuntime(unpack_returned_tuples=True)
-        runner = lua.execute('return function(SOURCE, NAME, FUNCTIONS, FRAME_BUDGET, INSTRUCTION_LIMIT, PARAM_KINDS, ENTITY_FILE) ' + HARNESS + ' end')
+        runner = lua.execute('return function(SOURCE, NAME, FUNCTIONS, FRAME_BUDGET, INSTRUCTION_LIMIT, PARAM_KINDS, ENTITY_FILE, DEFINITION_FIXTURE) ' + HARNESS + ' end')
         kinds = {}
         for name, params in re.findall(r'^function ([\w.]+)\(([^)]*)\)', source, re.M):
             entity_file = '__native_entity_state' in source
@@ -307,7 +427,8 @@ def main():
                                        else 'string' if re.search(r'name|comment|key|text|string|def|label', p, re.I)
                                        else 'number' if re.search(r'type|count|index|id|amount|priority|state|param|seconds', p, re.I)
                                        else 'thing') for p in extra])
-        result = runner(source, path.name, lua.table(*functions), args.frames, args.instructions, lua.table(**kinds), '__native_entity_state' in source)
+        result = runner(source, path.name, lua.table(*functions), args.frames, args.instructions, lua.table(**kinds), '__native_entity_state' in source,
+                        to_lua(lua, fixture, fixture_metadata) if fixture is not None else None)
         rel = path.relative_to(base).as_posix()
         entry = {}
         leaks = free_globals(source)

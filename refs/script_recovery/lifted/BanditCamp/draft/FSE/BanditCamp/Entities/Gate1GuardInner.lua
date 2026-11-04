@@ -66,6 +66,9 @@ function Main(quest, me)
                     pcVar8 = "TEXT_QST_009_BANDIT1B_ASIDE"
                     pCVar6 = quest:GetHero()
                     r2 = me:Speak(pCVar6, pcVar8, iVar9, (iVar10 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                    if not r2 then
+                        goto LAB_00d02f2c
+                    end
                     iVar9 = me:IsPerformingScriptTask()
                     cVar3 = iVar9
                     while cVar3 do

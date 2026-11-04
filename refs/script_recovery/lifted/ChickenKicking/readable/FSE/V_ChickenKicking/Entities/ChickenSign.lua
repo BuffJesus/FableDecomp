@@ -7,15 +7,23 @@ local TextKeys = {"TEXT_QST_B17_SIGN_WON_NOTHING", "TEXT_QST_B17_SIGN_WON_EXPR",
 -- ChickenSign.Main (retail 0x00e64df0)
 function Main(quest, me)
     quest:SetThingAsUsable(me, true)
-    quest:SetReadableObjectText(quest:GetThingWithScriptName("ChickenSign"), TextKeys[quest:GetStateInt("PrizesWon") + 1])
+    local scratchValue = TextKeys[quest:GetStateInt("PrizesWon") + 1]
+    local chickenSign = quest:GetThingWithScriptName("ChickenSign")
+    quest:SetReadableObjectText(chickenSign, scratchValue)
+    chickenSign = nil
     local prizesWon = quest:GetStateInt("PrizesWon")
     while true do
         if prizesWon == 7 then
+            quest:IsActiveThreadTerminating()
             return
         end
         if not quest:NewScriptFrame(me) then break end
         if prizesWon ~= quest:GetStateInt("PrizesWon") then
-            quest:SetReadableObjectText(quest:GetThingWithScriptName("ChickenSign"), TextKeys[quest:GetStateInt("PrizesWon") + 1])
+            if quest:IsActiveThreadTerminating() then return end
+            scratchValue = TextKeys[quest:GetStateInt("PrizesWon") + 1]
+            chickenSign = quest:GetThingWithScriptName("ChickenSign")
+            quest:SetReadableObjectText(chickenSign, scratchValue)
+            chickenSign = nil
             prizesWon = quest:GetStateInt("PrizesWon")
         end
     end

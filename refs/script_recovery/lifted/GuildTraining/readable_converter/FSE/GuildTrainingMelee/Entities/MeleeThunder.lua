@@ -21,6 +21,7 @@ function Main(quest, me)
     while quest:GetStateInt("TutorialState") == 4 do
         if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
     end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     resources:PrepareResource(resource)
     while quest:GetStateInt("TutorialState") ~= 6 do
         if not quest:NewScriptFrame(me) then goto LAB_00d58297 end

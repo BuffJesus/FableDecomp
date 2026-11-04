@@ -885,5 +885,33 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedDragonPhaseElse": {
+    "0x00d25a00": {
+      "sourceSha256": "a0a5ef4585cc0de9ac997faaae8b6ee05d9cf13994d9a407045f1a93ccc6b98c",
+      "nativeSha256": "35af74cdf7df2afcb01a5034f95c8777116a1fa4f426c1d5dffeb61c3d20d512",
+      "branchWindowSha256": "48f53b529a530e7470c5b1be32453f3fbbdb7471ecfc8771a0862ff3611e000a"
+    }
+  },
+  "reviewedDragonSummonerTarget": {
+    "0x00d25a00": {
+      "sourceSha256": "a0a5ef4585cc0de9ac997faaae8b6ee05d9cf13994d9a407045f1a93ccc6b98c",
+      "nativeSha256": "35af74cdf7df2afcb01a5034f95c8777116a1fa4f426c1d5dffeb61c3d20d512",
+      "storeWindowSha256": "99d627b1c87b1fad3ac9c687aa57433fe3001fdd6785a5e54c394c587367f537"
+    }
+  },
+  "reviewedDragonSpawnSummoners": {
+    "0x00d26e60": {
+      "sourceSha256": "aa6f6ab157114ee004823611939b3c3a5ffe86d3bcb2bdbb96f86b84af2a1a70",
+      "nativeSha256": "91f645cb6114eb775746b40b626123b1f4d211ad602ab13dc9f2b8d95ed69071",
+      "indirectSites": [
+        "0x00d26efa",
+        "0x00d26f87"
+      ],
+      "effectSite": "0x00d26f0b",
+      "creatureSite": "0x00d26f98",
+      "spawnList": "SummonerSpawnPoints",
+      "indexField": "NextSummonerSpawnPoint"
+    }
   }
 }

@@ -9,10 +9,9 @@ local SCRIPT_DEF = {
 
 -- V_BeggarAndChild.Main (retail 0x00e57e60)
 function Main(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local amount, predicateResult, predicateResult14, pQuestName, string, movie, resource, resource2
-    local resource3, actorMap
+    local amount, controlAcquired, predicateResult, predicateResult14, pQuestName, pppuVar, string
+    local movie, resource, resource2, resource3, actorMap
     local function ReleaseEverything()
         quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_SNEER_DUMMY", 3, 10)
         resources:RunMacro("CS_BANDB_BEGGARLEAVES_2", actorMap, false, true)
@@ -83,8 +82,14 @@ function Main(quest)
     resource2 = resources:NewResource()
     resource3 = resources:NewResource()
     resources:PrepareResource(resource)
-    while not resources:TryAcquire(resource, hero, 4) do
+    pppuVar = resource
+    local hero = quest:GetHero()
+    controlAcquired = resources:TryAcquire(pppuVar, hero, 4)
+    while not controlAcquired do
         if not quest:NewScriptFrame() then goto LAB_00e58586 end
+        pppuVar = resource
+        local hero2 = quest:GetHero()
+        controlAcquired = resources:TryAcquire(pppuVar, hero2, 4)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00e58586 end
     resources:PrepareResource(resource2)
@@ -155,7 +160,8 @@ function Main(quest)
                 resources:ReleaseResource(resource3)
                 resources:ReleaseResource(resource2)
                 resources:ReleaseResource(resource)
-                quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+                pQuestName = quest:GetActiveQuestName()
+                quest:DeactivateQuestLater(pQuestName, 0)
                 return
             end
             if not quest:IsActiveThreadTerminating() then
@@ -188,7 +194,8 @@ function Main(quest)
             resources:ReleaseResource(resource3)
             resources:ReleaseResource(resource2)
             resources:ReleaseResource(resource)
-            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+            pQuestName = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pQuestName, 0)
             return
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00e58565 end
@@ -203,7 +210,8 @@ function Main(quest)
             resources:ReleaseResource(resource3)
             resources:ReleaseResource(resource2)
             resources:ReleaseResource(resource)
-            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+            pQuestName = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pQuestName, 0)
             return
         end
         if quest:IsXbox() then
@@ -345,17 +353,41 @@ end
 
 -- V_BeggarAndChild.OnPersist (retail 0x00e57d20)
 function OnPersist(quest, context)
-    quest:SetStateBool("BeggarHit", quest:PersistTransferBool(context, "BeggarHit", quest:GetStateBool("BeggarHit")))
-    quest:SetStateBool("BeggarLeft", quest:PersistTransferBool(context, "BeggarLeft", quest:GetStateBool("BeggarLeft")))
-    quest:SetStateBool("BullyLeft", quest:PersistTransferBool(context, "BullyLeft", quest:GetStateBool("BullyLeft")))
-    quest:SetStateBool("BullyHit", quest:PersistTransferBool(context, "BullyHit", quest:GetStateBool("BullyHit")))
-    quest:SetStateBool("TaughtBelch", quest:PersistTransferBool(context, "TaughtBelch", quest:GetStateBool("TaughtBelch")))
-    quest:SetStateBool("TaughtSneer", quest:PersistTransferBool(context, "TaughtSneer", quest:GetStateBool("TaughtSneer")))
-    quest:SetStateBool("TaughtThanks", quest:PersistTransferBool(context, "TaughtThanks", quest:GetStateBool("TaughtThanks")))
-    quest:SetStateBool("TaughtBattleCry", quest:PersistTransferBool(context, "TaughtBattleCry", quest:GetStateBool("TaughtBattleCry")))
-    quest:SetStateBool("BullyHasTaunted", quest:PersistTransferBool(context, "BullyHasTaunted", quest:GetStateBool("BullyHasTaunted")))
-    quest:SetStateInt("BelchedAtBeggar", quest:PersistTransferInt(context, "BelchedAtBeggar", quest:GetStateInt("BelchedAtBeggar") or 0))
-    quest:SetStateBool("BelchedAtBully", quest:PersistTransferBool(context, "BelchedAtBully", quest:GetStateBool("BelchedAtBully")))
-    quest:SetStateBool("QuestCardGiven", quest:PersistTransferBool(context, "QuestCardGiven", quest:GetStateBool("QuestCardGiven")))
+    local beggarHit = quest:GetStateBool("BeggarHit") or false
+    beggarHit = quest:PersistTransferBool(context, "BeggarHit", beggarHit)
+    quest:SetStateBool("BeggarHit", beggarHit)
+    local beggarLeft = quest:GetStateBool("BeggarLeft") or false
+    beggarLeft = quest:PersistTransferBool(context, "BeggarLeft", beggarLeft)
+    quest:SetStateBool("BeggarLeft", beggarLeft)
+    local bullyLeft = quest:GetStateBool("BullyLeft") or false
+    bullyLeft = quest:PersistTransferBool(context, "BullyLeft", bullyLeft)
+    quest:SetStateBool("BullyLeft", bullyLeft)
+    local bullyHit = quest:GetStateBool("BullyHit") or false
+    bullyHit = quest:PersistTransferBool(context, "BullyHit", bullyHit)
+    quest:SetStateBool("BullyHit", bullyHit)
+    local taughtBelch = quest:GetStateBool("TaughtBelch") or false
+    taughtBelch = quest:PersistTransferBool(context, "TaughtBelch", taughtBelch)
+    quest:SetStateBool("TaughtBelch", taughtBelch)
+    local taughtSneer = quest:GetStateBool("TaughtSneer") or false
+    taughtSneer = quest:PersistTransferBool(context, "TaughtSneer", taughtSneer)
+    quest:SetStateBool("TaughtSneer", taughtSneer)
+    local taughtThanks = quest:GetStateBool("TaughtThanks") or false
+    taughtThanks = quest:PersistTransferBool(context, "TaughtThanks", taughtThanks)
+    quest:SetStateBool("TaughtThanks", taughtThanks)
+    local taughtBattleCry = quest:GetStateBool("TaughtBattleCry") or false
+    taughtBattleCry = quest:PersistTransferBool(context, "TaughtBattleCry", taughtBattleCry)
+    quest:SetStateBool("TaughtBattleCry", taughtBattleCry)
+    local bullyHasTaunted = quest:GetStateBool("BullyHasTaunted") or false
+    bullyHasTaunted = quest:PersistTransferBool(context, "BullyHasTaunted", bullyHasTaunted)
+    quest:SetStateBool("BullyHasTaunted", bullyHasTaunted)
+    local belchedAtBeggar = quest:GetStateInt("BelchedAtBeggar") or 0
+    belchedAtBeggar = quest:PersistTransferInt(context, "BelchedAtBeggar", belchedAtBeggar)
+    quest:SetStateInt("BelchedAtBeggar", belchedAtBeggar)
+    local belchedAtBully = quest:GetStateBool("BelchedAtBully") or false
+    belchedAtBully = quest:PersistTransferBool(context, "BelchedAtBully", belchedAtBully)
+    quest:SetStateBool("BelchedAtBully", belchedAtBully)
+    local questCardGiven = quest:GetStateBool("QuestCardGiven") or false
+    questCardGiven = quest:PersistTransferBool(context, "QuestCardGiven", questCardGiven)
+    quest:SetStateBool("QuestCardGiven", questCardGiven)
 end
 

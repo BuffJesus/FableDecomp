@@ -1,0 +1,34 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index e45ca14..fa304c1 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -37,6 +37,7 @@
+ 
+ struct NoviUnitQuestData {
+     std::map<std::string, std::vector<unsigned char>> flagVectors;
++    std::map<std::string, std::vector<std::string>> stringVectors;
+     std::map<std::string, std::vector<std::shared_ptr<CScriptThing>>> lists;
+     std::shared_ptr<LuaRetailResources> resources;
+ };
+@@ -172,6 +173,21 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         if (it == lists.end() || index < 0 || index >= static_cast<int>(it->second.size())) return;
+         it->second.erase(it->second.begin() + index);
+     };
++    // Value strings copied into quest members, independent of later definition
++    // changes. The unit table releases these with the owning quest state.
++    quest["StateStringVectorResize"] = [](LuaQuestState& self, const std::string& name, int count) {
++        if (count < 0) throw std::out_of_range("negative string vector size");
++        NoviUnitData(self).stringVectors[name].resize(static_cast<std::size_t>(count));
++    };
++    quest["GetStateStringVectorCount"] = [](LuaQuestState& self, const std::string& name) -> int {
++        return static_cast<int>(NoviUnitData(self).stringVectors[name].size());
++    };
++    quest["GetStateStringVectorAt"] = [](LuaQuestState& self, const std::string& name, int index) -> std::string {
++        return NoviUnitData(self).stringVectors[name].at(static_cast<std::size_t>(index));
++    };
++    quest["SetStateStringVectorAt"] = [](LuaQuestState& self, const std::string& name, int index, const std::string& value) {
++        NoviUnitData(self).stringVectors[name].at(static_cast<std::size_t>(index)) = value;
++    };
+     // Byte-per-flag vectors: 0x467686 resize, byte reads/stores, and
+     // CPersistContext::TransferVector 0xCDCF80 (BookDonated/BookOwned).
+     quest["StateFlagVectorResize"] = [](LuaQuestState& self, const std::string& name, int count) {

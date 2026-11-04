@@ -1,6 +1,12 @@
 -- Readable native conversion: V_TourGuide. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    TourGuideOpeningTime = 2280,  -- 800
+    TourGuideClosingTime = 2284,  -- 2000
+}
+
 local function __native_all_dead(list)
     local down = 0
     for _, thing in ipairs(list) do
@@ -11,16 +17,22 @@ end
 
 -- V_TourGuide.Main (retail 0x00ee47b0)
 function Main(quest)
+    local scratchValue
     quest:AddEntityBinding("TourGuideGuide", "V_TourGuide/Entities/TourGuideGuide")
     quest:AddEntityBinding("TourGuideFollower", "V_TourGuide/Entities/TourGuideFollower")
     quest:FinalizeEntityBindings()
     quest:CreateThread("WatchForGuideKilled")  -- native thread body NScript::CV_TourGuideScript::WatchForGuideKilled: lift it as function WatchForGuideKilled(quest)
+    if not scratchValue then
+    end
     quest:CreateThread("WatchForClosingTime")  -- native thread body NScript::CV_TourGuideScript::WatchForClosingTime: lift it as function WatchForClosingTime(quest)
+    if not scratchValue then
+    end
     local questFinished = quest:GetStateBool("QuestFinished")
     while true do
         if questFinished then
             if quest:IsActiveThreadTerminating() then return end
-            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+            local pQuestName = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pQuestName, 0)
             return
         end
         if not quest:NewScriptFrame() then break end
@@ -113,10 +125,18 @@ end
 
 -- V_TourGuide.OnPersist (retail 0x00ee5720)
 function OnPersist(quest, context)
-    quest:SetStateBool("TourGuideKilled", quest:PersistTransferBool(context, "TourGuideKilled", quest:GetStateBool("TourGuideKilled")))
-    quest:SetStateInt("WaypointCounter", quest:PersistTransferInt(context, "WaypointCounter", quest:GetStateInt("WaypointCounter") or 0))
-    quest:SetStateBool("TourFinished", quest:PersistTransferBool(context, "TourFinished", quest:GetStateBool("TourFinished")))
-    quest:SetStateBool("QuestActivated", quest:PersistTransferBool(context, "QuestActivated", quest:GetStateBool("QuestActivated")))
+    local tourGuideKilled = quest:GetStateBool("TourGuideKilled") or false
+    tourGuideKilled = quest:PersistTransferBool(context, "TourGuideKilled", tourGuideKilled)
+    quest:SetStateBool("TourGuideKilled", tourGuideKilled)
+    local waypointCounter = quest:GetStateInt("WaypointCounter") or 0
+    waypointCounter = quest:PersistTransferInt(context, "WaypointCounter", waypointCounter)
+    quest:SetStateInt("WaypointCounter", waypointCounter)
+    local tourFinished = quest:GetStateBool("TourFinished") or false
+    tourFinished = quest:PersistTransferBool(context, "TourFinished", tourFinished)
+    quest:SetStateBool("TourFinished", tourFinished)
+    local questActivated = quest:GetStateBool("QuestActivated") or false
+    questActivated = quest:PersistTransferBool(context, "QuestActivated", questActivated)
+    quest:SetStateBool("QuestActivated", questActivated)
 end
 
 -- V_TourGuide.WatchForGuideKilled (retail 0x00ee4a70)
@@ -125,13 +145,18 @@ function WatchForGuideKilled(quest)
     while true do
         local predicateResult = not (tourGuideGuide ~= nil and not tourGuideGuide:IsNull()) or not (tourGuideGuide ~= nil and tourGuideGuide:IsAlive())
         if not predicateResult then break end
-        if not quest:NewScriptFrame() then return end
+        quest:NewScriptFrame()
+        if quest:IsActiveThreadTerminating() then
+            tourGuideGuide = nil
+            do return end
+        end
     end
     if quest:IsActiveThreadTerminating() then return end
     while true do
         if (tourGuideGuide ~= nil and not tourGuideGuide:IsNull()) and tourGuideGuide ~= nil and tourGuideGuide:MsgIsKilledBy("") then break end
         if not quest:NewScriptFrame() then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     quest:SetStateBool("TourGuideKilled", true)
 end
 
@@ -140,20 +165,21 @@ function WatchForClosingTime(quest)
     repeat
         if quest:IsActiveThreadTerminating() then return end
         local getTimeOfDay = quest:GetTimeOfDay()
-        if getTimeOfDay < quest:ReadGlobalGameData(2284) then
+        if getTimeOfDay < quest:ReadGlobalGameData(SCRIPT_DEF.TourGuideClosingTime) then
             goto LAB_00ee4a39
         else
             if not quest:GetStateBool("TourFinished") then goto LAB_00ee4a4b end
-            if getTimeOfDay <= quest:ReadGlobalGameData(2284) then goto LAB_00ee4a39 end
+            if getTimeOfDay <= quest:ReadGlobalGameData(SCRIPT_DEF.TourGuideClosingTime) then goto LAB_00ee4a39 end
         end
         goto FLOW_past_lab_00ee4a39
         ::LAB_00ee4a39::
-        if quest:ReadGlobalGameData(2280) < getTimeOfDay and quest:GetStateBool("TourFinished") then
+        if quest:ReadGlobalGameData(SCRIPT_DEF.TourGuideOpeningTime) < getTimeOfDay and quest:GetStateBool("TourFinished") then
             goto LAB_00ee4a4b
         end
         ::FLOW_past_lab_00ee4a39::
         goto FLOW_past_lab_00ee4a4b
         ::LAB_00ee4a4b::
+        if quest:IsActiveThreadTerminating() then return end
         ::FLOW_past_lab_00ee4a4b::
         quest:NewScriptFrame()
     until false
@@ -161,30 +187,26 @@ end
 
 -- V_TourGuide.WatchForNoFollowers (retail 0x00ee6a40)
 function WatchForNoFollowers(quest)
-    local predicateResult
     local tourGuideFollower = quest:GetAllThingsWithScriptName("TourGuideFollower")
-    predicateResult = quest:IsActiveThreadTerminating()
     repeat
-        if predicateResult then
-            return
-        end
-        -- TODO(native): MsgIsRegionUnloaded is not a ForgeFSE binding
-        quest:MsgIsRegionUnloaded("HeroGuildComplexInside")
-        if predicateResult then
+        if quest:IsActiveThreadTerminating() then return end
+        if quest:MsgIsRegionUnloaded("HeroGuildComplexInside") then
             if quest:IsActiveThreadTerminating() then return end
-            goto LAB_00ee6b8f
+        else
+            goto FLOW_past_lab_00ee6b8f
         end
-        goto FLOW_past_lab_00ee6b8f
         ::LAB_00ee6b8f::
+        if not quest:IsActiveThreadTerminating() then
+        end
         do return end
         ::FLOW_past_lab_00ee6b8f::
-        if __native_all_dead(tourGuideFollower) and not quest:GetStateBool("TourFinished") then
+        if not (__native_all_dead(tourGuideFollower) and (not quest:GetStateBool("TourFinished"))) then
+            quest:NewScriptFrame()
+        else
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateBool("AllFollowersDead", true)
             goto LAB_00ee6b8f
         end
-        quest:NewScriptFrame()
-        predicateResult = quest:IsActiveThreadTerminating()
     until false
 end
 
@@ -192,40 +214,77 @@ end
 -- EE6850: bsim names this body NScript::CV_TourGuideScript::MoveToNextWaypoint (a homologous script member); no PDB name
 function MoveToNextWaypoint(quest, param1, param2)
     local resources = quest:RetailResources()
-    local getPos, getThingWithScriptName
-    if param1 ~= nil and param1:IsAlive() then
-        if quest:IsActiveThreadTerminating() then return end
-        resources:MoveToPosition(param2, param1:GetPos(), 1.0, 0, false, true)
-        return
+    return quest:WithRetailResources(function(owned)
+    local waypointOwner, resultOwner = 0, 0
+    local scratchValue, isActiveThreadTerminating, sequence1, getThingWithScriptName, getPos
+    local copyThingOutput
+    isActiveThreadTerminating = param1 ~= nil and param1:IsAlive()
+    if isActiveThreadTerminating then
+        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+        if not isActiveThreadTerminating then
+            local scratchValue7 = 1
+            local scratchValue6 = 0
+            local scratchValue5 = 0
+            local scratchValue4 = 1.0
+            local position = param1:GetPos()
+            resources:MoveToPosition(param2, position, scratchValue4, scratchValue5, scratchValue6 ~= 0, scratchValue7 ~= 0)
+            return
+        end
     else
-        if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 4);
-        -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 8);
-        getThingWithScriptName = nil
-        if nil ~= nil then
-            -- TODO(native): *xStack_18 = *xStack_18 + 1;
-        end
-        local waypointCounter = quest:GetStateInt("WaypointCounter")
-        while true do
-            if not (getThingWithScriptName == nil or not (getThingWithScriptName ~= nil and getThingWithScriptName:IsAlive())) then break end
-            if not quest:NewScriptFrame() then return end
-            local getStateInt = quest:GetStateInt("WaypointCounter") + 1
-            quest:SetStateInt("WaypointCounter", getStateInt)
-            if getStateInt < 18 then
-                if getStateInt == waypointCounter and quest:IsActiveThreadTerminating() then return end
-            else
-                quest:SetStateInt("WaypointCounter", 0)
+        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+        if not isActiveThreadTerminating then
+            copyThingOutput = owned:CopyThingOutput(param1)
+            waypointOwner = owned:TrackThingOutput(copyThingOutput)
+            if copyThingOutput ~= nil then
             end
-            getThingWithScriptName = quest:GetThingWithScriptName(quest:GetStateString("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker"))
+            local waypointCounter = quest:GetStateInt("WaypointCounter")
+            while true do
+                scratchValue = copyThingOutput == nil
+                if not scratchValue then
+                    local scratchValue2 = copyThingOutput ~= nil and copyThingOutput:IsAlive()
+                    scratchValue = not scratchValue2
+                end
+                if not scratchValue then break end
+                quest:NewScriptFrame()
+                isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+                if isActiveThreadTerminating then goto LAB_00ee6a24 end
+                local scratchValue3 = (quest:GetStateInt("WaypointCounter") + 1 + 2147483648) % 4294967296 - 2147483648
+                quest:SetStateInt("WaypointCounter", scratchValue3)
+                if scratchValue3 < 18 then
+                    sequence1 = false
+                    sequence1 = scratchValue3 == waypointCounter
+                    if sequence1 then
+                        isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+                        sequence1 = isActiveThreadTerminating
+                    end
+                    if sequence1 then goto LAB_00ee6a24 end
+                else
+                    isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+                    if isActiveThreadTerminating then goto LAB_00ee6a24 end
+                    quest:SetStateInt("WaypointCounter", 0)
+                end
+                getThingWithScriptName = quest:GetThingWithScriptName(quest:GetStateString("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker"))
+                resultOwner = owned:TrackThingOutput(getThingWithScriptName)
+                owned:AssignThingOutput(waypointOwner, getThingWithScriptName)
+                owned:RetireThingOutput(resultOwner)
+                resultOwner = 0
+                getThingWithScriptName = nil
+            end
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+            if isActiveThreadTerminating then goto LAB_00ee6a24 end
+            if copyThingOutput == nil then
+                getPos = {x = 0, y = 0, z = 0}
+            else
+                getPos = copyThingOutput:GetPos()
+            end
+            resources:MoveToPosition(param2, getPos, 1.0, 0, false, true)
+            ::LAB_00ee6a24::
+            owned:RetireThingOutput(waypointOwner)
+            waypointOwner = 0
+            copyThingOutput = nil
+            return
         end
-        if quest:IsActiveThreadTerminating() then return end
-        if getThingWithScriptName == nil then
-            getPos = {x = 0, y = 0, z = 0}
-        else
-            getPos = getThingWithScriptName:GetPos()
-        end
-        resources:MoveToPosition(param2, getPos, 1.0, 0, false, true)
-        return
     end
+    end)
 end
 

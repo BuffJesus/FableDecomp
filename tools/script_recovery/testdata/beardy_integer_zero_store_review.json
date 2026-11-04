@@ -1,0 +1,42 @@
+{
+  "owner": "BB_BeardyBaldyMan",
+  "function": "Main",
+  "address": "0x00e50fd0",
+  "file": "FSE/V_BeardyBaldy/Entities/BB_BeardyBaldyMan.lua",
+  "phase": "after-final-naming-wrap-and-nil-only-pruning",
+  "phaseSha256": "1cf24645fa591cba660e9347dd5464ba5cede863cdaccc504fece855a7b09236",
+  "variable": "addNewConversation",
+  "hostReceiver": "quest",
+  "hostMethod": "AddNewConversation",
+  "hostContract": {
+    "name": "AddNewConversation",
+    "scope": "Quest",
+    "returnType": "int",
+    "parameters": [
+      {
+        "name": "pThing",
+        "type": "CScriptThing*",
+        "optional": false
+      },
+      {
+        "name": "b1",
+        "type": "bool",
+        "optional": false
+      },
+      {
+        "name": "b2",
+        "type": "bool",
+        "optional": false
+      }
+    ],
+    "blocking": false,
+    "category": "Conversation",
+    "description": "Creates a conversation with the supplied initial participant."
+  },
+  "expectedHostDefinitions": 1,
+  "expectedZeroStores": 24,
+  "expectedReads": 2,
+  "expectedTargetFreeCompoundJumps": 1,
+  "fixedNormalHostIntegerReturnRequired": true,
+  "nativeImplementationVerified": false
+}

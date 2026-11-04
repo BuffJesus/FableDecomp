@@ -1,5 +1,7 @@
 # Notes for Aeon — 2026-09-22
 
+> Dated findings; no fresh runtime verification.
+
 Since the 2026-09-20 share. Ordered by what is most likely to matter to you.
 
 ---

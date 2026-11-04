@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar10, bVar4, cVar5, c_stk_81, dist, fStack_24, fVar12, f_stk_20, f_stk_8c, fret_0, fret_00, fret_01, iVar14, iVar15, iVar6, iVar8, i_stk_7c, p0, pCVar16, pCVar7, pCVar9, pcVar13, r1, r2, r3, r4, this_00, uVar11, uVar3, u_stk_88, xStack_34, xStack_4c, xStack_78, xStack_8c, xStack_c, x_stk_18
+    local bVar4, cVar5, c_stk_81, dist, fStack_24, fVar12, f_stk_20, f_stk_8c, fret_0, fret_00, fret_01, iVar14, iVar15, iVar6, iVar8, i_stk_7c, jabberIndex, jabberNextIndex, p0, pCVar16, pCVar7, pCVar9, pcVar13, r1, r2, r3, r4, this_00, uVar11, uVar3, u_stk_88, xStack_34, xStack_4c, xStack_78, xStack_8c, xStack_c, x_stk_18
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -40,6 +40,7 @@ function Main(quest, me)
         end
         iVar6 = quest:RegisterTimer()
         i_stk_7c = iVar6
+        xStack_8c = "SickChildBed"
         pCVar7 = quest:GetThingWithScriptName("SickChildBed")
         r1 = quest:GetSleepingPositionAndOrientationFromBed(me, pCVar7)
         xStack_c = r1 and r1.pos or {x = 0.0, y = 0.0, z = 0.0}
@@ -48,14 +49,15 @@ function Main(quest, me)
         fVar12 = math.atan(fStack_24,f_stk_20)
         f_stk_8c = (fVar12 * 0.15915493667125702)
         if (fVar12 * 0.15915493667125702 < 0.0) or (1.0 <= f_stk_8c) then
+            fret_0 = math.fmod(f_stk_8c, 1.0)
             f_stk_8c = fret_0
             if fret_0 < 0.0 then
-                -- TODO(native): xStack_8c = (CCharString)(f_stk_8c + 1.0);
+                f_stk_8c = (f_stk_8c + 1.0)
             end
         end
-        quest:EntityTeleportToPosition(me, nil --[[missing]], false, false)
+        quest:EntityTeleportToPosition(me, xStack_c, f_stk_8c, false, false)
         xStack_8c = quest:ReadGlobalGameDataString(0x748)
-        me:PlayLoopingAnimation(r1, -1, false, false, false)
+        resources:PlayLoopingAnimation(xStack_78, xStack_8c, -1, false, false, false, true, true, false, false)
         bVar4 = false
         pCVar7 = quest:GetThingWithScriptName("SickChildBed")
         quest:SetBedAvailability(pCVar7, bVar4)
@@ -67,6 +69,7 @@ function Main(quest, me)
         quest:EntitySetAsKillable(me, false, false)
         quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
         cVar5 = quest:GetStateBool("FinishedQuest")
+        jabberNextIndex = 10
         while not cVar5 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
@@ -107,18 +110,18 @@ function Main(quest, me)
                 iVar6 = quest:AddNewConversation(me, false, false)
                 pCVar7 = quest:GetHero()
                 quest:AddPersonToConversation(iVar6, pCVar7)
-                CVar10 = 0xa
-                pCVar9 = tostring(0xa)
+                jabberIndex = jabberNextIndex
+                pCVar9 = tostring(jabberIndex)
                 pCVar9 = ("TEXT_QST_B10_BOY_JABBERS_" .. pCVar9)
                 xStack_8c = pCVar9
                 bVar4 = quest:TextEntryExists(xStack_8c)
                 if not bVar4 then
-                    CVar10 = 0xa
+                    jabberIndex = 10
                     pCVar9 = tostring(10)
                     pCVar9 = ("TEXT_QST_B10_BOY_JABBERS_" .. pCVar9)
                     xStack_8c = pCVar9
                 end
-                -- TODO(native): xStack_80 = (CCharString)((int)CVar10 + 0xa);
+                jabberNextIndex = ((jabberIndex + 0xa + 0x80000000) & 0xffffffff) - 0x80000000
                 pCVar7 = quest:GetHero()
                 quest:AddLineToConversation(iVar6, xStack_8c, me, pCVar7, false)
                 iVar6 = i_stk_7c
@@ -171,11 +174,8 @@ function Main(quest, me)
                     xStack_4c = resources:StartMovie("")
                     pCVar16 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
-                    x_stk_18 = resources:ScriptThing(xStack_78)
-                    pCVar7 = x_stk_18
-                    fret_01 = quest:GetHealth(pCVar7)
-                    fVar12 = 0.0
-                    if fVar12 < fret_01 then
+                    pCVar7, x_stk_18 = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_78, 0.0) then
                         iVar15 = 0
                         iVar14 = 1
                         iVar6 = 0
@@ -183,6 +183,10 @@ function Main(quest, me)
                         pcVar13 = "TEXT_QST_B10_MOTHER_HIT"
                         pCVar7 = quest:GetHero()
                         r2 = me:Speak(pCVar7, pcVar13, iVar8, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                        if not r2 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto LAB_00ec677d
+                        end
                         iVar8 = me:IsPerformingScriptTask()
                         cVar5 = iVar8
                         while cVar5 do
@@ -227,11 +231,8 @@ function Main(quest, me)
                 xStack_34 = resources:StartMovie("")
                 pCVar16 = 0x1
                 quest:PauseAllNonScriptedEntities(true)
-                pCVar7 = resources:ScriptThing(xStack_78)
-                pCVar7 = pCVar7
-                fret_00 = quest:GetHealth(pCVar7)
-                fVar12 = 0.0
-                if fret_00 <= fVar12 then
+                pCVar7 = nil
+                if not resources:ResourceThingHealthAbove(xStack_78, 0.0) then
                     goto LAB_00ec64c5
                 end
                 goto FLOW_past_lab_00ec64c5
@@ -242,6 +243,13 @@ function Main(quest, me)
                 bVar4 = me:MsgIsHitByHero()
                 if bVar4 then
                     goto LAB_00ec6567_c2
+                else
+                    bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                    if bVar4 then
+                        bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                        if not bVar4 then goto LAB_00ec6567_c2 end
+                    end
+                    c_stk_81 = 0
                 end
                 goto FLOW_past_lab_00ec6567_c2
                 ::LAB_00ec6567_c2::
@@ -254,11 +262,8 @@ function Main(quest, me)
                     xStack_4c = resources:StartMovie("")
                     pCVar16 = 0x1
                     quest:PauseAllNonScriptedEntities(true)
-                    x_stk_18 = resources:ScriptThing(xStack_78)
-                    pCVar7 = x_stk_18
-                    fret_01 = quest:GetHealth(pCVar7)
-                    fVar12 = 0.0
-                    if fVar12 < fret_01 then
+                    pCVar7, x_stk_18 = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_78, 0.0) then
                         iVar15 = 0
                         iVar14 = 1
                         iVar6 = 0
@@ -266,6 +271,10 @@ function Main(quest, me)
                         pcVar13 = "TEXT_QST_B10_MOTHER_HIT"
                         pCVar7 = quest:GetHero()
                         r3 = me:Speak(pCVar7, pcVar13, iVar8, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                        if not r3 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            goto LAB_00ec677d_c2
+                        end
                         iVar8 = me:IsPerformingScriptTask()
                         cVar5 = iVar8
                         while cVar5 do
@@ -311,6 +320,11 @@ function Main(quest, me)
                 pcVar13 = "TEXT_QST_B10_BOY_CURED_10"
                 pCVar7 = quest:GetHero()
                 r4 = me:Speak(pCVar7, pcVar13, iVar8, (iVar6 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                if not r4 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    this_00 = xStack_34
+                    goto LAB_00ec6781
+                end
                 iVar8 = me:IsPerformingScriptTask()
                 cVar5 = iVar8
                 while cVar5 do

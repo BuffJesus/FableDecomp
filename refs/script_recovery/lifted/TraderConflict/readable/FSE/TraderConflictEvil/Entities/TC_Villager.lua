@@ -7,22 +7,26 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 function Main(quest, me)
     local predicateResult
     local screamOutTimer = quest:GetStateInt("ScreamOutTimer")
-    local hero = quest:GetHero()
     if not quest:NewScriptFrame(me) then return end
     if not quest:IsRegionLoaded("BarrowFields") then
+        quest:IsActiveThreadTerminating()
         return
     end
     while not quest:GetStateBool("QuestStartScreened") do
         if not quest:NewScriptFrame(me) then return end
     end
+    if quest:IsActiveThreadTerminating() then return end
     quest:EntitySetAsScared(me, true)
     quest:ClearThingHasInformation(me)
     quest:EntitySetCombatEnabled(me, false)
+    local hero = quest:GetHero()
     quest:EntityUnsetThingAsAllyOfThing(me, hero)
-    quest:EntityUnsetThingAsAllyOfThing(hero, me)
+    local pThing1 = quest:GetHero()
+    quest:EntityUnsetThingAsAllyOfThing(pThing1, me)
     while not quest:GetStateBool("PlayerEngaged") do
         if not quest:NewScriptFrame(me) then return end
         if not ((not me:MsgIsHitBy("")) or me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
+            if quest:IsActiveThreadTerminating() then return end
             quest:ModifyThingHealth(me, 100.0, false)
         else
             if me:MsgIsHitByHero() then
@@ -36,6 +40,7 @@ function Main(quest, me)
             predicateResult = true
             ::FLOW_past_lab_00df9462::
             if predicateResult then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateBool("PlayerEngaged", true)
             end
         end
@@ -44,21 +49,28 @@ function Main(quest, me)
     while not quest:IsActiveThreadTerminating() do
         if quest:GetTimer(screamOutTimer) ~= 0 then
             quest:NewScriptFrame(me)
-        elseif not quest:IsDistanceBetweenThingsUnder(me, hero, 15.0) then
-            quest:NewScriptFrame(me)
         else
-            local conversationID = quest:AddNewConversation(me, false, false)
-            quest:AddPersonToConversation(conversationID, hero)
-            if quest:EntityGetSex(me) == 2 then
-                if quest:IsActiveThreadTerminating() then return end
-                quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_FEMALE_PANIC", me, hero, false)
+            local hero2 = quest:GetHero()
+            if not quest:IsDistanceBetweenThingsUnder(me, hero2, 15.0) then
+                quest:NewScriptFrame(me)
             else
                 if quest:IsActiveThreadTerminating() then return end
-                quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, hero, false)
+                local conversationID = quest:AddNewConversation(me, false, false)
+                local hero3 = quest:GetHero()
+                quest:AddPersonToConversation(conversationID, hero3)
+                if quest:EntityGetSex(me) == 2 then
+                    if quest:IsActiveThreadTerminating() then return end
+                    local hero4 = quest:GetHero()
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_FEMALE_PANIC", me, hero4, false)
+                else
+                    if quest:IsActiveThreadTerminating() then return end
+                    local hero5 = quest:GetHero()
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_B12_VILLAGER_MALE_PANIC", me, hero5, false)
+                end
+                local randomChoice = quest:RetailRandModulo(32768)
+                quest:SetTimer(screamOutTimer, randomChoice % 15 + 15)
+                quest:NewScriptFrame(me)
             end
-            local scratchValue = math.random(0, 32767)
-            quest:SetTimer(screamOutTimer, scratchValue % 15 + 15)
-            quest:NewScriptFrame(me)
         end
     end
 end

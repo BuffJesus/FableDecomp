@@ -1,0 +1,78 @@
+from pathlib import Path
+import copy,hashlib,json,sys
+import pytest
+from lupa.lua54 import LuaRuntime
+W=Path(__file__).resolve().parent;R=W.parents[1]
+sys.path.insert(0,str(R))
+from tools.script_recovery.native_reviewed_register_resource_health_lifetimes import recover,serial,digest
+from tools.script_recovery.native_health_copy_correspondence import prove as prove_copy
+from tools.script_recovery.test_native_reviewed_interface_table_staging import FixtureImage
+from tools.script_recovery.lift_native_lua import RData
+read=lambda p:json.loads(p.read_text());F=W/'fixtures/register_resource_health'
+@pytest.fixture(autouse=True)
+def no_retail_image(monkeypatch):
+    monkeypatch.setattr(RData,'__init__',lambda *a,**k:(_ for _ in ()).throw(AssertionError('retail image opened')))
+def inputs():
+    phase=read(F/'phase.json');row=read(F/'row.json')
+    return dict(source=(F/'phase.lua').read_text(),todo=phase['todo'],calls=phase['calls'],fn=phase['fn'],row=row,unit=read(F/'unit.json'),owner=row['owner'],image=FixtureImage([(int(p['address'],16),bytes.fromhex(p['bytes'])) for p in read(F/'image_parts.json')]),manifest={'GetHealth':row['hostContract']},before=read(F/'before.json'),after=read(F/'after.json'))
+def repin(data):
+    for key,value in [('fnSha256',serial(data['fn'])),('luaPhaseSha256',data['source'].encode()),('callsSha256',serial(data['calls'])),('todoSha256',serial(data['todo'])),('beforeSha256',serial(data['before'])),('afterSha256',serial(data['after']))]:data['row'][key]=digest(value)
+def test_unreviewed_untouched():
+    assert recover('source',['todo'],['call'],{},None,{},None,None,None,None,None)==('source',['todo'],['call'],[])
+def test_three_scopes_proven_and_unique_aliases_cleared():
+    data=inputs();snapshot=copy.deepcopy({k:v for k,v in data.items() if k!='image'})
+    out,todo,calls,reviews=recover(**data)
+    assert len(reviews)==3 and sum(len(r['deadValues']) for r in reviews)==11
+    assert [len(r['clearedThingAliases']) for r in reviews]==[2,1,2]
+    assert [r['call'] for r in reviews]==['0x00ec6627','0x00ec63fe','0x00ec6627']
+    assert out.count('resources:ResourceThingHealthAbove(')==3 and 'quest:GetHealth(' not in out
+    assert out.count('if not resources:ResourceThingHealthAbove(')==1
+    assert todo==data['todo'] and len(calls)==len(data['calls'])-3
+    assert all(data[k]==v for k,v in snapshot.items());LuaRuntime().compile(out)
+@pytest.mark.parametrize('key',['nativeSha256','fnSha256','luaPhaseSha256','callsSha256','todoSha256','beforeSha256','afterSha256'])
+def test_stale_inputs_reject(key):
+    data=inputs();data['row'][key]='0'*64
+    with pytest.raises(ValueError):recover(**data)
+@pytest.mark.parametrize('fault',['owner','method','minimum','boolMinimum','registration','vtable','slot','profile','inlineBreaks','missingSite','duplicateSite','positiveExit','falseExit','host'])
+def test_changed_evidence_rejects(fault):
+    data=inputs();row=data['row']
+    if fault=='owner':row['owner']='other'
+    elif fault=='method':row['method']='other'
+    elif fault=='minimum':row['minimumHealth']=1
+    elif fault=='boolMinimum':row['minimumHealth']=False
+    elif fault=='registration':data['unit']['entities']['SickChild']['functions']['Main']['address']='0x1'
+    elif fault=='vtable':row['entityVtable']='0x1'
+    elif fault=='slot':row['healthSlot']=0x424
+    elif fault=='profile':row['actorProfile']='entry-ebx'
+    elif fault=='inlineBreaks':row['analysisInlineBreaks']=2
+    elif fault=='missingSite':row['nativeProfiles'].pop()
+    elif fault=='duplicateSite':row['nativeProfiles'].append(row['nativeProfiles'][0])
+    elif fault in ['positiveExit','falseExit']:row['nativeProfiles'][0][fault]+=1
+    else:data['manifest']['GetHealth']=dict(scope='Other')
+    with pytest.raises((ValueError,AssertionError)):recover(**data)
+@pytest.mark.parametrize('ordinal',[0,1,2])
+@pytest.mark.parametrize('role',['thing','result','threshold'])
+@pytest.mark.parametrize('conditional',[False,True])
+def test_observable_values_reject_even_after_repin(ordinal,role,conditional):
+    data=inputs();proof=prove_copy(data['fn'],data['before'],data['after'],data['source'])['scopes'][ordinal]
+    alias=proof['actor'] if role=='thing' else proof[role]
+    prefix=proof['prefix'];start=proof['start']
+    # Insert beyond the consumed condition so both old numeric and Thing values
+    # remain observable along an actual decision edge.
+    at=start+len(prefix)+1;indent=' '*24
+    readback=indent+'quest:Observe('+alias+')\n'
+    if conditional:readback=indent+'if unknownBranch then\n'+readback+indent+'end\n'
+    data['source']=data['source'][:at]+readback+data['source'][at:];repin(data)
+    with pytest.raises(ValueError,match='live staging value read/escape'):recover(**data)
+
+@pytest.mark.parametrize('address',[0x7e7490,0x890400,0x126132c,0x4aa840,0x99a2e0,0x122dedc])
+def test_changed_native_dependency_rejects(address):
+    data=inputs();original=data['image']
+    class Image:
+        def bytes_at(self,a,n):
+            raw=original.bytes_at(a,n)
+            if raw is not None and a<=address<a+n:
+                raw=bytearray(raw);raw[address-a]^=1;return bytes(raw)
+            return raw
+    data['image']=Image()
+    with pytest.raises(ValueError):recover(**data)

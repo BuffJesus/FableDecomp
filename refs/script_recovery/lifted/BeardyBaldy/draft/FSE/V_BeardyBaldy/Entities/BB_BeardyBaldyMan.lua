@@ -12,30 +12,13 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar5, bVar6, bVar8, cVar7, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, iVar13, iVar14, iVar15, iVar16, native_arg_sequence_1, p0, pCVar10, pCVar11, pCVar9, pThing, pcVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r3, r4, r5, r6, r7, r8, r9, this_00, uVar1, xStack_124, xStack_12c, xStack_138, xStack_140, xStack_148, xStack_150, xStack_154, xStack_158, xStack_16c, xStack_170, xStack_174, xStack_178, xStack_184, xStack_188, xStack_18c, xStack_19c, xStack_1ac, xStack_1bc, xStack_1c8, xStack_1cc, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1fc, xStack_20c, x_stk_108, x_stk_114, x_stk_120, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_b4, x_stk_c, x_stk_c0, x_stk_cc, x_stk_d8, x_stk_e4, x_stk_f0, x_stk_fc
+    local __native_condition_1, bVar5, bVar6, bVar8, cVar7, fVar4, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, fret_13, fret_14, fret_15, fret_16, fret_17, fret_18, fret_19, fret_20, fret_21, fret_22, iVar13, iVar14, iVar15, iVar16, native_arg_sequence_1, p0, pCVar10, pCVar11, pCVar9, pThing, pcVar12, r1, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r2, r20, r21, r22, r23, r24, r25, r3, r4, r5, r6, r7, r8, r9, xStack_124, xStack_12c, xStack_138, xStack_140, xStack_148, xStack_150, xStack_154, xStack_158, xStack_16c, xStack_170, xStack_174, xStack_178, xStack_184, xStack_188, xStack_18c, xStack_19c, xStack_1ac, xStack_1bc, xStack_1cc, xStack_1d4, xStack_1e4, xStack_1e8, xStack_1fc, xStack_20c, x_stk_108, x_stk_114, x_stk_120, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_b4, x_stk_c, x_stk_c0, x_stk_cc, x_stk_d8, x_stk_e4, x_stk_f0, x_stk_fc
     local alive = true
     bVar5 = false
     bVar8 = false
     bVar6 = false
     xStack_20c = resources:NewResource()
-    if this_00 == nil then
-        this_00 = 0x0
-    else
-        -- TODO(native): xStack_1c8._4_4_ = *(undefined4 *)(this + 0xc);
-        bVar5 = true
-        bVar8 = true
-        bVar6 = true
-        xStack_1c8 = nil
-        if xStack_1c8 ~= nil then
-            -- TODO(native): *xStack_1c8 = *xStack_1c8 + 1;
-        end
-        pCVar9 = extraout_EAX
-        pCVar9 = (a .. pCVar9)
-        -- TODO(native): CSpawnedFunc<NScript::CExpression_FollowScript>::CSpawnedFunc<NScript::CExpression_FollowScript> (this_00,pCVar9,0);
-        -- TODO(native): *(code **)(this_00 + 0x34) = NScript::CV_BeardyBaldyScript::WatchForAttack;
-        -- TODO(native): *(undefined4 *)(this_00 + 0x38) = uVar1;
-    end
-    -- TODO(native): CGuiVarTransferStruct::Add(*(CGuiVarTransferStruct **)(this + 0x14),this_00,sectionName);
+    quest:CreateThread("WatchForAttack", {args = {me}})  -- native parent-quest worker WatchForAttack, the entity's own thing captured
     if bVar6 then
     end
     if bVar8 then
@@ -124,11 +107,8 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_20c)
                 return
             end
-            x_stk_84 = resources:ScriptThing(xStack_20c)
-            pCVar10 = x_stk_84
-            fret_0 = quest:GetHealth(pCVar10)
-            fVar4 = 0.0
-            if fVar4 < fret_0 then
+            pCVar10, x_stk_84 = nil, nil
+            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                 iVar16 = 0
                 iVar15 = 1
                 iVar14 = 0
@@ -136,6 +116,12 @@ function Main(quest, me)
                 pcVar12 = "TEXT_QST_014_ATTACK"
                 pCVar10 = quest:GetHero()
                 r1 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                if not r1 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_19c)
+                    resources:ReleaseResource(xStack_20c)
+                    return
+                end
                 iVar13 = me:IsPerformingScriptTask()
                 cVar7 = iVar13
                 while cVar7 do
@@ -212,11 +198,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if not bVar6 then
-                            x_stk_120 = resources:ScriptThing(xStack_20c)
-                            pCVar10 = x_stk_120
-                            fret_00 = quest:GetHealth(pCVar10)
-                            fVar4 = 0.0
-                            if fVar4 < fret_00 then
+                            pCVar10, x_stk_120 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -224,6 +207,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_PHASE1_REMINDER"
                                 pCVar10 = quest:GetHero()
                                 r2 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r2 then
+                                    goto LAB_00e53600
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -249,11 +235,8 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then goto LAB_00e53600 end
-                            x_stk_6c = resources:ScriptThing(xStack_20c)
-                            pCVar10 = x_stk_6c
-                            fret_01 = quest:GetHealth(pCVar10)
-                            fVar4 = 0.0
-                            if fVar4 < fret_01 then
+                            pCVar10, x_stk_6c = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -261,6 +244,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_PHASE1_INTRO1"
                                 pCVar10 = quest:GetHero()
                                 r3 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r3 then
+                                    goto LAB_00e53600
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -280,11 +266,8 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then goto LAB_00e53600 end
-                            x_stk_54 = resources:ScriptThing(xStack_20c)
-                            pCVar10 = x_stk_54
-                            fret_02 = quest:GetHealth(pCVar10)
-                            fVar4 = 0.0
-                            if fVar4 < fret_02 then
+                            pCVar10, x_stk_54 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -292,6 +275,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_PHASE1_INTRO_REMINDER"
                                 pCVar10 = quest:GetHero()
                                 r4 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r4 then
+                                    goto LAB_00e53600
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -330,11 +316,8 @@ function Main(quest, me)
                                     resources:ReleaseResource(xStack_20c)
                                     return
                                 end
-                                x_stk_3c = resources:ScriptThing(xStack_20c)
-                                pCVar10 = x_stk_3c
-                                fret_03 = quest:GetHealth(pCVar10)
-                                fVar4 = 0.0
-                                if fVar4 < fret_03 then
+                                pCVar10, x_stk_3c = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                     iVar16 = 0
                                     iVar15 = 1
                                     iVar14 = 0
@@ -342,6 +325,9 @@ function Main(quest, me)
                                     pcVar12 = "TEXT_QST_014_PHASE1_INTRO2"
                                     pCVar10 = quest:GetHero()
                                     r5 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                    if not r5 then
+                                        goto LAB_00e53600
+                                    end
                                     iVar13 = me:IsPerformingScriptTask()
                                     cVar7 = iVar13
                                     while cVar7 do
@@ -374,11 +360,8 @@ function Main(quest, me)
                                     xStack_154 = quest:ReadGlobalGameDataString(0x450)
                                     quest:SetStateString("RequiredHairdo", xStack_154)
                                 end
-                                x_stk_24 = resources:ScriptThing(xStack_20c)
-                                pCVar10 = x_stk_24
-                                fret_04 = quest:GetHealth(pCVar10)
-                                fVar4 = 0.0
-                                if fVar4 < fret_04 then
+                                pCVar10, x_stk_24 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                     iVar16 = 0
                                     iVar15 = 1
                                     iVar14 = 0
@@ -386,6 +369,9 @@ function Main(quest, me)
                                     pcVar12 = "TEXT_QST_014_PHASE1_INTRO3"
                                     pCVar10 = quest:GetHero()
                                     r6 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                    if not r6 then
+                                        goto LAB_00e53600
+                                    end
                                     iVar13 = me:IsPerformingScriptTask()
                                     cVar7 = iVar13
                                     while cVar7 do
@@ -403,11 +389,8 @@ function Main(quest, me)
                                 quest:SetStateBool("Phase1RequirementsComplete", true)
                             else
                                 if bVar6 then goto LAB_00e53600 end
-                                x_stk_c = resources:ScriptThing(xStack_20c)
-                                pCVar10 = x_stk_c
-                                fret_05 = quest:GetHealth(pCVar10)
-                                fVar4 = 0.0
-                                if fVar4 < fret_05 then
+                                pCVar10, x_stk_c = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                     iVar16 = 0
                                     iVar15 = 1
                                     iVar14 = 0
@@ -415,6 +398,9 @@ function Main(quest, me)
                                     pcVar12 = "TEXT_QST_014_PHASE1_DENIED"
                                     pCVar10 = quest:GetHero()
                                     r7 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                    if not r7 then
+                                        goto LAB_00e53600
+                                    end
                                     iVar13 = me:IsPerformingScriptTask()
                                     cVar7 = iVar13
                                     while cVar7 do
@@ -458,7 +444,7 @@ function Main(quest, me)
                 quest:SetStateInt("QuestPhase", 1)
                 quest:SetStateBool("InitialisePhase", true)
             end
-        elseif iVar13 then
+        elseif iVar13 == 1 then
             alive = not quest:IsActiveThreadTerminating()
             bVar6 = not alive
             if bVar6 then
@@ -530,11 +516,8 @@ function Main(quest, me)
                             resources:ReleaseResource(xStack_20c)
                             return
                         end
-                        x_stk_48 = resources:ScriptThing(xStack_20c)
-                        pCVar10 = x_stk_48
-                        fret_07 = quest:GetHealth(pCVar10)
-                        fVar4 = 0.0
-                        if fVar4 < fret_07 then
+                        pCVar10, x_stk_48 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -542,6 +525,12 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_014_PHASE2_INTRO1"
                             pCVar10 = quest:GetHero()
                             r8 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r8 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_1bc)
+                                resources:ReleaseResource(xStack_20c)
+                                return
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar7 = iVar13
                             while cVar7 do
@@ -594,11 +583,8 @@ function Main(quest, me)
                             xStack_138 = quest:ReadGlobalGameDataString(0x460)
                             quest:SetStateString("RequiredBeard", xStack_138)
                         end
-                        x_stk_f0 = resources:ScriptThing(xStack_20c)
-                        pCVar10 = x_stk_f0
-                        fret_08 = quest:GetHealth(pCVar10)
-                        fVar4 = 0.0
-                        if fVar4 < fret_08 then
+                        pCVar10, x_stk_f0 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -606,6 +592,12 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_014_PHASE2_INTRO2"
                             pCVar10 = quest:GetHero()
                             r9 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r9 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_1bc)
+                                resources:ReleaseResource(xStack_20c)
+                                return
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar7 = iVar13
                             while cVar7 do
@@ -640,11 +632,8 @@ function Main(quest, me)
                             resources:ReleaseResource(xStack_20c)
                             return
                         end
-                        x_stk_78 = resources:ScriptThing(xStack_20c)
-                        pCVar10 = x_stk_78
-                        fret_09 = quest:GetHealth(pCVar10)
-                        fVar4 = 0.0
-                        if fVar4 < fret_09 then
+                        pCVar10, x_stk_78 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -652,6 +641,12 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_014_PHASE2_WRONG_HAIR"
                             pCVar10 = quest:GetHero()
                             r10 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r10 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_1bc)
+                                resources:ReleaseResource(xStack_20c)
+                                return
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar7 = iVar13
                             while cVar7 do
@@ -687,11 +682,8 @@ function Main(quest, me)
                         resources:ReleaseResource(xStack_20c)
                         return
                     end
-                    x_stk_108 = resources:ScriptThing(xStack_20c)
-                    pCVar10 = x_stk_108
-                    fret_06 = quest:GetHealth(pCVar10)
-                    fVar4 = 0.0
-                    if fVar4 < fret_06 then
+                    pCVar10, x_stk_108 = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                         iVar16 = 0
                         iVar15 = 1
                         iVar14 = 0
@@ -699,6 +691,12 @@ function Main(quest, me)
                         pcVar12 = "TEXT_QST_014_PHASE2_REMINDER"
                         pCVar10 = quest:GetHero()
                         r11 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                        if not r11 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_1bc)
+                            resources:ReleaseResource(xStack_20c)
+                            return
+                        end
                         iVar13 = me:IsPerformingScriptTask()
                         cVar7 = iVar13
                         while cVar7 do
@@ -782,17 +780,13 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00e5276b end
-                    -- TODO(native): bVar6 = helper_E53670(quest, me, *(this + 0x14))
-                    bVar6 = nil --[[unresolved native value]]
+                    bVar6 = helper_E53670(quest, me)
                     if not bVar6 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if not bVar6 then
-                            x_stk_18 = resources:ScriptThing(xStack_20c)
-                            pCVar10 = x_stk_18
-                            fret_11 = quest:GetHealth(pCVar10)
-                            fVar4 = 0.0
-                            if fVar4 < fret_11 then
+                            pCVar10, x_stk_18 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -800,6 +794,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_PHASE3_NO_BEARD"
                                 pCVar10 = quest:GetHero()
                                 r12 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r12 then
+                                    goto LAB_00e5276b
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -835,11 +832,8 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if not bVar6 then
-                                x_stk_90 = resources:ScriptThing(xStack_20c)
-                                pCVar10 = x_stk_90
-                                fret_16 = quest:GetHealth(pCVar10)
-                                fVar4 = 0.0
-                                if fVar4 < fret_16 then
+                                pCVar10, x_stk_90 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                     iVar16 = 0
                                     iVar15 = 1
                                     iVar14 = 0
@@ -847,6 +841,9 @@ function Main(quest, me)
                                     pcVar12 = "TEXT_QST_014_PHASE3_WRONG_BEARD"
                                     pCVar10 = quest:GetHero()
                                     r13 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                    if not r13 then
+                                        goto LAB_00e5276b
+                                    end
                                     iVar13 = me:IsPerformingScriptTask()
                                     cVar7 = iVar13
                                     while cVar7 do
@@ -883,11 +880,8 @@ function Main(quest, me)
                             resources:ReleaseResource(xStack_20c)
                             return
                         end
-                        x_stk_114 = resources:ScriptThing(xStack_20c)
-                        pCVar10 = x_stk_114
-                        fret_17 = quest:GetHealth(pCVar10)
-                        fVar4 = 0.0
-                        if fVar4 < fret_17 then
+                        pCVar10, x_stk_114 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -895,6 +889,9 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_014_PHASE3_WRONG_HAIR"
                             pCVar10 = quest:GetHero()
                             r14 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r14 then
+                                goto LAB_00e5276b
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar7 = iVar13
                             while cVar7 do
@@ -923,11 +920,8 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if bVar6 then goto LAB_00e5276b end
-                            x_stk_fc = resources:ScriptThing(xStack_20c)
-                            pCVar10 = x_stk_fc
-                            fret_18 = quest:GetHealth(pCVar10)
-                            fVar4 = 0.0
-                            if fVar4 < fret_18 then
+                            pCVar10, x_stk_fc = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -935,6 +929,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_PHASE3_WRONG_HAIR_AND_BEARD"
                                 pCVar10 = quest:GetHero()
                                 r15 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r15 then
+                                    goto LAB_00e5276b
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -966,11 +963,8 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00e5276b end
-                    x_stk_c0 = resources:ScriptThing(xStack_20c)
-                    pCVar10 = x_stk_c0
-                    fret_12 = quest:GetHealth(pCVar10)
-                    fVar4 = 0.0
-                    if fVar4 < fret_12 then
+                    pCVar10, x_stk_c0 = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                         iVar16 = 0
                         iVar15 = 1
                         iVar14 = 0
@@ -978,6 +972,9 @@ function Main(quest, me)
                         pcVar12 = "TEXT_QST_014_PHASE3_INTRO1"
                         pCVar10 = quest:GetHero()
                         r16 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                        if not r16 then
+                            goto LAB_00e5276b
+                        end
                         iVar13 = me:IsPerformingScriptTask()
                         cVar7 = iVar13
                         while cVar7 do
@@ -997,11 +994,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if not bVar6 then
-                            x_stk_a8 = resources:ScriptThing(xStack_20c)
-                            pCVar10 = x_stk_a8
-                            fret_14 = quest:GetHealth(pCVar10)
-                            fVar4 = 0.0
-                            if fVar4 < fret_14 then
+                            pCVar10, x_stk_a8 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -1009,6 +1003,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_PHASE3_INTRO3"
                                 pCVar10 = quest:GetHero()
                                 r17 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r17 then
+                                    goto LAB_00e5276b
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -1030,11 +1027,8 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if not bVar6 then
-                        x_stk_60 = resources:ScriptThing(xStack_20c)
-                        pCVar10 = x_stk_60
-                        fret_13 = quest:GetHealth(pCVar10)
-                        fVar4 = 0.0
-                        if fVar4 < fret_13 then
+                        pCVar10, x_stk_60 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -1042,6 +1036,9 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_014_PHASE3_INTRO2"
                             pCVar10 = quest:GetHero()
                             r18 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r18 then
+                                goto LAB_00e5276b
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar7 = iVar13
                             while cVar7 do
@@ -1078,11 +1075,8 @@ function Main(quest, me)
                         xStack_158 = quest:ReadGlobalGameDataString(0x470)
                         quest:SetStateString("RequiredTash", xStack_158)
                     end
-                    x_stk_30 = resources:ScriptThing(xStack_20c)
-                    pCVar10 = x_stk_30
-                    fret_15 = quest:GetHealth(pCVar10)
-                    fVar4 = 0.0
-                    if fVar4 < fret_15 then
+                    pCVar10, x_stk_30 = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                         iVar16 = 0
                         iVar15 = 1
                         iVar14 = 0
@@ -1090,6 +1084,9 @@ function Main(quest, me)
                         pcVar12 = "TEXT_QST_014_PHASE3_INTRO4"
                         pCVar10 = quest:GetHero()
                         r19 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                        if not r19 then
+                            goto LAB_00e5276b
+                        end
                         iVar13 = me:IsPerformingScriptTask()
                         cVar7 = iVar13
                         while cVar7 do
@@ -1111,11 +1108,8 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00e5276b end
-                    x_stk_d8 = resources:ScriptThing(xStack_20c)
-                    pCVar10 = x_stk_d8
-                    fret_10 = quest:GetHealth(pCVar10)
-                    fVar4 = 0.0
-                    if fret_10 <= fVar4 then
+                    pCVar10, x_stk_d8 = nil, nil
+                    if not resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                         -- LAB_00e52d63_c38: (native jump target)
                         resources:PrepareResource(xStack_20c)
                         quest:PauseAllNonScriptedEntities(false)
@@ -1129,6 +1123,9 @@ function Main(quest, me)
                     pcVar12 = "TEXT_QST_014_PHASE3_REMINDER"
                     pCVar10 = quest:GetHero()
                     r20 = me:Speak(pCVar10, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                    if not r20 then
+                        goto LAB_00e5276b
+                    end
                     iVar13 = me:IsPerformingScriptTask()
                     cVar7 = iVar13
                     while cVar7 do
@@ -1222,8 +1219,7 @@ function Main(quest, me)
                     return
                 end
                 if quest:GetStateBool("AllHairChanged") then
-                    -- TODO(native): bVar6 = helper_E53670(quest, me, *(this + 0x14))
-                    bVar6 = nil --[[unresolved native value]]
+                    bVar6 = helper_E53670(quest, me)
                     native_arg_sequence_1 = false
                     if bVar6 then
                         native_arg_sequence_1 = true
@@ -1250,11 +1246,8 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if not bVar6 then
-                            x_stk_cc = resources:ScriptThing(xStack_20c)
-                            pCVar11 = x_stk_cc
-                            fret_20 = quest:GetHealth(pCVar11)
-                            fVar4 = 0.0
-                            if fVar4 < fret_20 then
+                            pCVar11, x_stk_cc = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -1262,6 +1255,12 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_END_FINALE1"
                                 pCVar11 = quest:GetHero()
                                 r21 = me:Speak(pCVar11, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r21 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_1ac)
+                                    resources:ReleaseResource(xStack_20c)
+                                    return
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -1291,11 +1290,8 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
                             if not bVar6 then
-                                x_stk_b4 = resources:ScriptThing(xStack_20c)
-                                pCVar11 = x_stk_b4
-                                fret_21 = quest:GetHealth(pCVar11)
-                                fVar4 = 0.0
-                                if fVar4 < fret_21 then
+                                pCVar11, x_stk_b4 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                     iVar16 = 0
                                     iVar15 = 1
                                     iVar14 = 0
@@ -1303,6 +1299,9 @@ function Main(quest, me)
                                     pcVar12 = "TEXT_QST_014_END_FINALE2"
                                     pCVar11 = quest:GetHero()
                                     r22 = me:Speak(pCVar11, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                    if not r22 then
+                                        goto LAB_00e53630
+                                    end
                                     iVar13 = me:IsPerformingScriptTask()
                                     cVar7 = iVar13
                                     while cVar7 do
@@ -1336,11 +1335,8 @@ function Main(quest, me)
                         bVar6 = not alive
                         if not bVar6 then
                             quest:SetStateInt("IncorrectHairComboCount", quest:GetStateInt("IncorrectHairComboCount") + 1)
-                            x_stk_9c = resources:ScriptThing(xStack_20c)
-                            pCVar11 = x_stk_9c
-                            fret_22 = quest:GetHealth(pCVar11)
-                            fVar4 = 0.0
-                            if fVar4 < fret_22 then
+                            pCVar11, x_stk_9c = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -1348,6 +1344,12 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_014_END_WRONG"
                                 pCVar11 = quest:GetHero()
                                 r23 = me:Speak(pCVar11, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r23 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_1ac)
+                                    resources:ReleaseResource(xStack_20c)
+                                    return
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar7 = iVar13
                                 while cVar7 do
@@ -1385,11 +1387,8 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_20c)
                     return
                 end
-                x_stk_e4 = resources:ScriptThing(xStack_20c)
-                pCVar11 = x_stk_e4
-                fret_19 = quest:GetHealth(pCVar11)
-                fVar4 = 0.0
-                if fVar4 < fret_19 then
+                pCVar11, x_stk_e4 = nil, nil
+                if resources:ResourceThingHealthAbove(xStack_20c, 0.0) then
                     iVar16 = 0
                     iVar15 = 1
                     iVar14 = 0
@@ -1397,6 +1396,12 @@ function Main(quest, me)
                     pcVar12 = "TEXT_QST_014_END_NO_TASH"
                     pCVar11 = quest:GetHero()
                     r24 = me:Speak(pCVar11, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                    if not r24 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_1ac)
+                        resources:ReleaseResource(xStack_20c)
+                        return
+                    end
                     iVar13 = me:IsPerformingScriptTask()
                     cVar7 = iVar13
                     while cVar7 do
@@ -1600,8 +1605,7 @@ function helper_E53CB0(quest, me)
             return hiddenStringResult
         end
         ::FLOW_after_lab_00e53d52::
-        iVar2 = math.random(0, 32767)
-        iVar2 = iVar2 % 10
+        iVar2 = quest:RetailRandModulo(10)
         if (iVar2 ~= __native_entity_state:GetStateInt("lastRandomSpeechIdx1")) and (iVar2 ~= __native_entity_state:GetStateInt("lastRandomSpeechIdx2")) then
             alive = not quest:IsActiveThreadTerminating()
             bVar1 = not alive

@@ -94,7 +94,8 @@ def test_generated_dialogue_helper_builds_the_full_key(generated, stage, helper,
     lua.globals().__native_entity_state = lua.table_from({'GetStateString': lambda _self, key: name})
     # The readable stage stores entity fields as file-local upvalues. Supply the
     # native Name member explicitly: Init's member assignment recovery is separate.
-    lua.execute('local name = ...\n' + function, name)
+    member = re.search(r'"TEXT_QST_B13_" \.\. (\w+)', function)[1] if stage == 'readable' else 'name'
+    lua.execute(f'local {member} = ...\n' + function, name)
     assert lua.globals()[helper](lua.table(), lua.table(), suffix) == 'TEXT_QST_B13_' + name + '_' + suffix
     assert native_dialogue_key(name, suffix) == 'TEXT_QST_B13_' + name + '_' + suffix
 

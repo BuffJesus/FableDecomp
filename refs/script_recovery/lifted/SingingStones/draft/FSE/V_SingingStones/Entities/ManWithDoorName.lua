@@ -86,6 +86,11 @@ function Main(quest, me)
                     pcVar10 = "TEXT_QST_060_MAN_WITH_DOOR_NAME_HIT"
                     pCVar8 = quest:GetHero()
                     r1 = me:Speak(pCVar8, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                    if not r1 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_98)
+                        goto LAB_00ed286a
+                    end
                     iVar11 = me:IsPerformingScriptTask()
                     cVar6 = iVar11
                     while cVar6 do
@@ -156,6 +161,11 @@ function Main(quest, me)
                 pcVar10 = "TEXT_QST_060_MAN_WITH_DOOR_NAME_SPEAKS"
                 pCVar8 = quest:GetHero()
                 r2 = me:Speak(pCVar8, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                if not r2 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(xStack_cc)
+                    goto LAB_00ed286a
+                end
                 iVar11 = me:IsPerformingScriptTask()
                 cVar6 = iVar11
                 while cVar6 do
@@ -261,6 +271,9 @@ function Main(quest, me)
                     pcVar10 = "TEXT_QST_060_MAN_WITH_DOOR_NAME_INTRO"
                     pCVar8 = quest:GetHero()
                     r4 = me:Speak(pCVar8, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                    if not r4 then
+                        goto LAB_00ed2793
+                    end
                     iVar11 = me:IsPerformingScriptTask()
                     cVar6 = iVar11
                     while cVar6 do
@@ -314,6 +327,9 @@ function Main(quest, me)
                     pcVar10 = "TEXT_QST_060_MAN_WITH_DOOR_NAME_REMINDER"
                     pCVar8 = quest:GetHero()
                     r5 = me:Speak(pCVar8, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                    if not r5 then
+                        goto LAB_00ed27cd
+                    end
                     iVar11 = me:IsPerformingScriptTask()
                     cVar6 = iVar11
                     while cVar6 do
@@ -367,6 +383,9 @@ function Main(quest, me)
                     pcVar10 = "TEXT_QST_060_MAN_WITH_DOOR_NAME_ATTACKED"
                     pCVar8 = quest:GetHero()
                     r6 = me:Speak(pCVar8, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                    if not r6 then
+                        goto LAB_00ed2807
+                    end
                     iVar11 = me:IsPerformingScriptTask()
                     cVar6 = iVar11
                     while cVar6 do
@@ -447,6 +466,9 @@ function Main(quest, me)
                         pcVar10 = "TEXT_QST_060_MAN_WITH_DOOR_WRONG_ITEM"
                         pCVar8 = quest:GetHero()
                         r7 = me:Speak(pCVar8, pcVar10, iVar11, (iVar12 ~= 0), (iVar13 ~= 0), (iVar14 ~= 0))
+                        if not r7 then
+                            goto LAB_00ed283b
+                        end
                         iVar11 = me:IsPerformingScriptTask()
                         cVar6 = iVar11
                         while cVar6 do

@@ -4,39 +4,44 @@
 local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 local ENTITY_MOVE_WALK = 0  -- EScriptEntityMoveType (Ego_r.pdb)
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    IngredientObject = 1848,  -- 'OBJECT_MUSHROOM_BLUE_01'
+    ObjectToGiveToMansLover = 1852,  -- 'OBJECT_SICK_CHILD_MANS_LETTER'
+    ObjectFromMansLover = 1856,  -- 'OBJECT_SICK_CHILD_WOMANS_LETTER'
+    TellingTheTruth = 1880,  -- 0.009999999776482582
+    LyingToManAboutWomanNotLikingHer = 1888,  -- -0.019999999552965164
+    LyingToManAboutWomanLikingHer = 1892,  -- -0.019999999552965164
+    KilledSomeoneForMushroom = 1896,  -- -0.029999999329447746
+}
+
 -- per-entity fields (native class members; one Lua state per entity instance)
-local givenLetter, gotReward, helpedGuyOut
+local givenLetter_, gotReward_, helpedGuyOut
 
 -- ManInLove.Main (retail 0x00ec8300)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, predicateResult3, readGlobalGameDataFloat, readGlobalGameDataFloat2
-    local questionAnswer, line, getNearestWithDefName, this_00, scratchValue, u_stk_15c_2
-    local scratchValue16, scratchValue21, startMovie, resource
+    local predicateResult, predicateResult3, center, readGlobalGameDataFloat
+    local msgIsQuestionAnsweredYesOrNo, manConversationMovie, manHasUnrewardedLetter
+    local manShouldReactToHit, manTalkMovie, hero3, getHero, line, getNearestWithDefName, resource
     local function ReleaseEverything()
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(startMovie)
+        resources:DestroyMovie(manTalkMovie)
         resources:ReleaseResource(resource)
     end
     if not quest:NewScriptFrame(me) then return end
     resource = resources:NewResource()
-    u_stk_15c_2 = 1
-    if not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataString(1856), hero) then
-        u_stk_15c_2 = 3
-        if ((not quest:IsObjectInThingsPossession("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER", hero)) and givenLetter) and quest:GetStateInt("MansLoverState") ~= 3 then
+    local scratchValue50 = quest:ReadGlobalGameDataString(SCRIPT_DEF.ObjectFromMansLover)
+    local hero = quest:GetHero()
+    if not quest:IsObjectInThingsPossession(scratchValue50, hero) then
+        local hero2 = quest:GetHero()
+        if ((not quest:IsObjectInThingsPossession("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER", hero2)) and givenLetter_) and quest:GetStateInt("MansLoverState") ~= 3 then
             predicateResult = false
             goto LAB_00ec8400
         end
     end
     predicateResult = true
     ::LAB_00ec8400::
-    if u_stk_15c_2 & 2 ~= 0 then
-        u_stk_15c_2 = u_stk_15c_2 & 0xfffffffd
-    end
-    if u_stk_15c_2 & 1 ~= 0 then
-        u_stk_15c_2 = u_stk_15c_2 & 0xfffffffe
-    end
     if predicateResult then
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         quest:SetThingHasInformation(me, true, true, false)
@@ -44,6 +49,7 @@ function Main(quest, me)
     quest:SetIsPushableByHero(me, false)
     quest:SetCreatureBrain(me, "BRAIN_PASSIVE_OVERRIDE")
     local position = me:GetPos()
+    center = position.x
     quest:SetWanderCentrePoint(me, position)
     quest:SetWanderMinDistance(me, 0.0)
     quest:SetWanderMaxDistance(me, 10.0)
@@ -65,175 +71,218 @@ function Main(quest, me)
                 end
             end
             if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-            if not givenLetter and quest:GetStateInt("MansLoverState") ~= 3 then
+            if not givenLetter_ and quest:GetStateInt("MansLoverState") ~= 3 then
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                local movie3 = resources:StartMovie("")
+                local manIntroMovie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                getHero = nil
+                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                    msgIsQuestionAnsweredYesOrNo = 0
                     line = "TEXT_QST_B10_MAN_IN_LOVE_INTRO"
-                    me:Speak(hero, line, 0, false, true, false)
+                    getHero = quest:GetHero()
+                    if not me:Speak(getHero, line, 0, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(resource)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie3)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(resource)
                             do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie3)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(resource)
                         return
                     end
                 end
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                getHero = nil
+                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                    msgIsQuestionAnsweredYesOrNo = 0
                     line = "TEXT_QST_B10_MAN_IN_LOVE_INTRO_50"
-                    me:Speak(hero, line, 0, false, true, false)
+                    getHero = quest:GetHero()
+                    if not me:Speak(getHero, line, 0, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(resource)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie3)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(resource)
                             do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie3)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(resource)
                         return
                     end
                 end
-                quest:GiveHeroObject(quest:ReadGlobalGameDataString(1852), -1, false)
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                local scratchValue47 = quest:ReadGlobalGameDataString(SCRIPT_DEF.ObjectToGiveToMansLover)
+                quest:GiveHeroObject(scratchValue47, -1, false)
+                getHero = nil
+                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                    msgIsQuestionAnsweredYesOrNo = 0
                     line = "TEXT_QST_B10_MAN_IN_LOVE_INTRO_60"
-                    me:Speak(hero, line, 0, false, true, false)
+                    getHero = quest:GetHero()
+                    if not me:Speak(getHero, line, 0, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(resource)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie3)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(resource)
                             do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie3)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(resource)
                         return
                     end
                 end
-                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                getHero = nil
+                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                    msgIsQuestionAnsweredYesOrNo = 0
                     line = "TEXT_QST_B10_MAN_IN_LOVE_INTRO_70"
-                    me:Speak(hero, line, 0, false, true, false)
+                    getHero = quest:GetHero()
+                    if not me:Speak(getHero, line, 0, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(resource)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(movie3)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(resource)
                             do return end
                         end
                     end
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(movie3)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(resource)
                         return
                     end
                 end
-                givenLetter = true
+                givenLetter_ = true
                 quest:ClearThingHasInformation(me)
                 quest:PauseAllNonScriptedEntities(false)
-                this_00 = movie3
+                manConversationMovie = manIntroMovie
             else
                 if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-                startMovie = resources:StartMovie("")
+                manTalkMovie = resources:StartMovie("")
+                getHero = 1
                 quest:PauseAllNonScriptedEntities(true)
-                -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)xStack_138);
-                local movie = startMovie
-                -- TODO(native): xStack_158 = xStack_158 | 4;
-                if quest:IsObjectInThingsPossession("", hero) then
+                local local_manLetterDefinition = quest:ReadGlobalGameDataString(SCRIPT_DEF.ObjectFromMansLover)
+                hero3 = quest:GetHero()
+                if quest:IsObjectInThingsPossession(local_manLetterDefinition, hero3) then
                     goto LAB_00ec8a86
                 else
-                    scratchValue = movie | 12
-                    startMovie = scratchValue
-                    if quest:IsObjectInThingsPossession("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER", hero) then goto LAB_00ec8a86 end
+                    hero3 = quest:GetHero()
+                    if quest:IsObjectInThingsPossession("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER", hero3) then goto LAB_00ec8a86 end
                     goto LAB_00ec8a92
                 end
                 goto FLOW_past_lab_00ec8a86
                 ::LAB_00ec8a86::
-                -- TODO(native): xStack_170 = (int *)CONCAT13(1,(undefined3)xStack_170);
-                if gotReward then goto LAB_00ec8a92 end
+                manHasUnrewardedLetter = true
+                if gotReward_ then goto LAB_00ec8a92 end
                 ::FLOW_past_lab_00ec8a86::
                 goto FLOW_past_lab_00ec8a92
                 ::LAB_00ec8a92::
+                manHasUnrewardedLetter = false
                 ::FLOW_past_lab_00ec8a92::
-                if scratchValue & 8 ~= 0 then
-                    scratchValue = scratchValue & 0xfffffff7
-                    startMovie = scratchValue
-                end
-                if scratchValue & 4 ~= 0 then
-                    -- TODO(native): xStack_158 = uVar11 & 0xfffffffb;
-                end
-                if true then
+                if not manHasUnrewardedLetter then
                     if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                    if not gotReward then
+                    if not gotReward_ then
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(startMovie)
+                            resources:DestroyMovie(manTalkMovie)
                             resources:ReleaseResource(resource)
                             return
                         end
                         if quest:GetStateInt("MansLoverState") == 3 then
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(startMovie)
+                                resources:DestroyMovie(manTalkMovie)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                            hero3 = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                msgIsQuestionAnsweredYesOrNo = 0
                                 line = "TEXT_QST_B10_MAN_IN_LOVE_MYRA_DIED"
-                                me:Speak(hero, line, 0, false, true, false)
+                                getHero = quest:GetHero()
+                                if not me:Speak(getHero, line, 0, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(manTalkMovie)
+                                    resources:ReleaseResource(resource)
+                                    return
+                                end
                                 while me:IsPerformingScriptTask() do
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(startMovie)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(resource)
                                         do return end
                                     end
                                 end
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(startMovie)
+                                    resources:DestroyMovie(manTalkMovie)
                                     resources:ReleaseResource(resource)
                                     return
                                 end
                             end
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_140);
-                            quest:GiveHeroObject(line, scratchValue21, -1)
-                            quest:RemoveItemFromContainer(me, quest:ReadGlobalGameDataString(1848))
-                            gotReward = true
+                            local local_manRewardDefinitionFirst = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                            quest:GiveHeroObject(local_manRewardDefinitionFirst, -1, false)
+                            local scratchValue46 = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                            quest:RemoveItemFromContainer(me, scratchValue46)
+                            gotReward_ = true
                         else
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(startMovie)
+                                resources:DestroyMovie(manTalkMovie)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                            hero3 = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                msgIsQuestionAnsweredYesOrNo = 0
                                 line = "TEXT_QST_B10_MAN_IN_LOVE_DELIVER_LETTER"
-                                me:Speak(hero, line, 0, false, true, false)
+                                getHero = quest:GetHero()
+                                if not me:Speak(getHero, line, 0, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(manTalkMovie)
+                                    resources:ReleaseResource(resource)
+                                    return
+                                end
                                 while me:IsPerformingScriptTask() do
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(startMovie)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(resource)
                                         do return end
                                     end
@@ -244,7 +293,7 @@ function Main(quest, me)
                     else
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(startMovie)
+                            resources:DestroyMovie(manTalkMovie)
                             resources:ReleaseResource(resource)
                             return
                         end
@@ -253,25 +302,33 @@ function Main(quest, me)
                             if quest:GetStateInt("MansLoverState") == 3 then
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(startMovie)
+                                    resources:DestroyMovie(manTalkMovie)
                                     resources:ReleaseResource(resource)
                                     return
                                 end
-                                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                                hero3 = nil
+                                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                    msgIsQuestionAnsweredYesOrNo = 0
                                     line = "TEXT_QST_B10_MAN_IN_LOVE_POST_QUEST_MYRA_DIED_10"
-                                    me:Speak(hero, line, 0, false, true, false)
+                                    getHero = quest:GetHero()
+                                    if not me:Speak(getHero, line, 0, false, true, false) then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(manTalkMovie)
+                                        resources:ReleaseResource(resource)
+                                        return
+                                    end
                                     while me:IsPerformingScriptTask() do
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(startMovie)
+                                            resources:DestroyMovie(manTalkMovie)
                                             resources:ReleaseResource(resource)
                                             do return end
                                         end
                                     end
                                     if quest:IsActiveThreadTerminating() then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(startMovie)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(resource)
                                         return
                                     end
@@ -279,18 +336,26 @@ function Main(quest, me)
                             else
                                 if quest:IsActiveThreadTerminating() then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(startMovie)
+                                    resources:DestroyMovie(manTalkMovie)
                                     resources:ReleaseResource(resource)
                                     return
                                 end
-                                if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                                hero3 = nil
+                                if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                    msgIsQuestionAnsweredYesOrNo = 0
                                     line = "TEXT_QST_B10_MAN_IN_LOVE_POST_QUEST_UNHAPPY_10"
-                                    me:Speak(hero, line, 0, false, true, false)
+                                    getHero = quest:GetHero()
+                                    if not me:Speak(getHero, line, 0, false, true, false) then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(manTalkMovie)
+                                        resources:ReleaseResource(resource)
+                                        return
+                                    end
                                     while me:IsPerformingScriptTask() do
                                         quest:NewScriptFrame(me)
                                         if quest:IsActiveThreadTerminating() then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(startMovie)
+                                            resources:DestroyMovie(manTalkMovie)
                                             resources:ReleaseResource(resource)
                                             do return end
                                         end
@@ -301,18 +366,26 @@ function Main(quest, me)
                         else
                             if quest:IsActiveThreadTerminating() then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(startMovie)
+                                resources:DestroyMovie(manTalkMovie)
                                 resources:ReleaseResource(resource)
                                 return
                             end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                            hero3 = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                msgIsQuestionAnsweredYesOrNo = 0
                                 line = "TEXT_QST_B10_MAN_IN_LOVE_POST_QUEST_HAPPY_10"
-                                me:Speak(hero, line, 0, false, true, false)
+                                getHero = quest:GetHero()
+                                if not me:Speak(getHero, line, 0, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(manTalkMovie)
+                                    resources:ReleaseResource(resource)
+                                    return
+                                end
                                 while me:IsPerformingScriptTask() do
                                     quest:NewScriptFrame(me)
                                     if quest:IsActiveThreadTerminating() then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(startMovie)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(resource)
                                         do return end
                                     end
@@ -325,7 +398,7 @@ function Main(quest, me)
                     ::LAB_00ec96a4::
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(startMovie)
+                        resources:DestroyMovie(manTalkMovie)
                         resources:ReleaseResource(resource)
                         return
                     end
@@ -333,176 +406,198 @@ function Main(quest, me)
                 else
                     if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                     quest:GiveHeroYesNoQuestion("TEXT_QST_B10_MAN_IN_LOVE_RETURNING_OBJECT_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                    questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
-                    while questionAnswer < 0 do
+                    msgIsQuestionAnsweredYesOrNo = quest:MsgIsQuestionAnsweredYesOrNo()
+                    while msgIsQuestionAnsweredYesOrNo < 0 do
                         if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                        questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                        msgIsQuestionAnsweredYesOrNo = quest:MsgIsQuestionAnsweredYesOrNo()
                     end
                     if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                     local predicateResult33 = quest:IsActiveThreadTerminating()
-                    if questionAnswer == 1 then
+                    if msgIsQuestionAnsweredYesOrNo == 1 then
                         if predicateResult33 then ReleaseEverything(); return end
-                        quest:TakeObjectFromHero(quest:ReadGlobalGameDataString(1856))
+                        local scratchValue51 = quest:ReadGlobalGameDataString(SCRIPT_DEF.ObjectFromMansLover)
+                        quest:TakeObjectFromHero(scratchValue51)
                         quest:TakeObjectFromHero("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER")
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                        hero3 = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            msgIsQuestionAnsweredYesOrNo = 0
                             line = "TEXT_QST_B10_MAN_IN_LOVE_RETURNED_OBJECT_TO_ME"
-                            me:Speak(hero, line, 0, false, true, false)
+                            getHero = quest:GetHero()
+                            if not me:Speak(getHero, line, 0, false, true, false) then
+                                ReleaseEverything(); return
+                            end
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                             end
                             if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                         end
-                        quest:GiveHeroObject(quest:ReadGlobalGameDataString(1848), -1, false)
-                        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_dc);
-                        quest:RemoveItemFromContainer(me, line)
+                        local scratchValue48 = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                        quest:GiveHeroObject(scratchValue48, -1, false)
+                        local local_manReturnedItemDefinition = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                        quest:RemoveItemFromContainer(me, local_manReturnedItemDefinition)
                         if quest:GetStateInt("MansLoverState") == 2 then
                             if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                            readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(1880)
+                            readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.TellingTheTruth)
                         else
                             if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                            readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(1892)
+                            readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.LyingToManAboutWomanLikingHer)
                         end
                         quest:GiveHeroMorality(readGlobalGameDataFloat)
-                        gotReward = true
+                        gotReward_ = true
                         helpedGuyOut = true
                         quest:ClearThingHasInformation(me)
                     else
                         if predicateResult33 then ReleaseEverything(); return end
-                        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                        hero3 = nil
+                        if resources:ResourceThingHealthAbove(resource, 0.0) then
+                            msgIsQuestionAnsweredYesOrNo = 0
                             line = "TEXT_QST_B10_MAN_IN_LOVE_DIDNT_RETURN_OBJECT_TO_ME"
-                            me:Speak(hero, line, 0, false, true, false)
+                            hero3 = quest:GetHero()
+                            if not me:Speak(hero3, line, 0, false, true, false) then
+                                ReleaseEverything(); return
+                            end
                             while me:IsPerformingScriptTask() do
                                 if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                             end
                             if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                         end
                         quest:GiveHeroYesNoQuestion("TEXT_QST_B10_MAN_IN_LOVE_WOMANS_OPINION_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while questionAnswer < 0 do
+                        msgIsQuestionAnsweredYesOrNo = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while msgIsQuestionAnsweredYesOrNo < 0 do
                             if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
-                            questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                            msgIsQuestionAnsweredYesOrNo = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                         if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                         local predicateResult34 = quest:IsActiveThreadTerminating()
-                        if questionAnswer == 1 then
+                        if msgIsQuestionAnsweredYesOrNo == 1 then
                             if predicateResult34 then ReleaseEverything(); return end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                            hero3 = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                msgIsQuestionAnsweredYesOrNo = 0
                                 line = "TEXT_QST_B10_MAN_IN_LOVE_HAPPY"
-                                me:Speak(hero, line, 0, false, true, false)
+                                getHero = quest:GetHero()
+                                if not me:Speak(getHero, line, 0, false, true, false) then
+                                    ReleaseEverything(); return
+                                end
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                                 end
                                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                             end
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_104);
-                            quest:GiveHeroObject(line, scratchValue16, -1)
-                            quest:RemoveItemFromContainer(me, quest:ReadGlobalGameDataString(1848))
-                            gotReward = true
+                            local local_manRewardDefinitionSecond = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                            quest:GiveHeroObject(local_manRewardDefinitionSecond, -1, false)
+                            local scratchValue52 = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                            quest:RemoveItemFromContainer(me, scratchValue52)
+                            gotReward_ = true
                             helpedGuyOut = true
                             if quest:GetStateInt("MansLoverState") == 2 then
                                 goto LAB_00ec91ef
                             else
                                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                                readGlobalGameDataFloat2 = quest:ReadGlobalGameDataFloat(1892)
+                                readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.LyingToManAboutWomanLikingHer)
                             end
                         else
                             if predicateResult34 then ReleaseEverything(); return end
-                            if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
+                            hero3 = nil
+                            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                                msgIsQuestionAnsweredYesOrNo = 0
                                 line = "TEXT_QST_B10_MAN_IN_LOVE_UNHAPPY"
-                                me:Speak(hero, line, 0, false, true, false)
+                                getHero = quest:GetHero()
+                                if not me:Speak(getHero, line, 0, false, true, false) then
+                                    ReleaseEverything(); return
+                                end
                                 while me:IsPerformingScriptTask() do
                                     if not quest:NewScriptFrame(me) then ReleaseEverything(); return end
                                 end
                                 if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
                             end
-                            quest:GiveHeroObject(quest:ReadGlobalGameDataString(1848), -1, false)
-                            quest:RemoveItemFromContainer(me, quest:ReadGlobalGameDataString(1848))
-                            gotReward = true
+                            local scratchValue53 = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                            quest:GiveHeroObject(scratchValue53, -1, false)
+                            local scratchValue49 = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+                            quest:RemoveItemFromContainer(me, scratchValue49)
+                            gotReward_ = true
                             if quest:GetStateInt("MansLoverState") ~= 2 then goto LAB_00ec91ef end
                             if quest:IsActiveThreadTerminating() then ReleaseEverything(); return end
-                            readGlobalGameDataFloat2 = quest:ReadGlobalGameDataFloat(1888)
+                            readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.LyingToManAboutWomanNotLikingHer)
                         end
                         goto FLOW_past_lab_00ec91ef
                         ::LAB_00ec91ef::
                         if quest:IsActiveThreadTerminating() then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(startMovie)
+                            resources:DestroyMovie(manTalkMovie)
                             resources:ReleaseResource(resource)
                             return
                         end
-                        readGlobalGameDataFloat2 = quest:ReadGlobalGameDataFloat(1880)
+                        readGlobalGameDataFloat = quest:ReadGlobalGameDataFloat(SCRIPT_DEF.TellingTheTruth)
                         ::FLOW_past_lab_00ec91ef::
-                        quest:GiveHeroMorality(readGlobalGameDataFloat2)
+                        quest:GiveHeroMorality(readGlobalGameDataFloat)
                         quest:ClearThingHasInformation(me)
                     end
                 end
                 quest:PauseAllNonScriptedEntities(false)
-                this_00 = startMovie
+                manConversationMovie = manTalkMovie
             end
-            resources:ReleaseResource(this_00)
+            resources:DestroyMovie(manConversationMovie)
             resources:PrepareResource(resource)
         end
-        local scratchValue15 = u_stk_15c_2
-        u_stk_15c_2 = u_stk_15c_2 | 16
         if me:MsgIsHitByHero() then goto LAB_00ec9774 end
-        scratchValue = scratchValue15 | 48
-        u_stk_15c_2 = scratchValue
-        if me:MsgIsHitByAnySpecialAbilityFromHero() then
-            scratchValue = scratchValue15 | 112
-            u_stk_15c_2 = scratchValue
-            if not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec9774 end
-        end
+        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00ec9774 end
+        manShouldReactToHit = false
         goto FLOW_past_lab_00ec9774
         ::LAB_00ec9774::
+        manShouldReactToHit = true
         ::FLOW_past_lab_00ec9774::
-        if scratchValue & 64 ~= 0 then
-            scratchValue = scratchValue & 0xffffffbf
-            u_stk_15c_2 = scratchValue
-        end
-        if scratchValue & 32 ~= 0 then
-            scratchValue = scratchValue & 0xffffffdf
-            u_stk_15c_2 = scratchValue
-        end
-        if scratchValue & 16 ~= 0 then
-            u_stk_15c_2 = scratchValue & 0xffffffef
-        end
-        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-        me:ClearCommands()
-        resources:PrepareResource(resource)
-        while not resources:TryAcquire(resource, me, 4) do
-            quest:NewScriptFrame(me)
-            if quest:IsActiveThreadTerminating() then
-                resources:ReleaseResource(resource)
-                do return end
-            end
-        end
-        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
-        local movie2 = resources:StartMovie("")
-        quest:PauseAllNonScriptedEntities(true)
-        if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-            line = "TEXT_QST_B10_MAN_IN_LOVE_ON_HIT"
-            me:Speak(hero, line, 0, false, true, false)
-            while me:IsPerformingScriptTask() do
+        if manShouldReactToHit then
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            me:ClearCommands()
+            resources:PrepareResource(resource)
+            while not resources:TryAcquire(resource, me, 4) do
                 quest:NewScriptFrame(me)
                 if quest:IsActiveThreadTerminating() then
-                    quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(movie2)
                     resources:ReleaseResource(resource)
                     do return end
                 end
             end
-            if quest:IsActiveThreadTerminating() then
-                quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(movie2)
-                resources:ReleaseResource(resource)
-                return
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
+            local manHitMovie = resources:StartMovie("")
+            quest:PauseAllNonScriptedEntities(true)
+            getHero = nil
+            if resources:ResourceThingHealthAbove(resource, 0.0) then
+                msgIsQuestionAnsweredYesOrNo = 0
+                line = "TEXT_QST_B10_MAN_IN_LOVE_ON_HIT"
+                getHero = quest:GetHero()
+                if not me:Speak(getHero, line, 0, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(manHitMovie)
+                    resources:ReleaseResource(resource)
+                    return
+                end
+                while me:IsPerformingScriptTask() do
+                    quest:NewScriptFrame(me)
+                    if quest:IsActiveThreadTerminating() then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manHitMovie)
+                        resources:ReleaseResource(resource)
+                        do return end
+                    end
+                end
+                if quest:IsActiveThreadTerminating() then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(manHitMovie)
+                    resources:ReleaseResource(resource)
+                    return
+                end
             end
+            resources:PrepareResource(resource)
+            quest:PauseAllNonScriptedEntities(false)
+            resources:DestroyMovie(manHitMovie)
         end
-        resources:PrepareResource(resource)
-        quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(movie2)
-        local getStateBool = gotReward and not me:IsPerformingScriptTask()
-        if not getStateBool then quest:NewScriptFrame(me); predicateResult3 = quest:IsActiveThreadTerminating(); goto continue_13 end
+        local getStateBool = gotReward_ and not me:IsPerformingScriptTask()
+        if not getStateBool then
+            quest:NewScriptFrame(me);
+            predicateResult3 = quest:IsActiveThreadTerminating();
+            goto continue_13
+        end
         if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         getNearestWithDefName = quest:GetNearestWithDefName(me, "REGION_EXIT_POINT")
         resources:PrepareResource(resource)
@@ -529,29 +624,36 @@ end
 
 -- ManInLove.Init (retail 0x00ec8210)
 function Init(quest, me)
-    givenLetter = false
-    gotReward = false
+    givenLetter_ = false
+    gotReward_ = false
     helpedGuyOut = false
     quest:SetThingPersistent(me, true)
 end
 
 -- ManInLove.OnPersist (retail 0x00ecd8e0)
 function OnPersist(quest, me, context)
-    givenLetter = quest:PersistTransferBool(context, "GivenLetter", givenLetter)
-    gotReward = quest:PersistTransferBool(context, "GotReward", gotReward)
+    local givenLetter = givenLetter_ or false
+    givenLetter_ = quest:PersistTransferBool(context, "GivenLetter", givenLetter)
+    local gotReward = gotReward_ or false
+    gotReward_ = quest:PersistTransferBool(context, "GotReward", gotReward)
 end
 
 -- ManInLove.OnPredicateFail (retail 0x00ec8230)
 function OnPredicateFail(quest, me)
-    local predicateResult
-    if not gotReward then
+    local predicateResult, predicateResult2
+    predicateResult2 = false
+    if not gotReward_ then
+        predicateResult2 = true
         predicateResult = true
         if me:MsgIsKilledBy("") then goto LAB_00ec8274 end
     end
     predicateResult = false
     ::LAB_00ec8274::
+    if predicateResult2 then
+    end
     if not predicateResult then return end
-    quest:GiveHeroObject(quest:ReadGlobalGameDataString(1848), -1, false)
-    quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(1896))
+    local scratchValue = quest:ReadGlobalGameDataString(SCRIPT_DEF.IngredientObject)
+    quest:GiveHeroObject(scratchValue, -1, false)
+    quest:GiveHeroMorality(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.KilledSomeoneForMushroom))
 end
 

@@ -5,13 +5,12 @@ local GROUP_SELECT_FIRST = 0  -- ETextGroupSelectionMethod
 
 -- AssassinMarker.Main (retail 0x00d11930)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult, ctr_c, addNewConversation
+    local predicateResult, ctr_c, addNewConversation, assassin1, assassin, assassin3
     if not quest:NewScriptFrame(me) then return end
-    local assassin1 = quest:GetThingWithScriptName("Assassin1")
-    local assassin = quest:GetThingWithScriptName("Assassin2")
-    local assassin3 = quest:GetThingWithScriptName("Assassin3")
+    assassin1 = quest:GetThingWithScriptName("Assassin1")
+    assassin = quest:GetThingWithScriptName("Assassin2")
+    assassin3 = quest:GetThingWithScriptName("Assassin3")
     quest:EntitySetAsKillable(assassin1, false, true)
     quest:EntitySetAsKillable(assassin, false, true)
     quest:EntitySetAsKillable(assassin3, false, true)
@@ -26,9 +25,11 @@ function Main(quest, me)
     while not quest:GetStateBool("AssassinCutsceneTriggered") and not predicateResult do
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); goto LAB_00d128bf end
         if not quest:GetStateBool("AssassinsUnderAttack") then
+            local hero = quest:GetHero()
             local isDistanceBetweenThingsUnder = quest:IsDistanceBetweenThingsUnder(me, hero, 4.0)
             predicateResult = false
             if not isDistanceBetweenThingsUnder or quest:IsConversationActive(addNewConversation) or quest:GetStateBool("TalkedToAssassin") then goto LAB_00d12226 end
+            if quest:IsActiveThreadTerminating() then goto LAB_00d12245 end
             local switch = ctr_c
             repeat
                 if switch == 0 then
@@ -53,13 +54,17 @@ function Main(quest, me)
                     break
                 elseif switch == 4 then
                     addNewConversation = quest:AddNewConversation(assassin1, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_ASSASSIN1_LISTENED_THREE", assassin1, hero, false)
+                    local hero2 = quest:GetHero()
+                    quest:AddPersonToConversation(addNewConversation, hero2)
+                    local hero3 = quest:GetHero()
+                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_ASSASSIN1_LISTENED_THREE", assassin1, hero3, false)
                     break
                 elseif switch == 5 then
                     addNewConversation = quest:AddNewConversation(assassin1, false, false)
-                    quest:AddPersonToConversation(addNewConversation, hero)
-                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_ASSASSIN1_LISTENED_FOUR", assassin1, hero, false)
+                    local hero4 = quest:GetHero()
+                    quest:AddPersonToConversation(addNewConversation, hero4)
+                    local hero5 = quest:GetHero()
+                    quest:AddLineToConversation(addNewConversation, "TEXT_QST_009_ASSASSIN1_LISTENED_FOUR", assassin1, hero5, false)
                     break
                 else
                     break
@@ -67,15 +72,18 @@ function Main(quest, me)
             until true
             ctr_c = ctr_c + 1
         else
+            if quest:IsActiveThreadTerminating() then goto LAB_00d12245 end
             resources:TryAcquire(resource7, assassin1, 4)
             resources:TryAcquire(resource5, assassin, 4)
             resources:TryAcquire(resource6, assassin3, 4)
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            local fret_0 = quest:GetHealth(resources:ScriptThing(resource7))
+            local scratchValue = resources:ScriptThing(resource7)
+            local fret_0 = quest:GetHealth(scratchValue)
             if 0.0 < fret_0 then
-                me:Speak(hero, "TEXT_QST_009_ASSASSIN1_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
-                while me:IsPerformingScriptTask() do
+                local hero6 = quest:GetHero()
+                resources:Speak(resource7, hero6, "TEXT_QST_009_ASSASSIN1_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
+                while resources:IsPerformingScriptTask(resource7) do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -84,24 +92,28 @@ function Main(quest, me)
                         resources:ReleaseResource(resource6)
                         resources:ReleaseResource(resource5)
                         resources:ReleaseResource(resource7)
+                        assassin3 = nil
+                        assassin = nil
+                        assassin1 = nil
                         do return end
                     end
                 end
-                if not quest:IsActiveThreadTerminating() then goto LAB_00d11c9b end
-                goto LAB_00d1244c
+                if not quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00d1244c end
+            else
+                goto FLOW_past_lab_00d1244c
             end
-            goto FLOW_past_lab_00d1244c
             ::LAB_00d1244c::
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
             quest:DeregisterTimer(timerId)
             goto LAB_00d128bf
             ::FLOW_past_lab_00d1244c::
-            ::LAB_00d11c9b::
-            local fret_00 = quest:GetHealth(resources:ScriptThing(resource5))
+            local scratchValue3 = resources:ScriptThing(resource5)
+            local fret_00 = quest:GetHealth(scratchValue3)
             if 0.0 < fret_00 then
-                me:Speak(hero, "TEXT_QST_009_ASSASSIN2_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
-                while me:IsPerformingScriptTask() do
+                local hero7 = quest:GetHero()
+                resources:Speak(resource5, hero7, "TEXT_QST_009_ASSASSIN2_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
+                while resources:IsPerformingScriptTask(resource5) do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -110,15 +122,20 @@ function Main(quest, me)
                         resources:ReleaseResource(resource6)
                         resources:ReleaseResource(resource5)
                         resources:ReleaseResource(resource7)
+                        assassin3 = nil
+                        assassin = nil
+                        assassin1 = nil
                         do return end
                     end
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d1244c end
             end
-            local fret_01 = quest:GetHealth(resources:ScriptThing(resource6))
+            local scratchValue4 = resources:ScriptThing(resource6)
+            local fret_01 = quest:GetHealth(scratchValue4)
             if 0.0 < fret_01 then
-                me:Speak(hero, "TEXT_QST_009_ASSASSIN3_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
-                while me:IsPerformingScriptTask() do
+                local hero8 = quest:GetHero()
+                resources:Speak(resource6, hero8, "TEXT_QST_009_ASSASSIN3_ATTACKED", GROUP_SELECT_FIRST, false, true, false)
+                while resources:IsPerformingScriptTask(resource6) do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
                         quest:PauseAllNonScriptedEntities(false)
@@ -129,9 +146,12 @@ function Main(quest, me)
                 end
                 if quest:IsActiveThreadTerminating() then goto LAB_00d1244c end
             end
-            quest:GiveThingBestEnemyTarget(assassin1, hero)
-            quest:GiveThingBestEnemyTarget(assassin, hero)
-            quest:GiveThingBestEnemyTarget(assassin3, hero)
+            local hero9 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(assassin1, hero9)
+            local hero10 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(assassin, hero10)
+            local hero11 = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(assassin3, hero11)
             predicateResult = true
             resources:PrepareResource(resource7)
             resources:PrepareResource(resource5)
@@ -141,7 +161,13 @@ function Main(quest, me)
         end
         ::LAB_00d12226::
     end
-    if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); goto LAB_00d128bf end
+    if not (quest:IsActiveThreadTerminating()) then
+        goto FLOW_past_lab_00d12245
+    end
+    ::LAB_00d12245::
+    quest:DeregisterTimer(timerId)
+    goto LAB_00d128bf
+    ::FLOW_past_lab_00d12245::
     quest:EntitySetAsKillable(assassin1, true, true)
     quest:EntitySetAsKillable(assassin, true, true)
     quest:EntitySetAsKillable(assassin3, true, true)
@@ -152,7 +178,8 @@ function Main(quest, me)
         local resource2 = resources:NewResource()
         local resource3 = resources:NewResource()
         local resource4 = resources:NewResource()
-        resources:TryAcquire(resource, hero, 4)
+        local hero12 = quest:GetHero()
+        resources:TryAcquire(resource, hero12, 4)
         resources:TryAcquire(resource2, assassin1, 4)
         resources:TryAcquire(resource3, assassin, 4)
         resources:TryAcquire(resource4, assassin3, 4)
@@ -170,7 +197,8 @@ function Main(quest, me)
         resources:RunMacro("CS_BANDITCAMP_ASSATTACK", actorMap, false, true)
         quest:FixMovieSequenceCamera(false)
         quest:SetStateBool("Gate3Open", true)
-        quest:RemoveThing(quest:GetThingWithScriptName("Gate3Guard"), false, true)
+        local gate3Guard = quest:GetThingWithScriptName("Gate3Guard")
+        quest:RemoveThing(gate3Guard, false, true)
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie2)
         resources:DestroyActorMap(actorMap)

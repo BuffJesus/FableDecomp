@@ -806,5 +806,735 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedSavedTableStaging": {
+    "0x00d58490": {
+      "cacheProof": {
+        "nativeSha256": "939c15aa48a4350611b3d7ff2fc4b59770cc1674bbf5883c737364ed03fe3a75",
+        "abiContract": {
+          "ordinaryMsvcCalleeSaved": true,
+          "normalChildStackBalanceAssumed": true,
+          "callerFramePreservedExceptDeclaredBuffers": true,
+          "declaredBuffersStayInBounds": true,
+          "engineReentryVerified": false,
+          "exceptionsVerified": false,
+          "heapVerified": false,
+          "declaredParentBoolFieldsDoNotAliasCallerFrame": true
+        },
+        "pointerLoad": "0xd5a1d5",
+        "cacheStore": "0xd5a1de",
+        "pointerRead": "0xd5a95c",
+        "tableRead": "0xd5a960",
+        "pointerRegister": "ebx",
+        "ownerRegister": "esi",
+        "tableRegister": "edx",
+        "interfaceOffset": 4,
+        "branchTables": [
+          {
+            "site": "0xd59fd5",
+            "tableBytes": "dc9fd5001ba0d5005aa0d50099a0d500d8a0d50014a1d50050a1d500"
+          }
+        ],
+        "declaredBuffers": {
+          "0xd5a212": {
+            "coordinate": 320,
+            "bytes": 4
+          },
+          "0xd5a222": {
+            "coordinate": 152,
+            "bytes": 12
+          },
+          "0xd5a22c": {
+            "coordinate": 88,
+            "bytes": 12
+          },
+          "0xd5a230": {
+            "coordinate": 320,
+            "bytes": 4
+          },
+          "0xd5a23c": {
+            "coordinate": 320,
+            "bytes": 4
+          },
+          "0xd5a259": {
+            "coordinate": 368,
+            "bytes": 4
+          },
+          "0xd5a269": {
+            "coordinate": 152,
+            "bytes": 12
+          },
+          "0xd5a273": {
+            "coordinate": 88,
+            "bytes": 12
+          },
+          "0xd5a277": {
+            "coordinate": 368,
+            "bytes": 4
+          },
+          "0xd5a283": {
+            "coordinate": 368,
+            "bytes": 4
+          },
+          "0xd5a2aa": {
+            "coordinate": 328,
+            "bytes": 4
+          },
+          "0xd5a2bb": {
+            "coordinate": 328,
+            "bytes": 4
+          },
+          "0xd5a2c3": {
+            "coordinate": 28,
+            "bytes": 12
+          },
+          "0xd5a2ce": {
+            "coordinate": 328,
+            "bytes": 4
+          },
+          "0xd5a2ee": {
+            "coordinate": 376,
+            "bytes": 4
+          },
+          "0xd5a303": {
+            "coordinate": 376,
+            "bytes": 4
+          },
+          "0xd5a30b": {
+            "coordinate": 200,
+            "bytes": 12
+          },
+          "0xd5a323": {
+            "coordinate": 200,
+            "bytes": 12
+          },
+          "0xd5a32f": {
+            "coordinate": 376,
+            "bytes": 4
+          },
+          "0xd5a352": {
+            "coordinate": 216,
+            "bytes": 4
+          },
+          "0xd5a365": {
+            "coordinate": 260,
+            "bytes": 4
+          },
+          "0xd5a378": {
+            "coordinate": 264,
+            "bytes": 4
+          },
+          "0xd5a38b": {
+            "coordinate": 336,
+            "bytes": 4
+          },
+          "0xd5a39e": {
+            "coordinate": 216,
+            "bytes": 4
+          },
+          "0xd5a3a6": {
+            "coordinate": 260,
+            "bytes": 4
+          },
+          "0xd5a3ae": {
+            "coordinate": 264,
+            "bytes": 4
+          },
+          "0xd5a3b6": {
+            "coordinate": 336,
+            "bytes": 4
+          },
+          "0xd5a3c4": {
+            "coordinate": 336,
+            "bytes": 4
+          },
+          "0xd5a3d0": {
+            "coordinate": 264,
+            "bytes": 4
+          },
+          "0xd5a3dc": {
+            "coordinate": 260,
+            "bytes": 4
+          },
+          "0xd5a3e8": {
+            "coordinate": 216,
+            "bytes": 4
+          },
+          "0xd5a4a8": {
+            "coordinate": 68,
+            "bytes": 4
+          },
+          "0xd5a4b9": {
+            "coordinate": 88,
+            "bytes": 12
+          },
+          "0xd5a4bd": {
+            "coordinate": 68,
+            "bytes": 4
+          },
+          "0xd5a4c6": {
+            "coordinate": 68,
+            "bytes": 4
+          },
+          "0xd5a4e4": {
+            "coordinate": 64,
+            "bytes": 4
+          },
+          "0xd5a4fc": {
+            "coordinate": 64,
+            "bytes": 4
+          },
+          "0xd5a507": {
+            "coordinate": 64,
+            "bytes": 4
+          }
+        },
+        "declaredParentWrites": {
+          "0xd5a4d2": {
+            "memberOffset": 20,
+            "fieldOffset": 84,
+            "value": true
+          },
+          "0xd5a4db": {
+            "memberOffset": 20,
+            "fieldOffset": 85,
+            "value": true
+          }
+        }
+      },
+      "memberProfile": {
+        "offset": 8,
+        "vtable": "0x1238c8c",
+        "constructorReceiverAlias": "eax",
+        "witnesses": {
+          "factory": {
+            "address": "0xd565e2",
+            "bytes": "8d4e08c70624322c01e8a05875ff"
+          },
+          "constructor": {
+            "address": "0x4abe90",
+            "bytes": "8bc18b4c2404c7008c8c23018b51048950048b490885c98948087402ff01c20400"
+          }
+        }
+      },
+      "callContracts": [
+        {
+          "site": "0xd5a1e2",
+          "instructionBytes": "ff90ec050000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x5ec",
+          "target": "0x890ab0",
+          "calleePrefix": "538b5c2408568bf18b4e048b0153ff50",
+          "purgeBytes": 4
+        },
+        {
+          "site": "0xd5a1ef",
+          "instructionBytes": "ff92cc050000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x5cc",
+          "target": "0x88e500",
+          "calleePrefix": "8a44240484c00f94c0a2300c3801c204",
+          "purgeBytes": 4
+        },
+        {
+          "site": "0xd5a1fe",
+          "instructionBytes": "e82db91d00",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xf35b30",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a219",
+          "instructionBytes": "e8d249c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a237",
+          "instructionBytes": "e84159f6ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xcbfb7d",
+          "calleePrefix": "55b8dc1800008d6c2498e8a4eef3ff53",
+          "purgeBytes": 16
+        },
+        {
+          "site": "0xd5a245",
+          "instructionBytes": "e8e6b81d00",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xf35b30",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a260",
+          "instructionBytes": "e88b49c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a27e",
+          "instructionBytes": "e8fa58f6ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xcbfb7d",
+          "calleePrefix": "55b8dc1800008d6c2498e8a4eef3ff53",
+          "purgeBytes": 16
+        },
+        {
+          "site": "0xd5a28a",
+          "instructionBytes": "e85148c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a29d",
+          "instructionBytes": "ff921c040000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x41c",
+          "target": "0x891720",
+          "calleePrefix": "8b491481ecac000000e84282bbff85c0",
+          "purgeBytes": 12
+        },
+        {
+          "site": "0xd5a2b1",
+          "instructionBytes": "e83a49c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a2c8",
+          "instructionBytes": "ff9064090000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x964",
+          "target": "0x89c190",
+          "calleePrefix": "568b7424088b068bceff902c01000084",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a2d5",
+          "instructionBytes": "e80648c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a2e1",
+          "instructionBytes": "ff900c010000",
+          "family": "constructor_member_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1238c8c",
+          "slot": "0x10c",
+          "target": "0x4ab060",
+          "calleePrefix": "8b490485c974088b01ffa00c010000c2",
+          "purgeBytes": 4
+        },
+        {
+          "site": "0xd5a2f5",
+          "instructionBytes": "e8f648c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a313",
+          "instructionBytes": "ff9720010000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x120",
+          "target": "0x8a7d60",
+          "calleePrefix": "83ec0c8b44241453565733db8bf1508d",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a31d",
+          "instructionBytes": "ff97b0010000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x1b0",
+          "target": "0x8910d0",
+          "calleePrefix": "568b7424088b068bceff902c01000084",
+          "purgeBytes": 12
+        },
+        {
+          "site": "0xd5a32a",
+          "instructionBytes": "e8110575ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x4aa840",
+          "calleePrefix": "568bf1c7068c8c23018b460885c0741c",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a336",
+          "instructionBytes": "e8a547c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a345",
+          "instructionBytes": "ff92e0050000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x5e0",
+          "target": "0x88e4f0",
+          "calleePrefix": "e9fb8ce5ffcccccccccccccccccccccc",
+          "purgeBytes": 4
+        },
+        {
+          "site": "0xd5a359",
+          "instructionBytes": "e89248c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a36c",
+          "instructionBytes": "e87f48c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a37f",
+          "instructionBytes": "e86c48c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a392",
+          "instructionBytes": "e85948c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a3be",
+          "instructionBytes": "ff90c8010000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x1c8",
+          "target": "0x89e540",
+          "calleePrefix": "83ec0c53558be98b4d1456e820b4baff",
+          "purgeBytes": 20
+        },
+        {
+          "site": "0xd5a3cb",
+          "instructionBytes": "e81047c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a3d7",
+          "instructionBytes": "e80447c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a3e3",
+          "instructionBytes": "e8f846c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a3ef",
+          "instructionBytes": "e8ec46c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a3f9",
+          "instructionBytes": "ff909c000000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x9c",
+          "target": "0x894300",
+          "calleePrefix": "83ec1456578bf1e80432e5ff8bce8bf8",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a40a",
+          "instructionBytes": "ff521c",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x1c",
+          "target": "0x6e7410",
+          "calleePrefix": "8b0d38283d018a410584c075348b01ff",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a40f",
+          "instructionBytes": "e81cb71d00",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xf35b30",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a421",
+          "instructionBytes": "ff909c000000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x9c",
+          "target": "0x894300",
+          "calleePrefix": "83ec1456578bf1e80432e5ff8bce8bf8",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a42f",
+          "instructionBytes": "e8fcb61d00",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xf35b30",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a43e",
+          "instructionBytes": "e8edb61d00",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xf35b30",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a4ac",
+          "instructionBytes": "e83f47c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a4c1",
+          "instructionBytes": "e8b756f6ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xcbfb7d",
+          "calleePrefix": "55b8dc1800008d6c2498e8a4eef3ff53",
+          "purgeBytes": 16
+        },
+        {
+          "site": "0xd5a4ca",
+          "instructionBytes": "e81146c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a4e8",
+          "instructionBytes": "e80347c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99ebf0",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a4f2",
+          "instructionBytes": "ff9718010000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": true,
+          "vtable": "0x1260f0c",
+          "slot": "0x118",
+          "target": "0x891ca0",
+          "calleePrefix": "83ec0c568bf18b4e1457e8c17cbbff8b",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a501",
+          "instructionBytes": "ff97e0020000",
+          "family": "GSI_profile",
+          "receiverValueEquivalenceProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x2e0",
+          "target": "0x897220",
+          "calleePrefix": "8b4424048b491053565750e8e0611100",
+          "purgeBytes": 8
+        },
+        {
+          "site": "0xd5a50d",
+          "instructionBytes": "e8ce45c4ff",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0x99eae0",
+          "calleePrefix": "e8cbfeffffff0d00d83b01c3cccccccc",
+          "purgeBytes": 0
+        },
+        {
+          "site": "0xd5a518",
+          "instructionBytes": "e813b61d00",
+          "family": "direct",
+          "receiverValueEquivalenceProved": false,
+          "target": "0xf35b30",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "purgeBytes": 0
+        }
+      ],
+      "boundedReturnRegions": {
+        "0xf35b30": [
+          {
+            "start": "0xcb7940",
+            "endExclusive": "0xcb794e",
+            "sha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7"
+          },
+          {
+            "start": "0xf35b30",
+            "endExclusive": "0xf35b3c",
+            "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+          }
+        ],
+        "0xcbfb7d": [
+          {
+            "start": "0xcbfb7d",
+            "endExclusive": "0xcd1f97",
+            "sha256": "1c63efff83fe56e80bb575cb4bc914856d62fb51c650f2da472ac29d94526a50"
+          }
+        ],
+        "0x4aa840": [
+          {
+            "start": "0x4aa840",
+            "endExclusive": "0x4aa882",
+            "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+          },
+          {
+            "start": "0x99a2e0",
+            "endExclusive": "0x99a2e7",
+            "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+          }
+        ],
+        "0x88e4f0": [
+          {
+            "start": "0x6e71f0",
+            "endExclusive": "0x6e7270",
+            "sha256": "3f28b0a64d59cde47a958a39e0ee1c6a2b69655f39263a38ac626cd1c6a9efe0"
+          },
+          {
+            "start": "0x88e4f0",
+            "endExclusive": "0x88e4f5",
+            "sha256": "3c61375d8f8f46db53d3d076fba7323ef6cd96dd58a97964ba081e99e4892371"
+          }
+        ]
+      },
+      "boundedReturnInstructionBudgets": {
+        "0xcbfb7d": 32768
+      },
+      "imageSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+      "sourceSha256": "2c7839e7d53d4997e7158849d87d5c83dfc903c6c278b689f8f3071ddfcf1350",
+      "luaPhaseSha256": "92121005daa60377afa2d0fffed60387ea7665f82a0e1aee972c106a6e04dc14",
+      "cacheEvidenceSha256": "674a129d0848eb092aa23d3170abf9acf19a2b7d7a42e6937b818c4992708a06",
+      "prefixEvidenceSha256": "b6492de976417d0fe22ff994d0780d30e0fdaadeaf38096cfc5d6c2a9290bcbf",
+      "nativePredicateBranches": [
+        {
+          "call": "0xd5a518",
+          "branch": "0xd5a51f",
+          "bytes": "e813b61d0084c00f8537040000"
+        }
+      ],
+      "predicate": {
+        "wrapper": {
+          "address": "0xf35b30",
+          "bytes": "8b01ff500c8bc8e9041ed8ff"
+        },
+        "accessor": {
+          "address": "0xd56660",
+          "bytes": "8b4114c3"
+        },
+        "tail": {
+          "address": "0xcb7940",
+          "bytes": "8b412c85c0750332c0c38a4005c3"
+        },
+        "vtable": "0x12d030c",
+        "accessorOffset": 20,
+        "stateOffset": 44,
+        "flagOffset": 5
+      },
+      "sharedTail": "0xd5a962",
+      "dispatch": "0xd5a964",
+      "readBranchBytes": 6,
+      "api": {
+        "method": "PauseAllNonScriptedEntities",
+        "slot": "0x5ec",
+        "target": "0x890ab0",
+        "prefix": "538b5c2408568bf18b4e048b0153ff50"
+      },
+      "alias": "iVar7",
+      "cacheAlias": "xStack_23c",
+      "sourceCacheAlias": "piStack_23c",
+      "diagnosticMultiplicity": 1,
+      "nativeSourceFragment": "bVar3 = CCreatureAction_TrollWhackGroundBase::Initialise(this);\r\n          if (bVar3) {\r\n            iVar7 = *piStack_23c;\r\n            piVar12 = piStack_23c;\r\n            goto LAB_00d5a962;\r\n          }",
+      "originalLuaRegion": "                    alive = not quest:IsActiveThreadTerminating()\n                    bVar3 = not alive\n                    if bVar3 then\n                        -- TODO(native): iVar7 = *xStack_23c\n                        iVar7 = nil --[[unresolved native value]]\n                        -- TODO(native): goto LAB_00d5a962\n                    end\n",
+      "copies": [],
+      "readShape": "guarded_fallthrough",
+      "sourceConditionAlias": "bVar3",
+      "sourceReceiverAlias": "piVar12",
+      "sourcePredicate": "CCreatureAction_TrollWhackGroundBase::Initialise",
+      "luaConditionAlias": "bVar3",
+      "luaAliveAlias": "alive",
+      "scopeLimit": "Ordinary MSVC ABI and declared in-bounds child buffers/parent fields remain contracts. Engine reentry,exceptions,heap and gameplay remain unverified."
+    }
   }
 }

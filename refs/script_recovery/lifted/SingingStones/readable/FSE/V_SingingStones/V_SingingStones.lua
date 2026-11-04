@@ -3,7 +3,7 @@
 
 -- V_SingingStones.Main (retail 0x00ed10a0)
 function Main(quest)
-    local flags
+    local flags, scratchValue
     local isRegionLoaded = quest:IsRegionLoaded("Witchwood2")
     flags = 0
     while true do
@@ -13,10 +13,13 @@ function Main(quest)
             quest:AddEntityBinding("ManWithDoorName", "V_SingingStones/Entities/ManWithDoorName")
             quest:FinalizeEntityBindings()
             quest:CreateThread("WatchForCompleteTune")  -- native thread body 0x00ED2BB0: lift it as function WatchForCompleteTune(quest)
-            if flags & 4 ~= 0 then
+            if (flags & 4) ~= 0 then
                 flags = flags & 0xfffffffb
             end
             quest:CreateThread("WatchForSpokenToDemonDoors")  -- native thread body 0x00ED13B0: lift it as function WatchForSpokenToDemonDoors(quest)
+            if (flags & 8) ~= 0 then
+                scratchValue = flags & 0xfffffff7
+            end
             quest:CreateThread("WatchForRegionLeaving")  -- native thread body CQ_BanditCampScript::WatchForEndOfScript: lift it as function WatchForRegionLeaving(quest)
             return
         end
@@ -49,102 +52,149 @@ end
 
 -- V_SingingStones.OnPersist (retail 0x00ed1010)
 function OnPersist(quest, context)
-    quest:SetStateBool("DoorManIntroComplete", quest:PersistTransferBool(context, "DoorManIntroComplete", quest:GetStateBool("DoorManIntroComplete")))
-    quest:SetStateBool("DoorManAttackedByHero", quest:PersistTransferBool(context, "DoorManAttackedByHero", quest:GetStateBool("DoorManAttackedByHero")))
-    quest:SetStateBool("DoorManHasBribe", quest:PersistTransferBool(context, "DoorManHasBribe", quest:GetStateBool("DoorManHasBribe")))
-    quest:SetStateBool("DoorManComplete", quest:PersistTransferBool(context, "DoorManComplete", quest:GetStateBool("DoorManComplete")))
+    local doorManIntroComplete = quest:GetStateBool("DoorManIntroComplete") or false
+    doorManIntroComplete = quest:PersistTransferBool(context, "DoorManIntroComplete", doorManIntroComplete)
+    quest:SetStateBool("DoorManIntroComplete", doorManIntroComplete)
+    local doorManAttackedByHero = quest:GetStateBool("DoorManAttackedByHero") or false
+    doorManAttackedByHero = quest:PersistTransferBool(context, "DoorManAttackedByHero", doorManAttackedByHero)
+    quest:SetStateBool("DoorManAttackedByHero", doorManAttackedByHero)
+    local doorManHasBribe = quest:GetStateBool("DoorManHasBribe") or false
+    doorManHasBribe = quest:PersistTransferBool(context, "DoorManHasBribe", doorManHasBribe)
+    quest:SetStateBool("DoorManHasBribe", doorManHasBribe)
+    local doorManComplete = quest:GetStateBool("DoorManComplete") or false
+    doorManComplete = quest:PersistTransferBool(context, "DoorManComplete", doorManComplete)
+    quest:SetStateBool("DoorManComplete", doorManComplete)
+end
+
+local function RemoveLiveEffects(quest)
+    local effects = quest:GetStateListCopy("EffectList")
+    for index = 1, #effects do
+        local effect = effects[index]
+        if effect:IsAlive() then
+            quest:RemoveThing(effect, false, true)
+        end
+    end
 end
 
 -- V_SingingStones.WatchForCompleteTune (retail 0x00ed2bb0)
 function WatchForCompleteTune(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local getMasterGameState, scratchValue, scratchValue3, scratchValue4, scratchValue5
-    local scratchValue6, p0, scratchValue10
+    local getMasterGameState, scratchValue, scratchValue2, scratchValue3, scratchValue4
+    local scratchValue5, scratchValue6, p0, speakMarker2, scratchValue8
+    scratchValue3 = 0
     if quest:IsActiveThreadTerminating() then return end
     repeat
         if quest:GetStateInt("CurrentPlayListIndex") == 4 then
+            if quest:IsActiveThreadTerminating() then return end
+            scratchValue2 = 1
+            scratchValue = 1
             scratchValue4 = 0
             repeat
-                -- TODO(native): if piVar6[-8] ~= *piVar6 then
-                -- TODO(native): if piVar6[-4] ~= *piVar6 then
-                scratchValue4 = scratchValue4 + 1; goto continue_1
+                if quest:GetStateInt("PlayList_" .. scratchValue4) ~= quest:GetStateInt("YourPersonalPlayList_" .. scratchValue4) then
+                    if quest:IsActiveThreadTerminating() then return end
+                    scratchValue2 = 0
+                end
+                if quest:GetStateInt("RudePlayList_" .. scratchValue4) == quest:GetStateInt("YourPersonalPlayList_" .. scratchValue4) then
+                    scratchValue4 = scratchValue4 + 1
+                else
+                    if quest:IsActiveThreadTerminating() then return end
+                    scratchValue = 0
+                    scratchValue4 = scratchValue4 + 1
+                end
+            until not (scratchValue4 < 4)
+            if scratchValue2 ~= 0 then
                 if quest:IsActiveThreadTerminating() then return end
-                scratchValue4 = scratchValue4 + 1
-                ::continue_1::
-            until scratchValue4 >= 4
-            if quest:IsActiveThreadTerminating() then return end
-            local speakMarker = quest:GetNearestWithScriptName(hero, "SpeakMarker")
-            local conversationID = quest:AddNewConversation(speakMarker, true, true)
-            quest:AddPersonToConversation(conversationID, hero)
-            quest:AddLineToConversation(conversationID, "TEXT_QST_060_NAME_DBAC", speakMarker, hero, false)
-            quest:SetMasterGameState("SingingStonesInSync", true)
-            quest:SetStateInt("CurrentPlayListIndex", 0)
-            getMasterGameState = quest:GetMasterGameState("SingingStonesInSync")
-            break
+                local hero = quest:GetHero()
+                local speakMarker = quest:GetNearestWithScriptName(hero, "SpeakMarker")
+                local conversationID = quest:AddNewConversation(speakMarker, true, true)
+                local hero2 = quest:GetHero()
+                quest:AddPersonToConversation(conversationID, hero2)
+                local hero3 = quest:GetHero()
+                quest:AddLineToConversation(conversationID, "TEXT_QST_060_NAME_DBAC", speakMarker, hero3, false)
+                quest:SetMasterGameState("SingingStonesInSync", true)
+                quest:SetStateInt("CurrentPlayListIndex", 0)
+                getMasterGameState = quest:GetMasterGameState("SingingStonesInSync")
+                break
+            end
             if scratchValue == 0 or scratchValue3 ~= 0 then
                 if quest:IsActiveThreadTerminating() then return end
+                local tuneName = "TEXT_QST_060_NAME_"
                 scratchValue5 = 0
                 repeat
                     if quest:IsActiveThreadTerminating() then return end
-                    -- TODO(native): native_arg_switch_2 = *puVar7
-    --[[unresolved native value]]
+                    local switch = quest:GetStateInt("YourPersonalPlayList_" .. scratchValue5)
                     repeat
-                        if nil == 0 then
+                        if switch == 0 then
+                            p0 = "A"
                             break
-                        elseif nil == 1 then
+                        elseif switch == 1 then
+                            p0 = "B"
                             break
-                        elseif nil == 2 then
+                        elseif switch == 2 then
+                            p0 = "C"
                             break
-                        elseif nil == 3 then
+                        elseif switch == 3 then
+                            p0 = "D"
                             break
                         else
-                            break
+                            goto FLOW_native_label_1
                         end
                     until true
-                    -- TODO(native): CCharString::operator+=(&xStack_80,(int)p0);
+                    tuneName = tuneName .. p0
+                    ::FLOW_native_label_1::
                     scratchValue5 = scratchValue5 + 1
-                until scratchValue5 >= 4
+                until not (scratchValue5 < 4)
                 if quest:IsActiveThreadTerminating() then return end
                 local movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 quest:Pause(1.0)
-                quest:CameraUseCameraPoint(speakMarker, nil --[[missing]], 0, 0, -1.0)
+                quest:CameraUseCameraPoint("CAM_Stones", nil, nil, -1.0, 0, -1)
                 quest:SetStateInt("CurrentPlayListIndex", 0)
-                local speakMarker2 = quest:GetNearestWithScriptName(hero, "SpeakMarker")
+                local hero4 = quest:GetHero()
+                speakMarker2 = quest:GetNearestWithScriptName(hero4, "SpeakMarker")
                 local conversationId = quest:AddNewConversation(speakMarker2, true, true)
-                quest:AddPersonToConversation(conversationId, hero)
-                quest:AddLineToConversation(conversationId, "TEXT_QST_060_NAME_", speakMarker2, hero, false)
+                local hero5 = quest:GetHero()
+                quest:AddPersonToConversation(conversationId, hero5)
+                local hero6 = quest:GetHero()
+                quest:AddLineToConversation(conversationId, tuneName, speakMarker2, hero6, false)
                 quest:Pause(2.0)
                 quest:CameraDefault()
-                -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
+                RemoveLiveEffects(quest)
                 quest:StateListClear("EffectList")
+                speakMarker2 = nil
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie2)
             else
                 if quest:IsActiveThreadTerminating() then return end
+                scratchValue3 = 1
                 local movie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 quest:Pause(1.0)
-                quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], 0, 0, -1.0)
-                local speakMarker3 = quest:GetNearestWithScriptName(hero, "SpeakMarker")
+                quest:CameraUseCameraPoint("CAM_Stones", nil, nil, -1.0, 0, -1)
+                local hero7 = quest:GetHero()
+                local speakMarker3 = quest:GetNearestWithScriptName(hero7, "SpeakMarker")
                 local conversationId2 = quest:AddNewConversation(speakMarker3, true, true)
-                quest:AddPersonToConversation(conversationId2, hero)
-                quest:AddLineToConversation(conversationId2, "TEXT_QST_060_NAME_CDBA", speakMarker3, hero, false)
+                local hero8 = quest:GetHero()
+                quest:AddPersonToConversation(conversationId2, hero8)
+                local hero9 = quest:GetHero()
+                quest:AddLineToConversation(conversationId2, "TEXT_QST_060_NAME_CDBA", speakMarker3, hero9, false)
                 quest:SetStateInt("CurrentPlayListIndex", 0)
                 local stonesSpawnEnemy = quest:GetAllThingsWithScriptName("M_StonesSpawnEnemy")
-                scratchValue10 = 0
+                scratchValue8 = 0
                 if #stonesSpawnEnemy ~= 0 then
                     scratchValue6 = 0
                     repeat
-                        quest:GiveThingBestEnemyTarget(quest:CreateCreature("", stonesSpawnEnemy[scratchValue6 + 1]:GetPos(), "CREATURE_BALVERINE_01"), hero)
+                        local pPosition = stonesSpawnEnemy[scratchValue6 + 1]:GetPos()
+                        local scratchValue7 = quest:CreateCreature("", pPosition, "CREATURE_BALVERINE_01", false)
+                        local hero10 = quest:GetHero()
+                        quest:GiveThingBestEnemyTarget(scratchValue7, hero10)
                         scratchValue6 = scratchValue6 + 1
-                        scratchValue10 = scratchValue10 + 1
-                    until scratchValue10 >= #stonesSpawnEnemy
+                        scratchValue8 = scratchValue8 + 1
+                    until not (scratchValue8 < (#stonesSpawnEnemy))
                 end
                 quest:Pause(2.0)
                 quest:CameraDefault()
-                -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
+                RemoveLiveEffects(quest)
                 quest:StateListClear("EffectList")
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(movie)
@@ -155,7 +205,7 @@ function WatchForCompleteTune(quest)
     ::LAB_00ed3294::
     if not getMasterGameState then
         if quest:IsActiveThreadTerminating() then return end
-        -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
+        RemoveLiveEffects(quest)
         quest:StateListClear("EffectList")
         quest:DeactivateQuestLater("V_SingingStones", 0)
         quest:DeactivateQuestLater("V_SingingStones_Activate", 0)
@@ -194,8 +244,9 @@ function WatchForRegionLeaving(quest)
         while quest:IsRegionLoaded("Witchwood2") do
             if not quest:NewScriptFrame() then return end
         end
-        -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
-        -- TODO(native): Std_Vector_Erase_Range(quest:GetStateListRef("EffectList"),quest:GetStateListRef("EffectList"),(quest:GetStateListCount("EffectList") * 0xc));
+        if quest:IsActiveThreadTerminating() then break end
+        RemoveLiveEffects(quest)
+        quest:StateListClear("EffectList")
         quest:NewScriptFrame()
         isActiveThreadTerminating = quest:IsActiveThreadTerminating()
     end

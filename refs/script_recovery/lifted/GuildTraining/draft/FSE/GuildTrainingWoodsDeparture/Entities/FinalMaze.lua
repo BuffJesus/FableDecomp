@@ -161,7 +161,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
                 if bVar3 then goto LAB_00d664b0 end
-                uVar12 = math.random(0, 32767)
+                uVar12 = quest:RetailRandModulo(32768)
                 uVar12 = uVar12 & 0x80000001
                 bVar3 = uVar12 == 0
                 if uVar12 < 0 then
@@ -191,11 +191,13 @@ function Main(quest, me)
             end
         else
             uVar12 = uVar13 | 0x30
+            u_stk_78 = uVar12
             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
             if bVar3 then
                 goto LAB_00d64f41
             else
                 uVar12 = uVar13 | 0xf0
+                u_stk_78 = uVar12
                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
                 if bVar3 then goto LAB_00d64f41 end
                 goto LAB_00d64f56
@@ -212,15 +214,19 @@ function Main(quest, me)
             ::FLOW_past_lab_00d64f56::
             if ((uVar12 & 0x80) ~= 0) then
                 uVar12 = uVar12 & 0xffffff7f
+                u_stk_78 = uVar12
             end
             if (uVar12 & 0x40) ~= 0 then
                 uVar12 = uVar12 & 0xffffffbf
+                u_stk_78 = uVar12
             end
             if (uVar12 & 0x20) ~= 0 then
                 uVar12 = uVar12 & 0xffffffdf
+                u_stk_78 = uVar12
             end
             if (uVar12 & 0x10) ~= 0 then
                 uVar12 = uVar12 & 0xffffffef
+                u_stk_78 = uVar12
             end
             if bVar3 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -232,6 +238,7 @@ function Main(quest, me)
                 pCVar6 = quest:GetHero()
                 quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_BOW", me, pCVar6, false)
                 quest:ModifyThingHealth(me, 1000.0, false)
+                uVar12 = u_stk_78
             else
                 bVar3 = me:MsgIsHitByHeroSpecialAbility(0xb)
                 if bVar3 then
@@ -248,6 +255,7 @@ function Main(quest, me)
                         quest:AddPersonToConversation(iVar14, pCVar6)
                         pCVar6 = quest:GetHero()
                         quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_MELEE_LIGHTNING", me, pCVar6, false)
+                        uVar12 = u_stk_78
                     end
                     quest:ModifyThingHealth(me, 1000.0, false)
                 end
@@ -298,6 +306,9 @@ function Main(quest, me)
                 pcVar15 = "TEXT_QST_028_MAZE_WOODS_DEPARTURE_SKILL_FIRST"
                 pCVar6 = quest:GetHero()
                 r2 = me:Speak(pCVar6, pcVar15, iVar19, (iVar18 ~= 0), (iVar21 ~= 0), (iVar22 ~= 0))
+                if not r2 then
+                    goto LAB_00d65b9f
+                end
                 iVar19 = me:IsPerformingScriptTask()
                 cVar5 = iVar19
                 while cVar5 do
@@ -337,6 +348,7 @@ function Main(quest, me)
             pCVar8 = me:GetPos()
             r3 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
             cVar5 = __native_entity_state:GetStateBool("NotBeaten")
+            uVar12 = u_stk_78
             while cVar5 do
                 alive = quest:NewScriptFrame(me)
                 alive = not quest:IsActiveThreadTerminating()
@@ -393,11 +405,13 @@ function Main(quest, me)
                     uVar12 = u_stk_78
                 else
                     uVar12 = uVar13 | 0x3000
+                    u_stk_78 = uVar12
                     bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
                     if bVar3 then
                         goto LAB_00d65670
                     else
                         uVar12 = uVar13 | 0xf000
+                        u_stk_78 = uVar12
                         bVar4 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
                         bVar3 = false
                         if bVar4 then goto LAB_00d65670 end
@@ -408,15 +422,19 @@ function Main(quest, me)
                     ::FLOW_past_lab_00d65670::
                     if ((uVar12 & 0x8000) ~= 0) then
                         uVar12 = uVar12 & 0xffff7fff
+                        u_stk_78 = uVar12
                     end
                     if (uVar12 & 0x4000) ~= 0 then
                         uVar12 = uVar12 & 0xffffbfff
+                        u_stk_78 = uVar12
                     end
                     if (uVar12 & 0x2000) ~= 0 then
                         uVar12 = uVar12 & 0xffffdfff
+                        u_stk_78 = uVar12
                     end
                     if (uVar12 & 0x1000) ~= 0 then
                         uVar12 = uVar12 & 0xffffefff
+                        u_stk_78 = uVar12
                     end
                     if bVar3 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -442,7 +460,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00d664b0 end
-                            uVar13 = math.random(0, 32767)
+                            uVar13 = quest:RetailRandModulo(32768)
                             uVar13 = uVar13 & 0x80000001
                             bVar3 = uVar13 == 0
                             if uVar13 < 0 then
@@ -485,6 +503,7 @@ function Main(quest, me)
                                 quest:AddPersonToConversation(iVar14, pCVar6)
                                 pCVar6 = quest:GetHero()
                                 quest:AddLineToConversation(iVar14, "TEXT_QST_028_MAZE_WOODS_DEPARTURE_BAD_BOW_LIGHTNING", me, pCVar6, false)
+                                uVar12 = u_stk_78
                             end
                             quest:ModifyThingHealth(me, 1000.0, false)
                         end
@@ -536,6 +555,11 @@ function Main(quest, me)
                         pcVar15 = "TEXT_QST_028_MAZE_WOODS_DEPARTURE_LIGHTNING_FIRST"
                         pCVar6 = quest:GetHero()
                         r4 = me:Speak(pCVar6, pcVar15, iVar19, (iVar18 ~= 0), (iVar21 ~= 0), (iVar22 ~= 0))
+                        if not r4 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_38)
+                            goto LAB_00d664b0
+                        end
                         iVar19 = me:IsPerformingScriptTask()
                         cVar5 = iVar19
                         while cVar5 do
@@ -576,6 +600,7 @@ function Main(quest, me)
                     pCVar8 = me:GetPos()
                     r5 = quest:EntityWillTeleportToArea(me, pCVar8.x, fVar17, fVar20)
                     cVar5 = __native_entity_state:GetStateBool("NotBeaten")
+                    uVar12 = u_stk_78
                     while cVar5 do
                         alive = quest:NewScriptFrame(me)
                         alive = not quest:IsActiveThreadTerminating()
@@ -631,11 +656,13 @@ function Main(quest, me)
                             goto LAB_00d65e4c
                         else
                             uVar12 = uVar13 | 0x300000
+                            u_stk_78 = uVar12
                             bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_LONGBOW")
                             if bVar3 then
                                 goto LAB_00d65ef7
                             else
                                 uVar12 = uVar13 | 0xf00000
+                                u_stk_78 = uVar12
                                 bVar3 = me:MsgIsHitByHeroWithWeapon("OBJECT_YEW_CROSSBOW")
                                 if bVar3 then goto LAB_00d65ef7 end
                                 goto LAB_00d65f0c
@@ -652,15 +679,19 @@ function Main(quest, me)
                             ::FLOW_past_lab_00d65f0c::
                             if (uVar12 & 0x800000) ~= 0 then
                                 uVar12 = uVar12 & 0xff7fffff
+                                u_stk_78 = uVar12
                             end
                             if (uVar12 & 0x400000) ~= 0 then
                                 uVar12 = uVar12 & 0xffbfffff
+                                u_stk_78 = uVar12
                             end
                             if (uVar12 & 0x200000) ~= 0 then
                                 uVar12 = uVar12 & 0xffdfffff
+                                u_stk_78 = uVar12
                             end
                             if (uVar12 & 0x100000) ~= 0 then
                                 uVar12 = uVar12 & 0xffefffff
+                                u_stk_78 = uVar12
                             end
                             if bVar3 then
                                 alive = not quest:IsActiveThreadTerminating()
@@ -700,7 +731,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar3 = not alive
                                     if bVar3 then goto LAB_00d664b0 end
-                                    uVar13 = math.random(0, 32767)
+                                    uVar13 = quest:RetailRandModulo(32768)
                                     uVar13 = uVar13 & 0x80000001
                                     bVar3 = uVar13 == 0
                                     if uVar13 < 0 then

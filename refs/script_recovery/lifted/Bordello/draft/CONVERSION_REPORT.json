@@ -524,11 +524,16 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "SetCutsceneSkippableWhilePaused: not in FSE manifest",
-            "label LAB_00e3ea29",
-            "SetCutsceneSkippableWhilePaused: not in FSE manifest"
+          "reviewedCleanupJoins": [
+            {
+              "label": "LAB_00e3ea29",
+              "nativeEntry": "0x00e3ea29",
+              "classification": "resolved structured cleanup join",
+              "addressCommentRetained": true,
+              "note": "Reviewed native/source/Lua-shape certificate; separate from engine/gameplay proof."
+            }
           ],
+          "todo": [],
           "calls": [
             "SetStateBool",
             "RESOURCE_NewResource",
@@ -692,25 +697,28 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: xStack_174 = *(undefined ***)(this + 0x10);",
-            "unlifted: *xStack_174 = *xStack_174 + 1;",
-            "SetIsPushableByHero: missing spThing (1 args for 2 params)",
-            "unlifted: xStack_124._0_3_ = 0;",
-            "unlifted: xStack_124_b3 = '\\0';",
-            "unlifted: xStack_124_b3 = !(iVar5 != 0);",
-            "unlifted: xStack_164 = CVar2 & 0xffffff;",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
-            "unlifted: xStack_124_b3 = '\\0';",
-            "unlifted: xStack_124_b3 = '\\x01';",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
-            "CameraUseCameraPoint: missing i2 (4 args for 5 params)",
-            "unlifted: xStack_f8_b3 = '\\0';",
-            "unlifted: xStack_f8_b3 = '\\x01';",
-            "CameraUseCameraPoint: missing spTarget, i2 (3 args for 5 params)"
+          "recoveredCleanupOperands": {
+            "spanBegin": "::LAB_00e3bf28::",
+            "spanEnd": "::FLOW_past_lab_00e3bf28::",
+            "sourceOperandReplacements": 5,
+            "note": "Reviewed cleanup operands and shared receiver selection; separate from the original lifter call inventory, not a native execution trace."
+          },
+          "recoveredTimerOperands": {
+            "spanBegin": "            iVar7 = quest:GetTimer(4)",
+            "spanEnd": "            xStack_124_b3 = me:IsTalkedToByHero()\n            if xStack_124_b3 then\n                alive = not quest:IsActiveThreadTerminating()\n                bVar3 = not alive\n                if bVar3 then break end",
+            "sourceOperandReplacements": 2,
+            "note": "Reviewed registered timer ID and reset duration; separate from the original lifter call inventory, not a native execution trace."
+          },
+          "reviewedArgumentTemporaries": [
+            {
+              "nativeBegin": "0x00e3bbff",
+              "nativeEnd": "0x00e3bc49",
+              "removedDiagnostics": 4,
+              "scope": "compiler argument setup;API calls andlater aliases retained",
+              "note": "Reviewed native/source/scoped-Lua evidence;empty-actor engine behavior remains a separate gate."
+            }
           ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -732,7 +740,6 @@
             "SetTimer",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
@@ -755,7 +762,6 @@
             "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "RESOURCE_ScriptThing",
             "GetHealth",
@@ -829,7 +835,6 @@
             "IsObjectInThingsPossession",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "SetStateBool",
             "GetThingWithScriptName",
@@ -838,7 +843,6 @@
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
@@ -865,7 +869,6 @@
             "PauseAllNonScriptedEntities",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
@@ -888,13 +891,12 @@
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "PauseAllNonScriptedEntities",
-            "RESOURCE_ReleaseResource",
+            "RESOURCE_DestroyMovie",
             "MsgIsHitByHero",
             "MsgIsHitByAnySpecialAbilityFromHero",
             "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
@@ -934,7 +936,6 @@
             "IsTalkedToByHero",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
@@ -1122,7 +1123,6 @@
             "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "FixMovieSequenceCamera",
             "GetHero",
@@ -1154,7 +1154,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1185,
+          "lines": 1178,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1313,57 +1313,146 @@
             "returnKind": null,
             "bsimVoid": false
           },
+          "recoveredInterfaceCalls": [
+            {
+              "site": "0xe3eef0",
+              "method": "PauseAllNonScriptedEntities",
+              "arguments": [
+                "false"
+              ]
+            },
+            {
+              "site": "0xe3f731",
+              "method": "PauseAllNonScriptedEntities",
+              "arguments": [
+                "false"
+              ]
+            },
+            {
+              "site": "0xe403bf",
+              "method": "PauseAllNonScriptedEntities",
+              "arguments": [
+                "false"
+              ]
+            },
+            {
+              "site": "0xe403a4",
+              "method": "PauseAllNonScriptedEntities",
+              "arguments": [
+                "false"
+              ]
+            }
+          ],
+          "recoveredTerminalResourceCleanup": {
+            "pollNativeEntry": "0xe40310",
+            "localResource": "ladyResource",
+            "pollSourceExits": 1,
+            "splitMovieNativeEntry": "0xe40364",
+            "splitMovieSourceExits": 2,
+            "note": "Normal-path local retirement and split movie/local cleanup; not a native execution trace."
+          },
+          "reviewedArgumentTemporaries": [
+            {
+              "nativeBegin": "0x00e3eba6",
+              "nativeEnd": "0x00e3ec71",
+              "removedDiagnostics": 6,
+              "scope": "compiler argument setup;API calls andlater aliases retained",
+              "note": "Reviewed native/source/scoped-Lua evidence;empty-actor engine behavior remains a separate gate."
+            }
+          ],
+          "reviewedRestoredCallDiagnostics": [
+            {
+              "nativeSite": "0xe40074",
+              "method": "PauseAllNonScriptedEntities",
+              "argument": false,
+              "classification": "already restored by existing reviewed passes;stale report diagnostic",
+              "luaRegion": "            ::FLOW_past_lab_00e40044::\n            quest:PauseAllNonScriptedEntities(false)\n            resources:DestroyMovie(xStack_190)"
+            }
+          ],
+          "reviewedTemporaryMaskDiagnostics": [
+            {
+              "classification": "native CString construction/destruction bookkeeping; SDK methods own scoped FableString",
+              "maskFrameOffset": 56,
+              "groups": [
+                {
+                  "bit": 1,
+                  "stringFrameOffset": 160,
+                  "constructor": "0xe3ec8e",
+                  "destructor": "0xe3ecea"
+                },
+                {
+                  "bit": 2,
+                  "stringFrameOffset": 60,
+                  "constructor": "0xe400f6",
+                  "destructor": "0xe401c8"
+                },
+                {
+                  "bit": 4,
+                  "stringFrameOffset": 152,
+                  "constructor": "0xe40128",
+                  "destructor": "0xe401b3"
+                },
+                {
+                  "bit": 8,
+                  "stringFrameOffset": 144,
+                  "constructor": "0xe40158",
+                  "destructor": "0xe4019b"
+                }
+              ],
+              "retiredDiagnostics": {
+                "unlifted: xStack_15c = xStack_15c & 0xfffffffe;": 1,
+                "unlifted: xStack_15c = xStack_15c | 2;": 2,
+                "unlifted: xStack_15c = uVar15 & 0xfffffffd;": 2
+              },
+              "executableLuaUnchanged": true,
+              "scopeLimit": "SDK methods own method-scoped FableString; original expression keeps prior strings longer. Heap/destructor timing equivalence and deeper dynamic query argument escape are unverified; classification changes no Lua predicates/calls/state/yields."
+            }
+          ],
+          "reviewedRestoredVtableStaging": [
+            {
+              "paths": [
+                {
+                  "nativeEntry": "0xe403af",
+                  "nativeCall": "0xe3f731",
+                  "method": "PauseAllNonScriptedEntities",
+                  "argument": false,
+                  "receiver": "script GSI",
+                  "classification": "vtable staging for already restored shared call",
+                  "luaAssignmentRetained": true
+                },
+                {
+                  "nativeEntry": "0xe3f729",
+                  "nativeCall": "0xe3f731",
+                  "method": "PauseAllNonScriptedEntities",
+                  "argument": false,
+                  "receiver": "script GSI",
+                  "classification": "vtable staging for already restored shared call",
+                  "luaAssignmentRetained": true
+                }
+              ],
+              "executableLuaUnchanged": true,
+              "receiverProof": {
+                "acceptedEvidenceSha256": "c3e21a348e726d770caa386ff4cef4f1aafb223dd4eab44b80056da2b7733a7a",
+                "savedFrameOffset": 20,
+                "entryFrameOffset": -396,
+                "ordinaryMsvcAbiAssumed": true,
+                "cacheInstructions": [
+                  "0xe3ed64",
+                  "0xe3ed67",
+                  "0xe3ed69",
+                  "0xe3ed6b",
+                  "0xe3ed6d",
+                  "0xe3ed71"
+                ]
+              },
+              "scopeLimit": "Ordinary MSVC x86 callee-save/no arbitrary caller-frame writes assumed. Earlier Brain API borrowed CString nonretention remains unverified; original bounded pause cases use explicit GetWorld/clock callbacks and empty actor list. No full Main/heap/fibre/gameplay proof."
+            }
+          ],
           "todo": [
-            "SetCreatureBrain: missing spCreature (1 args for 2 params)",
-            "unnamed field 0xc",
-            "SetWanderCentrePoint: missing spThing, pos (0 args for 2 params)",
-            "SetWanderMinDistance: missing spThing (1 args for 2 params)",
-            "unnamed field 0xc",
-            "unlifted: xStack_1a0 = *(undefined ***)(this + 0x10);",
-            "unlifted: *xStack_1a0 = *xStack_1a0 + 1;",
-            "SetWanderMaxDistance: missing spThing (1 args for 2 params)",
-            "unlifted: xStack_1a0 = *(undefined ***)(this + 0x10);",
-            "unlifted: *xStack_1a0 = (undefined *)((int)*xStack_1a0 + 1);",
-            "SetScriptingStateGroup: missing spThing (1 args for 2 params)",
-            "IsReportedOrUnreportedCrimeKnown: missing spVillage (0 args for 1 params)",
-            "unlifted: xStack_15c = xStack_15c & 0xfffffffe;",
             "label LAB_00e40085",
-            "ClearThingHasInformation: missing pThing (0 args for 1 params)",
-            "EntitySetPersonalityOverride: not in FSE manifest",
-            "unlifted: xStack_15c = xStack_15c | 2;",
-            "unlifted: xStack_15c = uVar15 & 0xfffffffd;",
-            "PauseAllNonScriptedEntities: missing isPaused (0 args for 1 params)",
             "label LAB_00e40364",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\"",
-            "SetCutsceneSkippable: missing bIsSkippable (0 args for 1 params)",
             "label LAB_00e3fdc4",
-            "SetCutsceneSkippable: missing bIsSkippable (0 args for 1 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (*(code *)ppuVar13[0x17b])();",
-            "unlifted: (*(code *)(*pppuVar28)[0x17b])();",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (*(code *)(*pppuVar28)[0x17b])();",
-            "ClearThingHasInformation: missing pThing (0 args for 1 params)",
-            "EntitySetPersonalityOverride: not in FSE manifest",
-            "unlifted: xStack_15c = xStack_15c | 2;",
-            "unlifted: xStack_15c = uVar15 & 0xfffffffd;",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\"",
-            "SetCutsceneSkippable: missing bIsSkippable (0 args for 1 params)",
-            "SetNumberOfTimesHeroHasHadSex: missing count (0 args for 1 params)",
-            "label LAB_00e3f4e7",
-            "unlifted: (**(code **)(*piVar1 + 0x5ec))();",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: ppuVar13 = *piVar1",
-            "unlifted: ppuVar13 = *pppuVar28",
-            "unlifted: CVar3 = *ENTITYSTATE_GetString(\"Name\")"
+            "label LAB_00e3f4e7"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1384,7 +1473,7 @@
             "IsActiveThreadTerminating",
             "SetStateBool",
             "ClearThingHasInformation",
-            "EntitySetPersonalityOverride",
+            "EntitySetPersonalityOverrideByString",
             "MsgIsHitByHero",
             "MsgIsHitByAnySpecialAbilityFromHero",
             "MsgIsHitByHeroSpecialAbility",
@@ -1409,7 +1498,6 @@
             "IsActiveThreadTerminating",
             "RESOURCE_PrepareResource",
             "RESOURCE_StartMovie",
-            "StartMovieSequence",
             "PauseAllNonScriptedEntities",
             "RESOURCE_PrepareResource",
             "AcquireControl",
@@ -1536,11 +1624,11 @@
             "SetStateBool",
             "RESOURCE_IsAcquired",
             "RESOURCE_PrepareResource",
-            "RESOURCE_ReleaseResource",
+            "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
             "SetStateBool",
             "ClearThingHasInformation",
-            "EntitySetPersonalityOverride",
+            "EntitySetPersonalityOverrideByString",
             "MsgIsHitByHero",
             "MsgIsHitByAnySpecialAbilityFromHero",
             "MsgIsHitByHeroSpecialAbility",
@@ -1612,9 +1700,10 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
-            "RESOURCE_ReleaseResource"
+            "RESOURCE_ReleaseResource",
+            "ReleaseResource"
           ],
-          "lines": 816,
+          "lines": 817,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1662,6 +1751,7 @@
             "goto LAB_00e3ffe3;",
             "goto LAB_00e40044;",
             "goto LAB_00e40183;",
+            "goto LAB_00e40183_c2;",
             "goto LAB_00e402f9;",
             "goto LAB_00e402f9_c2;",
             "goto LAB_00e4039f;",
@@ -1736,9 +1826,20 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: puStack_1c = v_stk_4;"
+          "reviewedHiddenReturnTemporaries": [
+            {
+              "classification": "hidden CString result address for already restored entity getter; SDK owns result cleanup",
+              "nativeCall": "0xe3ac99",
+              "method": "GetDataString",
+              "resultEntryOffset": -4,
+              "assignmentCall": "0xe3ac9f",
+              "destructorCall": "0xe3aca8",
+              "executableLuaUnchanged": true,
+              "acceptedSdkEvidenceSha256": "589edfb22ababd61a880187b6018fa1e119a5919ba29e8d79b396f9e281223fa",
+              "scopeLimit": "Accepted SDK guards destruction after successful native hidden-out return, including empty strings and conversion exceptions. Native getter construction exceptions, deeper engine retention/heap/fibre/gameplay are unverified; global fallback CString runtime contents remain unavailable and were explicit fixtures."
+            }
           ],
+          "todo": [],
           "calls": [
             "SetStateBool",
             "SetStateBool",
@@ -2050,7 +2151,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 494,
+          "lines": 498,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2071,6 +2172,7 @@
             "goto LAB_00e40a48;",
             "goto LAB_00e40a57;",
             "goto LAB_00e40afa;",
+            "goto LAB_00e40afa_c1;",
             "goto LAB_00e40e5a;",
             "goto LAB_00e40e5a_c1;",
             "goto LAB_00e40e5e;",
@@ -2186,46 +2288,30 @@
             "returnKind": null,
             "bsimVoid": false
           },
+          "recoveredCleanupOperands": {
+            "spanBegin": "                            pcVar14 = \"TEXT_QST_B13_MAGICMAN_PIMPING\"",
+            "spanEnd": "    ::LAB_00e44903::",
+            "sourceOperandReplacements": 6,
+            "note": "Reviewed cleanup operands and shared receiver selection; separate from the original lifter call inventory, not a native execution trace."
+          },
           "todo": [
-            "unlifted: xStack_308 = (undefined **)**(int **)(this + 4);",
-            "unlifted: xStack_344 = (int *)(*(code *)xStack_308[0x46])();",
-            "unlifted: (*(code *)xStack_308[0x16e])(__push3,__push5,0,(this + 8),__unknown_push);",
             "goto LAB_00e446ea",
             "label LAB_00e44677",
             "label LAB_00e4489c_c2",
-            "unlifted: xStack_350 = (CScriptThing *)((uint)xStack_350 | 0x20);",
-            "unlifted: xStack_350 = (CScriptThing *)((uint)xStack_350 & 0xffffffdf);",
-            "unlifted: xStack_364 = xStack_364 + 1;",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
             "label LAB_00e446ea",
             "label LAB_00e4489c",
             "label LAB_00e42003_c7",
-            "unlifted: iVar21 = CBasicString<char>::Compare((void *)*unaff_EBP,\"OBJECT_BEER_TANKARD\");",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
             "label LAB_00e4488e",
             "label LAB_00e4489c_c8",
             "label LAB_00e428b0",
             "label LAB_00e4485d",
             "label LAB_00e428d4",
-            "unlifted: xStack_2bc = (undefined **)**(int **)(this + 4);",
-            "unlifted: xStack_344 = (int *)(*(code *)xStack_2bc[0x46])();",
-            "unlifted: (*(code *)xStack_2bc[0x16e])(__push17,__push19,0,(this + 8),__unknown_push);",
-            "CameraUseCameraPoint: missing spTarget (4 args for 5 params)",
             "label LAB_00e43023",
-            "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)",
-            "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)",
-            "CameraUseCameraPoint: missing spCamPoint, spTarget (3 args for 5 params)",
             "label LAB_00e43ae7",
             "label LAB_00e448e6_c30",
             "label LAB_00e448e6",
             "label LAB_00e43ae7_c32",
-            "unlifted: iVar21 = CBasicString<char>::Compare((void *)*unaff_EBP,\"OBJECT_BEER_TANKARD\");",
-            "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)",
-            "EntitySetFacingAngleTowardsThing: missing pTarget (2 args for 3 params)",
-            "CameraUseCameraPoint: missing spCamPoint, spTarget (3 args for 5 params)",
             "label LAB_00e43e65",
-            "RemoveThing: missing pThing (2 args for 3 params)",
-            "verify cleanup at LAB_00e428d4 (lifted as early return)",
             "label LAB_00e4485d_c34"
           ],
           "calls": [
@@ -2892,9 +2978,11 @@
             "DeregisterTimer",
             "DeregisterTimer",
             "PauseAllNonScriptedEntities",
-            "RESOURCE_DestroyMovie"
+            "RESOURCE_DestroyMovie",
+            "AddLineToConversation",
+            "AddLineToConversation"
           ],
-          "lines": 1845,
+          "lines": 1833,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -3095,17 +3183,323 @@
             "returnKind": null,
             "bsimVoid": false
           },
+          "reviewedNumericConditions": [
+            {
+              "nativeBranch": "0xe45027",
+              "zeroTarget": "0xe456e7",
+              "local": "cVar5",
+              "classification": "native numeric0/1 predicate;explicit Lua zero test",
+              "changedConditions": 1
+            }
+          ],
+          "reviewedThingResults": [
+            {
+              "lookups": [
+                {
+                  "nativeSite": "0xe44f8f",
+                  "name": "M_ClientStand",
+                  "local": "r1",
+                  "frameOffset": 40
+                },
+                {
+                  "nativeSite": "0xe44fbd",
+                  "name": "M_ClientSpawn",
+                  "local": "r2",
+                  "frameOffset": 52
+                }
+              ],
+              "movements": [
+                {
+                  "nativeSite": "0xe45748",
+                  "getPosNativeSite": "0xe45735",
+                  "local": "r1",
+                  "frameOffset": 40
+                },
+                {
+                  "nativeSite": "0xe4670a",
+                  "getPosNativeSite": "0xe466f7",
+                  "local": "r2",
+                  "frameOffset": 52
+                },
+                {
+                  "nativeSite": "0xe45098",
+                  "getPosNativeSite": "0xe45085",
+                  "local": "r1",
+                  "frameOffset": 40
+                }
+              ],
+              "distances": [
+                {
+                  "nativeSite": "0xe4575b",
+                  "arguments": [
+                    "r1",
+                    "me",
+                    "5.0"
+                  ],
+                  "changed": true
+                },
+                {
+                  "nativeSite": "0xe4671b",
+                  "arguments": [
+                    "r2",
+                    "me",
+                    "5.0"
+                  ],
+                  "changed": false
+                },
+                {
+                  "nativeSite": "0xe450a9",
+                  "arguments": [
+                    "me",
+                    "r1",
+                    "5.0"
+                  ],
+                  "changed": true
+                }
+              ],
+              "note": "Pinned native frame/result/Data and fastcall operands;lookup/ownership/fullMain gameplay remain separate evidence gates."
+            }
+          ],
+          "reviewedStringOperands": [
+            {
+              "nativeSite": "0x00E45904",
+              "frameOffset": 36,
+              "resultLocal": "stack0xfffffee0",
+              "changedOperand": true,
+              "classification": "constructed CString and speech accessor share original frame slot"
+            },
+            {
+              "nativeSite": "0x00E468BD",
+              "frameOffset": 68,
+              "resultLocal": "xStack_e4",
+              "changedOperand": true,
+              "classification": "constructed CString and speech accessor share original frame slot"
+            },
+            {
+              "nativeSite": "0x00E452AF",
+              "frameOffset": 72,
+              "resultLocal": "xStack_e0",
+              "changedOperand": true,
+              "classification": "constructed CString and speech accessor share original frame slot"
+            }
+          ],
+          "reviewedLuaScalarAliases": {
+            "nativeSha256": "31925bd236e88de80b6350b08b11abddf509821fac05ffdd6399bbf5d109cd47",
+            "sourceSha256": "998df9e5a379b230887fd0d123f0776ae5e0e2388da597706b2249fa40607cdf",
+            "textSha256": "ea800b4af1276711e1ef9b6bf6e47d918d3a75568b5063e730ebc7efc55a6b0c",
+            "alias": "registeredTimerID",
+            "nativeInstructions": {
+              "0xe44fa9": "e8429cb5ff",
+              "0xe44fae": "8b4d04",
+              "0xe44fb1": "8b11",
+              "0xe44fb3": "8d442444",
+              "0xe44fb7": "50",
+              "0xe44fb8": "8d442438",
+              "0xe44fbc": "50",
+              "0xe44fbd": "ff9220010000",
+              "0xe44fc3": "8d4c2444",
+              "0xe44fc7": "e8149bb5ff",
+              "0xe44fcc": "8b0df8e84301",
+              "0xe44fd2": "8b11",
+              "0xe44fd4": "ff925c010000",
+              "0xe44fda": "8d4c244c",
+              "0xe44fde": "89442410",
+              "0xe4598e": "0f8537100000",
+              "0xe45994": "8d4c2414",
+              "0xe45998": "e81ccae8ff",
+              "0xe4599d": "84c0",
+              "0xe4599f": "7409",
+              "0xe459a1": "8d4c2414",
+              "0xe459a5": "e8c6cde8ff",
+              "0xe459aa": "8b0df8e84301",
+              "0xe459b0": "8b542410",
+              "0xe459b4": "8b01",
+              "0xe459b6": "6a78",
+              "0xe459b8": "52",
+              "0xe459b9": "ff9064010000",
+              "0xe459bf": "837d1c02",
+              "0xe459c3": "0f851a0b0000",
+              "0xe459c9": "8da42400000000",
+              "0xe459d0": "8b4d04",
+              "0xe459d3": "8b01",
+              "0xe459d5": "ff501c",
+              "0xe459d8": "8bcd",
+              "0xe459da": "e851010f00",
+              "0xe459df": "84c0",
+              "0xe459e1": "0f85e40f0000",
+              "0xe459e7": "8b0df8e84301",
+              "0xe459ed": "8b442410",
+              "0xe459f1": "8b11",
+              "0xe459f3": "50",
+              "0xe459f4": "ff9268010000",
+              "0xe459fa": "85c0",
+              "0xe459fc": "740a",
+              "0xe45633": "e848258aff",
+              "0xe45638": "8b4d04",
+              "0xe4563b": "8b11",
+              "0xe4563d": "ff521c",
+              "0xe45640": "8bcd",
+              "0xe45642": "e8e9040f00",
+              "0xe45647": "84c0",
+              "0xe45649": "0f8401faffff",
+              "0xe4564f": "8b0df8e84301",
+              "0xe45655": "8b542410",
+              "0xe45659": "8b01",
+              "0xe4565b": "52",
+              "0xe4565c": "ff9060010000",
+              "0xe45662": "e96d130000",
+              "0xe45667": "8d4c2448",
+              "0xe45c2d": "6a00",
+              "0xe45c2f": "8bce",
+              "0xe45c31": "ff90ec050000",
+              "0xe45c37": "8d4c2458",
+              "0xe45c3b": "e8701e8aff",
+              "0xe45c40": "8d4c2450",
+              "0xe45c44": "c74424508c002601",
+              "0xe45c4c": "e8df47b5ff",
+              "0xe45c51": "8b0df8e84301",
+              "0xe45c57": "8b442410",
+              "0xe45c5b": "8b11",
+              "0xe45c5d": "50",
+              "0xe45c5e": "ff9260010000",
+              "0xe45c64": "e96b0d0000",
+              "0xe45c69": "8d4c2424",
+              "0xe469a7": "ff90ec050000",
+              "0xe469ad": "8d4c2450",
+              "0xe469b1": "e8ca118aff",
+              "0xe469b6": "eb13",
+              "0xe469b8": "8b4d04",
+              "0xe469bb": "8b01",
+              "0xe469bd": "ff501c",
+              "0xe469c0": "8bcd",
+              "0xe469c2": "e869f10e00",
+              "0xe469c7": "84c0",
+              "0xe469c9": "74ed",
+              "0xe469cb": "8d4c2410",
+              "0xe469cf": "e89cdae8ff",
+              "0xe469d4": "8d4c2434",
+              "0xe469d8": "e8633e66ff",
+              "0xe45036": "0f858f190000",
+              "0xe4503c": "8bcd",
+              "0xe4503e": "88442443",
+              "0xe45042": "e8e90a0f00",
+              "0xe45047": "84c0",
+              "0xe45049": "0f8500060000",
+              "0xe4504f": "90",
+              "0xe45050": "8a442443",
+              "0xe45054": "84c0",
+              "0xe45056": "7577",
+              "0xe450bb": "0f850a190000",
+              "0xe450c1": "8d4c2414",
+              "0xe450c5": "c644244301",
+              "0xe450ca": "e8a1d6e8ff",
+              "0xe450cf": "6aff",
+              "0xe452ee": "0f8573030000",
+              "0xe452f4": "8b4d28",
+              "0xe452f7": "8a442443",
+              "0xe452fb": "41",
+              "0xe452fc": "84c0",
+              "0xe453c7": "84c0",
+              "0xe453c9": "7407",
+              "0xe453cb": "c644246300",
+              "0xe453d0": "eb05",
+              "0xe453d2": "c644246301",
+              "0xe453d7": "f6c304",
+              "0xe453da": "7410",
+              "0xe4540d": "895c2424",
+              "0xe45411": "e8ca96b5ff",
+              "0xe45416": "8a442463",
+              "0xe4541a": "84c0",
+              "0xe4541c": "0f8416020000",
+              "0xe455eb": "84c0",
+              "0xe455ed": "0f85ba000000",
+              "0xe455f3": "8a442443",
+              "0xe455f7": "84c0",
+              "0xe455f9": "7425",
+              "0xe4502d": "8bcd",
+              "0xe4502f": "e8fc0a0f00",
+              "0xe45034": "84c0"
+            },
+            "edits": [
+              [
+                "local __push1,",
+                "local registeredTimerID, __push1,"
+              ],
+              [
+                "iVar6 = quest:RegisterTimer()",
+                "registeredTimerID = quest:RegisterTimer()"
+              ],
+              [
+                "quest:SetTimer(iVar6,",
+                "quest:SetTimer(registeredTimerID,"
+              ],
+              [
+                "quest:GetTimer(iVar6)",
+                "quest:GetTimer(registeredTimerID)"
+              ],
+              [
+                "quest:DeregisterTimer(iVar6)",
+                "quest:DeregisterTimer(registeredTimerID)"
+              ],
+              [
+                "xStack_e0_b3",
+                "clientAtStand"
+              ],
+              [
+                "xStack_e8_2_b3 ~= 0",
+                "clientAtStand"
+              ]
+            ],
+            "editCounts": [
+              1,
+              1,
+              1,
+              1,
+              3,
+              4,
+              2
+            ],
+            "nativeEvidence": {
+              "registeredFrameOffset": 16,
+              "registrationSite": "0xe44fd4",
+              "storeSite": "0xe44fde",
+              "setSite": "0xe459b9",
+              "getSite": "0xe459f4",
+              "directCleanupSites": [
+                "0xe4565c",
+                "0xe45c5e"
+              ],
+              "destructorSite": "0xe469cf",
+              "destructorAddress": "0xcd4470",
+              "destructorBytes": "8bc18b0df8e843018b008b1150ff9260010000c3"
+            },
+            "evidenceScope": "120originalcaller fragments/20actualdestructors;1941instructionCFG proves exactlyoncecleanup afterconstruction;24actualSDK/solcases showwrongtypes coerce0. OnlyregisteredscalarID isisolated;otheriVar6registerlifetimes remainexact. Realregistry/current-global-vs-capturedSDKinterface/fullMain/host/gameplay unproved. W127addsonebooleanstandlifetime:5originalinitialguard/15reader/2store cases,4completefemale-readable chathit experiments;sameframe+43. Originalcontrolcalls/engine/fullMain/gameplay remainunproved.",
+            "nativeDependencies": [
+              {
+                "address": "0xcd4470",
+                "bytes": "8bc18b0df8e843018b008b1150ff9260010000c3"
+              }
+            ],
+            "additionalAliases": [
+              "clientAtStand"
+            ],
+            "standByteEvidence": {
+              "frameOffset": 67,
+              "initialStore": "0xe4503e",
+              "arrivalStore": "0xe450c5",
+              "initialGuard": "0xe45036",
+              "movementReader": "0xe45050",
+              "chatReader": "0xe452f7",
+              "hitReader": "0xe455f3",
+              "booleanProducers": [
+                false,
+                true
+              ],
+              "restoredBooleanConditions": 2
+            }
+          },
           "todo": [
-            "label LAB_00e46616",
-            "unlifted: (**(code **)(*unaff_EBX + 0x5ec))();",
-            "unlifted: (**(code **)(*unaff_EBP + 0x5ec))();",
-            "unlifted: (**(code **)(*unaff_EBP + 0x5ec))();",
-            "unlifted: CScriptGameResourceObjectScriptedThingBase::operator= (RESOURCE_MemberResource(\"seh_Whore\"",
-            "unlifted: (**(code **)(*unaff_EBX + 0x5ec))();",
-            "unlifted: xStack_e0_b3 = '\\x01';",
-            "unlifted: xStack_c4_b3 = '\\0';",
-            "unlifted: xStack_c4_b3 = '\\x01';",
-            "unlifted: puVar8 = (**(*xStack_e4 + 0x18))()"
+            "label LAB_00e46616"
           ],
           "calls": [
             "NewScriptFrame",
@@ -3513,7 +3907,7 @@
           "calls": [
             "SetStateInt",
             "SetStateInt",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "SetStateInt",
             "SetStateInt",
             "SetStateInt",
@@ -3583,9 +3977,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: *(undefined1 *)(*(int *)(this + 0x20) + 0x58 + *(int *)(this + 0x14)) = 0;"
-          ],
+          "todo": [],
           "calls": [
             "SetStateInt"
           ],
@@ -3862,32 +4254,669 @@
           "Main": [
             "this_00",
             "xStack_120",
-            "xStack_124",
-            "xStack_134",
-            "xStack_148",
             "xStack_f8_b3"
-          ]
-        },
-        "FSE/V_Bordello/Entities/BordelloLady.lua": {
-          "Main": [
-            "xStack_1a8"
-          ]
-        },
-        "FSE/V_Bordello/Entities/Magicman.lua": {
-          "Main": [
-            "xStack_2e4",
-            "xStack_2fc",
-            "xStack_31c"
           ]
         },
         "FSE/V_Bordello/Entities/BordelloClient.lua": {
           "Main": [
-            "xStack_120",
-            "xStack_c4_b3",
-            "xStack_e8_2_b3",
-            "x_stk_108"
+            "xStack_c4_b3"
           ]
         }
+      },
+      "blockingSpeechCancellation": {
+        "FSE/V_Bordello/Entities/Madame.lua": [
+          {
+            "line": 166,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    resources:DestroyMovie(xStack_dc)\n                    quest:DeregisterTimer(i_stk_1a8)\n                    resources:ReleaseResource(madameResource)\n                    return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 241,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 283,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 312,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 397,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            pCVar10 = xStack_a0\n                            goto LAB_00e3e2ea",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 450,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            pCVar10 = xStack_90\n                            goto LAB_00e3e2ea",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 525,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    resources:DestroyMovie(xStack_ec)\n                    quest:DeregisterTimer(iVar7)\n                    resources:ReleaseResource(madameResource)\n                    return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 619,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 669,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 699,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 734,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 764,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 793,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 833,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 863,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 906,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 948,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 983,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1012,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d063",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1041,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1079,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e3d473",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1141,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        goto LAB_00e3e2e3",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/V_Bordello/Entities/BordelloLady.lua": [
+          {
+            "line": 168,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3f729",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 225,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3f729",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 272,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3eee8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 304,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3f729",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 333,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3eee8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 385,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3eee8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 478,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3f729",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 527,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3eee8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 666,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e403af",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 709,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e4039f",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 790,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e3f729",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/V_Bordello/Entities/BordelloGuard.lua": [
+          {
+            "line": 77,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                goto LAB_00e40e5a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 197,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e40673",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 234,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e40673",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 262,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e40673",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 290,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e40673",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 321,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e40673",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 384,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                goto LAB_00e40e5a_c1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 482,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e40673",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/V_Bordello/Entities/Magicman.lua": [
+          {
+            "line": 226,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_340)\n                                quest:DeregisterTimer(timerId)\n                                quest:DeregisterTimer(i_stk_378)\n                                resources:ReleaseResource(xStack_364)\n                                return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 274,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44615",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 341,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_340)\n                                goto LAB_00e44862",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 388,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44615",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 484,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_2f8)\n                            quest:DeregisterTimer(timerId)\n                            quest:DeregisterTimer(i_stk_378)\n                            resources:ReleaseResource(xStack_364)\n                            return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 527,
+            "actor": "me",
+            "query": "iVar18",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_2f8)\n                                quest:DeregisterTimer(timerId)\n                                quest:DeregisterTimer(i_stk_378)\n                                resources:ReleaseResource(xStack_364)\n                                return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 603,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44811",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 641,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44811",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 677,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44811",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 713,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44811",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 749,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44811",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 785,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44811",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1045,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e448cc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1089,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e448cc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1122,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                        resources:DestroyMovie(trickingMovie)\n                                        goto LAB_00e4450d",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1158,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e448cc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1204,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                                        resources:DestroyMovie(trickingMovie)\n                                                        goto LAB_00e4450d",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1264,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e448cc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1305,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                            resources:DestroyMovie(trickingMovie)\n                                            goto LAB_00e4450d",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1353,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(trickingMovie)\n                        goto LAB_00e4450d",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1448,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "-- LAB_00e448e6_c30: (native jump target)\n                            quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_2f8_2)\n                            goto LAB_00e4450d",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1492,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "-- LAB_00e43ae7_c32: (native jump target)\n                            quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_2f8_2)\n                            goto LAB_00e4450d",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1558,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44903",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1594,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44903",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1625,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44903",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1656,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44903",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1687,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44903",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1718,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e44903",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1762,
+            "actor": "me",
+            "query": "iVar21",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                                    resources:DestroyMovie(xStack_310)\n                                                    goto LAB_00e4450d",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/V_Bordello/Entities/BordelloClient.lua": [
+          {
+            "line": 97,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_dc)\n                        quest:DeregisterTimer(registeredTimerID)\n                        goto LAB_00e469d4",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 208,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                        resources:DestroyMovie(xStack_dc)\n                                        goto LAB_00e469cb",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 256,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e46644",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 321,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                            resources:DestroyMovie(xStack_e4)\n                                            goto LAB_00e469cb",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 382,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e46644",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 450,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e466b8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 547,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_dc)\n                                    goto LAB_00e469cb",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 672,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e4568a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 760,
+            "actor": "me",
+            "query": "iVar12",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e456ca",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
+      "sharedReviewedCleanupJoins": {
+        "helper_E3E720": [
+          {
+            "label": "LAB_00e3ea29",
+            "nativeEntry": "0x00e3ea29",
+            "classification": "resolved structured cleanup join",
+            "addressCommentRetained": true,
+            "note": "Reviewed native/source/Lua-shape certificate; separate from engine/gameplay proof."
+          }
+        ]
       },
       "sharedHelpers": {
         "path": "FSE/V_Bordello/native_quest_helpers.lua",
@@ -3901,11 +4930,7 @@
         "todo": {
           "helper_E3E320": [],
           "helper_E3E6B0": [],
-          "helper_E3E720": [
-            "SetCutsceneSkippableWhilePaused: not in FSE manifest",
-            "label LAB_00e3ea29",
-            "SetCutsceneSkippableWhilePaused: not in FSE manifest"
-          ],
+          "helper_E3E720": [],
           "helper_E44A40": [],
           "helper_E44CC0": []
         },
@@ -3924,7 +4949,7 @@
         "functionSyntaxPassed": 42,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 127
+        "todo": 28
       }
     }
   ],
@@ -3935,6 +4960,6 @@
     "functionSyntaxPassed": 42,
     "fileSyntaxPassed": 9,
     "fileSyntaxChecked": 9,
-    "todo": 127
+    "todo": 28
   }
 }

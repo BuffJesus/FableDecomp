@@ -6,7 +6,6 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- CROWDBANDITS.Main (retail 0x00d0b3e0)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local function parseGameInteger(text)
         local value, negative = 0, false
@@ -25,9 +24,9 @@ function Main(quest, me)
         return value
     end
     local predicateResult, scratchValue2, scratchValue3, scratchValue5, scratchValue6, scratchValue7
-    local scratchValue8, scratchValue9, scratchValue, kingHealth, timerId, scratchValue32
-    local scratchValue36, scratchValue38, scratchValue42, scratchValue44, scratchValue46
-    local scratchValue48, scratchValue54
+    local scratchValue8, scratchValue9, scratchValue, kingHealth, timerId, retailRandModulo
+    local retailRandModulo2, retailRandModulo3, retailRandModulo4, randomChoice3, randomChoice4
+    local retailRandModulo5, retailRandModulo6
     if not quest:NewScriptFrame(me) then return end
     quest:EntitySetTargetable(me, false)
     quest:EntitySetAsDamageable(me, false)
@@ -38,7 +37,8 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:EntitySetAsUseMovementInActions(me, false)
-    quest:EntityAttachToVillage(me, quest:GetNearestWithDefName(me, "VILLAGE_BANDIT_CAMP_BOSS"))
+    local getNearestWithDefName = quest:GetNearestWithDefName(me, "VILLAGE_BANDIT_CAMP_BOSS")
+    quest:EntityAttachToVillage(me, getNearestWithDefName)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
     while not resources:TryAcquire(resource, me, 4) do
@@ -73,85 +73,91 @@ function Main(quest, me)
             quest:EntitySetCutsceneBehaviour(me, CUTSCENE_BEHAVIOUR_PAUSED)
             predicateResult = true
         end
+        local hero = quest:GetHero()
         if quest:IsDistanceBetweenThingsUnder(me, hero, 3.5) then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-            quest:EntitySetAttackThingImmediately(me, hero, false, true)
+            local hero2 = quest:GetHero()
+            quest:EntitySetAttackThingImmediately(me, hero2, false, true)
         else
-            if not (quest:IsDistanceBetweenThingsOver(me, hero, 6.5) and quest:GetTimer(timerId) < 1) then quest:NewScriptFrame(me); goto continue_1 end
+            local hero3 = quest:GetHero()
+            if not (quest:IsDistanceBetweenThingsOver(me, hero3, 6.5) and quest:GetTimer(timerId) < 1) then quest:NewScriptFrame(me); goto continue_1 end
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
             if not me:IsPerformingScriptTask() then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                 if quest:GetStateInt("KingHealth") < kingHealth then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                     kingHealth = quest:GetStateInt("KingHealth")
-                    quest:EntitySetFacingAngleTowardsThing(me, hero, true)
-                    local scratchValue28 = math.random(0, 32767) & 0x80000001
-                    scratchValue5 = scratchValue28 == 0
-                    if scratchValue28 < 0 then
-                        scratchValue5 = (scratchValue28 - 1 | 0xfffffffe) == 0xffffffff
+                    local hero4 = quest:GetHero()
+                    quest:EntitySetFacingAngleTowardsThing(me, hero4, true)
+                    local randomChoice5 = quest:RetailRandModulo(32768) & 0x80000001
+                    scratchValue5 = randomChoice5 == 0
+                    if randomChoice5 < 0 then
+                        scratchValue5 = (randomChoice5 - 1 | 0xfffffffe) == 0xffffffff
                     end
                     if not scratchValue5 then goto LAB_00d0bd52 end
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                    local scratchValue15 = math.random(0, 32767) % 3
-                    if scratchValue15 == 0 then
-                        me:PlayAnimation("SPECIAL_BOAST", false, false, false, true, true, false, false)
+                    local randomChoice = quest:RetailRandModulo(3)
+                    if randomChoice == 0 then
+                        resources:PlayAnimationWithNativeArgument5(resource, "SPECIAL_BOAST", false, false, false, true, false, false)
                     else
-                        if scratchValue15 == 1 then
-                            me:PlayAnimation("ST_THREATEN", false, false, false, true, true, false, false)
+                        if randomChoice == 1 then
+                            resources:PlayAnimationWithNativeArgument5(resource, "ST_THREATEN", false, false, false, true, false, false)
                             goto LAB_00d0b927
                         end
-                        if scratchValue15 == 2 then
-                            me:PlayAnimation("SCRIPT_SHOUT", false, false, false, true, true, false, false)
+                        if randomChoice == 2 then
+                            resources:PlayAnimationWithNativeArgument5(resource, "SCRIPT_SHOUT", false, false, false, true, false, false)
                             goto LAB_00d0b927
                         end
                     end
                     ::LAB_00d0b927::
-                    local scratchValue30 = math.random(0, 32767) & 0x80000003
-                    scratchValue6 = scratchValue30 == 0
-                    if scratchValue30 < 0 then
-                        scratchValue6 = (scratchValue30 - 1 | 0xfffffffc) == 0xffffffff
+                    local randomChoice6 = quest:RetailRandModulo(32768) & 0x80000003
+                    scratchValue6 = randomChoice6 == 0
+                    if randomChoice6 < 0 then
+                        scratchValue6 = (randomChoice6 - 1 | 0xfffffffc) == 0xffffffff
                     end
                     if scratchValue6 then
                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                        scratchValue32 = math.random(0, 32767) & 0x80000001
-                        if scratchValue32 < 0 then
-                            scratchValue32 = (scratchValue32 - 1 | 0xfffffffe) + 1
+                        retailRandModulo = quest:RetailRandModulo(32768) & 0x80000001
+                        if retailRandModulo < 0 then
+                            retailRandModulo = (retailRandModulo - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue32 == 0 then
+                        if retailRandModulo == 0 then
                             quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_01")
-                        elseif scratchValue32 == 1 then
+                        elseif retailRandModulo == 1 then
                             quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_02")
                         end
                     end
                 else
-                    if not quest:IsDistanceBetweenThingsOver(hero, banditKing, 8.0) then
+                    local hero5 = quest:GetHero()
+                    if not quest:IsDistanceBetweenThingsOver(hero5, banditKing, 8.0) then
                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                        quest:EntitySetFacingAngleTowardsThing(me, hero, true)
-                        local scratchValue34 = math.random(0, 32767) & 0x80000001
-                        scratchValue7 = scratchValue34 == 0
-                        if scratchValue34 < 0 then
-                            scratchValue7 = (scratchValue34 - 1 | 0xfffffffe) == 0xffffffff
+                        local hero6 = quest:GetHero()
+                        quest:EntitySetFacingAngleTowardsThing(me, hero6, true)
+                        local randomChoice7 = quest:RetailRandModulo(32768) & 0x80000001
+                        scratchValue7 = randomChoice7 == 0
+                        if randomChoice7 < 0 then
+                            scratchValue7 = (randomChoice7 - 1 | 0xfffffffe) == 0xffffffff
                         end
                         if not scratchValue7 then goto LAB_00d0bd52 end
                         if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                        scratchValue36 = math.random(0, 32767) & 0x80000001
-                        if scratchValue36 < 0 then
-                            scratchValue36 = (scratchValue36 - 1 | 0xfffffffe) + 1
+                        retailRandModulo2 = quest:RetailRandModulo(32768) & 0x80000001
+                        if retailRandModulo2 < 0 then
+                            retailRandModulo2 = (retailRandModulo2 - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue36 == 0 then
-                            me:PlayAnimation("COCKY", false, false, false, true, true, false, false)
-                        elseif scratchValue36 == 1 then
-                            me:PlayAnimation("ST_UNPERTURBED_GESTURE", false, false, false, true, true, false, false)
+                        if retailRandModulo2 == 0 then
+                            resources:PlayAnimationWithNativeArgument5(resource, "COCKY", false, false, false, true, false, false)
+                        elseif retailRandModulo2 == 1 then
+                            resources:PlayAnimationWithNativeArgument5(resource, "ST_UNPERTURBED_GESTURE", false, false, false, true, false, false)
                             goto LAB_00d0bcdc
                         end
                         ::LAB_00d0bcdc::
-                        scratchValue38 = math.random(0, 32767) & 0x80000001
-                        if scratchValue38 < 0 then
-                            scratchValue38 = (scratchValue38 - 1 | 0xfffffffe) + 1
+                        retailRandModulo3 = quest:RetailRandModulo(32768) & 0x80000001
+                        if retailRandModulo3 < 0 then
+                            retailRandModulo3 = (retailRandModulo3 - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue38 == 0 then
+                        if retailRandModulo3 == 0 then
                             quest:PlaySoundOnThing(me, "SND_CROWDLARGEBOASTREACT_01")
-                        elseif scratchValue38 == 1 then
+                        elseif retailRandModulo3 == 1 then
                             quest:PlaySoundOnThing(me, "SND_CROWDLARGEBOASTREACT_02")
                         end
                         goto LAB_00d0bd70
@@ -160,11 +166,12 @@ function Main(quest, me)
                         return
                     end
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                    quest:EntitySetFacingAngleTowardsThing(me, hero, true)
-                    local scratchValue40 = math.random(0, 32767) & 0x80000001
-                    scratchValue8 = scratchValue40 == 0
-                    if scratchValue40 < 0 then
-                        scratchValue8 = (scratchValue40 - 1 | 0xfffffffe) == 0xffffffff
+                    local hero7 = quest:GetHero()
+                    quest:EntitySetFacingAngleTowardsThing(me, hero7, true)
+                    local randomChoice8 = quest:RetailRandModulo(32768) & 0x80000001
+                    scratchValue8 = randomChoice8 == 0
+                    if randomChoice8 < 0 then
+                        scratchValue8 = (randomChoice8 - 1 | 0xfffffffe) == 0xffffffff
                     end
                     if not scratchValue8 then
                         goto LAB_00d0bd52
@@ -179,43 +186,45 @@ function Main(quest, me)
                 do return end
                 ::FLOW_hoist_lab_00d0bd52_1::
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                scratchValue42 = math.random(0, 32767) & 0x80000001
-                if scratchValue42 < 0 then
-                    scratchValue42 = (scratchValue42 - 1 | 0xfffffffe) + 1
+                retailRandModulo4 = quest:RetailRandModulo(32768) & 0x80000001
+                if retailRandModulo4 < 0 then
+                    retailRandModulo4 = (retailRandModulo4 - 1 | 0xfffffffe) + 1
                 end
-                if scratchValue42 == 0 then
-                    me:PlayAnimation("SPECIAL_BOAST", false, false, false, true, true, false, false)
-                elseif scratchValue42 == 1 then
-                    me:PlayAnimation("ST_WAVE_SPECIAL_01", false, false, false, true, true, false, false)
+                if retailRandModulo4 == 0 then
+                    resources:PlayAnimationWithNativeArgument5(resource, "SPECIAL_BOAST", false, false, false, true, false, false)
+                elseif retailRandModulo4 == 1 then
+                    resources:PlayAnimationWithNativeArgument5(resource, "ST_WAVE_SPECIAL_01", false, false, false, true, false, false)
                     goto LAB_00d0bacf
                 end
                 ::LAB_00d0bacf::
-                scratchValue44 = math.random(0, 32767) & 0x80000007
-                scratchValue9 = scratchValue44 == 0
-                if scratchValue44 < 0 then
-                    scratchValue9 = (scratchValue44 - 1 | 0xfffffff8) == 0xffffffff
+                randomChoice3 = quest:RetailRandModulo(32768) & 0x80000007
+                scratchValue9 = randomChoice3 == 0
+                if randomChoice3 < 0 then
+                    scratchValue9 = (randomChoice3 - 1 | 0xfffffff8) == 0xffffffff
                 end
                 if scratchValue9 then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                     local conversationID = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationID, hero)
-                    quest:AddLineToConversation(conversationID, "TEXT_QST_009_BOSSFIGHT_TAUNTING", me, hero, false)
+                    local hero8 = quest:GetHero()
+                    quest:AddPersonToConversation(conversationID, hero8)
+                    local hero9 = quest:GetHero()
+                    quest:AddLineToConversation(conversationID, "TEXT_QST_009_BOSSFIGHT_TAUNTING", me, hero9, false)
                     timerId = timerId2
                 end
-                scratchValue46 = math.random(0, 32767) & 0x80000003
-                scratchValue = scratchValue46 == 0
-                if scratchValue46 < 0 then
-                    scratchValue = (scratchValue46 - 1 | 0xfffffffc) == 0xffffffff
+                randomChoice4 = quest:RetailRandModulo(32768) & 0x80000003
+                scratchValue = randomChoice4 == 0
+                if randomChoice4 < 0 then
+                    scratchValue = (randomChoice4 - 1 | 0xfffffffc) == 0xffffffff
                 end
                 if scratchValue then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                    scratchValue48 = math.random(0, 32767) & 0x80000001
-                    if scratchValue48 < 0 then
-                        scratchValue48 = (scratchValue48 - 1 | 0xfffffffe) + 1
+                    retailRandModulo5 = quest:RetailRandModulo(32768) & 0x80000001
+                    if retailRandModulo5 < 0 then
+                        retailRandModulo5 = (retailRandModulo5 - 1 | 0xfffffffe) + 1
                     end
-                    if scratchValue48 == 0 then
+                    if retailRandModulo5 == 0 then
                         quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_01")
-                    elseif scratchValue48 == 1 then
+                    elseif retailRandModulo5 == 1 then
                         quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_02")
                     end
                 end
@@ -224,7 +233,8 @@ function Main(quest, me)
             ::LAB_00d0bd70::
             if quest:GetStateBool("BanditKingFightEnded") then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
-                if parseGameInteger(me:GetDataString()) == 1 then
+                local dataString = me:GetDataString()
+                if parseGameInteger(dataString) == 1 then
                     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); resources:ReleaseResource(resource); return end
                     quest:RemoveThing(me, false, true)
                 end
@@ -263,41 +273,42 @@ function Main(quest, me)
         if not quest:GetStateBool("TwinBladeKilled") then
             if quest:IsActiveThreadTerminating() then break end
             if quest:GetTimer(timerId) < 1 then
-                local scratchValue50 = math.random(0, 32767) & 0x80000001
-                scratchValue2 = scratchValue50 == 0
-                if scratchValue50 < 0 then
-                    scratchValue2 = (scratchValue50 - 1 | 0xfffffffe) == 0xffffffff
+                if quest:IsActiveThreadTerminating() then break end
+                local randomChoice9 = quest:RetailRandModulo(32768) & 0x80000001
+                scratchValue2 = randomChoice9 == 0
+                if randomChoice9 < 0 then
+                    scratchValue2 = (randomChoice9 - 1 | 0xfffffffe) == 0xffffffff
                 end
                 if scratchValue2 then
                     if quest:IsActiveThreadTerminating() then break end
-                    local scratchValue18 = math.random(0, 32767) % 3
-                    if scratchValue18 == 0 then
-                        me:PlayAnimation("SPECIAL_BOAST", false, false, false, true, true, false, false)
+                    local randomChoice2 = quest:RetailRandModulo(3)
+                    if randomChoice2 == 0 then
+                        resources:PlayAnimationWithNativeArgument5(resource, "SPECIAL_BOAST", false, false, false, true, false, false)
                     else
-                        if scratchValue18 == 1 then
-                            me:PlayAnimation("ST_THREATEN", false, false, false, true, true, false, false)
+                        if randomChoice2 == 1 then
+                            resources:PlayAnimationWithNativeArgument5(resource, "ST_THREATEN", false, false, false, true, false, false)
                             goto LAB_00d0c05b
                         end
-                        if scratchValue18 == 2 then
-                            me:PlayAnimation("SCRIPT_SHOUT", false, false, false, true, true, false, false)
+                        if randomChoice2 == 2 then
+                            resources:PlayAnimationWithNativeArgument5(resource, "SCRIPT_SHOUT", false, false, false, true, false, false)
                             goto LAB_00d0c05b
                         end
                     end
                     ::LAB_00d0c05b::
-                    local scratchValue52 = math.random(0, 32767) & 0x80000003
-                    scratchValue3 = scratchValue52 == 0
-                    if scratchValue52 < 0 then
-                        scratchValue3 = (scratchValue52 - 1 | 0xfffffffc) == 0xffffffff
+                    local randomChoice10 = quest:RetailRandModulo(32768) & 0x80000003
+                    scratchValue3 = randomChoice10 == 0
+                    if randomChoice10 < 0 then
+                        scratchValue3 = (randomChoice10 - 1 | 0xfffffffc) == 0xffffffff
                     end
                     if scratchValue3 then
                         if quest:IsActiveThreadTerminating() then break end
-                        scratchValue54 = math.random(0, 32767) & 0x80000001
-                        if scratchValue54 < 0 then
-                            scratchValue54 = (scratchValue54 - 1 | 0xfffffffe) + 1
+                        retailRandModulo6 = quest:RetailRandModulo(32768) & 0x80000001
+                        if retailRandModulo6 < 0 then
+                            retailRandModulo6 = (retailRandModulo6 - 1 | 0xfffffffe) + 1
                         end
-                        if scratchValue54 == 0 then
+                        if retailRandModulo6 == 0 then
                             quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_01")
-                        elseif scratchValue54 == 1 then
+                        elseif retailRandModulo6 == 1 then
                             quest:PlaySoundOnThing(me, "SND_CROWDBOASTBOOS_02")
                         end
                     end
@@ -307,9 +318,10 @@ function Main(quest, me)
                 end
             end
         end
-        if not not ((quest:GetStateInt("AngryBanditNeeded") >= 1) or me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
+        if not not ((not (quest:GetStateInt("AngryBanditNeeded") < 1)) or me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
             if not quest:IsActiveThreadTerminating() then
-                quest:GiveThingBestEnemyTarget(me, hero)
+                local hero10 = quest:GetHero()
+                quest:GiveThingBestEnemyTarget(me, hero10)
                 quest:EntitySetAbleToBeEngagedInCombat(me, true)
                 resources:PrepareResource(resource)
                 if quest:GetStateInt("AngryBanditNeeded") == 0 then goto LAB_00d0c278 end

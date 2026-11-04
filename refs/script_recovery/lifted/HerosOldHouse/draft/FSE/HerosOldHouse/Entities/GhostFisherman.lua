@@ -165,6 +165,14 @@ function Main(quest, me)
                                         pcVar14 = "TEXT_QST_032_GHOST_FISHERMAN_WHERE"
                                         pCVar10 = quest:GetHero()
                                         r2 = me:Speak(pCVar10, pcVar14, iVar8, (iVar9 ~= 0), (iVar17 ~= 0), (iVar19 ~= 0))
+                                        if not r2 then
+                                            quest:PauseAllNonScriptedEntities(false)
+                                            resources:DestroyMovie(xStack_f0)
+                                            resources:DestroyActorMap(xStack_118)
+                                            resources:ReleaseResource(xStack_100)
+                                            quest:DeregisterTimer(xStack_12c)
+                                            goto LAB_00d8bca5
+                                        end
                                         iVar8 = me:IsPerformingScriptTask()
                                         cVar6 = iVar8
                                         while cVar6 do
@@ -228,6 +236,9 @@ function Main(quest, me)
                         pcVar14 = "TEXT_QST_032_GHOST_FISHERMAN_COMPLAINT"
                         pCVar10 = quest:GetHero()
                         r3 = me:Speak(pCVar10, pcVar14, iVar8, (iVar9 ~= 0), (iVar17 ~= 0), (iVar19 ~= 0))
+                        if not r3 then
+                            goto LAB_00d8bc59
+                        end
                         iVar8 = me:IsPerformingScriptTask()
                         cVar6 = iVar8
                         while cVar6 do
@@ -316,6 +327,9 @@ function Main(quest, me)
                                     pcVar14 = "TEXT_QST_032_GHOST_FISHERMAN_REFUSAL"
                                     pCVar10 = quest:GetHero()
                                     r4 = me:Speak(pCVar10, pcVar14, iVar8, (iVar9 ~= 0), (iVar17 ~= 0), (iVar19 ~= 0))
+                                    if not r4 then
+                                        goto LAB_00d8bc59
+                                    end
                                     iVar8 = me:IsPerformingScriptTask()
                                     cVar6 = iVar8
                                     while cVar6 do

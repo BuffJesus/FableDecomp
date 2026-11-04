@@ -4,9 +4,11 @@
 -- RaceMarker.Main (retail 0x00d40aa0)
 function Main(quest, me)
     while not quest:IsActiveThreadTerminating() do
-        if not quest:IsDistanceBetweenThingsUnder(quest:GetHero(), me, 3.0) then
+        local thing1 = quest:GetHero()
+        if not quest:IsDistanceBetweenThingsUnder(thing1, me, 3.0) then
             quest:NewScriptFrame(me)
         else
+            if quest:IsActiveThreadTerminating() then return end
             quest:SetStateBool("ReachedPlatform", true)
             quest:MiniMapRemoveMarker(me)
             quest:NewScriptFrame(me)

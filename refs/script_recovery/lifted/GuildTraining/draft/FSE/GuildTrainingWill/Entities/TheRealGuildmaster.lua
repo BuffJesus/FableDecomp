@@ -93,6 +93,14 @@ function Main(quest, me)
                         pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_NOT_START"
                         pCVar12 = quest:GetHero()
                         r1 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
+                        if not r1 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_1f0)
+                            quest:DeregisterTimer(i_stk_244)
+                            quest:DeregisterTimer(i_stk_240)
+                            resources:ReleaseResource(xStack_228)
+                            return
+                        end
                         iVar10 = me:IsPerformingScriptTask()
                         cVar7 = iVar10
                         while cVar7 do
@@ -328,7 +336,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar6 = not alive
                         if bVar6 then goto LAB_00d6138b end
-                        c_stk_22d = bVar6
+                        c_stk_22d = (bVar6) and 1 or 0
                         bVar6 = quest:IsXbox()
                         if bVar6 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -730,6 +738,9 @@ function Main(quest, me)
                         end
                         if c_stk_22d ~= 0 then
                             r4 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_YES", 0, false, true, false)
+                            if not r4 then
+                                goto LAB_00d61563
+                            end
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -838,6 +849,9 @@ function Main(quest, me)
                         end
                         if c_stk_22d ~= 0 then
                             r7 = me:Speak(me, "TEXT_QST_028_GUILDMASTER_PLAY_WHISPER_QUESTION_YES", 0, false, true, false)
+                            if not r7 then
+                                goto LAB_00d61004
+                            end
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -907,7 +921,7 @@ function Main(quest, me)
         pCVar12 = quest:GetThingWithScriptName("WillApprenticeMarker")
         bVar6 = false
         pCVar13 = pCVar12:GetPos()
-        r8 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
+        r8 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice", bVar6)
         if (r8 ~= nil and not r8:IsNull()) then
             r8:SetToKillOnLevelUnload(false)
         end
@@ -997,7 +1011,7 @@ function Main(quest, me)
                         pCVar12 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
                         bVar6 = false
                         pCVar13 = pCVar12:GetPos()
-                        r9 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice")
+                        r9 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice", false)
                         goto LAB_00d61ad8
                     end
                 else
@@ -1013,6 +1027,9 @@ function Main(quest, me)
                             pcVar17 = "TEXT_QST_028_GUILDMASTER_WILL_END_QUESTION_NO"
                             pCVar12 = quest:GetHero()
                             r10 = me:Speak(pCVar12, pcVar17, iVar10, (iVar11 ~= 0), true, (iVar22 ~= 0))
+                            if not r10 then
+                                goto LAB_00d61b44
+                            end
                             iVar10 = me:IsPerformingScriptTask()
                             cVar7 = iVar10
                             while cVar7 do
@@ -1123,7 +1140,7 @@ function Main(quest, me)
     pCVar9 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     bVar6 = false
     pCVar13 = pCVar9:GetPos()
-    r11 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice")
+    r11 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice", bVar6)
     pCVar9 = quest:GetThingWithScriptName("WillApprentice")
     bVar6 = (pCVar9 ~= nil and pCVar9:IsAlive())
     if bVar6 then
@@ -1152,7 +1169,7 @@ function Main(quest, me)
         pCVar9 = quest:GetThingWithScriptName("WillApprenticeMarker")
         bVar6 = false
         pCVar13 = pCVar9:GetPos()
-        r12 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
+        r12 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice", bVar6)
         if (r12 ~= nil and not r12:IsNull()) then
             r12:SetToKillOnLevelUnload(false)
         end
@@ -1224,7 +1241,7 @@ function Main(quest, me)
     pCVar9 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
     bVar6 = false
     pCVar13 = pCVar9:GetPos()
-    r13 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice")
+    r13 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", pCVar13, "MeleeApprentice", bVar6)
     pCVar9 = quest:GetThingWithScriptName("WillApprentice")
     bVar6 = (pCVar9 ~= nil and pCVar9:IsAlive())
     if not bVar6 then
@@ -1234,7 +1251,7 @@ function Main(quest, me)
             pCVar9 = quest:GetThingWithScriptName("WillApprenticeMarker")
             bVar6 = false
             pCVar13 = pCVar9:GetPos()
-            r14 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice")
+            r14 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar13, "WillApprentice", bVar6)
             if (r14 ~= nil and not r14:IsNull()) then
                 r14:SetToKillOnLevelUnload(false)
             end

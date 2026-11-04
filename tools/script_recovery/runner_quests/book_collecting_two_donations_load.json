@@ -1,0 +1,23 @@
+{
+  "quest": "V_BookCollecting",
+  "host": "V_BookCollecting",
+  "maps": "BowerstoneSlums$",
+  "legs": {},
+  "enemyNames": [],
+  "clear": false,
+  "answer": "yes",
+  "steps": [
+    {
+      "name": "verify two donations after fresh reload without writes",
+      "do": [
+        "assert(quest:GetStateBool('DoneIntro')); assert(quest:GetStateInt('BooksInGame')==40); assert(quest:GetStateInt('BooksDonated')==2); assert(quest:GetStateInt('GoodBooksDonated')==2); assert(not quest:GetStateBool('ReadingBook')); assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero()), 'donated book still in inventory'); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do assert(quest:GetStateFlagVectorAt(name,i)==(i<2),name..'['..i..']') end end; assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,1),quest:GetHero()),'second donated book still in inventory'); Runner.twoDonationsLoaded=true"
+      ],
+      "until": "Runner.twoDonationsLoaded==true",
+      "timeout": 30,
+      "tries": 1
+    }
+  ],
+  "done": "Runner.twoDonationsLoaded==true",
+  "failed": "false",
+  "stateStatus": "'DoneIntro='..tostring(quest:GetStateBool('DoneIntro'))..' BooksDonated='..tostring(quest:GetStateInt('BooksDonated'))..' Time='..tostring(quest:GetTimeOfDay())..' BooksInGame='..tostring(quest:GetStateInt('BooksInGame'))..' FirstBook='..quest:ReadGlobalGameDataStringAt(0x4d4,0)..' Donated0='..tostring(quest:GetStateFlagVectorAt('BookDonated',0))..' Owned0='..tostring(quest:GetStateFlagVectorAt('BookOwned',0))..' Reading='..tostring(quest:GetStateBool('ReadingBook'))..' Inventory0='..tostring(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,0),quest:GetHero()))..' GoodBooks='..tostring(quest:GetStateInt('GoodBooksDonated'))..' Inventory1='..tostring(quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,1),quest:GetHero()))..' Donated1='..tostring(quest:GetStateFlagVectorAt('BookDonated',1))"
+}

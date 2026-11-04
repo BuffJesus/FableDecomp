@@ -1,0 +1,56 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 674124f..9f7b88d 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -1401,6 +1401,28 @@ bool IsDistanceBetweenThingsUnder(CScriptThing* first, CScriptThing* second, flo
+     using Distance = bool(__fastcall*)(CScriptThing*, CScriptThing*, float);
+     return ASLR<Distance>(0x00CBE2FF)(first, second, range);
+ }
++    void SendEntityEventFromHeroWithThingData(int eventType, CScriptThing* receiver, CScriptThing* data) {
++        CheckOpen();
++        if (!m_game || !GetHero_API || !SendEntityEvent_API)
++            throw std::runtime_error("Retail hero event APIs unavailable");
++        CScriptThing empty{}; empty.pVTable = g_pCScriptThingVTable;
++        if (!receiver && !empty.pVTable)
++            throw std::runtime_error("Retail empty receiver vtable unavailable");
++        receiver = receiver ? receiver : &empty;
++        CThing* nativeData = nullptr;
++        auto* impl = data ? reinterpret_cast<CGameScriptThing*>(data->pImp.Data) : nullptr;
++        if (impl) {
++            auto* table = reinterpret_cast<CGameScriptThingVTable*>(impl->pVTable);
++            if (!table || !table->GetPThing)
++                throw std::runtime_error("Retail event GetPThing unavailable");
++            nativeData = table->GetPThing(impl);
++        }
++        // The original snapshots the payload before calling GetHero. Keep that
++        // ordering even if the hero lookup changes the source wrapper.
++        auto* sender = GetHero_API(m_game);
++        SendEntityEvent_API(m_game, static_cast<NEntityEvents::EEventType>(eventType),
++                            sender, receiver, nativeData);
++    }
+ bool IsHorizontalDistanceBetweenThingsUnder(CScriptThing* first, CScriptThing* second, float range) {
+     CheckOpen();
+     using Distance = bool(__fastcall*)(CScriptThing*, CScriptThing*, float);
+@@ -2492,6 +2514,22 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["InitializeWifeActor"] = &LuaRetailResources::InitializeWifeActor;
+     type["IsActorPositionOnScreen"] = &LuaRetailResources::IsActorPositionOnScreen;
+     type["IsDistanceBetweenThingsUnder"] = &LuaRetailResources::IsDistanceBetweenThingsUnder;
++    type["SendEntityEventFromHeroWithThingData"] = [](LuaRetailResources& resources, sol::object eventType, sol::object receiver, sol::object data) {
++        auto thing = [](const sol::object& value) -> CScriptThing* {
++            if (!value.valid() || value.get_type() == sol::type::nil) return nullptr;
++            if (value.get_type() != sol::type::userdata || !value.is<CScriptThing*>())
++                throw std::runtime_error("Retail event requires Things or nil");
++            return value.as<CScriptThing*>();
++        };
++        if (!eventType.valid() || eventType.get_type() != sol::type::number)
++            throw std::runtime_error("Retail event type requires an integer");
++        auto eventNumber = eventType.as<double>();
++        if (!std::isfinite(eventNumber) || eventNumber < -2147483648.0 || eventNumber > 2147483647.0 || std::trunc(eventNumber) != eventNumber)
++            throw std::runtime_error("Retail event type requires int32");
++        auto* receiverThing = thing(receiver);
++        auto* dataThing = thing(data);
++        resources.SendEntityEventFromHeroWithThingData(static_cast<int>(eventNumber), receiverThing, dataThing);
++    };
+     type["IsHorizontalDistanceBetweenThingsUnder"] = [](LuaRetailResources& resources, sol::object first, sol::object second, sol::object range) {
+         auto thing = [](const sol::object& value) -> CScriptThing* {
+             if (!value.valid() || value.get_type() == sol::type::nil) return nullptr;

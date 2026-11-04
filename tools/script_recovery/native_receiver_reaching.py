@@ -71,9 +71,21 @@ def _reaching(ins, preds, start, reg, x86):
             defs.add(k)
             continue
         if not preds[k]:
+            if k and _is_padding(ins[k]):
+                continue                     # alignment filler after a jmp: never executed (Needle F15B8D)
             defs.add(-1)                     # reached the entry without a definition
         stack.extend(preds[k])
     return defs
+
+
+def _is_padding(i):
+    """MSVC's multi-byte alignment fillers (`lea ecx,[ecx]`, `lea esp,[esp]`, `nop`, `int3`, `mov edi,edi`)."""
+    if i.mnemonic in ('nop', 'int3'):
+        return True
+    if i.mnemonic == 'lea':
+        dst, src = i.op_str.split(', ', 1)
+        return src in (f'[{dst}]', f'[{dst} + 0]')
+    return i.mnemonic == 'mov' and i.op_str == 'edi, edi'
 
 
 def me_receiver_sites(rdata, entry, end):
@@ -127,7 +139,7 @@ def me_receiver_sites(rdata, entry, end):
     return out
 
 
-RE_HEAD = re.compile(r'\(\*\*\(code \*\*\)\(\*\(int \*\)(?P<recv>\w+) \+ (?P<slot>0x[0-9a-f]+|\d+)\)\)\($')
+RE_HEAD = re.compile(r'\(\*\*\(code \*\*\)\(\*(?:\(int \*\))?(?P<recv>\w+) \+ (?P<slot>0x[0-9a-f]+|\d+)\)\)\($')
 
 
 def respell_me_receivers(text, fn, entries, rdata):

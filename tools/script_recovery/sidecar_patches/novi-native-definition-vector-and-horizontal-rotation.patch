@@ -1,0 +1,43 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index f2a830f..4654ca2 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -464,6 +464,38 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         if (!v->first || v->first + index >= v->last) return "";
+         return NoviCCharStringToStd(v->first + index);
+     };
++    // vector<CDefString> elements are conversion tokens, not counted CCharString values.
++    // Retail PlayWave F20E07 invokes 415D70 on first + index*4, then destroys the temporary.
++    quest["ReadGlobalGameDataDefStringAt"] = [](LuaQuestState&, int offset, int index) -> std::string {
++        static_assert(sizeof(void*) == 4, "Definition vectors require the retail x86 ABI");
++        const auto* definitions = *ASLR<const unsigned char**>(0x0143E90C);
++        if (!definitions || offset < 0 || index < 0 || !CCharString_Destroy || !CCharString_ToConstChar_API)
++            throw std::runtime_error("Global definition-string vector APIs unavailable");
++        struct Vec { std::uint32_t first, last, capacity; };
++        const auto* v = reinterpret_cast<const Vec*>(definitions + offset);
++        if (!v->first || v->last < v->first || v->capacity < v->last ||
++            (v->last - v->first) % 4 || (v->capacity - v->first) % 4 ||
++            static_cast<std::uint32_t>(index) >= (v->last - v->first) / 4)
++            throw std::runtime_error("Global definition-string vector index out of range");
++        using Convert = CCharString* (__thiscall*)(const void*, CCharString*);
++        struct Converted {
++            CCharString value{};
++            ~Converted() { CCharString_Destroy(&value); }
++        } result;
++        ASLR<Convert>(0x00415D70)(reinterpret_cast<const void*>(v->first + static_cast<std::uint32_t>(index) * 4u), &result.value);
++        return NoviCCharStringToStd(&result.value);
++    };
++    // Retail A14040 rotates the Cartesian vector horizontally by turns, retaining
++    // its length and elevation through spherical conversion (positive turns clockwise).
++    quest["RotateVectorHorizontal"] = [](LuaQuestState&, sol::table position, float turns, sol::this_state ts) -> sol::table {
++        C3DVector value = { position["x"].get_or(0.0f), position["y"].get_or(0.0f), position["z"].get_or(0.0f) };
++        using Rotate = void (__thiscall*)(C3DVector*, float);
++        ASLR<Rotate>(0x00A14040)(&value, turns);
++        sol::state_view lua(ts);
++        sol::table out = lua.create_table();
++        out["x"] = value.x; out["y"] = value.y; out["z"] = value.z;
++        return out;
++    };
+     // ---- CScriptThing methods -------------------------------------------------------------------
+     // Retail 0x00CBE4B7 IsDistanceFromThingToPositionUnder, __fastcall bool(CScriptThing*, const C3DVector*, float):
+     // alive and squared distance strictly below distance^2 (V_GuildMaster GuildMasterGameFlow waits for the hero near

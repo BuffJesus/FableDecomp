@@ -7,9 +7,8 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- Gate3Guard.Main (retail 0x00d07490)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local predicateResult2, predicateResult3, predicateResult, predicateResult20
+    local predicateResult2, predicateResult3, predicateResult, predicateResult20, movie2
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -40,37 +39,44 @@ function Main(quest, me)
         predicateResult3 = true
         ::FLOW_past_lab_00d076a9::
         if predicateResult3 then
-            if not quest:IsActiveThreadTerminating() then
-                quest:GiveThingBestEnemyTarget(me, hero)
-                resources:PrepareResource(resource)
-                quest:ClearThingHasInformation(me)
-                repeat
-                    quest:NewScriptFrame(me)
-                until quest:IsActiveThreadTerminating()
-                quest:DeregisterTimer(timerId)
-                resources:ReleaseResource(resource)
-                return
-            end
-            -- TODO(native): override_prt_d07c09_8df7e253:
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
+            local hero = quest:GetHero()
+            quest:GiveThingBestEnemyTarget(me, hero)
+            resources:PrepareResource(resource)
+            quest:ClearThingHasInformation(me)
+            repeat
+                quest:NewScriptFrame(me)
+            until quest:IsActiveThreadTerminating()
+            quest:DeregisterTimer(timerId)
+            resources:ReleaseResource(resource)
+            do return end
             quest:DeregisterTimer(timerId)
             resources:ReleaseResource(resource)
             return
         end
         if not quest:GetStateBool("Gate3Open") then
-            -- TODO(native): if (bVar4) goto override_prt_d07c09_8df7e253;
+            if quest:IsActiveThreadTerminating() then
+                quest:DeregisterTimer(timerId)
+                resources:ReleaseResource(resource)
+                return
+            end
             if quest:GetTimer(timerId) < 1 then
-                if not quest:IsDistanceBetweenThingsUnder(hero, me, 8.0) then goto LAB_00d0783a end
+                local hero2 = quest:GetHero()
+                if not quest:IsDistanceBetweenThingsUnder(hero2, me, 8.0) then goto LAB_00d0783a end
                 if not quest:IsActiveThreadTerminating() then
                     local conversationId = quest:AddNewConversation(me, false, false)
-                    quest:AddPersonToConversation(conversationId, hero)
+                    local hero3 = quest:GetHero()
+                    quest:AddPersonToConversation(conversationId, hero3)
                     if not predicateResult20 then
                         if not quest:IsActiveThreadTerminating() then
                             predicateResult20 = true
-                            quest:AddLineToConversation(conversationId, "TEXT_QST_009_BANDIT3_COMMENT_FIRST", me, hero, false)
+                            local hero4 = quest:GetHero()
+                            quest:AddLineToConversation(conversationId, "TEXT_QST_009_BANDIT3_COMMENT_FIRST", me, hero4, false)
                             goto LAB_00d07820
                         end
                     elseif not quest:IsActiveThreadTerminating() then
-                        quest:AddLineToConversation(conversationId, "TEXT_QST_009_BANDIT3_COMMENT_SECOND", me, hero, false)
+                        local hero5 = quest:GetHero()
+                        quest:AddLineToConversation(conversationId, "TEXT_QST_009_BANDIT3_COMMENT_SECOND", me, hero5, false)
                         goto LAB_00d07820
                     end
                     goto FLOW_past_lab_00d07820
@@ -90,62 +96,74 @@ function Main(quest, me)
                     if not quest:IsActiveThreadTerminating() then
                         resources:PrepareResource(resource)
                         while not resources:TryAcquire(resource, me, 4) do
-                            if not quest:NewScriptFrame(me) then goto LAB_00d07cfc end
+                            if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00d0783a end
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            resources:StartMovie("")
+                            movie2 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+                            local scratchValue6 = resources:ScriptThing(resource)
+                            local fret_0 = quest:GetHealth(scratchValue6)
                             if 0.0 < fret_0 then
-                                me:Speak(hero, "TEXT_QST_009_BANDIT3_COMMENT_FIRST_CHAT", GROUP_SELECT_FIRST, false, true, false)
-                                while me:IsPerformingScriptTask() do
-                                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07caf end
+                                local hero6 = quest:GetHero()
+                                if not me:Speak(hero6, "TEXT_QST_009_BANDIT3_COMMENT_FIRST_CHAT", GROUP_SELECT_FIRST, false, true, false) then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                else
+                                    while me:IsPerformingScriptTask() do
+                                        if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07caf end
+                                    end
+                                    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07caf end
+                                    goto FLOW_past_lab_00d07caf
                                 end
-                                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07caf end
-                                goto FLOW_past_lab_00d07caf
                                 ::LAB_00d07caf::
+                                resources:DestroyMovie(movie2)
                                 goto LAB_00d07cf7
                             end
-                            goto FLOW_hoist_lab_00d07cf7_1
+                            goto FLOW_past_lab_00d07caf
                         end
                     end
                 elseif not quest:IsActiveThreadTerminating() then
                     resources:PrepareResource(resource)
                     while not resources:TryAcquire(resource, me, 4) do
-                        if not quest:NewScriptFrame(me) then goto LAB_00d07cfc end
+                        if not quest:NewScriptFrame(me) then goto FLOW_past_lab_00d0783a end
                     end
                     if not quest:IsActiveThreadTerminating() then
-                        resources:StartMovie("")
+                        local movie = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
+                        local scratchValue = resources:ScriptThing(resource)
+                        local fret_00 = quest:GetHealth(scratchValue)
                         if 0.0 < fret_00 then
-                            me:Speak(hero, "TEXT_QST_009_BANDIT3_COMMENT_SECOND_CHAT", GROUP_SELECT_FIRST, false, true, false)
-                            while me:IsPerformingScriptTask() do
-                                if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07ce2 end
+                            local hero7 = quest:GetHero()
+                            if not me:Speak(hero7, "TEXT_QST_009_BANDIT3_COMMENT_SECOND_CHAT", GROUP_SELECT_FIRST, false, true, false) then
+                                quest:PauseAllNonScriptedEntities(false)
+                            else
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07ce2 end
+                                end
+                                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07ce2 end
+                                goto FLOW_past_lab_00d07ce2
                             end
-                            if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00d07ce2 end
-                            goto FLOW_past_lab_00d07ce2
                             ::LAB_00d07ce2::
+                            resources:DestroyMovie(movie)
                             goto LAB_00d07cf7
                             ::FLOW_past_lab_00d07ce2::
                         end
                         quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie)
                         goto LAB_00d07bb5
                     end
                 end
                 goto FLOW_past_lab_00d07cf7
                 ::LAB_00d07cf7::
-                goto LAB_00d07cfc
+                goto FLOW_past_lab_00d0783a
                 ::FLOW_past_lab_00d07caf::
-                ::FLOW_hoist_lab_00d07cf7_1::
                 predicateResult = true
                 quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie2)
                 ::LAB_00d07bb5::
                 goto LAB_00d07bbe
                 ::FLOW_past_lab_00d07cf7::
             end
             ::FLOW_past_lab_00d0783a::
-            ::LAB_00d07cfc::
             quest:DeregisterTimer(timerId)
             break
         end

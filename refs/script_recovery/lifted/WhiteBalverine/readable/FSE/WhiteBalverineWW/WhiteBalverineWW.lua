@@ -5,7 +5,6 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- Q_WhiteBalverineWW.Main (retail 0x00e18630)
 function Main(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local missionFailed, scratchValue, scratchValue2, predicateResult
     quest:AddEntityBinding("KG_Chief", "WhiteBalverineWW/Entities/KG_Chief", 1)
@@ -19,15 +18,16 @@ function Main(quest)
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:SetQuestCardObjective("Q_WhiteBalverineKnotholeGlade", "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_07", "Witchwood4", "KnotholeGlade")
-    quest:SetStateThing("WhiteBalverine", quest:GetThingWithScriptName("WBWW_WhiteBalverine"))
+    local whiteBalverine = quest:GetThingWithScriptName("WBWW_WhiteBalverine")
+    quest:SetStateThing("WhiteBalverine", whiteBalverine)
     local getStateThing = quest:GetStateThing("WhiteBalverine")
     quest:SetThingPersistent(getStateThing, true)
     quest:CreateThread("MonitorBalverine")  -- native thread body MonitorBalverine: lift it as function MonitorBalverine(quest)
-    if 0 & 8 ~= 0 then
+    if (0 & 8) ~= 0 then
         scratchValue2 = scratchValue2 & 247
     end
     quest:CreateThread("SpawnBalverines")  -- native thread body 0x00E19560: lift it as function SpawnBalverines(quest)
-    if scratchValue2 & 16 ~= 0 then
+    if (scratchValue2 & 16) ~= 0 then
         scratchValue2 = scratchValue2 & 239
     end
     local resource = resources:NewResource()
@@ -44,6 +44,7 @@ function Main(quest)
     local resource2 = resources:NewResource()
     resources:TryAcquire(resource2, getStateThing, 4)
     repeat
+        local hero = quest:GetHero()
         scratchValue = scratchValue2
         if quest:IsDistanceBetweenThingsUnder(hero, getStateThing, 8.0) then
             goto LAB_00e18ce8
@@ -61,13 +62,14 @@ function Main(quest)
         ::LAB_00e18ce8::
         predicateResult = false
         ::FLOW_past_lab_00e18ce8::
-        if scratchValue & 128 ~= 0 then
+        if (scratchValue & 128) ~= 0 then
             scratchValue = scratchValue & 127
         end
-        if scratchValue & 64 ~= 0 then
+        if (scratchValue & 64) ~= 0 then
             scratchValue = scratchValue & 191
         end
-        if scratchValue & 32 ~= 0 then
+        scratchValue2 = scratchValue
+        if (scratchValue & 32) ~= 0 then
             scratchValue2 = scratchValue & 223
         end
         if predicateResult then
@@ -76,7 +78,8 @@ function Main(quest)
             if not quest:IsActiveThreadTerminating() then
                 resources:PrepareResource(resource2)
                 quest:OverrideMusic(23, false, false)
-                quest:GiveThingBestEnemyTarget(getStateThing, hero)
+                local hero2 = quest:GetHero()
+                quest:GiveThingBestEnemyTarget(getStateThing, hero2)
                 missionFailed = quest:GetStateBool("MissionFailed")
                 goto LAB_00e18d99
             end
@@ -96,12 +99,14 @@ function Main(quest)
     if not quest:IsActiveThreadTerminating() then
         if not quest:GetStateBool("MissionSucceeded") then
             if quest:IsActiveThreadTerminating() then goto LAB_00e18e80 end
-            quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
+            local pQuestName = quest:GetActiveQuestName()
+            quest:SetQuestAsFailed(pQuestName, true, "", true)
         else
             if quest:IsActiveThreadTerminating() then goto LAB_00e18e80 end
             quest:SetMasterGameState("WhiteBalverineFinished", true)
         end
-        quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+        local getActiveQuestName = quest:GetActiveQuestName()
+        quest:DeactivateQuestLater(getActiveQuestName, 0)
         quest:DisplayQuestInfo(false)
     end
     goto LAB_00e18e80
@@ -124,7 +129,7 @@ end
 -- Q_WhiteBalverineWW.MonitorBalverine (retail 0x00e18eb0)
 function MonitorBalverine(quest)
     local pThing = quest:GetStateThing("WhiteBalverine")
-    quest:AddQuestInfoBarHealth(pThing, {R = 255, G = 255, B = 255, A = 255}, "HUD_QUEST_ICON_WHITE_BALVERINE", 1.0)
+    local healthBar = quest:AddQuestInfoBarHealth(pThing, {R = 255, G = 255, B = 255, A = 255}, "HUD_QUEST_ICON_WHITE_BALVERINE", 1.0)
     quest:DisplayQuestInfo(true)
     local scratchValue = pThing ~= nil and pThing:MsgIsKilledBy("")
     while true do
@@ -145,56 +150,69 @@ end
 
 -- Q_WhiteBalverineWW.SpawnBalverines (retail 0x00e19560)
 function SpawnBalverines(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult7, scratchValue, scratchValue2, scratchValue3, pPosition
-    local thing, this_01, this_02, resource2, movie3
+    local thing, balverine01, getRandomThingWithScriptName, this_01, this_02, resource, resource2
+    local movie3
     local pThing = quest:GetStateThing("WhiteBalverine")
     local function ReleaseEverything()
         resources:DestroyMovie(movie3)
         local this_02 = resource2
         resources:ReleaseResource(this_02)
     end
+    local function ReleaseEverything2()
+        local this_02 = resource
+        resources:ReleaseResource(this_02)
+    end
     predicateResult = false
     predicateResult7 = false
     quest:ModifyThingHealth(pThing, 250.0, false)
-    local scratchValue7 = math.tointeger(math.modf(quest:GetHealth(pThing) * 0.25))
-    local scratchValue8 = math.tointeger(math.modf(quest:GetHealth(pThing) - scratchValue7))
+    local fret_0 = quest:GetHealth(pThing)
+    local scratchValue5 = math.tointeger(math.modf(fret_0 * 0.25))
+    local fret_00 = quest:GetHealth(pThing)
+    local scratchValue6 = math.tointeger(math.modf(fret_00 - scratchValue5))
     scratchValue = 1
     scratchValue3 = 1
     repeat
         if not quest:NewScriptFrame() then return end
-        if quest:GetHealth(pThing) < scratchValue8 then
+        if quest:GetHealth(pThing) < scratchValue6 then
+            if quest:IsActiveThreadTerminating() then return end
             thing = quest:GetThingWithScriptName("MK_WBW_FIRSTSPAWN")
+            local hero = quest:GetHero()
             if quest:IsDistanceBetweenThingsUnder(thing, hero, 10.0) then
+                if quest:IsActiveThreadTerminating() then return end
                 thing = quest:GetThingWithScriptName("MK_WBW_FIRSTSPAWNB")
                 predicateResult = true
             end
             scratchValue2 = 0
             if 0 < scratchValue then
                 repeat
-                    if quest:IsActiveThreadTerminating() then return end
+                    if quest:IsActiveThreadTerminating() then thing = nil; return end
                     if not (thing ~= nil and not thing:IsNull()) then
                         pPosition = {x = 0, y = 0, z = 0}
                     else
                         pPosition = thing:GetPos()
                     end
-                    quest:GiveThingBestEnemyTarget(quest:CreateCreature("CREATURE_BALVERINE_01", pPosition, "WBWW_SoldierBalverine"), hero)
+                    balverine01 = quest:CreateCreature("CREATURE_BALVERINE_01", pPosition, "WBWW_SoldierBalverine", false)
+                    local hero2 = quest:GetHero()
+                    quest:GiveThingBestEnemyTarget(balverine01, hero2)
                     quest:Pause(0.2)
+                    balverine01 = nil
                     scratchValue2 = scratchValue2 + 1
-                until scratchValue2 >= scratchValue3
+                until not (scratchValue2 < scratchValue3)
             end
-            if quest:IsActiveThreadTerminating() then return end
+            if quest:IsActiveThreadTerminating() then thing = nil; return end
             quest:EntitySetAsDamageable(pThing, false)
             resource2 = resources:NewResource()
             resources:TryAcquire(resource2, pThing, 4)
             movie3 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             quest:Pause(0.2)
-            quest:EntitySetAttackThingImmediately(pThing, hero, true, true)
+            local hero3 = quest:GetHero()
+            quest:EntitySetAttackThingImmediately(pThing, hero3, true, true)
             quest:Pause(0.2)
             quest:PlaySoundOnThing(pThing, "SND_LONGWOLFHOWL_01")
-            resources:PlayAnimation(resource2, "HOWL", false, false, false, true, true, false, false)
+            resources:PlayAnimationWithNativeArgument5(resource2, "HOWL", false, false, false, true, false, false)
             while resources:IsPerformingScriptTask(resource2) do
                 quest:NewScriptFrame()
                 if quest:IsActiveThreadTerminating() then
@@ -215,9 +233,11 @@ function SpawnBalverines(quest)
             quest:EntitySetAsDamageable(pThing, true)
             if not predicateResult7 then
                 if quest:IsActiveThreadTerminating() then return end
-                local resource = resources:NewResource()
-                resources:TryAcquire(resource, quest:GetRandomThingWithScriptName("WBWW_SoldierBalverine"), 4)
+                resource = resources:NewResource()
+                getRandomThingWithScriptName = quest:GetRandomThingWithScriptName("WBWW_SoldierBalverine")
+                resources:TryAcquire(resource, getRandomThingWithScriptName, 4)
                 if predicateResult then
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
                     local actorMap = resources:NewActorMap()
                     resources:SetActor(actorMap, "BALV", resource)
                     local movie = resources:StartMovie("")
@@ -229,6 +249,7 @@ function SpawnBalverines(quest)
                     resources:DestroyMovie(movie)
                     this_01 = actorMap
                 else
+                    if quest:IsActiveThreadTerminating() then ReleaseEverything2(); return end
                     local actorMap2 = resources:NewActorMap()
                     resources:SetActor(actorMap2, "BALV", resource)
                     local movie2 = resources:StartMovie("")
@@ -244,12 +265,13 @@ function SpawnBalverines(quest)
                 predicateResult7 = true
                 resources:ReleaseResource(resource)
             end
-            scratchValue8 = scratchValue8 - scratchValue7
+            scratchValue6 = scratchValue6 - scratchValue5
             scratchValue = scratchValue3 + 1
             scratchValue3 = scratchValue
         end
         if 3 < scratchValue then
-            return
+            quest:IsActiveThreadTerminating()
+            do return end
         end
     until false
 end

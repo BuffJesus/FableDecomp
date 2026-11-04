@@ -197,6 +197,11 @@ function Main(quest, me)
                     pcVar14 = "TEXT_QST_028_GUILDMASTER_MELEE_HIT_WHISPER"
                     pCVar5 = quest:GetHero()
                     r2 = me:Speak(pCVar5, pcVar14, iVar7, (iVar6 ~= 0), (iVar20 ~= 0), (iVar17 ~= 0))
+                    if not r2 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_204)
+                        goto LAB_00d5933c
+                    end
                     iVar7 = me:IsPerformingScriptTask()
                     cVar4 = iVar7
                     while cVar4 do
@@ -528,7 +533,7 @@ function Main(quest, me)
             pCVar5 = quest:GetThingWithScriptName("SkillApprenticeMarker")
             bVar3 = false
             pCVar9 = pCVar5:GetPos()
-            r3 = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", pCVar9, "MeleeThunder")
+            r3 = quest:CreateCreature("CREATURE_RIVAL_HERO_THUNDER", pCVar9, "MeleeThunder", bVar3)
             quest:EntitySetAppearanceMorphSeed(r3, 1)
             xStack_214 = resources:NewResource()
             resources:PrepareResource(xStack_214)
@@ -664,7 +669,7 @@ function Main(quest, me)
             f_stk_1d4 = fret_06
             fret_07 = quest:GetHealth(r1)
             ixVar13 = 0
-            f_stk_1d4 = ((f_stk_74 - fret_07) - (f_stk_70 - f_stk_1d4))
+            f_stk_1d4 = (string.unpack("<f", string.pack("<f", ((f_stk_74 - fret_07) - (f_stk_70 - f_stk_1d4)))))
             iVar7 = 0
             repeat
                 iVar6 = iVar7
@@ -831,8 +836,8 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
-                        -- TODO(native): iVar7 = *xStack_23c
-                        iVar7 = nil --[[unresolved native value]]
+                        -- reviewed native saved-table staging: iVar7 = *xStack_23c
+                        iVar7 = nil --[[reviewed native interface-table staging]]
                         __cleanup_LAB_00d5a962(); return
                     end
                     quest:TakeObjectFromHero("OBJECT_IRON_LONGSWORD")
@@ -879,11 +884,11 @@ function Main(quest, me)
             pCVar10 = quest:GetThingWithScriptName("MeleeApprenticeMarker")
             bVar3 = false
             pCVar9 = pCVar10:GetPos()
-            r5 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar9, "MeleeApprentice")
+            r5 = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pCVar9, "MeleeApprentice", bVar3)
             pCVar10 = quest:GetThingWithScriptName("CombatApprenticeMarker")
             bVar3 = false
             pCVar9 = pCVar10:GetPos()
-            r6 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar9, "CombatApprentice")
+            r6 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar9, "CombatApprentice", bVar3)
             delay = 0
             pCVar11 = quest:GetActiveQuestName()
             quest:DeactivateQuestLater(pCVar11, delay)

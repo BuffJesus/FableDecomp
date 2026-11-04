@@ -2,11 +2,11 @@
 import re
 from collections import defaultdict
 
-from tools.script_recovery.lua_local_versions import flow_graph
+from tools.script_recovery.lua_local_versions import flow_graph, compound_scalar_stores
 from tools.script_recovery.readable_lua import GENERATED, rename_identifiers, tokens
 
 
-def inline_literal_locals(source):
+def inline_literal_locals(source, *, generated=GENERATED):
     original = source.splitlines(keepends=True)
     structure = ''.join(re.sub(r'[^\n]', ' ', t[0]) if t.lastgroup in
                         ('comment', 'longcomment', 'string', 'longstring') else t[0]
@@ -19,14 +19,15 @@ def inline_literal_locals(source):
         match = re.fullmatch(r'\s*local ([\w, ]+)\s*', line)
         if match:
             for name in map(str.strip, match[1].split(',')):
-                if GENERATED.fullmatch(name):
+                if generated.fullmatch(name):
                     declarations[name].append(i)
     output, evidence = list(original), {}
+    inline_written = compound_scalar_stores(structure)
     marker = '__literal_read_marker__'
     while marker in source:
         marker += '_'
     for name, sites in declarations.items():
-        if len(sites) != 1:
+        if len(sites) != 1 or name in inline_written:
             continue
         declaration = sites[0]
         assignment = re.compile(r'^\s*' + re.escape(name) + r'\s*=(?!=)\s*(.*?)\s*$')

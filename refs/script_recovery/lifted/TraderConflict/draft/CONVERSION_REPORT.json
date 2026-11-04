@@ -513,7 +513,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "GetPos",
             "CreateCreature",
@@ -530,7 +530,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating"
           ],
-          "lines": 130,
+          "lines": 131,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -889,7 +889,7 @@
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -1068,7 +1068,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "AddLineToConversation",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "SetTimer",
             "NewScriptFrame",
             "IsActiveThreadTerminating"
@@ -1328,12 +1328,17 @@
           ]
         }
       },
-      "declaredFreeLocals": {
-        "FSE/TraderConflictEvil/Entities/TC_GuardSpawnPoint.lua": {
-          "Main": [
-            "pThing"
-          ]
-        }
+      "blockingSpeechCancellation": {
+        "FSE/TraderConflictEvil/Entities/TC_BanditFollower.lua": [
+          {
+            "line": 101,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_10)\n                            resources:ReleaseResource(xStack_20)\n                            return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "summary": {
         "owners": 6,
@@ -1637,9 +1642,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "IsThingAwareOfOtherThingInAnyWay: missing spThing2 (1 args for 2 params)"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "NewScriptFrame",
@@ -1911,9 +1914,7 @@
             "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "verify cleanup at LAB_00dfdd34 (lifted as early return)",
             "label LAB_00dfdc8a",
-            "label LAB_00dfda90",
-            "label LAB_00dfdd34",
-            "unlifted: cVar3 = (**(*piStack_14 + 0x12c))()"
+            "label LAB_00dfdd34"
           ],
           "calls": [
             "QUESTLIST_Copy",
@@ -1935,6 +1936,7 @@
             "DeregisterTimer",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsThingAwareOfOtherThingInAnyWay",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "GiveThingBestEnemyTarget",
             "GetTimer",
@@ -1961,8 +1963,6 @@
             "AddLineToConversation",
             "SetTimer",
             "MiniMapAddMarker",
-            "IsEqualTo",
-            "LOCALLIST_Erase",
             "LOCALLIST_At",
             "GetHero",
             "IsThingAwareOfOtherThingInAnyWay",
@@ -1994,9 +1994,12 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
-            "DeregisterTimer"
+            "DeregisterTimer",
+            "TrackThingOutput",
+            "AssignThingOutput",
+            "RetireThingOutput"
           ],
-          "lines": 257,
+          "lines": 248,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2006,7 +2009,6 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_after_lab_00dfda90;",
             "goto FLOW_past_lab_00dfd643;",
             "goto FLOW_past_lab_00dfd841;",
             "goto FLOW_past_lab_00dfda32;",
@@ -2017,17 +2019,18 @@
             "goto LAB_00dfdaff;",
             "goto LAB_00dfde13;",
             "if ((char)iVar4 != '\\0') goto LAB_00dfd841;",
+            "if (LOCALLIST_Count(xStack_24) != 0) goto LAB_00dfda90;",
             "if (bVar2) goto LAB_00dfd841;",
             "if (this[0x61] != (CQ_TraderConflictGoodScript)0x0) goto LAB_00dfdb8c;"
           ],
           "nativeLabels": [
-            "FLOW_after_lab_00dfda90",
             "FLOW_past_lab_00dfd643",
             "FLOW_past_lab_00dfd841",
             "FLOW_past_lab_00dfda32",
             "LAB_00dfd643",
             "LAB_00dfd841",
             "LAB_00dfda32",
+            "LAB_00dfda90",
             "LAB_00dfdabb",
             "LAB_00dfdaff",
             "LAB_00dfdb8c",
@@ -2148,7 +2151,7 @@
             "GetDataString",
             "ENGINE_Concat",
             "AddLineToConversation",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -2165,7 +2168,7 @@
             "IsEqualTo",
             "IsPlayerHoldingLockTargetButton",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -2467,7 +2470,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1067,
+          "lines": 1061,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -2543,7 +2546,7 @@
             "if (iVar17 == 0) goto LAB_00dfe2e9;",
             "if (iVar17 == 0) goto LAB_00dffb06;",
             "if (iVar17 == 0) goto LAB_00e001c0;",
-            "if (native_arg_sequence_3) goto LAB_00e005b1;"
+            "if (native_arg_sequence_2) goto LAB_00e005b1;"
           ],
           "nativeLabels": [
             "FLOW_past_lab_00dfe2e9",
@@ -2884,7 +2887,7 @@
             "GetHero",
             "ENGINE_IsDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -3208,10 +3211,10 @@
             "GetPos",
             "CreateCreature",
             "GetHero",
-            "ENGINE_SquaredDistance",
+            "ENGINE_RetailDistance",
             "ENGINE_Round",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "GetHero",
             "GiveThingBestEnemyTarget"
@@ -3432,16 +3435,29 @@
       "cleanupRegions": {
         "FSE/TraderConflictGood/TraderConflictGood.lua": {
           "LAB_00dfdd34": [
-            "quest:DeregisterTimer(i_stk_3c)"
+            "resources:RetireThingOutput(traderOwner); traderOwner = 0; quest:DeregisterTimer(i_stk_3c)"
           ]
         }
       },
-      "declaredFreeLocals": {
-        "FSE/TraderConflictGood/TraderConflictGood.lua": {
-          "AttackPeople": [
-            "piStack_14"
-          ]
-        }
+      "blockingSpeechCancellation": {
+        "FSE/TraderConflictGood/Entities/TraderToRescue.lua": [
+          {
+            "line": 482,
+            "actor": "me",
+            "query": "iVar17",
+            "loop": "cVar7",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_1c)\n                                goto LAB_00e005b1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 830,
+            "actor": "me",
+            "query": "iVar17",
+            "loop": "cVar7",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_2c)\n                                goto LAB_00e005ac",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "sharedHelpers": {
         "path": "FSE/TraderConflictGood/native_quest_helpers.lua",
@@ -3468,7 +3484,7 @@
         "functionSyntaxPassed": 39,
         "fileSyntaxPassed": 9,
         "fileSyntaxChecked": 9,
-        "todo": 19
+        "todo": 16
       }
     }
   ],
@@ -3479,6 +3495,6 @@
     "functionSyntaxPassed": 65,
     "fileSyntaxPassed": 15,
     "fileSyntaxChecked": 15,
-    "todo": 26
+    "todo": 23
   }
 }

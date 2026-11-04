@@ -25,6 +25,7 @@ function Main(quest, me)
         f_stk_10 = require("V_StatueMaster.native_quest_helpers").helper_ED43D0(quest, me)
         f_stk_10 = f_stk_10 + 0.5
         bVar3 = true
+        fret_0 = math.fmod(f_stk_10, 1.0)
         quest:EntitySetFacingAngle(me, fret_0, bVar3)
         CVar2 = 0x0
         CVar4 = require("V_StatueMaster.native_quest_helpers").GetStatuePointingPosition(quest, me)

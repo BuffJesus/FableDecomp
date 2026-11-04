@@ -7,8 +7,8 @@ function GetStatuePointingPosition(quest, me)
     iVar1 = math.tointeger(math.modf(f_st0))
     iVar2 = 1
     repeat
-        if quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) - 0.03999999910593033 < (f_st0 - iVar1) then
-            if (f_st0 - iVar1) < quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) + 0.03999999910593033 then
+        if quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) - 0.03999999910593033 < (string.unpack("<f", string.pack("<f", (f_st0 - iVar1)))) then
+            if (string.unpack("<f", string.pack("<f", (f_st0 - iVar1)))) < quest:GetStateFloat(("AnglesToFaceList_" .. iVar2)) + 0.03999999910593033 then
                 return iVar2
             end
         end

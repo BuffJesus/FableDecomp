@@ -107,7 +107,7 @@ function Main(quest)
             alive = not quest:IsActiveThreadTerminating()
             bVar13 = not alive
             if bVar13 then goto LAB_00df75ec end
-            quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), nil --[[operand lost by the decompiler]])
+            quest:SetCombatNearbyBreakOffRange(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), 10.0)
             quest:EntitySetInFaction(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "FACTION_MONSTERS")
             quest:MiniMapAddMarker(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), "HUD_ORB_RED_SMALL")
             quest:EntitySetSleepEnabled(quest:GetStateListAt("AllCreatures", (CVar5) / 0xc), false)
@@ -143,7 +143,7 @@ function Main(quest)
                 pCVar6 = "TC_Villager"
                 pPosition = quest:GetStateListAt("AllCreatures", (CVar5) / 0xc):GetPos()
                 pCVar4 = "CREATURE_OAKVALE_VILLAGER_MALE_FAKE_SHOPKEEPER"
-                r2 = quest:CreateCreature(pCVar4, pPosition, pCVar6)
+                r2 = quest:CreateCreature(pCVar4, pPosition, pCVar6, (CVar15 ~= 0))
                 fVar16 = 10.0
                 ctr_74 = ctr_74 + 1
                 quest:SetCombatNearbyBreakOffRange(r2, fVar16)

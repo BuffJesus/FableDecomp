@@ -1,0 +1,66 @@
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index c1de095..2e669e9 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -6372,12 +6372,12 @@ void LuaQuestState::UpdateMiniGameInfoBar(float value) {
+     }
+ }
+ 
+-bool LuaQuestState::IsEntityPickPocketable(const std::shared_ptr<CScriptThing>& spThing) {
++bool LuaQuestState::IsEntityPickPocketable(sol::object thing) {
+     if (!m_pGameInterface || !IsEntityPickPocketable_API) {
+         Log("!!! ERROR: IsEntityPickPocketable - API not available!");
+         return false;
+     }
+-    CScriptThing* pThing = spThing.get();
++    CScriptThing* pThing = GetScriptThingFromSolObject(thing);
+     if (!pThing) {
+         Log("!!! ERROR: IsEntityPickPocketable - pThing is null!");
+         return false;
+@@ -6385,12 +6385,12 @@ bool LuaQuestState::IsEntityPickPocketable(const std::shared_ptr<CScriptThing>&
+     return IsEntityPickPocketable_API(m_pGameInterface, pThing);
+ }
+ 
+-bool LuaQuestState::IsEntityPickLockable(const std::shared_ptr<CScriptThing>& spThing) {
++bool LuaQuestState::IsEntityPickLockable(sol::object thing) {
+     if (!m_pGameInterface || !IsEntityPickLockable_API) {
+         Log("!!! ERROR: IsEntityPickLockable - API not available!");
+         return false;
+     }
+-    CScriptThing* pThing = spThing.get();
++    CScriptThing* pThing = GetScriptThingFromSolObject(thing);
+     if (!pThing) {
+         Log("!!! ERROR: IsEntityPickLockable - pThing is null!");
+         return false;
+@@ -6398,12 +6398,12 @@ bool LuaQuestState::IsEntityPickLockable(const std::shared_ptr<CScriptThing>& sp
+     return IsEntityPickLockable_API(m_pGameInterface, pThing);
+ }
+ 
+-bool LuaQuestState::IsEntityStealable(const std::shared_ptr<CScriptThing>& spThing) {
++bool LuaQuestState::IsEntityStealable(sol::object thing) {
+     if (!m_pGameInterface || !IsEntityStealable_API) {
+         Log("!!! ERROR: IsEntityStealable - API not available!");
+         return false;
+     }
+-    CScriptThing* pThing = spThing.get();
++    CScriptThing* pThing = GetScriptThingFromSolObject(thing);
+     if (!pThing) {
+         Log("!!! ERROR: IsEntityStealable - pThing is null!");
+         return false;
+diff --git a/FableScriptExtender/LuaQuestState.h b/FableScriptExtender/LuaQuestState.h
+index f788440..7ba95c3 100644
+--- a/FableScriptExtender/LuaQuestState.h
++++ b/FableScriptExtender/LuaQuestState.h
+@@ -773,9 +773,9 @@ public:
+     bool IsQuestCompleted(const std::string& questName);
+     bool IsQuestFailed(const std::string& questName);
+     bool IsToFailQuestOnDeath();
+-    bool IsEntityPickPocketable(const std::shared_ptr<CScriptThing>& spThing);
+-    bool IsEntityPickLockable(const std::shared_ptr<CScriptThing>& spThing);
+-    bool IsEntityStealable(const std::shared_ptr<CScriptThing>& spThing);
++    bool IsEntityPickPocketable(sol::object thing);
++    bool IsEntityPickLockable(sol::object thing);
++    bool IsEntityStealable(sol::object thing);
+     bool IsScreenFadingOut();
+     bool IsCameraPosOnScreen(sol::table pos);
+     bool IsChestOpen(const std::shared_ptr<CScriptThing>& spChest);

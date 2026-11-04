@@ -40,7 +40,7 @@ function Main(quest, me)
                 quest:GiveThingBestEnemyTarget(me, pTarget)
             end
             quest:EntitySetInLimbo(me, false, true)
-            -- TODO(native): FadeInThing(p0,0x40000000);
+            me:FadeInThing(2.0)
             iVar1 = quest:GetStateInt("SummonersAlive")
             while iVar1 ~= 0 do
                 alive = quest:NewScriptFrame(me)

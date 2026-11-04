@@ -1,0 +1,81 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index be51965..1596ef8 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -3,6 +3,7 @@
+ #include "retail_thing_position_list.h"
+ #include "retail_float_math.h"
+ #include "retail_distance_math.h"
++#include "retail_position_pair.h"
+ #include "retail_theresa_guard_vector.h"
+ #include "retail_villager_speech_lists.h"
+ #include "retail_owned_timer.h"
+@@ -47,6 +48,14 @@ inline sol::table ReadRetailThingPosition(CScriptThing* actor, sol::this_state s
+                                  "z", static_cast<float>(position->z));
+ }
+ 
++inline sol::table ReadRetailThingPositionPair(CScriptThing* first, CScriptThing* second, sol::this_state state) {
++    const auto positions = RetailPositionPair::Read(first, second);
++    sol::state_view lua(state);
++    auto a = lua.create_table_with("x", positions.first.x, "y", positions.first.y, "z", positions.first.z);
++    auto b = lua.create_table_with("x", positions.second.x, "y", positions.second.y, "z", positions.second.z);
++    return lua.create_table_with("first", a, "second", b);
++}
++
+ class LuaRetailResources {
+ public:
+     explicit LuaRetailResources(CGameScriptInterfaceBase* game) : m_game(game) {
+@@ -2284,6 +2293,15 @@ inline void RegisterRetailResources(sol::state& lua) {
+     positions["GetPos"]=[](RetailThingPositionList& list,int index,sol::this_state ts) {
+         return ReadRetailThingPosition(list.PositionSource(index),ts);
+     };
++    positions["GetPosPair"]=[](RetailThingPositionList& list,int index,sol::object other,sol::this_state ts) {
++        CScriptThing* actor = nullptr;
++        if (other.valid() && other.get_type() != sol::type::nil) {
++            if (other.get_type() != sol::type::userdata || !other.is<CScriptThing*>())
++                throw std::runtime_error("Retail paired position requires a Thing or nil");
++            actor = other.as<CScriptThing*>();
++        }
++        return ReadRetailThingPositionPair(list.PositionSource(index),actor,ts);
++    };
+     positions["Close"]=&RetailThingPositionList::Close;
+     auto snapshot=lua.new_usertype<RetailBarrelWatchSnapshot>("RetailBarrelWatchSnapshot",sol::no_constructor);
+     snapshot["Refresh"]=&RetailBarrelWatchSnapshot::Refresh;
+diff --git a/FableScriptExtender/retail_position_pair.h b/FableScriptExtender/retail_position_pair.h
+new file mode 100644
+index 0000000..b3127b0
+--- /dev/null
++++ b/FableScriptExtender/retail_position_pair.h
+@@ -0,0 +1,32 @@
++#pragma once
++#include "FableAPI.h"
++#include "EntityScriptingAPI.h"
++#include <stdexcept>
++
++// The second position is borrowed first. Neither snapshot is read until the
++// first Thing's virtual getter has also returned; the callbacks may share or
++// update the underlying position storage. No actor copy or retain is introduced.
++class RetailPositionPair {
++public:
++    struct Snapshot { C3DVector first; C3DVector second; };
++    static Snapshot Read(CScriptThing* first, CScriptThing* second) {
++        auto* firstTable = first ? reinterpret_cast<CScriptThingVTable*>(first->pVTable) : nullptr;
++        if (!firstTable || !firstTable->GetPos)
++            throw std::runtime_error("Retail paired position Thing vtable unavailable");
++        auto* implementation = second ? reinterpret_cast<CGameScriptThing*>(second->pImp.Data) : nullptr;
++        const volatile C3DVector* secondPosition = nullptr;
++        if (implementation) {
++            auto* table = reinterpret_cast<CGameScriptThingVTable*>(implementation->pVTable);
++            if (!table || !table->GetPos)
++                throw std::runtime_error("Retail paired position implementation vtable unavailable");
++            secondPosition = table->GetPos(implementation);
++        } else {
++            secondPosition = ASLR<const volatile C3DVector*>(0x0143E8E0);
++        }
++        if (!secondPosition) throw std::runtime_error("Retail paired position returned a null vector");
++        const volatile C3DVector* firstPosition = firstTable->GetPos(first);
++        if (!firstPosition) throw std::runtime_error("Retail paired position returned a null vector");
++        return {{firstPosition->x, firstPosition->y, firstPosition->z},
++                {secondPosition->x, secondPosition->y, secondPosition->z}};
++    }
++};

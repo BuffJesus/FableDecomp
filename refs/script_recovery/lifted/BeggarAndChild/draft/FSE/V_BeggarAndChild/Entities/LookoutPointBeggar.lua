@@ -12,29 +12,33 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, aC_stk_28, au_stk_3c, bVar3, bVar5, cVar4, c_stk_1f5, fVar15, fVar2, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_1fc, native_arg_sequence_1, native_arg_sequence_2, native_arg_switch_3, native_arg_switch_4, p0, p0_00, p1, p2, pCVar6, pcVar16, piVar1, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar13, uVar7, uVar8, xStack_19c, xStack_1b0, xStack_1c0, xStack_1d0, xStack_1e0, xStack_1e4, xStack_1e8, xStack_1fc, xStack_210, xStack_9c, xStack_a8, xStack_c0, x_stk_1c, x_stk_28, x_stk_4, x_stk_40, x_stk_48, x_stk_60, x_stk_64, x_stk_6c, x_stk_90
+    local __native_condition_1, aC_stk_28, au_stk_3c, bVar3, bVar5, battleCryReplyCount, cVar4, fVar15, fVar2, iVar10, iVar17, iVar18, iVar19, iVar9, i_stk_1fc, initialReplySelected, native_arg_sequence_1, native_arg_sequence_2, native_arg_switch_3, native_arg_switch_4, p0_00, p1, p2, pCVar6, pcVar16, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar13, uVar7, uVar8, xStack_1b0, xStack_1c0, xStack_1d0, xStack_1e0, xStack_1e4, xStack_1e8, xStack_210, xStack_9c, xStack_a8, x_stk_1c, x_stk_28, x_stk_4, x_stk_40, x_stk_48, x_stk_60, x_stk_64, x_stk_6c, x_stk_90
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
     if not bVar3 then
         xStack_210 = resources:NewResource()
-        resources:PrepareResource(xStack_210)
+        local entityControl = xStack_210
+        resources:PrepareResource(entityControl)
         p2 = 4
         p1 = xStack_210
-        cVar4 = resources:TryAcquire(xStack_210, me, 4)
+        cVar4 = resources:TryAcquire(entityControl, me, 4)
         while not cVar4 do
             alive = quest:NewScriptFrame(me)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             if bVar3 then goto LAB_00e5b1a4 end
-            cVar4 = resources:TryAcquire(xStack_210, me, 4)
+            cVar4 = resources:TryAcquire(entityControl, me, 4)
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
             uVar8 = __native_entity_state:GetStateInt("self_0xc")
+            quest:SetIsPushableByHero(me, false)
             r1 = quest:GetThingWithScriptName("BeggarBully")
+            initialReplySelected = false
+            battleCryReplyCount = 0
             quest:SetThingHasInformation(me, false, false, false)
             quest:EntitySetAsKillable(me, false, true)
             cVar4 = quest:GetStateBool("BeggarHit")
@@ -51,8 +55,6 @@ function Main(quest, me)
                     if bVar3 then goto LAB_00e5b19b end
                     bVar3 = true
                 end
-                uVar7 = 0
-                -- TODO(native): xStack_1e4 = xStack_1e4 | 1;
                 bVar5 = me:MsgIsHitByHero()
                 if bVar5 then
                     goto LAB_00e58fce
@@ -68,7 +70,6 @@ function Main(quest, me)
                 ::LAB_00e58fce::
                 bVar5 = true
                 ::FLOW_past_lab_00e58fce::
-                    -- TODO(native): xStack_1e4 = uVar13 & 0xfffffffe;
                 if bVar5 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
@@ -80,18 +81,18 @@ function Main(quest, me)
                         bVar3 = not alive
                         if bVar3 then goto LAB_00e5b19b end
                         bVar3 = false
-                        if (c_stk_1f5 == 0) and (not quest:GetStateBool("TaughtBattleCry")) then
+                        if (not initialReplySelected) and (not quest:GetStateBool("TaughtBattleCry")) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
                             if bVar5 then goto LAB_00e5b19b end
-                            c_stk_1f5 = 1
+                            initialReplySelected = true
                             if quest:GetStateInt("BelchedAtBeggar") == 0 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar5 = not alive
                                 if bVar5 then goto LAB_00e5b19b end
                                 xStack_1c0 = resources:StartMovie("")
                                 quest:PauseAllNonScriptedEntities(true)
-                                au_stk_3c = resources:ScriptThing(r1)
+                                au_stk_3c = resources:ScriptThing(entityControl)
                                 pCVar6 = au_stk_3c
                                 fVar15 = quest:GetHealth(pCVar6)
                                 fVar2 = 0.0
@@ -103,6 +104,9 @@ function Main(quest, me)
                                     pcVar16 = "TEXT_QST_015_BEGGAR_FIRST_SPEAK"
                                     iVar9 = quest:GetHero()
                                     r2 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                    if not r2 then
+                                        goto LAB_00e59935
+                                    end
                                     iVar9 = me:IsPerformingScriptTask()
                                     cVar4 = iVar9
                                     while cVar4 do
@@ -137,7 +141,7 @@ function Main(quest, me)
                                     bVar5 = not alive
                                     if iVar9 == 1 then
                                         if not bVar5 then
-                                            aC_stk_28 = resources:ScriptThing(0x0)
+                                            aC_stk_28 = resources:ScriptThing(entityControl)
                                             iVar10 = aC_stk_28
                                             fVar15 = quest:GetHealth(iVar10)
                                             fVar2 = 0.0
@@ -149,6 +153,9 @@ function Main(quest, me)
                                                 pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY"
                                                 iVar9 = quest:GetHero()
                                                 r3 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                                if not r3 then
+                                                    goto LAB_00e59935
+                                                end
                                                 iVar9 = me:IsPerformingScriptTask()
                                                 cVar4 = iVar9
                                                 while cVar4 do
@@ -218,11 +225,11 @@ function Main(quest, me)
                                         end
                                         -- LAB_00e5b1cf: (native jump target)
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_1b0)
+                                        resources:DestroyMovie(xStack_1c0)
                                         goto LAB_00e5b19b
                                     end
                                     if not bVar5 then
-                                        x_stk_1c = resources:ScriptThing(0x0)
+                                        x_stk_1c = resources:ScriptThing(entityControl)
                                         iVar10 = x_stk_1c
                                         fVar15 = quest:GetHealth(iVar10)
                                         fVar2 = 0.0
@@ -234,6 +241,9 @@ function Main(quest, me)
                                             pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_REFUSED"
                                             iVar9 = quest:GetHero()
                                             r4 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                            if not r4 then
+                                                goto LAB_00e59935
+                                            end
                                             iVar9 = me:IsPerformingScriptTask()
                                             cVar4 = iVar9
                                             while cVar4 do
@@ -253,13 +263,14 @@ function Main(quest, me)
                                     goto FLOW_past_lab_00e59a93
                                     ::LAB_00e59a93::
                                     quest:PauseAllNonScriptedEntities(false)
+                                    this_00 = xStack_1c0
                                     goto LAB_00e59aa3
                                     ::FLOW_past_lab_00e59a93::
                                 end
                                 ::FLOW_past_lab_00e596a9::
                                 ::LAB_00e59935::
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_1b0)
+                                resources:DestroyMovie(xStack_1c0)
                                 goto LAB_00e5b19b
                             end
                             alive = not quest:IsActiveThreadTerminating()
@@ -267,7 +278,7 @@ function Main(quest, me)
                             if bVar5 then goto LAB_00e5b19b end
                             xStack_1b0 = resources:StartMovie("")
                             quest:PauseAllNonScriptedEntities(true)
-                            x_stk_6c = resources:ScriptThing(r1)
+                            x_stk_6c = resources:ScriptThing(entityControl)
                             pCVar6 = x_stk_6c
                             fVar15 = quest:GetHealth(pCVar6)
                             fVar2 = 0.0
@@ -279,6 +290,9 @@ function Main(quest, me)
                                 pcVar16 = "TEXT_QST_015_BEGGAR_FIRST_SPEAK_BELCH"
                                 iVar9 = quest:GetHero()
                                 r5 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                if not r5 then
+                                    goto LAB_00e5b1b8
+                                end
                                 iVar9 = me:IsPerformingScriptTask()
                                 cVar4 = iVar9
                                 while cVar4 do
@@ -297,7 +311,7 @@ function Main(quest, me)
                             goto FLOW_past_lab_00e59429
                             ::LAB_00e59429::
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_19c)
+                            resources:DestroyMovie(xStack_1b0)
                             goto LAB_00e5b19b
                             ::FLOW_past_lab_00e59429::
                             ::LAB_00e591a3::
@@ -317,7 +331,7 @@ function Main(quest, me)
                             bVar5 = not alive
                             if iVar9 == 1 then
                                 if not bVar5 then
-                                    x_stk_40 = resources:ScriptThing(xStack_1fc)
+                                    x_stk_40 = resources:ScriptThing(entityControl)
                                     iVar10 = x_stk_40
                                     fVar15 = quest:GetHealth(iVar10)
                                     fVar2 = 0.0
@@ -329,6 +343,9 @@ function Main(quest, me)
                                         pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY"
                                         iVar9 = quest:GetHero()
                                         r6 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                        if not r6 then
+                                            goto LAB_00e59429
+                                        end
                                         iVar9 = me:IsPerformingScriptTask()
                                         cVar4 = iVar9
                                         while cVar4 do
@@ -351,6 +368,7 @@ function Main(quest, me)
                                     ::LAB_00e594c9::
                                     quest:SetStateBool("TaughtBattleCry", true)
                                     quest:PauseAllNonScriptedEntities(false)
+                                    this_00 = xStack_1b0
                                     goto LAB_00e59aa3
                                     ::FLOW_past_lab_00e594c9::
                                     cVar4 = quest:IsXbox()
@@ -402,11 +420,11 @@ function Main(quest, me)
                             goto FLOW_past_lab_00e5b1b8
                             ::LAB_00e5b1b8::
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_19c)
+                            resources:DestroyMovie(xStack_1b0)
                             goto LAB_00e5b19b
                             ::FLOW_past_lab_00e5b1b8::
                             if bVar5 then goto LAB_00e59429 end
-                            x_stk_28 = resources:ScriptThing(xStack_1fc)
+                            x_stk_28 = resources:ScriptThing(entityControl)
                             iVar10 = x_stk_28
                             fVar15 = quest:GetHealth(iVar10)
                             fVar2 = 0.0
@@ -418,6 +436,9 @@ function Main(quest, me)
                                 pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_REFUSED"
                                 iVar9 = quest:GetHero()
                                 r7 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                if not r7 then
+                                    goto LAB_00e5b1b8
+                                end
                                 iVar9 = me:IsPerformingScriptTask()
                                 cVar4 = iVar9
                                 while cVar4 do
@@ -433,6 +454,7 @@ function Main(quest, me)
                                 if bVar5 then goto LAB_00e59429 end
                             end
                             quest:PauseAllNonScriptedEntities(false)
+                            this_00 = xStack_1b0
                             ::LAB_00e59aa3::
                             resources:DestroyMovie(this_00)
                             if not quest:GetStateBool("QuestCardGiven") then
@@ -440,7 +462,7 @@ function Main(quest, me)
                                 bVar5 = not alive
                                 if bVar5 then goto LAB_00e5b19b end
                                 uVar8 = quest:GetActiveQuestName()
-                                quest:GiveHeroQuestCardDirectly(uVar8, "OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", xStack_c0)
+                                quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_BEGGAR_AND_CHILD", uVar8, false)
                                 quest:SetStateBool("QuestCardGiven", true)
                             end
                         else
@@ -458,7 +480,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar5 = not alive
                                     if not bVar5 then
-                                        x_stk_48 = resources:ScriptThing(xStack_1fc)
+                                        x_stk_48 = resources:ScriptThing(entityControl)
                                         iVar10 = x_stk_48
                                         fVar15 = quest:GetHealth(iVar10)
                                         fVar2 = 0.0
@@ -470,6 +492,9 @@ function Main(quest, me)
                                             pcVar16 = "TEXT_QST_015_BEGGAR_REPEAT_BELCH_RETURN"
                                             iVar9 = quest:GetHero()
                                             r8 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                            if not r8 then
+                                                goto LAB_00e5b1e6
+                                            end
                                             iVar9 = me:IsPerformingScriptTask()
                                             cVar4 = iVar9
                                             while cVar4 do
@@ -491,7 +516,7 @@ function Main(quest, me)
                                             alive = quest:NewScriptFrame(me)
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar5 = not alive
-                                            if bVar5 then goto LAB_00e5a527 end
+                                            if bVar5 then goto LAB_00e5b1e6 end
                                             iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
                                         end
                                         alive = not quest:IsActiveThreadTerminating()
@@ -501,7 +526,7 @@ function Main(quest, me)
                                             bVar5 = not alive
                                             if iVar9 == 1 then
                                                 if not bVar5 then
-                                                    x_stk_64 = resources:ScriptThing(0x0)
+                                                    x_stk_64 = resources:ScriptThing(entityControl)
                                                     iVar10 = x_stk_64
                                                     fVar15 = quest:GetHealth(iVar10)
                                                     fVar2 = 0.0
@@ -513,19 +538,22 @@ function Main(quest, me)
                                                         pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY"
                                                         iVar9 = quest:GetHero()
                                                         r9 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                                        if not r9 then
+                                                            goto LAB_00e5b1e6
+                                                        end
                                                         iVar9 = me:IsPerformingScriptTask()
                                                         cVar4 = iVar9
                                                         while cVar4 do
                                                             alive = quest:NewScriptFrame(me)
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar5 = not alive
-                                                            if bVar5 then goto LAB_00e5a527 end
+                                                            if bVar5 then goto LAB_00e5b1e6 end
                                                             iVar9 = me:IsPerformingScriptTask()
                                                             cVar4 = iVar9
                                                         end
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar5 = not alive
-                                                        if bVar5 then goto LAB_00e5a527 end
+                                                        if bVar5 then goto LAB_00e5b1e6 end
                                                     end
                                                     quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 3, 10)
                                                     if quest:GetStateBool("ExpressionTutorialShown") then
@@ -547,14 +575,14 @@ function Main(quest, me)
                                                                 alive = quest:NewScriptFrame(me)
                                                                 alive = not quest:IsActiveThreadTerminating()
                                                                 bVar5 = not alive
-                                                                if bVar5 then goto LAB_00e5a527 end
+                                                                if bVar5 then goto LAB_00e5b1e6 end
                                                                 cVar4 = quest:MsgIsGameInfoClickedPast()
                                                             end
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar5 = not alive
                                                             if not bVar5 then goto LAB_00e5a066 end
                                                         end
-                                                        goto LAB_00e5a527
+                                                        goto LAB_00e5b1e6
                                                     end
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar5 = not alive
@@ -565,7 +593,7 @@ function Main(quest, me)
                                                             alive = quest:NewScriptFrame(me)
                                                             alive = not quest:IsActiveThreadTerminating()
                                                             bVar5 = not alive
-                                                            if bVar5 then goto LAB_00e5a527 end
+                                                            if bVar5 then goto LAB_00e5b1e6 end
                                                             cVar4 = quest:MsgIsGameInfoClickedPast()
                                                         end
                                                         alive = not quest:IsActiveThreadTerminating()
@@ -582,11 +610,11 @@ function Main(quest, me)
                                                 end
                                                 -- LAB_00e59c7a: (native jump target)
                                                 quest:PauseAllNonScriptedEntities(false)
-                                                resources:DestroyMovie(xStack_1d0)
+                                                resources:DestroyMovie(xStack_1e0)
                                                 goto LAB_00e5b19b
                                             end
                                             if not bVar5 then
-                                                x_stk_4 = resources:ScriptThing(0x0)
+                                                x_stk_4 = resources:ScriptThing(entityControl)
                                                 iVar10 = x_stk_4
                                                 fVar15 = quest:GetHealth(iVar10)
                                                 fVar2 = 0.0
@@ -598,19 +626,22 @@ function Main(quest, me)
                                                     pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT_FAIL_BELCH"
                                                     iVar9 = quest:GetHero()
                                                     r10 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                                    if not r10 then
+                                                        goto LAB_00e5b1e6
+                                                    end
                                                     iVar9 = me:IsPerformingScriptTask()
                                                     cVar4 = iVar9
                                                     while cVar4 do
                                                         alive = quest:NewScriptFrame(me)
                                                         alive = not quest:IsActiveThreadTerminating()
                                                         bVar5 = not alive
-                                                        if bVar5 then goto LAB_00e5a527 end
+                                                        if bVar5 then goto LAB_00e5b1e6 end
                                                         iVar9 = me:IsPerformingScriptTask()
                                                         cVar4 = iVar9
                                                     end
                                                     alive = not quest:IsActiveThreadTerminating()
                                                     bVar5 = not alive
-                                                    if bVar5 then goto LAB_00e5a527 end
+                                                    if bVar5 then goto LAB_00e5b1e6 end
                                                 end
                                                 goto LAB_00e5a126
                                             end
@@ -623,7 +654,7 @@ function Main(quest, me)
                                         end
                                         -- LAB_00e59fcd: (native jump target)
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_1d0)
+                                        resources:DestroyMovie(xStack_1e0)
                                         goto LAB_00e5b19b
                                     end
                                     ::LAB_00e5b1fc::
@@ -633,7 +664,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar5 = not alive
                                     if not bVar5 then
-                                        x_stk_90 = resources:ScriptThing(xStack_1fc)
+                                        x_stk_90 = resources:ScriptThing(entityControl)
                                         pCVar6 = x_stk_90
                                         fVar15 = quest:GetHealth(pCVar6)
                                         fVar2 = 0.0
@@ -645,19 +676,22 @@ function Main(quest, me)
                                             pcVar16 = "TEXT_QST_015_BEGGAR_REPEAT_BATTLE_CRY"
                                             iVar9 = quest:GetHero()
                                             r11 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                            if not r11 then
+                                                goto LAB_00e5b1e6
+                                            end
                                             iVar9 = me:IsPerformingScriptTask()
                                             cVar4 = iVar9
                                             while cVar4 do
                                                 alive = quest:NewScriptFrame(me)
                                                 alive = not quest:IsActiveThreadTerminating()
                                                 bVar5 = not alive
-                                                if bVar5 then goto LAB_00e5a527 end
+                                                if bVar5 then goto LAB_00e5b1e6 end
                                                 iVar9 = me:IsPerformingScriptTask()
                                                 cVar4 = iVar9
                                             end
                                             alive = not quest:IsActiveThreadTerminating()
                                             bVar5 = not alive
-                                            if bVar5 then goto LAB_00e5a527 end
+                                            if bVar5 then goto LAB_00e5b1e6 end
                                         end
                                         quest:PauseAllNonScriptedEntities(false)
                                         resources:DestroyMovie(xStack_1e0)
@@ -684,7 +718,148 @@ function Main(quest, me)
                                 if bVar5 then
                                     goto LAB_00e5a527
                                 end
-                                goto FLOW_hoist_lab_00e5a527_1
+                                goto FLOW_past_lab_00e5a527
+                                ::LAB_00e5a527::
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_1d0)
+                                goto LAB_00e5b19b
+                                ::FLOW_past_lab_00e5a527::
+                                quest:GiveHeroYesNoQuestion("TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
+                                iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                while iVar9 < 0 do
+                                    alive = quest:NewScriptFrame(me)
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar5 = not alive
+                                    if bVar5 then goto LAB_00e5b231 end
+                                    iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar5 = not alive
+                                if bVar5 then goto LAB_00e5a527 end
+                                alive = not quest:IsActiveThreadTerminating()
+                                bVar5 = not alive
+                                if iVar9 == 1 then
+                                    if not bVar5 then
+                                        xStack_a8 = resources:ScriptThing(entityControl)
+                                        iVar10 = xStack_a8
+                                        fVar15 = quest:GetHealth(iVar10)
+                                        fVar2 = 0.0
+                                        if fVar2 < fVar15 then
+                                            iVar19 = 0
+                                            iVar18 = 1
+                                            iVar17 = 0
+                                            iVar10 = 0
+                                            pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY"
+                                            iVar9 = quest:GetHero()
+                                            r12 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                            if not r12 then
+                                                goto LAB_00e5a527
+                                            end
+                                            iVar9 = me:IsPerformingScriptTask()
+                                            cVar4 = iVar9
+                                            while cVar4 do
+                                                alive = quest:NewScriptFrame(me)
+                                                alive = not quest:IsActiveThreadTerminating()
+                                                bVar5 = not alive
+                                                if bVar5 then goto LAB_00e5a527 end
+                                                iVar9 = me:IsPerformingScriptTask()
+                                                cVar4 = iVar9
+                                            end
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar5 = not alive
+                                            if bVar5 then goto LAB_00e5b231 end
+                                        end
+                                        quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 3, 10)
+                                        if quest:GetStateBool("ExpressionTutorialShown") then
+                                            goto LAB_00e5a5c8
+                                        end
+                                        goto FLOW_past_lab_00e5a5c8
+                                        ::LAB_00e5a5c8::
+                                        quest:SetStateBool("TaughtBattleCry", true)
+                                        goto LAB_00e5a683
+                                        ::FLOW_past_lab_00e5a5c8::
+                                        cVar4 = quest:IsXbox()
+                                        if cVar4 then
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar5 = not alive
+                                            if not bVar5 then
+                                                quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS")
+                                                cVar4 = quest:MsgIsGameInfoClickedPast()
+                                                while not cVar4 do
+                                                    alive = quest:NewScriptFrame(me)
+                                                    alive = not quest:IsActiveThreadTerminating()
+                                                    bVar5 = not alive
+                                                    if bVar5 then goto LAB_00e5b231 end
+                                                    cVar4 = quest:MsgIsGameInfoClickedPast()
+                                                end
+                                                alive = not quest:IsActiveThreadTerminating()
+                                                bVar5 = not alive
+                                                if not bVar5 then goto LAB_00e5a5c1 end
+                                            end
+                                            goto LAB_00e5a527
+                                        end
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar5 = not alive
+                                        if not bVar5 then
+                                            quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS_PC")
+                                            cVar4 = quest:MsgIsGameInfoClickedPast()
+                                            while not cVar4 do
+                                                alive = quest:NewScriptFrame(me)
+                                                alive = not quest:IsActiveThreadTerminating()
+                                                bVar5 = not alive
+                                                if bVar5 then goto LAB_00e5a527 end
+                                                cVar4 = quest:MsgIsGameInfoClickedPast()
+                                            end
+                                            alive = not quest:IsActiveThreadTerminating()
+                                            bVar5 = not alive
+                                            if not bVar5 then
+                                                goto LAB_00e5a5c1
+                                            end
+                                        end
+                                        goto FLOW_past_lab_00e5a5c1
+                                        ::LAB_00e5a5c1::
+                                        quest:SetStateBool("ExpressionTutorialShown", true)
+                                        goto LAB_00e5a5c8
+                                        ::FLOW_past_lab_00e5a5c1::
+                                    end
+                                    goto LAB_00e5b231
+                                end
+                                goto FLOW_past_lab_00e5b231
+                                ::LAB_00e5b231::
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_1d0)
+                                goto LAB_00e5b19b
+                                ::FLOW_past_lab_00e5b231::
+                                if bVar5 then goto LAB_00e5a527 end
+                                xStack_9c = resources:ScriptThing(entityControl)
+                                iVar10 = xStack_9c
+                                fVar15 = quest:GetHealth(iVar10)
+                                fVar2 = 0.0
+                                if fVar2 < fVar15 then
+                                    iVar19 = 0
+                                    iVar18 = 1
+                                    iVar17 = 0
+                                    iVar10 = 0
+                                    pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT_FAIL"
+                                    iVar9 = quest:GetHero()
+                                    r13 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                    if not r13 then
+                                        goto LAB_00e5b231
+                                    end
+                                    iVar9 = me:IsPerformingScriptTask()
+                                    cVar4 = iVar9
+                                    while cVar4 do
+                                        alive = quest:NewScriptFrame(me)
+                                        alive = not quest:IsActiveThreadTerminating()
+                                        bVar5 = not alive
+                                        if bVar5 then goto LAB_00e5b231 end
+                                        iVar9 = me:IsPerformingScriptTask()
+                                        cVar4 = iVar9
+                                    end
+                                    alive = not quest:IsActiveThreadTerminating()
+                                    bVar5 = not alive
+                                    if bVar5 then goto LAB_00e5a527 end
+                                end
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar5 = not alive
@@ -693,7 +868,7 @@ function Main(quest, me)
                                     resources:DestroyMovie(xStack_1d0)
                                     goto LAB_00e5b19b
                                 end
-                                x_stk_60 = resources:ScriptThing(r1)
+                                x_stk_60 = resources:ScriptThing(entityControl)
                                 iVar10 = x_stk_60
                                 fVar15 = quest:GetHealth(iVar10)
                                 fVar2 = 0.0
@@ -704,14 +879,25 @@ function Main(quest, me)
                                 iVar10 = 0
                                 pcVar16 = "TEXT_QST_015_BEGGAR_REPEAT_BATTLE_CRY"
                                 iVar9 = quest:GetHero()
-                                r12 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                r14 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
+                                if not r14 then
+                                    -- LAB_00e5a527_c2: (native jump target)
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(xStack_1d0)
+                                    goto LAB_00e5b19b
+                                end
                                 iVar9 = me:IsPerformingScriptTask()
                                 cVar4 = iVar9
                                 while cVar4 do
                                     alive = quest:NewScriptFrame(me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar5 = not alive
-                                    if bVar5 then goto LAB_00e5a527 end
+                                    if bVar5 then
+                                        -- LAB_00e5a527_c2: (native jump target)
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(xStack_1d0)
+                                        goto LAB_00e5b19b
+                                    end
                                     iVar9 = me:IsPerformingScriptTask()
                                     cVar4 = iVar9
                                 end
@@ -719,147 +905,10 @@ function Main(quest, me)
                                 bVar5 = not alive
                                 if bVar5 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_1c0)
+                                    resources:DestroyMovie(xStack_1d0)
                                     goto LAB_00e5b19b
                                 end
                             end
-                            goto FLOW_past_lab_00e5a527
-                            ::LAB_00e5a527::
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_1d0)
-                            goto LAB_00e5b19b
-                            ::FLOW_hoist_lab_00e5a527_1::
-                            quest:GiveHeroYesNoQuestion("TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                            iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
-                            while iVar9 < 0 do
-                                alive = quest:NewScriptFrame(me)
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar5 = not alive
-                                if bVar5 then goto LAB_00e5b231 end
-                                iVar9 = quest:MsgIsQuestionAnsweredYesOrNo()
-                            end
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if bVar5 then goto LAB_00e5a527 end
-                            alive = not quest:IsActiveThreadTerminating()
-                            bVar5 = not alive
-                            if iVar9 == 1 then
-                                if not bVar5 then
-                                    xStack_a8 = resources:ScriptThing(xStack_1fc)
-                                    iVar10 = xStack_a8
-                                    fVar15 = quest:GetHealth(iVar10)
-                                    fVar2 = 0.0
-                                    if fVar2 < fVar15 then
-                                        iVar19 = 0
-                                        iVar18 = 1
-                                        iVar17 = 0
-                                        iVar10 = 0
-                                        pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_BATTLE_CRY"
-                                        iVar9 = quest:GetHero()
-                                        r13 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
-                                        iVar9 = me:IsPerformingScriptTask()
-                                        cVar4 = iVar9
-                                        while cVar4 do
-                                            alive = quest:NewScriptFrame(me)
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            bVar5 = not alive
-                                            if bVar5 then goto LAB_00e5a527 end
-                                            iVar9 = me:IsPerformingScriptTask()
-                                            cVar4 = iVar9
-                                        end
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar5 = not alive
-                                        if bVar5 then goto LAB_00e5b231 end
-                                    end
-                                    quest:SetPreferredQuickAccessItem("OBJECT_EXPRESSION_FART_DUMMY", 3, 10)
-                                    if quest:GetStateBool("ExpressionTutorialShown") then
-                                        goto LAB_00e5a5c8
-                                    end
-                                    goto FLOW_past_lab_00e5a5c8
-                                    ::LAB_00e5a5c8::
-                                    quest:SetStateBool("TaughtBattleCry", true)
-                                    goto LAB_00e5a683
-                                    ::FLOW_past_lab_00e5a5c8::
-                                    cVar4 = quest:IsXbox()
-                                    if cVar4 then
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar5 = not alive
-                                        if not bVar5 then
-                                            quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS")
-                                            cVar4 = quest:MsgIsGameInfoClickedPast()
-                                            while not cVar4 do
-                                                alive = quest:NewScriptFrame(me)
-                                                alive = not quest:IsActiveThreadTerminating()
-                                                bVar5 = not alive
-                                                if bVar5 then goto LAB_00e5b231 end
-                                                cVar4 = quest:MsgIsGameInfoClickedPast()
-                                            end
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            bVar5 = not alive
-                                            if not bVar5 then goto LAB_00e5a5c1 end
-                                        end
-                                        goto LAB_00e5a527
-                                    end
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar5 = not alive
-                                    if not bVar5 then
-                                        quest:DisplayGameInfo("TEXT_QST_015_TUTORIAL_EXPRESSIONS_PC")
-                                        cVar4 = quest:MsgIsGameInfoClickedPast()
-                                        while not cVar4 do
-                                            alive = quest:NewScriptFrame(me)
-                                            alive = not quest:IsActiveThreadTerminating()
-                                            bVar5 = not alive
-                                            if bVar5 then goto LAB_00e5a527 end
-                                            cVar4 = quest:MsgIsGameInfoClickedPast()
-                                        end
-                                        alive = not quest:IsActiveThreadTerminating()
-                                        bVar5 = not alive
-                                        if not bVar5 then
-                                            goto LAB_00e5a5c1
-                                        end
-                                    end
-                                    goto FLOW_past_lab_00e5a5c1
-                                    ::LAB_00e5a5c1::
-                                    quest:SetStateBool("ExpressionTutorialShown", true)
-                                    goto LAB_00e5a5c8
-                                    ::FLOW_past_lab_00e5a5c1::
-                                end
-                                goto LAB_00e5b231
-                            end
-                            goto FLOW_past_lab_00e5b231
-                            ::LAB_00e5b231::
-                            quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_1d0)
-                            goto LAB_00e5b19b
-                            ::FLOW_past_lab_00e5b231::
-                            if bVar5 then goto LAB_00e5a527 end
-                            xStack_9c = resources:ScriptThing(r1)
-                            iVar10 = xStack_9c
-                            fVar15 = quest:GetHealth(iVar10)
-                            fVar2 = 0.0
-                            if fVar2 < fVar15 then
-                                iVar19 = 0
-                                iVar18 = 1
-                                iVar17 = 0
-                                iVar10 = 0
-                                pcVar16 = "TEXT_QST_015_BEGGAR_TEACH_OFFER_REPEAT_FAIL"
-                                iVar9 = quest:GetHero()
-                                r14 = me:Speak(iVar9, pcVar16, iVar10, (iVar17 ~= 0), (iVar18 ~= 0), (iVar19 ~= 0))
-                                iVar9 = me:IsPerformingScriptTask()
-                                cVar4 = iVar9
-                                while cVar4 do
-                                    alive = quest:NewScriptFrame(me)
-                                    alive = not quest:IsActiveThreadTerminating()
-                                    bVar5 = not alive
-                                    if bVar5 then goto LAB_00e5b231 end
-                                    iVar9 = me:IsPerformingScriptTask()
-                                    cVar4 = iVar9
-                                end
-                                alive = not quest:IsActiveThreadTerminating()
-                                bVar5 = not alive
-                                if bVar5 then goto LAB_00e5a527 end
-                            end
-                            ::FLOW_past_lab_00e5a527::
                             ::LAB_00e5a683::
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_1d0)
@@ -888,7 +937,7 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then goto LAB_00e5b19b end
                     uVar8 = quest:GetThingWithScriptName("BeggarBully")
-                    quest:EntitySetFacingAngleTowardsThing(uVar8, r1)
+                    quest:EntitySetFacingAngleTowardsThing(me, uVar8)
                     quest:SetStateBool("BullyHasTaunted", false)
                     iVar9 = quest:RegisterTimer()
                     i_stk_1fc = iVar9
@@ -900,22 +949,20 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         if bVar5 then goto LAB_00e5b24b end
-                        bVar5 = quest:MsgOnQuestFailed("SCRIPT_NAME_HERO")
+                        bVar5 = me:IsTalkedToByHero()
                         if bVar5 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar3 = not alive
                             if bVar3 then goto LAB_00e5b24b end
                             bVar3 = true
                         end
-                        -- TODO(native): xStack_1e4 = xStack_1e4 | 8;
-                        -- TODO(native): MsgIsRegionUnloaded is not a ForgeFSE binding
-                        quest:MsgIsRegionUnloaded("SCRIPT_NAME_HERO")
+                        bVar5 = me:MsgIsHitByHero()
                         if bVar5 then
                             goto LAB_00e5a8ab
                         else
-                            bVar5 = quest:MsgIsActionModeButtonPressed()
+                            bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
                             if bVar5 then
-                                bVar5 = quest:MsgIsTutorialClickedPast()
+                                bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                                 if not bVar5 then goto LAB_00e5a8ab end
                             end
                             bVar5 = false
@@ -924,7 +971,6 @@ function Main(quest, me)
                         ::LAB_00e5a8ab::
                         bVar5 = true
                         ::FLOW_past_lab_00e5a8ab::
-                            -- TODO(native): xStack_1e4 = uVar13 & 0xfffffff7;
                         if bVar5 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -939,7 +985,7 @@ function Main(quest, me)
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
                         if bVar5 then goto LAB_00e5b24b end
-                        iVar9 = math.random(0, 32767)
+                        iVar9 = quest:RetailRandModulo(32768)
                         native_arg_switch_3 = iVar9 % 5
                         repeat
                             if native_arg_switch_3 == 0 then
@@ -970,9 +1016,9 @@ function Main(quest, me)
                             end
                         until not (false)
                         ::FLOW_native_label_1::
-                        uVar8 = quest:AddNewConversation(nil --[[missing]], false, false)
-                        quest:AddPersonToConversation(uVar8, nil --[[missing]])
-                        uVar7 = math.random(0, 32767)
+                        uVar8 = quest:AddNewConversation(me, false, false)
+                        quest:AddPersonToConversation(uVar8, r1)
+                        uVar7 = quest:RetailRandModulo(32768)
                         uVar7 = uVar7 & 0x80000003
                         bVar5 = uVar7 == 0
                         if uVar7 < 0 then
@@ -982,9 +1028,9 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
                             if bVar5 then goto LAB_00e5b24b end
-                            quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_01", nil --[[missing]], nil --[[missing]], false)
+                            quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_01", me, r1, false)
                         else
-                            uVar7 = math.random(0, 32767)
+                            uVar7 = quest:RetailRandModulo(32768)
                             uVar7 = uVar7 & 0x80000003
                             bVar5 = uVar7 == 0
                             if uVar7 < 0 then
@@ -994,9 +1040,9 @@ function Main(quest, me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar5 = not alive
                                 if bVar5 then goto LAB_00e5b24b end
-                                quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_02", nil --[[missing]], nil --[[missing]], false)
+                                quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_02", me, r1, false)
                             else
-                                uVar7 = math.random(0, 32767)
+                                uVar7 = quest:RetailRandModulo(32768)
                                 uVar7 = uVar7 & 0x80000003
                                 bVar5 = uVar7 == 0
                                 if uVar7 < 0 then
@@ -1013,7 +1059,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar5 = not alive
                                     if bVar5 then goto LAB_00e5b24b end
-                                    quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_04", nil --[[missing]], nil --[[missing]], false)
+                                    quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_04", me, r1, false)
                                 end
                             end
                         end
@@ -1023,7 +1069,7 @@ function Main(quest, me)
                     quest:DeregisterTimer(i_stk_1fc)
                     goto LAB_00e5b19b
                     ::FLOW_hoist_lab_00e5b24b_1::
-                    quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_03", nil --[[missing]], nil --[[missing]], false)
+                    quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_TAUNT_REPLY_03", me, r1, false)
                     ::FLOW_past_lab_00e5b24b::
                     quest:DeregisterTimer(i_stk_1fc)
                 end
@@ -1041,7 +1087,7 @@ function Main(quest, me)
                 goto LAB_00e5b19b
                 ::FLOW_past_lab_00e5b29c::
                 uVar8 = quest:GetHero()
-                quest:EntitySetFacingAngleTowardsThing(uVar8, nil --[[missing]])
+                quest:EntitySetFacingAngleTowardsThing(me, uVar8)
                 iVar9 = quest:RegisterTimer()
                 i_stk_1fc = iVar9
                 quest:SetTimer(iVar9, 2)
@@ -1066,7 +1112,6 @@ function Main(quest, me)
                         end
                         bVar3 = true
                     end
-                    -- TODO(native): xStack_1e4 = xStack_1e4 | 0x40;
                     bVar5 = me:MsgIsHitByHero()
                     if bVar5 then
                         goto LAB_00e5addd
@@ -1082,7 +1127,6 @@ function Main(quest, me)
                     ::LAB_00e5addd::
                     bVar5 = true
                     ::FLOW_past_lab_00e5addd::
-                        -- TODO(native): xStack_1e4 = uVar13 & 0xffffffbf;
                     if bVar5 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar5 = not alive
@@ -1114,26 +1158,25 @@ function Main(quest, me)
                 bVar5 = not alive
                 if bVar5 then goto LAB_00e5b293 end
                 if xStack_1e8 ~= nil then
-                    -- TODO(native): p0 = *xStack_1e8
-                    p0 = nil --[[unresolved native value]]
-                    -- TODO(native): iVar9 = CBasicString<char>::Compare(p0,"EXPRESSION_BELCH");
+                    iVar9 = ((xStack_1e8 == "EXPRESSION_BELCH") and 0 or 1)
                     bVar3 = false
                     if iVar9 == 0 then goto LAB_00e5aedc end
-                    -- TODO(native): iVar9 = CBasicString<char>::Compare(p0,"EXPRESSION_FART");
+                    iVar9 = ((xStack_1e8 == "EXPRESSION_FART") and 0 or 1)
                     bVar3 = false
                     if iVar9 ~= 0 then goto FLOW_native_label_2 end
                     -- LAB_00e5b036: (native jump target)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then goto LAB_00e5b293 end
+                    battleCryReplyCount = (battleCryReplyCount + 1) & 0xffffffff
                     uVar8 = quest:AddNewConversation(me, false, false)
                     uVar11 = quest:GetHero()
                     quest:AddPersonToConversation(uVar8, uVar11)
-                    if r1 == 1 then
+                    if battleCryReplyCount == 1 then
                         uVar11 = quest:GetHero()
                         quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_FIRST_BATTLE_CRY_REPLY", me, uVar11, false)
                     else
-                        if r1 == 2 then
+                        if battleCryReplyCount == 2 then
                             uVar11 = quest:GetHero()
                             quest:AddLineToConversation(uVar8, "TEXT_QST_015_BEGGAR_SECOND_BATTLE_CRY_REPLY", me, uVar11, false)
                         else
@@ -1198,7 +1241,7 @@ function Main(quest, me)
                 native_arg_sequence_2 = false
             end
             if native_arg_sequence_2 then
-                bVar3 = (not resources:ScriptThing(r1):IsNull())
+                bVar3 = (not resources:ScriptThing(entityControl):IsNull())
                 if bVar3 then
                     native_arg_sequence_2 = true
                 else
@@ -1206,12 +1249,12 @@ function Main(quest, me)
                 end
             end
             if native_arg_sequence_2 then
-                resources:PrepareResource(r1)
+                resources:PrepareResource(entityControl)
             end
             ::LAB_00e5b19b::
         end
         ::LAB_00e5b1a4::
-        resources:ReleaseResource(r1)
+        resources:ReleaseResource(entityControl)
     end
 end
 

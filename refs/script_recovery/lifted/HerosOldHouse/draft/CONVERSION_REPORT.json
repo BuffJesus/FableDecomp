@@ -818,6 +818,7 @@
             "GetThingWithScriptName",
             "SetStateBool",
             "ENGINE_ZeroVector",
+            "GetPos",
             "MoveToPosition",
             "IsPerformingScriptTask",
             "NewScriptFrame",
@@ -832,7 +833,7 @@
             "PauseAllNonScriptedEntities",
             "DeregisterTimer"
           ],
-          "lines": 668,
+          "lines": 671,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -844,6 +845,7 @@
           "nativeJumps": [
             "goto FLOW_after_lab_00d8cc55;",
             "goto FLOW_hoist_lab_00d8c74b_1;",
+            "goto FLOW_loop_head_lab_00d8cc55;",
             "goto FLOW_past_lab_00d8c74b;",
             "goto FLOW_past_lab_00d8ca0f;",
             "goto FLOW_past_lab_00d8cab0;",
@@ -855,6 +857,7 @@
             "goto LAB_00d8d21b;",
             "goto LAB_00d8d571;",
             "goto LAB_00d8d57a;",
+            "if (!(!cVar6)) goto FLOW_loop_exit_lab_00d8cc55;",
             "if (!bVar5) goto LAB_00d8cab0;",
             "if (!bVar5) goto LAB_00d8cc48;",
             "if (!bVar5) goto LAB_00d8d21b;",
@@ -865,6 +868,8 @@
           "nativeLabels": [
             "FLOW_after_lab_00d8cc55",
             "FLOW_hoist_lab_00d8c74b_1",
+            "FLOW_loop_exit_lab_00d8cc55",
+            "FLOW_loop_head_lab_00d8cc55",
             "FLOW_past_lab_00d8c74b",
             "FLOW_past_lab_00d8ca0f",
             "FLOW_past_lab_00d8cab0",
@@ -1104,6 +1109,76 @@
         "GhostFisherman": "HerosOldHouse/Entities/GhostFisherman",
         "FishermansWife": "HerosOldHouse/Entities/FishermansWife",
         "ExtraBooty": "HerosOldHouse/Entities/ExtraBooty"
+      },
+      "blockingSpeechCancellation": {
+        "FSE/HerosOldHouse/Entities/GhostFisherman.lua": [
+          {
+            "line": 167,
+            "actor": "me",
+            "query": "iVar8",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                            resources:DestroyMovie(xStack_f0)\n                                            resources:DestroyActorMap(xStack_118)\n                                            resources:ReleaseResource(xStack_100)\n                                            quest:DeregisterTimer(xStack_12c)\n                                            goto LAB_00d8bca5",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 230,
+            "actor": "me",
+            "query": "iVar8",
+            "loop": "cVar6",
+            "exit": "goto LAB_00d8bc59",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 318,
+            "actor": "me",
+            "query": "iVar8",
+            "loop": "cVar6",
+            "exit": "goto LAB_00d8bc59",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/HerosOldHouse/Entities/FishermansWife.lua": [
+          {
+            "line": 128,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_b0)\n                            goto LAB_00d8d571",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 272,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    resources:DestroyMovie(xStack_120)\n                    goto LAB_00d8d571",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 315,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    pCVar12 = xStack_c4\n                    quest:DeregisterTimer(xStack_178)\n                    goto LAB_00d8d57a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 488,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_130)\n                        goto LAB_00d8d571",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 554,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_120)\n                        goto LAB_00d8d571",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "summary": {
         "owners": 4,

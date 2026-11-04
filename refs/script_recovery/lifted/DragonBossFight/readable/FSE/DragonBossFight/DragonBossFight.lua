@@ -1,13 +1,29 @@
 -- Readable native conversion: Q_DragonBossFight. Review coverage report before use.
 -- Registration remains disabled until the package is verified.
 
+-- CScriptDef fields read by this script (offsets into the global game data; retail values in the comments)
+local SCRIPT_DEF = {
+    DBNumMinionsHighHealth = 3008,  -- 0
+    DBNumMinionsMediumHealth = 3012,  -- 2
+    DBNumMinionsLowHealth = 3016,  -- 2
+    DBNumMinionsVeryLowHealth = 3020,  -- 3
+    DBNumSummonersHighHealth = 3024,  -- 0
+    DBNumSummonersMediumHealth = 3028,  -- 0
+    DBNumSummonersLowHealth = 3032,  -- 1
+    DBNumSummonersVeryLowHealth = 3036,  -- 1
+    DBNumFlyBysBetweenSummonerSpawns = 3040,  -- 2
+}
+
 -- Q_DragonBossFight.Main (retail 0x00d255e0)
 function Main(quest)
+    local scratchValue
     quest:AddEntityBinding("Dragon", "DragonBossFight/Entities/Dragon")
     quest:AddEntityBinding("DBMinion", "DragonBossFight/Entities/DBMinion")
     quest:AddEntityBinding("DBSummoner", "DragonBossFight/Entities/DBSummoner")
     quest:FinalizeEntityBindings()
     quest:CreateThread("DoMission")  -- native thread body DoMission: lift it as function DoMission(quest)
+    if not scratchValue then
+    end
 end
 
 -- Q_DragonBossFight.Init (retail 0x00d254b0)
@@ -18,16 +34,17 @@ function Init(quest)
     quest:SetStateInt("NextSummonerSpawnPoint", 0)
     quest:SetStateInt("NumMinions", 0)
     quest:SetStateInt("NumSummoners", 0)
-    quest:SetStateInt("NumFlyBysBetweenSummonerSpawns", quest:ReadGlobalGameData(3040))
+    quest:SetStateInt("NumFlyBysBetweenSummonerSpawns", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumFlyBysBetweenSummonerSpawns))
     quest:AddQuestRegion("Q_DragonBossFight", "DragonCliff2")
 end
 
 -- Q_DragonBossFight.DoMission (retail 0x00d26190)
 function DoMission(quest)
-    local scratchValue2, dragonState, scratchValue3, scratchValue4, scratchValue6, scratchValue7
-    local scratchValue8, scratchValue9, scratchValue, scratchValue11
+    local scratchValue2, dragonState, scratchValue3, scratchValue4, pThing, scratchValue6
+    local scratchValue7, healthBar, scratchValue8, scratchValue9, scratchValue10, scratchValue11
     scratchValue3 = 0
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DRAGON_BOSS_OBJECTIVE_01", "DragonCliff2", "NorthernWastes3")
+    local getActiveQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(getActiveQuestName, "TEXT_QUEST_DRAGON_BOSS_OBJECTIVE_01", "DragonCliff2", "NorthernWastes3")
     while not quest:IsRegionLoaded("DragonCliff2") do
         if not quest:NewScriptFrame() then return end
     end
@@ -43,17 +60,22 @@ function DoMission(quest)
             scratchValue9 = #creatures
             scratchValue8 = scratchValue8 + 1
             scratchValue3 = scratchValue3 + 1
-        until scratchValue8 >= scratchValue9
+        until not (scratchValue8 < scratchValue9)
     end
     scratchValue4 = 0
     helper_D27050(quest, scratchValue9)
     quest:OverrideMusic(23, false, false)
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DRAGON_BOSS_OBJECTIVE_02", "DragonCliff2", "NorthernWastes3")
-    quest:KickOffQuestStartScreen(quest:GetActiveQuestName(), true, false)
+    local getActiveQuestName2 = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(getActiveQuestName2, "TEXT_QUEST_DRAGON_BOSS_OBJECTIVE_02", "DragonCliff2", "NorthernWastes3")
+    local getActiveQuestName3 = quest:GetActiveQuestName()
+    quest:KickOffQuestStartScreen(getActiveQuestName3, true, false)
     quest:FadeScreenIn()
     quest:SetTeleportingAsActive(false)
     quest:DisplayQuestInfo(true)
-    quest:AddQuestInfoBarHealth(quest:GetThingWithScriptName("Dragon"), {R = 255, G = 0, B = 0, A = 255}, "HUD_QUEST_ICON_DRAGON", 1.0)
+    local scratchValue5 = {R = 255, G = 0, B = 0, A = 255}
+    pThing = quest:GetThingWithScriptName("Dragon")
+    healthBar = quest:AddQuestInfoBarHealth(pThing, scratchValue5, "HUD_QUEST_ICON_DRAGON", 1.0)
+    pThing = nil
     quest:CreateThread("RunEnemySpawning")  -- native thread body 0x00D26BA0: lift it as function RunEnemySpawning(quest)
     quest:CreateThread("JackTaunts")  -- native thread body JackTaunts: lift it as function JackTaunts(quest)
     dragonState = quest:GetStateInt("DragonState")
@@ -67,28 +89,32 @@ function DoMission(quest)
     quest:SetCutsceneActionMode(true, "TEXT_QST_B05_MASK_CHOICE")
     helper_D27050(quest, dragonState)
     quest:SetCutsceneActionMode(false, "")
+    local scratchValue = quest:RetailFlags("cs_flags"):Get("PutMaskOn")
     local predicateResult = quest:IsActiveThreadTerminating()
-    if not quest:RetailFlags("cs_flags"):Get("PutMaskOn") then
+    if not scratchValue then
         if predicateResult then return end
         helper_D27050(quest, dragonState)
         quest:AddLogbookStoryEntry("TEXT_QST_LOG_STORY_PLATINUM_380")
         quest:SetMasterGameState("HeroWoreMask", false)
-        scratchValue = 0
+        scratchValue10 = 0
         if #creatures ~= 0 then
             repeat
                 quest:EntitySetInLimbo(creatures[scratchValue4 + 1], false, true)
-                scratchValue = scratchValue + 1
+                scratchValue10 = scratchValue10 + 1
                 scratchValue4 = scratchValue4 + 1
-            until scratchValue >= #creatures
+            until not (scratchValue10 < (#creatures))
         end
-        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
+        local getActiveQuestName4 = quest:GetActiveQuestName()
+        quest:SetQuestAsCompleted(getActiveQuestName4, true, false, false)
         if not quest:NewScriptFrame() then return end
         if not quest:NewScriptFrame() then return end
         if not quest:NewScriptFrame() then return end
         if not quest:NewScriptFrame() then return end
         if 0.5 <= quest:GetHeroMorality() then
+            if quest:IsActiveThreadTerminating() then return end
             scratchValue6 = "Data\\Video\\dragon_good_no_mask.xmv"
         else
+            if quest:IsActiveThreadTerminating() then return end
             scratchValue6 = "Data\\Video\\dragon_evil_no_mask.xmv"
         end
         quest:PlayAVIMovie(scratchValue6)
@@ -104,16 +130,19 @@ function DoMission(quest)
                 quest:EntitySetInLimbo(creatures[scratchValue4 + 1], false, true)
                 scratchValue11 = scratchValue11 + 1
                 scratchValue4 = scratchValue4 + 1
-            until scratchValue11 >= #creatures
+            until not (scratchValue11 < (#creatures))
         end
-        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
+        local getActiveQuestName5 = quest:GetActiveQuestName()
+        quest:SetQuestAsCompleted(getActiveQuestName5, true, false, false)
         if not quest:NewScriptFrame() then return end
         if not quest:NewScriptFrame() then return end
         if not quest:NewScriptFrame() then return end
         if not quest:NewScriptFrame() then return end
         if 0.5 <= quest:GetHeroMorality() then
+            if quest:IsActiveThreadTerminating() then return end
             scratchValue7 = "Data\\Video\\dragon_good_mask.xmv"
         else
+            if quest:IsActiveThreadTerminating() then return end
             scratchValue7 = "Data\\Video\\dragon_evil_mask.xmv"
         end
         quest:PlayAVIMovie(scratchValue7)
@@ -121,7 +150,8 @@ function DoMission(quest)
     end
     quest:GiveHeroMorality(scratchValue2)
     quest:StopOverrideMusic(false)
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+    local getActiveQuestName6 = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(getActiveQuestName6, 0)
 end
 
 -- Q_DragonBossFight.RunEnemySpawning (retail 0x00d26ba0)
@@ -132,11 +162,13 @@ function RunEnemySpawning(quest)
     quest:SetStateBool("SummonerSpawningEnabled", false)
     while true do
         if dragonState == 4 then
+            quest:IsActiveThreadTerminating()
             return
         end
         if not quest:NewScriptFrame() then break end
         local getStateBool = quest:GetStateBool("MinionSpawningEnabled") and quest:GetTimer(quest:GetStateInt("MinionSpawnDelay")) == 0
         if getStateBool then
+            if quest:IsActiveThreadTerminating() then return end
             SpawnMinions(quest)
             quest:SetStateBool("MinionSpawningEnabled", false)
         end
@@ -154,19 +186,26 @@ end
 
 -- Q_DragonBossFight.JackTaunts (retail 0x00d26a50)
 function JackTaunts(quest)
-    local value
-    local hero = quest:GetHero()
-    local registerTimer = quest:RegisterTimer()
+    local registerTimer, value
+    registerTimer = quest:RegisterTimer()
     value = 10
+    local timerId = registerTimer
     quest:SetTimer(registerTimer, 20)
     repeat
         if not quest:NewScriptFrame() then quest:DeregisterTimer(registerTimer); return end
         if quest:GetTimer(registerTimer) == 0 then
-            quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_B05_JACK_TAUNT_" .. tostring(value), hero, hero, false)
-            quest:SetTimer(registerTimer, 20)
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
+            local hero = quest:GetHero()
+            local conversationId = quest:AddNewConversation(hero, false, false)
+            local hero2 = quest:GetHero()
+            local pSpeaker = quest:GetHero()
+            local scratchValue = "TEXT_QST_B05_JACK_TAUNT_" .. tostring(value)
+            quest:AddLineToConversation(conversationId, scratchValue, pSpeaker, hero2, false)
+            registerTimer = timerId
+            quest:SetTimer(timerId, 20)
             value = value + 10
         end
-    until value >= 60
+    until not (value < 60)
     if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(registerTimer); return end
     quest:DeregisterTimer(registerTimer)
     do return end
@@ -178,40 +217,50 @@ function SpawnMinions(quest)
     local minionSpawnPointsIndex, scratchValue
     local getStateInt = quest:GetStateInt("TargetNumMinions") - quest:GetStateInt("NumMinions")
     scratchValue = 0
-    if 0 >= getStateInt then return end
+    if not (0 < getStateInt) then return end
     minionSpawnPointsIndex = 0
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        quest:CreateEffectAtPos("SUMMON_CREATURE_SUMMON_EVIL", quest:GetStateListAt("MinionSpawnPoints", minionSpawnPointsIndex):GetPos(), 0.0, false)
-        quest:CreateCreature("CREATURE_MINION_WARDOG", quest:GetStateListAt("MinionSpawnPoints", minionSpawnPointsIndex):GetPos(), "DBMinion")
+        local minionSpawnPointsItem = quest:GetStateListAt("MinionSpawnPoints", minionSpawnPointsIndex):GetPos()
+        quest:CreateEffectAtPos("SUMMON_CREATURE_SUMMON_EVIL", minionSpawnPointsItem, 0.0, false)
+        local minionSpawnPointsItem2 = quest:GetStateListAt("MinionSpawnPoints", minionSpawnPointsIndex):GetPos()
+        quest:CreateCreature("CREATURE_MINION_WARDOG", minionSpawnPointsItem2, "DBMinion", false)
         scratchValue = scratchValue + 1
         minionSpawnPointsIndex = minionSpawnPointsIndex + 1
-    until scratchValue >= getStateInt
+    until not (scratchValue < getStateInt)
 end
 
 -- Q_DragonBossFight.SpawnSummoners (retail 0x00d26e60)
 function SpawnSummoners(quest)
-    local createEffectAtPos, creature, scratchValue4
+    local scratchValue, string, scratchValue3
     local getStateInt = quest:GetStateInt("TargetNumSummoners") - quest:GetStateInt("NumSummoners")
-    scratchValue4 = 0
-    if 0 >= getStateInt then return end
+    scratchValue3 = 0
+    if not (0 < getStateInt) then return end
     repeat
         if quest:IsActiveThreadTerminating() then return end
-        local scratchValue3 = math.random(0, 32767) & 0x80000001
-        -- TODO(native): pCVar4 = (**(*(quest:GetStateListRef("SummonerSpawnPoints") + quest:GetStateInt("NextSummonerSpawnPoint") * 0xc) + 0x18))()
---[[unresolved native value]]
-        createEffectAtPos = quest:CreateEffectAtPos("SUMMON_CREATURE_SUMMON_EVIL", nil --[[missing]], 0.0, false)
-        -- TODO(native): pCVar4 = (**(*(quest:GetStateListRef("SummonerSpawnPoints") + quest:GetStateInt("NextSummonerSpawnPoint") * 0xc) + 0x18))()
-    --[[unresolved native value]]
-        creature = quest:CreateCreature(nil, nil --[[missing]], "DBSummoner")
+        local randomChoice = quest:RetailRandModulo(32768) & 0x80000001
+        scratchValue = randomChoice == 0
+        if randomChoice < 0 then
+            scratchValue = (randomChoice - 1 | 0xfffffffe) == 0xffffffff
+        end
+        string = "CREATURE_SUMMONER_01"
+        if not scratchValue then
+            string = "CREATURE_SUMMONER_02"
+        end
+        local summonerSpawnPointsItem = quest:GetStateListAt("SummonerSpawnPoints", quest:GetStateInt("NextSummonerSpawnPoint")):GetPos()
+        quest:CreateEffectAtPos("SUMMON_CREATURE_SUMMON_EVIL", summonerSpawnPointsItem, 0.0, false)
+        local summonerSpawnPointsItem2 = quest:GetStateListAt("SummonerSpawnPoints", quest:GetStateInt("NextSummonerSpawnPoint")):GetPos()
+        quest:CreateCreature(string, summonerSpawnPointsItem2, "DBSummoner", false)
         local nextSummonerSpawnPoint = quest:GetStateInt("NextSummonerSpawnPoint")
         quest:SetStateInt("NextSummonerSpawnPoint", nextSummonerSpawnPoint + 1)
-        if quest:GetStateListCount("SummonerSpawnPoints") <= nextSummonerSpawnPoint + 1 then
+        if not (quest:GetStateListCount("SummonerSpawnPoints") <= nextSummonerSpawnPoint + 1) then
+            scratchValue3 = scratchValue3 + 1
+        else
             if quest:IsActiveThreadTerminating() then return end
             quest:SetStateInt("NextSummonerSpawnPoint", 0)
+            scratchValue3 = scratchValue3 + 1
         end
-        scratchValue4 = scratchValue4 + 1
-    until scratchValue4 >= getStateInt
+    until not (scratchValue3 < getStateInt)
 end
 
 -- Q_DragonBossFight.SpawnEnemies (retail 0x00d25c20)
@@ -231,23 +280,23 @@ function helper_D258C0(quest, param1)
     quest:SetStateInt("DragonState", param1)
     if param1 == 0 then
         if quest:IsActiveThreadTerminating() then return end
-        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3008))
-        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3024))
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumMinionsHighHealth))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumSummonersHighHealth))
         return
     elseif param1 == 1 then
         if quest:IsActiveThreadTerminating() then return end
-        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3012))
-        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3028))
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumMinionsMediumHealth))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumSummonersMediumHealth))
         return
     elseif param1 == 2 then
         if quest:IsActiveThreadTerminating() then return end
-        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3016))
-        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3032))
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumMinionsLowHealth))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumSummonersLowHealth))
         return
     elseif param1 == 3 then
         if quest:IsActiveThreadTerminating() then return end
-        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(3020))
-        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(3036))
+        quest:SetStateInt("TargetNumMinions", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumMinionsVeryLowHealth))
+        quest:SetStateInt("TargetNumSummoners", quest:ReadGlobalGameData(SCRIPT_DEF.DBNumSummonersVeryLowHealth))
     end
 end
 
@@ -255,7 +304,8 @@ end
 function helper_D27050(quest, param1)
     local resources = quest:RetailResources()
     local resource = resources:NewResource()
-    resources:TryAcquire(resource, quest:GetHero(), 4)
+    local pThing = quest:GetHero()
+    resources:TryAcquire(resource, pThing, 4)
     local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     local movie = resources:StartMovie("")

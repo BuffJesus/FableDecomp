@@ -8,115 +8,99 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 local helpers = require("V_Bordello.native_quest_helpers")
 
 -- per-entity fields (native class members; one Lua state per entity instance)
-local name, self0Xc_, noLongerWorking, haveTalked, partiedAlready, goldRequired, walkingDownstairs
+local goldRequired_, noLongerWorking, haveTalked_, partiedAlready_, name_, walkingDownstairs
 
 -- BordelloLady.Main (retail 0x00e3eb10)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local scratchValue, predicateResult2, predicateResult, predicateResult22, scratchValue6, health
-    local getHealth, questionAnswer, questionAnswer2, getStateString, scratchValue13, line
-    local scratchValue15, resource2, pppuVar28, getStateInt, resource
+    local name, isActiveThreadTerminating, predicateResult, predicateResult20, questionAnswer
+    local questionAnswer2, getStateString, scratchValue, scratchValue15, getHomePos
+    local getNumberOfTimesHeroHasHadSex, scratchValue17
+    local ladyHitAfterConversation
+    local goldRequired = goldRequired_
     if not quest:NewScriptFrame(me) then return end
-    resources:NewResource()
-    quest:SetCreatureBrain(nil --[[missing]], "BRAIN_PASSIVE_OVERRIDE")
-    quest:SetWanderCentrePoint(nil --[[missing]], nil --[[missing]])
-    quest:SetWanderMinDistance(nil --[[missing]], 0)
-    getStateInt = self0Xc_
-    -- TODO(native): xStack_1a0 = *(undefined ***)(this + 0x10);
-    if self0Xc_ ~= nil then
-        -- TODO(native): *xStack_1a0 = *xStack_1a0 + 1;
-    end
-    quest:SetWanderMaxDistance(nil --[[missing]], 16.0)
-    -- TODO(native): xStack_1a0 = *(undefined ***)(this + 0x10);
-    if self0Xc_ ~= nil then
-        -- TODO(native): *xStack_1a0 = (undefined *)((int)*xStack_1a0 + 1);
-    end
-    quest:SetScriptingStateGroup(nil --[[missing]], 0)
-    predicateResult2 = quest:IsActiveThreadTerminating()
+    local ladyResource = resources:NewResource()
+    quest:SetCreatureBrain(me, "BRAIN_PASSIVE_OVERRIDE")
+    local homePosition = me:GetHomePos()
+    quest:SetWanderCentrePoint(me, homePosition)
+    quest:SetWanderMinDistance(me, 0)
+    quest:SetWanderMaxDistance(me, 16.0)
+    quest:SetScriptingStateGroup(me, 4)
+    isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+    ::LADY_POLL::
     while true do
-        if predicateResult2 then
+        if isActiveThreadTerminating then
+            resources:ReleaseResource(ladyResource)
             return
         end
-        scratchValue = not me:IsTalkedToByHero()
-        if not scratchValue then
-            scratchValue6 = quest:IsReportedOrUnreportedCrimeKnown(nil --[[missing]])
-            scratchValue = scratchValue6
-        end
-        local predicateResult3 = not scratchValue
-            -- TODO(native): xStack_15c = xStack_15c & 0xfffffffe;
-        if predicateResult3 then break end
+        if not (not me:IsTalkedToByHero() or quest:IsReportedOrUnreportedCrimeKnown(quest:GetStateThing("BordelloVillage"))) then break end
         if not noLongerWorking and quest:GetStateBool("BecomeNunnery") then
-            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(self0Xc_); return end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(ladyResource); return end
             noLongerWorking = true
-            quest:ClearThingHasInformation(nil --[[missing]])
-            -- TODO(native): EntitySetPersonalityOverride is not a ForgeFSE binding
-            quest:EntitySetPersonalityOverride()
+            quest:ClearThingHasInformation(me)
+            quest:EntitySetPersonalityOverrideByString(me, "OPINION_PERSONALITY_EX_PROSTITUTE")
         end
-        -- TODO(native): xStack_15c = xStack_15c | 2;
-        if me:MsgIsHitByHero() then goto LAB_00e40183 end
-        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40183 end
-        goto FLOW_past_lab_00e40183
-        ::LAB_00e40183::
-        ::FLOW_past_lab_00e40183::
-            -- TODO(native): xStack_15c = uVar15 & 0xfffffffd;
-        if not quest:IsActiveThreadTerminating() then
+        local ladyWasHit = not not (me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL))))
+        if not ladyWasHit then
+            quest:NewScriptFrame(me);
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating();
+        else
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(ladyResource); return end
             resources:PrepareResource(resources:MemberResource("seh_Whore"))
-            resources:PrepareResource(self0Xc_)
-            while not me:AcquireControl(4) do
-                if not quest:NewScriptFrame(me) then resources:ReleaseResource(self0Xc_); return end
+            resources:PrepareResource(ladyResource)
+            while not resources:TryAcquire(ladyResource, me, 4) do
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(ladyResource); return end
+            end
+            if quest:IsActiveThreadTerminating() then resources:ReleaseResource(ladyResource); return end
+            me:ClearCommands()
+            me:PlayAnimation("ST_OPINION_FEAR_IDLE_COWERING", false, false, false, true, true, false, false)
+            while me:IsPerformingScriptTask() do
+                if not quest:NewScriptFrame(me) then resources:ReleaseResource(ladyResource); return end
             end
             if not quest:IsActiveThreadTerminating() then
-                me:ClearCommands()
-                me:PlayAnimation("ST_OPINION_FEAR_IDLE_COWERING", false, false, false, true, true, false, false)
-                while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then resources:ReleaseResource(self0Xc_); return end
-                end
-                if not quest:IsActiveThreadTerminating() then resources:PrepareResource(self0Xc_); goto LAB_00e402f9 end
+                resources:PrepareResource(ladyResource)
+            else
+                resources:ReleaseResource(ladyResource)
+                return
             end
+            quest:NewScriptFrame(me)
+            isActiveThreadTerminating = quest:IsActiveThreadTerminating()
         end
-        resources:ReleaseResource(self0Xc_)
-        do return end
-        ::LAB_00e402f9::
-        quest:NewScriptFrame(me)
-        predicateResult2 = quest:IsActiveThreadTerminating()
+        ::continue_1::
     end
-    ::FLOW_after_lab_00e40085::
-    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(getStateInt); return end
+    if quest:IsActiveThreadTerminating() then resources:ReleaseResource(ladyResource); return end
     resources:PrepareResource(resources:MemberResource("seh_Whore"))
     local movie = resources:StartMovie("")
-    quest:StartMovieSequence()
-    getStateInt = resource2
     quest:PauseAllNonScriptedEntities(true)
-    resources:PrepareResource(resource2)
-    scratchValue6 = me:AcquireControl(4)
-    while not scratchValue6 do
+    resources:PrepareResource(ladyResource)
+    while not resources:TryAcquire(ladyResource, me, 4) do
         quest:NewScriptFrame(me)
-        if not quest:IsActiveThreadTerminating() then
-            scratchValue6 = me:AcquireControl(8)
-        else
+        if quest:IsActiveThreadTerminating() then
             quest:PauseAllNonScriptedEntities(false)
             resources:DestroyMovie(movie)
-            resources:DestroyMovie(movie)
+            resources:ReleaseResource(ladyResource)
             do return end
-            scratchValue6 = me:AcquireControl(8)
         end
     end
     if quest:IsActiveThreadTerminating() then
-        quest:PauseAllNonScriptedEntities(nil --[[missing]])
+        quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(movie)
-        resources:DestroyMovie(movie)
+        resources:ReleaseResource(ladyResource)
         return
     end
     me:ClearCommands()
     if quest:GetStateBool("BecomeNunnery") then
         if quest:IsActiveThreadTerminating() then goto LAB_00e4039f end
-        resources:ScriptThing(resource2)
-        health = quest:GetHealth(nil --[[missing]])
-        getHealth = 0.0
-        if 0.0 < health then
-            line = GetLHTSTag(quest, me, "HAPPY")
-            if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3f729 end
+        resources:ScriptThing(ladyResource)
+        if 0.0 < quest:GetHealth(me) then
+            getHomePos = GetLHTSTag(quest, me, "HAPPY")
+            local hero = quest:GetHero()
+            if not me:Speak(hero, getHomePos, 0, false, true, false) then
+                goto LAB_00e3f729
+            end
+            while me:IsPerformingScriptTask() do
+                if not quest:NewScriptFrame(me) then goto LAB_00e3f729 end
+            end
             if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
         end
         goto LAB_00e3ffe3
@@ -126,11 +110,15 @@ function Main(quest, me)
     else
         if quest:GetStateBool("HeroTricking") and helpers.IsHeroWearingBeard(quest, me) and not quest:GetStateBool("PlayerOwned") then
             if not quest:IsActiveThreadTerminating() then
-                health = quest:GetHealth(nil --[[missing]])
-                getHealth = 0.0
-                if 0.0 < health then
-                    line = GetLHTSTag(quest, me, "MAGICIAN_HINT")
-                    if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3f729 end
+                if 0.0 < quest:GetHealth(me) then
+                    getHomePos = GetLHTSTag(quest, me, "MAGICIAN_HINT")
+                    local hero2 = quest:GetHero()
+                    if not me:Speak(hero2, getHomePos, 0, false, true, false) then
+                        goto LAB_00e3f729
+                    end
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then goto LAB_00e3f729 end
+                    end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
                 end
                 goto LAB_00e3ffe3
@@ -139,32 +127,51 @@ function Main(quest, me)
         end
         if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
         if not quest:GetStateBool("PlayerOwned") then
-            if not haveTalked then
-                health = quest:GetHealth(nil --[[missing]])
-                if health <= 0.0 then
-                    goto LAB_00e3f953
+            if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
+            if not haveTalked_ then
+                if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
+                if not (quest:GetHealth(me) <= 0.0) then
+                    goto FLOW_past_lab_00e3f953
                 end
-                goto FLOW_past_lab_00e3f953
                 ::LAB_00e3f953::
-                haveTalked = true
+                haveTalked_ = true
                 goto LAB_00e3f957
                 ::FLOW_past_lab_00e3f953::
-                line = GetLHTSTag(quest, me, "PARTY_PAID_INTRODUCTION")
-                if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3eee8 end
+                getHomePos = GetLHTSTag(quest, me, "PARTY_PAID_INTRODUCTION")
+                local hero3 = quest:GetHero()
+                if not me:Speak(hero3, getHomePos, 0, false, true, false) then
+                    goto LAB_00e3eee8
+                end
+                while me:IsPerformingScriptTask() do
+                    if not quest:NewScriptFrame(me) then goto LAB_00e3eee8 end
+                end
                 if not quest:IsActiveThreadTerminating() then goto LAB_00e3f953 end
             else
-                if not partiedAlready then
-                    health = quest:GetHealth(nil --[[missing]])
-                    if 0.0 < health then
-                        line = GetLHTSTag(quest, me, "PARTY_PAID_REMINDER")
-                        if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3f729 end
+                if quest:IsActiveThreadTerminating() then goto LAB_00e4039f end
+                if not partiedAlready_ then
+                    if quest:IsActiveThreadTerminating() then goto LAB_00e4039f end
+                    if 0.0 < quest:GetHealth(me) then
+                        getHomePos = GetLHTSTag(quest, me, "PARTY_PAID_REMINDER")
+                        local hero4 = quest:GetHero()
+                        if not me:Speak(hero4, getHomePos, 0, false, true, false) then
+                            goto LAB_00e3f729
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00e3f729 end
+                        end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
                     end
                 else
-                    health = quest:GetHealth(nil --[[missing]])
-                    if 0.0 < health then
-                        line = GetLHTSTag(quest, me, "PARTY_AGAIN")
-                        if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3eee8 end
+                    if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
+                    if 0.0 < quest:GetHealth(me) then
+                        getHomePos = GetLHTSTag(quest, me, "PARTY_AGAIN")
+                        local hero5 = quest:GetHero()
+                        if not me:Speak(hero5, getHomePos, 0, false, true, false) then
+                            goto LAB_00e3eee8
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00e3eee8 end
+                        end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
                     end
                 end
@@ -172,7 +179,8 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00e3f957
             ::LAB_00e3f957::
-            quest:GiveHeroYesNoQuestion(GetLHTSTag(quest, me, "PARTY_PAID_QUESTION"), "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "PARTY_PAID_QUESTION")
+            scratchValue17 = GetLHTSTag(quest, me, "PARTY_PAID_QUESTION")
+            quest:GiveHeroYesNoQuestion(scratchValue17, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
             questionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
             while questionAnswer < 0 do
                 if not quest:NewScriptFrame(me) then goto LAB_00e3eee8 end
@@ -182,55 +190,69 @@ function Main(quest, me)
                 predicateResult = quest:IsActiveThreadTerminating()
                 if questionAnswer == 1 then
                     if not predicateResult then
-                        if goldRequired <= quest:GetHeroGold() then
+                        local getHeroGold = quest:GetHeroGold()
+                        if goldRequired <= getHeroGold then
                             if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
-                            health = quest:GetHealth(nil --[[missing]])
-                            getHealth = 0.0
-                            if 0.0 < health then
-                                line = GetLHTSTag(quest, me, "PARTY_PAID_FOLLOW_ME")
-                                if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3eee8 end
+                            if 0.0 < quest:GetHealth(me) then
+                                getHomePos = GetLHTSTag(quest, me, "PARTY_PAID_FOLLOW_ME")
+                                local hero6 = quest:GetHero()
+                                if not me:Speak(hero6, getHomePos, 0, false, true, false) then
+                                    goto LAB_00e3eee8
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto LAB_00e3eee8 end
+                                end
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
                             end
-                            quest:GiveHeroGold(0.0)
-                            -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (resources:MemberResource("seh_Whore"),&xStack_1a8);
-                            scratchValue13 = "TEXT_CS_B13_SEX_" .. name
-                            resources:SetString(resources:MemberStringMap("csargs"), line, scratchValue13)
-                            scratchValue13 = GetLHTSTag(quest, me, "PARTY_PAID_PLEASED")
-                            resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", scratchValue13)
-                            quest:SetCutsceneSkippable(nil --[[missing]])
+                            quest:GiveHeroGold(-goldRequired)
+                            resources:AssignResource(resources:MemberResource("seh_Whore"), ladyResource)
+                            getStateString = name_
+                            scratchValue = "TEXT_CS_B13_SEX_" .. getStateString
+                            resources:SetString(resources:MemberStringMap("csargs"), "$SEXTALK", scratchValue)
+                            scratchValue = GetLHTSTag(quest, me, "PARTY_PAID_PLEASED")
+                            resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", scratchValue)
+                            quest:SetCutsceneSkippable(false)
                             if not quest:GetStateBool("HadSex") then
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
-                                if name == nil then
+                                if getStateString == nil then
                                     goto LAB_00e3fd35
                                 else
-                                    if name ~= "HEDWIG" then goto LAB_00e3fd35 end
+                                    if getStateString ~= "HEDWIG" then goto LAB_00e3fd35 end
+                                    if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
                                     scratchValue15 = "CS_BORDELLO_PAYINGFORSEX_HEDWIG"
                                 end
                                 goto FLOW_past_lab_00e3fd35
                                 ::LAB_00e3fd35::
+                                if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
                                 scratchValue15 = "CS_BORDELLO_PAYINGFORSEX"
                                 ::FLOW_past_lab_00e3fd35::
                                 helpers.PlayCutscene(quest, me, scratchValue15, true)
                                 quest:SetStateBool("HadSex", true)
                             else
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
-                                if name ~= nil and name == "HEDWIG" then
+                                if getStateString ~= nil and getStateString == "HEDWIG" then
+                                    if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
                                     helpers.PlayCutscene(quest, me, "CS_BORDELLO_PAYINGFORSEX_QUICKIE_HEDWIG", true)
                                 else
+                                    if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
                                     helpers.PlayCutscene(quest, me, "CS_BORDELLO_PAYINGFORSEX_QUICKIE", true)
                                 end
                             end
-                            quest:SetCutsceneSkippable(nil --[[missing]])
-                            partiedAlready = true
+                            quest:SetCutsceneSkippable(true)
+                            partiedAlready_ = true
                             quest:SetStateBool("HeroPartying", true)
                             goto LAB_00e3fd7c
                         end
                         if not quest:IsActiveThreadTerminating() then
-                            health = quest:GetHealth(nil --[[missing]])
-                            getHealth = 0.0
-                            if 0.0 < health then
-                                line = GetLHTSTag(quest, me, "PARTY_PAID_TOO_EXPENSIVE")
-                                if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3f729 end
+                            if 0.0 < quest:GetHealth(me) then
+                                getHomePos = GetLHTSTag(quest, me, "PARTY_PAID_TOO_EXPENSIVE")
+                                local hero7 = quest:GetHero()
+                                if not me:Speak(hero7, getHomePos, 0, false, true, false) then
+                                    goto LAB_00e3f729
+                                end
+                                while me:IsPerformingScriptTask() do
+                                    if not quest:NewScriptFrame(me) then goto LAB_00e3f729 end
+                                end
                                 if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
                             end
                             goto LAB_00e3ffe3
@@ -247,73 +269,85 @@ function Main(quest, me)
     end
     goto FLOW_past_lab_00e403af
     ::LAB_00e403af::
-    -- TODO(native): ppuVar13 = *piVar1
---[[unresolved native value]]
-    ::LAB_00e3f731::
-    -- TODO(native): (*(code *)ppuVar13[0x17b])();
+    quest:PauseAllNonScriptedEntities(false)
     ::FLOW_past_lab_00e403af::
     goto FLOW_past_lab_00e3eee8
     ::LAB_00e3eee8::
-    -- TODO(native): (*(code *)(*pppuVar28)[0x17b])();
-    resources:DestroyMovie("TEXT_OBJECT_HERO_ANSWER_YES")
-    resources:ReleaseResource(resource2)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(ladyResource)
     do return end
     ::FLOW_hoist_lab_00e3eee8_1::
     if predicateResult then goto LAB_00e3f729 end
-    health = quest:GetHealth(nil --[[missing]])
-    getHealth = 0.0
-    if 0.0 < health then
-        line = GetLHTSTag(quest, me, "PARTY_PAID_DECLINED")
-        if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3eee8 end
+    if 0.0 < quest:GetHealth(me) then
+        getHomePos = GetLHTSTag(quest, me, "PARTY_PAID_DECLINED")
+        local hero8 = quest:GetHero()
+        if not me:Speak(hero8, getHomePos, 0, false, true, false) then
+            goto LAB_00e3eee8
+        end
+        while me:IsPerformingScriptTask() do
+            if not quest:NewScriptFrame(me) then goto LAB_00e3eee8 end
+        end
         if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
     end
     ::LAB_00e3ffe3::
     if not walkingDownstairs then
         goto LAB_00e40044
     else
-        if not (me ~= nil and me:IsDistanceFromPositionOver(me:GetHomePos(), 2.0)) then goto LAB_00e40044 end
+        getHomePos = me:GetHomePos()
+        if not (me ~= nil and me:IsDistanceFromPositionOver(getHomePos, 2.0)) then goto LAB_00e40044 end
         if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
-        me:MoveToPosition(me:GetHomePos(), 1.0, ENTITY_MOVE_WALK, false, true)
+        local p0 = me:GetHomePos()
+        me:MoveToPosition(p0, 1.0, ENTITY_MOVE_WALK, false, true)
     end
     goto FLOW_past_lab_00e40044
     ::LAB_00e40044::
     if quest:IsActiveThreadTerminating() then goto LAB_00e3f729 end
     walkingDownstairs = false
-    if not resources:ScriptThing(resource2):IsNull() then
-        resources:PrepareResource(resource)
+    if not resources:ScriptThing(ladyResource):IsNull() then
+        resources:PrepareResource(ladyResource)
     end
     ::FLOW_past_lab_00e40044::
-    -- TODO(native): (*(code *)(*pppuVar28)[0x17b])();
-    resources:ReleaseResource(resource2)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
     if not noLongerWorking and quest:GetStateBool("BecomeNunnery") then
-        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource2); return end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(ladyResource); return end
         noLongerWorking = true
-        quest:ClearThingHasInformation(nil --[[missing]])
-        -- TODO(native): EntitySetPersonalityOverride is not a ForgeFSE binding
-        quest:EntitySetPersonalityOverride()
+        quest:ClearThingHasInformation(me)
+        quest:EntitySetPersonalityOverrideByString(me, "OPINION_PERSONALITY_EX_PROSTITUTE")
     end
-    -- TODO(native): xStack_15c = xStack_15c | 2;
-        -- TODO(native): xStack_15c = uVar15 & 0xfffffffd;
-    if not quest:IsActiveThreadTerminating() then
+    ladyHitAfterConversation = false
+    if not (me:MsgIsHitByHero()) then
+        if me:MsgIsHitByAnySpecialAbilityFromHero() and not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL) then goto LAB_00e40183_c2 end
+        goto FLOW_past_lab_00e40183_c2
+    end
+    ::LAB_00e40183_c2::
+    ladyHitAfterConversation = true
+    ::FLOW_past_lab_00e40183_c2::
+    if ladyHitAfterConversation then
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(ladyResource); return end
         resources:PrepareResource(resources:MemberResource("seh_Whore"))
-        resources:PrepareResource(resource2)
-        while not me:AcquireControl(4) do
-            if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
+        resources:PrepareResource(ladyResource)
+        while not resources:TryAcquire(ladyResource, me, 4) do
+            if not quest:NewScriptFrame(me) then resources:ReleaseResource(ladyResource); return end
+        end
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(ladyResource); return end
+        me:ClearCommands()
+        me:PlayAnimation("ST_OPINION_FEAR_IDLE_COWERING", false, false, false, true, true, false, false)
+        while me:IsPerformingScriptTask() do
+            if not quest:NewScriptFrame(me) then resources:ReleaseResource(ladyResource); return end
         end
         if not quest:IsActiveThreadTerminating() then
-            me:ClearCommands()
-            me:PlayAnimation("ST_OPINION_FEAR_IDLE_COWERING", false, false, false, true, true, false, false)
-            while me:IsPerformingScriptTask() do
-                if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource2); return end
-            end
-            if not quest:IsActiveThreadTerminating() then resources:PrepareResource(resource2); goto LAB_00e402f9_c2 end
+            resources:PrepareResource(ladyResource)
+        else
+            resources:ReleaseResource(ladyResource)
+            return
         end
     end
-    resources:ReleaseResource(resource2)
-    do return end
-    ::LAB_00e402f9_c2::
     quest:NewScriptFrame(me)
-    goto FLOW_after_lab_00e40085
+    isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+    if isActiveThreadTerminating then resources:ReleaseResource(ladyResource); return end
+    goto LADY_POLL
     ::FLOW_hoist_lab_00e3eee8_3::
     goto LAB_00e3f729
     ::FLOW_hoist_lab_00e3eee8_4::
@@ -321,43 +355,52 @@ function Main(quest, me)
     ::FLOW_past_lab_00e3eee8::
     goto FLOW_past_lab_00e3f729
     ::LAB_00e3f729::
-    -- TODO(native): ppuVar13 = *pppuVar28
---[[unresolved native value]]
-    goto LAB_00e3f731
+    goto LAB_00e403af
     ::FLOW_hoist_lab_00e3f729_1::
     if not quest:IsActiveThreadTerminating() then
-        resources:ScriptThing(resource)
-        getHealth = quest:GetHealth(nil --[[missing]])
-        if 0.0 < getHealth then
-            line = GetLHTSTag(quest, me, "PARTY_FREE")
-            if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e403af end
+        resources:ScriptThing(ladyResource)
+        if 0.0 < quest:GetHealth(me) then
+            getHomePos = GetLHTSTag(quest, me, "PARTY_FREE")
+            local hero9 = quest:GetHero()
+            if not me:Speak(hero9, getHomePos, 0, false, true, false) then
+                goto LAB_00e403af
+            end
+            while me:IsPerformingScriptTask() do
+                if not quest:NewScriptFrame(me) then goto LAB_00e403af end
+            end
             if quest:IsActiveThreadTerminating() then goto LAB_00e4039f end
         end
-        quest:GiveHeroYesNoQuestion(GetLHTSTag(quest, me, "PARTY_FREE_QUESTION"), "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "PARTY_FREE_QUESTION")
+        scratchValue17 = GetLHTSTag(quest, me, "PARTY_FREE_QUESTION")
+        quest:GiveHeroYesNoQuestion(scratchValue17, "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
         questionAnswer2 = quest:MsgIsQuestionAnsweredYesOrNo()
         while questionAnswer2 < 0 do
             if not quest:NewScriptFrame(me) then goto LAB_00e403af end
             questionAnswer2 = quest:MsgIsQuestionAnsweredYesOrNo()
         end
         if not quest:IsActiveThreadTerminating() then
-            predicateResult22 = quest:IsActiveThreadTerminating()
+            predicateResult20 = quest:IsActiveThreadTerminating()
             if questionAnswer2 == 1 then
-                if predicateResult22 then goto LAB_00e403af end
-                getHealth = quest:GetHealth(nil --[[missing]])
-                if 0.0 < getHealth then
-                    line = GetLHTSTag(quest, me, "PARTY_FREE_FOLLOW_ME")
-                    if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e4039f end
+                if predicateResult20 then goto LAB_00e403af end
+                if 0.0 < quest:GetHealth(me) then
+                    getHomePos = GetLHTSTag(quest, me, "PARTY_FREE_FOLLOW_ME")
+                    local hero10 = quest:GetHero()
+                    if not me:Speak(hero10, getHomePos, 0, false, true, false) then
+                        goto LAB_00e4039f
+                    end
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then goto LAB_00e4039f end
+                    end
                     if quest:IsActiveThreadTerminating() then goto LAB_00e403af end
                 end
-                -- TODO(native): CScriptGameResourceObjectScriptedThingBase::operator= (resources:MemberResource("seh_Whore"),&xStack_1a8);
-                getStateString = ("TEXT_CS_B13_SEX_" .. name) .. "_BOSS"
+                resources:AssignResource(resources:MemberResource("seh_Whore"), ladyResource)
+                scratchValue15 = "_BOSS"
+                getStateString = ("TEXT_CS_B13_SEX_" .. name_) .. scratchValue15
                 resources:SetString(resources:MemberStringMap("csargs"), "$SEXTALK", getStateString)
                 getStateString = GetLHTSTag(quest, me, "PARTY_FREE_FINISHING_UP")
                 resources:SetString(resources:MemberStringMap("csargs"), "$ENDLINE", getStateString)
-                quest:SetCutsceneSkippable(true)
-                -- TODO(native): CVar3 = *name
-    --[[unresolved native value]]
-                if nil == nil then
+                quest:SetCutsceneSkippable(false)
+                name = name_
+                if name == nil then
                     goto LAB_00e3f48a
                 end
                 goto FLOW_hoist_lab_00e3f48a_1
@@ -371,8 +414,8 @@ function Main(quest, me)
     scratchValue15 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE"
     ::LAB_00e3f4a5::
     helpers.PlayCutscene(quest, me, scratchValue15, true)
-    quest:SetCutsceneSkippable(nil --[[missing]])
-    partiedAlready = true
+    quest:SetCutsceneSkippable(true)
+    partiedAlready_ = true
     quest:SetStateBool("HeroPartying", true)
     goto LAB_00e3fd7c
     ::FLOW_hoist_lab_00e3f48a_1::
@@ -382,24 +425,29 @@ function Main(quest, me)
     ::FLOW_past_lab_00e3f48a::
     goto FLOW_past_lab_00e3fd7c
     ::LAB_00e3fd7c::
-    quest:SetNumberOfTimesHeroHasHadSex(nil --[[missing]])
+    getNumberOfTimesHeroHasHadSex = quest:GetNumberOfTimesHeroHasHadSex()
+    quest:SetNumberOfTimesHeroHasHadSex(getNumberOfTimesHeroHasHadSex + 1)
     quest:SetHeroAsHavingHadSex(true)
     walkingDownstairs = true
     goto LAB_00e3ffe3
     ::FLOW_hoist_lab_00e3fd7c_1::
-    if nil ~= "HEDWIG" then goto LAB_00e3f48a end
+    if name ~= "HEDWIG" then goto LAB_00e3f48a end
     if not quest:IsActiveThreadTerminating() then scratchValue15 = "CS_BORDELLO_PAYINGFORSEX_QUICKIE_HEDWIG"; goto LAB_00e3f4a5 end
-    -- TODO(native): (**(code **)(*piVar1 + 0x5ec))();
-    resources:DestroyMovie("TEXT_OBJECT_HERO_ANSWER_YES")
-    resources:ReleaseResource(resource2)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(ladyResource)
     do return end
     ::FLOW_hoist_lab_00e3fd7c_2::
-    if not predicateResult22 then
-        health = quest:GetHealth(nil --[[missing]])
-        getHealth = 0.0
-        if 0.0 < health then
-            line = GetLHTSTag(quest, me, "PARTY_FREE_DECLINED")
-            if not me:Speak(hero, line, 0, false, true, false) then goto LAB_00e3f729 end
+    if not predicateResult20 then
+        if 0.0 < quest:GetHealth(me) then
+            getHomePos = GetLHTSTag(quest, me, "PARTY_FREE_DECLINED")
+            local hero11 = quest:GetHero()
+            if not me:Speak(hero11, getHomePos, 0, false, true, false) then
+                goto LAB_00e3f729
+            end
+            while me:IsPerformingScriptTask() do
+                if not quest:NewScriptFrame(me) then goto LAB_00e3f729 end
+            end
             if quest:IsActiveThreadTerminating() then goto LAB_00e3eee8 end
         end
         goto LAB_00e3ffe3
@@ -407,55 +455,64 @@ function Main(quest, me)
     ::FLOW_past_lab_00e3fd7c::
     goto LAB_00e4039f
     ::FLOW_past_lab_00e3f729::
-    resources:DestroyMovie("TEXT_OBJECT_HERO_ANSWER_YES")
-    resources:ReleaseResource(resource2)
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(ladyResource)
     do return end
     ::LAB_00e4039f::
-    quest:PauseAllNonScriptedEntities(getHealth ~= 0)
-    resources:DestroyMovie("TEXT_OBJECT_HERO_ANSWER_YES")
-    resources:ReleaseResource(resource2)
+    quest:PauseAllNonScriptedEntities(false)
+    resources:DestroyMovie(movie)
+    resources:ReleaseResource(ladyResource)
 end
 
 -- BordelloLady.Init (retail 0x00e3ac70)
 function Init(quest, me)
-    -- TODO(native): puStack_1c = v_stk_4;
+    local this_00
     walkingDownstairs = false
-    haveTalked = false
-    partiedAlready = false
+    haveTalked_ = false
+    partiedAlready_ = false
     noLongerWorking = false
+    this_00 = name_
     local dataString = me:GetDataString()
-    name = dataString
+    name_ = dataString
     if not quest:GetStateBool("BecomeNunnery") then
         quest:SetThingHasInformation(me, true)
     end
     quest:EntitySetAsKillable(me, false)
     quest:EntitySetAsToAddToComboMultiplierWhenHit(me, false)
     quest:EntitySetOpinionReactionMask(me, "OPINION_REACTION_MASK_DONT_SCREAM")
-    goldRequired = 0
+    goldRequired_ = 0
     if dataString ~= nil and dataString == "POLLY" then
-        goldRequired = 50
+        goldRequired_ = 50
     end
     if dataString ~= nil and dataString == "AMELIA" then
-        goldRequired = 100
+        goldRequired_ = 100
     end
     if dataString ~= nil and dataString == "LUCREZIA" then
-        goldRequired = 200
-    end
-    if not ((dataString == nil) or (dataString ~= "SOPHIA")) then
-        goldRequired = 1000
+        goldRequired_ = 200
     end
     if dataString == nil then
-        return
+        do goto LAB_00e3ae08 end
+    else
+        if dataString ~= "SOPHIA" then goto LAB_00e3ae08 end
+    end
+    goldRequired_ = 1000
+    ::LAB_00e3ae08::
+    if dataString == nil then
+        do
+            return
+        end
     elseif dataString ~= "HEDWIG" then
         return
     end
-    goldRequired = 2000
+    goldRequired_ = 2000
 end
 
 -- BordelloLady.OnPersist (retail 0x00e3ba80)
 function OnPersist(quest, me, context)
-    partiedAlready = quest:PersistTransferBool(context, "PartiedAlready", partiedAlready)
-    haveTalked = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
+    local partiedAlready = partiedAlready_ or false
+    partiedAlready_ = quest:PersistTransferBool(context, "PartiedAlready", partiedAlready)
+    local haveTalked = haveTalked_ or false
+    haveTalked_ = quest:PersistTransferBool(context, "HaveTalked", haveTalked)
 end
 
 -- BordelloLady.OnPredicateFail (retail 0x00cdebd0)
@@ -465,6 +522,6 @@ end
 -- BordelloLady.GetLHTSTag (retail 0x00e403d0)
 -- E403D0: bsim names this body NScript::CV_BordelloScript::CBordelloLady::GetLHTSTag (a homologous script member); no PDB name
 function GetLHTSTag(quest, me, dialogueSuffix)
-    return (("TEXT_QST_B13_" .. name) .. "_") .. dialogueSuffix
+    return (("TEXT_QST_B13_" .. name_) .. "_") .. dialogueSuffix
 end
 

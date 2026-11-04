@@ -207,6 +207,11 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_MULTI_GRADE"
                             pCVar8 = quest:GetHero()
                             r3 = me:Speak(pCVar8, pcVar12, iVar6, (iVar13 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                            if not r3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_5c)
+                                __cleanup_LAB_00d505a6(); return
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar5 = iVar6
                             while cVar5 do
@@ -276,6 +281,9 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_RETURN"
                             pCVar8 = quest:GetHero()
                             r4 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                            if not r4 then
+                                goto LAB_00d50542
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar5 = iVar13
                             while cVar5 do
@@ -314,6 +322,11 @@ function Main(quest, me)
                     pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_INTRO"
                     pCVar8 = quest:GetHero()
                     r5 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                    if not r5 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_104)
+                        __cleanup_LAB_00d505a6(); return
+                    end
                     iVar13 = me:IsPerformingScriptTask()
                     cVar5 = iVar13
                     while cVar5 do
@@ -357,6 +370,11 @@ function Main(quest, me)
                         pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_INTRO_APLUS"
                         pCVar8 = quest:GetHero()
                         r6 = me:Speak(pCVar8, pcVar12, iVar13, (iVar14 ~= 0), (iVar16 ~= 0), (iVar17 ~= 0))
+                        if not r6 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_104)
+                            __cleanup_LAB_00d505a6(); return
+                        end
                         iVar13 = me:IsPerformingScriptTask()
                         cVar5 = iVar13
                         while cVar5 do
@@ -454,7 +472,7 @@ function Main(quest, me)
                         quest:AddLineToConversation(iVar13, "TEXT_QST_028_APPRENTICE_WILL_NO_WILL", me, pCVar8, false)
                         quest:SetTimer(quest:GetStateInt("WillHelpTimer"), 8)
                         timerId = xStack_14c
-                        cVar5 = c_stk_115
+                        cVar5 = (c_stk_115 ~= 0)
                     end
                     fVar18 = 30.0
                     pCVar8 = quest:GetHero()
@@ -651,6 +669,11 @@ function Main(quest, me)
                         pcVar12 = "TEXT_QST_028_APPRENTICE_WILL_EARLY"
                         pCVar8 = quest:GetHero()
                         r7 = me:Speak(pCVar8, pcVar12, iVar6, (iVar13 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                        if not r7 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_4c)
+                            __cleanup_LAB_00d505a6(); return
+                        end
                         iVar6 = me:IsPerformingScriptTask()
                         cVar5 = iVar6
                         while cVar5 do

@@ -1,0 +1,178 @@
+diff --git a/FableScriptExtender/FableScriptExtender.vcxproj b/FableScriptExtender/FableScriptExtender.vcxproj
+index 5ffbe6b..5c91d1b 100644
+--- a/FableScriptExtender/FableScriptExtender.vcxproj
++++ b/FableScriptExtender/FableScriptExtender.vcxproj
+@@ -84,6 +84,7 @@
+     <ClInclude Include="framework.h" />
+     <ClInclude Include="FableAPI.h" />
+     <ClInclude Include="GameInterface.h" />
++    <ClInclude Include="RetailCStringVector.h" />
+     <ClInclude Include="LuaEntityAPI.h" />
+     <ClInclude Include="LuaEntityHost.h" />
+     <ClInclude Include="LuaManager.h" />
+diff --git a/FableScriptExtender/GameInterface.h b/FableScriptExtender/GameInterface.h
+index ce04bb3..e754c4f 100644
+--- a/FableScriptExtender/GameInterface.h
++++ b/FableScriptExtender/GameInterface.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ #include "FableAPI.h"
++#include "RetailCStringVector.h"
+ #include "EntityScriptingAPI.h"
+ #include <list> 
+ #include <vector> 
+@@ -1374,7 +1375,7 @@ typedef bool(__thiscall* tIsThingOnFire)(CGameScriptInterfaceBase* This, const C
+ typedef void(__thiscall* tAddItemToContainer)(CGameScriptInterfaceBase* This, const CScriptThing* pContainer, const CCharString* pItemDefName);
+ typedef void(__thiscall* tRemoveItemFromContainer)(CGameScriptInterfaceBase* This, const CScriptThing* pContainer, const CCharString* pItemDefName);
+ typedef void(__thiscall* tEntitySetDeathContainerAsEnabled)(CGameScriptInterfaceBase* This, const CScriptThing* pThing, bool bIsEnabled);
+-typedef void(__thiscall* tGetItemDefNamesFromContainer)(CGameScriptInterfaceBase* This, const CScriptThing* pContainer, std::vector<CCharString>* pOutNames);
++typedef void(__thiscall* tGetItemDefNamesFromContainer)(CGameScriptInterfaceBase* This, const CScriptThing* pContainer, RetailCStringVectorStorage* pOutNames);
+ typedef void(__thiscall* tSetCreatureBrain)(CGameScriptInterfaceBase* This, const CScriptThing* pCreature, const CCharString* pBrainName);
+ typedef void(__thiscall* tPause)(CGameScriptInterfaceBase* This, float duration);
+ typedef void(__thiscall* tStartMovieSequence)(CGameScriptInterfaceBase* This, const CCharString* sequenceName, CScriptGameResourceObjectMovieBase* movieObject);
+diff --git a/FableScriptExtender/LuaQuestState.cpp b/FableScriptExtender/LuaQuestState.cpp
+index f5a3bba..007fb61 100644
+--- a/FableScriptExtender/LuaQuestState.cpp
++++ b/FableScriptExtender/LuaQuestState.cpp
+@@ -8935,7 +8935,7 @@ void LuaQuestState::EntitySetDeathContainerAsEnabled(const std::shared_ptr<CScri
+ }
+ 
+ unsigned int LuaQuestState::GetContainerItemDefCount(CScriptThing* pContainer) {
+-    if (!m_pGameInterface || !GetItemDefNamesFromContainer_API || !CCharString_Destroy) {
++    if (!m_pGameInterface || !GetItemDefNamesFromContainer_API || !CCharString_Destroy || !Game_free) {
+         Log("!!! ERROR: GetContainerItemDefCount - API or string destructor not available!");
+         return 0;
+     }
+@@ -8943,14 +8943,12 @@ unsigned int LuaQuestState::GetContainerItemDefCount(CScriptThing* pContainer) {
+         Log("!!! ERROR: GetContainerItemDefCount - pContainer is null!");
+         return 0;
+     }
+-    std::vector<CCharString> outNames;
+-    GetItemDefNamesFromContainer_API(m_pGameInterface, pContainer, &outNames);
++    RetailCStringVector outNames;
++    GetItemDefNamesFromContainer_API(m_pGameInterface, pContainer, outNames.Output());
+     // Count native vector elements, including entries with no text. The public
+     // string-list conversion omits such entries and cannot establish emptiness.
+-    const unsigned int count = static_cast<unsigned int>(outNames.size());
+-    for (auto& name : outNames) {
+-        CCharString_Destroy(&name);
+-    }
++    const unsigned int count = outNames.Count();
++    outNames.Close();
+     return count;
+ }
+ 
+@@ -8958,7 +8956,8 @@ sol::table LuaQuestState::GetItemDefNamesFromContainer(const std::shared_ptr<CSc
+     sol::state_view lua(s);
+     sol::table resultTable = lua.create_table();
+ 
+-    if (!m_pGameInterface || !GetItemDefNamesFromContainer_API) {
++    if (!m_pGameInterface || !GetItemDefNamesFromContainer_API || !CCharString_ToConstChar_API ||
++        !CCharString_Destroy || !Game_free) {
+         Log("!!! ERROR: GetItemDefNamesFromContainer - API not available!");
+         return resultTable;
+     }
+@@ -8968,18 +8967,20 @@ sol::table LuaQuestState::GetItemDefNamesFromContainer(const std::shared_ptr<CSc
+         return resultTable;
+     }
+ 
+-    std::vector<CCharString> outNames;
+-    GetItemDefNamesFromContainer_API(m_pGameInterface, pContainer, &outNames);
++    RetailCStringVector outNames;
++    GetItemDefNamesFromContainer_API(m_pGameInterface, pContainer, outNames.Output());
+ 
+     int luaIndex = 1;
+-    for (auto& cStr : outNames) {
+-        const char* text = CCharString_ToConstChar_API(&cStr);
++    const unsigned int count = outNames.Count();
++    for (unsigned int index = 0; index < count; ++index) {
++        const char* text = CCharString_ToConstChar_API(outNames.At(index));
+         if (text) {
+             resultTable[luaIndex++] = std::string(text);
+         }
+-        CCharString_Destroy(&cStr); // Must destroy the strings given by the game
++        outNames.RetireNext(); // Preserve conversion/destruction interleaving
+     }
+ 
++    outNames.Close();
+     return resultTable;
+ }
+ 
+diff --git a/FableScriptExtender/RetailCStringVector.h b/FableScriptExtender/RetailCStringVector.h
+new file mode 100644
+index 0000000..05f6fd5
+--- /dev/null
++++ b/FableScriptExtender/RetailCStringVector.h
+@@ -0,0 +1,72 @@
++#pragma once
++#include "FableAPI.h"
++#include <cstdint>
++#include <exception>
++#include <stdexcept>
++
++// The game fills this STLport layout using MSVCR71 allocation. It is not a
++// modern std::vector and must never be released through the bridge's CRT.
++struct RetailCStringVectorStorage {
++    CCharString* begin = nullptr;
++    CCharString* end = nullptr;
++    CCharString* capacity = nullptr;
++};
++static_assert(sizeof(CCharString) == 4 && sizeof(RetailCStringVectorStorage) == 12,
++              "Retail CString vectors require the Win32 three-pointer layout");
++
++class RetailCStringVector {
++public:
++    explicit RetailCStringVector(tCCharString_Destructor destroy = CCharString_Destroy,
++                                 t_free release = Game_free)
++        : destroy_(destroy), release_(release) {
++        if (!destroy_ || !release_)
++            throw std::runtime_error("Retail CString vector cleanup unavailable");
++    }
++    ~RetailCStringVector() { try { Close(); } catch (...) {} }
++    RetailCStringVector(const RetailCStringVector&) = delete;
++    RetailCStringVector& operator=(const RetailCStringVector&) = delete;
++
++    RetailCStringVectorStorage* Output() {
++        if (closed_) throw std::runtime_error("Retail CString vector is closed");
++        return &storage_;
++    }
++    unsigned int Count() const {
++        if (!storage_.begin) return 0;
++        return static_cast<unsigned int>((reinterpret_cast<std::uintptr_t>(storage_.end)
++            - reinterpret_cast<std::uintptr_t>(storage_.begin)) / sizeof(CCharString));
++    }
++    CCharString* At(unsigned int index) {
++        if (closed_ || index >= Count())
++            throw std::runtime_error("Retail CString vector index out of range");
++        return storage_.begin + index;
++    }
++    void RetireNext() {
++        if (closed_ || retired_ >= Count())
++            throw std::runtime_error("Retail CString vector retirement out of range");
++        // Record retirement before dispatch so an exceptional cleanup cannot
++        // cause a second attempt on the same CString.
++        destroy_(storage_.begin + retired_++);
++    }
++    void Close() {
++        if (closed_) return;
++        std::exception_ptr failure;
++        while (retired_ < Count()) {
++            try { RetireNext(); }
++            catch (...) { if (!failure) failure = std::current_exception(); }
++        }
++        auto buffer = storage_.begin;
++        storage_ = {};
++        closed_ = true;
++        if (buffer) {
++            try { release_(buffer); }
++            catch (...) { if (!failure) failure = std::current_exception(); }
++        }
++        if (failure) std::rethrow_exception(failure);
++    }
++private:
++    RetailCStringVectorStorage storage_{};
++    tCCharString_Destructor destroy_;
++    t_free release_;
++    unsigned int retired_ = 0;
++    bool closed_ = false;
++};

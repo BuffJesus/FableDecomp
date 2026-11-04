@@ -1,0 +1,59 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 8f49e11..b6d8c84 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -2239,6 +2239,7 @@ inline void RegisterRetailResources(sol::state& lua) {
+     auto positions=lua.new_usertype<RetailThingPositionList>("RetailThingPositionList",sol::no_constructor);
+     positions["Clear"]=&RetailThingPositionList::Clear;
+     positions["FillScriptName"]=&RetailThingPositionList::FillScriptName;
++    positions["AppendScriptName"]=&RetailThingPositionList::AppendScriptName;
+     positions["Count"]=&RetailThingPositionList::Count;
+     positions["GetPos"]=[](RetailThingPositionList& list,int index,sol::this_state ts) {
+         return ReadRetailThingPosition(list.PositionSource(index),ts);
+diff --git a/FableScriptExtender/retail_thing_position_list.h b/FableScriptExtender/retail_thing_position_list.h
+index c165283..3df4fdf 100644
+--- a/FableScriptExtender/retail_thing_position_list.h
++++ b/FableScriptExtender/retail_thing_position_list.h
+@@ -12,10 +12,11 @@ public:
+     using Getter=int(__thiscall*)(CGameScriptInterfaceBase*,const CCharString*,Vector*);
+     using Erase=CScriptThing*(__thiscall*)(Vector*,CScriptThing*,CScriptThing*);
+     using Destroy=void(__thiscall*)(Vector*);
+-    struct APIs { Getter get; Erase erase; Destroy destroy; };
++    using Append=void(__thiscall*)(Vector*,const CScriptThing*);
++    struct APIs { Getter get; Erase erase; Destroy destroy; Append append=nullptr; };
+     static APIs NativeAPIs() {
+         return {reinterpret_cast<Getter>(GetAllThingsWithScriptName_API),
+-                ASLR<Erase>(0x008AC9D0),ASLR<Destroy>(0x008AC970)};
++                ASLR<Erase>(0x008AC9D0),ASLR<Destroy>(0x008AC970),ASLR<Append>(0x008ADF90)};
+     }
+     explicit RetailThingPositionList(CGameScriptInterfaceBase* game,APIs apis=NativeAPIs()):game(game),apis(apis) {
+         if(!game || !apis.get || !apis.erase || !apis.destroy || !CCharString_Construct_Literal || !CCharString_Destroy)
+@@ -38,6 +39,28 @@ public:
+         CCharString_Destroy(&key);
+         return result;
+     }
++    void AppendScriptName(const std::string& name) {
++        CheckOpen();
++        if(!apis.append || !GetThingWithScriptName_ByName_API || !RetailThing_Destroy_API)
++            throw std::runtime_error("Retail Thing named append APIs unavailable");
++        CCharString key{};
++        CCharString_Construct_Literal(&key,name.c_str(),-1);
++        CScriptThing temporary{};
++        bool live=false;
++        try {
++            auto* result=GetThingWithScriptName_ByName_API(game,&temporary,&key);
++            live=true;
++            // Native push_back retains a separate by-value handle, including empty results.
++            apis.append(&vector,result);
++            live=false;
++            RetailThing_Destroy_API(&temporary);
++        } catch(...) {
++            if(live) {try {RetailThing_Destroy_API(&temporary);}catch(...) {}}
++            try {CCharString_Destroy(&key);}catch(...) {}
++            throw;
++        }
++        CCharString_Destroy(&key);
++    }
+     int Count() const {
+         CheckOpen();
+         auto bytes=static_cast<std::int32_t>(reinterpret_cast<std::uintptr_t>(vector.end)-reinterpret_cast<std::uintptr_t>(vector.begin));

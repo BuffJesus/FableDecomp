@@ -637,5 +637,251 @@
     "pdbMembersUnused": [],
     "nestedPdbMembers": {}
   },
-  "entities": {}
+  "entities": {},
+  "reviewedStackScalarAliases": {
+    "0x00eea240": {
+      "alias": "local_followTarget",
+      "additionalAliases": [
+        "followDistance"
+      ],
+      "nativeSha256": "d963b37216c422a670d71bd3eff0f2bdce0be712193dda973c3e78eb9e0e02a5",
+      "sourceSha256": "8de3f697f07f34cfa714444f774fe47b513c29af0821b756b08185ed1eef0b7e",
+      "nativeInstructions": {
+        "0x00eea240": "83ec20",
+        "0x00eea243": "56",
+        "0x00eea244": "8bf1",
+        "0x00eea246": "8b4e40",
+        "0x00eea249": "8b01",
+        "0x00eea24b": "57",
+        "0x00eea24c": "8d54240c",
+        "0x00eea250": "52",
+        "0x00eea251": "ff901c010000",
+        "0x00eea257": "8b4c2410",
+        "0x00eea25b": "33ff",
+        "0x00eea25d": "3bcf",
+        "0x00eea25f": "0f8408010000",
+        "0x00eea265": "8b01",
+        "0x00eea267": "ff902c010000",
+        "0x00eea26d": "84c0",
+        "0x00eea26f": "0f84f8000000",
+        "0x00eea284": "8d4c2418",
+        "0x00eea288": "e8f300abff",
+        "0x00eea28d": "8b4e40",
+        "0x00eea290": "6a04",
+        "0x00eea292": "8d44241c",
+        "0x00eea296": "50",
+        "0x00eea297": "8d442414",
+        "0x00eea29b": "c74424204c092701",
+        "0x00eea2a3": "897c2428",
+        "0x00eea2a7": "897c242c",
+        "0x00eea2ab": "8b11",
+        "0x00eea2ad": "50",
+        "0x00eea2ae": "ff5220",
+        "0x00eea2b1": "8b4e40",
+        "0x00eea2b4": "8b11",
+        "0x00eea2b6": "6a01",
+        "0x00eea2b8": "680000803f",
+        "0x00eea2bd": "ff9218010000",
+        "0x00eea2c3": "50",
+        "0x00eea2c4": "8d4c2424",
+        "0x00eea2c8": "e853d08fff",
+        "0x00eea2eb": "8b442424",
+        "0x00eea2ef": "3bc7",
+        "0x00eea2f1": "741d",
+        "0x00eea2f3": "ff08",
+        "0x00eea2f5": "8b442424",
+        "0x00eea2f9": "3938",
+        "0x00eea2fb": "7513",
+        "0x00eea2fd": "8b4808",
+        "0x00eea300": "ff5004",
+        "0x00eea303": "8b4c2424",
+        "0x00eea307": "51",
+        "0x00eea308": "e8af46d1ff",
+        "0x00eea30d": "83c404",
+        "0x00eea310": "8d4c2418",
+        "0x00eea314": "897c2420",
+        "0x00eea318": "897c2424",
+        "0x00eea31c": "c74424188c002601",
+        "0x00eea324": "e80701abff",
+        "0x00eea329": "8b442414",
+        "0x00eea32d": "3bc7",
+        "0x00eea32f": "c744240c8c8c2301"
+      },
+      "edits": [
+        [
+          "xStack_1c",
+          "local_followTarget"
+        ],
+        [
+          "if ((piStack_18 == (int *)0x0) || (cVar2 = (**(code **)(*piStack_18 + 300))(), cVar2 == '\\0')) {",
+          "if ((local_followTarget == (CScriptThing_bv *)0x0) || (cVar2 = CScriptThing::IsAlive((CScriptThing_bv *)&local_followTarget), cVar2 == '\\0')) {"
+        ],
+        [
+          "pcVar5 = &DAT_3f800000;",
+          "followDistance = 1.0;"
+        ],
+        [
+          "(CScriptGameResourceObjectScriptedThingBase *)xStack_10,(CScriptThing *)pCVar4,pcVar5,pCVar6,(CCharString *)unaff_EDI,unaff_ESI,(bool)in_stack_ffffffe0,(bool)in_stack_ffffffe4",
+          "(CScriptGameResourceObjectScriptedThingBase *)xStack_10,(CScriptThing *)pCVar4,followDistance,true"
+        ]
+      ],
+      "editCounts": [
+        5,
+        1,
+        1,
+        1
+      ],
+      "review": "Scratch candidate: returned Thing SP0C has Data SP10. Native EEa257 reads Data, null-guards and calls implementation IsAlive slot12C at EEa267. Resource SP18 acquires that returned Thing. EEa2B6/B8/C3 push true, IEEE32 1.0 and GetHero result; EEa2C4 ECX=SP18, EEa2C8 invokes7E7320 FollowThing with12 argument bytes. Explicit aliases preserve receiver and real arity. Native and behavioral validation still required before promotion."
+    }
+  },
+  "reviewedThingOutputScopes": {
+    "0x00eea240": {
+      "address": "0x00EEA240",
+      "end": "0x00EEA3C0",
+      "sourceSha256": "8de3f697f07f34cfa714444f774fe47b513c29af0821b756b08185ed1eef0b7e",
+      "nativeSha256": "d963b37216c422a670d71bd3eff0f2bdce0be712193dda973c3e78eb9e0e02a5",
+      "anchors": {
+        "0xeea24c": "8d54240c52ff901c010000",
+        "0xeea2eb": "8b4424243bc7741dff088b442424393875138b4808ff50048b4c242451e8af46d1ff83c4048d4c2418897c2420897c2424c74424188c002601e80701abff8b4424143bc7c744240c8c8c2301741dff088b442414393875138b4808ff50048b54241452e86946d1ff83c4048d4c240c897c2410897c2414e879ffaaff5f5e83c420c3",
+        "0xeea378": "8d4c240ce8bf045cff5f5e83c420c3",
+        "0xeea3a7": "8d4c240ce83047abff8d4c2410e887045cff5b5f5e83c420c3"
+      },
+      "dependencies": {
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "83d924f226af312090e032cc18ecffc5e767bd13fd633ba9dae1c9adc2c5c0dd"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "76215ab1c8f75af889f974a5be9aa61c1c6f872d07fe5052d7bb4b21dbc09620"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_pickpocket_event_payload_20261009/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "f16df4899338ea4a9673f2344b0e6be0a80814f8ea52e8ce9ff7d6e6340ba7d0",
+      "recoveredSha256": "f7cb9ee47f0befdcce4d20c2ca2bc2956c54fdc2c9b07149f0a88c88b9ab65a9",
+      "operations": [
+        {
+          "before": "    local resources = quest:RetailResources()",
+          "after": "    return quest:WithRetailResources(function(resources)\n    local followTargetOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "    local r1 = quest:GetHeroTargetedThing()",
+          "after": "    local r1 = quest:GetHeroTargetedThing()\n    followTargetOwner = resources:TrackThingOutput(r1)",
+          "count": 1
+        },
+        {
+          "before": "\n            return\n",
+          "after": "\n            resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0\n            return\n",
+          "count": 2
+        },
+        {
+          "before": "    end\nend\n",
+          "after": "    end\n    resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "TrackThingOutput",
+        "RetireThingOutput"
+      ]
+    },
+    "0x00eea020": {
+      "address": "0x00EEA020",
+      "end": "0x00EEA23F",
+      "sourceSha256": "9b53e4ac6400892ef7e0d42d5846a5ba87430385eaab31478db588ed67e47a58",
+      "nativeSha256": "c5fdc51a971e1fc1320f943950e752505362dcc3c8220362c5a9cec1718caee4",
+      "anchors": {
+        "0xeea07c": "8d4c2418e8fb02abff8b4e408bc1c74424184c092701895c2420895c24248b388b016a04",
+        "0xeea13d": "49abff518bc48858028858018818c64003ff8b4e408b11680000003f680000003fff92d40500008b4e408b0168000080",
+        "0xeea215": "8d4c2430e892d87fff8d4c2428c74424288c002601e80102abff8d4c2418e898d28fff5f5e5b83c43cc3"
+      },
+      "dependencies": {
+        "0x6e7ab0": {
+          "length": 53,
+          "sha256": "23707643d74133867908da322ba37d39576eb0cb9001a73db24903f73725b556"
+        },
+        "0x6e7b80": {
+          "length": 66,
+          "sha256": "fae67ecaf59ee36c52741765d02b3fd8998348f81a6b6fc15ef5eaeddc21d0f0"
+        },
+        "0x7e74d0": {
+          "length": 66,
+          "sha256": "63d35277586994402fc860945a37ce38ac2c40da11870d375fe4034f4c2df9ba"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "FableAPI.h": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "476ba7c926536992b7fb10a5a00a57576f9b5967f41f1d23cfb0441511e3a54a"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "76215ab1c8f75af889f974a5be9aa61c1c6f872d07fe5052d7bb4b21dbc09620"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_wait_conscious_condition_20261009/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        }
+      },
+      "intermediateSha256": "86ce869be164925dcb1b30ca0b5c25049dfb6d6b19eecba469dd51d382330179",
+      "recoveredSha256": "91864f5d0835d95601c04c4e041db900449cd0e12b71ee7c32ade5e5d1213633",
+      "operations": [
+        {
+          "before": "    local resources = quest:RetailResources()",
+          "after": "    return quest:WithRetailResources(function(resources)",
+          "count": 1
+        },
+        {
+          "before": "\nend\n",
+          "after": "\n    end)\nend\n",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "WithRetailResources"
+      ],
+      "contract": "Resource-only callback scope: preserves explicit movie then resource normal cleanup and resource-only early exit; reverse-order fallback for Lua callback errors. No new Thing output ownership operations."
+    }
+  },
+  "reviewedQuestConsciousConditions": {
+    "0x00eea020": {
+      "schema": "reviewed-quest-conscious-condition/1",
+      "address": "0x00eea020",
+      "role": "Main",
+      "sourceSha256": "9b53e4ac6400892ef7e0d42d5846a5ba87430385eaab31478db588ed67e47a58",
+      "nativeSha256": "c5fdc51a971e1fc1320f943950e752505362dcc3c8220362c5a9cec1718caee4",
+      "operation": "RegisterQuestConsciousCondition",
+      "nativeThreadOffset": "0x2c",
+      "nativeVTable": "0x012c2fe8",
+      "contract": "Native16-byte conscious condition, clone retains counted Thing; caller local destroyed before first frame. No Lua polling.",
+      "sdkMethodSha256": "72a8314f9e5727faae53be26db7075582fa6cdd6c8cdc54f9d6b4b42b771198e",
+      "sdkBindingSha256": "f534880bb9a740bc59d51afd3a029bc508c831f5af321e46989b9c1521f3cad7"
+    }
+  }
 }

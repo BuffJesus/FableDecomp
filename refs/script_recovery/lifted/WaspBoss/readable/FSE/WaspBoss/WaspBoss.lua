@@ -22,13 +22,14 @@ end
 
 -- Q_WaspBoss.Main (retail 0x00e0ea40)
 function Main(quest)
+    local scratchValue
     quest:SetTimer(quest:GetStateInt("ReachedWaspHelper"), 120)
     while not quest:IsRegionLoaded("LookoutPoint") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:Pause(1.0)
-    quest:GiveHeroTutorial(TUTORIAL_CATEGORY_CAMERA)
+    scratchValue = quest:GiveHeroTutorial(TUTORIAL_CATEGORY_CAMERA)
     quest:AddEntityBinding("GratefulVillagerSpawn", "WaspBoss/Entities/GratefulVillagerSpawn", 1)
     quest:AddEntityBinding("WaspChaser", "WaspBoss/Entities/WaspChaser", 1)
     quest:AddEntityBinding("WaspChaseWoman", "WaspBoss/Entities/WaspChaseWoman", 1)
@@ -39,23 +40,31 @@ function Main(quest)
     quest:AddEntityBinding("QueenHornet", "WaspBoss/Entities/QueenHornet", 1)
     quest:AddEntityBinding("HornetDrone", "WaspBoss/Entities/HornetDrone", 1)
     quest:FinalizeEntityBindings()
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WASP_MENACE_OBJECTIVE_01", "", "HeroGuildComplexInside")
+    local pQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_WASP_MENACE_OBJECTIVE_01", "", "HeroGuildComplexInside")
     quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_028_GUILDSEAL_WASP_MAP", "", true, true)
     while not quest:IsLevelLoaded("PicnicArea") do
         if not quest:NewScriptFrame() then return end
     end
-    if quest:IsActiveThreadTerminating() then return end
+    local isActiveThreadTerminating = quest:IsActiveThreadTerminating()
+    if isActiveThreadTerminating then return end
     quest:OverrideMusic(23, false, false)
     quest:CreateThread("WatchForTermination")  -- native thread body CV_ChapelOfEvilScript::EndMission: lift it as function WatchForTermination(quest)
+    if not isActiveThreadTerminating then
+    end
     quest:CreateThread("DoMission")  -- native thread body CQ_WaspBossScript::DoMission: lift it as function DoMission(quest)
+    if not isActiveThreadTerminating then
+    end
     quest:CreateThread("WatchForCutscene")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetCutscene: lift it as function WatchForCutscene(quest)
+    if not isActiveThreadTerminating then
+    end
 end
 
 -- Q_WaspBoss.Init (retail 0x00e0e820)
 function Init(quest)
     quest:SetStateInt("ReachedWaspHelper", quest:RegisterTimer())  -- native constructor: CTimer member
     quest:AddQuestRegion("Q_WaspBoss", "PicnicArea")
-    quest:SetQuestWorldMapOffset("Q_WaspBoss", 10, nil --[[missing]])
+    quest:SetQuestWorldMapOffset("Q_WaspBoss", 10, 10)
     quest:SetStateBool("PanickedVillagersScene", false)
     quest:SetStateBool("MissionSucceeded", false)
     quest:SetStateBool("MissionFailed", false)
@@ -71,8 +80,12 @@ end
 
 -- Q_WaspBoss.OnPersist (retail 0x00e0e9a0)
 function OnPersist(quest, context)
-    quest:SetStateBool("QuestStartScreened", quest:PersistTransferBool(context, "QuestStartScreened", quest:GetStateBool("QuestStartScreened")))
-    quest:SetStateInt("SavedVillagerCount", quest:PersistTransferInt(context, "SavedVillagerCount", quest:GetStateInt("SavedVillagerCount") or 0))
+    local questStartScreened = quest:GetStateBool("QuestStartScreened") or false
+    questStartScreened = quest:PersistTransferBool(context, "QuestStartScreened", questStartScreened)
+    quest:SetStateBool("QuestStartScreened", questStartScreened)
+    local savedVillagerCount = quest:GetStateInt("SavedVillagerCount") or 0
+    savedVillagerCount = quest:PersistTransferInt(context, "SavedVillagerCount", savedVillagerCount)
+    quest:SetStateInt("SavedVillagerCount", savedVillagerCount)
 end
 
 -- Q_WaspBoss.WatchForTermination (retail 0x00e0f1d0)
@@ -85,7 +98,8 @@ function WatchForTermination(quest)
     if not missionFailed then
         quest:ResetPlayerCreatureCombatMultiplier()
         quest:GiveHeroExperience(quest:ReadGlobalGameData(SCRIPT_DEF.WB_ExperienceReward))
-        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
+        local getActiveQuestName = quest:GetActiveQuestName()
+        quest:SetQuestAsCompleted(getActiveQuestName, true, false, false)
         quest:StopOverrideMusic(false)
         quest:FadeScreenIn()
         while quest:IsLevelLoaded("PicnicArea") do
@@ -94,10 +108,12 @@ function WatchForTermination(quest)
         if quest:IsActiveThreadTerminating() then return end
         quest:HeroReceiveMessageFromGuildMaster("TEXT_QST_078_GM_MSG_FIRST", "", true, true)
     else
-        quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "", true)
+        local getActiveQuestName2 = quest:GetActiveQuestName()
+        quest:SetQuestAsFailed(getActiveQuestName2, true, "", true)
         quest:StopOverrideMusic(false)
     end
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+    local getActiveQuestName3 = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(getActiveQuestName3, 0)
 end
 
 -- Q_WaspBoss.DoMission (retail 0x00e12580)
@@ -122,12 +138,12 @@ function DoMission(quest)
         scratchValue4 = quest:GetThingWithScriptName(scratchValue3)
         isActiveThreadTerminating = false
         position = scratchValue4:GetPos()
-        scratchValue4 = quest:CreateCreature(readGlobalGameDataString, position, "HornetDrone")
+        scratchValue4 = quest:CreateCreature(readGlobalGameDataString, position, "HornetDrone", isActiveThreadTerminating)
         scratchValue6 = scratchValue4
         scratchValue4 = nil
         scratchValue4 = nil
         scratchValue2 = scratchValue2 + 1
-    until scratchValue2 >= 6
+    until not (scratchValue2 < 6)
     isActiveThreadTerminating = quest:IsActiveThreadTerminating()
     if isActiveThreadTerminating then
         scratchValue6 = nil
@@ -151,7 +167,7 @@ function DoMission(quest)
             scratchValue4 = quest:GetThingWithScriptName("MK_WQ_STARTING")
             isActiveThreadTerminating = false
             position = scratchValue4:GetPos()
-            scratchValue5 = quest:CreateCreature(readGlobalGameDataString, position, "QueenHornet")
+            scratchValue5 = quest:CreateCreature(readGlobalGameDataString, position, "QueenHornet", isActiveThreadTerminating)
             quest:SetStateBool("QueenHornetAttacks", true)
             quest:CreateThread("GuildmasterHelp")  -- native thread body CScriptGameResourceObjectScriptedThingBase_HandleQueenHornetDialogue: lift it as function GuildmasterHelp(quest)
             quest:NewScriptFrame()
@@ -174,7 +190,6 @@ end
 
 -- Q_WaspBoss.WatchForCutscene (retail 0x00e12330)
 function WatchForCutscene(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local queenHornetAttacks = quest:GetStateBool("QueenHornetAttacks")
     while true do
@@ -183,13 +198,15 @@ function WatchForCutscene(quest)
             local queenHornet = quest:GetThingWithScriptName("QueenHornet")
             quest:EntitySetCutsceneBehaviour(queenHornet, CUTSCENE_BEHAVIOUR_NOT_PAUSED)
             local resource = resources:NewResource()
+            local hero = quest:GetHero()
             resources:TryAcquire(resource, hero, 4)
             local actorMap = resources:NewActorMap()
             resources:SetActor(actorMap, "HERO", resource)
             local movie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
             resources:RunMacro("CS_WASPBOSS_QUEEN", actorMap, false, true)
-            quest:EntitySetFacingAngleTowardsThing(hero, queenHornet, true)
+            local pThing = quest:GetHero()
+            quest:EntitySetFacingAngleTowardsThing(pThing, queenHornet, true)
             quest:CameraDefault()
             quest:SetStateBool("CutsceneFinished", true)
             quest:PauseAllNonScriptedEntities(false)
@@ -251,7 +268,8 @@ function WaspIntro(quest)
     local waspVictim = quest:GetThingWithScriptName("WaspVictim")
     local resource = resources:NewResource()
     local resource2 = resources:NewResource()
-    resources:TryAcquire(resource, quest:GetHero(), 4)
+    local pThing = quest:GetHero()
+    resources:TryAcquire(resource, pThing, 4)
     resources:TryAcquire(resource2, waspVictim, 4)
     local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
@@ -268,7 +286,8 @@ function WaspIntro(quest)
             resources:ReleaseResource(resource)
             return
         end
-        quest:KickOffQuestStartScreen(quest:GetActiveQuestName(), true, false)
+        local pQuestName = quest:GetActiveQuestName()
+        quest:KickOffQuestStartScreen(pQuestName, true, false)
         quest:SetStateBool("QuestStartScreened", true)
     end
     quest:PauseAllNonScriptedEntities(false)
@@ -276,25 +295,34 @@ function WaspIntro(quest)
     resources:DestroyActorMap(actorMap)
     resources:ReleaseResource(resource2)
     resources:ReleaseResource(resource)
+    waspVictim = nil
 end
 
 -- Q_WaspBoss.helper_E13310 (retail 0x00e13310)
 function helper_E13310(quest)
-    local predicateResult, healthBar, queenHornet
-    queenHornet = quest:GetThingWithScriptName("QueenHornet")
+    local predicateResult, healthBar, queenHornet2
+    queenHornet2 = nil
+    queenHornet2 = quest:GetThingWithScriptName("QueenHornet")
     quest:DisplayQuestInfo(true)
     while not quest:GetStateBool("QueenHornetAttacks") do
-        if not quest:NewScriptFrame() then return end
+        quest:NewScriptFrame()
+        if quest:IsActiveThreadTerminating() then
+            queenHornet2 = nil
+            do return end
+        end
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_WASP_MENACE_OBJECTIVE_02", "", "HeroGuildComplexInside")
-    healthBar = quest:AddQuestInfoBarHealth(queenHornet, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
+    local pQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_WASP_MENACE_OBJECTIVE_02", "", "HeroGuildComplexInside")
+    healthBar = quest:AddQuestInfoBarHealth(queenHornet2, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
     while true do
         while true do
             if not quest:NewScriptFrame() then return end
-            predicateResult = false
-            if not quest:IsLevelLoaded("PicnicArea") then break end
-            if (queenHornet ~= nil and not queenHornet:IsNull()) and queenHornet ~= nil and queenHornet:MsgIsKilledBy("") then
+            local isLevelLoaded = quest:IsLevelLoaded("PicnicArea")
+            predicateResult = quest:IsActiveThreadTerminating()
+            if not isLevelLoaded then break end
+            if predicateResult then return end
+            if (queenHornet2 ~= nil and not queenHornet2:IsNull()) and queenHornet2 ~= nil and queenHornet2:MsgIsKilledBy("") then
                 if not quest:IsActiveThreadTerminating() then
                     quest:DisplayQuestInfo(false)
                     quest:RemoveQuestInfoElement(healthBar)
@@ -306,30 +334,38 @@ function helper_E13310(quest)
         end
         if predicateResult then break end
         while not quest:IsLevelLoaded("PicnicArea") do
-            if not quest:NewScriptFrame() then return end
+            quest:NewScriptFrame()
+            if quest:IsActiveThreadTerminating() then
+                queenHornet2 = nil
+                do return end
+            end
         end
         if quest:IsActiveThreadTerminating() then break end
-        queenHornet = quest:GetThingWithScriptName("QueenHornet")
+        queenHornet2 = quest:GetThingWithScriptName("QueenHornet")
         quest:DisplayQuestInfo(true)
-        healthBar = quest:AddQuestInfoBarHealth(queenHornet, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
+        healthBar = quest:AddQuestInfoBarHealth(queenHornet2, {R = 255, G = 255, B = 0, A = 255}, "HUD_ICON_WASP_HEAD", 1.0)
     end
 end
 
 -- Q_WaspBoss.helper_E137B0 (retail 0x00e137b0)
 function helper_E137B0(quest)
     local resources = quest:RetailResources()
+    local queenDepositPos1
     quest:NewScriptFrame()
     if quest:IsActiveThreadTerminating() then return end
     quest:SetStateBool("PanickedVillagersScene", true)
     local resource = resources:NewResource()
-    resources:TryAcquire(resource, quest:GetHero(), 4)
+    local hero = quest:GetHero()
+    resources:TryAcquire(resource, hero, 4)
     local movie = resources:StartMovie("")
     quest:PauseAllNonScriptedEntities(true)
     quest:Pause(3.0)
     quest:FadeScreenOut(0.5, 0.5)
     quest:Pause(0.5)
-    local getNearestWithDefName = quest:GetNearestWithDefName(quest:GetThingWithScriptName("QueenDepositPos1"), "CREATURE_HORNET_QUEEN_01")
-    if getNearestWithDefName ~= nil then
+    queenDepositPos1 = quest:GetThingWithScriptName("QueenDepositPos1")
+    local getNearestWithDefName = quest:GetNearestWithDefName(queenDepositPos1, "CREATURE_HORNET_QUEEN_01")
+    queenDepositPos1 = nil
+    if getNearestWithDefName ~= nil and not getNearestWithDefName:IsNull() then
         if getNearestWithDefName ~= nil and getNearestWithDefName:IsAlive() then
             if quest:IsActiveThreadTerminating() then
                 quest:PauseAllNonScriptedEntities(false)
@@ -347,8 +383,11 @@ function helper_E137B0(quest)
     quest:PauseAllNonScriptedEntities(false)
     resources:DestroyMovie(movie)
     resources:ReleaseResource(resource)
-    quest:EntitySetInFaction(quest:GetThingWithScriptName("VILL1"), "FACTION_PICNIC_AREA")
-    quest:EntitySetInFaction(quest:GetThingWithScriptName("VILL2"), "FACTION_PICNIC_AREA")
-    quest:EntitySetInFaction(quest:GetThingWithScriptName("VILL3"), "FACTION_PICNIC_AREA")
+    local vill1 = quest:GetThingWithScriptName("VILL1")
+    quest:EntitySetInFaction(vill1, "FACTION_PICNIC_AREA")
+    local vill = quest:GetThingWithScriptName("VILL2")
+    quest:EntitySetInFaction(vill, "FACTION_PICNIC_AREA")
+    local vill3 = quest:GetThingWithScriptName("VILL3")
+    quest:EntitySetInFaction(vill3, "FACTION_PICNIC_AREA")
 end
 

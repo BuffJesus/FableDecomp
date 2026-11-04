@@ -59,17 +59,10 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: p1 = CCharString::CCharString(xStack_4);",
-            "unlifted: CArray<std::pair<long,long>_>::push_back((CArray<std::pair<long,long>_> *)(this + 0x94),iV",
-            "unlifted: std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize((vector<unsigned_char,st",
-            "unlifted: std::vector<unsigned_char,std::allocator<unsigned_char>_>::resize((vector<unsigned_char,st",
-            "unlifted: CCharString::operator= ((CCharString *)(*(int *)(this + 0x94) + iVar1 * 4), ENGINE_GlobalG",
-            "unlifted: *(undefined1 *)(iVar1 + *(int *)(this + 0xac)) = 0;",
-            "unlifted: *(undefined1 *)(iVar1 + *(int *)(this + 0xa0)) = 0;"
-          ],
+          "todo": [],
           "calls": [
             "SetStateBool",
+            "SnapshotGlobalConversations",
             "SetStateBool",
             "SetStateBool",
             "SetStateBool",
@@ -79,7 +72,13 @@
             "SetStateInt",
             "SetStateInt",
             "ENGINE_GlobalGameData",
-            "SetStateInt"
+            "SetStateInt",
+            "StateStringVectorResize",
+            "StateFlagVectorResize",
+            "StateFlagVectorResize",
+            "SetStateStringVectorAt",
+            "SetStateFlagVectorAt",
+            "SetStateFlagVectorAt"
           ],
           "lines": 25,
           "syntax": {
@@ -110,10 +109,7 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "persist transfer: `BookDonated` is a `vector<bool,std::allocator<bool>_>` member (BookDonated, this + 0xa0); no PersistTransfer list binding (callee 0xcdcf80 is Transfer<vector>, 3 operands)",
-            "persist transfer: `BookOwned` is a `vector<bool,std::allocator<bool>_>` member (BookOwned, this + 0xac); no PersistTransfer list binding (callee 0xcdcf80 is Transfer<vector>, 3 operands)"
-          ],
+          "todo": [],
           "calls": [
             "GetStateBool",
             "PersistTransferBool",
@@ -138,7 +134,9 @@
             "SetStateInt",
             "GetStateInt",
             "PersistTransferInt",
-            "SetStateInt"
+            "SetStateInt",
+            "PersistStateFlagVector",
+            "PersistStateFlagVector"
           ],
           "lines": 26,
           "syntax": {
@@ -168,7 +166,7 @@
           },
           "todo": [],
           "calls": [
-            "ENGINE_ConversationLines",
+            "ENGINE_StateConversationLines",
             "IsActiveThreadTerminating",
             "GetThingWithScriptName",
             "GetThingWithScriptName",
@@ -198,7 +196,7 @@
             "ClearCommands",
             "RESOURCE_PrepareResource"
           ],
-          "lines": 52,
+          "lines": 54,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -289,10 +287,10 @@
           },
           "todo": [],
           "calls": [
-            "ENGINE_ConversationString",
-            "ENGINE_ConversationString",
-            "ENGINE_ConversationString",
-            "ENGINE_ConversationString",
+            "ENGINE_StateConversationString",
+            "ENGINE_StateConversationString",
+            "ENGINE_StateConversationString",
+            "ENGINE_StateConversationString",
             "GetThingWithScriptName",
             "ENGINE_StrNotEqual",
             "IsActiveThreadTerminating",
@@ -370,81 +368,750 @@
             "returnKind": null,
             "bsimVoid": false
           },
+          "reviewedDispatchStaging": [
+            {
+              "nativeRead": "0x00e55831",
+              "dispatch": "0x00e55851",
+              "resource": {
+                "family": "self",
+                "offset": 52,
+                "kind": "resource_vtable_load",
+                "receiverRegister": "edi",
+                "tableRegister": "eax",
+                "provenance": "reviewed receiver lifetime and independent entry-this member origin"
+              },
+              "liveness": {
+                "assignmentLine": 230,
+                "alias": "xStack_7c",
+                "copiedAliases": [],
+                "visitedNodes": 169,
+                "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed",
+                "analysisOnlyAssignment": true
+              },
+              "executableLuaUnchanged": true
+            }
+          ],
+          "reviewedDefinitionStaging": [
+            {
+              "nativeRead": "0x00e5559a",
+              "field": {
+                "family": "parent",
+                "offset": 148,
+                "kind": "member_load"
+              },
+              "definition": "BookDef",
+              "indexField": "LastBookRequested",
+              "consumer": "IsObjectInThingsPossession",
+              "liveness": {
+                "assignmentLine": 308,
+                "alias": "iVar1",
+                "copiedAliases": [],
+                "visitedNodes": 381,
+                "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+              },
+              "executableLuaUnchanged": true,
+              "limits": "Valid immutable string snapshot and valid indices; API/heap/exception/gameplay boundaries remain."
+            }
+          ],
+          "reviewedRegisterDispatchStaging": [
+            {
+              "nativeRead": "0xe55683",
+              "dispatch": "0xe5569b",
+              "resource": {
+                "family": "self",
+                "offset": 52,
+                "kind": "resource_vtable_load",
+                "receiverRegister": "edi",
+                "tableRegister": "ebx"
+              },
+              "getter": "0x891ca0",
+              "getterSha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af",
+              "liveness": {
+                "assignmentLine": 355,
+                "alias": "CVar12",
+                "copiedAliases": [],
+                "visitedNodes": 19,
+                "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+              },
+              "executableLuaUnchanged": true,
+              "limits": "Bounded native register lifetime under explicit child API/MSVC ABI and caller-frame contracts; engine, heap, reentry, exceptions and gameplay unverified."
+            },
+            {
+              "nativeRead": "0xe5573e",
+              "dispatch": "0xe55756",
+              "resource": {
+                "family": "self",
+                "offset": 52,
+                "kind": "resource_vtable_load",
+                "receiverRegister": "edi",
+                "tableRegister": "ebx"
+              },
+              "getter": "0x891ca0",
+              "getterSha256": "e5f87fcf8da3f35f3810609e3a7157ce003d21ac503daeb5bfaee1f8e71745af",
+              "liveness": {
+                "assignmentLine": 260,
+                "alias": "CVar12",
+                "copiedAliases": [],
+                "visitedNodes": 19,
+                "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+              },
+              "executableLuaUnchanged": true,
+              "limits": "Bounded native register lifetime under explicit child API/MSVC ABI and caller-frame contracts; engine, heap, reentry, exceptions and gameplay unverified."
+            }
+          ],
+          "reviewedInterfacePointerStaging": [
+            {
+              "nativeRead": "0x00e551c6",
+              "dispatch": "0x00e551d3",
+              "interfaceOffset": 4,
+              "cachePrefixEspOffset": 20,
+              "method": "PauseAllNonScriptedEntities",
+              "argument": true,
+              "liveness": {
+                "assignmentLine": 113,
+                "alias": "CVar12",
+                "copiedAliases": [
+                  "CVar12",
+                  "xStack_7c"
+                ],
+                "visitedNodes": 381,
+                "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+              },
+              "executableLuaUnchanged": true,
+              "limits": "Immediate interface-load/cache/API prefix and dead Lua staging only; API double/ordinary MSVC ABI. Whole-lifetime cache, engine, heap, reentry, exceptions and gameplay unverified."
+            }
+          ],
+          "reviewedInterfaceTableStaging": [
+            {
+              "nativeRead": "0x00e55316",
+              "pointerLoad": "0x00e551c6",
+              "dispatch": "0x00e55c41",
+              "method": "PauseAllNonScriptedEntities",
+              "argument": false,
+              "liveness": {
+                "assignmentLine": 220,
+                "alias": "iVar8",
+                "copiedAliases": [],
+                "visitedNodes": 245,
+                "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+              },
+              "postHoistLiveness": {
+                "alias": "iVar8",
+                "cleanup": "__cleanup_LAB_00e55316",
+                "nilWritesInClosure": 1,
+                "terminalCallLines": [
+                  128,
+                  173,
+                  193,
+                  213,
+                  280,
+                  297
+                ],
+                "otherAliasCaptures": 0,
+                "scope": "normal zero-argument closure return paths only; exceptions/reentry unverified"
+              },
+              "executableLuaUnchanged": true,
+              "limits": "Dead table-staging annotation under ordinary MSVC ABI and load-site provenance contracts; actual heap/object/vtable lifetime, engine reentry, exceptions, saved cache and gameplay unverified. Shared tail is validated only for this sealed incoming branch.",
+              "copies": [
+                {
+                  "nativeBranch": "0x00e5588b",
+                  "nativeRead": "0x00e55316",
+                  "copyTarget": "LAB_00e55316",
+                  "inputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+                  "outputSha256": "12110f8443921bcd7cb891c9b7187e7fd64aff6d2632c4d623c842ce67640987",
+                  "liveness": {
+                    "assignmentLine": 244,
+                    "alias": "iVar8",
+                    "copiedAliases": [],
+                    "visitedNodes": 3,
+                    "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+                  },
+                  "originalGuardAndOperationsRetained": true,
+                  "limits": "Conditional copied read only, under seeded valid Teacher/parent/state objects; actual object/vtable lifetime, engine/heap/reentry/exceptions/gameplay and later DestroyMovie unverified."
+                }
+              ]
+            }
+          ],
+          "reviewedSavedTableStaging": [
+            {
+              "nativeRead": "0xe55a17",
+              "cacheStore": "0xe551cf",
+              "nativeCache": {
+                "status": "passed_native_cache_isolation_under_declared_ABI",
+                "instructions": 261,
+                "calls": 48,
+                "pointerLoad": "0xe551c6",
+                "cacheStore": "0xe551cf",
+                "tableRead": "0xe55a17",
+                "cacheCoordinate": 24,
+                "readCoordinate": 24,
+                "explicitWrites": [
+                  {
+                    "site": "0xe55512",
+                    "coordinate": 23,
+                    "width": 1
+                  },
+                  {
+                    "site": "0xe5551e",
+                    "coordinate": 23,
+                    "width": 1
+                  }
+                ],
+                "declaredBufferEscapes": [
+                  {
+                    "site": "0xe55705",
+                    "coordinate": 120,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xe554f8",
+                    "coordinate": 96,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xe5572c",
+                    "coordinate": 120,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xe55523",
+                    "coordinate": 96,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xe555d1",
+                    "coordinate": 0,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xe5564a",
+                    "coordinate": 108,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xe55671",
+                    "coordinate": 108,
+                    "bytes": 12
+                  }
+                ],
+                "abiContract": {
+                  "ordinaryMsvcCalleeSaved": true,
+                  "normalChildStackBalanceAssumed": true,
+                  "callerFramePreservedExceptDeclaredBuffers": true,
+                  "declaredBuffersStayInBounds": true,
+                  "engineReentryVerified": false,
+                  "exceptionsVerified": false,
+                  "heapVerified": false
+                },
+                "limits": "Native pointer origin, normal CFG, ESP equations and direct caller writes are checked. Opaque children, static interface targets and bounded buffer writes use the declared ordinary ABI/caller-frame contract; actual heap/vtable lifetime, reentry, exceptions and gameplay are unverified. This proof alone does not classify Lua diagnostics."
+              },
+              "callContracts": [
+                {
+                  "site": "0xe551d3",
+                  "target": "0x890ab0",
+                  "purgeBytes": 4,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe551de",
+                  "target": "0xcd23b9",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe551e9",
+                  "target": "0xcd2770",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe551f7",
+                  "target": "0x89b5b0",
+                  "purgeBytes": 12,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55205",
+                  "target": "0x6e7410",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5520a",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55220",
+                  "target": "0x89b5b0",
+                  "purgeBytes": 12,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55229",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe554aa",
+                  "target": "0x88fe30",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe554c0",
+                  "target": "0x88fe30",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe554e4",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe554ff",
+                  "target": "0x7e7490",
+                  "purgeBytes": 4,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55506",
+                  "target": "0x890400",
+                  "purgeBytes": 4,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55527",
+                  "target": "0x4aa840",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55548",
+                  "target": "0x891ca0",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55551",
+                  "target": "0x7e7390",
+                  "purgeBytes": 24,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55558",
+                  "target": "0x7e7450",
+                  "purgeBytes": 0,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55565",
+                  "target": "0x6e7410",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5556a",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5557b",
+                  "target": "0x7e7450",
+                  "purgeBytes": 0,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55584",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe555ac",
+                  "target": "0x891ca0",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe555b7",
+                  "target": "0x897220",
+                  "purgeBytes": 8,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe555c3",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe555da",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe555eb",
+                  "target": "0xe55ce0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe555f6",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55636",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55651",
+                  "target": "0x7e7490",
+                  "purgeBytes": 4,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55658",
+                  "target": "0x890400",
+                  "purgeBytes": 4,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55675",
+                  "target": "0x4aa840",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55692",
+                  "target": "0x891ca0",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5569b",
+                  "target": "0x7e7390",
+                  "purgeBytes": 24,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe556a2",
+                  "target": "0x7e7450",
+                  "purgeBytes": 0,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe556b5",
+                  "target": "0x6e7410",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe556ba",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe556cb",
+                  "target": "0x7e7450",
+                  "purgeBytes": 0,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe556d4",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe556f1",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5570c",
+                  "target": "0x7e7490",
+                  "purgeBytes": 4,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55713",
+                  "target": "0x890400",
+                  "purgeBytes": 4,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55730",
+                  "target": "0x4aa840",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5574d",
+                  "target": "0x891ca0",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55756",
+                  "target": "0x7e7390",
+                  "purgeBytes": 24,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5575d",
+                  "target": "0x7e7450",
+                  "purgeBytes": 0,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe55769",
+                  "target": "0x6e7410",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5576e",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": null,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xe5577f",
+                  "target": "0x7e7450",
+                  "purgeBytes": 0,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                }
+              ],
+              "aliases": [
+                {
+                  "kind": "original",
+                  "liveness": {
+                    "assignmentLine": 347,
+                    "alias": "iVar8",
+                    "copiedAliases": [],
+                    "visitedNodes": 246,
+                    "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+                  }
+                },
+                {
+                  "kind": "actual_tail_copy",
+                  "liveness": {
+                    "assignmentLine": 270,
+                    "alias": "iVar8",
+                    "copiedAliases": [],
+                    "visitedNodes": 3,
+                    "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+                  }
+                },
+                {
+                  "kind": "actual_tail_copy",
+                  "liveness": {
+                    "assignmentLine": 332,
+                    "alias": "iVar8",
+                    "copiedAliases": [],
+                    "visitedNodes": 3,
+                    "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+                  }
+                },
+                {
+                  "kind": "actual_tail_copy",
+                  "liveness": {
+                    "assignmentLine": 370,
+                    "alias": "iVar8",
+                    "copiedAliases": [],
+                    "visitedNodes": 3,
+                    "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+                  }
+                }
+              ],
+              "executableLuaUnchanged": true,
+              "limits": "Dead saved interface-table annotations under explicit ordinary MSVC ABI, normal child balance and caller-frame preservation except declared in-bounds buffers. Original local cache-prefix comparisons use seeded objects/cache and an explicit pause RET4 double; active resource bounds, nonempty string allocation, actual heap/object/vtable lifetime, engine reentry, exceptions, later DestroyMovie and gameplay remain unverified. No executable Lua changes."
+            }
+          ],
           "todo": [
             "verify cleanup at LAB_00e559a8 (lifted as early return)",
             "verify cleanup at LAB_00e55316 (lifted as early return)",
             "label LAB_00e559f0",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);",
-            "unlifted: (**(code **)(*(int *)CVar12 + 0x5ec))(0);",
             "verify cleanup at LAB_00e55316 (lifted as early return)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);",
             "label LAB_00e559a8",
             "label LAB_00e559b4",
             "verify cleanup at LAB_00e55316 (lifted as early return)",
             "label LAB_00e55316",
             "goto LAB_00e55c3f",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: xStack_7c = *pCVar11;",
-            "unlifted: (**(code **)((int)xStack_7c + 0x34))(pCVar9,pcVar13);",
             "verify cleanup at LAB_00e559a8 (lifted as early return)",
             "verify cleanup at LAB_00e559f0 (lifted as early return)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)((int)CVar12 + 0x34))(pCVar9,pcVar13);",
-            "verify cleanup at LAB_00e55a1e (lifted as early return)",
+            "verify cleanup at LAB_00e559f0 (lifted as early return)",
             "verify cleanup at LAB_00e55316 (lifted as early return)",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)((int)CVar2 + 0x34))(pCVar9,pcVar13);",
             "verify cleanup at LAB_00e559f0 (lifted as early return)",
             "verify cleanup at LAB_00e55316 (lifted as early return)",
             "unnamed field 0x14",
             "label LAB_00e55a1e",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))();",
-            "unlifted: (**(code **)(*(int *)xStack_7c + 0x5ec))();",
+            "verify cleanup at LAB_00e559f0 (lifted as early return)",
             "label LAB_00e55a13",
             "goto LAB_00e55c3f",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "unlifted: (**(code **)((int)CVar12 + 0x34))(pCVar9,pcVar13);",
-            "verify cleanup at LAB_00e55a1e (lifted as early return)",
+            "verify cleanup at LAB_00e559f0 (lifted as early return)",
+            "verify cleanup at LAB_00e559f0 (lifted as early return)",
             "label LAB_00e55c3a",
             "label LAB_00e55c3f",
-            "GetHealth: missing pThing (0 args for 1 params)",
-            "Speak: missing overScreenFade (5 args for 6 params)",
             "label LAB_00e55c16",
-            "verify cleanup at LAB_00e55c3a (lifted as early return)",
-            "unlifted: CVar12 = *(this + 4)",
-            "unlifted: pCVar9 = (**(*pCVar11 + 0x30))()",
-            "unlifted: CVar2 = *pCVar11",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))(pCVar9)",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
-            "unlifted: pCVar9 = (**(*pCVar11 + 0x30))()",
-            "unlifted: CVar2 = *pCVar11",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))(pCVar9)",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
-            "unlifted: iVar8 = *CVar12",
-            "unlifted: pCVar9 = (**(*pCVar11 + 0x30))()",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))(pCVar9)",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
-            "unlifted: iVar8 = *CVar12",
-            "unlifted: pCVar9 = (**(*pCVar11 + 0x30))()",
-            "unlifted: CVar12 = *pCVar11",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))(pCVar9)",
-            "unlifted: iVar8 = *xStack_7c",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
-            "unlifted: pCVar9 = (**(*pCVar11 + 0x30))()",
-            "unlifted: CVar2 = *pCVar11",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))(pCVar9)",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
-            "unlifted: iVar1 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x94)",
-            "unlifted: iVar8 = *xStack_7c",
-            "unlifted: iVar8 = *xStack_7c",
-            "unlifted: pCVar9 = (**(*pCVar11 + 0x30))()",
-            "unlifted: CVar12 = *pCVar11",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))(pCVar9)",
-            "unlifted: cVar7 = (**(*pCVar11 + 0x68))()",
-            "unlifted: iVar8 = *xStack_7c",
-            "unlifted: pCVar9 = (**(*this_00 + 0x30))()"
+            "verify cleanup at LAB_00e55c3a (lifted as early return)"
           ],
           "calls": [
             "SetThingPersistent",
@@ -491,21 +1158,30 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "RESOURCE_DestroyMovie",
-            "IsActiveThreadTerminating",
-            "PauseAllNonScriptedEntities",
-            "RESOURCE_DestroyMovie",
-            "IsActiveThreadTerminating",
-            "GetHealth",
-            "GetHero",
+            "Speak",
+            "RESOURCE_IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "RESOURCE_IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsActiveThreadTerminating",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "RESOURCE_IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
             "GiveHeroQuestCardDirectly",
@@ -515,43 +1191,59 @@
             "GetTimeOfDay",
             "GetTimeOfDay",
             "IsActiveThreadTerminating",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "QUESTTHING_Empty",
             "GetHero",
+            "Speak",
+            "RESOURCE_IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
+            "Speak",
+            "RESOURCE_IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "RESOURCE_IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
+            "Speak",
+            "RESOURCE_IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "GetHero",
             "IsObjectInThingsPossession",
             "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
-            "RESOURCE_DestroyMovie",
             "SetStateInt",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
+            "Speak",
+            "RESOURCE_IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
@@ -572,12 +1264,11 @@
             "RESOURCE_TryAcquire",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "PauseAllNonScriptedEntities",
-            "RESOURCE_DestroyMovie",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
+            "RESOURCE_ScriptThing",
             "GetHealth",
             "GetHero",
             "Speak",
@@ -600,7 +1291,7 @@
             "NewScriptFrame",
             "IsActiveThreadTerminating"
           ],
-          "lines": 519,
+          "lines": 484,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -720,22 +1411,12 @@
           },
           "todo": [
             "label LAB_00e55dcf",
-            "unnamed field 0x14",
-            "TakeObjectFromHero: missing objectDefName (0 args for 1 params)",
-            "unlifted: *(undefined1 *)(*(int *)(*(int *)(this + 0x14) + 0xa0) + (int)value) = 1;",
-            "helper_E57020: 2 helper operands for 0 parameters",
             "label LAB_00e560d5",
             "label LAB_00e560f5",
             "label LAB_00e560f5_c15",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
             "label LAB_00e560f5_c16",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
             "label LAB_00e560f5_c17",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
-            "label LAB_00e560f5_c18",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
-            "unlifted: CTCCarryable::OnKill((CTCCarryable *)xStack_30);",
-            "unlifted: ACTORMAP_Set(xStack_3c, \"Teacher\", &pOther)"
+            "label LAB_00e560f5_c18"
           ],
           "calls": [
             "ENGINE_IntToString",
@@ -771,6 +1452,7 @@
             "IsActiveThreadTerminating",
             "SetStateBool",
             "TakeObjectFromHero",
+            "SetStateFlagVectorAt",
             "SetStateInt",
             "IsActiveThreadTerminating",
             "SetStateInt",
@@ -816,6 +1498,7 @@
             "STRINGMAP_Destroy",
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
+            "STRINGMAP_Clear",
             "STRINGMAP_Set",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
@@ -825,16 +1508,7 @@
             "STRINGMAP_Destroy",
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
-            "STRINGMAP_Set",
-            "ACTORMAP_Set",
-            "ACTORMAP_Set",
-            "RESOURCE_RunMacroWithStrings",
-            "SetStateBool",
-            "IsActiveThreadTerminating",
-            "STRINGMAP_Destroy",
-            "ACTORMAP_Destroy",
-            "RESOURCE_ReleaseResource",
-            "IsActiveThreadTerminating",
+            "STRINGMAP_Clear",
             "STRINGMAP_Set",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
@@ -845,11 +1519,38 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
             "IsActiveThreadTerminating",
+            "STRINGMAP_Clear",
             "STRINGMAP_Set",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
             "RESOURCE_RunMacroWithStrings",
             "SetStateBool",
+            "IsActiveThreadTerminating",
+            "STRINGMAP_Clear",
+            "STRINGMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_RunMacroWithStrings",
+            "SetStateBool",
+            "IsActiveThreadTerminating",
+            "STRINGMAP_Destroy",
+            "ACTORMAP_Destroy",
+            "RESOURCE_ReleaseResource",
+            "IsActiveThreadTerminating",
+            "STRINGMAP_Clear",
+            "STRINGMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_RunMacroWithStrings",
+            "SetStateBool",
+            "IsActiveThreadTerminating",
+            "STRINGMAP_Clear",
+            "STRINGMAP_Set",
+            "ACTORMAP_Set",
+            "ACTORMAP_Set",
+            "RESOURCE_RunMacroWithStrings",
+            "SetStateBool",
+            "STRINGMAP_Clear",
             "STRINGMAP_Set",
             "ACTORMAP_Set",
             "ACTORMAP_Set",
@@ -863,7 +1564,7 @@
             "SetStateBool",
             "CreateThread"
           ],
-          "lines": 332,
+          "lines": 354,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -950,15 +1651,143 @@
           "path": "FSE/V_BookCollecting/Entities/BS_Teacher.lua",
           "evidence": "unnamed entity helper",
           "nativeSignature": {
-            "parameters": [],
+            "parameters": [
+              {
+                "native": "param_1",
+                "lua": "native_arg_param_1",
+                "type": "long"
+              },
+              {
+                "native": "param_2",
+                "lua": "native_arg_param_2",
+                "type": "map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_>\r\n          *"
+              }
+            ],
             "returnKind": null,
-            "problem": "unparsed parameter: std::less<CCharString>"
+            "bsimVoid": true
           },
+          "reviewedUnusedStackBytes": [
+            {
+              "reads": [
+                {
+                  "nativeStore": "0x00e573a4",
+                  "diagnostic": "unlifted: native_arg_param_2 = (map<CCharString,CCharString,std::less<CCharString>,std::allocator<st",
+                  "proof": {
+                    "store": "0xe573a4",
+                    "slotOffset": 24,
+                    "width": 4,
+                    "visitedStates": 23,
+                    "overwriteBoundaries": [
+                      {
+                        "site": "0xe5735b",
+                        "kind": "constructor-overwrite",
+                        "helper": "0x99ebf0"
+                      },
+                      {
+                        "site": "0xe573c0",
+                        "kind": "constructor-overwrite",
+                        "helper": "0x99ebf0"
+                      }
+                    ],
+                    "returnBoundaries": [
+                      {
+                        "site": "0xe5738f",
+                        "stackDelta": 16,
+                        "discardedThrough": 28
+                      }
+                    ],
+                    "contractedCalls": [
+                      {
+                        "site": "0xe57347",
+                        "helper": "0xf35b30",
+                        "kind": "nonstack-receiver"
+                      },
+                      {
+                        "site": "0xe573ac",
+                        "helper": "0xf35b30",
+                        "kind": "nonstack-receiver"
+                      },
+                      {
+                        "site": "0xe57385",
+                        "helper": "0x99eae0",
+                        "kind": "receiver-object"
+                      }
+                    ],
+                    "scope": "Native reachable CFG after byte store, under explicit helper access contracts; unknown operations reject."
+                  },
+                  "executableLuaUnchanged": true
+                }
+              ],
+              "helperAccess": {
+                "contracts": {
+                  "10087408": {
+                    "kind": "constructor-overwrite",
+                    "width": 4
+                  },
+                  "10087136": {
+                    "kind": "receiver-object",
+                    "receiverBytes": 4,
+                    "stackArguments": 0,
+                    "callerStackAccess": "none"
+                  },
+                  "15948592": {
+                    "kind": "nonstack-receiver",
+                    "stackArguments": 0,
+                    "callerStackAccess": "none"
+                  }
+                },
+                "nonstackRegisters": [
+                  21
+                ],
+                "nativeProofs": {
+                  "termination": {
+                    "address": "0xf35b30",
+                    "size": 12,
+                    "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+                  },
+                  "getter": {
+                    "address": "0xe54620",
+                    "size": 4,
+                    "sha256": "01d3abacb68aac3537badfe563d0e21d0244fb61db1d805bcef8f455407fad96"
+                  },
+                  "predicate": {
+                    "address": "0xcb7940",
+                    "size": 14,
+                    "sha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7"
+                  },
+                  "constructor": {
+                    "address": "0x99ebf0",
+                    "size": 61,
+                    "sha256": "8c27b64a613d8319d3e866b8224ecfcedf8e5ccaf92a81314c16631d41f3f100"
+                  },
+                  "destructor": {
+                    "address": "0x99eae0",
+                    "size": 12,
+                    "sha256": "65d790bd8e62fef3658c4d1320e81e8b1c6d54ab12879256c0e4e4c533c1c53e"
+                  },
+                  "release": {
+                    "address": "0x99e9b0",
+                    "size": 87,
+                    "sha256": "e0ccad7278cb78743022e17eb02dad9b144f7132dc1538d5adb393a625d3e5de"
+                  }
+                },
+                "receiverOrigin": {
+                  "instruction": "0xe5702b",
+                  "register": "ebx",
+                  "origin": "entry thiscall ECX"
+                },
+                "effects": {
+                  "constructor": "first full DWORD zero before any read/call/branch",
+                  "destructor": "four-byte CString receiver; separate packed control17/data heap objects; global instance counter",
+                  "termination": "read-only registered parent/state/thread chain; no caller stack arguments"
+                },
+                "limits": "Valid disjoint script/CString/heap objects required. CRT free bodies and allocator correctness remain external boundaries. No exception/unwind or gameplay claim."
+              },
+              "executableLuaUnchanged": true
+            }
+          ],
           "todo": [
-            "label LAB_00e5750f",
-            "unlifted: CCharString::CCharString((CCharString *)&this,(CCharString *)(*(int *)(this + 0x18) + 0x54",
-            "unlifted: param_2 = (map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCh",
-            "unparsed parameter: std::less<CCharString>"
+            "label LAB_00e5750f"
           ],
           "calls": [
             "IsActiveThreadTerminating",
@@ -991,6 +1820,7 @@
             "IsActiveThreadTerminating",
             "STRINGMAP_Set",
             "IsActiveThreadTerminating",
+            "GetMasterGameState",
             "ENGINE_Concat",
             "STRINGMAP_Set",
             "ENGINE_Concat",
@@ -1000,7 +1830,7 @@
             "IsActiveThreadTerminating",
             "STRINGMAP_Set"
           ],
-          "lines": 205,
+          "lines": 223,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1037,19 +1867,28 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "IsObjectInThingsPossession: missing objectDefName (1 args for 2 params)",
-            "unnamed field 0x14",
-            "unnamed field 0x14",
-            "unlifted: *(undefined1 *)(ctr_CVar13 + *(int *)(*(int *)(this + 0x14) + 0xac)) = 1;",
-            "unlifted: (**(code **)((int)x_stk_14 + 0x34))(pCVar8,pvVar11,uVar15,uVar16,uVar17);",
-            "unlifted: iVar7 = *(iVar7 + 0x94)",
-            "unlifted: if (ctr_CVar13 == quest:GetStateInt(\"LastBookRequested\")) or (*(ctr_CVar13 + *(__native_en",
-            "unlifted: if *(ctr_CVar13 + *(__native_entity_state:GetStateInt(\"self_0x14\") + 0xac)) == 0 then",
-            "unlifted: x_stk_14 = *pCVar12",
-            "unlifted: cVar6 = (**(*pCVar12 + 0x68))(pCVar8)",
-            "unlifted: cVar6 = (**(*pCVar12 + 0x68))()"
+          "reviewedDispatchStaging": [
+            {
+              "nativeRead": "0x00e5779a",
+              "dispatch": "0x00e577e3",
+              "resource": {
+                "family": "self",
+                "offset": 52,
+                "kind": "resource_vtable_load",
+                "receiverRegister": "edi",
+                "tableRegister": "eax"
+              },
+              "liveness": {
+                "assignmentLine": 91,
+                "alias": "x_stk_14",
+                "copiedAliases": [],
+                "visitedNodes": 23,
+                "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+              },
+              "executableLuaUnchanged": true
+            }
           ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
             "GetHero",
@@ -1059,6 +1898,7 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
+            "SetStateFlagVectorAt",
             "IsActiveThreadTerminating",
             "RESOURCE_MemberResource",
             "RESOURCE_ScriptThing",
@@ -1066,8 +1906,11 @@
             "ENGINE_IntToString",
             "ENGINE_Concat",
             "GetHero",
+            "Speak",
+            "RESOURCE_IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
+            "RESOURCE_IsPerformingScriptTask",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "ENGINE_IntToString",
@@ -1105,7 +1948,7 @@
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating"
           ],
-          "lines": 224,
+          "lines": 211,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1140,12 +1983,30 @@
       "controlMode": "structured draft",
       "runtimeBoundaries": [
         {
-          "method": "GlobalConversations",
+          "method": "SnapshotGlobalConversations",
           "members": {
             "0x4c": {
               "name": "BookReactions",
               "global": "0x4c8",
-              "element": "CConversation"
+              "element": "CConversation",
+              "storage": "questConversationVector",
+              "stride": 92,
+              "initialization": {
+                "functions": [
+                  "0x00e54990"
+                ],
+                "assign": "0x00e54aa0"
+              },
+              "readFunctions": [
+                "0x00e566f0",
+                "0x00e569d0"
+              ],
+              "evidence": {
+                "copyConstructor": "0x00e54ca0",
+                "copyAssignment": "0x00e54c50",
+                "destructor": "0x00e54d80",
+                "notes": "Native vector assignment retains Lines and four independent CString vectors. Script-visible value projection excludes CDefClassBase pool/identity fields. Nonempty allocation/reuse/shrink/destruction and source replacement executed in work/codex_lua_book_conversation_snapshot_20261015/native_results.json."
+              }
             }
           },
           "omittedUnreachableContainerBodies": [
@@ -1154,7 +2015,8 @@
             "0x00e54c50",
             "0x00e54ca0",
             "0x00e54e40"
-          ]
+          ],
+          "readMethod": "GetStateConversations"
         }
       ],
       "bindingFiles": {
@@ -1163,7 +2025,7 @@
       "cleanupRegions": {
         "FSE/V_BookCollecting/Entities/BS_Teacher.lua": {
           "LAB_00e55316": [
-            "iVar8 = nil --[[unresolved native value]]",
+            "iVar8 = nil --[[reviewed native interface-table staging]]",
             "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_10)"
           ],
@@ -1173,9 +2035,6 @@
           ],
           "LAB_00e559f0": [
             "quest:PauseAllNonScriptedEntities(false)",
-            "resources:DestroyMovie(xStack_10)"
-          ],
-          "LAB_00e55a1e": [
             "resources:DestroyMovie(xStack_10)"
           ],
           "LAB_00e55c3a": [
@@ -1192,11 +2051,68 @@
         "FSE/V_BookCollecting/Entities/BS_Teacher.lua": {
           "helper_E56D10": [
             "pCVar6"
-          ],
-          "helper_E57530": [
-            "x_stk_18"
           ]
         }
+      },
+      "blockingSpeechCancellation": {
+        "FSE/V_BookCollecting/Entities/BS_Teacher.lua": [
+          {
+            "line": 457,
+            "actor": "me",
+            "query": "cVar7",
+            "loop": "cVar7",
+            "exit": "-- LAB_00e55c16: (native jump target)\n                                quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_10)\n                                return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 584,
+            "actor": "me",
+            "query": "cVar4",
+            "loop": "cVar4",
+            "exit": "do return false end\n                goto FLOW_after_lab_00e55dcf",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 615,
+            "actor": "me",
+            "query": "cVar4",
+            "loop": "cVar4",
+            "exit": "do return false end\n                goto FLOW_after_lab_00e55dcf",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 665,
+            "actor": "me",
+            "query": "cVar4",
+            "loop": "cVar4",
+            "exit": "do return false end\n                goto FLOW_after_lab_00e55dcf",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 705,
+            "actor": "me",
+            "query": "cVar4",
+            "loop": "cVar4",
+            "exit": "do return false end\n                goto FLOW_after_lab_00e55dcf",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1288,
+            "actor": "me",
+            "query": "cVar6",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e57924",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1356,
+            "actor": "me",
+            "query": "cVar6",
+            "loop": "cVar6",
+            "exit": "return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "sharedHelpers": {
         "path": "FSE/V_BookCollecting/native_quest_helpers.lua",
@@ -1221,7 +2137,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 115
+        "todo": 34
       }
     }
   ],
@@ -1232,6 +2148,6 @@
     "functionSyntaxPassed": 14,
     "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 115
+    "todo": 34
   }
 }

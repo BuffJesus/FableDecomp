@@ -1,5 +1,7 @@
 # CGSI Lua-binding candidates — DB-generated
 
+> Candidate inventory, not callable ABI approval; abbreviated/template rows are not copyable prototypes.
+
 *Generated 2026-07-21 from the RE DB (DumpVtableSlots.java -> cgsi_slots_aligned.tsv, joined with engine_api.tsv).*
 
 ForgeFSE resolves `pInterface->pVTable[N]` where N is the vtable slot. This maps every useful

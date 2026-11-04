@@ -323,15 +323,10 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "CreateEffectAtPos: missing position (3 args for 5 params)",
-            "CreateCreature: missing position (2 args for 3 params)",
-            "unlifted: pCVar4 = (**(*(QUESTLIST_BeginValue(\"SummonerSpawnPoints\") + quest:GetStateInt(\"NextSummon",
-            "unlifted: pCVar4 = (**(*(QUESTLIST_BeginValue(\"SummonerSpawnPoints\") + quest:GetStateInt(\"NextSummon"
-          ],
+          "todo": [],
           "calls": [
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "CreateEffectAtPos",
             "QUESTTHING_Empty",
             "CreateCreature",
@@ -339,7 +334,9 @@
             "SetStateInt",
             "IsActiveThreadTerminating",
             "SetStateInt",
-            "IsActiveThreadTerminating"
+            "IsActiveThreadTerminating",
+            "GetStateListAt",
+            "GetPos"
           ],
           "lines": 46,
           "syntax": {
@@ -486,11 +483,7 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: } else {",
-            "unlifted: } else {",
-            "unlifted: *(undefined4 *)(this_00 + 0x6c) = uVar4;"
-          ],
+          "todo": [],
           "calls": [
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -519,6 +512,7 @@
             "IsActiveThreadTerminating",
             "SetStateInt",
             "ENGINE_GlobalGameData",
+            "SetStateInt",
             "IsActiveThreadTerminating"
           ],
           "lines": 115,
@@ -915,7 +909,7 @@
         "functionSyntaxPassed": 22,
         "fileSyntaxPassed": 5,
         "fileSyntaxChecked": 5,
-        "todo": 8
+        "todo": 1
       }
     }
   ],
@@ -926,6 +920,6 @@
     "functionSyntaxPassed": 22,
     "fileSyntaxPassed": 5,
     "fileSyntaxChecked": 5,
-    "todo": 8
+    "todo": 1
   }
 }

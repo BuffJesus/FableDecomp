@@ -685,5 +685,29 @@
     "pdbMembersUnused": [],
     "nestedPdbMembers": {}
   },
-  "entities": {}
+  "entities": {},
+  "reviewedRenownMessages": {
+    "0x00cf02a0": {
+      "sourceSha256": "99fd9fe498ace2f01febf6c7d28edeb4308285c4e137e2afbef7c3793987f1f9",
+      "nativeSha256": "3ea9d9be19b5743acbb8e68080752f807678e6368414bdb5a9da34622df97bed",
+      "renownCallSite": "0x00cf03bf",
+      "messages": [
+        "TEXT_QST_080_RENOWN_LEVEL_ONE",
+        "TEXT_QST_080_RENOWN_LEVEL_TWO",
+        "TEXT_QST_080_RENOWN_LEVEL_THREE",
+        "TEXT_QST_080_RENOWN_LEVEL_FOUR",
+        "TEXT_QST_080_RENOWN_LEVEL_FIVE",
+        "TEXT_QST_080_RENOWN_LEVEL_SIX",
+        "TEXT_QST_080_RENOWN_LEVEL_SEVEN"
+      ]
+    }
+  },
+  "reviewedRenownCleanup": {
+    "0x00cf02a0": {
+      "sourceSha256": "99fd9fe498ace2f01febf6c7d28edeb4308285c4e137e2afbef7c3793987f1f9",
+      "nativeSha256": "3ea9d9be19b5743acbb8e68080752f807678e6368414bdb5a9da34622df97bed",
+      "temporaryCount": 8,
+      "destructorAddress": "0x0099eae0"
+    }
+  }
 }

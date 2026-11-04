@@ -562,13 +562,13 @@
             "RESOURCE_ScriptThing",
             "IsDistanceFromPositionOver",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "Pause",
             "GetPos",
             "CreateEffectAtPos",
@@ -672,13 +672,13 @@
             "RESOURCE_ScriptThing",
             "IsDistanceFromPositionOver",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "Pause",
             "GetPos",
             "CreateEffectAtPos",
@@ -726,13 +726,13 @@
             "RESOURCE_ScriptThing",
             "IsDistanceFromPositionOver",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "Pause",
             "GetPos",
             "CreateEffectAtPos",
@@ -1487,6 +1487,8 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_PrepareResource",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -1532,7 +1534,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 440,
+          "lines": 447,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1558,6 +1560,7 @@
             "goto LAB_00e17f13;",
             "goto LAB_00e17f13_c1;",
             "goto LAB_00e17f21;",
+            "goto LAB_00e17f21_c1;",
             "goto LAB_00e18135;",
             "goto LAB_00e18135_c1;",
             "goto LAB_00e181f6;",
@@ -1566,6 +1569,7 @@
             "goto LAB_00e18203;",
             "if (!bVar5) goto LAB_00e17e64;",
             "if (!bVar5) goto LAB_00e17f13;",
+            "if (!bVar5) goto LAB_00e17f13_c1;",
             "if (*(int *)(*(int *)(this + 0x14) + 0x50) == 7) goto LAB_00e17f21;",
             "if (*(int *)(*(int *)(this + 0x14) + 0x50) == 7) goto LAB_00e17f21_c1;",
             "if (bVar5) goto LAB_00e17d91;",
@@ -1690,6 +1694,66 @@
         "WB_Guard2": "WhiteBalverineKnotholeGlade/Entities/WB_Guard2",
         "KG_Chief": "WhiteBalverineKnotholeGlade/Entities/KG_Chief"
       },
+      "blockingSpeechCancellation": {
+        "FSE/WhiteBalverineKnotholeGlade/Entities/KG_Chief.lua": [
+          {
+            "line": 90,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    goto LAB_00e181f6",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 175,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e181ca",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 211,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e181ca",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 241,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e181ca",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 293,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e181ca",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 368,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                        goto LAB_00e181f6_c1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 434,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e181ca",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 7,
         "functions": 28,
@@ -1792,7 +1856,7 @@
             "DeactivateQuestLater",
             "DisplayQuestInfo"
           ],
-          "lines": 135,
+          "lines": 136,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1971,7 +2035,7 @@
             "EntitySetAttackThingImmediately",
             "Pause",
             "PlaySoundOnThing",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsPerformingScriptTask",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
@@ -2497,6 +2561,34 @@
             "resources:ReleaseResource(xStack_b0)"
           ]
         }
+      },
+      "blockingSpeechCancellation": {
+        "FSE/WhiteBalverineWW/Entities/KG_Chief.lua": [
+          {
+            "line": 111,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "__cleanup_LAB_00e1a6d6(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 149,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "__cleanup_LAB_00e1a2b3(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 232,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_48)\n                            resources:ReleaseResource(xStack_b0)\n                            return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "summary": {
         "owners": 4,

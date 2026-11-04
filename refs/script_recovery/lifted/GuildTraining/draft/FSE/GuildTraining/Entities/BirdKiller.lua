@@ -12,12 +12,12 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, timerId, uVar10, xStack_18, xStack_38, xStack_78, xStack_7c, xStack_8c, x_stk_68, x_stk_8, x_stk_c
+    local __native_condition_1, __native_condition_2, __native_condition_3, bVar3, birdTimerId, cVar4, ctr_90, elem_1, fVar14, fVar2, fret_0, fret_00, fret_01, iStack_68, iVar12, iVar13, iVar6, iVar7, pCVar15, pCVar5, pCVar9, pPosition, pThing, pcVar11, r1, r2, r3, r4, uVar10, xStack_18, xStack_38, xStack_78, xStack_8c, x_stk_68, x_stk_8, x_stk_c
     local alive = true
     local function __cleanup_LAB_00d4e91f()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_78)
-        quest:DeregisterTimer(xStack_8c)
+        quest:DeregisterTimer(birdTimerId)
         resources:ReleaseResource(xStack_8c)
     end
     uVar10 = 0
@@ -60,7 +60,7 @@ function Main(quest, me)
                 bVar3 = false
                 elem_1 = iStack_68[(ctr_90) / 0xc + 1]
                 pPosition = elem_1:GetPos()
-                r1 = quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", pPosition, "KillBird")
+                r1 = quest:CreateCreature("CREATURE_BIRD_GUILD_SPARROW", pPosition, "KillBird", bVar3)
                 quest:SetThingPersistent(r1, true)
                 ctr_90 = ctr_90 + 0xc
                 uVar10 = uVar10 + 1
@@ -76,9 +76,9 @@ function Main(quest, me)
         quest:SetStateInt("CurrentBirdsKilled", 0)
         __native_entity_state:SetStateInt("BirdMode", 2)
     end
-    timerId = quest:RegisterTimer()
-    ctr_90 = timerId
-    quest:SetTimer(timerId, 0xf)
+    birdTimerId = quest:RegisterTimer()
+    ctr_90 = birdTimerId
+    quest:SetTimer(birdTimerId, 0xf)
     iVar6 = __native_entity_state:GetStateInt("BirdMode")
     while iVar6 == 2 do
         alive = quest:NewScriptFrame(me)
@@ -90,7 +90,7 @@ function Main(quest, me)
         bVar3 = quest:IsDistanceBetweenThingsUnder(pCVar5, me, fVar14)
         __native_condition_1 = bVar3
         if __native_condition_1 then
-            iVar6 = quest:GetTimer(timerId)
+            iVar6 = quest:GetTimer(birdTimerId)
             __native_condition_1 = iVar6 < 1
         end
         if __native_condition_1 then
@@ -131,6 +131,9 @@ function Main(quest, me)
                             pcVar11 = "TEXT_QST_028_BIRD_KILLER_GREET"
                             pCVar15 = quest:GetHero()
                             r2 = me:Speak(pCVar15, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            if not r2 then
+                                __cleanup_LAB_00d4e91f(); return
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -173,7 +176,7 @@ function Main(quest, me)
                     if bVar3 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_78)
-                        quest:DeregisterTimer(xStack_8c)
+                        quest:DeregisterTimer(birdTimerId)
                         resources:ReleaseResource(xStack_8c)
                         return
                     end
@@ -235,6 +238,13 @@ function Main(quest, me)
                             pcVar11 = "TEXT_QST_028_BIRD_KILLER_REFUSE"
                             pCVar5 = quest:GetHero()
                             r3 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            if not r3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_78)
+                                quest:DeregisterTimer(birdTimerId)
+                                resources:ReleaseResource(xStack_8c)
+                                return
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -244,7 +254,7 @@ function Main(quest, me)
                                 if bVar3 then
                                     quest:PauseAllNonScriptedEntities(false)
                                     resources:DestroyMovie(xStack_78)
-                                    quest:DeregisterTimer(xStack_8c)
+                                    quest:DeregisterTimer(birdTimerId)
                                     resources:ReleaseResource(xStack_8c)
                                     return
                                 end
@@ -267,13 +277,13 @@ function Main(quest, me)
                 ::FLOW_hoist_lab_00d4e5e3_1::
                 ::LAB_00d4e9e1::
                 quest:PauseAllNonScriptedEntities(false)
-                resources:DestroyMovie(xStack_7c)
+                resources:DestroyMovie(xStack_78)
                 ::FLOW_past_lab_00d4e5e3::
             end
             goto LAB_00d4ef87
         end
         ::LAB_00d4e87a::
-        timerId = ctr_90
+        birdTimerId = ctr_90
         iVar6 = __native_entity_state:GetStateInt("BirdMode")
     end
     alive = not quest:IsActiveThreadTerminating()
@@ -385,6 +395,11 @@ function Main(quest, me)
                             pcVar11 = "TEXT_QST_028_BIRD_KILLER_DONE"
                             pCVar5 = quest:GetHero()
                             r4 = me:Speak(pCVar5, pcVar11, iVar6, (iVar7 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            if not r4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_38)
+                                goto LAB_00d4ef87
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar4 = iVar6
                             while cVar4 do
@@ -459,7 +474,7 @@ function Main(quest, me)
         end
     end
     ::LAB_00d4ef87::
-    quest:DeregisterTimer(timerId)
+    quest:DeregisterTimer(birdTimerId)
     ::LAB_00d4ef90::
     resources:ReleaseResource(xStack_8c)
 end

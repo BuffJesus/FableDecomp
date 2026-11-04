@@ -1,4 +1,264 @@
 {
+  "reviewedThingOutputScopes": {
+    "0x00e06050": {
+      "address": "0x00E06050",
+      "end": "0x00E0643F",
+      "sourceSha256": "f10b69a0a16923f538168f38cf3efdb8fc9024e0a03a31e8f3437862432e7fc6",
+      "nativeSha256": "a92cf1ba0e9640c03ba41e8d9435e5b4828e6e1f6a6a4188ad0299ee74dc6212",
+      "intermediateSha256": "ad5266b0ed353cce95b980d7fa2cc7b4126d83adc3d6c4d83433c3c703532f43",
+      "recoveredSha256": "41e325b69519672e29673f14992e4d58c6368650e314050d543e7aaba4fa76ce",
+      "operations": [
+        {
+          "before": "        local alive = true",
+          "after": "        local surpriseActorOwner, surpriseNearestOwner = 0, 0\n        local alive = true",
+          "count": 1
+        },
+        {
+          "before": "                            r1 = quest:CreateCreature(\"CREATURE_BALVERINE_EASY\", pCVar7, \"SurpriseBalverine\", bVar5)",
+          "after": "                            r1 = quest:CreateCreature(\"CREATURE_BALVERINE_EASY\", pCVar7, \"SurpriseBalverine\", bVar5)\n                            surpriseActorOwner = resources:TrackThingOutput(r1)",
+          "count": 1
+        },
+        {
+          "before": "pCVar8 = quest:GetNearestWithScriptName(r1, \"DarkwoodTrader\")",
+          "after": "pCVar8 = quest:GetNearestWithScriptName(r1, \"DarkwoodTrader\")\n                            surpriseNearestOwner = resources:TrackThingOutput(pCVar8)",
+          "count": 2
+        },
+        {
+          "before": "                            MakeTraderComment(quest, \"BALVERINE_SURPRISE\", pCVar8, iVar9)",
+          "after": "                            MakeTraderComment(quest, \"BALVERINE_SURPRISE\", pCVar8, iVar9)\n                            resources:RetireThingOutput(surpriseNearestOwner)\n                            surpriseNearestOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "                                quest:GiveThingBestEnemyTarget(r1, pCVar8)\n                            else",
+          "after": "                                quest:GiveThingBestEnemyTarget(r1, pCVar8)\n                                resources:RetireThingOutput(surpriseNearestOwner)\n                                surpriseNearestOwner = 0\n                            else",
+          "count": 1
+        },
+        {
+          "before": "        quest:SetStateInt(\"BalverinesToSurpriseHeroNeeded\", quest:GetStateInt(\"BalverinesToSurpriseHeroNeeded\") + -1)",
+          "after": "        quest:SetStateInt(\"BalverinesToSurpriseHeroNeeded\", quest:GetStateInt(\"BalverinesToSurpriseHeroNeeded\") + -1)\n        resources:RetireThingOutput(surpriseActorOwner)\n        surpriseActorOwner = 0",
+          "count": 1
+        },
+        {
+          "before": "                                pCVar8 = quest:GetNearestWithScriptName(r1, \"DarkwoodTrader\")\n                            surpriseNearestOwner = resources:TrackThingOutput(pCVar8)",
+          "after": "                                pCVar8 = quest:GetNearestWithScriptName(r1, \"DarkwoodTrader\")\n                                surpriseNearestOwner = resources:TrackThingOutput(pCVar8)",
+          "count": 1
+        }
+      ],
+      "calls": [
+        "TrackThingOutput",
+        "RetireThingOutput"
+      ],
+      "anchors": {
+        "0xe0625e": "e8dd456aff8d4c241ce87488",
+        "0xe062d2": "e869456aff8d4c2424e80088",
+        "0xe06349": "8bcee8f015ebff84c08d4c24",
+        "0xe0635f": "e8dc446aff8bcee8d515ebff",
+        "0xe06366": "e8d515ebff84c00f85980000",
+        "0xe06378": "ff501c8bcee8be15ebff84c0",
+        "0xe063f5": "e846446aff8d4c2428e86d65",
+        "0xe063fe": "e86d65aaff5f5e5d5b83c448"
+      },
+      "dependencies": {
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "0x4ab170": {
+          "length": 87,
+          "sha256": "7598bad2f69f53de4ca1f812b9d93cf62cc459891dc0b0c18e24b95d77c36912"
+        },
+        "0x99a2e0": {
+          "length": 7,
+          "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+        }
+      },
+      "sidecar": {
+        "FableAPI.cpp": {
+          "path": "work/codex_lua_trader_deterministic_owner_20261005/sidecar_candidate/FableScriptExtender/FableAPI.cpp",
+          "sha256": "5d80af63450920bfcbf4af3cc41209f1c81cd5007eb541acceb7bef9e751fdd9"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work/codex_lua_trader_deterministic_owner_20261005/sidecar_candidate/FableScriptExtender/RetailThingOutputOwner.h",
+          "sha256": "dad36aea326e39cf1104ec3fa01f5cebaae2b7e14ca85dfe49ebd37add3b7dca"
+        },
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_trader_deterministic_owner_20261005/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "7b195819cdf05219186ef253c535ed78000f1740ba84e7000eeb9ebab3ea23fb"
+        },
+        "LuaManager.cpp": {
+          "path": "work/codex_lua_trader_deterministic_owner_20261005/sidecar_candidate/FableScriptExtender/LuaManager.cpp",
+          "sha256": "3870427e8fd83f3c8da1b36ac14f1146b12ec66012d272f28687f86585b2da48"
+        }
+      },
+      "proofScope": "Caller-local actor and two nearest API outputs only. Complete native caller/ordered effects and frame ownership evidence retained; MakeTraderComment is a call boundary and its independent local copy recovery remains separate. Actual SDK/sol ownership/scope/factory candidate tests, no production host/engine proof. Accepted Track allocation failures now retire before alias GC (12 adversarial cases, 8 injected failures). Nested nearest token indentation corrected; generic lowering code unchanged. First registry publication allocation failures separately exercised in fresh processes: unpublished cleanup skips registry initialization; metadata public ownership operations and recovered Lua unchanged."
+    },
+    "0x00e01900": {
+      "address": "0x00E01900",
+      "end": "0x00E02389",
+      "sourceSha256": "451b9e7f5b22dc0b0b23de353eed66b598608b1cf5627574a57e3f7c398b2be5",
+      "nativeSha256": "dc16eeed8a4aa34d102b0598d6525d46c0ae31b63530d320b826a5344ddb8e0a",
+      "anchors": {
+        "0xe01955": "e8e68e6aff",
+        "0xe019dc": "e85f8e6aff",
+        "0xe01a07": "e8348e6aff",
+        "0xe01abc": "e87f8d6aff",
+        "0xe01ac5": "e8768d6aff",
+        "0xe01ace": "e86d8d6aff",
+        "0xe01ae3": "e858608eff",
+        "0xe01aed": "e88e9eaaff",
+        "0xe01af6": "e8458d6aff",
+        "0xe01b38": "e853a36aff",
+        "0xe01b46": "e8359eaaff",
+        "0xe01b54": "e8279eaaff",
+        "0xe01b5d": "e8de8c6aff",
+        "0xe01bfd": "e83e8c6aff",
+        "0xe0201b": "e820886aff",
+        "0xe02024": "e817886aff",
+        "0xe0202d": "e80e886aff",
+        "0xe0205f": "e8dc876aff",
+        "0xe02289": "e8b2856aff",
+        "0xe02292": "e8a9856aff",
+        "0xe02350": "e8eb846aff",
+        "0xe02378": "e8c3846aff",
+        "0xe01900": "83ec40c7442404000000008b442448558be98b48048b400885c05657c744241c8c8c2301894c2420894424247402ff008b54241c8d4c241cff922c010000",
+        "0xe01997": "8b70088b780483c0048b4424243bc6743085c0741eff088b44242483380075138b4808ff50048b4c242451e8f5cfdfff83c40485f6897c2420897424247402ff06",
+        "0xe01a98": "8b4c24308b54243c8b0152ff9038010000",
+        "0xe02195": "8b4c243c8b5424248b0152ff9038010000"
+      },
+      "dependencies": {
+        "0x4abe90": {
+          "length": 33,
+          "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+        },
+        "0x8ab980": {
+          "length": 74,
+          "sha256": "eea8f5b4daeb6d005ce07f2af99585aa47e28ea567d4ec3ed1dfbfab68e0eae0"
+        },
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "0x8d46a0": {
+          "length": 40,
+          "sha256": "cdc07ac476ea3728262d192f81bc3c35586f0346638eda98e70c20c7630ccf55"
+        },
+        "0xa01b50": {
+          "length": 54,
+          "sha256": "324b143f28d6d3d34007ca91a1d480f17c3b632ff18c4b2261d6e9cdd6345e7c"
+        }
+      },
+      "sidecar": {
+        "FableAPI.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "FableAPI.cpp": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "LuaRetailResources.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\LuaRetailResources.h",
+          "sha256": "69410a14ff4f81d9aa196745885b5dac81ff44a4ec94bd800b4b0f05f6995407"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        },
+        "NoviUnitBindings.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\NoviUnitBindings.h",
+          "sha256": "dd9be76bd7fdf096cfb26063a9b64505b66f76420260952d6a6a203545e6f88e"
+        },
+        "DirectThingImplementationEquality.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\DirectThingImplementationEquality.h",
+          "sha256": "2df8ba2723f93efe8ea8fbc264c54706795a6885940f4cbbd578ccb7cb98fbd5"
+        }
+      },
+      "operations": [
+        {
+          "before": "function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)",
+          "after": "function MakeTraderComment(quest, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)\n    return quest:WithRetailResources(function(resources)\n    local speakerOwner, nearestOwner, furthestOwner, fallbackOwner, swapOwner, triggerOwner = 0, 0, 0, 0, 0, 0"
+        },
+        {
+          "before": "    xStack_30 = native_arg_speaker",
+          "after": "    xStack_30 = resources:CopyThingOutput(native_arg_speaker)\n    speakerOwner = resources:TrackThingOutput(xStack_30)"
+        },
+        {
+          "before": "        xStack_30 = pCVar4",
+          "after": "        fallbackOwner = resources:TrackThingOutput(pCVar4)\n        resources:AssignThingOutput(speakerOwner, pCVar4)\n        resources:RetireThingOutput(fallbackOwner)"
+        },
+        {
+          "before": "        local_furthest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_speaker)",
+          "after": "        local_furthest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_speaker)\n        if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end\n        furthestOwner = resources:TrackThingOutput(local_furthest_handle)"
+        },
+        {
+          "before": "    local_nearest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_comment_type)",
+          "after": "    local_nearest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_comment_type)\n    if local_nearest_handle == nil then local_nearest_handle = resources:CopyThingOutput(nil) end\n    nearestOwner = resources:TrackThingOutput(local_nearest_handle)"
+        },
+        {
+          "before": "    local_furthest_handle = quest:GetFurthestWithScriptName(xStack_30, native_arg_comment_type)",
+          "after": "    local_furthest_handle = quest:GetFurthestWithScriptName(xStack_30, native_arg_comment_type)\n    if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end\n    furthestOwner = resources:TrackThingOutput(local_furthest_handle)"
+        },
+        {
+          "before": "            local_furthest_handle = nil",
+          "after": "            resources:AssignThingOutput(furthestOwner, nil)"
+        },
+        {
+          "before": "        native_swap_handle = local_nearest_handle\n        local_nearest_handle = local_furthest_handle\n        local_furthest_handle = native_swap_handle",
+          "after": "        native_swap_handle = resources:CopyThingOutput(local_nearest_handle)\n        swapOwner = resources:TrackThingOutput(native_swap_handle)\n        resources:AssignThingOutput(nearestOwner, local_furthest_handle)\n        resources:AssignThingOutput(furthestOwner, native_swap_handle)\n        resources:RetireThingOutput(swapOwner)"
+        },
+        {
+          "before": "    r1 = quest:PlayCriteriaSoundOnThing(pCVar4, native_arg_comment_type)\n    quest:Pause(1.0)",
+          "after": "    triggerOwner = resources:TrackThingOutput(pCVar4)\n    r1 = quest:PlayCriteriaSoundOnThing(pCVar4, native_arg_comment_type)\n    resources:RetireThingOutput(triggerOwner)\n    quest:Pause(1.0)"
+        },
+        {
+          "before": "        ::LAB_00e02355::",
+          "after": "        ::LAB_00e02355::\n        resources:RetireThingOutput(furthestOwner)\n        furthestOwner = 0"
+        },
+        {
+          "before": "    return false\nend",
+          "after": "    return false\n    end)\nend"
+        },
+        {
+          "before": "(local_furthest_handle ~= nil and local_furthest_handle:IsEqualTo(xStack_30))",
+          "after": "local_furthest_handle:RetailImplementationIsEqualTo(xStack_30)"
+        },
+        {
+          "before": "(local_nearest_handle ~= nil and local_nearest_handle:IsEqualTo(local_furthest_handle))",
+          "after": "local_nearest_handle:RetailImplementationIsEqualTo(local_furthest_handle)"
+        }
+      ],
+      "calls": [
+        "WithRetailResources",
+        "CopyThingOutput",
+        "TrackThingOutput",
+        "AssignThingOutput",
+        "RetireThingOutput",
+        "RetailImplementationIsEqualTo"
+      ],
+      "intermediateSha256": "e518b3cb92612a7d12775bf8fb46527f0d637c10e6ecf0e008a8520fe4791ba2",
+      "recoveredSha256": "604d85f7748143394764d7fe72ac42599a4b4d7b89aebe2c3392db58c9d96509",
+      "inlinedOwnership": {
+        "fallbackAssignment": {
+          "start": "0x00e01997",
+          "endExclusive": "0x00e019d8",
+          "sameInfoBranch": "0x00e019a6",
+          "releaseOld": "0x00e019ac",
+          "deleteOld": "0x00e019ba",
+          "freeOld": "0x00e019c2",
+          "publishData": "0x00e019cc",
+          "publishInfo": "0x00e019d0",
+          "retainNew": "0x00e019d6",
+          "queryDestructor": "0x00e019dc"
+        }
+      },
+      "exportEvidence": {
+        "path": "refs\\script_recovery\\trader_escort\\translation_unit_typed.json",
+        "functionName": "NScript::CQ_TraderEscortScript::MakeTraderComment",
+        "functionSourceSha256": "451b9e7f5b22dc0b0b23de353eed66b598608b1cf5627574a57e3f7c398b2be5"
+      },
+      "proofScope": "Original helper/concrete equality/assignment evidence; actual generated SDK/sol returning and isolated first-chance fault cases. Engine/copy/destructor doubles remain; production host and runtime sound/completion unverified."
+    }
+  },
   "schema": "quest-unit-evidence/1",
   "script": "Q_TraderEscort",
   "package": "TraderEscort",
@@ -1316,6 +1576,452 @@
       "timers": [],
       "resourceFields": {},
       "arrays": []
+    }
+  },
+  "reviewedTraderSounds": {
+    "0x00e02e50": {
+      "retainedLiteralCall": "quest:PlaySoundOnThing(r1, \"DarkwoodAssassin\")",
+      "retainedCallStart": "0xe031f8",
+      "retainedCallHex": "8b4e048b118d442410508d44242850ff92c80a0000",
+      "sourceSha256": "8e7eb15cba1dd43cd7000abc6be05db1fc4c2d17c9632dbf2dc44541340d1474",
+      "nativeSha256": "a81f08a0d946f11abc864a3be468306ff5a5c3d06b7fbc2f7c2904f306f9f595",
+      "windowStart": "0xe02f03",
+      "windowEnd": "0xe02f1f",
+      "windowHex": "e8682e61ff8d4c2418518d4c2414e81abdb9ff8d4c2418e8c1bbb9ff",
+      "first": "iVar1",
+      "last": "iVar8",
+      "random": "uVar5",
+      "nativeCopy": "&CStack_30,&CStack_28",
+      "indent": 4,
+      "soundCalls": 2,
+      "todoFragments": [
+        "CDefString::operator_class_CCharString",
+        "CCharString::CCharString(&xStack_30"
+      ]
+    },
+    "0x00e03810": {
+      "sourceSha256": "d36217bb2baad5aeee1fd15867c87fe3366bd324cc018b119080e593ce22a095",
+      "nativeSha256": "f95fe36474ada475704ce8f542734ad96c4e568fbbdf7dd0cc4ad630590b2a9d",
+      "windowStart": "0xe038f3",
+      "windowEnd": "0xe0390f",
+      "windowHex": "e8782461ff8d54240c528d4c2414e82ab3b9ff8d4c240ce8d1b1b9ff",
+      "first": "iVar2",
+      "last": "iVar1",
+      "random": "uVar5",
+      "nativeCopy": "&CStack_14,(CCharString_bv *)&stack0xffffffe8",
+      "indent": 12,
+      "soundCalls": 1,
+      "todoFragments": [
+        "CDefString::operator_class_CCharString",
+        "CCharString::CCharString(&xStack_14"
+      ]
+    }
+  },
+  "reviewedSelfOperands": {
+    "0x00e02e50": {
+      "address": "0x00E02E50",
+      "bodyEndExclusive": "0x00E03395",
+      "nativeSha256": "a81f08a0d946f11abc864a3be468306ff5a5c3d06b7fbc2f7c2904f306f9f595",
+      "sourceSha256": "8e7eb15cba1dd43cd7000abc6be05db1fc4c2d17c9632dbf2dc44541340d1474",
+      "anchors": {
+        "0xe02e55": "8bf1",
+        "0xe02e58": "8d6e08",
+        "0xe02e69": "896c241c",
+        "0xe02f87": "8b6c241c",
+        "0xe02f8d": "8b6c241c",
+        "0xe03367": "6a01",
+        "0xe03369": "6a00",
+        "0xe0336b": "55",
+        "0xe0336c": "ff92b0010000"
+      },
+      "operand": {
+        "register": "ebp",
+        "definitions": [
+          "0xe02e58",
+          "0xe02f87",
+          "0xe02f8d"
+        ],
+        "call": "0xe0336c",
+        "slot": "0x1b0",
+        "receiver": "*(int **)(this + 4)",
+        "receiverInstructions": {
+          "0xe03362": "8b4e04",
+          "0xe03365": "8b11"
+        },
+        "arguments": [
+          "(CScriptThing_bv *)p0",
+          "false",
+          "true"
+        ],
+        "index": 0
+      },
+      "finding": "RemoveThing receives entity member this+8 through EBP, not unassigned Lua p0",
+      "status": "Evidence collected; lowering and adverse behavioral validation pending"
+    }
+  },
+  "reviewedTraderComments": {
+    "0x00e01900": {
+      "address": "0xe01900",
+      "end": "0xe02389",
+      "nativeSha256": "dc16eeed8a4aa34d102b0598d6525d46c0ae31b63530d320b826a5344ddb8e0a",
+      "sourceSha256": "451b9e7f5b22dc0b0b23de353eed66b598608b1cf5627574a57e3f7c398b2be5",
+      "intermediateSha256": "41c280d5604c0e065c474cd081129605a9cf503aa7d8e90d0ba27e8f44879f10",
+      "recoveredSha256": "c6fc0df888e909571efc64a471e8b97cc0ec97a319565c0b0ac3194f4f59c8a2",
+      "anchors": {
+        "0xe01a98": "8b4c24308b54243c8b0152ff903801000084c0",
+        "0xe01b86": "8b08bae8f42d01e8def960fff7d81ac0fec0884424540f8482000000",
+        "0xe0220c": "c6442458017505c644245800",
+        "0xe0226e": "8a44245884c00f84d200",
+        "0xe01adf": "8d4c2444e858608eff508d4c243ce88e9eaaff8d4c2444e8458d6aff68d47626018d442460508d4c2434e8f28d6aff8bc8e84bceb9ff8d4c245c8ad8e8c0cfb9ff84db743e8bcde8155eebff84c075898d4c242c518d4c2448e853a36aff8d542438528d4c2430e8359eaaff8d442444508d4c243ce8279eaaff8d4c2444e8de8c6aff8b5c2454",
+        "0xe01c24": "8b4d408b4424588b116a006a0050ff92b0050000"
+      },
+      "dependencies": {
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "0x4abe90": {
+          "length": 33,
+          "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+        },
+        "0x8ab980": {
+          "length": 74,
+          "sha256": "eea8f5b4daeb6d005ce07f2af99585aa47e28ea567d4ec3ed1dfbfab68e0eae0"
+        },
+        "0x6e7b40": {
+          "length": 26,
+          "sha256": "a4b36bf0a1886b45b248622598422d0ae7e69f46fd37073a6e38ec1f76112379"
+        },
+        "0x4aa900": {
+          "length": 42,
+          "sha256": "1342f3a8a27422c01c24b498a8925a5c318ac499c2e2ec9e904b79ffeae90ca6"
+        },
+        "0x4ab130": {
+          "length": 28,
+          "sha256": "2f058b3a91d179c5bd531a6c5a536915b23fc9e4edce96b78b2029d7d2376000"
+        }
+      },
+      "review": "Whole native helper comparison with explicit engine/CString boundaries: 768 native runs, 3072 Lua comparisons; retained swap/clear and conversation operand windows also exercised separately",
+      "ownership": "Local wrapper copies map to held Lua actor values; no extra explicit engine removal/release introduced",
+      "lifetimeSlots": {
+        "speaker": "argument snapshot plus retained local, independent of later CString/reply byte storage",
+        "replyFlag": "E0220C/E02213 byte stores, E0226E byte read",
+        "comment": "EBX snapshot before E01B98 compare-byte store; subsequent CString construction uses separate lifetimes",
+        "lookups": "E01A56/E01A89 hidden results; E01B38/E01B46/E01B54/E01B5D retained swap, E01AE3/E01AED/E01AF6 clear"
+      }
+    }
+  },
+  "reviewedTraderActorSelection": {
+    "0x00e07640": {
+      "address": "0x00E07640",
+      "end": "0x00E0A4FF",
+      "nativeSha256": "d097208424b5f57f1b669fdc81681e532f346ccf6f23be8149782eb7aa4ad050",
+      "sourceSha256": "ff196c236a4eac9b051782ba31687fd07bcca3df242a2eaa9c9b321d874f9455",
+      "intermediateSha256": "f6a44ce2df66c72e9de0a2b68e767d7b1b27d60cd6da7899fd473ce45d078e3a",
+      "recoveredSha256": "56baf6bb1ad18b0dffd220c8f835adff7a956aca896e53f3038a0379d013c717",
+      "anchors": {
+        "0xe07c36": "8b4c24448b54245c8b0152ff9038010000",
+        "0xe07c5a": "8d8c24c4000000e8dafe8dff508d4c245ce8103daaff8d8c24c4000000e8c42b6aff",
+        "0xe07cd9": "8d442440508d8c24c8000000e8a6416aff8d4c2458518d4c2444e8883caaff8d9424c4000000528d4c245ce8773caaff8d8c24c4000000e82b2b6aff",
+        "0xe07aa5": "8bcde884e0120084c00f85440b00008844241b",
+        "0xe082c8": "8bcde861d8120083ff01751684c00f8554fbffff6affc644241f0168b8fb2d01eb0f84c00f85befaffff6aff6894fb2d018d4c2470e8ee68b9ff",
+        "0xe0837e": "8a44241b84c08bcd0f8424020000"
+      },
+      "dependencies": {
+        "0x4abe90": {
+          "length": 33,
+          "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+        },
+        "0x8ab980": {
+          "length": 74,
+          "sha256": "eea8f5b4daeb6d005ce07f2af99585aa47e28ea567d4ec3ed1dfbfab68e0eae0"
+        },
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "0x6e7b40": {
+          "length": 26,
+          "sha256": "a4b36bf0a1886b45b248622598422d0ae7e69f46fd37073a6e38ec1f76112379"
+        },
+        "0x4aa900": {
+          "length": 42,
+          "sha256": "1342f3a8a27422c01c24b498a8925a5c318ac499c2e2ec9e904b79ffeae90ca6"
+        },
+        "0x4ab130": {
+          "length": 28,
+          "sha256": "2f058b3a91d179c5bd531a6c5a536915b23fc9e4edce96b78b2029d7d2376000"
+        },
+        "0xf35b30": {
+          "length": 12,
+          "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+        },
+        "0xcb7940": {
+          "length": 14,
+          "sha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7"
+        }
+      }
+    }
+  },
+  "reviewedTraderVectors": {
+    "0x00e06050": {
+      "address": "0x00E06050",
+      "end": "0x00E0643F",
+      "sourceSha256": "f10b69a0a16923f538168f38cf3efdb8fc9024e0a03a31e8f3437862432e7fc6",
+      "nativeSha256": "a92cf1ba0e9640c03ba41e8d9435e5b4828e6e1f6a6a4188ad0299ee74dc6212",
+      "intermediateSha256": "0e60c9a208eeec2e969e5dc94f0d995b9ee84a20c2faa3ffae63722b501a6fd5",
+      "recoveredSha256": "ad5266b0ed353cce95b980d7fa2cc7b4126d83adc3d6c4d83433c3c703532f43",
+      "dependencies": {
+        "0x8ac9d0": {
+          "length": 77,
+          "sha256": "6c14c2a4b3591d60ef28f5a73060576c459c7cddce217fb2fbd9f3aa7bfb277a"
+        },
+        "0x8ac2a0": {
+          "length": 132,
+          "sha256": "24af9b7f8b2b0755012eb4e98441dd65c8facadeb7414d5d67d4ec808c4b0087"
+        },
+        "0x8ac970": {
+          "length": 50,
+          "sha256": "804b6b863d9405337d2e256db023e9c512614766507073be77773f0d217e2a6d"
+        },
+        "0x4ab170": {
+          "length": 87,
+          "sha256": "7598bad2f69f53de4ca1f812b9d93cf62cc459891dc0b0c18e24b95d77c36912"
+        },
+        "0x4aa980": {
+          "length": 18,
+          "sha256": "f5c90c753c25a2a2cac25d36b81d4dab11a2555b125fed4241097a24392f47e5"
+        },
+        "0x8a9100": {
+          "length": 532,
+          "sha256": "091e18be87c040fbdfb766929074f2163ef5fa7a5d0500985c5ecd0fc08f781d"
+        }
+      },
+      "sidecar": {
+        "LuaRetailResources.h": {
+          "path": "work/codex_lua_trader_vector_clear_20261005/sidecar_candidate/FableScriptExtender/LuaRetailResources.h",
+          "sha256": "a0723ffaa99447a8f8dd76ba751b425f2e30a16bb204f9afb1f643208554ef58"
+        },
+        "retail_thing_position_list.h": {
+          "path": "work/codex_lua_trader_vector_clear_20261005/sidecar_candidate/FableScriptExtender/retail_thing_position_list.h",
+          "sha256": "88b02ffd8ba409af331911b2ea6114f127cd7947fd5673283663c0cebee0b32e"
+        },
+        "LuaManager.cpp": {
+          "path": "work/codex_lua_trader_vector_clear_20261005/sidecar_candidate/FableScriptExtender/LuaManager.cpp",
+          "sha256": "6f9b99a8ad451cd7da0220490d0a0816d34107006794dc53f474179e0c3b1d02"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_trader_spawn_flag_20261005/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "504a3c9a4f7e6dc0fb5874e9f395257cc905db3147ad3b246795acbcb29027fe"
+        },
+        "LuaQuestState.h": {
+          "path": "work/codex_lua_trader_spawn_flag_20261005/sidecar_candidate/FableScriptExtender/LuaQuestState.h",
+          "sha256": "865c8547197996bf89a27c73dc4f5b2d3f7b46c8fd399e27052875c7998534b2"
+        },
+        "ManifestFunctionRegistry.generated.h": {
+          "path": "work/codex_lua_trader_spawn_flag_20261005/sidecar_candidate/FableScriptExtender/ManifestFunctionRegistry.generated.h",
+          "sha256": "8f7411e06372c1b0ed3f030e36628286975271304df45219608527f0acde3e0b"
+        }
+      },
+      "proofScope": "Original full caller visible-marker/needed-zero240 cases; native erase20/GetAll+erase24/vectordestroy20/GetPos6; exact active helper144 and scoped list72 compiled cases; whole Lua draft2592 recording comparisons. Native spawn branch/host coroutine/game not proved by these fixtures. Native CreateCreature flag call-stack7/window6, exact method22 and real-sol12 additional cases; explicit native true flag now retained, default false unchanged."
+    }
+  },
+  "reviewedFunctionPrototypes": {
+    "0x00e0a510": {
+      "address": "0x00e0a510",
+      "sourceSha256": "49cc1136f41ad37ca18e96ef208e36e927cb0979d3387bc6c127ac2ec54dc605",
+      "nativeSha256": "f0b36e05e2e78e1ab950fee8b364f70835321fa1dbcc6d526015313928fdd8d3",
+      "bodyExtent": 778,
+      "oraclePath": "refs/script_recovery/trader_escort/reviewed_prototypes/SetBrainState_pdb_signature.txt",
+      "oracleSha256": "f9921120bdadac241bc741b7cadc02ecb794b326ec9c052b4f6d3be7f2ff2e6d",
+      "oracleSignature": "void NScript::CQ_TraderEscortScript::CDarkwoodTrader::SetBrainState(long brain_state)",
+      "expectedParameters": [
+        {
+          "native": "brain_state",
+          "type": "int"
+        }
+      ],
+      "expectedReturnKind": "number",
+      "returnType": "void",
+      "evidence": "debug_build/Ego_r.pdb GUID774B3052-BDD8-43B4-808D-48481CC576CE age4; debug signature void(long), retail RET4 and direct caller immediately overwrites EAX."
+    }
+  },
+  "reviewedSharedThingOutputScopes": {
+    "0x00e01900": {
+      "address": "0x00E01900",
+      "end": "0x00E02389",
+      "sourceSha256": "451b9e7f5b22dc0b0b23de353eed66b598608b1cf5627574a57e3f7c398b2be5",
+      "nativeSha256": "dc16eeed8a4aa34d102b0598d6525d46c0ae31b63530d320b826a5344ddb8e0a",
+      "anchors": {
+        "0xe01955": "e8e68e6aff",
+        "0xe019dc": "e85f8e6aff",
+        "0xe01a07": "e8348e6aff",
+        "0xe01abc": "e87f8d6aff",
+        "0xe01ac5": "e8768d6aff",
+        "0xe01ace": "e86d8d6aff",
+        "0xe01ae3": "e858608eff",
+        "0xe01aed": "e88e9eaaff",
+        "0xe01af6": "e8458d6aff",
+        "0xe01b38": "e853a36aff",
+        "0xe01b46": "e8359eaaff",
+        "0xe01b54": "e8279eaaff",
+        "0xe01b5d": "e8de8c6aff",
+        "0xe01bfd": "e83e8c6aff",
+        "0xe0201b": "e820886aff",
+        "0xe02024": "e817886aff",
+        "0xe0202d": "e80e886aff",
+        "0xe0205f": "e8dc876aff",
+        "0xe02289": "e8b2856aff",
+        "0xe02292": "e8a9856aff",
+        "0xe02350": "e8eb846aff",
+        "0xe02378": "e8c3846aff",
+        "0xe01900": "83ec40c7442404000000008b442448558be98b48048b400885c05657c744241c8c8c2301894c2420894424247402ff008b54241c8d4c241cff922c010000",
+        "0xe01997": "8b70088b780483c0048b4424243bc6743085c0741eff088b44242483380075138b4808ff50048b4c242451e8f5cfdfff83c40485f6897c2420897424247402ff06",
+        "0xe01a98": "8b4c24308b54243c8b0152ff9038010000",
+        "0xe02195": "8b4c243c8b5424248b0152ff9038010000"
+      },
+      "dependencies": {
+        "0x4abe90": {
+          "length": 33,
+          "sha256": "3c497d08782ebf50f8d8813805f1e16fc8c68869028ff7033e4ecbfed3ef1da9"
+        },
+        "0x8ab980": {
+          "length": 74,
+          "sha256": "eea8f5b4daeb6d005ce07f2af99585aa47e28ea567d4ec3ed1dfbfab68e0eae0"
+        },
+        "0x4aa840": {
+          "length": 66,
+          "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+        },
+        "0x8d46a0": {
+          "length": 40,
+          "sha256": "cdc07ac476ea3728262d192f81bc3c35586f0346638eda98e70c20c7630ccf55"
+        },
+        "0xa01b50": {
+          "length": 54,
+          "sha256": "324b143f28d6d3d34007ca91a1d480f17c3b632ff18c4b2261d6e9cdd6345e7c"
+        }
+      },
+      "sidecar": {
+        "FableAPI.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\FableAPI.h",
+          "sha256": "7e1acf56472f2a1f87001c1b7f7753b3db5a304dcff4094548ab470730aa11b5"
+        },
+        "FableAPI.cpp": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\FableAPI.cpp",
+          "sha256": "a4222af1d993b7933ecac1aa93592d3ff13be9fad4da22c72587f7d17965f134"
+        },
+        "LuaRetailResources.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\LuaRetailResources.h",
+          "sha256": "69410a14ff4f81d9aa196745885b5dac81ff44a4ec94bd800b4b0f05f6995407"
+        },
+        "RetailThingOutputOwner.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\RetailThingOutputOwner.h",
+          "sha256": "7a2c0e0887f12c67fc7d8afb72b48cad597eeb5848af83e3015ff2e8d035e61f"
+        },
+        "NoviUnitBindings.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\NoviUnitBindings.h",
+          "sha256": "dd9be76bd7fdf096cfb26063a9b64505b66f76420260952d6a6a203545e6f88e"
+        },
+        "DirectThingImplementationEquality.h": {
+          "path": "work\\codex_lua_trader_helper_assignment_20261005\\sidecar_candidate\\FableScriptExtender\\DirectThingImplementationEquality.h",
+          "sha256": "2df8ba2723f93efe8ea8fbc264c54706795a6885940f4cbbd578ccb7cb98fbd5"
+        }
+      },
+      "operations": [
+        {
+          "before": "function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)",
+          "after": "function MakeTraderComment(quest, me, native_arg_comment_to_make, native_arg_speaker, native_arg_comment_type)\n    return quest:WithRetailResources(function(resources)\n    local speakerOwner, nearestOwner, furthestOwner, fallbackOwner, swapOwner, triggerOwner = 0, 0, 0, 0, 0, 0"
+        },
+        {
+          "before": "    xStack_30 = native_arg_speaker",
+          "after": "    xStack_30 = resources:CopyThingOutput(native_arg_speaker)\n    speakerOwner = resources:TrackThingOutput(xStack_30)"
+        },
+        {
+          "before": "        xStack_30 = pCVar4",
+          "after": "        fallbackOwner = resources:TrackThingOutput(pCVar4)\n        resources:AssignThingOutput(speakerOwner, pCVar4)\n        resources:RetireThingOutput(fallbackOwner)"
+        },
+        {
+          "before": "        local_furthest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_speaker)",
+          "after": "        local_furthest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_speaker)\n        if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end\n        furthestOwner = resources:TrackThingOutput(local_furthest_handle)"
+        },
+        {
+          "before": "    local_nearest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_comment_type)",
+          "after": "    local_nearest_handle = quest:GetNearestWithScriptName(xStack_30, native_arg_comment_type)\n    if local_nearest_handle == nil then local_nearest_handle = resources:CopyThingOutput(nil) end\n    nearestOwner = resources:TrackThingOutput(local_nearest_handle)"
+        },
+        {
+          "before": "    local_furthest_handle = quest:GetFurthestWithScriptName(xStack_30, native_arg_comment_type)",
+          "after": "    local_furthest_handle = quest:GetFurthestWithScriptName(xStack_30, native_arg_comment_type)\n    if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end\n    furthestOwner = resources:TrackThingOutput(local_furthest_handle)"
+        },
+        {
+          "before": "            local_furthest_handle = nil",
+          "after": "            resources:AssignThingOutput(furthestOwner, nil)"
+        },
+        {
+          "before": "        native_swap_handle = local_nearest_handle\n        local_nearest_handle = local_furthest_handle\n        local_furthest_handle = native_swap_handle",
+          "after": "        native_swap_handle = resources:CopyThingOutput(local_nearest_handle)\n        swapOwner = resources:TrackThingOutput(native_swap_handle)\n        resources:AssignThingOutput(nearestOwner, local_furthest_handle)\n        resources:AssignThingOutput(furthestOwner, native_swap_handle)\n        resources:RetireThingOutput(swapOwner)"
+        },
+        {
+          "before": "    r1 = quest:PlayCriteriaSoundOnThing(pCVar4, native_arg_comment_type)\n    quest:Pause(1.0)",
+          "after": "    triggerOwner = resources:TrackThingOutput(pCVar4)\n    r1 = quest:PlayCriteriaSoundOnThing(pCVar4, native_arg_comment_type)\n    resources:RetireThingOutput(triggerOwner)\n    quest:Pause(1.0)"
+        },
+        {
+          "before": "        ::LAB_00e02355::",
+          "after": "        ::LAB_00e02355::\n        resources:RetireThingOutput(furthestOwner)\n        furthestOwner = 0"
+        },
+        {
+          "before": "    return false\nend",
+          "after": "    return false\n    end)\nend"
+        },
+        {
+          "before": "(local_furthest_handle ~= nil and local_furthest_handle:IsEqualTo(xStack_30))",
+          "after": "local_furthest_handle:RetailImplementationIsEqualTo(xStack_30)"
+        },
+        {
+          "before": "(local_nearest_handle ~= nil and local_nearest_handle:IsEqualTo(local_furthest_handle))",
+          "after": "local_nearest_handle:RetailImplementationIsEqualTo(local_furthest_handle)"
+        }
+      ],
+      "calls": [
+        "WithRetailResources",
+        "CopyThingOutput",
+        "TrackThingOutput",
+        "AssignThingOutput",
+        "RetireThingOutput",
+        "RetailImplementationIsEqualTo"
+      ],
+      "intermediateSha256": "ac65bae6201c73fea5bdcb3715b1ee7dbd646a877a759cca2a0a1353d7d4d186",
+      "recoveredSha256": "2d440829c0ad052fb0240fb5a94007f8fc09c52b83946b0e268113f227640dff",
+      "inlinedOwnership": {
+        "fallbackAssignment": {
+          "start": "0x00e01997",
+          "endExclusive": "0x00e019d8",
+          "sameInfoBranch": "0x00e019a6",
+          "releaseOld": "0x00e019ac",
+          "deleteOld": "0x00e019ba",
+          "freeOld": "0x00e019c2",
+          "publishData": "0x00e019cc",
+          "publishInfo": "0x00e019d0",
+          "retainNew": "0x00e019d6",
+          "queryDestructor": "0x00e019dc"
+        }
+      },
+      "exportEvidence": {
+        "path": "refs\\script_recovery\\trader_escort\\translation_unit_typed.json",
+        "functionName": "NScript::CQ_TraderEscortScript::MakeTraderComment",
+        "functionSourceSha256": "451b9e7f5b22dc0b0b23de353eed66b598608b1cf5627574a57e3f7c398b2be5"
+      },
+      "proofScope": "Original helper/concrete equality/assignment evidence; actual generated SDK/sol returning and isolated first-chance fault cases. Engine/copy/destructor doubles remain; production host and runtime sound/completion unverified."
+    }
+  },
+  "reviewedVoidRegisterStores": {
+    "0x00e0a510": {
+      "intermediateSha256": "49cc1136f41ad37ca18e96ef208e36e927cb0979d3387bc6c127ac2ec54dc605",
+      "recoveredSha256": "a33b5056e6513d717ddea1eb44fb76db7201846238d3d39b4327ed1ea1cee0d5",
+      "statement": "iVar4 = extraout_EAX_00;",
+      "producerCall": "0x00e0a80d",
+      "producerBytes": "e8ce42b9ff",
+      "evidence": "Health ID stored at E0A80A before CString destructor E0A80D. E0A812..E0A81A only pops and RET4: EAX is unobserved. Reviewed PDB void prototype and full native/source pins are mandatory. Source branch falls through only to the stale scalar return; no effect or cleanup is removed."
     }
   }
 }

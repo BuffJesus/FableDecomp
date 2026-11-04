@@ -1,5 +1,7 @@
 # New Oakvale Intro converter completion plan
 
+> Historical assignment and continuous-work instructions; no current authorization to resume.
+
 Marathon resumed at user request on 2026-09-14. Current results and the live-test
 approval state are in the [marathon checkpoint](../journal/2026-09/NEW_OAKVALE_MARATHON_2026-09-14.md).
 The finish line below remains unchanged; offline results do not establish gameplay parity.

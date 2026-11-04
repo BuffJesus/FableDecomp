@@ -9,7 +9,8 @@ function Main(quest, me)
         if not quest:NewScriptFrame(me) then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:GiveThingBestEnemyTarget(me, quest:GetHero())
+    local pTarget = quest:GetHero()
+    quest:GiveThingBestEnemyTarget(me, pTarget)
     repeat
         quest:NewScriptFrame(me)
     until quest:IsActiveThreadTerminating()

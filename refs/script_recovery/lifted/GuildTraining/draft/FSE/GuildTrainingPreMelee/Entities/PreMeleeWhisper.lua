@@ -101,6 +101,13 @@ function Main(quest, me)
                     p1 = "TEXT_QST_028_TEEN_WHISPER_PRE_MELEE_GUIDE_CHAT"
                     pCVar5 = quest:GetHero()
                     r1 = me:Speak(pCVar5, p1, iVar10, (iVar11 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                    if not r1 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(xStack_1c)
+                        quest:DeregisterTimer(timerId)
+                        resources:ReleaseResource(xStack_a0)
+                        return
+                    end
                     iVar10 = me:IsPerformingScriptTask()
                     cVar4 = iVar10
                     while cVar4 do
@@ -143,7 +150,7 @@ function Main(quest, me)
                 puVar8 = r2:GetPos()
             end
             pCVar6 = pCVar5:GetPos()
-            f_stk_94 = puVar8.z - pCVar6.z
+            f_stk_94 = (string.unpack("<f", string.pack("<f", puVar8.z - pCVar6.z)))
             bVar3 = quest:IsDistanceBetweenThingsUnder(me, r2, 7.0)
             if bVar3 then
                 dist = 7.0

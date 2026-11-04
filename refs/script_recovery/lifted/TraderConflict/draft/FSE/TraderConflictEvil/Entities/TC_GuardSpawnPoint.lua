@@ -11,7 +11,7 @@ do
 end
 
 function Main(quest, me)
-    local bVar2, iVar4, iVar6, iVar7, native_arg_sequence_1, pCVar3, pCVar5, pOther, pScriptName, pThing, r1, xStack_1c
+    local bVar2, iVar4, iVar6, iVar7, native_arg_sequence_1, pCVar3, pCVar5, pOther, pScriptName, r1, xStack_1c
     local alive = true
     local cVar1 = quest:GetStateBool("QuestStartScreened")
     while not cVar1 do
@@ -66,6 +66,7 @@ function Main(quest, me)
                         if bVar2 then
                             return
                         end
+                        xStack_1c = ""
                         if quest:ReadGlobalGameData(0xf88) < (0x19 - quest:GetStateInt("InitialNumberInRegion")) - quest:GetStateInt("NumberSpawned") then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
@@ -96,7 +97,7 @@ function Main(quest, me)
                             pOther = "CREATURE_BS_GUARD_BLACK"
                         end
                         xStack_1c = pOther
-                        iVar4 = math.random(0, 32767)
+                        iVar4 = quest:RetailRandModulo(32768)
                         if iVar4 % 500 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
@@ -110,8 +111,8 @@ function Main(quest, me)
                         pScriptName = "IsAGuard"
                         pCVar3 = me:GetPos()
                         pCVar5 = xStack_1c
-                        r1 = quest:CreateCreature(pCVar5, pCVar3, pScriptName)
-                        quest:SetCombatNearbyBreakOffRange(r1, pThing)
+                        r1 = quest:CreateCreature(pCVar5, pCVar3, pScriptName, bVar2)
+                        quest:SetCombatNearbyBreakOffRange(r1, 10.0)
                         quest:EntitySetInFaction(r1, "FACTION_MONSTERS")
                         quest:MiniMapAddMarker(r1, "HUD_ORB_RED_SMALL")
                         pCVar5 = quest:GetHero()

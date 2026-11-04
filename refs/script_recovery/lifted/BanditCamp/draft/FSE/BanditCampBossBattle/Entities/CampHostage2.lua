@@ -56,7 +56,7 @@ function Main(quest, me)
                         iVar4 = quest:AddNewConversation(me, false, false)
                         pCVar6 = quest:GetHero()
                         quest:AddPersonToConversation(iVar4, pCVar6)
-                        me:PlayAnimation("CS_DISAPPOINTED", false, false, false, true, true, false, false)
+                        resources:PlayAnimationWithNativeArgument5(xStack_20, "CS_DISAPPOINTED", false, false, false, true, false, false)
                         if i_stk_30 == 0 then
                             pCVar6 = quest:GetHero()
                             quest:AddLineToConversation(iVar4, "TEXT_QST_009_HOSTAGE_SECOND_CRY_FIRST", me, pCVar6, false)

@@ -88,19 +88,19 @@ function CreateSpectators(quest)
                 pCVar4 = quest:GetThingWithScriptName("Spectator1")
                 bVar3 = false
                 pCVar5 = pCVar4:GetPos()
-                r1 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar5, "Spectator")
+                r1 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar5, "Spectator", bVar3)
                 r1 = nil
                 pCVar4 = nil
                 pCVar4 = quest:GetThingWithScriptName("Spectator2")
                 bVar3 = false
                 pCVar5 = pCVar4:GetPos()
-                r2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar5, "Spectator")
+                r2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", pCVar5, "Spectator", bVar3)
                 r2 = nil
                 pCVar4 = nil
                 pCVar4 = quest:GetThingWithScriptName("Spectator3")
                 bVar3 = false
                 pCVar5 = pCVar4:GetPos()
-                r3 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar5, "Spectator")
+                r3 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar5, "Spectator", bVar3)
                 r3 = nil
                 pCVar4 = nil
                 quest:SetStateBool("SpectatorsCreated", true)
@@ -184,7 +184,7 @@ function LookAfterOrganiser(quest)
                 pCVar3 = quest:GetThingWithScriptName("ScaredMasterMarker")
                 bVar2 = false
                 pCVar4 = pCVar3:GetPos()
-                r1 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar4, "ChickenMaster")
+                r1 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar4, "ChickenMaster", bVar2)
             else
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
@@ -194,7 +194,7 @@ function LookAfterOrganiser(quest)
                 pCVar3 = quest:GetThingWithScriptName("MK_CK_ORG")
                 bVar2 = false
                 pCVar4 = pCVar3:GetPos()
-                r2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar4, "ChickenMaster")
+                r2 = quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", pCVar4, "ChickenMaster", bVar2)
             end
             quest:SetStateBool("RanOff", false)
         end

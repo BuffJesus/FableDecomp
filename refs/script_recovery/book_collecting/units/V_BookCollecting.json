@@ -781,13 +781,83 @@
       "0x4c": {
         "name": "BookReactions",
         "global": "0x4c8",
-        "element": "CConversation"
+        "element": "CConversation",
+        "storage": "questConversationVector",
+        "stride": 92,
+        "initialization": {
+          "functions": [
+            "0x00e54990"
+          ],
+          "assign": "0x00e54aa0"
+        },
+        "readFunctions": [
+          "0x00e566f0",
+          "0x00e569d0"
+        ],
+        "evidence": {
+          "copyConstructor": "0x00e54ca0",
+          "copyAssignment": "0x00e54c50",
+          "destructor": "0x00e54d80",
+          "notes": "Native vector assignment retains Lines and four independent CString vectors. Script-visible value projection excludes CDefClassBase pool/identity fields. Nonempty allocation/reuse/shrink/destruction and source replacement executed in work/codex_lua_book_conversation_snapshot_20261015/native_results.json."
+        }
+      },
+      "0x94": {
+        "name": "BookDef",
+        "global": "0x4d4",
+        "element": "CCharString",
+        "storage": "questStringVector",
+        "initialization": {
+          "functions": [
+            "0x00e54990"
+          ],
+          "stride": 4,
+          "emptyConstructor": "0x0099e4b0",
+          "resize": "0x0043332c",
+          "destructor": "0x0099eae0",
+          "assign": "0x0099efb0"
+        },
+        "readFunctions": [
+          "0x00e54e90",
+          "0x00e55ce0",
+          "0x00e57530"
+        ],
+        "evidence": {
+          "init": "0x00e54990",
+          "stride": 4,
+          "notes": "Init copies global definition strings by index. The three listed consumers only read this vector; destructor frees it. Mutable donated/owned byte vectors are separate."
+        }
       }
     },
     "arrays": [],
     "retailOffsetDelta": -20,
     "pdbMembersUnused": [],
-    "nestedPdbMembers": {}
+    "nestedPdbMembers": {},
+    "flagVectors": {
+      "0xa0": {
+        "name": "BookDonated",
+        "element": "Bool",
+        "stride": 1,
+        "resize": "0x00467686",
+        "transfer": "0x00cdcf80",
+        "evidence": {
+          "init": "0x00e54990",
+          "persist": "0x00e54880",
+          "storage": "three pointers; byte elements; binary transfer normalizes booleans"
+        }
+      },
+      "0xac": {
+        "name": "BookOwned",
+        "element": "Bool",
+        "stride": 1,
+        "resize": "0x00467686",
+        "transfer": "0x00cdcf80",
+        "evidence": {
+          "init": "0x00e54990",
+          "persist": "0x00e54880",
+          "storage": "three pointers; byte elements; binary transfer normalizes booleans"
+        }
+      }
+    }
   },
   "entities": {
     "BS_Teacher": {
@@ -872,6 +942,1655 @@
         "0x34": "seh_me"
       },
       "arrays": []
+    }
+  },
+  "nativeScalarOperands": {
+    "0x00e57530": {
+      "nativeSha256": "07b19e9cbcb7e59756f581332813b078ee97bcf94abcd51087a0d58958b24c47",
+      "sourceSha256": "f50c86fa935e8e44f653bfe5eb3ba56bc31e0bef60edaa24580dc1493f1973d2",
+      "proof": "docs/journal/2026-09/LUA_RECOVERY_2026-09-29.md; work/codex_lua_marathon8_20260929/native_evidence.md",
+      "bindings": [
+        {
+          "entryOffset": -24,
+          "accesses": [
+            {
+              "site": "0x00e5754e",
+              "bytes": "896c2414",
+              "entryEspDelta": -44
+            },
+            {
+              "site": "0x00e575e9",
+              "bytes": "896c2414",
+              "entryEspDelta": -44
+            },
+            {
+              "site": "0x00e575ef",
+              "bytes": "8b6c2414",
+              "entryEspDelta": -44
+            },
+            {
+              "site": "0x00e57625",
+              "bytes": "8b6c2414",
+              "entryEspDelta": -44
+            },
+            {
+              "site": "0x00e57642",
+              "bytes": "896c2414",
+              "entryEspDelta": -44
+            },
+            {
+              "site": "0x00e57648",
+              "bytes": "8b6c2414",
+              "entryEspDelta": -44
+            },
+            {
+              "site": "0x00e57909",
+              "bytes": "8b6c2414",
+              "entryEspDelta": -44
+            }
+          ],
+          "tokens": [
+            {
+              "start": 1100,
+              "name": "local_18",
+              "site": "0x00e5754e"
+            },
+            {
+              "start": 8632,
+              "name": "local_18",
+              "site": "0x00e57648"
+            },
+            {
+              "start": 9041,
+              "name": "local_18",
+              "site": "0x00e57625"
+            },
+            {
+              "start": 9066,
+              "name": "local_18",
+              "site": "0x00e57625"
+            },
+            {
+              "start": 9334,
+              "name": "local_18",
+              "site": "0x00e57642"
+            },
+            {
+              "start": 9862,
+              "name": "local_18",
+              "site": "0x00e575e9"
+            },
+            {
+              "start": 9958,
+              "name": "local_18",
+              "site": "0x00e575ef"
+            },
+            {
+              "start": 5827,
+              "name": "CStack_1c",
+              "site": "0x00e57909"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reviewedResourceOperands": {
+    "0x00e57530": {
+      "nativeSha256": "07b19e9cbcb7e59756f581332813b078ee97bcf94abcd51087a0d58958b24c47",
+      "sourceSha256": "f50c86fa935e8e44f653bfe5eb3ba56bc31e0bef60edaa24580dc1493f1973d2",
+      "proof": "work/codex_lua_marathon10_20260929/native_evidence.md",
+      "calls": [
+        {
+          "resourceAnchor": "0x00e57769",
+          "family": "self",
+          "offset": 52,
+          "entryOffset": -20,
+          "vtableStack": [
+            {
+              "site": "0x00e577b2",
+              "bytes": "89442428",
+              "entryEspDelta": -60
+            },
+            {
+              "site": "0x00e577dd",
+              "bytes": "8b442430",
+              "entryEspDelta": -68
+            }
+          ],
+          "dispatch": {
+            "site": "0x00e577e3",
+            "bytes": "ff5034"
+          },
+          "flagPushes": [
+            {
+              "site": "0x00e577aa",
+              "bytes": "6a00"
+            },
+            {
+              "site": "0x00e577a8",
+              "bytes": "6a00"
+            },
+            {
+              "site": "0x00e577a1",
+              "bytes": "6a01"
+            },
+            {
+              "site": "0x00e5779f",
+              "bytes": "6a00"
+            }
+          ],
+          "heroSite": "0x00e577d6",
+          "textToken": {
+            "name": "pvVar11",
+            "start": 2562
+          },
+          "helpers": [
+            {
+              "address": "0x0099f830",
+              "size": 116,
+              "sha256": "bb328fb3c5a3d52e3bc3be058e9e7ce43d7b4e4951b37aa7d9fac532c918fddc"
+            },
+            {
+              "address": "0x0099f690",
+              "size": 160,
+              "sha256": "4ad56ad60796d85b27a3f773956e8c1a326c4af9b759e90214200439216b40e9"
+            },
+            {
+              "address": "0x0099e4c0",
+              "size": 15,
+              "sha256": "4ba3b993225caf80df7766426201e2827153bcbefb139ff84d6801040a1236bf"
+            }
+          ]
+        }
+      ],
+      "unusedDispatchStaging": {
+        "nativeExtentSha256": "4a030a4c5fba1384e670f46bcb7e6a8ed0de0eb849a1ce7b3b0675eb79085b53",
+        "luaPhaseSha256": "b8ae3ad438331d89b08a43cf2dd83e5d9714efc149160f98970e0135cfbfe9c0",
+        "reads": [
+          {
+            "nativeRead": "0x00e5779a",
+            "dispatch": "0x00e577e3",
+            "alias": "x_stk_14",
+            "diagnostic": "unlifted: x_stk_14 = *pCVar12",
+            "nativeSourceFragment": "local_18 = *pCVar12;"
+          }
+        ]
+      }
+    },
+    "0x00e54e90": {
+      "nativeSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+      "sourceSha256": "45e01ee1f497db566952985245183420edff36faaa32acd035deb2e9d0026846",
+      "proof": "work/codex_lua_marathon13_20260929/native_evidence.md",
+      "calls": [
+        {
+          "resourceAnchor": "0x00e557c2",
+          "family": "self",
+          "offset": 52,
+          "entryOffset": -124,
+          "receiverLifetime": {
+            "start": "0xe557c0",
+            "end": "0xe55882",
+            "sha256": "8176ab6e6644e1bf6443cf46e9500b97096a4954d4da3e15875b5cf9d81a062c",
+            "anchorReceiver": {
+              "site": "0x00e557c0",
+              "bytes": "8bcf"
+            },
+            "speechReceiver": {
+              "site": "0x00e5584f",
+              "bytes": "8bcf"
+            },
+            "tableLoad": {
+              "site": "0x00e55831",
+              "bytes": "8b07"
+            },
+            "cleanup": {
+              "start": "0xe557e6",
+              "end": "0xe55826",
+              "sha256": "c47d6e75f306549b6166f2d63daf1d0b2ab784b96ab18a28e92279d2af89e32d"
+            }
+          },
+          "vtableStack": [
+            {
+              "site": "0x00e55840",
+              "bytes": "89442428",
+              "entryEspDelta": -164
+            },
+            {
+              "site": "0x00e5584b",
+              "bytes": "8b44242c",
+              "entryEspDelta": -168
+            }
+          ],
+          "dispatch": {
+            "site": "0x00e55851",
+            "bytes": "ff5034"
+          },
+          "flagPushes": [
+            {
+              "site": "0x00e55839",
+              "bytes": "6a02"
+            },
+            {
+              "site": "0x00e55838",
+              "bytes": "55",
+              "zeroDefinition": {
+                "site": "0x00e557ea",
+                "bytes": "33ed"
+              }
+            },
+            {
+              "site": "0x00e55836",
+              "bytes": "6a01"
+            },
+            {
+              "site": "0x00e55835",
+              "bytes": "55",
+              "zeroDefinition": {
+                "site": "0x00e557ea",
+                "bytes": "33ed"
+              }
+            }
+          ],
+          "heroSite": "0x00e55844",
+          "textPush": {
+            "site": "0x00e5583b",
+            "bytes": "686c602e01",
+            "literal": "TEXT_QST_B16_BOOK_WRONG_TIME"
+          },
+          "helpers": [
+            {
+              "address": "0x0099a2e0",
+              "size": 7,
+              "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+            }
+          ],
+          "taskPolls": [
+            {
+              "table": {
+                "site": "0x00e55854",
+                "bytes": "8b07"
+              },
+              "receiver": {
+                "site": "0x00e55856",
+                "bytes": "8bcf"
+              },
+              "dispatch": {
+                "site": "0x00e55858",
+                "bytes": "ff5068"
+              }
+            },
+            {
+              "table": {
+                "site": "0x00e55877",
+                "bytes": "8b07"
+              },
+              "receiver": {
+                "site": "0x00e55879",
+                "bytes": "8bcf"
+              },
+              "dispatch": {
+                "site": "0x00e5587b",
+                "bytes": "ff5068"
+              }
+            }
+          ]
+        }
+      ],
+      "unusedDispatchStaging": {
+        "nativeExtentSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+        "luaPhaseSha256": "d314031970b5564b43aafbb1243adf1559acca679f7329627d0bfac5e06cd462",
+        "reads": [
+          {
+            "nativeRead": "0x00e55831",
+            "dispatch": "0x00e55851",
+            "alias": "xStack_7c",
+            "diagnostic": "unlifted: xStack_7c = *pCVar11;",
+            "nativeSourceFragment": "CStack_7c = *pCVar11;",
+            "commentOnly": true,
+            "reviewedMemberLifetime": true
+          }
+        ]
+      }
+    }
+  },
+  "reviewedMissingInterfaceOperands": {
+    "0x00e54e90": {
+      "sourceSha256": "45e01ee1f497db566952985245183420edff36faaa32acd035deb2e9d0026846",
+      "nativeSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+      "slot": "0x5ec",
+      "table": "0x01260f0c",
+      "target": "0x00890ab0",
+      "method": "PauseAllNonScriptedEntities",
+      "purgeWords": 1,
+      "calleeBytes": "538b5c2408568bf18b4e048b0153ff500c8bc8e8f8e4c8ff84db741f8b4e048b4968680000803f68efbeefbe68ffff0000e88a56c3ff5e5bc204008b56048b4a6868efbeefbee84556c3ff5e5bc20400568bf18b4e048b01ff500c8a4c240884c9884855",
+      "nativeInstructions": {
+        "0xe54e9a": "8bf1",
+        "0xe551c6": "8b5e04",
+        "0xe551c9": "8b13",
+        "0xe551cb": "6a01",
+        "0xe551cd": "8bcb",
+        "0xe551cf": "895c2418",
+        "0xe551d3": "ff92ec050000",
+        "0xe5579c": "8b5c2414",
+        "0xe559e2": "8b03",
+        "0xe559e4": "6a00",
+        "0xe559e6": "8bcb",
+        "0xe559e8": "ff90ec050000",
+        "0xe55a1e": "8b4c2414",
+        "0xe55a22": "8b11",
+        "0xe55a24": "6a00",
+        "0xe55a26": "ff92ec050000"
+      },
+      "receiverOrigin": {
+        "thisBind": "0xe54e9a",
+        "load": "0xe551c6",
+        "store": "0xe551cf",
+        "reload": "0xe5579c",
+        "balancedStackOffset": 20,
+        "holder": "ebx",
+        "script": "esi"
+      },
+      "calls": [
+        {
+          "site": "0xe55a26",
+          "head": "(**(code **)(*(int *)xStack_7c + 0x5ec))",
+          "printedArguments": [],
+          "arguments": [
+            "false"
+          ],
+          "receiver": "stack"
+        }
+      ]
+    }
+  },
+  "reviewedUnusedStackBytes": {
+    "0x00e57020": {
+      "owner": "BS_Teacher",
+      "nativeSha256": "9f2cfeaf5c869387e6e7fb8cf6c2320f34dc105b0cf74bfb388365e1569213bc",
+      "sourceSha256": "3545c1ba62459822312e0db98d4ca8d11ca94c8e1a8ac15883dab5d872566f90",
+      "luaPhaseSha256": "36c663b55d3e1fc4dad4ba5458b41213599fb7146a53d634b633248cf9b37764",
+      "helperMetadata": {
+        "entityVtable": "0x012E5F40",
+        "parentOffset": 20,
+        "stateOffset": 44,
+        "flagOffset": 5,
+        "parentVtableSlot": 12,
+        "instanceCounter": "0x013bd800",
+        "freeText": "0x00bfeb1c",
+        "freeControl": "0x00bfe9bc",
+        "termination": {
+          "address": "0x00f35b30",
+          "size": 12
+        },
+        "getter": {
+          "address": "0x00e54620",
+          "size": 4
+        },
+        "predicate": {
+          "address": "0x00cb7940",
+          "size": 14
+        },
+        "constructor": {
+          "address": "0x0099ebf0",
+          "size": 61
+        },
+        "destructor": {
+          "address": "0x0099eae0",
+          "size": 12
+        },
+        "release": {
+          "address": "0x0099e9b0",
+          "size": 87
+        }
+      },
+      "helperNativeProofs": {
+        "termination": {
+          "address": "0xf35b30",
+          "size": 12,
+          "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+        },
+        "getter": {
+          "address": "0xe54620",
+          "size": 4,
+          "sha256": "01d3abacb68aac3537badfe563d0e21d0244fb61db1d805bcef8f455407fad96"
+        },
+        "predicate": {
+          "address": "0xcb7940",
+          "size": 14,
+          "sha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7"
+        },
+        "constructor": {
+          "address": "0x99ebf0",
+          "size": 61,
+          "sha256": "8c27b64a613d8319d3e866b8224ecfcedf8e5ccaf92a81314c16631d41f3f100"
+        },
+        "destructor": {
+          "address": "0x99eae0",
+          "size": 12,
+          "sha256": "65d790bd8e62fef3658c4d1320e81e8b1c6d54ab12879256c0e4e4c533c1c53e"
+        },
+        "release": {
+          "address": "0x99e9b0",
+          "size": 87,
+          "sha256": "e0ccad7278cb78743022e17eb02dad9b144f7132dc1538d5adb393a625d3e5de"
+        }
+      },
+      "reads": [
+        {
+          "nativeStore": "0x00e573a4",
+          "nativeStoreBytes": "88442418",
+          "entryEspOffset": 24,
+          "alias": "native_arg_param_2",
+          "diagnostic": "unlifted: native_arg_param_2 = (map<CCharString,CCharString,std::less<CCharString>,std::allocator<st",
+          "marker": "native_arg_param_2 = (map<CCharString,CCharString,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,CCharString>_>_> *)CONCAT31(native_arg_param_2._1_3_,cVar2);",
+          "nativeSourceFragment": "CONCAT31(param_2._1_3_,cVar2)"
+        }
+      ]
+    }
+  },
+  "reviewedDefinitionStaging": {
+    "0x00e54e90": {
+      "owner": "BS_Teacher",
+      "nativeSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+      "sourceSha256": "45e01ee1f497db566952985245183420edff36faaa32acd035deb2e9d0026846",
+      "luaPhaseSha256": "e215e949741c9fdd448b26fffc03c6ee52c2219a8dfd7c69f6666077d33d4004",
+      "vectorOffset": 148,
+      "indexOffset": 140,
+      "indexField": [
+        "LastBookRequested",
+        "Int"
+      ],
+      "definitionSha256": "d0f76ce8626da7e02170a8a87be6eeff7a8177728b9187b440a82025d070cc84",
+      "consumer": "IsObjectInThingsPossession",
+      "heroTarget": "0x00891ca0",
+      "consumerTarget": "0x00897220",
+      "nativeRead": "0x00e5559a",
+      "span": [
+        {
+          "address": "0xe55591",
+          "bytes": "8b4614"
+        },
+        {
+          "address": "0xe55594",
+          "bytes": "8b888c000000"
+        },
+        {
+          "address": "0xe5559a",
+          "bytes": "8b9094000000"
+        },
+        {
+          "address": "0xe555a0",
+          "bytes": "8d2c8a"
+        },
+        {
+          "address": "0xe555a3",
+          "bytes": "8b4e04"
+        },
+        {
+          "address": "0xe555a6",
+          "bytes": "8b11"
+        },
+        {
+          "address": "0xe555a8",
+          "bytes": "8bc1"
+        },
+        {
+          "address": "0xe555aa",
+          "bytes": "8b18"
+        },
+        {
+          "address": "0xe555ac",
+          "bytes": "ff9218010000"
+        },
+        {
+          "address": "0xe555b2",
+          "bytes": "8b4e04"
+        },
+        {
+          "address": "0xe555b5",
+          "bytes": "50"
+        },
+        {
+          "address": "0xe555b6",
+          "bytes": "55"
+        },
+        {
+          "address": "0xe555b7",
+          "bytes": "ff93e0020000"
+        }
+      ],
+      "alias": "iVar1",
+      "indexAlias": "iVar8",
+      "heroAlias": "pCVar9",
+      "resultAlias": "bVar6",
+      "diagnostic": "unlifted: iVar1 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x94)",
+      "marker": "iVar1 = *(__native_entity_state:GetStateInt(\"self_0x14\") + 0x94)",
+      "nativeSourceFragment": "iVar1 = *(int *)(*(int *)((int)this + 0x14) + 0x94);"
+    }
+  },
+  "reviewedRegisterDispatchStaging": {
+    "0x00e54e90": {
+      "imageSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+      "nativeSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+      "sourceSha256": "45e01ee1f497db566952985245183420edff36faaa32acd035deb2e9d0026846",
+      "luaPhaseSha256": "d7d121119fccdf1b71f6e67af1a3ded30568f7b7115dff48967fc0ad9127d019",
+      "getter": {
+        "slot": "0x118",
+        "target": "0x00891ca0",
+        "method": "GetHero",
+        "bytes": "83ec0c568bf18b4e1457e8c17cbbff8bc8e80a61bfff33ff83c6303bc78d4c24087437518bc8e88561c3ff508bcee8ad9c01008b4424103bc7c74424088c8c23017451ff088b442410393875478b4808ff50048b54241052eb32e841e20300508bcee8799c01008b4424103bc7c74424088c8c2301741dff088b442410393875138b4808ff50048b44241050e88bcc360083c4048d4c2408897c2410897c240ce89b8510005f8bc65e83c40cc3"
+      },
+      "abiContract": {
+        "ordinaryMsvcCalleeSaved": true,
+        "callerFramePreserved": true,
+        "exceptionsVerified": false,
+        "engineReentryVerified": false,
+        "heapVerified": false
+      },
+      "acceptedEvidenceSha256": "a848c3aadb25c13cf89d5fa819efd577050e3cbefbc82ac7604a814cd5489107",
+      "scopeLimit": "Bounded native register lifetime under explicit child API/MSVC ABI and caller-frame contracts; engine, heap, reentry, exceptions and gameplay unverified.",
+      "reads": [
+        {
+          "nativeRead": "0xe55683",
+          "dispatch": "0xe5569b",
+          "heroCall": "0xe55692",
+          "tableRegister": "ebx",
+          "literal": "TEXT_QST_B16_BOOK_LOST",
+          "group": 0,
+          "flags": [
+            0,
+            1,
+            0
+          ],
+          "nativeSourceFragment": "CVar12 = *pCVar11;\r\n              pcVar13 = \"TEXT_QST_B16_BOOK_LOST\";",
+          "luaRegion": "                            -- TODO(native): CVar12 = *pCVar11\n                            CVar12 = nil --[[unresolved native value]]\n                            pCVar9 = quest:GetHero()\n                            r6 = me:Speak(pCVar9, \"TEXT_QST_B16_BOOK_LOST\", 0, false, true, false)\n                            cVar7 = resources:IsPerformingScriptTask(resources:MemberResource(\"seh_me\", (me)))\n",
+          "alias": "CVar12",
+          "heroAlias": "pCVar9",
+          "resultAlias": "r6",
+          "diagnostic": "unlifted: CVar12 = *pCVar11"
+        },
+        {
+          "nativeRead": "0xe5573e",
+          "dispatch": "0xe55756",
+          "heroCall": "0xe5574d",
+          "tableRegister": "ebx",
+          "literal": "TEXT_QST_B16_BOOK_LOOK",
+          "group": 2,
+          "flags": [
+            0,
+            1,
+            0
+          ],
+          "nativeSourceFragment": "CVar12 = *pCVar11;\r\n                pcVar13 = \"TEXT_QST_B16_BOOK_LOOK\";",
+          "luaRegion": "                                -- TODO(native): CVar12 = *pCVar11\n                                CVar12 = nil --[[unresolved native value]]\n                                pCVar9 = quest:GetHero()\n                                r4 = me:Speak(pCVar9, \"TEXT_QST_B16_BOOK_LOOK\", 2, false, true, false)\n                                cVar7 = resources:IsPerformingScriptTask(resources:MemberResource(\"seh_me\", (me)))\n",
+          "alias": "CVar12",
+          "heroAlias": "pCVar9",
+          "resultAlias": "r4",
+          "diagnostic": "unlifted: CVar12 = *pCVar11"
+        }
+      ]
+    }
+  },
+  "reviewedInterfacePointerStaging": {
+    "0x00e54e90": {
+      "imageSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+      "nativeSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+      "sourceSha256": "45e01ee1f497db566952985245183420edff36faaa32acd035deb2e9d0026846",
+      "luaPhaseSha256": "0609f1ad46f38e67165f6e1a082807a87b92d089ca29dd33ae4e460dcc82a8e8",
+      "slot": "0x5ec",
+      "target": "0x00890ab0",
+      "method": "PauseAllNonScriptedEntities",
+      "calleeWitnessPrefix": "538b5c2408568bf18b4e048b0153ff500c8bc8e8f8e4c8ff84db741f8b4e048b4968680000803f68efbeefbe68ffff0000e88a56c3ff5e5bc204008b56048b4a6868efbeefbee84556c3ff5e5bc20400568bf18b4e048b01ff500c8a4c240884c9884855",
+      "purgeWords": 1,
+      "nativeRead": "0x00e551c6",
+      "dispatch": "0x00e551d3",
+      "cachePrefixEspOffset": 20,
+      "argument": true,
+      "alias": "CVar12",
+      "copyAlias": "xStack_7c",
+      "diagnostic": "unlifted: CVar12 = *(this + 4)",
+      "nativeSourceFragment": "CVar12 = *(CCharString_bv *)((int)this + 4);\r\n        CStack_7c = CVar12;\r\n        (**(code **)(*(int *)CVar12 + 0x5ec))((void *)CVar12,true);",
+      "luaRegion": "                -- TODO(native): CVar12 = *(this + 4)\n                CVar12 = nil --[[unresolved native value]]\n                xStack_7c = CVar12\n                quest:PauseAllNonScriptedEntities(true)\n",
+      "acceptedEvidenceSha256": "5e47d5f2ac761346fcae9130e32d7fc59e8d86bf49eaf64664054ff2eb55a485",
+      "scopeLimit": "Immediate interface-load/cache/API prefix and dead Lua staging only; API double/ordinary MSVC ABI. Whole-lifetime cache, engine, heap, reentry, exceptions and gameplay unverified."
+    }
+  },
+  "reviewedInterfaceTableStaging": {
+    "0x00e54e90": {
+      "imageSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+      "nativeSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+      "sourceSha256": "45e01ee1f497db566952985245183420edff36faaa32acd035deb2e9d0026846",
+      "method": "PauseAllNonScriptedEntities",
+      "slot": "0x5ec",
+      "target": "0x00890ab0",
+      "calleeWitnessPrefix": "538b5c2408568bf18b4e048b0153ff500c8bc8e8f8e4c8ff84db741f8b4e048b4968680000803f68efbeefbe68ffff0000e88a56c3ff5e5bc204008b56048b4a6868efbeefbee84556c3ff5e5bc20400568bf18b4e048b01ff500c8a4c240884c9884855",
+      "purgeWords": 1,
+      "luaPhaseSha256": "5a6f1336797ecdef3eb47e3b2ff02d8e02717b99c4530bb44973b286727373b7",
+      "pointerLoad": "0x00e551c6",
+      "nativeRead": "0x00e55316",
+      "sharedTail": "0x00e55c3f",
+      "dispatch": "0x00e55c41",
+      "pointerRegister": "ebx",
+      "tableRegister": "eax",
+      "ownerRegister": "esi",
+      "branchBytes": 9,
+      "argument": false,
+      "alias": "iVar8",
+      "receiverAlias": "CVar12",
+      "diagnostic": "unlifted: iVar8 = *CVar12",
+      "diagnosticMultiplicity": 2,
+      "nativeSourceFragment": "LAB_00e55316:\r\n              iVar8 = *(int *)CVar12;\r\n              goto LAB_00e55c3f;",
+      "luaRegion": "                            -- LAB_00e55316: (native jump target)\n                            -- TODO(native): iVar8 = *CVar12\n                            iVar8 = nil --[[unresolved native value]]\n                            -- TODO(native): goto LAB_00e55c3f\n",
+      "abiContract": {
+        "ordinaryMsvcCalleeSaved": true,
+        "callerFramePreserved": true,
+        "engineReentryVerified": false,
+        "exceptionsVerified": false,
+        "heapVerified": false
+      },
+      "acceptedEvidenceSha256": "5660d08301045981b13d78eb28d29c2970c30c2aeee3b16c12fae212fd8a2264",
+      "scopeLimit": "Dead table-staging annotation under ordinary MSVC ABI and load-site provenance contracts; actual heap/object/vtable lifetime, engine reentry, exceptions, saved cache and gameplay unverified. Shared tail is validated only for this sealed incoming branch.",
+      "copies": [
+        {
+          "copyTrace": {
+            "inputIndex": 207,
+            "target": "LAB_00e55316",
+            "targetInputIndex": 185,
+            "inputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "preparedInputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "originalJump": "              if (bVar6) goto LAB_00e55316;",
+            "copiedStatements": [
+              "              if (bVar6) {",
+              "                iVar8 = *(int *)CVar12;",
+              "                GSI->PauseAllNonScriptedEntities(0);",
+              "                RESOURCE_DestroyMovie(xStack_10);",
+              "                return;",
+              "              }"
+            ],
+            "terminated": true,
+            "syntheticExit": null,
+            "outputStartIndex": 216,
+            "outputStatementCount": 6,
+            "outputSha256": "12110f8443921bcd7cb891c9b7187e7fd64aff6d2632c4d623c842ce67640987"
+          },
+          "conditionAlias": "bVar6",
+          "nativeBranch": "0x00e5588b",
+          "luaRegion": "                            if bVar6 then\n                                -- TODO(native): iVar8 = *CVar12\n                                iVar8 = nil --[[unresolved native value]]\n                                quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_10)\n                                return\n                            end\n",
+          "acceptedEvidenceSha256": "9be9e871bf4135ff44d5f49955f034b0f68647cd5656b492d27cc474c25afc04",
+          "movieAlias": "xStack_10",
+          "scopeLimit": "Conditional copied read only, under seeded valid Teacher/parent/state objects; actual object/vtable lifetime, engine/heap/reentry/exceptions/gameplay and later DestroyMovie unverified.",
+          "predicate": {
+            "wrapper": {
+              "address": "0x00f35b30",
+              "bytes": "8b01ff500c8bc8e9041ed8ff"
+            },
+            "accessor": {
+              "address": "0x00e54620",
+              "bytes": "8b4114c3"
+            },
+            "tail": {
+              "address": "0x00cb7940",
+              "bytes": "8b412c85c0750332c0c38a4005c3"
+            },
+            "vtable": "0x012e5f40",
+            "accessorOffset": 20,
+            "stateOffset": 44,
+            "flagOffset": 5
+          },
+          "nativeCaller": {
+            "address": "0x00e55882",
+            "bytes": "8bcee8a7020e0084c00f8585faffff"
+          }
+        }
+      ]
+    }
+  },
+  "reviewedSavedTableStaging": {
+    "0x00e54e90": {
+      "imageSha256": "41dc91090ae853715ac06d2e9fc96e5d545381d197ed55d624c642f34509ac10",
+      "sourceSha256": "45e01ee1f497db566952985245183420edff36faaa32acd035deb2e9d0026846",
+      "luaPhaseSha256": "6b73e8015672b231d48a02f2c87bc6077d077613d685bb470ca6d4218587b87e",
+      "cacheEvidenceSha256": "f4be6fca96fff1d6f5a9382b27976f64a6191ee47db56439e015facf344ca45d",
+      "prefixEvidenceSha256": "04a82df1a62ec5c145476aa4abe11aef6777b7704aa1e44851eaa2007b4d6162",
+      "cacheProof": {
+        "nativeSha256": "f8c76fa0554a4f69cab714606e14fef55549d7e0263ad1cb6f26aa080b571379",
+        "pointerLoad": "0xe551c6",
+        "cacheStore": "0xe551cf",
+        "pointerRead": "0xe55a13",
+        "tableRead": "0xe55a17",
+        "pointerRegister": "ebx",
+        "ownerRegister": "esi",
+        "tableRegister": "eax",
+        "interfaceOffset": 4,
+        "abiContract": {
+          "ordinaryMsvcCalleeSaved": true,
+          "normalChildStackBalanceAssumed": true,
+          "callerFramePreservedExceptDeclaredBuffers": true,
+          "declaredBuffersStayInBounds": true,
+          "engineReentryVerified": false,
+          "exceptionsVerified": false,
+          "heapVerified": false
+        },
+        "declaredBuffers": {
+          "0xe55705": {
+            "coordinate": 120,
+            "bytes": 12
+          },
+          "0xe554f8": {
+            "coordinate": 96,
+            "bytes": 12
+          },
+          "0xe5572c": {
+            "coordinate": 120,
+            "bytes": 12
+          },
+          "0xe55523": {
+            "coordinate": 96,
+            "bytes": 12
+          },
+          "0xe5564a": {
+            "coordinate": 108,
+            "bytes": 12
+          },
+          "0xe55671": {
+            "coordinate": 108,
+            "bytes": 12
+          },
+          "0xe555d1": {
+            "coordinate": 0,
+            "bytes": 4
+          }
+        },
+        "bufferScope": "CScriptThing12-byte result/destructor objects under the declared in-bounds contract. Original empty path is tested; active callback bounds remain an explicit assumption.",
+        "acceptedEmptyPathEvidenceSha256": "83a790a96bfb43cf164408c127d0d52f6e9fe0377cfd58cf75be01189efe1983",
+        "stringBufferScope": "MOV ECX,ESP atE555D1 supplies a four-byte CCharString. Original two DWORD0 receiver writes are checked; actual nonempty allocation/disjoint heap behavior remains an explicit caller-frame/in-bounds contract.",
+        "acceptedStringConstructorSha256": "8c27b64a613d8319d3e866b8224ecfcedf8e5ccaf92a81314c16631d41f3f100"
+      },
+      "memberProfile": {
+        "offset": 52,
+        "vtable": "0x127094c",
+        "witnesses": {
+          "factory": {
+            "address": "0xe545b0",
+            "bytes": "8d4e34c706405f2e01895e14e8df2c99ff"
+          },
+          "constructor": {
+            "address": "0x7e72a0",
+            "bytes": "568bf1e8d8301b0033c0c7064c09270189460889460c8bc65ec3"
+          },
+          "base": {
+            "address": "0x99a380",
+            "bytes": "8bc1c700d8a72901c7400400000000c3"
+          }
+        }
+      },
+      "callContracts": [
+        {
+          "site": "0xe551d3",
+          "instructionBytes": "ff92ec050000",
+          "family": "GSI_profile",
+          "target": "0x890ab0",
+          "purgeBytes": 4,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "538b5c2408568bf18b4e048b0153ff50",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x5ec",
+          "tablePointerBytes": "b00a8900"
+        },
+        {
+          "site": "0xe551de",
+          "instructionBytes": "e8d6d1e7ff",
+          "family": "direct",
+          "target": "0xcd23b9",
+          "purgeBytes": 0,
+          "returnEvidence": "bounded_original_outer_RET_operands",
+          "calleePrefix": "33c03941080f95c0c3568bf18b0e85c9",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe551e9",
+          "instructionBytes": "e882d5e7ff",
+          "family": "direct",
+          "target": "0xcd2770",
+          "purgeBytes": 0,
+          "returnEvidence": "bounded_original_outer_RET_operands",
+          "calleePrefix": "568d71088bcee86549b1ff8326005ec3",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe551f7",
+          "instructionBytes": "ff5020",
+          "family": "GSI_profile",
+          "target": "0x89b5b0",
+          "purgeBytes": 12,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "83ec1053558b6c241c8b450056578bf9",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x20",
+          "tablePointerBytes": "b0b58900"
+        },
+        {
+          "site": "0xe55205",
+          "instructionBytes": "ff521c",
+          "family": "GSI_profile",
+          "target": "0x6e7410",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b0d38283d018a410584c075348b01ff",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x1c",
+          "tablePointerBytes": "10746e00"
+        },
+        {
+          "site": "0xe5520a",
+          "instructionBytes": "e821090e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe55220",
+          "instructionBytes": "ff5020",
+          "family": "GSI_profile",
+          "target": "0x89b5b0",
+          "purgeBytes": 12,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "83ec1053558b6c241c8b450056578bf9",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x20",
+          "tablePointerBytes": "b0b58900"
+        },
+        {
+          "site": "0xe55229",
+          "instructionBytes": "e802090e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe554aa",
+          "instructionBytes": "ff921c0a0000",
+          "family": "GSI_profile",
+          "target": "0x88fe30",
+          "purgeBytes": 0,
+          "returnEvidence": "bounded_original_outer_RET_operands",
+          "calleePrefix": "8b41048b481ce9c5b4e2ffcccccccccc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0xa1c",
+          "tablePointerBytes": "30fe8800"
+        },
+        {
+          "site": "0xe554c0",
+          "instructionBytes": "ff901c0a0000",
+          "family": "GSI_profile",
+          "target": "0x88fe30",
+          "purgeBytes": 0,
+          "returnEvidence": "bounded_original_outer_RET_operands",
+          "calleePrefix": "8b41048b481ce9c5b4e2ffcccccccccc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0xa1c",
+          "tablePointerBytes": "30fe8800"
+        },
+        {
+          "site": "0xe554e4",
+          "instructionBytes": "e847060e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe554ff",
+          "instructionBytes": "ff5030",
+          "family": "constructor_member_profile",
+          "target": "0x7e7490",
+          "purgeBytes": 4,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9568b74240875218bcee82d",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x30",
+          "tablePointerBytes": "90747e00"
+        },
+        {
+          "site": "0xe55506",
+          "instructionBytes": "ff9520040000",
+          "family": "GSI_profile",
+          "target": "0x890400",
+          "purgeBytes": 4,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b4c24048b01ff502c85c07418f68091",
+          "receiverValueEquivalenceProved": false,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x420",
+          "tablePointerBytes": "00048900"
+        },
+        {
+          "site": "0xe55527",
+          "instructionBytes": "e8145365ff",
+          "family": "direct",
+          "target": "0x4aa840",
+          "purgeBytes": 0,
+          "returnEvidence": "bounded_original_outer_RET_operands",
+          "calleePrefix": "568bf1c7068c8c23018b460885c0741c",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe55548",
+          "instructionBytes": "ff9218010000",
+          "family": "GSI_profile",
+          "target": "0x891ca0",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "83ec0c568bf18b4e1457e8c17cbbff8b",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x118",
+          "tablePointerBytes": "a01c8900"
+        },
+        {
+          "site": "0xe55551",
+          "instructionBytes": "ff5534",
+          "family": "constructor_member_profile",
+          "target": "0x7e7390",
+          "purgeBytes": 24,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c974058b01ff6034c21800cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x34",
+          "tablePointerBytes": "90737e00"
+        },
+        {
+          "site": "0xe55558",
+          "instructionBytes": "ff5068",
+          "family": "constructor_member_profile",
+          "target": "0x7e7450",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9750332c0c38b01ff6068cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x68",
+          "tablePointerBytes": "50747e00"
+        },
+        {
+          "site": "0xe55565",
+          "instructionBytes": "ff521c",
+          "family": "GSI_profile",
+          "target": "0x6e7410",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b0d38283d018a410584c075348b01ff",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x1c",
+          "tablePointerBytes": "10746e00"
+        },
+        {
+          "site": "0xe5556a",
+          "instructionBytes": "e8c1050e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe5557b",
+          "instructionBytes": "ff5068",
+          "family": "constructor_member_profile",
+          "target": "0x7e7450",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9750332c0c38b01ff6068cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x68",
+          "tablePointerBytes": "50747e00"
+        },
+        {
+          "site": "0xe55584",
+          "instructionBytes": "e8a7050e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe555ac",
+          "instructionBytes": "ff9218010000",
+          "family": "GSI_profile",
+          "target": "0x891ca0",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "83ec0c568bf18b4e1457e8c17cbbff8b",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x118",
+          "tablePointerBytes": "a01c8900"
+        },
+        {
+          "site": "0xe555b7",
+          "instructionBytes": "ff93e0020000",
+          "family": "GSI_profile",
+          "target": "0x897220",
+          "purgeBytes": 8,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b4424048b491053565750e8e0611100",
+          "receiverValueEquivalenceProved": false,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x2e0",
+          "tablePointerBytes": "20728900"
+        },
+        {
+          "site": "0xe555c3",
+          "instructionBytes": "e868050e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe555da",
+          "instructionBytes": "e81196b4ff",
+          "family": "direct",
+          "target": "0x99ebf0",
+          "purgeBytes": 8,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "568bf1c70600000000ff0500d83b0183",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe555eb",
+          "instructionBytes": "e8f0060000",
+          "family": "direct",
+          "target": "0xe55ce0",
+          "purgeBytes": 8,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "83ec48558b6c2450568bf1578bd58d4c",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe555f6",
+          "instructionBytes": "e835050e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe55636",
+          "instructionBytes": "e8f5040e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe55651",
+          "instructionBytes": "ff5230",
+          "family": "constructor_member_profile",
+          "target": "0x7e7490",
+          "purgeBytes": 4,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9568b74240875218bcee82d",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x30",
+          "tablePointerBytes": "90747e00"
+        },
+        {
+          "site": "0xe55658",
+          "instructionBytes": "ff9320040000",
+          "family": "GSI_profile",
+          "target": "0x890400",
+          "purgeBytes": 4,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b4c24048b01ff502c85c07418f68091",
+          "receiverValueEquivalenceProved": false,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x420",
+          "tablePointerBytes": "00048900"
+        },
+        {
+          "site": "0xe55675",
+          "instructionBytes": "e8c65165ff",
+          "family": "direct",
+          "target": "0x4aa840",
+          "purgeBytes": 0,
+          "returnEvidence": "bounded_original_outer_RET_operands",
+          "calleePrefix": "568bf1c7068c8c23018b460885c0741c",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe55692",
+          "instructionBytes": "ff9218010000",
+          "family": "GSI_profile",
+          "target": "0x891ca0",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "83ec0c568bf18b4e1457e8c17cbbff8b",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x118",
+          "tablePointerBytes": "a01c8900"
+        },
+        {
+          "site": "0xe5569b",
+          "instructionBytes": "ff5334",
+          "family": "constructor_member_profile",
+          "target": "0x7e7390",
+          "purgeBytes": 24,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c974058b01ff6034c21800cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x34",
+          "tablePointerBytes": "90737e00"
+        },
+        {
+          "site": "0xe556a2",
+          "instructionBytes": "ff5068",
+          "family": "constructor_member_profile",
+          "target": "0x7e7450",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9750332c0c38b01ff6068cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x68",
+          "tablePointerBytes": "50747e00"
+        },
+        {
+          "site": "0xe556b5",
+          "instructionBytes": "ff521c",
+          "family": "GSI_profile",
+          "target": "0x6e7410",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b0d38283d018a410584c075348b01ff",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x1c",
+          "tablePointerBytes": "10746e00"
+        },
+        {
+          "site": "0xe556ba",
+          "instructionBytes": "e871040e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe556cb",
+          "instructionBytes": "ff5068",
+          "family": "constructor_member_profile",
+          "target": "0x7e7450",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9750332c0c38b01ff6068cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x68",
+          "tablePointerBytes": "50747e00"
+        },
+        {
+          "site": "0xe556d4",
+          "instructionBytes": "e857040e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe556f1",
+          "instructionBytes": "e83a040e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe5570c",
+          "instructionBytes": "ff5230",
+          "family": "constructor_member_profile",
+          "target": "0x7e7490",
+          "purgeBytes": 4,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9568b74240875218bcee82d",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x30",
+          "tablePointerBytes": "90747e00"
+        },
+        {
+          "site": "0xe55713",
+          "instructionBytes": "ff9320040000",
+          "family": "GSI_profile",
+          "target": "0x890400",
+          "purgeBytes": 4,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b4c24048b01ff502c85c07418f68091",
+          "receiverValueEquivalenceProved": false,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x420",
+          "tablePointerBytes": "00048900"
+        },
+        {
+          "site": "0xe55730",
+          "instructionBytes": "e80b5165ff",
+          "family": "direct",
+          "target": "0x4aa840",
+          "purgeBytes": 0,
+          "returnEvidence": "bounded_original_outer_RET_operands",
+          "calleePrefix": "568bf1c7068c8c23018b460885c0741c",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe5574d",
+          "instructionBytes": "ff9218010000",
+          "family": "GSI_profile",
+          "target": "0x891ca0",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "83ec0c568bf18b4e1457e8c17cbbff8b",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x118",
+          "tablePointerBytes": "a01c8900"
+        },
+        {
+          "site": "0xe55756",
+          "instructionBytes": "ff5334",
+          "family": "constructor_member_profile",
+          "target": "0x7e7390",
+          "purgeBytes": 24,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c974058b01ff6034c21800cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x34",
+          "tablePointerBytes": "90737e00"
+        },
+        {
+          "site": "0xe5575d",
+          "instructionBytes": "ff5068",
+          "family": "constructor_member_profile",
+          "target": "0x7e7450",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9750332c0c38b01ff6068cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x68",
+          "tablePointerBytes": "50747e00"
+        },
+        {
+          "site": "0xe55769",
+          "instructionBytes": "ff521c",
+          "family": "GSI_profile",
+          "target": "0x6e7410",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b0d38283d018a410584c075348b01ff",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x1260f0c",
+          "slot": "0x1c",
+          "tablePointerBytes": "10746e00"
+        },
+        {
+          "site": "0xe5576e",
+          "instructionBytes": "e8bd030e00",
+          "family": "direct",
+          "target": "0xf35b30",
+          "purgeBytes": 0,
+          "returnEvidence": "original_registered_Teacher_predicate_chain",
+          "calleePrefix": "8b01ff500c8bc8e9041ed8ffcccccccc",
+          "receiverValueEquivalenceProved": null,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false
+        },
+        {
+          "site": "0xe5577f",
+          "instructionBytes": "ff5068",
+          "family": "constructor_member_profile",
+          "target": "0x7e7450",
+          "purgeBytes": 0,
+          "returnEvidence": "existing_original_RET_sweep",
+          "calleePrefix": "8b490885c9750332c0c38b01ff6068cc",
+          "receiverValueEquivalenceProved": true,
+          "normalChildStackBalanceAssumed": true,
+          "currentVtableLifetimeProved": false,
+          "vtable": "0x127094c",
+          "slot": "0x68",
+          "tablePointerBytes": "50747e00"
+        }
+      ],
+      "boundedReturnRegions": {
+        "0xcd23b9": [
+          {
+            "start": "0xcd23b9",
+            "endExclusive": "0xcd23c2",
+            "sha256": "4709c48eae7699b36b7eeb43e313220d557b4fde38b603a9e8df9164e944e298"
+          }
+        ],
+        "0xcd2770": [
+          {
+            "start": "0xcd2770",
+            "endExclusive": "0xcd2780",
+            "sha256": "c533ae5d358e4c7bd75002630d31c9148a38ffb7159bceae44823bd66cd654a1"
+          }
+        ],
+        "0x4aa840": [
+          {
+            "start": "0x4aa840",
+            "endExclusive": "0x4aa882",
+            "sha256": "5aa58f8e6b624fb6abbc2496c0f63791f6a7ae480b3e86d9e93f148d23fe4afa"
+          },
+          {
+            "start": "0x99a2e0",
+            "endExclusive": "0x99a2e7",
+            "sha256": "b391b1043a81dbc361b75b6ef3b6f5551ecf4643eb44e742e4f605ce2382115a"
+          }
+        ],
+        "0x88fe30": [
+          {
+            "start": "0x88fe30",
+            "endExclusive": "0x88fe3b",
+            "sha256": "16bb6f743fc60ef4be18fa61f87506572d183627a744102f7da86b7439f6c043"
+          },
+          {
+            "start": "0x6bb300",
+            "endExclusive": "0x6bb34c",
+            "sha256": "eddbbbc6f74644d06b3729b397d6477f0ec8aa2eef73fb215057ac0913e27164"
+          },
+          {
+            "start": "0xbfea70",
+            "endExclusive": "0xbfeb8a",
+            "sha256": "19cbdd0afeef7c30b359d551d007cfc936b223190af3cd1cc33b0eeaeb024daf"
+          }
+        ],
+        "0xf35b30": [
+          {
+            "start": "0xf35b30",
+            "endExclusive": "0xf35b3c",
+            "sha256": "b66dc059936f9626435a61bf7799408eb58a08dafd6a86c2e090e6581ed96d19"
+          },
+          {
+            "start": "0xcb7940",
+            "endExclusive": "0xcb794e",
+            "sha256": "c2221a56bfdf2aafb57a34757a936e123dfc8571365ebc47063de167fad4c4f7"
+          }
+        ]
+      },
+      "nativePredicateBranches": [
+        {
+          "call": "0xe555f6",
+          "branch": "0xe555fd",
+          "fallthrough": "0xe55603",
+          "bytes": "e835050e0084c00f8510040000",
+          "entryThisReceiverProved": true
+        },
+        {
+          "call": "0xe55636",
+          "branch": "0xe5563d",
+          "fallthrough": "0xe55643",
+          "bytes": "e8f5040e0084c00f85d0030000",
+          "entryThisReceiverProved": true
+        },
+        {
+          "call": "0xe556d4",
+          "branch": "0xe556db",
+          "fallthrough": "0xe556e1",
+          "bytes": "e857040e0084c00f8532030000",
+          "entryThisReceiverProved": true
+        },
+        {
+          "call": "0xe5576e",
+          "branch": "0xe55775",
+          "fallthrough": "0xe5577b",
+          "bytes": "e8bd030e0084c00f8598020000",
+          "entryThisReceiverProved": true
+        }
+      ],
+      "predicate": {
+        "wrapper": {
+          "address": "0x00f35b30",
+          "bytes": "8b01ff500c8bc8e9041ed8ff"
+        },
+        "accessor": {
+          "address": "0x00e54620",
+          "bytes": "8b4114c3"
+        },
+        "tail": {
+          "address": "0x00cb7940",
+          "bytes": "8b412c85c0750332c0c38a4005c3"
+        },
+        "vtable": "0x012e5f40",
+        "accessorOffset": 20,
+        "stateOffset": 44,
+        "flagOffset": 5
+      },
+      "sharedTail": "0xe55c3f",
+      "dispatch": "0xe55c41",
+      "readBranchBytes": 11,
+      "api": {
+        "method": "PauseAllNonScriptedEntities",
+        "slot": "0x5ec",
+        "target": "0x890ab0",
+        "prefix": "538b5c2408568bf18b4e048b0153ff50"
+      },
+      "alias": "iVar8",
+      "cacheAlias": "xStack_7c",
+      "sourceCacheAlias": "CStack_7c",
+      "diagnosticMultiplicity": 4,
+      "nativeSourceFragment": "LAB_00e55a13:\r\n              iVar8 = *(int *)CStack_7c;\r\n              goto LAB_00e55c3f;",
+      "originalLuaRegion": "                            -- LAB_00e55a13: (native jump target)\n                            -- TODO(native): iVar8 = *xStack_7c\n                            iVar8 = nil --[[unresolved native value]]\n                            -- TODO(native): goto LAB_00e55c3f\n",
+      "copies": [
+        {
+          "conditionAlias": "bVar6",
+          "movieAlias": "xStack_10",
+          "copyTrace": {
+            "inputIndex": 226,
+            "target": "LAB_00e55a13",
+            "targetInputIndex": 286,
+            "inputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "preparedInputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "originalJump": "                  if (bVar6) goto LAB_00e55a13;",
+            "copiedStatements": [
+              "                  if (bVar6) {",
+              "                    iVar8 = *(int *)xStack_7c;",
+              "                    GSI->PauseAllNonScriptedEntities(0);",
+              "                    RESOURCE_DestroyMovie(xStack_10);",
+              "                    return;",
+              "                  }"
+            ],
+            "terminated": true,
+            "syntheticExit": null,
+            "outputStartIndex": 240,
+            "outputStatementCount": 6,
+            "outputSha256": "12110f8443921bcd7cb891c9b7187e7fd64aff6d2632c4d623c842ce67640987"
+          },
+          "luaRegion": "                                    if bVar6 then\n                                        -- TODO(native): iVar8 = *xStack_7c\n                                        iVar8 = nil --[[unresolved native value]]\n                                        quest:PauseAllNonScriptedEntities(false)\n                                        resources:DestroyMovie(xStack_10)\n                                        return\n                                    end\n"
+        },
+        {
+          "conditionAlias": "bVar6",
+          "movieAlias": "xStack_10",
+          "copyTrace": {
+            "inputIndex": 278,
+            "target": "LAB_00e55a13",
+            "targetInputIndex": 286,
+            "inputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "preparedInputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "originalJump": "                if (bVar6) goto LAB_00e55a13;",
+            "copiedStatements": [
+              "                if (bVar6) {",
+              "                  iVar8 = *(int *)xStack_7c;",
+              "                  GSI->PauseAllNonScriptedEntities(0);",
+              "                  RESOURCE_DestroyMovie(xStack_10);",
+              "                  return;",
+              "                }"
+            ],
+            "terminated": true,
+            "syntheticExit": null,
+            "outputStartIndex": 297,
+            "outputStatementCount": 6,
+            "outputSha256": "12110f8443921bcd7cb891c9b7187e7fd64aff6d2632c4d623c842ce67640987"
+          },
+          "luaRegion": "                                if bVar6 then\n                                    -- TODO(native): iVar8 = *xStack_7c\n                                    iVar8 = nil --[[unresolved native value]]\n                                    quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_10)\n                                    return\n                                end\n"
+        },
+        {
+          "conditionAlias": "bVar6",
+          "movieAlias": "xStack_10",
+          "copyTrace": {
+            "inputIndex": 306,
+            "target": "LAB_00e55a13",
+            "targetInputIndex": 286,
+            "inputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "preparedInputSha256": "a82c41b0c32a14e152c2e3f20e17b4f632a65e141afee4a7c8ca17180a9e5885",
+            "originalJump": "              if (bVar6) goto LAB_00e55a13;",
+            "copiedStatements": [
+              "              if (bVar6) {",
+              "                iVar8 = *(int *)xStack_7c;",
+              "                GSI->PauseAllNonScriptedEntities(0);",
+              "                RESOURCE_DestroyMovie(xStack_10);",
+              "                return;",
+              "              }"
+            ],
+            "terminated": true,
+            "syntheticExit": null,
+            "outputStartIndex": 330,
+            "outputStatementCount": 6,
+            "outputSha256": "12110f8443921bcd7cb891c9b7187e7fd64aff6d2632c4d623c842ce67640987"
+          },
+          "luaRegion": "                            if bVar6 then\n                                -- TODO(native): iVar8 = *xStack_7c\n                                iVar8 = nil --[[unresolved native value]]\n                                quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_10)\n                                return\n                            end\n"
+        }
+      ],
+      "scopeLimit": "Dead saved interface-table annotations under explicit ordinary MSVC ABI, normal child balance and caller-frame preservation except declared in-bounds buffers. Original local cache-prefix comparisons use seeded objects/cache and an explicit pause RET4 double; active resource bounds, nonempty string allocation, actual heap/object/vtable lifetime, engine reentry, exceptions, later DestroyMovie and gameplay remain unverified. No executable Lua changes."
     }
   }
 }

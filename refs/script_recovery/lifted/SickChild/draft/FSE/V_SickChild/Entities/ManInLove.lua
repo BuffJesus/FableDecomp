@@ -12,14 +12,13 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar5, cVar6, center, fVar10, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, iVar13, iVar14, iVar15, iVar16, pCVar7, pCVar8, pCVar9, pcVar12, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, this_00, uVar11, uVar4, u_stk_15c, xStack_104, xStack_110, xStack_118, xStack_120, xStack_124, xStack_140, xStack_148, xStack_158, xStack_170, xStack_b8, xStack_d4, xStack_e8, xStack_ec, xStack_fc, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_c
+    local __native_condition_1, bVar5, cVar6, center, fVar10, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, fret_12, iVar13, iVar14, iVar15, iVar16, local_manLetterDefinition, local_manReturnedItemDefinition, local_manRewardDefinitionFirst, local_manRewardDefinitionSecond, manCleanupFlags, manConversationMovie, manHasUnrewardedLetter, manHitMovie, manIntroMovie, manShouldReactToHit, manTalkMovie, pCVar7, pCVar8, pCVar9, pcVar12, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar11, uVar4, xStack_110, xStack_118, xStack_120, xStack_124, xStack_148, xStack_170, xStack_e8, xStack_ec, xStack_fc, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_a8, x_stk_c
     local alive = true
     local function __cleanup_LAB_00ec95d3()
         quest:PauseAllNonScriptedEntities(false)
-        resources:DestroyMovie(xStack_158)
+        resources:DestroyMovie(manTalkMovie)
         resources:ReleaseResource(xStack_170)
     end
-    u_stk_15c = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar5 = not alive
@@ -28,11 +27,9 @@ function Main(quest, me)
     end
     xStack_170 = resources:NewResource()
     xStack_148 = quest:ReadGlobalGameDataString(0x740)
-    u_stk_15c = 1
     pCVar7 = quest:GetHero()
     bVar5 = quest:IsObjectInThingsPossession(xStack_148, pCVar7)
     if not bVar5 then
-        u_stk_15c = 3
         pCVar7 = quest:GetHero()
         bVar5 = quest:IsObjectInThingsPossession("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER", pCVar7)
         if ((not bVar5) and (__native_entity_state:GetStateBool("GivenLetter"))) and (quest:GetStateInt("MansLoverState") ~= 3) then
@@ -42,12 +39,6 @@ function Main(quest, me)
     end
     bVar5 = true
     ::LAB_00ec8400::
-    if (u_stk_15c & 2) ~= 0 then
-        u_stk_15c = u_stk_15c & 0xfffffffd
-    end
-    if (u_stk_15c & 1) ~= 0 then
-        u_stk_15c = u_stk_15c & 0xfffffffe
-    end
     if bVar5 then
         alive = not quest:IsActiveThreadTerminating()
         bVar5 = not alive
@@ -106,13 +97,10 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_170)
                     return
                 end
-                xStack_d4 = resources:StartMovie("")
+                manIntroMovie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                x_stk_54 = resources:ScriptThing(xStack_170)
-                pCVar9 = x_stk_54
-                fret_0 = quest:GetHealth(pCVar9)
-                fVar3 = 0.0
-                if fVar3 < fret_0 then
+                pCVar9, x_stk_54 = nil, nil
+                if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                     iVar16 = 0
                     iVar15 = 1
                     iVar14 = 0
@@ -120,6 +108,12 @@ function Main(quest, me)
                     pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_INTRO"
                     pCVar9 = quest:GetHero()
                     r1 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                    if not r1 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(xStack_170)
+                        return
+                    end
                     iVar13 = me:IsPerformingScriptTask()
                     cVar6 = iVar13
                     while cVar6 do
@@ -128,7 +122,7 @@ function Main(quest, me)
                         bVar5 = not alive
                         if bVar5 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_d4)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(xStack_170)
                             return
                         end
@@ -139,16 +133,13 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_d4)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(xStack_170)
                         return
                     end
                 end
-                x_stk_3c = resources:ScriptThing(xStack_170)
-                pCVar9 = x_stk_3c
-                fret_00 = quest:GetHealth(pCVar9)
-                fVar3 = 0.0
-                if fVar3 < fret_00 then
+                pCVar9, x_stk_3c = nil, nil
+                if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                     iVar16 = 0
                     iVar15 = 1
                     iVar14 = 0
@@ -156,6 +147,12 @@ function Main(quest, me)
                     pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_INTRO_50"
                     pCVar9 = quest:GetHero()
                     r2 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                    if not r2 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(xStack_170)
+                        return
+                    end
                     iVar13 = me:IsPerformingScriptTask()
                     cVar6 = iVar13
                     while cVar6 do
@@ -164,7 +161,7 @@ function Main(quest, me)
                         bVar5 = not alive
                         if bVar5 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_d4)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(xStack_170)
                             return
                         end
@@ -175,18 +172,15 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_d4)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(xStack_170)
                         return
                     end
                 end
                 xStack_118 = quest:ReadGlobalGameDataString(0x73c)
                 quest:GiveHeroObject(xStack_118, -1, false)
-                x_stk_24 = resources:ScriptThing(xStack_170)
-                pCVar9 = x_stk_24
-                fret_01 = quest:GetHealth(pCVar9)
-                fVar3 = 0.0
-                if fVar3 < fret_01 then
+                pCVar9, x_stk_24 = nil, nil
+                if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                     iVar16 = 0
                     iVar15 = 1
                     iVar14 = 0
@@ -194,6 +188,12 @@ function Main(quest, me)
                     pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_INTRO_60"
                     pCVar9 = quest:GetHero()
                     r3 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                    if not r3 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(xStack_170)
+                        return
+                    end
                     iVar13 = me:IsPerformingScriptTask()
                     cVar6 = iVar13
                     while cVar6 do
@@ -202,7 +202,7 @@ function Main(quest, me)
                         bVar5 = not alive
                         if bVar5 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_d4)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(xStack_170)
                             return
                         end
@@ -213,16 +213,13 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_d4)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(xStack_170)
                         return
                     end
                 end
-                x_stk_30 = resources:ScriptThing(xStack_170)
-                pCVar9 = x_stk_30
-                fret_02 = quest:GetHealth(pCVar9)
-                fVar3 = 0.0
-                if fVar3 < fret_02 then
+                pCVar9, x_stk_30 = nil, nil
+                if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                     iVar16 = 0
                     iVar15 = 1
                     iVar14 = 0
@@ -230,6 +227,13 @@ function Main(quest, me)
                     pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_INTRO_70"
                     pCVar9 = quest:GetHero()
                     r4 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                    if not r4 then
+                        -- LAB_00ec9b00: (native jump target)
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(manIntroMovie)
+                        resources:ReleaseResource(xStack_170)
+                        return
+                    end
                     iVar13 = me:IsPerformingScriptTask()
                     cVar6 = iVar13
                     while cVar6 do
@@ -239,7 +243,7 @@ function Main(quest, me)
                         if bVar5 then
                             -- LAB_00ec9b00: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_d4)
+                            resources:DestroyMovie(manIntroMovie)
                             resources:ReleaseResource(xStack_170)
                             return
                         end
@@ -251,7 +255,7 @@ function Main(quest, me)
                     if bVar5 then
                         -- LAB_00ec9b2c: (native jump target)
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_d4)
+                        resources:DestroyMovie(manIntroMovie)
                         resources:ReleaseResource(xStack_170)
                         return
                     end
@@ -259,7 +263,7 @@ function Main(quest, me)
                 __native_entity_state:SetStateBool("GivenLetter", true)
                 quest:ClearThingHasInformation(me)
                 quest:PauseAllNonScriptedEntities(false)
-                this_00 = xStack_d4
+                manConversationMovie = manIntroMovie
             else
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
@@ -267,19 +271,15 @@ function Main(quest, me)
                     resources:ReleaseResource(xStack_170)
                     return
                 end
-                xStack_158 = resources:StartMovie("")
+                manTalkMovie = resources:StartMovie("")
                 pCVar9 = 0x1
                 quest:PauseAllNonScriptedEntities(true)
-                -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x740),(int)xStack_138);
-                uVar4 = xStack_158
-                -- TODO(native): xStack_158 = xStack_158 | 4;
+                local_manLetterDefinition = quest:ReadGlobalGameDataString(0x740)
                 pCVar7 = quest:GetHero()
-                bVar5 = quest:IsObjectInThingsPossession("", pCVar7)
+                bVar5 = quest:IsObjectInThingsPossession(local_manLetterDefinition, pCVar7)
                 if bVar5 then
                     goto LAB_00ec8a86
                 else
-                    uVar11 = uVar4 | 0xc
-                    xStack_158 = uVar11
                     pCVar7 = quest:GetHero()
                     bVar5 = quest:IsObjectInThingsPossession("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER", pCVar7)
                     if bVar5 then goto LAB_00ec8a86 end
@@ -287,20 +287,14 @@ function Main(quest, me)
                 end
                 goto FLOW_past_lab_00ec8a86
                 ::LAB_00ec8a86::
-                -- TODO(native): xStack_170 = (int *)CONCAT13(1,(undefined3)xStack_170);
+                manHasUnrewardedLetter = true
                 if __native_entity_state:GetStateBool("GotReward") then goto LAB_00ec8a92 end
                 ::FLOW_past_lab_00ec8a86::
                 goto FLOW_past_lab_00ec8a92
                 ::LAB_00ec8a92::
+                manHasUnrewardedLetter = false
                 ::FLOW_past_lab_00ec8a92::
-                if (uVar11 & 8) ~= 0 then
-                    uVar11 = uVar11 & 0xfffffff7
-                    xStack_158 = uVar11
-                end
-                if (uVar11 & 4) ~= 0 then
-                    -- TODO(native): xStack_158 = uVar11 & 0xfffffffb;
-                end
-                if 0 == 0 then
+                if not manHasUnrewardedLetter then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar5 = not alive
                     if bVar5 then
@@ -312,7 +306,7 @@ function Main(quest, me)
                         bVar5 = not alive
                         if bVar5 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_158)
+                            resources:DestroyMovie(manTalkMovie)
                             resources:ReleaseResource(xStack_170)
                             return
                         end
@@ -321,15 +315,12 @@ function Main(quest, me)
                             bVar5 = not alive
                             if bVar5 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_158)
+                                resources:DestroyMovie(manTalkMovie)
                                 resources:ReleaseResource(xStack_170)
                                 return
                             end
-                            x_stk_18 = resources:ScriptThing(xStack_170)
-                            pCVar7 = x_stk_18
-                            fret_07 = quest:GetHealth(pCVar7)
-                            fVar3 = 0.0
-                            if fVar3 < fret_07 then
+                            pCVar7, x_stk_18 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -337,6 +328,12 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_MYRA_DIED"
                                 pCVar9 = quest:GetHero()
                                 r5 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r5 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(manTalkMovie)
+                                    resources:ReleaseResource(xStack_170)
+                                    return
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar6 = iVar13
                                 while cVar6 do
@@ -345,7 +342,7 @@ function Main(quest, me)
                                     bVar5 = not alive
                                     if bVar5 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_158)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(xStack_170)
                                         return
                                     end
@@ -356,13 +353,13 @@ function Main(quest, me)
                                 bVar5 = not alive
                                 if bVar5 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_158)
+                                    resources:DestroyMovie(manTalkMovie)
                                     resources:ReleaseResource(xStack_170)
                                     return
                                 end
                             end
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_140);
-                            quest:GiveHeroObject(pcVar12, xStack_140, -1)
+                            local_manRewardDefinitionFirst = quest:ReadGlobalGameDataString(0x738)
+                            quest:GiveHeroObject(local_manRewardDefinitionFirst, -1, false)
                             xStack_110 = quest:ReadGlobalGameDataString(0x738)
                             quest:RemoveItemFromContainer(me, xStack_110)
                             __native_entity_state:SetStateBool("GotReward", true)
@@ -371,15 +368,12 @@ function Main(quest, me)
                             bVar5 = not alive
                             if bVar5 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_158)
+                                resources:DestroyMovie(manTalkMovie)
                                 resources:ReleaseResource(xStack_170)
                                 return
                             end
-                            x_stk_60 = resources:ScriptThing(xStack_170)
-                            pCVar7 = x_stk_60
-                            fret_08 = quest:GetHealth(pCVar7)
-                            fVar3 = 0.0
-                            if fVar3 < fret_08 then
+                            pCVar7, x_stk_60 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -387,6 +381,12 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_DELIVER_LETTER"
                                 pCVar9 = quest:GetHero()
                                 r6 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r6 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(manTalkMovie)
+                                    resources:ReleaseResource(xStack_170)
+                                    return
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar6 = iVar13
                                 while cVar6 do
@@ -395,7 +395,7 @@ function Main(quest, me)
                                     bVar5 = not alive
                                     if bVar5 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_158)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(xStack_170)
                                         return
                                     end
@@ -410,7 +410,7 @@ function Main(quest, me)
                         bVar5 = not alive
                         if bVar5 then
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_158)
+                            resources:DestroyMovie(manTalkMovie)
                             resources:ReleaseResource(xStack_170)
                             return
                         end
@@ -421,15 +421,12 @@ function Main(quest, me)
                                 bVar5 = not alive
                                 if bVar5 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_158)
+                                    resources:DestroyMovie(manTalkMovie)
                                     resources:ReleaseResource(xStack_170)
                                     return
                                 end
-                                x_stk_9c = resources:ScriptThing(xStack_170)
-                                pCVar7 = x_stk_9c
-                                fret_10 = quest:GetHealth(pCVar7)
-                                fVar3 = 0.0
-                                if fVar3 < fret_10 then
+                                pCVar7, x_stk_9c = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                                     iVar16 = 0
                                     iVar15 = 1
                                     iVar14 = 0
@@ -437,6 +434,12 @@ function Main(quest, me)
                                     pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_POST_QUEST_MYRA_DIED_10"
                                     pCVar9 = quest:GetHero()
                                     r7 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                    if not r7 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(manTalkMovie)
+                                        resources:ReleaseResource(xStack_170)
+                                        return
+                                    end
                                     iVar13 = me:IsPerformingScriptTask()
                                     cVar6 = iVar13
                                     while cVar6 do
@@ -445,7 +448,7 @@ function Main(quest, me)
                                         bVar5 = not alive
                                         if bVar5 then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_158)
+                                            resources:DestroyMovie(manTalkMovie)
                                             resources:ReleaseResource(xStack_170)
                                             return
                                         end
@@ -456,7 +459,7 @@ function Main(quest, me)
                                     bVar5 = not alive
                                     if bVar5 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_158)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(xStack_170)
                                         return
                                     end
@@ -466,15 +469,12 @@ function Main(quest, me)
                                 bVar5 = not alive
                                 if bVar5 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    resources:DestroyMovie(xStack_158)
+                                    resources:DestroyMovie(manTalkMovie)
                                     resources:ReleaseResource(xStack_170)
                                     return
                                 end
-                                x_stk_84 = resources:ScriptThing(xStack_170)
-                                pCVar7 = x_stk_84
-                                fret_11 = quest:GetHealth(pCVar7)
-                                fVar3 = 0.0
-                                if fVar3 < fret_11 then
+                                pCVar7, x_stk_84 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                                     iVar16 = 0
                                     iVar15 = 1
                                     iVar14 = 0
@@ -482,6 +482,12 @@ function Main(quest, me)
                                     pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_POST_QUEST_UNHAPPY_10"
                                     pCVar9 = quest:GetHero()
                                     r8 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                    if not r8 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(manTalkMovie)
+                                        resources:ReleaseResource(xStack_170)
+                                        return
+                                    end
                                     iVar13 = me:IsPerformingScriptTask()
                                     cVar6 = iVar13
                                     while cVar6 do
@@ -490,7 +496,7 @@ function Main(quest, me)
                                         bVar5 = not alive
                                         if bVar5 then
                                             quest:PauseAllNonScriptedEntities(false)
-                                            resources:DestroyMovie(xStack_158)
+                                            resources:DestroyMovie(manTalkMovie)
                                             resources:ReleaseResource(xStack_170)
                                             return
                                         end
@@ -505,15 +511,12 @@ function Main(quest, me)
                             bVar5 = not alive
                             if bVar5 then
                                 quest:PauseAllNonScriptedEntities(false)
-                                resources:DestroyMovie(xStack_158)
+                                resources:DestroyMovie(manTalkMovie)
                                 resources:ReleaseResource(xStack_170)
                                 return
                             end
-                            x_stk_a8 = resources:ScriptThing(xStack_170)
-                            pCVar7 = x_stk_a8
-                            fret_09 = quest:GetHealth(pCVar7)
-                            fVar3 = 0.0
-                            if fVar3 < fret_09 then
+                            pCVar7, x_stk_a8 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -521,6 +524,12 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_POST_QUEST_HAPPY_10"
                                 pCVar9 = quest:GetHero()
                                 r9 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r9 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    resources:DestroyMovie(manTalkMovie)
+                                    resources:ReleaseResource(xStack_170)
+                                    return
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar6 = iVar13
                                 while cVar6 do
@@ -529,7 +538,7 @@ function Main(quest, me)
                                     bVar5 = not alive
                                     if bVar5 then
                                         quest:PauseAllNonScriptedEntities(false)
-                                        resources:DestroyMovie(xStack_158)
+                                        resources:DestroyMovie(manTalkMovie)
                                         resources:ReleaseResource(xStack_170)
                                         return
                                     end
@@ -546,7 +555,7 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_158)
+                        resources:DestroyMovie(manTalkMovie)
                         resources:ReleaseResource(xStack_170)
                         return
                     end
@@ -574,11 +583,8 @@ function Main(quest, me)
                         xStack_e8 = quest:ReadGlobalGameDataString(0x740)
                         quest:TakeObjectFromHero(xStack_e8)
                         quest:TakeObjectFromHero("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER")
-                        x_stk_c = resources:ScriptThing(xStack_170)
-                        pCVar7 = x_stk_c
-                        fret_03 = quest:GetHealth(pCVar7)
-                        fVar3 = 0.0
-                        if fVar3 < fret_03 then
+                        pCVar7, x_stk_c = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -586,6 +592,9 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_RETURNED_OBJECT_TO_ME"
                             pCVar9 = quest:GetHero()
                             r10 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r10 then
+                                __cleanup_LAB_00ec95d3(); return
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar6 = iVar13
                             while cVar6 do
@@ -602,8 +611,8 @@ function Main(quest, me)
                         end
                         xStack_120 = quest:ReadGlobalGameDataString(0x738)
                         quest:GiveHeroObject(xStack_120, -1, false)
-                        -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_dc);
-                        quest:RemoveItemFromContainer(me, pcVar12)
+                        local_manReturnedItemDefinition = quest:ReadGlobalGameDataString(0x738)
+                        quest:RemoveItemFromContainer(me, local_manReturnedItemDefinition)
                         if quest:GetStateInt("MansLoverState") == 2 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar5 = not alive
@@ -621,11 +630,8 @@ function Main(quest, me)
                         quest:ClearThingHasInformation(me)
                     else
                         if bVar5 then __cleanup_LAB_00ec95d3(); return end
-                        x_stk_90 = resources:ScriptThing(xStack_170)
-                        pCVar7 = x_stk_90
-                        fret_04 = quest:GetHealth(pCVar7)
-                        fVar3 = 0.0
-                        if fVar3 < fret_04 then
+                        pCVar7, x_stk_90 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -633,6 +639,9 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_DIDNT_RETURN_OBJECT_TO_ME"
                             pCVar7 = quest:GetHero()
                             r11 = me:Speak(pCVar7, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r11 then
+                                __cleanup_LAB_00ec95d3(); return
+                            end
                             iVar13 = me:IsPerformingScriptTask()
                             cVar6 = iVar13
                             while cVar6 do
@@ -663,11 +672,8 @@ function Main(quest, me)
                         bVar5 = not alive
                         if iVar13 == 1 then
                             if bVar5 then __cleanup_LAB_00ec95d3(); return end
-                            x_stk_48 = resources:ScriptThing(xStack_170)
-                            pCVar7 = x_stk_48
-                            fret_05 = quest:GetHealth(pCVar7)
-                            fVar3 = 0.0
-                            if fVar3 < fret_05 then
+                            pCVar7, x_stk_48 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -675,6 +681,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_HAPPY"
                                 pCVar9 = quest:GetHero()
                                 r12 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r12 then
+                                    __cleanup_LAB_00ec95d3(); return
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar6 = iVar13
                                 while cVar6 do
@@ -689,8 +698,8 @@ function Main(quest, me)
                                 bVar5 = not alive
                                 if bVar5 then __cleanup_LAB_00ec95d3(); return end
                             end
-                            -- TODO(native): CDefString::operator_class_CCharString((CDefString *)(DAT_0143e90c + 0x738),(int)xStack_104);
-                            quest:GiveHeroObject(pcVar12, xStack_104, -1)
+                            local_manRewardDefinitionSecond = quest:ReadGlobalGameDataString(0x738)
+                            quest:GiveHeroObject(local_manRewardDefinitionSecond, -1, false)
                             xStack_ec = quest:ReadGlobalGameDataString(0x738)
                             quest:RemoveItemFromContainer(me, xStack_ec)
                             __native_entity_state:SetStateBool("GotReward", true)
@@ -705,11 +714,8 @@ function Main(quest, me)
                             end
                         else
                             if bVar5 then __cleanup_LAB_00ec95d3(); return end
-                            x_stk_78 = resources:ScriptThing(xStack_170)
-                            pCVar7 = x_stk_78
-                            fret_06 = quest:GetHealth(pCVar7)
-                            fVar3 = 0.0
-                            if fVar3 < fret_06 then
+                            pCVar7, x_stk_78 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                                 iVar16 = 0
                                 iVar15 = 1
                                 iVar14 = 0
@@ -717,6 +723,9 @@ function Main(quest, me)
                                 pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_UNHAPPY"
                                 pCVar9 = quest:GetHero()
                                 r13 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                                if not r13 then
+                                    __cleanup_LAB_00ec95d3(); return
+                                end
                                 iVar13 = me:IsPerformingScriptTask()
                                 cVar6 = iVar13
                                 while cVar6 do
@@ -749,7 +758,7 @@ function Main(quest, me)
                         if bVar5 then
                             -- LAB_00ec9b58: (native jump target)
                             quest:PauseAllNonScriptedEntities(false)
-                            resources:DestroyMovie(xStack_158)
+                            resources:DestroyMovie(manTalkMovie)
                             resources:ReleaseResource(xStack_170)
                             return
                         end
@@ -760,42 +769,27 @@ function Main(quest, me)
                     end
                 end
                 quest:PauseAllNonScriptedEntities(false)
-                this_00 = xStack_158
+                manConversationMovie = manTalkMovie
             end
-            resources:ReleaseResource(this_00)
+            resources:DestroyMovie(manConversationMovie)
             resources:PrepareResource(xStack_170)
         end
-        uVar4 = u_stk_15c
-        u_stk_15c = u_stk_15c | 0x10
         cVar6 = me:MsgIsHitByHero()
         if not cVar6 then
-            uVar11 = uVar4 | 0x30
-            u_stk_15c = uVar11
             bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
             if bVar5 then
-                uVar11 = uVar4 | 0x70
-                u_stk_15c = uVar11
                 bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
                 if not bVar5 then goto LAB_00ec9774 end
             end
+            manShouldReactToHit = false
         else
             goto LAB_00ec9774
         end
         goto FLOW_past_lab_00ec9774
         ::LAB_00ec9774::
+        manShouldReactToHit = true
         ::FLOW_past_lab_00ec9774::
-        if (uVar11 & 0x40) ~= 0 then
-            uVar11 = uVar11 & 0xffffffbf
-            u_stk_15c = uVar11
-        end
-        if (uVar11 & 0x20) ~= 0 then
-            uVar11 = uVar11 & 0xffffffdf
-            u_stk_15c = uVar11
-        end
-        if (uVar11 & 0x10) ~= 0 then
-            u_stk_15c = uVar11 & 0xffffffef
-        end
-        if 1 ~= 0 then
+        if manShouldReactToHit then
             alive = not quest:IsActiveThreadTerminating()
             bVar5 = not alive
             if bVar5 then
@@ -821,13 +815,10 @@ function Main(quest, me)
                 resources:ReleaseResource(xStack_170)
                 return
             end
-            xStack_b8 = resources:StartMovie("")
+            manHitMovie = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            x_stk_6c = resources:ScriptThing(xStack_170)
-            pCVar9 = x_stk_6c
-            fret_12 = quest:GetHealth(pCVar9)
-            fVar3 = 0.0
-            if fVar3 < fret_12 then
+            pCVar9, x_stk_6c = nil, nil
+            if resources:ResourceThingHealthAbove(xStack_170, 0.0) then
                 iVar16 = 0
                 iVar15 = 1
                 iVar14 = 0
@@ -835,6 +826,12 @@ function Main(quest, me)
                 pcVar12 = "TEXT_QST_B10_MAN_IN_LOVE_ON_HIT"
                 pCVar9 = quest:GetHero()
                 r14 = me:Speak(pCVar9, pcVar12, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                if not r14 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(manHitMovie)
+                    resources:ReleaseResource(xStack_170)
+                    return
+                end
                 iVar13 = me:IsPerformingScriptTask()
                 cVar6 = iVar13
                 while cVar6 do
@@ -843,7 +840,7 @@ function Main(quest, me)
                     bVar5 = not alive
                     if bVar5 then
                         quest:PauseAllNonScriptedEntities(false)
-                        resources:DestroyMovie(xStack_b8)
+                        resources:DestroyMovie(manHitMovie)
                         resources:ReleaseResource(xStack_170)
                         return
                     end
@@ -854,14 +851,14 @@ function Main(quest, me)
                 bVar5 = not alive
                 if bVar5 then
                     quest:PauseAllNonScriptedEntities(false)
-                    resources:DestroyMovie(xStack_b8)
+                    resources:DestroyMovie(manHitMovie)
                     resources:ReleaseResource(xStack_170)
                     return
                 end
             end
             resources:PrepareResource(xStack_170)
             quest:PauseAllNonScriptedEntities(false)
-            resources:DestroyMovie(xStack_b8)
+            resources:DestroyMovie(manHitMovie)
         end
         __native_condition_1 = __native_entity_state:GetStateBool("GotReward")
         if __native_condition_1 then

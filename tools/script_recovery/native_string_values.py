@@ -80,4 +80,20 @@ def fold_rep_equality(text):
         if m['tmp'] in (m['a'], m['b']) or not _result_is_dead(text[m.end():], m['tmp']):
             return m[0]
         return f'if (ENGINE_StrEq({m["a"]}, {m["b"]})) {{'
-    return pattern.sub(replace, text)
+    return fold_array_rep_equality(pattern.sub(replace, text))
+
+
+def fold_array_rep_equality(text):
+    # The same complete string representation test can occur under a message
+    # guard, with DWORD array indexing for the length field and buffer pointer.
+    # Do not discard an observable Compare result from any subsequent path.
+    pattern = re.compile(
+        r"if \(\((?P<gate>\w+ != '\\0')\) && \(\((?P<a>\w+) == (?P<b>\w+) \|\| "
+        r'\(\(\(\((?P=a) != \(undefined4 \*\)0x0 && \((?P=b) != \(undefined4 \*\)0x0\)\) && '
+        r'\((?P=a)\[1\] == (?P=b)\[1\]\)\) && '
+        r'\((?P<tmp>\w+) = CBasicString<char>::Compare\(\(void \*\)\*(?P=a),\(void \*\)\*(?P=b)\), (?P=tmp) == 0\)\)\)\)\)\) \{')
+    def replace(m):
+        if m['a']==m['b'] or m['tmp'] in (m['a'],m['b']) or not _result_is_dead(text[m.end():],m['tmp']):
+            return m[0]
+        return f"if (({m['gate']}) && ENGINE_StrEq({m['a']}, {m['b']})) {{"
+    return pattern.sub(replace,text)

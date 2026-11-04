@@ -81,7 +81,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingDeparture | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
 | Q_GuildTrainingMelee | Q_GuildTrainingMelee | Main | 0x00d55e90 | True | 0 |
 | Q_GuildTrainingMelee | Q_GuildTrainingMelee | Init | 0x00d55da0 | True | 0 |
-| Q_GuildTrainingMelee | TheRealGuildmaster | Main | 0x00d58490 | True | 57 |
+| Q_GuildTrainingMelee | TheRealGuildmaster | Main | 0x00d58490 | True | 56 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | Init | 0x00d56670 | True | 0 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingMelee | TheRealGuildmaster | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -157,4 +157,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_GuildTrainingWoodsWill | WillWhisper | OnPredicateFail | 0x00d687e0 | True | 0 |
 
-Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 261}`
+Summary: `{"owners": 37, "functions": 152, "missing": 10, "functionSyntaxPassed": 152, "fileSyntaxPassed": 37, "fileSyntaxChecked": 37, "todo": 260}`

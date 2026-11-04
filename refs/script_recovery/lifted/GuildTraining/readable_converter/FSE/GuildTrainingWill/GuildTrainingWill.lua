@@ -19,7 +19,11 @@ end
 
 -- Q_GuildTrainingWill.OnPersist (retail 0x00d5e070)
 function OnPersist(quest, context)
-    quest:SetStateBool("TestFinished", quest:PersistTransferBool(context, "TestFinished", quest:GetStateBool("TestFinished")))
-    quest:SetStateBool("BanditsDefeated", quest:PersistTransferBool(context, "BanditsDefeated", quest:GetStateBool("BanditsDefeated")))
+    local testFinished = quest:GetStateBool("TestFinished") or false
+    testFinished = quest:PersistTransferBool(context, "TestFinished", testFinished)
+    quest:SetStateBool("TestFinished", testFinished)
+    local banditsDefeated = quest:GetStateBool("BanditsDefeated") or false
+    banditsDefeated = quest:PersistTransferBool(context, "BanditsDefeated", banditsDefeated)
+    quest:SetStateBool("BanditsDefeated", banditsDefeated)
 end
 

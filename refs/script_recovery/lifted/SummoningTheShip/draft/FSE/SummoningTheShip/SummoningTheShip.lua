@@ -64,7 +64,7 @@ function DoMission(quest)
     pCVar4 = quest:GetThingWithScriptName("HookCoastVillage")
     quest:SetVillageLimbo(pCVar4, (CVar9 ~= 0))
     iVar7 = extraout_ECX
-    helper_DF3E50(quest, iVar7)
+    helper_DF3E50(quest, "CS_SUMSHIP_PREINTRO")
     CVar9 = 0x0
     bVar2 = true
     pCVar5 = quest:GetActiveQuestName()
@@ -89,7 +89,7 @@ function DoMission(quest)
     pCVar3 = quest:GetActiveQuestName()
     quest:SetQuestCardObjective(pCVar3, "TEXT_QUEST_SUMMONING_SHIP_OBJECTIVE_02", "HookCoast", "HookCoast")
     iVar7 = extraout_ECX_00
-    helper_DF3E50(quest, iVar7)
+    helper_DF3E50(quest, "CS_SUMSHIP_INTRO")
     quest:SetStateBool("SummonerAttacksStarted", true)
     quest:OverrideMusic(0x17, false, false)
     iVar7 = quest:GetStateInt("CurrentAttackWave")
@@ -114,7 +114,7 @@ function DoMission(quest)
             return
         end
         iVar7 = extraout_ECX_02
-        helper_DF3E50(quest, iVar7)
+        helper_DF3E50(quest, "CS_SUMSHIP_WAVE2")
     else
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
@@ -122,7 +122,7 @@ function DoMission(quest)
             return
         end
         iVar7 = extraout_ECX_01
-        helper_DF3E50(quest, iVar7)
+        helper_DF3E50(quest, "CS_SUMSHIP_OUTRO_FAILED")
         CVar9 = 0x1
         bVar2 = true
         pCVar6 = quest:GetActiveQuestName()
@@ -164,7 +164,7 @@ function DoMission(quest)
         if bVar2 then goto LAB_00df3e3a end
         quest:Pause(3.0)
         iVar7 = extraout_ECX_03
-        helper_DF3E50(quest, iVar7)
+        helper_DF3E50(quest, "CS_SUMSHIP_OUTRO")
         quest:PlayAVIMovie("Data\\\\Video\\\\Summoning_The_Ship.xmv")
         CVar9 = 0x0
         b2 = false
@@ -176,7 +176,7 @@ function DoMission(quest)
         bVar2 = not alive
         if bVar2 then goto LAB_00df3e3a end
         iVar7 = extraout_ECX_04
-        helper_DF3E50(quest, iVar7)
+        helper_DF3E50(quest, "CS_SUMSHIP_OUTRO_FAILED")
         CVar9 = 0x1
         bVar2 = true
         pCVar6 = quest:GetActiveQuestName()

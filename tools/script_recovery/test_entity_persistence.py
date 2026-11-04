@@ -11,7 +11,7 @@ from lupa.lua54 import LuaRuntime
 from tools.script_recovery.convert_quest_unit import lift_persist_evidence, persist_kinds_from_spec
 from tools.script_recovery.native_evidence_lowering import LoweringSpec
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = next(p for p in Path(__file__).resolve().parents if (p/'tools/script_recovery/script_units.py').exists())
 
 
 @pytest.mark.parametrize('typed', [False, True])
@@ -144,6 +144,12 @@ def test_loaded_three_mushrooms_then_one_more_reaches_potion_and_saves_four(gene
         function resources:StartMovie() local m={}; movies[m]=true; movieCount=movieCount+1; return m end
         function resources:DestroyMovie(m) assert(movies[m]); movies[m]=nil end
         function quest:RetailResources() return resources end
+        function resources:IsHitByHeroExceptAbility(actor,ability)
+            assert(actor==me and ability==14)
+            if actor:MsgIsHitByHero() then return true end
+            if not actor:MsgIsHitByAnySpecialAbilityFromHero() then return false end
+            return not actor:MsgIsHitByHeroSpecialAbility(ability)
+        end
         function quest:GetHero() return hero end
         function quest:NewScriptFrame() frames=frames+1; assert(frames<20); return not stop end
         function quest:IsActiveThreadTerminating() return stop end

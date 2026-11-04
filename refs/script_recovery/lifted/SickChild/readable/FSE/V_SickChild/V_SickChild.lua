@@ -25,14 +25,16 @@ function Main(quest)
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
+    local getActiveQuestName = quest:GetActiveQuestName()
+    quest:SetQuestAsCompleted(getActiveQuestName, false, false, false)
     while quest:IsRegionLoaded("BowerstoneSlums") do
         if not quest:NewScriptFrame() then return end
     end
     if quest:IsActiveThreadTerminating() then return end
     quest:DeactivateQuestLater("V_SickChildBarrowFields", 0)
     quest:DeactivateQuestLater("V_SickChild_Activate", 0)
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+    local getActiveQuestName2 = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(getActiveQuestName2, 0)
 end
 
 -- V_SickChild.Init (retail 0x00ec5420)
@@ -47,12 +49,24 @@ end
 
 -- V_SickChild.OnPersist (retail 0x00ecd7b0)
 function OnPersist(quest, context)
-    quest:SetStateBool("FinishedQuest", quest:PersistTransferBool(context, "FinishedQuest", quest:GetStateBool("FinishedQuest")))
-    quest:SetStateBool("GotFishingSpotMushroom", quest:PersistTransferBool(context, "GotFishingSpotMushroom", quest:GetStateBool("GotFishingSpotMushroom")))
-    quest:SetStateBool("MotherIntroDone", quest:PersistTransferBool(context, "MotherIntroDone", quest:GetStateBool("MotherIntroDone")))
-    quest:SetStateInt("MansLoverState", quest:PersistTransferInt(context, "MansLoverState", quest:GetStateInt("MansLoverState") or 0))
-    quest:SetStateBool("OwnerAlive", quest:PersistTransferBool(context, "OwnerAlive", quest:GetStateBool("OwnerAlive")))
-    quest:SetStateBool("LaughingWomanKilled", quest:PersistTransferBool(context, "LaughingWomanKilled", quest:GetStateBool("LaughingWomanKilled")))
+    local finishedQuest = quest:GetStateBool("FinishedQuest") or false
+    finishedQuest = quest:PersistTransferBool(context, "FinishedQuest", finishedQuest)
+    quest:SetStateBool("FinishedQuest", finishedQuest)
+    local gotFishingSpotMushroom = quest:GetStateBool("GotFishingSpotMushroom") or false
+    gotFishingSpotMushroom = quest:PersistTransferBool(context, "GotFishingSpotMushroom", gotFishingSpotMushroom)
+    quest:SetStateBool("GotFishingSpotMushroom", gotFishingSpotMushroom)
+    local motherIntroDone = quest:GetStateBool("MotherIntroDone") or false
+    motherIntroDone = quest:PersistTransferBool(context, "MotherIntroDone", motherIntroDone)
+    quest:SetStateBool("MotherIntroDone", motherIntroDone)
+    local mansLoverState = quest:GetStateInt("MansLoverState") or 0
+    mansLoverState = quest:PersistTransferInt(context, "MansLoverState", mansLoverState)
+    quest:SetStateInt("MansLoverState", mansLoverState)
+    local ownerAlive = quest:GetStateBool("OwnerAlive") or false
+    ownerAlive = quest:PersistTransferBool(context, "OwnerAlive", ownerAlive)
+    quest:SetStateBool("OwnerAlive", ownerAlive)
+    local laughingWomanKilled = quest:GetStateBool("LaughingWomanKilled") or false
+    laughingWomanKilled = quest:PersistTransferBool(context, "LaughingWomanKilled", laughingWomanKilled)
+    quest:SetStateBool("LaughingWomanKilled", laughingWomanKilled)
 end
 
 -- V_SickChild.helper_ECE460 (retail 0x00ece460)
@@ -60,10 +74,13 @@ function helper_ECE460(quest, macroName, argument)
     local resources = quest:RetailResources()
     local actorMap = resources:NewStringMap()
     local resource = resources:NewResource()
-    resources:TryAcquire(resource, quest:GetHero(), 4)
+    local pThing = quest:GetHero()
+    resources:TryAcquire(resource, pThing, 4)
     local scratchValue = "NULL" or ""
-    if string.lower(argument or "") ~= string.lower(scratchValue) then
-        resources:SetString(actorMap, "$ARG1", argument or "")
+    local scratchValue2 = argument or ""
+    if string.lower(scratchValue2) ~= string.lower(scratchValue) then
+        local pOther = argument or ""
+        resources:SetString(actorMap, "$ARG1", pOther)
     end
     local actorMap2 = resources:NewActorMap()
     resources:SetActor(actorMap2, "WITCH", resources:MemberResource("seh_Witch"))

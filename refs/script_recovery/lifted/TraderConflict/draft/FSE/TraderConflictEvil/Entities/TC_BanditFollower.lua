@@ -99,6 +99,12 @@ function Main(quest, me)
                         p1 = "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO"
                         pCVar8 = quest:GetHero()
                         r2 = me:Speak(pCVar8, p1, iVar10, (iVar11 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                        if not r2 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_10)
+                            resources:ReleaseResource(xStack_20)
+                            return
+                        end
                         iVar10 = me:IsPerformingScriptTask()
                         cVar5 = iVar10
                         while cVar5 do

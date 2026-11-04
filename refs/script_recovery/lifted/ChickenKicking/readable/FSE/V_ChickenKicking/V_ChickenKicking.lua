@@ -37,9 +37,15 @@ end
 
 -- V_ChickenKicking.OnPersist (retail 0x00e629a0)
 function OnPersist(quest, context)
-    quest:SetStateInt("PrizesWon", quest:PersistTransferUInt(context, "PrizesWon", quest:GetStateInt("PrizesWon") or 0))
-    quest:SetStateBool("InfoDisplayed", quest:PersistTransferBool(context, "InfoDisplayed", quest:GetStateBool("InfoDisplayed")))
-    quest:SetStateBool("KnowGhostHasGone", quest:PersistTransferBool(context, "KnowGhostHasGone", quest:GetStateBool("KnowGhostHasGone")))
+    local prizesWon = quest:GetStateInt("PrizesWon") or 0
+    prizesWon = quest:PersistTransferUInt(context, "PrizesWon", prizesWon)
+    quest:SetStateInt("PrizesWon", prizesWon)
+    local infoDisplayed = quest:GetStateBool("InfoDisplayed") or false
+    infoDisplayed = quest:PersistTransferBool(context, "InfoDisplayed", infoDisplayed)
+    quest:SetStateBool("InfoDisplayed", infoDisplayed)
+    local knowGhostHasGone = quest:GetStateBool("KnowGhostHasGone") or false
+    knowGhostHasGone = quest:PersistTransferBool(context, "KnowGhostHasGone", knowGhostHasGone)
+    quest:SetStateBool("KnowGhostHasGone", knowGhostHasGone)
 end
 
 -- V_ChickenKicking.CreateSpectators (retail 0x00e62d60)
@@ -48,6 +54,7 @@ function CreateSpectators(quest)
     local spectatorsCreated = quest:GetStateBool("SpectatorsCreated")
     while true do
         if spectatorsCreated then
+            quest:IsActiveThreadTerminating()
             return
         end
         if not quest:NewScriptFrame() then return end
@@ -59,12 +66,13 @@ function CreateSpectators(quest)
             if not isRegionLoaded then break end
             if not quest:NewScriptFrame() then return end
             if quest:GetStateBool("KnowGhostHasGone") then
-                local spectator1 = quest:GetThingWithScriptName("Spectator1")
-                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", spectator1:GetPos(), "Spectator")
-                local spectator = quest:GetThingWithScriptName("Spectator2")
-                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", spectator:GetPos(), "Spectator")
-                local spectator3 = quest:GetThingWithScriptName("Spectator3")
-                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", spectator3:GetPos(), "Spectator")
+                if quest:IsActiveThreadTerminating() then return end
+                local position = quest:GetThingWithScriptName("Spectator1"):GetPos()
+                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", position, "Spectator", false)
+                local position2 = quest:GetThingWithScriptName("Spectator2"):GetPos()
+                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_FEMALE_UNEMPLOYED", position2, "Spectator", false)
+                local position3 = quest:GetThingWithScriptName("Spectator3"):GetPos()
+                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", position3, "Spectator", false)
                 quest:SetStateBool("SpectatorsCreated", true)
             end
         end
@@ -72,6 +80,7 @@ function CreateSpectators(quest)
         while quest:IsRegionLoaded("OakBay") do
             if not quest:NewScriptFrame() then return end
         end
+        if quest:IsActiveThreadTerminating() then break end
         spectatorsCreated = quest:GetStateBool("SpectatorsCreated")
     end
 end
@@ -91,20 +100,26 @@ function LookAfterOrganiser(quest)
             if not quest:NewScriptFrame() then return end
         end
         if quest:IsActiveThreadTerminating() then break end
-        if not quest:GetStateBool("RanOff") then quest:NewScriptFrame(); predicateResult = quest:IsActiveThreadTerminating(); goto continue_1 end
-        if quest:IsActiveThreadTerminating() then return end
-        if not quest:GetStateBool("KnowGhostHasGone") then
-            if quest:IsActiveThreadTerminating() then return end
-            local scaredMasterMarker = quest:GetThingWithScriptName("ScaredMasterMarker")
-            quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", scaredMasterMarker:GetPos(), "ChickenMaster")
+        if not quest:GetStateBool("RanOff") then
+            quest:NewScriptFrame();
+            predicateResult = quest:IsActiveThreadTerminating();
         else
             if quest:IsActiveThreadTerminating() then return end
-            local mkCkOrg = quest:GetThingWithScriptName("MK_CK_ORG")
-            quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", mkCkOrg:GetPos(), "ChickenMaster")
+            if not quest:GetStateBool("KnowGhostHasGone") then
+                if quest:IsActiveThreadTerminating() then return end
+                local scaredMasterMarker = quest:GetThingWithScriptName("ScaredMasterMarker")
+                local position = scaredMasterMarker:GetPos()
+                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", position, "ChickenMaster", false)
+            else
+                if quest:IsActiveThreadTerminating() then return end
+                local mkCkOrg = quest:GetThingWithScriptName("MK_CK_ORG")
+                local position2 = mkCkOrg:GetPos()
+                quest:CreateCreature("CREATURE_OAKVALE_VILLAGER_MALE_UNEMPLOYED", position2, "ChickenMaster", false)
+            end
+            quest:SetStateBool("RanOff", false)
+            quest:NewScriptFrame()
+            predicateResult = quest:IsActiveThreadTerminating()
         end
-        quest:SetStateBool("RanOff", false)
-        quest:NewScriptFrame()
-        predicateResult = quest:IsActiveThreadTerminating()
         ::continue_1::
     end
 end
@@ -113,7 +128,8 @@ end
 function helper_E68B20(quest, strParam1)
     local resources = quest:RetailResources()
     local resource = resources:NewResource()
-    resources:TryAcquire(resource, quest:GetHero(), 4)
+    local pThing = quest:GetHero()
+    resources:TryAcquire(resource, pThing, 4)
     local actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     resources:SetActor(actorMap, "CHICKEN", resources:MemberResource("seh_Chicken"))

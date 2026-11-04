@@ -1,5 +1,7 @@
 # AlbionSecrets FSE tutorial API audit
 
+> Registration and name/arity checks establish an API inventory, not native ABI correctness, resource lifetime safety or runtime execution. Treat runtime assertions below as dated observations of the recorded profile.
+
 ## Provenance
 
 `ALL-INTERFACE-FUNCTIONS-FOR-FSE.h` was posted by **AlbionSecrets** on 2025-11-05 as the tutorial

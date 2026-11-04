@@ -1,0 +1,20 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 419ce6b..0f42350 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -519,6 +519,15 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         if (hit) LogToFile("    [HitEvidence] MsgIsHitByAnySpecialAbilityFrom(" + sourceName + ") returned true.");
+         return hit;
+     };
++    // Slot 0xAC preserves the native aggressive-ability filter; the 0xA8
++    // query above also includes non-aggressive abilities such as healing.
++    thing["MsgIsHitByAnyAggressiveSpecialAbilityFrom"] = [](CScriptThing* me, const std::string& sourceName) -> bool {
++        if (!me || !me->pVTable) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        if (!vt->MsgIsHitByAnyAggressiveSpecialAbilityFrom) return false;
++        FableString name(sourceName.c_str());
++        return vt->MsgIsHitByAnyAggressiveSpecialAbilityFrom(me, name.get());
++    };
+     // ---- friendly-fire messages, no operand (CScriptThing slots 0xBC / 0xC4 / 0xCC) --------------
+     thing["MsgHitFriendWithMeleeWeapon"] = [](CScriptThing* me) -> bool {
+         if (!me || !me->pVTable) return false;

@@ -75,7 +75,7 @@ function Main(quest, me)
                     uVar4 = quest:ReadGlobalGameData(0xbd4)
                     goto LAB_00d25bfd
                 end
-                -- TODO(native): } else {
+            else
                 __native_condition_2 = quest:GetStateInt("DragonState") == 1
                 if __native_condition_2 then
                     fret_00 = quest:GetHealth(me)
@@ -95,7 +95,7 @@ function Main(quest, me)
                         uVar4 = quest:ReadGlobalGameData(0xbd8)
                         goto LAB_00d25bfd
                     end
-                    -- TODO(native): } else {
+                else
                     __native_condition_3 = quest:GetStateInt("DragonState") == 2
                     if __native_condition_3 then
                         fret_01 = quest:GetHealth(me)
@@ -120,7 +120,7 @@ function Main(quest, me)
             end
             goto FLOW_past_lab_00d25bfd
             ::LAB_00d25bfd::
-            -- TODO(native): *(undefined4 *)(this_00 + 0x6c) = uVar4;
+            quest:SetStateInt("TargetNumSummoners", uVar4)
             ::FLOW_past_lab_00d25bfd::
             iVar1 = quest:GetStateInt("DragonState")
         end

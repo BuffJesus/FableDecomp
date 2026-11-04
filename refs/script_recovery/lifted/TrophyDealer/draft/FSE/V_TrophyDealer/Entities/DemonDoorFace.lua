@@ -69,6 +69,12 @@ function Main(quest, me)
                         p1 = "TEXT_QST_071_DOOR_LOCKED1"
                         pCVar5 = quest:GetHero()
                         r1 = me:Speak(pCVar5, p1, iVar8, (iVar9 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                        if not r1 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_20)
+                            resources:ReleaseResource(xStack_30)
+                            return
+                        end
                         iVar8 = me:IsPerformingScriptTask()
                         cVar4 = iVar8
                         while cVar4 do

@@ -704,5 +704,111 @@
       "resourceFields": {},
       "arrays": []
     }
+  },
+  "reviewedThingOutputScopes": {
+    "0x00d5e0c0": {
+      "address": "0x00D5E0C0",
+      "end": "0x00D61B8F",
+      "nativeSha256": "719bb62fcd1b48eeab4e00b3c4a12836874434cae7883d3d98d08326879684a9",
+      "sourceSha256": "2b3ebe763a58d8e2d6257b189e8f04601ff2d4331f9a204fb0e039cfb7e26306",
+      "intermediateSha256": "422f8ea232355ab0d195d310a647b1b6f82e91b87fac1b87792ef227ce960c07",
+      "recoveredSha256": "3c2c6bd7a45552346cc72c1d4756e912dc02431d85c3fac5da2771f898b34ff7",
+      "anchors": {
+        "0xd618c0": "8d8c24c4000000",
+        "0xd618c7": "e824d3c3ff",
+        "0xd618cc": "8b4e04",
+        "0xd618cf": "8b01",
+        "0xd618d1": "8bd1",
+        "0xd618d3": "8b3a",
+        "0xd618d5": "6a01",
+        "0xd618d7": "6a00",
+        "0xd618d9": "8d9424c4000000",
+        "0xd618e0": "52",
+        "0xd618e1": "8d942480000000",
+        "0xd618e8": "52",
+        "0xd618e9": "ff9020010000",
+        "0xd618ef": "8b4e04",
+        "0xd618f2": "50",
+        "0xd618f3": "ff97b0010000",
+        "0xd618f9": "8d4c2474",
+        "0xd618fd": "e83e8f74ff",
+        "0xd61902": "8d8c24bc000000",
+        "0xd61909": "e8d2d1c3ff",
+        "0xd6190e": "6aff",
+        "0xd61910": "68f8d62c01",
+        "0xd61915": "8d8c24f0000000",
+        "0xd6191c": "e8cfd2c3ff",
+        "0xd61921": "6aff",
+        "0xd61923": "687ce02c01",
+        "0xd61928": "8d8c24d8000000",
+        "0xd6192f": "e8bcd2c3ff",
+        "0xd61934": "6aff",
+        "0xd61936": "6878e62c01",
+        "0xd6193b": "8d8c24e8000000",
+        "0xd61942": "e8a9d2c3ff",
+        "0xd61947": "8b4e04",
+        "0xd6194a": "8b01",
+        "0xd6194c": "8d9424d0000000",
+        "0xd61953": "52",
+        "0xd61954": "8d9424a4000000",
+        "0xd6195b": "52",
+        "0xd6195c": "ff9020010000",
+        "0xd61962": "8b4e04",
+        "0xd61965": "8b39",
+        "0xd61967": "6a00",
+        "0xd61969": "8d9424ec000000",
+        "0xd61970": "52",
+        "0xd61971": "8b10",
+        "0xd61973": "8bc8",
+        "0xd61975": "ff5218",
+        "0xd61978": "50",
+        "0xd61979": "8d8424ec000000",
+        "0xd61980": "50",
+        "0xd61981": "8d8c2404020000",
+        "0xd61988": "51",
+        "0xd61989": "8b4e04",
+        "0xd6198c": "ff976c010000",
+        "0xd61992": "8d8c24f4010000",
+        "0xd61999": "e8a28e74ff",
+        "0xd6199e": "8d8c24a0000000",
+        "0xd619a5": "e8968e74ff",
+        "0xd619aa": "8d8c24e0000000",
+        "0xd619b1": "e82ad1c3ff",
+        "0xd619b6": "8d8c24d0000000",
+        "0xd619bd": "e81ed1c3ff"
+      },
+      "dependencies": {
+        "0x8a9100": {
+          "length": 256,
+          "sha256": "a02f716b4a600f96e8a576dba1cf8315f3bc544c5931c75fd2b29a50e6c7921f"
+        },
+        "0x1261078": {
+          "length": 4,
+          "sha256": "e09054adda32d2dc9a327b02bc3a1496955b2bdd4f5806cd44c5de305632273e"
+        }
+      },
+      "sidecar": {
+        "LuaQuestState.h": {
+          "path": "work/codex_lua_trader_helper_assignment_20261005/sidecar_candidate/FableScriptExtender/LuaQuestState.h",
+          "sha256": "43e6a873e46fdfcd19d1897c27a77b7ce4beab9753b6be37796b144d9d4ec0b8"
+        },
+        "LuaQuestState.cpp": {
+          "path": "work/codex_lua_trader_helper_assignment_20261005/sidecar_candidate/FableScriptExtender/LuaQuestState.cpp",
+          "sha256": "492d2e33eb8176d2733bd3d33c27b579639e0264cb5dabd8f2dfd3e76300bff5"
+        },
+        "ManifestFunctionRegistry.generated.h": {
+          "path": "work/codex_lua_trader_helper_assignment_20261005/sidecar_candidate/FableScriptExtender/ManifestFunctionRegistry.generated.h",
+          "sha256": "e7eb161e75b28042c2fca89c569c58926c0d40ddc1544e2b5740227f770ccada"
+        }
+      },
+      "operations": [
+        {
+          "before": "quest:CreateCreature(\"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\", pCVar13, \"MeleeApprentice\", \"MeleeApprentice\")",
+          "after": "quest:CreateCreature(\"CREATURE_RIVAL_HERO_WHISPER_APPRENTICE\", pCVar13, \"MeleeApprentice\", false)"
+        }
+      ],
+      "calls": [],
+      "review": "Guild Will graduation replacement spawn D6198C: native D61967 pushes0 before script-name, GetPos result, definition-name and hidden result buffer. Native GSI slot16C points to8A9100 and purges5words. The C arithmetic output pointer auStack_64+4 was not recognized by slot_name; operand placement reused MeleeApprentice as the optional Boolean. Preserve definition/position/script name and recover only nativeFlag=false. Full native/source/intermediate/recovered hashes and caller/dependency/sidecar witnesses fail closed. No full quest, native allocation/refcount or sidecar runtime equivalence claim."
+    }
   }
 }

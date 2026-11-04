@@ -26,7 +26,7 @@ function Main(quest, me)
     end
     bVar5 = false
     bVar7 = false
-    xStack_9c = pCVar8
+    xStack_9c = me
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
@@ -109,6 +109,9 @@ function Main(quest, me)
                                 pcVar10 = "TEXT_QST_074_CHIEF_BALVERINE_GONE_FIRST"
                                 pCVar8 = quest:GetHero()
                                 r1 = me:Speak(pCVar8, pcVar10, iVar11, (iVar13 ~= 0), (iVar12 ~= 0), (iVar14 ~= 0))
+                                if not r1 then
+                                    __cleanup_LAB_00e1a6d6(); return
+                                end
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar6 = iVar11
                                 while cVar6 do
@@ -147,6 +150,9 @@ function Main(quest, me)
                                 pcVar10 = "TEXT_QST_074_CHIEF_BALVERINE_GONE_SECOND"
                                 pCVar8 = quest:GetHero()
                                 r2 = me:Speak(pCVar8, pcVar10, iVar11, (iVar13 ~= 0), (iVar12 ~= 0), (iVar14 ~= 0))
+                                if not r2 then
+                                    __cleanup_LAB_00e1a2b3(); return
+                                end
                                 iVar11 = me:IsPerformingScriptTask()
                                 cVar6 = iVar11
                                 while cVar6 do
@@ -230,6 +236,12 @@ function Main(quest, me)
                         pcVar10 = "TEXT_QST_074_CHIEF_BEEN_ATTACKED"
                         pCVar8 = quest:GetHero()
                         r3 = me:Speak(pCVar8, pcVar10, iVar11, (iVar13 ~= 0), (iVar12 ~= 0), (iVar14 ~= 0))
+                        if not r3 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_48)
+                            resources:ReleaseResource(xStack_b0)
+                            return
+                        end
                         iVar11 = me:IsPerformingScriptTask()
                         cVar6 = iVar11
                         while cVar6 do
@@ -260,7 +272,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
                     if bVar4 then goto LAB_00e1a6c6 end
-                    me:SetFriendsWithEverythingFlag(xStack_9c)
+                    me:SetFriendsWithEverythingFlag(true)
                 end
                 pCVar8 = xStack_9c
                 cVar6 = quest:GetStateBool("MissionSucceeded")

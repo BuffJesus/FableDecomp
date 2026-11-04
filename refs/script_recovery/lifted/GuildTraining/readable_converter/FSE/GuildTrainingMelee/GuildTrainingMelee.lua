@@ -5,14 +5,20 @@ local TUTORIAL_CATEGORY_MOVEMENT = 26  -- ETutorialCategory (Ego_r.pdb)
 
 -- Q_GuildTrainingMelee.Main (retail 0x00d55e90)
 function Main(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
+    local controlAcquired, thing, pThingToMove, rivalHeroWhisperTeenApprentice
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingMelee/Entities/TheRealGuildmaster", 1)
     quest:AddEntityBinding("MeleeOpponent", "GuildTrainingMelee/Entities/MeleeOpponent", 1)
     quest:AddEntityBinding("MeleeThunder", "GuildTrainingMelee/Entities/MeleeThunder", 1)
     quest:FinalizeEntityBindings()
-    quest:EntityTeleportToThing(quest:GetThingWithScriptName("TheRealGuildmaster"), quest:GetThingWithScriptName("M_MeleeTeacherStand"), false)
-    local rivalHeroWhisperTeenApprentice = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", quest:GetThingWithScriptName("MK_GTWU_WHISPER"):GetPos(), "MeleeOpponent")
+    thing = quest:GetThingWithScriptName("M_MeleeTeacherStand")
+    pThingToMove = quest:GetThingWithScriptName("TheRealGuildmaster")
+    quest:EntityTeleportToThing(pThingToMove, thing, false)
+    pThingToMove = nil
+    thing = nil
+    local pPosition = quest:GetThingWithScriptName("MK_GTWU_WHISPER"):GetPos()
+    rivalHeroWhisperTeenApprentice = quest:CreateCreature("CREATURE_RIVAL_HERO_WHISPER_TEEN_APPRENTICE", pPosition, "MeleeOpponent", false)
+    thing = nil
     quest:EntitySetInFaction(rivalHeroWhisperTeenApprentice, "FACTION_HERO")
     if rivalHeroWhisperTeenApprentice ~= nil and not rivalHeroWhisperTeenApprentice:IsNull() then
         rivalHeroWhisperTeenApprentice:SetFriendsWithEverythingFlag(true)
@@ -23,6 +29,7 @@ function Main(quest)
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource2)
+            rivalHeroWhisperTeenApprentice = nil
             do return end
         end
     end
@@ -30,8 +37,12 @@ function Main(quest)
     quest:EntitySetAllowBossPhaseChanges(rivalHeroWhisperTeenApprentice, false)
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
-    while not resources:TryAcquire(resource, hero, 4) do
+    local hero = quest:GetHero()
+    controlAcquired = resources:TryAcquire(resource, hero, 4)
+    while not controlAcquired do
         if not quest:NewScriptFrame() then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
+        local hero2 = quest:GetHero()
+        controlAcquired = resources:TryAcquire(resource, hero2, 4)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
     local actorMap = resources:NewActorMap()
@@ -50,8 +61,9 @@ function Main(quest)
     quest:AddLogbookStoryEntry(40)
     if not (quest:DisplayTutorial(TUTORIAL_CATEGORY_MOVEMENT) and not quest:IsActiveThreadTerminating()) then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
     while not quest:MsgIsTutorialClickedPast() do
-        if not quest:NewScriptFrame() then break end
+        if not quest:NewScriptFrame() then resources:ReleaseResource(resource); resources:ReleaseResource(resource2); return end
     end
+    quest:IsActiveThreadTerminating()
     resources:ReleaseResource(resource)
     resources:ReleaseResource(resource2)
 end

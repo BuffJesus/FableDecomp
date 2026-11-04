@@ -3,17 +3,17 @@
 
 -- Q_GuildTrainingPreMelee.Main (retail 0x00d51520)
 function Main(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local movie, resource, actorMap, resource4, resource5, timerId
+    local controlAcquired, hero, preMeleeMaze, preMeleeWhisper, theRealGuildmaster, movie, resource
+    local actorMap, resource4, resource5, timerId
     quest:AddEntityBinding("TheRealGuildmaster", "GuildTrainingPreMelee/Entities/TheRealGuildmaster", 1)
     quest:AddEntityBinding("PreMeleeDummy", "GuildTrainingPreMelee/Entities/PreMeleeDummy", 1)
     quest:AddEntityBinding("PreMeleeWhisper", "GuildTrainingPreMelee/Entities/PreMeleeWhisper", 1)
     quest:FinalizeEntityBindings()
     quest:SetMasterGameState("GuildWarningOccuring", true)
-    local preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
-    local preMeleeWhisper = quest:GetThingWithScriptName("PreMeleeWhisper")
-    local theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
+    preMeleeMaze = quest:GetThingWithScriptName("PreMeleeMaze")
+    preMeleeWhisper = quest:GetThingWithScriptName("PreMeleeWhisper")
+    theRealGuildmaster = quest:GetThingWithScriptName("TheRealGuildmaster")
     quest:GiveHeroTitle("OBJECT_HERO_TITLE_CHICKEN_CHASER")
     quest:SetStateInt("PreMeleeMode", 0)
     local resource6 = resources:NewResource()
@@ -22,6 +22,9 @@ function Main(quest)
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
             resources:ReleaseResource(resource6)
+            theRealGuildmaster = nil
+            preMeleeWhisper = nil
+            preMeleeMaze = nil
             do return end
         end
     end
@@ -40,8 +43,12 @@ function Main(quest)
     if quest:IsActiveThreadTerminating() then goto LAB_00d51948 end
     resource = resources:NewResource()
     resources:PrepareResource(resource)
-    while not resources:TryAcquire(resource, hero, 4) do
+    hero = quest:GetHero()
+    controlAcquired = resources:TryAcquire(resource, hero, 4)
+    while not controlAcquired do
         if not quest:NewScriptFrame() then goto LAB_00d5193f end
+        local hero2 = quest:GetHero()
+        controlAcquired = resources:TryAcquire(resource, hero2, 4)
     end
     if quest:IsActiveThreadTerminating() then goto LAB_00d5193f end
     actorMap = resources:NewActorMap()
@@ -81,7 +88,8 @@ function Main(quest)
             if not quest:NewScriptFrame() then goto LAB_00d51dd9 end
         end
         if not quest:IsActiveThreadTerminating() then
-            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+            local pQuestName = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(pQuestName, 0)
         end
     end
     ::LAB_00d51dd9::

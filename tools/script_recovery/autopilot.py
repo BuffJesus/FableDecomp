@@ -103,9 +103,12 @@ def stage_save(profile: str) -> Path | None:
     # timestamped: a later run must never destroy what an earlier run left in the live slot
     backup = ROOT / 'scratchpad' / f'save_backup_{FRONTEND_PROFILE_DIR}_{datetime.datetime.now():%Y%m%d-%H%M%S}'
     backup.mkdir(parents=True, exist_ok=True)
-    old = sorted((ROOT / 'scratchpad').glob(f'save_backup_{FRONTEND_PROFILE_DIR}_*'))
-    for stale in old[:-12]:
-        shutil.rmtree(stale, ignore_errors=True)
+    # Dialog/tutorial interactions can rewrite profile settings independently
+    # of AutoSave. Preserve the target profile; never install the source's.
+    profile_exists = (dst / 'Profile.bin').is_file()
+    if profile_exists:
+        shutil.copy2(dst / 'Profile.bin', backup / 'Profile.bin')
+    (backup / 'profile_backup.json').write_text(json.dumps({'existed': profile_exists}))
     for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
         if (dst / f).is_file():
             shutil.copy2(dst / f, backup / f)
@@ -157,11 +160,20 @@ def restore_save(backup: Path | None) -> None:
     if not backup.is_dir():
         raise FileNotFoundError(f'save backup directory is missing: {backup}')
     dst = SAVES / FRONTEND_PROFILE_DIR
+    metadata = backup / 'profile_backup.json'
+    profile = json.loads(metadata.read_text()) if metadata.is_file() else None
+    if profile and profile['existed'] and not (backup / 'Profile.bin').is_file():
+        raise FileNotFoundError(f'profile backup is missing: {backup / "Profile.bin"}')
     for f in ('AutoSave', 'AutoSave.qs', 'AutoSave.qs.hs'):
         if (backup / f).is_file():
             shutil.copy2(backup / f, dst / f)
         else:
             (dst / f).unlink(missing_ok=True)
+    if profile is not None:
+        if profile['existed']:
+            shutil.copy2(backup / 'Profile.bin', dst / 'Profile.bin')
+        else:
+            (dst / 'Profile.bin').unlink(missing_ok=True)
     print(f'restored {dst} from {backup}')
 
 
@@ -289,7 +301,7 @@ def game_info_box_pos(png: Path) -> tuple[int, int] | None:
     return int(xs[sel].mean()) + 560, int(ys[sel].mean()) + 370
 
 
-def drive_frontend_to_autosave(shots: Path, timeout: float = 120.0) -> None:
+def drive_frontend_to_autosave(shots: Path, timeout: float = 120.0, log: Path | None = None) -> None:
     """title -> (menu -> Change Profile) -> 0atlas -> Continue Game -> AutoSave, verifying every screen by capture;
     the main menu opens on the last profile, or on the profile list when the game has none (after a crash)"""
     shots.mkdir(parents=True, exist_ok=True)
@@ -302,6 +314,11 @@ def drive_frontend_to_autosave(shots: Path, timeout: float = 120.0) -> None:
         game_input(f'capture {png}')
         kind = screen_kind(png)
         print(f'frontend: {kind}')
+        # A profile/menu click may start loading immediately. Once a quest host
+        # exists, further menu navigation sends input into the live game.
+        if log and log.is_file() and 'LuaQuestHost for ' in log.read_text(encoding='utf-8', errors='replace'):
+            print('frontend: save already loaded (quest host is up)')
+            return
         if kind == 'title':
             game_input('click 512 400')
         elif kind == 'menu':
@@ -355,9 +372,13 @@ def launch_and_load(bundle: str, timeout: float = 240.0) -> None:
     deadline = time.time() + timeout
     while time.time() < deadline and not (log.is_file() and 'hosts enabled' in log.read_text(encoding='utf-8', errors='replace')):
         time.sleep(2)
-    time.sleep(14)                                   # title screen
+    time.sleep(14)
+    game_input('key ESC')                            # two opening movies precede the title screen
+    time.sleep(2)
+    game_input('key ESC')
+    time.sleep(2)
     tail = LogTail(log)
-    drive_frontend_to_autosave(ROOT / 'scratchpad' / 'autopilot_frontend')
+    drive_frontend_to_autosave(ROOT / 'scratchpad' / 'autopilot_frontend', log=log)
     deadline = time.time() + timeout
     while time.time() < deadline:
         if any('LuaQuestHost for ' in l and 'created' in l for l in tail.new_lines()):
@@ -369,7 +390,8 @@ def launch_and_load(bundle: str, timeout: float = 240.0) -> None:
 
 
 def bundle_dir(name: str) -> Path:
-    d = WORK / f'local-candidate-{name}'
+    requested = Path(name)
+    d = requested if requested.is_absolute() else WORK / f'local-candidate-{name}'
     if not d.is_dir():
         sys.exit(f'no bundle {d}')
     return d

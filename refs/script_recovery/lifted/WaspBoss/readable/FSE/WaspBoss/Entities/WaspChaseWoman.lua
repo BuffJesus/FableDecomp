@@ -11,9 +11,8 @@ local SCRIPT_DEF = {
 
 -- WaspChaseWoman.Main (retail 0x00e10e60)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
-    local isDistanceBetweenThingsOver, scratchValue, getThingWithScriptName, villagerEscapePos
+    local isDistanceBetweenThingsOver, scratchValue2, getThingWithScriptName4, villagerEscapePos
     if not quest:NewScriptFrame(me) then return end
     local resource = resources:NewResource()
     resources:PrepareResource(resource)
@@ -22,6 +21,7 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     if quest:GetStateBool("QueenHornetAttacks") then
+        if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
         quest:RemoveThing(me, false, true)
     end
     while not quest:GetStateBool("StartChase") do
@@ -29,19 +29,25 @@ function Main(quest, me)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     local waspChaser = quest:GetThingWithScriptName("WaspChaser")
-    scratchValue = 2
-    getThingWithScriptName = quest:GetThingWithScriptName("ChasedWomanNav" .. tostring(3))
-    me:FollowPreCalculatedRoute(quest:GetThingWithScriptName("ChasedWomanNav" .. tostring(2)), 1, false, true)
+    scratchValue2 = 2
+    local scratchValue4 = "ChasedWomanNav" .. tostring(3)
+    getThingWithScriptName4 = quest:GetThingWithScriptName(scratchValue4)
+    local scratchValue6 = "ChasedWomanNav" .. tostring(2)
+    local getThingWithScriptName = quest:GetThingWithScriptName(scratchValue6)
+    me:FollowPreCalculatedRoute(getThingWithScriptName, 1, false, true)
     local timerId = quest:RegisterTimer()
     quest:SetTimer(timerId, 11)
     while not quest:IsActiveThreadTerminating() do
         local taskRunning = me:IsPerformingScriptTask()
-        if not taskRunning or quest:IsDistanceBetweenThingsUnder(me, getThingWithScriptName, 2.0) then
+        if not taskRunning or quest:IsDistanceBetweenThingsUnder(me, getThingWithScriptName4, 2.0) then
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
-            scratchValue = (scratchValue + 1) % 6
-            getThingWithScriptName = quest:GetThingWithScriptName("ChasedWomanNav" .. tostring((scratchValue + 1) % 6))
+            scratchValue2 = (scratchValue2 + 1) % 6
+            local scratchValue8 = "ChasedWomanNav" .. tostring((scratchValue2 + 1) % 6)
+            getThingWithScriptName4 = quest:GetThingWithScriptName(scratchValue8)
             me:ClearCommands()
-            me:FollowPreCalculatedRoute(quest:GetThingWithScriptName("ChasedWomanNav" .. tostring(scratchValue)), 1, false, true)
+            local scratchValue = "ChasedWomanNav" .. tostring(scratchValue2)
+            local getThingWithScriptName3 = quest:GetThingWithScriptName(scratchValue)
+            me:FollowPreCalculatedRoute(getThingWithScriptName3, 1, false, true)
         end
         if waspChaser ~= nil and waspChaser:IsAlive() then
             quest:NewScriptFrame(me)
@@ -49,8 +55,10 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
             quest:EntitySetAsScared(me, false)
             local conversationId = quest:AddNewConversation(me, false, false)
+            local hero = quest:GetHero()
             quest:AddPersonToConversation(conversationId, hero)
-            quest:AddLineToConversation(conversationId, "TEXT_QST_072_WASP_CHASE_FEMALE_ON_SAVED_10", me, hero, false)
+            local hero2 = quest:GetHero()
+            quest:AddLineToConversation(conversationId, "TEXT_QST_072_WASP_CHASE_FEMALE_ON_SAVED_10", me, hero2, false)
             villagerEscapePos = quest:GetThingWithScriptName("VillagerEscapePos")
             if quest:GetStateInt("SavedVillagerCount") < 2 then
                 if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); resources:ReleaseResource(resource); return end
@@ -59,7 +67,6 @@ function Main(quest, me)
             end
             isDistanceBetweenThingsOver = quest:IsDistanceBetweenThingsOver(me, villagerEscapePos, 2.0)
             goto LAB_00e112c4
-            quest:NewScriptFrame(me)
         end
     end
     quest:DeregisterTimer(timerId)

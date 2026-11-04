@@ -81,6 +81,47 @@ class LaunchIsolationTests(unittest.TestCase):
     def test_running_game_preserves_pending_commands_and_log(self):
         self.check_launch(running=True)
 
+    def test_profile_changes_are_restored_without_installing_source_profile(self):
+        for existed in (False, True):
+            with self.subTest(existed=existed), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                source, target = root / 'saves/source', root / 'saves/target'
+                source.mkdir(parents=True); target.mkdir()
+                (source / 'AutoSave').write_bytes(b'checkpoint')
+                (source / 'Profile.bin').write_bytes(b'source profile must not be installed')
+                if existed:
+                    (target / 'Profile.bin').write_bytes(b'original profile')
+                (target / 'ManualSave').write_bytes(b'protected manual save')
+                original = {p.name:p.read_bytes() for p in target.iterdir()}
+                with patch.object(autopilot, 'ROOT', root), patch.object(autopilot, 'SAVES', root/'saves'), \
+                     patch.object(autopilot, 'FRONTEND_PROFILE_DIR', 'target'):
+                    backup = autopilot.stage_save('source')
+                    self.assertEqual((target / 'Profile.bin').exists(), existed)
+                    if existed:
+                        self.assertEqual((target / 'Profile.bin').read_bytes(), b'original profile')
+                    (target / 'Profile.bin').write_bytes(b'new tutorial flags')
+                    autopilot.restore_save(backup)
+                self.assertEqual({p.name:p.read_bytes() for p in target.iterdir()}, original)
+
+    def test_missing_profile_backup_fails_before_restoring_any_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory);backup=root/'backup';live=root/'target'
+            backup.mkdir();live.mkdir()
+            (backup/'profile_backup.json').write_text('{"existed": true}')
+            (live/'AutoSave').write_bytes(b'live save')
+            with patch.object(autopilot,'SAVES',root), patch.object(autopilot,'FRONTEND_PROFILE_DIR','target'):
+                with self.assertRaisesRegex(FileNotFoundError,'profile backup'):
+                    autopilot.restore_save(backup)
+            self.assertEqual((live/'AutoSave').read_bytes(),b'live save')
+
+    def test_legacy_backup_does_not_delete_profile(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);backup=root/'backup';live=root/'target'
+            backup.mkdir();live.mkdir();(live/'Profile.bin').write_bytes(b'protected')
+            with patch.object(autopilot,'SAVES',root), patch.object(autopilot,'FRONTEND_PROFILE_DIR','target'):
+                autopilot.restore_save(backup)
+            self.assertEqual((live/'Profile.bin').read_bytes(),b'protected')
+
     def test_fresh_launch_clears_previous_session_commands_and_log(self):
         self.check_launch(running=False)
 

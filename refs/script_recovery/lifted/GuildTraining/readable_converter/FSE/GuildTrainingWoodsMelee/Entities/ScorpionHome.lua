@@ -11,11 +11,12 @@ local scorpionsLeft, flourishHint
 
 -- ScorpionHome.Main (retail 0x00d67270)
 function Main(quest, me)
-    local pPosition
-    local hero = quest:GetHero()
-    local infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles))), 1.0)
+    local pPosition, guildStagBeetle
+    local scratchValue2 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles)))
+    local infoCounter = quest:AddQuestInfoCounter("HUD_BEETLE_ICON", scratchValue2, 1.0)
     quest:DisplayQuestInfo(true)
     local timerId = quest:RegisterTimer()
+    local timerId2 = timerId
     quest:SetTimer(timerId, 5)
     local scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
     repeat
@@ -29,36 +30,47 @@ function Main(quest, me)
         end
         if not quest:NewScriptFrame(me) then quest:DeregisterTimer(timerId); return end
         local isPlayerCarryingItemOfType = quest:IsPlayerCarryingItemOfType("OBJECT_HERO_STICK") or 0 < quest:GetTimer(timerId)
-        if not isPlayerCarryingItemOfType then
-            quest:AddLineToConversation(quest:AddNewConversation(hero, false, false), "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", hero, hero, false)
-            quest:SetTimer(timerId, 8)
+        local predicateResult = not isPlayerCarryingItemOfType
+        if predicateResult then
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
+            local hero = quest:GetHero()
+            local conversationId = quest:AddNewConversation(hero, false, false)
+            local hero2 = quest:GetHero()
+            local pSpeaker = quest:GetHero()
+            quest:AddLineToConversation(conversationId, "TEXT_QST_028_GUILDMASTER_PREMELEE_STICK_REPEAT", pSpeaker, hero2, false)
+            quest:SetTimer(timerId2, 8)
         end
         local guildScorpions = quest:GetAllThingsWithScriptName("GuildScorpions")
-        local count = #guildScorpions
-        quest:UpdateQuestInfoCounter(infoCounter, math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles) - scorpionsLeft) - count)), -1)
-        if #guildScorpions >= 3 then
-            scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
-        else
-            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId); return end
-            if #guildScorpions == 0 and scorpionsLeft == 0 then
-                quest:SetStateBool("ScorpionsAlive", false)
-                quest:SetMasterGameState("ScorpionsDestroyed", true)
-            elseif 0 < scorpionsLeft then
-                local scorpionSpawn = quest:GetFurthestWithScriptName(hero, "ScorpionSpawn")
-                if scorpionSpawn == nil then
-                    pPosition = {x = 0, y = 0, z = 0}
-                else
-                    pPosition = scorpionSpawn:GetPos()
-                end
-                local guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions")
-                if guildStagBeetle ~= nil then
-                    guildStagBeetle:SetToKillOnLevelUnload(false)
-                end
-                quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsMelee")
-                scorpionsLeft = scorpionsLeft - 1
+        local count2 = #guildScorpions
+        local scratchValue = count2
+        local count = math.tointeger(math.modf((quest:ReadGlobalGameDataFloat(SCRIPT_DEF.GUI_MeleeBeetles) - scorpionsLeft) - scratchValue))
+        quest:UpdateQuestInfoCounter(infoCounter, count, -1)
+        if not ((#guildScorpions) < 3) then scorpionsAlive = quest:GetStateBool("ScorpionsAlive"); timerId = timerId2; goto continue_1 end
+        if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); return end
+        if (#guildScorpions == 0) and scorpionsLeft == 0 then
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); return end
+            quest:SetStateBool("ScorpionsAlive", false)
+            quest:SetMasterGameState("ScorpionsDestroyed", true)
+        elseif 0 < scorpionsLeft then
+            if quest:IsActiveThreadTerminating() then quest:DeregisterTimer(timerId2); return end
+            local hero3 = quest:GetHero()
+            local scorpionSpawn = quest:GetFurthestWithScriptName(hero3, "ScorpionSpawn")
+            if scorpionSpawn == nil then
+                pPosition = {x = 0, y = 0, z = 0}
+            else
+                pPosition = scorpionSpawn:GetPos()
             end
-            scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
+            guildStagBeetle = quest:CreateCreature("CREATURE_GUILD_STAG_BEETLE", pPosition, "GuildScorpions", false)
+            if guildStagBeetle ~= nil then
+                guildStagBeetle:SetToKillOnLevelUnload(false)
+            end
+            quest:EntityAttachToScript(guildStagBeetle, "Q_GuildTrainingWoodsMelee")
+            scorpionsLeft = scorpionsLeft - 1
+            guildStagBeetle = nil
         end
+        scorpionsAlive = quest:GetStateBool("ScorpionsAlive")
+        timerId = timerId2
+        ::continue_1::
     until false
 end
 

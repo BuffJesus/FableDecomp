@@ -1,0 +1,84 @@
+diff --git a/FableScriptExtender/LuaRetailResources.h b/FableScriptExtender/LuaRetailResources.h
+index 62928e2..be51965 100644
+--- a/FableScriptExtender/LuaRetailResources.h
++++ b/FableScriptExtender/LuaRetailResources.h
+@@ -2,6 +2,7 @@
+ #include "retail_barrel_watch_snapshot.h"
+ #include "retail_thing_position_list.h"
+ #include "retail_float_math.h"
++#include "retail_distance_math.h"
+ #include "retail_theresa_guard_vector.h"
+ #include "retail_villager_speech_lists.h"
+ #include "retail_owned_timer.h"
+@@ -982,6 +983,15 @@ void DestroyText(unsigned id) { Release(id, Kind::Text); }
+         } catch(...) {cleanup();throw;}
+     }
+ 
++    double DistanceBetweenThings(CScriptThing* first, CScriptThing* second) {
++        CheckOpen();
++        return RetailDistanceMath{}.BetweenThings(first, second);
++    }
++    double DistanceFromThingToPosition(CScriptThing* thing, sol::table position) {
++        CheckOpen();
++        return RetailDistanceMath{}.FromThingToPosition(thing, ReadFloatVector3(position));
++    }
++
+     sol::table NormalizeVector3(sol::table value, sol::this_state state) {
+         CheckOpen();
+         C3DVector input = ReadFloatVector3(value);
+@@ -2302,6 +2312,8 @@ inline void RegisterRetailResources(sol::state& lua) {
+     type["NewBarrelThugRemarkConversation"] = &LuaRetailResources::NewBarrelThugRemarkConversation;
+     type["AddBarrelThugRemark"] = &LuaRetailResources::AddBarrelThugRemark;
+     type["NewBarrelWatchSnapshot"] = &LuaRetailResources::NewBarrelWatchSnapshot;
++    type["DistanceBetweenThings"] = &LuaRetailResources::DistanceBetweenThings;
++    type["DistanceFromThingToPosition"] = &LuaRetailResources::DistanceFromThingToPosition;
+     type["NormalizeVector3"] = &LuaRetailResources::NormalizeVector3;
+     type["RotateVector3"] = &LuaRetailResources::RotateVector3;
+     type["ArcCosTurns"] = &LuaRetailResources::ArcCosTurns;
+diff --git a/FableScriptExtender/retail_distance_math.h b/FableScriptExtender/retail_distance_math.h
+new file mode 100644
+index 0000000..f582fd0
+--- /dev/null
++++ b/FableScriptExtender/retail_distance_math.h
+@@ -0,0 +1,41 @@
++#pragma once
++#include "FableAPI.h"
++#include "EntityScriptingAPI.h"
++#include <stdexcept>
++
++// Preserve original getter order and the un-narrowed x87 return. A caller's
++// float store is separate from this query, including comparisons before a store.
++class RetailDistanceMath {
++public:
++    using BetweenFunction = double(__fastcall*)(CScriptThing*, CScriptThing*);
++    using PositionFunction = double(__fastcall*)(CScriptThing*, const C3DVector*);
++    struct APIs { BetweenFunction between; PositionFunction position; };
++    static APIs NativeAPIs() {
++        return {ASLR<BetweenFunction>(0x00CBE512), ASLR<PositionFunction>(0x00CBE551)};
++    }
++    explicit RetailDistanceMath(APIs apis = NativeAPIs()) : apis(apis) {}
++    double BetweenThings(CScriptThing* first, CScriptThing* second) const {
++        if (!apis.between) throw std::runtime_error("Retail Thing distance unavailable");
++        CScriptThing empty{};
++        empty.pVTable = g_pCScriptThingVTable;
++        first = first ? first : &empty;
++        second = second ? second : &empty;
++        CheckPositionTable(first);
++        CheckPositionTable(second);
++        return apis.between(first, second);
++    }
++    double FromThingToPosition(CScriptThing* thing, const C3DVector& position) const {
++        if (!apis.position) throw std::runtime_error("Retail Thing/position distance unavailable");
++        CScriptThing empty{};
++        empty.pVTable = g_pCScriptThingVTable;
++        thing = thing ? thing : &empty;
++        CheckPositionTable(thing);
++        return apis.position(thing, &position);
++    }
++private:
++    static void CheckPositionTable(CScriptThing* thing) {
++        auto* table = reinterpret_cast<CScriptThingVTable*>(thing->pVTable);
++        if (!table || !table->GetPos) throw std::runtime_error("Retail Thing position vtable unavailable");
++    }
++    APIs apis;
++};

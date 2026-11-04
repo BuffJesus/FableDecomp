@@ -2,28 +2,35 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local resources = quest:RetailResources()
-    local C_stk_40, __native_condition_1, bVar6, bVar7, bVar8, bVar9, cVar10, fVar2, fVar5, f_stk_30, f_stk_38, iVar13, i_stk_2c, i_stk_3c, pCVar11, pCVar12, pExtraData, pSender, r1, uVar14, value, xStack_10, xStack_2c
-    local alive = true
+    return quest:WithRetailResources(function(resources)
+    local pickpocketTargetOwner = 0
+    local pickpocketTemporaryOwner = 0
+    local C_stk_40, __native_condition_1, bVar6, bVar7, bVar8, bVar9, cVar10, fVar2, fVar5, f_stk_30, f_stk_38, iVar13, i_stk_2c, i_stk_3c, pCVar11, pCVar12, r1, uVar14, value, xStack_10, xStack_2c
     local function __cleanup_LAB_00eeb4fa()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_10)
+        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
     end
     local function __cleanup_LAB_00eeb5dd()
         quest:PauseAllNonScriptedEntities(false)
         resources:DestroyMovie(xStack_10)
+        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
     end
+    local alive = true
     pCVar11 = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(pCVar11)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar7 = not alive
     if bVar7 then
+        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
         return
     end
     bVar7 = false
     pCVar12 = quest:GetActiveQuestName()
     quest:SetQuestAsPersistent(pCVar12, bVar7)
     r1 = quest:GetHeroTargetedThing()
+    pickpocketTargetOwner = resources:TrackThingOutput(r1)
     bVar7 = quest:IsEntityPickPocketable(r1)
     if bVar7 then
         bVar7 = quest:IsInMovieSequence()
@@ -65,6 +72,7 @@ function Main(quest)
                         if bVar9 then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_10)
+                            resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                             return
                         end
                         if 0 < i_stk_3c then
@@ -84,6 +92,7 @@ function Main(quest)
                     if bVar9 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_10)
+                        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                         return
                     end
                     bVar9 = true
@@ -99,6 +108,7 @@ function Main(quest)
                         if bVar9 then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_10)
+                            resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                             return
                         end
                         bVar9 = true
@@ -113,7 +123,9 @@ function Main(quest)
                 end
                 quest:UpdateMiniGameInfoBar(f_stk_38)
                 pCVar11 = quest:GetHeroTargetedThing()
-                r1 = pCVar11
+                pickpocketTemporaryOwner = resources:TrackThingOutput(pCVar11)
+                resources:AssignThingOutput(pickpocketTargetOwner, pCVar11)
+                resources:RetireThingOutput(pickpocketTemporaryOwner); pickpocketTemporaryOwner = 0
                 pCVar11 = nil
                 __native_condition_1 = not (r1 ~= nil and not r1:IsNull())
                 if not __native_condition_1 then
@@ -128,6 +140,7 @@ function Main(quest)
                     if bVar8 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_10)
+                        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                         return
                     end
                     if 1.0 <= f_stk_38 then goto LAB_00eeb3f9 end
@@ -136,19 +149,21 @@ function Main(quest)
                     if bVar8 then
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_10)
+                        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                         return
                     end
                     if C_stk_40 < xStack_2c then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar8 = not alive
                         if bVar8 then __cleanup_LAB_00eeb5dd(); return end
-                        iVar13 = math.random(0, 32767)
+                        iVar13 = quest:RetailRandModulo(32768)
                         if iVar13 % 100 < quest:ReadGlobalGameData(0x1018) then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar7 = not alive
                             if bVar7 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_10)
+                                resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                                 return
                             end
                             bVar7 = true
@@ -175,6 +190,7 @@ function Main(quest)
                         -- LAB_00eeb521: (native jump target)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_10)
+                        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                         return
                     end
                     C_stk_40 = (C_stk_40 + -1)
@@ -207,6 +223,7 @@ function Main(quest)
                         -- LAB_00eeb583: (native jump target)
                         quest:PauseAllNonScriptedEntities(false)
                         resources:DestroyMovie(xStack_10)
+                        resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                         return
                     end
                     quest:EntitySetCutsceneBehaviour(r1, 0)
@@ -216,22 +233,15 @@ function Main(quest)
                         if bVar7 then
                             quest:PauseAllNonScriptedEntities(false)
                             resources:DestroyMovie(xStack_10)
+                            resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                             return
                         end
-                        if not (r1 ~= nil and not r1:IsNull()) then
-                            pExtraData = 0x0
-                        else
-                            -- TODO(native): GetPThing is not a ForgeFSE binding
-                            pExtraData = r1:GetPThing()
-                        end
-                        pCVar11 = r1
-                        pSender = quest:GetHero()
-                        quest:SendEntityEvent(0x13, pSender, pCVar11)
+                        resources:SendEntityEventFromHeroWithThingData(19, r1, r1)
                     else
                         alive = not quest:IsActiveThreadTerminating()
                         bVar7 = not alive
                         if bVar7 then __cleanup_LAB_00eeb4fa(); return end
-                        iVar13 = math.random(0, 32767)
+                        iVar13 = quest:RetailRandModulo(32768)
                         i_stk_2c = (iVar13 % 100)
                         if i_stk_2c < f_stk_38 * 100.0 then
                             alive = not quest:IsActiveThreadTerminating()
@@ -239,6 +249,7 @@ function Main(quest)
                             if bVar7 then
                                 quest:PauseAllNonScriptedEntities(false)
                                 resources:DestroyMovie(xStack_10)
+                                resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
                                 return
                             end
                             quest:EntitySetAsPickPocketed(r1)
@@ -251,11 +262,13 @@ function Main(quest)
             uVar14 = 0
             pCVar12 = quest:GetActiveQuestName()
             quest:DeactivateQuestLater(pCVar12, uVar14)
+            resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
             return
         end
         alive = not quest:IsActiveThreadTerminating()
         bVar7 = not alive
         if bVar7 then
+            resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
             return
         end
     else
@@ -267,6 +280,8 @@ function Main(quest)
     pCVar12 = quest:GetActiveQuestName()
     quest:DeactivateQuestLater(pCVar12, uVar14)
     ::LAB_00eeafc7::
+    resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0
+    end)
 end
 
 function Init(quest)

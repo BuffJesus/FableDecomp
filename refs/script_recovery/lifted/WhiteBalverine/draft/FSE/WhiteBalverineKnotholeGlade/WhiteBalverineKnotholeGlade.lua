@@ -98,7 +98,7 @@ function Main(quest)
             pCVar6 = quest:GetThingWithScriptName("WB_WhiteBalverineSpawnMarker")
             bVar3 = false
             pCVar7 = pCVar6:GetPos()
-            r3 = quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", pCVar7, "WB_WhiteBalverine")
+            r3 = quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", pCVar7, "WB_WhiteBalverine", bVar3)
         end
         pCVar4 = quest:GetActiveQuestName()
         quest:SetQuestCardObjective(pCVar4, "TEXT_QUEST_WHITE_BALVERINE_KNOTHOLE_GLADE_OBJECTIVE_02", "KnotholeGlade", "KnotholeGlade")
@@ -192,7 +192,7 @@ function Main(quest)
             pCVar6 = quest:GetThingWithScriptName("WB_EscapePoint2")
             pCVar7 = pCVar6:GetPos()
             pCVar8 = {x = pCVar7.x, y = pCVar7.y, z = pCVar7.z + 9.0}
-            r4 = quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", pCVar8, "WB_WhiteBalverine")
+            r4 = quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", pCVar8, "WB_WhiteBalverine", false)
         end
         iVar1 = quest:GetStateInt("BalverineState")
         while iVar1 ~= 5 do
@@ -311,16 +311,16 @@ function Main(quest)
             pCVar6 = quest:GetThingWithScriptName("WB_BalvEscape2")
             bVar3 = false
             pCVar7 = pCVar6:GetPos()
-            r5 = quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", pCVar7, "WB_WhiteBalverine")
+            r5 = quest:CreateCreature("CREATURE_FULLMOON_BALVERINE", pCVar7, "WB_WhiteBalverine", bVar3)
         end
         pCVar6 = quest:GetThingWithScriptName("WB_Guard1Pos")
         bVar3 = false
         pCVar7 = pCVar6:GetPos()
-        r6 = quest:CreateCreature("CREATURE_KN_GUARD", pCVar7, "WB_Guard1")
+        r6 = quest:CreateCreature("CREATURE_KN_GUARD", pCVar7, "WB_Guard1", bVar3)
         pCVar6 = quest:GetThingWithScriptName("WB_Guard2Pos")
         bVar3 = false
         pCVar7 = pCVar6:GetPos()
-        r7 = quest:CreateCreature("CREATURE_KN_GUARD", pCVar7, "WB_Guard2")
+        r7 = quest:CreateCreature("CREATURE_KN_GUARD", pCVar7, "WB_Guard2", bVar3)
         iVar1 = quest:GetStateInt("BalverineState")
         while iVar1 ~= 7 do
             alive = quest:NewScriptFrame()

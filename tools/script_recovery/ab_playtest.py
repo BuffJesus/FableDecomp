@@ -30,7 +30,8 @@ RUNS = ROOT / 'work' / 'ab_runs'
 
 
 def bundle_dir(name: str) -> Path:
-    d = WORK / f'local-candidate-{name}'
+    requested = Path(name)
+    d = requested if requested.is_absolute() else WORK / f'local-candidate-{name}'
     if not d.is_dir():
         sys.exit(f'no bundle {d}')
     return d

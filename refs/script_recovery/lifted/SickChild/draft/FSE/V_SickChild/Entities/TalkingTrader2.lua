@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar5, cVar6, c_stk_a9, ctr_90, fVar3, fret_0, fret_00, fret_01, fret_02, iVar13, iVar14, iVar15, iVar16, iVar9, pCVar10, pCVar7, pcVar12, pvVar8, r1, r2, r3, r4, this_00, uVar11, uVar4, u_stk_94, xStack_34, xStack_44, xStack_5a, xStack_98, xStack_a8, xStack_b0, x_stk_18, x_stk_1a, x_stk_8e, x_stk_c
+    local __native_condition_1, bVar5, cVar6, c_stk_a9, ctr_90, fVar3, fret_0, fret_00, fret_01, fret_02, hitLine, iVar13, iVar14, iVar15, iVar16, iVar9, pCVar10, pCVar7, pcVar12, pvVar8, r1, r2, r3, r4, this_00, uVar11, uVar4, u_stk_94, xStack_34, xStack_44, xStack_5a, xStack_a8, xStack_b0, x_stk_18, x_stk_1a, x_stk_c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -57,6 +57,7 @@ function Main(quest, me)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
                 if not bVar5 then
+                    xStack_b0 = ""
                     iVar9 = __native_entity_state:GetStateInt("TimesTalkedTo")
                     if iVar9 == 0 then
                         pcVar12 = "TEXT_QST_B10_TRADERB_INTRO"
@@ -67,7 +68,7 @@ function Main(quest, me)
                             goto LAB_00ecccaa
                         end
                         if iVar9 == 2 then
-                            -- TODO(native): CCharString::operator=(&xStack_b0,"TEXT_QST_B10_TRADERB_REPEATB_10");
+                            xStack_b0 = "TEXT_QST_B10_TRADERB_REPEATB_10"
                             __native_entity_state:SetStateInt("TimesTalkedTo", 0xffffffff)
                         end
                     end
@@ -75,7 +76,7 @@ function Main(quest, me)
                     ::LAB_00ecccaa::
                     xStack_b0 = pcVar12
                     ::FLOW_past_lab_00ecccaa::
-                    __native_entity_state:SetStateInt("TimesTalkedTo", __native_entity_state:GetStateInt("TimesTalkedTo") + 1)
+                    __native_entity_state:SetStateInt("TimesTalkedTo", ((__native_entity_state:GetStateInt("TimesTalkedTo") + 1 + 2147483648) % 4294967296 - 2147483648))
                     __native_condition_1 = not (r1 ~= nil and not r1:IsNull())
                     if not __native_condition_1 then
                         cVar6 = (r1 ~= nil and r1:IsAlive())
@@ -87,11 +88,8 @@ function Main(quest, me)
                         if bVar5 then goto LAB_00ecd272 end
                         xStack_34 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        x_stk_18 = resources:ScriptThing(xStack_a8)
-                        pCVar7 = x_stk_18
-                        fret_00 = quest:GetHealth(pCVar7)
-                        fVar3 = 0.0
-                        if fVar3 < fret_00 then
+                        pCVar7, x_stk_18 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_a8, 0.0) then
                             iVar15 = 0
                             iVar14 = 1
                             iVar13 = 0
@@ -99,6 +97,11 @@ function Main(quest, me)
                             pcVar12 = "TEXT_QST_B10_TRADERB_OTHERTRADERDEAD_10"
                             pCVar7 = quest:GetHero()
                             r2 = me:Speak(pCVar7, pcVar12, iVar9, (iVar13 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                            if not r2 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_34)
+                                goto LAB_00ecd29f
+                            end
                             iVar9 = me:IsPerformingScriptTask()
                             cVar6 = iVar9
                             while cVar6 do
@@ -135,11 +138,8 @@ function Main(quest, me)
                     if not bVar5 then
                         xStack_44 = resources:StartMovie("")
                         quest:PauseAllNonScriptedEntities(true)
-                        x_stk_c = resources:ScriptThing(xStack_a8)
-                        pCVar7 = x_stk_c
-                        fret_0 = quest:GetHealth(pCVar7)
-                        fVar3 = 0.0
-                        if fVar3 < fret_0 then
+                        pCVar7, x_stk_c = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_a8, 0.0) then
                             iVar16 = 0
                             iVar15 = 1
                             iVar14 = 0
@@ -147,6 +147,11 @@ function Main(quest, me)
                             pvVar8 = xStack_b0
                             iVar9 = quest:GetHero()
                             r3 = me:Speak(iVar9, pvVar8, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                            if not r3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_44)
+                                goto LAB_00ecd29f
+                            end
                             iVar9 = me:IsPerformingScriptTask()
                             cVar6 = iVar9
                             while cVar6 do
@@ -183,27 +188,7 @@ function Main(quest, me)
             break
             ::FLOW_past_lab_00ecd29f::
             ::LAB_00eccf0a::
-            cVar6 = me:MsgIsHitByHero()
-            if not cVar6 then
-                bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
-                if bVar5 then
-                    bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
-                    if not bVar5 then goto LAB_00eccf8f end
-                end
-                goto LAB_00eccfad
-            else
-                goto LAB_00eccf8f
-            end
-            goto FLOW_past_lab_00eccfad
-            ::LAB_00eccfad::
-            c_stk_a9 = 0
-            ::FLOW_past_lab_00eccfad::
-            goto FLOW_past_lab_00eccf8f
-            ::LAB_00eccf8f::
-            fret_01 = quest:GetHealth(me)
-            c_stk_a9 = 1
-            if fret_01 <= 0.0 then goto LAB_00eccfad end
-            ::FLOW_past_lab_00eccf8f::
+            c_stk_a9 = resources:IsHitByHeroExceptAbilityAndHealthAbove(me, 14, 0.0) and 1 or 0
             if c_stk_a9 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar5 = not alive
@@ -217,29 +202,30 @@ function Main(quest, me)
                 end
                 pCVar10 = tostring(ctr_90)
                 pCVar10 = ("TEXT_QST_B10_TRADERB_ONHIT_" .. pCVar10)
-                xStack_98 = pCVar10
-                bVar5 = quest:TextEntryExists(xStack_98)
+                hitLine = pCVar10
+                bVar5 = quest:TextEntryExists(hitLine)
                 if not bVar5 then
                     ctr_90 = 10
                     pCVar10 = tostring(10)
                     pCVar10 = ("TEXT_QST_B10_TRADERB_ONHIT_" .. pCVar10)
-                    xStack_98 = pCVar10
+                    hitLine = pCVar10
                 end
                 ctr_90 = ctr_90 + 0xa
                 xStack_5a = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                x_stk_1a = resources:ScriptThing(xStack_a8)
-                pCVar7 = x_stk_1a
-                fret_02 = quest:GetHealth(pCVar7)
-                fVar3 = 0.0
-                if fVar3 < fret_02 then
+                pCVar7, x_stk_1a = nil, nil
+                if resources:ResourceThingHealthAbove(xStack_a8, 0.0) then
                     iVar16 = 0
                     iVar15 = 1
                     iVar14 = 0
                     iVar13 = 0
-                    pvVar8 = x_stk_8e
+                    pvVar8 = hitLine
                     iVar9 = quest:GetHero()
                     r4 = me:Speak(iVar9, pvVar8, iVar13, (iVar14 ~= 0), (iVar15 ~= 0), (iVar16 ~= 0))
+                    if not r4 then
+                        quest:PauseAllNonScriptedEntities(false)
+                        goto LAB_00ecd292
+                    end
                     iVar9 = me:IsPerformingScriptTask()
                     cVar6 = iVar9
                     while cVar6 do
@@ -265,7 +251,7 @@ function Main(quest, me)
                     goto LAB_00ecd29f
                     ::FLOW_past_lab_00ecd292::
                 end
-                __native_entity_state:SetStateInt("TimesHit", __native_entity_state:GetStateInt("TimesHit") + 1)
+                __native_entity_state:SetStateInt("TimesHit", ((__native_entity_state:GetStateInt("TimesHit") + 1 + 2147483648) % 4294967296 - 2147483648))
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_5a)
             end

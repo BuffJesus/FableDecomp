@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local CVar18, CVar25, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, bVar10, bVar11, bVar4, bVar6, bVar8, bVar9, cVar7, c_stk_155, c_stk_171, fVar26, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar14, iVar17, iVar27, iVar28, native_arg_sequence_1, native_arg_sequence_2, native_arg_sequence_3, p0, pCVar12, pCVar13, pCVar15, pCVar20, pcVar21, pvVar16, r1, r2, r3, r4, r5, r6, r7, r8, uVar22, uVar5, u_stk_170, xStack_124, xStack_148, xStack_150, xStack_154, xStack_15c, xStack_160, xStack_164, xStack_168, xStack_16c, xStack_1c, xStack_2c, xStack_b8, x_stk_c
+    local CVar18, CVar25, __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, __native_condition_6, __native_condition_7, bVar10, bVar11, bVar4, bVar6, bVar8, bVar9, cVar7, c_stk_155, c_stk_171, fVar26, fVar3, fret_0, fret_00, fret_01, fret_02, fret_03, iVar14, iVar17, iVar27, iVar28, native_arg_sequence_1, native_arg_sequence_2, p0, pCVar12, pCVar13, pCVar15, pCVar20, pcVar21, pvVar16, r1, r2, r3, r4, r5, r6, r7, r8, uVar22, uVar5, u_stk_170, xStack_124, xStack_148, xStack_14c, xStack_150, xStack_154, xStack_15c, xStack_160, xStack_164, xStack_168, xStack_16c, xStack_1c, xStack_2c, xStack_b8, x_stk_c
     local alive = true
     bVar4 = false
     bVar9 = false
@@ -191,7 +191,7 @@ function Main(quest, me)
                         quest:AddLineToConversation(iVar14, pCVar20, me, pCVar15, uVar22)
                         c_stk_155 = 1
                     else
-                        iVar17 = math.random(0, 32767)
+                        iVar17 = quest:RetailRandModulo(32768)
                         if iVar17 % 5 == 0 then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar6 = not alive
@@ -238,21 +238,12 @@ function Main(quest, me)
                 bVar6 = not alive
                 if bVar6 then goto LAB_00e005d5 end
                 iVar17 = IsPlayerThreateningEntity(me)
-                native_arg_sequence_2 = false
-                if iVar17 == 0 then
-                    native_arg_sequence_2 = true
-                else
-                    native_arg_sequence_2 = false
+                __native_condition_2 = iVar17 == 0
+                if not __native_condition_2 then
+                    iVar17 = quest:RetailRandModulo(32768)
+                    __native_condition_2 = iVar17 % 3 ~= 0
                 end
-                if not native_arg_sequence_2 then
-                    iVar17 = math.random(0, 32767)
-                    if iVar17 % 3 ~= 0 then
-                        native_arg_sequence_2 = true
-                    else
-                        native_arg_sequence_2 = false
-                    end
-                end
-                if native_arg_sequence_2 then
+                if __native_condition_2 then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar6 = not alive
                     if bVar6 then goto LAB_00e005d5 end
@@ -425,9 +416,12 @@ function Main(quest, me)
         if not bVar10 then
             quest:SetStateInt("TradersFollowing", quest:GetStateInt("TradersFollowing") + 1)
             CVar18 = 0xa
+            xStack_15c = ""
+            xStack_160 = ""
             xStack_150 = quest:RegisterTimer()
             quest:SetTimer(xStack_150, 0x14)
             xStack_154 = quest:RegisterTimer()
+            xStack_14c = 0x1
             alive = not quest:IsActiveThreadTerminating()
             bVar10 = not alive
             uVar5 = u_stk_170
@@ -486,6 +480,11 @@ function Main(quest, me)
                             pvVar16 = xStack_160
                             pCVar20 = quest:GetHero()
                             r3 = me:Speak(pCVar20, pvVar16, iVar17, (iVar14 ~= 0), (iVar27 ~= 0), (iVar28 ~= 0))
+                            if not r3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_1c)
+                                goto LAB_00e005b1
+                            end
                             iVar17 = me:IsPerformingScriptTask()
                             cVar7 = iVar17
                             while cVar7 do
@@ -513,17 +512,17 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_1c)
                     end
                     iVar17 = quest:GetTimer(xStack_16c)
-                    __native_condition_3 = iVar17 == 0
-                    if __native_condition_3 then
+                    __native_condition_4 = iVar17 == 0
+                    if __native_condition_4 then
                         iVar17 = IsPlayerThreateningEntity(me)
-                        __native_condition_3 = iVar17 ~= 0
+                        __native_condition_4 = iVar17 ~= 0
                     end
-                    __native_condition_2 = __native_condition_3
-                    if __native_condition_2 then
+                    __native_condition_3 = __native_condition_4
+                    if __native_condition_3 then
                         bVar10 = quest:IsPlayerHoldingLockTargetButton()
-                        __native_condition_2 = bVar10
+                        __native_condition_3 = bVar10
                     end
-                    if __native_condition_2 then
+                    if __native_condition_3 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar10 = not alive
                         if bVar10 then goto LAB_00e005b1 end
@@ -572,12 +571,12 @@ function Main(quest, me)
                         if bVar10 then goto LAB_00e005b1 end
                         fret_01 = quest:GetHealth(me)
                         uVar5 = u_stk_170
-                        __native_condition_4 = fret_01 <= 5.0
-                        if not __native_condition_4 then
+                        __native_condition_5 = fret_01 <= 5.0
+                        if not __native_condition_5 then
                             iVar17 = quest:GetTimer(xStack_154)
-                            __native_condition_4 = iVar17 ~= 0
+                            __native_condition_5 = iVar17 ~= 0
                         end
-                        if __native_condition_4 then
+                        if __native_condition_5 then
                             goto LAB_00dff54a
                         else
                             bVar10 = me:MsgIsHitByHero()
@@ -621,18 +620,18 @@ function Main(quest, me)
                                 if not c_stk_171 then
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar10 = not alive
-                                    CVar18 = 0x1
+                                    CVar18 = xStack_14c
                                     if bVar10 then goto LAB_00e005b1 end
-                                    pCVar12 = tostring(0x1)
+                                    pCVar12 = tostring(xStack_14c)
                                     pCVar12 = ("SND_MM_TRADER_C_SCREAM_0" .. pCVar12)
                                     r4 = quest:PlaySoundOnThing(me, pCVar12)
                                     bVar10 = CVar18 == 0x4
                                 else
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar10 = not alive
-                                    CVar18 = 0x1
+                                    CVar18 = xStack_14c
                                     if bVar10 then goto LAB_00e005b1 end
-                                    pCVar12 = tostring(0x1)
+                                    pCVar12 = tostring(xStack_14c)
                                     pCVar12 = ("SND_MM_TRADER_B_SCREAM_0" .. pCVar12)
                                     r5 = quest:PlaySoundOnThing(me, pCVar12)
                                     bVar10 = CVar18 == 0x3
@@ -640,9 +639,9 @@ function Main(quest, me)
                             else
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar10 = not alive
-                                CVar18 = 0x1
+                                CVar18 = xStack_14c
                                 if bVar10 then goto LAB_00e005b1 end
-                                pCVar12 = tostring(0x1)
+                                pCVar12 = tostring(xStack_14c)
                                 pCVar12 = ("SND_MM_TRADER_A_SCREAM_0" .. pCVar12)
                                 r6 = quest:PlaySoundOnThing(me, pCVar12)
                                 bVar10 = CVar18 == 0x3
@@ -737,22 +736,22 @@ function Main(quest, me)
                     if (u_stk_170 & 0x8000) ~= 0 then
                         u_stk_170 = u_stk_170 & 0xffff7fff
                     end
-                    native_arg_sequence_3 = false
+                    native_arg_sequence_2 = false
                     if bVar10 then
-                        native_arg_sequence_3 = true
+                        native_arg_sequence_2 = true
                     else
-                        native_arg_sequence_3 = false
+                        native_arg_sequence_2 = false
                     end
-                    if native_arg_sequence_3 then
+                    if native_arg_sequence_2 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar10 = not alive
                         if bVar10 then
-                            native_arg_sequence_3 = true
+                            native_arg_sequence_2 = true
                         else
-                            native_arg_sequence_3 = false
+                            native_arg_sequence_2 = false
                         end
                     end
-                    if native_arg_sequence_3 then goto LAB_00e005b1 end
+                    if native_arg_sequence_2 then goto LAB_00e005b1 end
                     xStack_168 = me:MsgExpressionPerformedTo()
                     bVar10 = xStack_168 ~= nil
                     if bVar10 then
@@ -834,6 +833,11 @@ function Main(quest, me)
                             pvVar16 = xStack_160
                             pCVar20 = quest:GetHero()
                             r8 = me:Speak(pCVar20, pvVar16, iVar17, (iVar14 ~= 0), (iVar27 ~= 0), (iVar28 ~= 0))
+                            if not r8 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_2c)
+                                goto LAB_00e005ac
+                            end
                             iVar17 = me:IsPerformingScriptTask()
                             cVar7 = iVar17
                             while cVar7 do
@@ -861,17 +865,17 @@ function Main(quest, me)
                         resources:DestroyMovie(xStack_2c)
                     end
                     iVar17 = quest:GetTimer(xStack_16c)
-                    __native_condition_6 = iVar17 == 0
-                    if __native_condition_6 then
+                    __native_condition_7 = iVar17 == 0
+                    if __native_condition_7 then
                         iVar17 = IsPlayerThreateningEntity(me)
-                        __native_condition_6 = iVar17 ~= 0
+                        __native_condition_7 = iVar17 ~= 0
                     end
-                    __native_condition_5 = __native_condition_6
-                    if __native_condition_5 then
+                    __native_condition_6 = __native_condition_7
+                    if __native_condition_6 then
                         bVar10 = quest:IsPlayerHoldingLockTargetButton()
-                        __native_condition_5 = bVar10
+                        __native_condition_6 = bVar10
                     end
-                    if __native_condition_5 then
+                    if __native_condition_6 then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar10 = not alive
                         if bVar10 then goto LAB_00e005ac end

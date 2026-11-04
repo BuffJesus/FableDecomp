@@ -57,7 +57,7 @@ function Main(quest, me)
     end
     bVar2 = false
     fret_0 = quest:GetHealth(me)
-    quest:ModifyThingHealth(me, (6.0 - fret_0), bVar2)
+    quest:ModifyThingHealth(me, (string.unpack("<f", string.pack("<f", (6.0 - fret_0)))), bVar2)
     if quest:GetStateBool("QueenHornetAttacks") then
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive

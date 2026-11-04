@@ -96,6 +96,9 @@ function Main(quest, me)
                     pcVar10 = "TEXT_QST_028_APPLEGIRL_CHAT"
                     pCVar5 = quest:GetHero()
                     r2 = me:Speak(pCVar5, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                    if not r2 then
+                        goto LAB_00d3d948
+                    end
                     iVar7 = me:IsPerformingScriptTask()
                     cVar3 = iVar7
                     while cVar3 do
@@ -161,6 +164,9 @@ function Main(quest, me)
                     pcVar10 = "TEXT_QST_028_APPLEGIRL_IMPLORE"
                     pCVar6 = quest:GetHero()
                     r3 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                    if not r3 then
+                        goto LAB_00d3d948
+                    end
                     iVar7 = me:IsPerformingScriptTask()
                     cVar3 = iVar7
                     while cVar3 do
@@ -342,6 +348,9 @@ function Main(quest, me)
                                     pcVar10 = "TEXT_QST_028_APPLEGIRL_THANKS"
                                     pCVar6 = quest:GetHero()
                                     r4 = me:Speak(pCVar6, pcVar10, iVar7, (iVar4 ~= 0), (iVar11 ~= 0), (iVar12 ~= 0))
+                                    if not r4 then
+                                        goto LAB_00d3e06c
+                                    end
                                     iVar7 = me:IsPerformingScriptTask()
                                     cVar3 = iVar7
                                     while cVar3 do

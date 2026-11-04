@@ -148,6 +148,12 @@ function Main(quest, me)
                                     pvVar12 = pCVar11
                                     pCVar7 = quest:GetHero()
                                     r2 = me:Speak(pCVar7, pvVar12, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                    if not r2 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(xStack_c8)
+                                        resources:ReleaseResource(xStack_1b0)
+                                        return
+                                    end
                                     iVar19 = me:IsPerformingScriptTask()
                                     cVar6 = iVar19
                                     while cVar6 do
@@ -211,6 +217,12 @@ function Main(quest, me)
                                     pcVar14 = "TEXT_QST_081_ATTACKED"
                                     pCVar7 = quest:GetHero()
                                     r3 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                    if not r3 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        resources:DestroyMovie(xStack_d8)
+                                        resources:ReleaseResource(xStack_1b0)
+                                        return
+                                    end
                                     iVar19 = me:IsPerformingScriptTask()
                                     cVar6 = iVar19
                                     while cVar6 do
@@ -291,6 +303,11 @@ function Main(quest, me)
                         pcVar14 = "TEXT_QST_081_ATTACKED"
                         pCVar7 = quest:GetHero()
                         r4 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                        if not r4 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            this_00 = xStack_b8
+                            goto LAB_00e91ef9
+                        end
                         iVar19 = me:IsPerformingScriptTask()
                         cVar6 = iVar19
                         while cVar6 do
@@ -346,6 +363,9 @@ function Main(quest, me)
                                     pvVar12 = pCVar11
                                     pCVar7 = quest:GetHero()
                                     r5 = me:Speak(pCVar7, pvVar12, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                    if not r5 then
+                                        goto LAB_00e91ccb
+                                    end
                                     iVar19 = me:IsPerformingScriptTask()
                                     cVar6 = iVar19
                                     while cVar6 do
@@ -381,6 +401,9 @@ function Main(quest, me)
                                 pcVar14 = "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE"
                                 pCVar10 = quest:GetHero()
                                 r6 = me:Speak(pCVar10, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                if not r6 then
+                                    goto LAB_00e91ee8
+                                end
                                 iVar19 = me:IsPerformingScriptTask()
                                 cVar6 = iVar19
                                 while cVar6 do
@@ -423,6 +446,9 @@ function Main(quest, me)
                                         pcVar14 = "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE_NO"
                                         pCVar7 = quest:GetHero()
                                         r7 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                        if not r7 then
+                                            goto LAB_00e91ee8
+                                        end
                                         iVar19 = me:IsPerformingScriptTask()
                                         cVar6 = iVar19
                                         while cVar6 do
@@ -464,6 +490,9 @@ function Main(quest, me)
                                 pcVar14 = "TEXT_QST_081_WAITING_FOR_WIZARD_BATTLE_YES"
                                 pCVar7 = quest:GetHero()
                                 r8 = me:Speak(pCVar7, pcVar14, iVar19, (iVar18 ~= 0), (iVar17 ~= 0), (iVar20 ~= 0))
+                                if not r8 then
+                                    goto LAB_00e91ccb
+                                end
                                 iVar19 = me:IsPerformingScriptTask()
                                 cVar6 = iVar19
                                 while cVar6 do

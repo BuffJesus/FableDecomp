@@ -488,6 +488,18 @@
         "TrophyDealerInCave": "V_TrophyDealer/Entities/TrophyDealerInCave",
         "DemonDoorFace": "V_TrophyDealer/Entities/DemonDoorFace"
       },
+      "blockingSpeechCancellation": {
+        "FSE/V_TrophyDealer/Entities/DemonDoorFace.lua": [
+          {
+            "line": 71,
+            "actor": "me",
+            "query": "iVar8",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_20)\n                            resources:ReleaseResource(xStack_30)\n                            return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 3,
         "functions": 12,

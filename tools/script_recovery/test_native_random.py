@@ -9,6 +9,24 @@ from tools.script_recovery.convert_new_oakvale import convert, ROOT
 
 
 class RetailRandomTests(unittest.TestCase):
+    def test_in_place_modulo_uses_native_rng_and_preserves_later_uses(self):
+        fn = {'calls': [{'currentName': 'MSVCR71.DLL::rand', 'site': '0x1000', 'target': hex(RAND_THUNK)}]}
+        raw = b'\xe8' + (RAND_THUNK - 0x1005).to_bytes(4, 'little', signed=True)
+        for callee in ('rand', 'ENGINE_Rand'):
+            with self.subTest(callee=callee):
+                source = f'int iVar2;\niVar2 = {callee}();\niVar2 = iVar2 % 10;\nuse(iVar2);'
+                recovered, evidence = fold_retail_random(source, fn, lambda *_: raw)
+                self.assertEqual(recovered, 'int iVar2;\niVar2 = GSI->RetailRandModulo(10);\nuse(iVar2);')
+                self.assertEqual(len(evidence), 1)
+                for candidate in (source.replace('% 10', '% iVar2'),
+                                  source.replace('% 10', '% 0'),
+                                  source.replace('% 10', '% -1'),
+                                  source.replace('();', '(); use(iVar2);', 1),
+                                  source.replace('();', '(); /* retained */', 1),
+                                  source + '\niVar3 = ENGINE_Rand();'):
+                    self.assertEqual(fold_retail_random(candidate, fn, lambda *_: raw), (candidate, []))
+                self.assertEqual(fold_retail_random(source, fn, lambda *_: b'\x90' * 5), (source, []))
+
     def test_villager_random_condition_retains_short_circuit_draw_timing(self):
         from tools.script_recovery.lift_native_lua import RData, load_slots, load_manifest, load_thing_tables, annotate, Lifter
         from tools.script_recovery.native_self_wrapper import fold_self_wrapper_arguments

@@ -27,15 +27,36 @@ def source(request, tmp_path_factory):
 HARNESS = '''
 return function(source, scenario, duration)
     local frame, rewards, destroyed, removed, deactivated = 0, 0, 0, 0, 0
+    local tracked, movie, retired, closed = false, false, 0, 0
     local bars = {}
     local target, hero, resources, quest = {}, {}, {}, {}
     function target:IsNull() return scenario == 'null' and frame >= 3 end
     function target:IsAlive() return not (scenario == 'dead' and frame >= 3) end
     function hero:MsgIsHitBy(s) assert(s == ''); return scenario == 'hit' and frame >= 3 end
-    function resources:StartMovie(s) assert(s == ''); return 17 end
-    function resources:DestroyMovie(id) assert(id == 17); destroyed = destroyed + 1 end
+    function resources:StartMovie(s) assert(s == '' and tracked and not movie); movie = true; return 17 end
+    function resources:DestroyMovie(id)
+        assert(id == 17 and movie); movie = false; destroyed = destroyed + 1
+    end
+    function resources:TrackThingOutput(t)
+        assert(t == target and not tracked); tracked = true; return 19
+    end
+    function resources:RetireThingOutput(id)
+        if id == 0 then return end
+        assert(id == 19 and tracked and not movie)
+        tracked = false; retired = retired + 1
+    end
     function quest:RetailResources() return resources end
+    function quest:WithRetailResources(body)
+        local ok, result = pcall(body, resources)
+        -- The host closes remaining owners after callback errors as well as returns.
+        if movie then resources:DestroyMovie(17) end
+        if tracked then resources:RetireThingOutput(19) end
+        closed = closed + 1
+        if not ok then error(result) end
+        return result
+    end
     function quest:GetHero() return hero end
+    function quest:RegisterQuestConsciousCondition(actor) assert(actor == hero and frame == 0) end
     function quest:NewScriptFrame()
         frame = frame + 1; assert(frame < 20, 'progress loop failed to terminate')
         return not self:IsActiveThreadTerminating()
@@ -60,7 +81,10 @@ return function(source, scenario, duration)
     function quest:EntitySetFacingAngleTowardsThing(h,t,b) assert(h == hero and t == target and b) end
     function quest:IsDPadButtonHeldForExpression() return scenario ~= 'release' or frame < 3 end
     function quest:IsDeedWitnessed(id) assert(id == 23); return scenario == 'witness' and frame >= 3 end
-    function quest:UpdateMiniGameInfoBar(value) bars[#bars + 1] = value end
+    function quest:UpdateMiniGameInfoBar(value)
+        bars[#bars + 1] = value
+        if scenario == 'callback_error' then error('BAR_CALLBACK_ERROR') end
+    end
     function quest:RemoveOpinionDeedStillSearchingForWitnesses(h,id)
         assert(h == hero and id == 23); removed = removed + 1
     end
@@ -71,9 +95,17 @@ return function(source, scenario, duration)
     function quest:DeactivateQuestLater(name,delay)
         assert(name == 'expression' and delay == 0); deactivated = deactivated + 1
     end
+    function quest:RetailRandModulo(bound) assert(bound == 32768); return 0 end
     math.random = function() return 0 end
-    assert(load(source))(); Main(quest)
-    return bars, rewards, destroyed, removed, deactivated
+    assert(load(source))()
+    local ok, reason = pcall(Main, quest)
+    if scenario == 'callback_error' then
+        assert(not ok and string.find(reason, 'BAR_CALLBACK_ERROR', 1, true), reason)
+    else
+        assert(ok, reason)
+    end
+    assert(not movie and not tracked)
+    return bars, rewards, destroyed, removed, deactivated, retired, closed
 end
 '''
 
@@ -84,18 +116,29 @@ end
 def test_progress_and_cancellation(source, readable, scenario, duration):
     if readable:
         source, _ = readable_file(source, style=True, frame_returns_alive=True)
-    bars, rewards, destroyed, removed, deactivated = LuaRuntime().execute(HARNESS)(source, scenario, duration)
+    bars, rewards, destroyed, removed, deactivated, retired, closed = LuaRuntime().execute(HARNESS)(source, scenario, duration)
     bars = list(bars.values())
     assert rewards == (scenario == 'complete')
     assert destroyed == (scenario != 'ineligible')
     assert removed == (scenario not in ('ineligible', 'terminate'))
     assert deactivated == (scenario != 'terminate')
+    assert retired == 1 and closed == 1
     if scenario == 'ineligible':
         assert bars == []
     else:
         ticks = duration * 4
         expected = [1 - remaining / ticks for remaining in range(int(ticks), -1, -1)]
         assert bars == pytest.approx(expected if scenario == 'complete' else expected[:1 if scenario == 'terminate' else 2])
+
+
+@pytest.mark.parametrize('readable', [False, True])
+def test_progress_callback_error_closes_movie_before_target(source, readable):
+    if readable:
+        source, _ = readable_file(source, style=True, frame_returns_alive=True)
+    bars, rewards, destroyed, removed, deactivated, retired, closed = LuaRuntime().execute(HARNESS)(
+        source, 'callback_error', 1)
+    assert list(bars.values()) == [0]
+    assert (rewards, destroyed, removed, deactivated, retired, closed) == (0, 1, 0, 0, 1, 1)
 
 
 @pytest.mark.parametrize('suffix', ['consume(&CStack_20);\nx = (float)CStack_20;', 'x = CStack_20;'])

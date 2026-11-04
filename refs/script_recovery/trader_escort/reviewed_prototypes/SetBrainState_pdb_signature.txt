@@ -1,0 +1,8 @@
+﻿Summary for D:\Documents\FableTLC\debug_build\Ego_r.pdb
+  Size: 133565440 bytes
+  Guid: {774B3052-BDD8-43B4-808D-48481CC576CE}
+  Age: 4
+  Attributes: HasPrivateSymbols 
+---SYMBOLS & TYPES BY NAME---
+[1 occurrences] - NScript::CQ_TraderEscortScript::CDarkwoodTrader::SetBrainState
+  func [0x00e44180+31 - 0x00e44545-18 | sizeof=965] (FPO) void NScript::CQ_TraderEscortScript::CDarkwoodTrader::SetBrainState(long brain_state)

@@ -2,7 +2,6 @@
 local MakeBriarRoseComment
 function MakeBriarRoseComment(quest, me, commentToMake)
     local isConversationActive, getHero
-    local hero = quest:GetHero()
     isConversationActive = quest:IsConversationActive(quest:GetStateInt("ConversationIndex"))
     if not isConversationActive then
         quest:SetTimer(quest:GetStateInt("CommentaryTimer"), 15)
@@ -12,9 +11,9 @@ function MakeBriarRoseComment(quest, me, commentToMake)
             if scratchValue then
                 local conversationID = quest:AddNewConversation(briarRose, false, false)
                 quest:SetStateInt("ConversationIndex", conversationID)
-                getHero = hero
+                getHero = quest:GetHero()
                 quest:AddPersonToConversation(conversationID, getHero)
-                local pListener = hero
+                local pListener = quest:GetHero()
                 getHero = briarRose
                 isConversationActive = false
                 local pLine = "TEXT_QST_B02_BRIARROSE_" .. commentToMake

@@ -1,0 +1,18 @@
+diff --git a/FableScriptExtender/NoviUnitBindings.h b/FableScriptExtender/NoviUnitBindings.h
+index 4654ca2..a39914d 100644
+--- a/FableScriptExtender/NoviUnitBindings.h
++++ b/FableScriptExtender/NoviUnitBindings.h
+@@ -567,6 +567,13 @@ inline void RegisterNoviUnitBindings(sol::usertype<LuaQuestState>& quest, sol::u
+         FableString name(sourceName.c_str());
+         return vt->MsgIsHitByAnyAggressiveSpecialAbilityFrom(me, name.get());
+     };
++    // CScriptThing slot 0xB8: retail wrapper 0x004AADC0 checks Data and
++    // tail-calls CGameScriptThing slot 0xB8, bool, no explicit arguments.
++    thing["MsgHitEnemyWithMeleeWeapon"] = [](CScriptThing* me) -> bool {
++        if (!me || !me->pVTable) return false;
++        auto* vt = reinterpret_cast<CScriptThingVTable*>(me->pVTable);
++        return vt->MsgHitEnemyWithMeleeWeapon ? vt->MsgHitEnemyWithMeleeWeapon(me) : false;
++    };
+     // ---- friendly-fire messages, no operand (CScriptThing slots 0xBC / 0xC4 / 0xCC) --------------
+     thing["MsgHitFriendWithMeleeWeapon"] = [](CScriptThing* me) -> bool {
+         if (!me || !me->pVTable) return false;

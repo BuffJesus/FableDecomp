@@ -2282,7 +2282,7 @@
             "DeregisterTimer",
             "DeregisterTimer"
           ],
-          "lines": 1270,
+          "lines": 1275,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -4710,7 +4710,7 @@
             "GetTimer",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "SetTimer",
@@ -5622,6 +5622,8 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "ClearCommands",
             "RESOURCE_StartMovie",
@@ -5654,7 +5656,7 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 275,
+          "lines": 285,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -5678,6 +5680,7 @@
             "goto LAB_00d44498;",
             "if (!bVar4) goto LAB_00d441a3;",
             "if (!bVar4) goto LAB_00d44243;",
+            "if (!bVar4) goto LAB_00d44243_c1;",
             "if (bVar4) goto LAB_00d444a1;"
           ],
           "nativeLabels": [
@@ -5794,6 +5797,400 @@
         "KillBird": "GuildTraining/Entities/KillBird",
         "PreMeleeMaze": "GuildTraining/Entities/PreMeleeMaze"
       },
+      "blockingSpeechCancellation": {
+        "FSE/GuildTraining/Entities/AppleGirl.lua": [
+          {
+            "line": 98,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d3d948",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 163,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d3d948",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 344,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d3e06c",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTraining/Entities/ApprenticeSpeedTest.lua": [
+          {
+            "line": 177,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_20c)\n                                quest:DeregisterTimer(i_stk_250)\n                                quest:DeregisterTimer(i_stk_258)\n                                quest:DeregisterTimer(iStack_254)\n                                goto LAB_00d40749",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 252,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d405d6",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 313,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d405d6",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 454,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                pCVar11 = xStack_c4\n                                resources:DestroyMovie(pCVar11)\n                                goto LAB_00d405fc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 501,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    pCVar11 = xStack_100\n                                    resources:DestroyMovie(pCVar11)\n                                    goto LAB_00d405fc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 559,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    pCVar11 = xStack_d4\n                                    resources:DestroyMovie(pCVar11)\n                                    goto LAB_00d405fc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 716,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                pCVar11 = xStack_1fc\n                                resources:DestroyMovie(pCVar11)\n                                goto LAB_00d405fc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 785,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    pCVar11 = xStack_1fc\n                                    resources:DestroyMovie(pCVar11)\n                                    goto LAB_00d405fc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 837,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    pCVar11 = xStack_1fc\n                                    resources:DestroyMovie(pCVar11)\n                                    goto LAB_00d405fc",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 992,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d402b3",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1027,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                        goto FLOW_after_lab_00d402b3",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1222,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "__region_LAB_00d402b3_c31(); goto LAB_00d405fc_c31",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1253,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "__region_LAB_00d40716_c31(); goto LAB_00d405fc_c31",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTraining/Entities/MeleeApprentice.lua": [
+          {
+            "line": 196,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            pCVar9 = xStack_74\n                            __cleanup_LAB_00d41a02(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 265,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            pCVar9 = xStack_94\n                            __cleanup_LAB_00d41a02(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 313,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                pCVar9 = xStack_84\n                                __cleanup_LAB_00d41a02(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 369,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    pCVar9 = xStack_64\n                                    resources:DestroyMovie(pCVar9)\n                                    resources:ReleaseResource(xStack_f8)\n                                    return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 415,
+            "actor": "me",
+            "query": "iVar11",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    __cleanup_LAB_00d419fe(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTraining/Entities/CombatApprentice.lua": [
+          {
+            "line": 233,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_ec)\n                        goto LAB_00d4c6da",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 280,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_dc)\n                                goto LAB_00d4c6da",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 331,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_cc)\n                                goto LAB_00d4c6d1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 376,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d4c5ff",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 439,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_20c)\n                                goto LAB_00d4c6d1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 485,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_20c)\n                                goto LAB_00d4c6d1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 527,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_20c)\n                                    goto LAB_00d4c6d1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 648,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                        resources:DestroyMovie(xStack_bc)\n                                        goto LAB_00d4c6c8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 698,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_ac)\n                                    goto LAB_00d4c6c8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTraining/Entities/SkillApprentice.lua": [
+          {
+            "line": 217,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_74)\n                                __cleanup_LAB_00d4de46(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 263,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_128)\n                        __cleanup_LAB_00d4de46(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 330,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar5",
+            "exit": "goto LAB_00d4dded",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 361,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar5",
+            "exit": "goto LAB_00d4dded",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 403,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_128)\n                        __cleanup_LAB_00d4de46(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 685,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_64)\n                            __cleanup_LAB_00d4de46(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTraining/Entities/WillApprentice.lua": [
+          {
+            "line": 209,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_5c)\n                                __cleanup_LAB_00d505a6(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 278,
+            "actor": "me",
+            "query": "iVar13",
+            "loop": "cVar5",
+            "exit": "goto LAB_00d50542",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 316,
+            "actor": "me",
+            "query": "iVar13",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_104)\n                        __cleanup_LAB_00d505a6(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 359,
+            "actor": "me",
+            "query": "iVar13",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_104)\n                            __cleanup_LAB_00d505a6(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 653,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_4c)\n                            __cleanup_LAB_00d505a6(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTraining/Entities/BirdKiller.lua": [
+          {
+            "line": 133,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar4",
+            "exit": "__cleanup_LAB_00d4e91f(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 237,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_78)\n                                quest:DeregisterTimer(birdTimerId)\n                                resources:ReleaseResource(xStack_8c)\n                                return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 387,
+            "actor": "me",
+            "query": "iVar6",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_38)\n                                goto LAB_00d4ef87",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTraining/Entities/PreMeleeMaze.lua": [
+          {
+            "line": 141,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                    goto LAB_00d44494",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 235,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                goto LAB_00d44494_c1",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 276,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n        this_00 = xStack_20\n        goto LAB_00d44498",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "cleanupRegions": {
         "FSE/GuildTraining/Entities/ApprenticeSpeedTest.lua": {
           "LAB_00d402b3_c31": [
@@ -5855,15 +6252,8 @@
           "LAB_00d4e91f": [
             "quest:PauseAllNonScriptedEntities(false)",
             "resources:DestroyMovie(xStack_78)",
-            "quest:DeregisterTimer(xStack_8c)",
+            "quest:DeregisterTimer(birdTimerId)",
             "resources:ReleaseResource(xStack_8c)"
-          ]
-        }
-      },
-      "declaredFreeLocals": {
-        "FSE/GuildTraining/Entities/BirdKiller.lua": {
-          "Main": [
-            "xStack_7c"
           ]
         }
       },
@@ -6171,6 +6561,18 @@
       "bindingFiles": {
         "TheRealGuildmaster": "GuildTrainingDeparture/Entities/TheRealGuildmaster"
       },
+      "blockingSpeechCancellation": {
+        "FSE/GuildTrainingDeparture/Entities/TheRealGuildmaster.lua": [
+          {
+            "line": 118,
+            "actor": "me",
+            "query": "iVar8",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_20)\n                            resources:ReleaseResource(xStack_30)\n                            return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 2,
         "functions": 6,
@@ -6337,6 +6739,711 @@
             "returnKind": null,
             "bsimVoid": false
           },
+          "reviewedSavedTableStaging": [
+            {
+              "nativeRead": "0xd5a960",
+              "cacheStore": "0xd5a1de",
+              "nativeCache": {
+                "status": "passed_native_cache_isolation_under_declared_ABI",
+                "instructions": 195,
+                "calls": 43,
+                "pointerLoad": "0xd5a1d5",
+                "cacheStore": "0xd5a1de",
+                "tableRead": "0xd5a960",
+                "cacheCoordinate": 60,
+                "readCoordinate": 60,
+                "explicitWrites": [],
+                "declaredBufferEscapes": [
+                  {
+                    "site": "0xd5a259",
+                    "coordinate": 368,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a212",
+                    "coordinate": 320,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a269",
+                    "coordinate": 152,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a222",
+                    "coordinate": 152,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a273",
+                    "coordinate": 88,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a22c",
+                    "coordinate": 88,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a277",
+                    "coordinate": 368,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a230",
+                    "coordinate": 320,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a283",
+                    "coordinate": 368,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a23c",
+                    "coordinate": 320,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a2aa",
+                    "coordinate": 328,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a2bb",
+                    "coordinate": 328,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a2c3",
+                    "coordinate": 28,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a2ce",
+                    "coordinate": 328,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a2ee",
+                    "coordinate": 376,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a303",
+                    "coordinate": 376,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a30b",
+                    "coordinate": 200,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a323",
+                    "coordinate": 200,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a32f",
+                    "coordinate": 376,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a352",
+                    "coordinate": 216,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a365",
+                    "coordinate": 260,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a378",
+                    "coordinate": 264,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a38b",
+                    "coordinate": 336,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a39e",
+                    "coordinate": 216,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a3a6",
+                    "coordinate": 260,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a3ae",
+                    "coordinate": 264,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a3b6",
+                    "coordinate": 336,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a3c4",
+                    "coordinate": 336,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a3d0",
+                    "coordinate": 264,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a3dc",
+                    "coordinate": 260,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a3e8",
+                    "coordinate": 216,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a4a8",
+                    "coordinate": 68,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a4b9",
+                    "coordinate": 88,
+                    "bytes": 12
+                  },
+                  {
+                    "site": "0xd5a4bd",
+                    "coordinate": 68,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a4c6",
+                    "coordinate": 68,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a4e4",
+                    "coordinate": 64,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a4fc",
+                    "coordinate": 64,
+                    "bytes": 4
+                  },
+                  {
+                    "site": "0xd5a507",
+                    "coordinate": 64,
+                    "bytes": 4
+                  }
+                ],
+                "abiContract": {
+                  "ordinaryMsvcCalleeSaved": true,
+                  "normalChildStackBalanceAssumed": true,
+                  "callerFramePreservedExceptDeclaredBuffers": true,
+                  "declaredBuffersStayInBounds": true,
+                  "engineReentryVerified": false,
+                  "exceptionsVerified": false,
+                  "heapVerified": false,
+                  "declaredParentBoolFieldsDoNotAliasCallerFrame": true
+                },
+                "limits": "Native pointer origin, normal CFG, ESP equations and direct caller writes are checked. Opaque children, static interface targets and bounded buffer writes use the declared ordinary ABI/caller-frame contract; actual heap/vtable lifetime, reentry, exceptions and gameplay are unverified. This proof alone does not classify Lua diagnostics. Declared parent Bool fields are assumed in-bounds and outside the caller frame; pointer load-site origins and exact byte writes are checked,not physical object lifetime.",
+                "verifiedBranchTables": {
+                  "targets": {
+                    "14000085": [
+                      14000092,
+                      14000155,
+                      14000218,
+                      14000281,
+                      14000344,
+                      14000404,
+                      14000464
+                    ]
+                  },
+                  "tables": [
+                    {
+                      "site": "0xd59fd5",
+                      "compare": "0xd59fcc",
+                      "rangeBranch": "0xd59fcf",
+                      "default": "0xd5a18f",
+                      "index": "ebx",
+                      "maximum": 6,
+                      "table": "0xd5a9cc",
+                      "tableBytes": "dc9fd5001ba0d5005aa0d50099a0d500d8a0d50014a1d50050a1d500",
+                      "targets": [
+                        "0xd59fdc",
+                        "0xd5a01b",
+                        "0xd5a05a",
+                        "0xd5a099",
+                        "0xd5a0d8",
+                        "0xd5a114",
+                        "0xd5a150"
+                      ]
+                    }
+                  ],
+                  "codeSha256": "939c15aa48a4350611b3d7ff2fc4b59770cc1674bbf5883c737364ed03fe3a75",
+                  "limits": "Original immutable table bytes, unsigned index guard and aligned internal targets only; no runtime mutation, engine, reentry or exception proof."
+                },
+                "parentFieldWrites": [
+                  {
+                    "site": "0xd5a4d2",
+                    "fieldOffset": 84,
+                    "value": true,
+                    "origin": [
+                      "parent_snapshot",
+                      20,
+                      14001359
+                    ],
+                    "outsideCallerFrameAssumed": true,
+                    "heapLifetimeVerified": false
+                  },
+                  {
+                    "site": "0xd5a4db",
+                    "fieldOffset": 85,
+                    "value": true,
+                    "origin": [
+                      "parent_snapshot",
+                      20,
+                      14001366
+                    ],
+                    "outsideCallerFrameAssumed": true,
+                    "heapLifetimeVerified": false
+                  }
+                ]
+              },
+              "callContracts": [
+                {
+                  "site": "0xd5a1e2",
+                  "target": "0x890ab0",
+                  "purgeBytes": 4,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a1ef",
+                  "target": "0x88e500",
+                  "purgeBytes": 4,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a1fe",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a219",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a237",
+                  "target": "0xcbfb7d",
+                  "purgeBytes": 16,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false,
+                  "boundedReturnInstructionBudget": 32768
+                },
+                {
+                  "site": "0xd5a245",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a260",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a27e",
+                  "target": "0xcbfb7d",
+                  "purgeBytes": 16,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false,
+                  "boundedReturnInstructionBudget": 32768
+                },
+                {
+                  "site": "0xd5a28a",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a29d",
+                  "target": "0x891720",
+                  "purgeBytes": 12,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a2b1",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a2c8",
+                  "target": "0x89c190",
+                  "purgeBytes": 8,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a2d5",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a2e1",
+                  "target": "0x4ab060",
+                  "purgeBytes": 4,
+                  "profile": "constructor_member_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false,
+                  "constructorReceiverAlias": "eax"
+                },
+                {
+                  "site": "0xd5a2f5",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a313",
+                  "target": "0x8a7d60",
+                  "purgeBytes": 8,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a31d",
+                  "target": "0x8910d0",
+                  "purgeBytes": 12,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a32a",
+                  "target": "0x4aa840",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a336",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a345",
+                  "target": "0x88e4f0",
+                  "purgeBytes": 4,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a359",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a36c",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a37f",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a392",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a3be",
+                  "target": "0x89e540",
+                  "purgeBytes": 20,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a3cb",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a3d7",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a3e3",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a3ef",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a3f9",
+                  "target": "0x894300",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a40a",
+                  "target": "0x6e7410",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a40f",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a421",
+                  "target": "0x894300",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a42f",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a43e",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a4ac",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a4c1",
+                  "target": "0xcbfb7d",
+                  "purgeBytes": 16,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false,
+                  "boundedReturnInstructionBudget": 32768
+                },
+                {
+                  "site": "0xd5a4ca",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a4e8",
+                  "target": "0x99ebf0",
+                  "purgeBytes": 8,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a4f2",
+                  "target": "0x891ca0",
+                  "purgeBytes": 0,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": true,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a501",
+                  "target": "0x897220",
+                  "purgeBytes": 8,
+                  "profile": "GSI_profile",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a50d",
+                  "target": "0x99eae0",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                },
+                {
+                  "site": "0xd5a518",
+                  "target": "0xf35b30",
+                  "purgeBytes": 0,
+                  "profile": "direct",
+                  "receiverValueEquivalenceProved": false,
+                  "opaqueChildStackBalanceAssumed": true,
+                  "currentVtableLifetimeVerified": false
+                }
+              ],
+              "aliases": [
+                {
+                  "kind": "original",
+                  "liveness": {
+                    "assignmentLine": 726,
+                    "alias": "iVar7",
+                    "copiedAliases": [],
+                    "visitedNodes": 120,
+                    "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+                  },
+                  "postHoistLiveness": {
+                    "alias": "iVar7",
+                    "cleanup": "__cleanup_LAB_00d5a962",
+                    "straightLineClosures": 13,
+                    "terminalCalls": 40,
+                    "closureAliasCaptures": 0,
+                    "liveness": {
+                      "assignmentLine": 823,
+                      "alias": "iVar7",
+                      "copiedAliases": [],
+                      "visitedNodes": 1,
+                      "scope": "generated Lua normal CFG;local copies allowed,all observable reads rejected;no statements removed"
+                    },
+                    "projectionSha256": "918dd32b903ecc7afc61903b6d10483a5f01690eec2a9b6eccedd6149c8268fe",
+                    "scope": "Normal terminal closure calls only; external callbacks,exceptions and engine reentry unverified. Source unchanged."
+                  }
+                }
+              ],
+              "executableLuaUnchanged": true,
+              "limits": "Ordinary MSVC ABI and declared in-bounds child buffers/parent fields remain contracts. Engine reentry,exceptions,heap and gameplay remain unverified."
+            }
+          ],
           "todo": [
             "label LAB_00d5a9be",
             "label LAB_00d5a902",
@@ -6393,8 +7500,7 @@
             "goto LAB_00d5a962",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
             "verify cleanup at LAB_00d5a9a7 (lifted as early return)",
-            "label LAB_00d5a8cb",
-            "unlifted: iVar7 = *xStack_23c"
+            "label LAB_00d5a8cb"
           ],
           "calls": [
             "RESOURCE_NewResource",
@@ -7121,7 +8227,7 @@
             "SetTimer",
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
@@ -7189,7 +8295,7 @@
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "RESOURCE_ReleaseResource",
@@ -7215,7 +8321,7 @@
             "RESOURCE_ReleaseResource",
             "GetTimer",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -7238,7 +8344,7 @@
             "RESOURCE_ReleaseResource",
             "GetTimer",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -7690,6 +8796,28 @@
           ]
         }
       },
+      "blockingSpeechCancellation": {
+        "FSE/GuildTrainingMelee/Entities/TheRealGuildmaster.lua": [
+          {
+            "line": 199,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_204)\n                        goto LAB_00d5933c",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTrainingMelee/Entities/MeleeOpponent.lua": [
+          {
+            "line": 117,
+            "actor": "me",
+            "query": "iVar8",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                                resources:DestroyMovie(xStack_bc)\n                                resources:ReleaseResource(xStack_d8)\n                                return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 4,
         "functions": 14,
@@ -7697,7 +8825,7 @@
         "functionSyntaxPassed": 14,
         "fileSyntaxPassed": 4,
         "fileSyntaxChecked": 4,
-        "todo": 59
+        "todo": 58
       }
     },
     {
@@ -7929,7 +9057,7 @@
             "EntitySetFacingAngleTowardsThing",
             "GetHero",
             "AddLineToConversation",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
             "GetHero",
@@ -8973,6 +10101,68 @@
         "PreMeleeDummy": "GuildTrainingPreMelee/Entities/PreMeleeDummy",
         "PreMeleeWhisper": "GuildTrainingPreMelee/Entities/PreMeleeWhisper"
       },
+      "blockingSpeechCancellation": {
+        "FSE/GuildTrainingPreMelee/Entities/TheRealGuildmaster.lua": [
+          {
+            "line": 740,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d55c72",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 827,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d55cba",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 881,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d55cba",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 939,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d555f3",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 989,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d555f3",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1044,
+            "actor": "me",
+            "query": "iVar7",
+            "loop": "cVar4",
+            "exit": "goto LAB_00d55cd5",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTrainingPreMelee/Entities/PreMeleeWhisper.lua": [
+          {
+            "line": 103,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar4",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                        resources:DestroyMovie(xStack_1c)\n                        quest:DeregisterTimer(timerId)\n                        resources:ReleaseResource(xStack_a0)\n                        return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 4,
         "functions": 14,
@@ -9725,7 +10915,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 1253,
+          "lines": 1255,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -9971,6 +11161,18 @@
             "resources:ReleaseResource(xStack_210)"
           ]
         }
+      },
+      "blockingSpeechCancellation": {
+        "FSE/GuildTrainingSkill/Entities/TheRealGuildmaster.lua": [
+          {
+            "line": 188,
+            "actor": "me",
+            "query": "iVar15",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_1c0)\n                            quest:DeregisterTimer(i_stk_220)\n                            resources:ReleaseResource(xStack_210)\n                            return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "summary": {
         "owners": 2,
@@ -10916,6 +12118,42 @@
       "bindingFiles": {
         "TheRealGuildmaster": "GuildTrainingWill/Entities/TheRealGuildmaster"
       },
+      "blockingSpeechCancellation": {
+        "FSE/GuildTrainingWill/Entities/TheRealGuildmaster.lua": [
+          {
+            "line": 95,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_1f0)\n                            quest:DeregisterTimer(i_stk_244)\n                            quest:DeregisterTimer(i_stk_240)\n                            resources:ReleaseResource(xStack_228)\n                            return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 732,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00d61563",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 840,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00d61004",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 1015,
+            "actor": "me",
+            "query": "iVar10",
+            "loop": "cVar7",
+            "exit": "goto LAB_00d61b44",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
+      },
       "summary": {
         "owners": 2,
         "functions": 7,
@@ -10982,7 +12220,7 @@
             "IsActiveThreadTerminating",
             "IsLevelLoaded"
           ],
-          "lines": 37,
+          "lines": 34,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -11198,7 +12436,7 @@
             "IsActiveThreadTerminating",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "GetHero",
             "AddLineToConversation",
             "IsActiveThreadTerminating",
@@ -11231,6 +12469,7 @@
             "GiveHeroObject",
             "RemoveItemFromContainer",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
@@ -11250,6 +12489,7 @@
             "GiveHeroObject",
             "RemoveItemFromContainer",
             "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
             "EntitySetAsKillable",
             "GetThingWithScriptName",
             "GetPos",
@@ -11652,7 +12892,7 @@
             "GetTimer",
             "IsConversationActive",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -11751,7 +12991,7 @@
             "GetTimer",
             "IsConversationActive",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -11849,7 +13089,7 @@
             "GetTimer",
             "IsConversationActive",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -11905,7 +13145,7 @@
             "DeregisterTimer",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 798,
+          "lines": 821,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -12236,6 +13476,108 @@
             "resources:ReleaseResource(xStack_184)"
           ]
         }
+      },
+      "blockingSpeechCancellation": {
+        "FSE/GuildTrainingWoodsDeparture/Entities/ArtifactThief.lua": [
+          {
+            "line": 135,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_138)\n                            __cleanup_LAB_00d63aab(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 179,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_bc)\n                            __cleanup_LAB_00d63aab(); return",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 244,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d63a7c",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 300,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d63a7c",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 331,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d63a7c",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 382,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d63a7c",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 431,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d63ad2",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 487,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d63aec",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 541,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d635e3",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 588,
+            "actor": "me",
+            "query": "iVar5",
+            "loop": "cVar3",
+            "exit": "goto LAB_00d63ad2",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/GuildTrainingWoodsDeparture/Entities/FinalMaze.lua": [
+          {
+            "line": 308,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar5",
+            "exit": "goto LAB_00d65b9f",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 554,
+            "actor": "me",
+            "query": "iVar19",
+            "loop": "cVar5",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            resources:DestroyMovie(xStack_38)\n                            goto LAB_00d664b0",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "summary": {
         "owners": 4,
@@ -13053,7 +14395,7 @@
             "SetFriendsWithEverythingFlag",
             "IsActiveThreadTerminating",
             "SetStateBool",
-            "PlayAnimation",
+            "PlayAnimationWithNativeArgument5",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource"
           ],
@@ -13197,6 +14539,6 @@
     "functionSyntaxPassed": 152,
     "fileSyntaxPassed": 37,
     "fileSyntaxChecked": 37,
-    "todo": 261
+    "todo": 260
   }
 }

@@ -643,7 +643,6 @@ function WatchForAttack(quest, native_arg_moi)
                 native_arg_sequence_1 = false
             end
             if native_arg_sequence_1 then
-                -- TODO(native): MsgIsHitByAnyAggressiveSpecialAbilityFrom is not a ForgeFSE binding
                 cVar2 = (native_arg_moi ~= nil and native_arg_moi:MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO"))
                 if cVar2 then
                     native_arg_sequence_1 = true
@@ -886,7 +885,7 @@ function GoTalkToBarber(quest)
 end
 
 function helper_E53C70(quest)
-    local iVar2 = math.random(0, 32767)
+    local iVar2 = quest:RetailRandModulo(32768)
     quest:SetTimer(quest:GetStateInt("RandomSpeechTimer"), quest:ReadGlobalGameData(0x494) - iVar2 % quest:ReadGlobalGameData(0x498))
 end
 

@@ -75,7 +75,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00ee6817 end
-            if __native_entity_state:GetStateInt("saveWaypointIdx") == -1 then
+            if ((__native_entity_state:GetStateInt("saveWaypointIdx") + 2147483648) % 4294967296 - 2147483648) == -1 then
                 cVar5 = quest:GetStateThing("NextTourWaypoint"):IsAlive()
                 if (not cVar5) or (0x11 < quest:GetStateInt("WaypointCounter")) then
                     alive = not quest:IsActiveThreadTerminating()
@@ -112,6 +112,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar4 then goto LAB_00ee6817 end
                 quest:CreateThread("WatchForNoFollowers")  -- native thread body NScript::CV_TourGuideScript::WatchForNoFollowers: lift it as function WatchForNoFollowers(quest)
+                uVar12 = u_stk_7c
                 if (u_stk_7c & 4) ~= 0 then
                     uVar12 = u_stk_7c & 0xfffffffb
                     u_stk_7c = uVar12
@@ -129,7 +130,7 @@ function Main(quest, me)
             quest:SetStateBool("GuideSpokenToHeroThisWaypoint", false)
             quest:SetStateBool("OverheardTourGuideThisWaypoint", false)
         end
-        iVar6 = math.random(0, 32767)
+        iVar6 = quest:RetailRandModulo(32768)
         if iVar6 % 0x32 == 0 then
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
@@ -219,8 +220,7 @@ function Main(quest, me)
                                     alive = not quest:IsActiveThreadTerminating()
                                     bVar4 = not alive
                                     if bVar4 then goto LAB_00ee6558 end
-                                    iVar6 = math.random(0, 32767)
-                                    iVar6 = iVar6 % 5
+                                    iVar6 = quest:RetailRandModulo(5)
                                     if iVar6 ~= __native_entity_state:GetStateInt("lastRandomSpeechIdx") then break end
                                     alive = quest:NewScriptFrame(me)
                                 end
@@ -356,8 +356,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then goto LAB_00ee6558 end
-                            iVar6 = math.random(0, 32767)
-                            iVar6 = iVar6 % 5
+                            iVar6 = quest:RetailRandModulo(5)
                             if iVar6 ~= __native_entity_state:GetStateInt("lastRandomSpeechIdx") then break end
                             alive = quest:NewScriptFrame(me)
                         end

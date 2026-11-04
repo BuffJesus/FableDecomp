@@ -11,6 +11,7 @@ function Main(quest, me)
         while not quest:GetStateBool("PlayerEngaged") do
             if not quest:NewScriptFrame(me) then return end
             if not ((not me:MsgIsHitBy("")) or me:MsgIsHitByHero() or (me:MsgIsHitByAnySpecialAbilityFromHero() and (not me:MsgIsHitByHeroSpecialAbility(HERO_ABILITY_HEAL_LIFE_SPELL)))) then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:ModifyThingHealth(me, 40.0, false)
             else
                 if me:MsgIsHitByHero() then
@@ -24,10 +25,12 @@ function Main(quest, me)
                 predicateResult = true
                 ::FLOW_past_lab_00df992a::
                 if predicateResult then
+                    if quest:IsActiveThreadTerminating() then return end
                     quest:SetStateBool("PlayerEngaged", true)
                 end
             end
-            if quest:IsDistanceBetweenThingsUnder(me, quest:GetHero(), 15.0) then
+            local thing = quest:GetHero()
+            if quest:IsDistanceBetweenThingsUnder(me, thing, 15.0) then
                 if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateBool("PlayerEngaged", true)
             end

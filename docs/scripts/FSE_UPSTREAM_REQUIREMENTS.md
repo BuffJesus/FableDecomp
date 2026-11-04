@@ -4,8 +4,7 @@ Audience: Aeon / FableScriptExtender maintainers. Status 2026-09-16.
 
 Our quest Lua is **lifted from the retail native scripts** (Ghidra decompile of `Fable.exe`, names
 and layouts from the debug PDB, FSE's own `GameInterface.h` typedefs for the vtable ABI). The output
-mirrors the native logic 1:1 — same state fields, same cutscene/resource lifetimes, same RNG use —
-so it needs a few *generic* runtime primitives that stock FSE (upstream master, checked 2026-09-12)
+aims to preserve native state, call order, resource lifetimes and RNG use. Converter diagnostics, synthetic boundaries and unverified runtime behavior remain; the output is not certified 1:1. It needs a few *generic* runtime primitives that stock FSE (upstream master, checked 2026-09-12)
 does not expose. Everything below has a working implementation in our compatibility DLL
 (`ForgeFSE-retail-shadow` + scalar-ABI patch), from which PRs can be lifted. Nothing is quest-specific.
 
@@ -122,13 +121,21 @@ not serialize this round-definition vector.
 Source: `tools/script_recovery/runtime_bindings/NoviArenaRounds.h` and
 `arena_round_snapshot.h`; installable source patch:
 `tools/script_recovery/sidecar_patches/novi-zzzzzzzzzzzzz-arena-rounds.patch`.
-**Deployment pending:** the x86 C++ snapshot executable and binding compile probe
+**Historical deployment status (2026-09-26):** the x86 C++ snapshot executable and binding compile probe
 pass against the ABI-v13 headers. A separate Release x86 candidate DLL builds
 and links with all six subsequent patches (things-killed through Arena rounds).
 It is not installed or in-game validated; smoke reports the method as pending.
 The candidate and its patch/hash manifest are in
 `work/readability_marathon_20260926_round10/sidecar_candidate/`. Preserve the other
 patches when preparing a later candidate; do not drop existing bindings.
+
+2026-10-18 source-profile clarification (W198): the current owned movie-reentry
+SDK already includes and calls `RegisterNoviArenaRounds`. Its unchanged full
+registration compiles, and synthetic snapshot checks pass. Smoke now follows
+called registration helpers in local quoted headers, so this method is known
+when that source profile is selected. Older profiles can still report it pending.
+Static source recognition does not establish DLL identity, installation, actual
+Arena execution, or C++ conditional-compilation/liveness semantics.
 
 Reproduce without changing the base checkout or game installation:
 
@@ -197,3 +204,69 @@ V_GuildMaster GuildMasterGameFlow Main (hero within 3.0 of TeleporterResidue) an
 ChickenMaster Main (its vector operand is still unrecovered). Patch
 `novi-zzzzzzzzzzzzzzzzzzz-position-under.patch`; the round-12 Release x86 candidate builds with it;
 not installed or in-game validated.
+
+
+## Scoped Thing outputs and direct implementation equality (2026-10-05)
+
+Retail `CScriptThing` locals are 12-byte wrappers with independent counted references.
+Lua aliases to one wrapper do not replace native copy construction, assignment, or
+destruction. Generated helpers use `WithRetailResources` to retain those local
+lifetimes and explicit retirement at the corresponding native boundary.
+
+| Binding | Contract |
+| --- | --- |
+| `resources:CopyThingOutput(thing)` | Native copy into a new owned wrapper, registered in this scope. Nil constructs an owned empty wrapper. Returns Thing userdata, not a numeric resource token. |
+| `resources:TrackThingOutput(thing)` | Claims an API-owned output and returns its token. Repeated tracking in the same scope returns that token without taking another native reference. Nil returns zero. Unowned, retired, or cross-scope outputs are rejected. |
+| `resources:AssignThingOutput(token, source)` | Calls retail assignment `0x008AB980` on the live scoped destination. Nil source is an empty native wrapper. Assignment updates the existing wrapper, so its Lua aliases observe the change. |
+| `resources:RetireThingOutput(token)` | Deterministically releases that local's native reference. Zero is a no-op in an open scope. Remaining Lua aliases become empty Things; their later GC frees metadata/storage without releasing the native reference twice. |
+| `thing:RetailImplementationIsEqualTo(other)` | Direct concrete implementation dispatch using the wrappers' `Data` pointers, matching native helper sites `0x00E01A98` and `0x00E02195`. This is distinct from the existing nil-safe wrapper `IsEqualTo`. Both arguments must be actual wrappers; an empty implementation can retain the native access violation. Do not substitute false for that native fault. |
+
+Scope closure retires remaining owned outputs after the protected callback returns,
+including a protected Lua error. Suspension must retain the C++ scope and its Lua
+stack until the callback resumes or the production host drains it. Deleting a
+suspended fiber is not equivalent to unwinding that callback. Native termination
+queries remain at their reviewed ownership boundaries even when their boolean
+result is unused.
+
+The cumulative committed implementation is preserved in
+[`novi-scoped-thing-outputs-direct-equality.patch`](../../tools/script_recovery/sidecar_patches/novi-scoped-thing-outputs-direct-equality.patch):
+base `07774e98c5675fb66aba7c23b4f1e4453b0434c0`, candidate
+`161c39c4ad167ed23b63704b46afe60e8dd63c35`, patch SHA-256
+`b885fe7f8cd9b36d08d74ddcf1c5fe276fd16ab907d6d56893032909e392dc70`.
+It includes prerequisite Thing-output ownership and the earlier reviewed
+camera/position/CreateCreature ABI changes; it is not an independent patch against
+an arbitrary upstream checkout. Reviewed lowering evidence remains in
+[`Q_TraderEscort.json`](../../refs/script_recovery/trader_escort/units/Q_TraderEscort.json).
+
+Validation distinguishes original native oracle execution, actual SDK/sol probes,
+standalone Win32 fiber suspension, installed DLL identity, and live host evidence.
+The standalone probes model engine/copy/destructor boundaries and do not establish
+production quest teardown or full escort behavior. Current results and remaining
+gates are recorded in the [Lua lane journal](../journal/2026-10/LUA_RECOVERY_2026-10-05.md).
+
+
+## Health-inclusive hero-hit predicate (offline candidate, 2026-10-22)
+
+`resources:IsHitByHeroExceptAbilityAndHealthAbove(actor, excludedAbility, minimumHealth)`
+combines the three native hero-hit queries and conditional health read while keeping
+one or three native CString temporaries alive through the health call. The result is
+an ordered `GetHealth_API(game, actor) > minimumHealth`; NaN is false. TalkingTrader1
+uses ability14 and minimum0.0. A query-only helper followed by a separate health call
+releases the native strings too early for this reviewed scope.
+
+W290 owned SDK source/W292 x86 build DLL1549f1e4 and W295 generic lowering are verified
+offline; W296 carries that DLL and exact tested Lua. Original651B linked-helper and
+46B health API execution cover896 cases, both generated stages1792 bridged cases,
+and exact-method SDK-header/sol fixture896 valid calls. The standalone sol fixture
+substitutes a ResourceProbe receiver and does not exercise actual resource-host
+construction/destruction or full DLL loading/registration.
+
+The contract requires a valid CScriptThing userdata, numeric ability/threshold,
+normal child ABI, disjoint storage and default FP environment. Wrong Lua actor types
+can fault and malformed numbers can convert; the existing query-only helper reproduces
+actor/ability handling. Nil actor, closed resource, null actor vtable and missing
+query/health APIs reject cleanly in the standalone source fixture. No claim of
+malformed-input safety, native heap/ownership, exception/reentry or gameplay proof.
+The SDK remains uncommitted per the user constraint; W295 exports its actual owned
+working-tree diff against unchanged HEAD, explicitly including preserved prior edits.
+It is not a committed upstream integration patch. No install or game launch occurred.

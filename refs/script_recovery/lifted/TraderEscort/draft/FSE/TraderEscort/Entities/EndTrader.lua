@@ -119,6 +119,13 @@ function Main(quest, me)
                 pcVar6 = "TEXT_QST_067_ENDTRADER_NOT_ALL_PRESENT"
                 pCVar4 = quest:GetHero()
                 r3 = me:Speak(pCVar4, pcVar6, iVar7, (iVar8 ~= 0), (iVar9 ~= 0), (iVar11 ~= 0))
+                if not r3 then
+                    quest:PauseAllNonScriptedEntities(false)
+                    this_00 = xStack_20
+                    resources:DestroyMovie(this_00)
+                    -- LAB_00e0602a_c5: (native jump target)
+                    goto FLOW_after_lab_00e0602a
+                end
                 iVar7 = me:IsPerformingScriptTask()
                 cVar3 = iVar7
                 while cVar3 do
@@ -177,6 +184,10 @@ function Main(quest, me)
                             pcVar6 = "TEXT_QST_067_ENDTRADER_NOT_ALL_PRESENT"
                             pCVar4 = quest:GetHero()
                             r4 = me:Speak(pCVar4, pcVar6, iVar7, (iVar8 ~= 0), (iVar9 ~= 0), (iVar11 ~= 0))
+                            if not r4 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                __region_LAB_00e0601a(); goto FLOW_after_lab_00e0602a
+                            end
                             iVar7 = me:IsPerformingScriptTask()
                             cVar3 = iVar7
                             while cVar3 do
@@ -185,7 +196,7 @@ function Main(quest, me)
                                 bVar2 = not alive
                                 if bVar2 then
                                     quest:PauseAllNonScriptedEntities(false)
-                                    __region_LAB_00e0601a(); return  -- TODO(native): goto FLOW_after_lab_00e0602a
+                                    __region_LAB_00e0601a(); goto FLOW_after_lab_00e0602a
                                 end
                                 iVar7 = me:IsPerformingScriptTask()
                                 cVar3 = iVar7
@@ -342,6 +353,11 @@ function Main(quest, me)
                             pcVar6 = "TEXT_QST_067_ENDTRADER_THANKS"
                             pCVar4 = quest:GetHero()
                             r6 = me:Speak(pCVar4, pcVar6, iVar7, (iVar8 ~= 0), (iVar9 ~= 0), (iVar11 ~= 0))
+                            if not r6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_54)
+                                goto LAB_00e05fd1
+                            end
                             iVar7 = me:IsPerformingScriptTask()
                             cVar3 = iVar7
                             while cVar3 do

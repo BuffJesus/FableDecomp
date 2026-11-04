@@ -409,27 +409,11 @@
           },
           "todo": [
             "unnamed field 0xc",
-            "unlifted: xStack_1e4 = xStack_1e4 | 1;",
-            "unlifted: xStack_1e4 = uVar13 & 0xfffffffe;",
             "label LAB_00e5b1cf",
             "label LAB_00e59c7a",
             "label LAB_00e59fcd",
-            "unlifted: xStack_1e4 = xStack_1e4 | 8;",
-            "MsgIsRegionUnloaded: not in FSE manifest",
-            "unlifted: xStack_1e4 = uVar13 & 0xfffffff7;",
-            "AddNewConversation: missing pThing (2 args for 3 params)",
-            "AddPersonToConversation: missing pPerson (1 args for 2 params)",
-            "AddLineToConversation: missing spSpeaker, spListener (3 args for 5 params)",
-            "AddLineToConversation: missing spSpeaker, spListener (3 args for 5 params)",
-            "AddLineToConversation: missing spSpeaker, spListener (3 args for 5 params)",
-            "AddLineToConversation: missing spSpeaker, spListener (3 args for 5 params)",
-            "EntitySetFacingAngleTowardsThing: missing pTarget (1 args for 3 params)",
-            "unlifted: xStack_1e4 = xStack_1e4 | 0x40;",
-            "unlifted: xStack_1e4 = uVar13 & 0xffffffbf;",
-            "unlifted: iVar9 = CBasicString<char>::Compare(p0,\"EXPRESSION_BELCH\");",
-            "unlifted: iVar9 = CBasicString<char>::Compare(p0,\"EXPRESSION_FART\");",
-            "label LAB_00e5b036",
-            "unlifted: p0 = *xStack_1e8"
+            "label LAB_00e5a527_c2",
+            "label LAB_00e5b036"
           ],
           "calls": [
             "NewScriptFrame",
@@ -441,6 +425,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
+            "SetIsPushableByHero",
             "GetThingWithScriptName",
             "SetThingHasInformation",
             "EntitySetAsKillable",
@@ -664,20 +649,6 @@
             "RESOURCE_StartMovie",
             "PauseAllNonScriptedEntities",
             "IsActiveThreadTerminating",
-            "IsActiveThreadTerminating",
-            "PauseAllNonScriptedEntities",
-            "RESOURCE_DestroyMovie",
-            "RESOURCE_ScriptThing",
-            "GetHealth",
-            "GetHero",
-            "Speak",
-            "IsPerformingScriptTask",
-            "NewScriptFrame",
-            "IsActiveThreadTerminating",
-            "IsPerformingScriptTask",
-            "IsActiveThreadTerminating",
-            "PauseAllNonScriptedEntities",
-            "RESOURCE_DestroyMovie",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "GiveHeroYesNoQuestion",
@@ -725,6 +696,22 @@
             "IsActiveThreadTerminating",
             "IsPerformingScriptTask",
             "IsActiveThreadTerminating",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "RESOURCE_ScriptThing",
+            "GetHealth",
+            "GetHero",
+            "Speak",
+            "IsPerformingScriptTask",
+            "NewScriptFrame",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
+            "IsPerformingScriptTask",
+            "IsActiveThreadTerminating",
+            "PauseAllNonScriptedEntities",
+            "RESOURCE_DestroyMovie",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "GetTimer",
@@ -739,16 +726,16 @@
             "GetTimer",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "MsgOnQuestFailed",
+            "IsTalkedToByHero",
             "IsActiveThreadTerminating",
-            "MsgIsRegionUnloaded",
-            "MsgIsActionModeButtonPressed",
-            "MsgIsTutorialClickedPast",
+            "MsgIsHitByHero",
+            "MsgIsHitByAnySpecialAbilityFromHero",
+            "MsgIsHitByHeroSpecialAbility",
             "IsActiveThreadTerminating",
             "SetStateBool",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "PlayAnimation",
             "PlayAnimation",
             "PlayAnimation",
@@ -756,13 +743,13 @@
             "PlayAnimation",
             "AddNewConversation",
             "AddPersonToConversation",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddLineToConversation",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "AddLineToConversation",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "AddLineToConversation",
@@ -790,6 +777,8 @@
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "IsActiveThreadTerminating",
+            "ENGINE_StrCmp",
+            "ENGINE_StrCmp",
             "IsActiveThreadTerminating",
             "AddNewConversation",
             "GetHero",
@@ -829,7 +818,6 @@
           },
           "readableLocalNames": {},
           "nativeJumps": [
-            "goto FLOW_hoist_lab_00e5a527_1;",
             "goto FLOW_hoist_lab_00e5b24b_1;",
             "goto FLOW_hoist_lab_00e5b276_1;",
             "goto FLOW_native_label_1;",
@@ -919,7 +907,6 @@
             "if (native_arg_switch_4 == 0x7ffffffe) goto FLOW_native_label_2;"
           ],
           "nativeLabels": [
-            "FLOW_hoist_lab_00e5a527_1",
             "FLOW_hoist_lab_00e5b24b_1",
             "FLOW_hoist_lab_00e5b276_1",
             "FLOW_native_label_1",
@@ -1069,19 +1056,12 @@
           },
           "todo": [
             "unnamed field 0xc",
-            "unlifted: xStack_164 = (undefined **)(uint)(uVar2 & 0xffff);",
-            "unlifted: pppuVar20_b3 = !(fVar15 <= (float10)0.0);",
             "label LAB_00e5be23",
-            "unlifted: xStack_164._0_3_ = CONCAT12(1,(undefined2)xStack_164);",
-            "unlifted: pppuVar20_b3 = !(fVar15 <= (float10)0.0);",
-            "unlifted: pppuVar20_b3 = !(fVar15 <= (float10)0.0);",
             "label LAB_00e5c48f",
-            "label LAB_00e5c30a",
+            "label LAB_00e5ce6e",
+            "label LAB_00e5ce8a",
             "label LAB_00e5ce57",
-            "AddLineToConversation: missing spListener (4 args for 5 params)",
-            "label LAB_00e5cbfe",
-            "unlifted: xStack_138 = xStack_138 + 1;",
-            "unlifted: unaff_EBP = uVar12;"
+            "label LAB_00e5cbfe"
           ],
           "calls": [
             "NewScriptFrame",
@@ -1093,6 +1073,7 @@
             "IsActiveThreadTerminating",
             "RESOURCE_TryAcquire",
             "IsActiveThreadTerminating",
+            "SetIsPushableByHero",
             "GetThingWithScriptName",
             "SetThingHasInformation",
             "EntitySetAsKillable",
@@ -1292,7 +1273,7 @@
             "IsActiveThreadTerminating",
             "DeregisterTimer",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "PlayAnimation",
             "PlayAnimation",
             "PlayAnimation",
@@ -1350,26 +1331,19 @@
             "SetPreferredQuickAccessItem",
             "RESOURCE_ReleaseResource"
           ],
-          "lines": 827,
+          "lines": 830,
           "syntax": {
             "runtime": "Lua 5.4",
-            "ok": false,
+            "ok": true,
             "checked": 1,
-            "passed": 0,
-            "errors": [
-              {
-                "path": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:Main",
-                "line": 215,
-                "message": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:Main:215: ')' expected near 'p1'"
-              }
-            ]
+            "passed": 1,
+            "errors": []
           },
           "readableLocalNames": {},
           "nativeJumps": [
             "goto FLOW_hoist_lab_00e5c45a_2;",
             "goto FLOW_hoist_lab_00e5c45a_3;",
             "goto FLOW_hoist_lab_00e5c469_1;",
-            "goto FLOW_hoist_lab_00e5ce8a_1;",
             "goto FLOW_hoist_lab_00e5cec4_1;",
             "goto FLOW_native_label_1;",
             "goto FLOW_native_label_2;",
@@ -1385,7 +1359,6 @@
             "goto FLOW_past_lab_00e5c69b;",
             "goto FLOW_past_lab_00e5caf0;",
             "goto FLOW_past_lab_00e5cd44;",
-            "goto FLOW_past_lab_00e5ce8a;",
             "goto FLOW_past_lab_00e5cea1;",
             "goto FLOW_past_lab_00e5cec4;",
             "goto LAB_00e5b649;",
@@ -1394,6 +1367,7 @@
             "goto LAB_00e5bb51;",
             "goto LAB_00e5bb58;",
             "goto LAB_00e5bc19;",
+            "goto LAB_00e5c30a;",
             "goto LAB_00e5c3a1;",
             "goto LAB_00e5c3a8;",
             "goto LAB_00e5c45a;",
@@ -1406,7 +1380,6 @@
             "goto LAB_00e5cd74;",
             "goto LAB_00e5ce35;",
             "goto LAB_00e5ce3a;",
-            "goto LAB_00e5ce8a;",
             "goto LAB_00e5cea1;",
             "goto LAB_00e5cec4;",
             "if (!bVar6) goto FLOW_native_label_2;",
@@ -1417,26 +1390,24 @@
             "if (!bVar6) goto LAB_00e5c469;",
             "if (!bVar6) goto LAB_00e5c69b;",
             "if (!bVar6) goto LAB_00e5caf0;",
-            "if (!pppuVar20_b3) goto LAB_00e5c469;",
             "if (0 < iVar9) goto LAB_00e5c948;",
             "if (bVar4) goto FLOW_native_label_2;",
             "if (bVar4) goto LAB_00e5ce3a;",
             "if (bVar4) goto LAB_00e5ce43;",
             "if (bVar4) goto LAB_00e5cea1;",
             "if (bVar6) goto LAB_00e5bab8;",
+            "if (bVar6) goto LAB_00e5c30a;",
             "if (bVar6) goto LAB_00e5ce3a;",
-            "if (bVar6) goto LAB_00e5ce6e;",
-            "if (bVar6) goto LAB_00e5ce8a;",
             "if (bVar6) goto LAB_00e5cea1;",
             "if (bVar6) goto LAB_00e5cec4;",
             "if (bVar6) goto LAB_00e5cedc;",
+            "if (hb_stk_f003 == '\\0') goto LAB_00e5c469;",
             "if (iVar9 == 0) goto LAB_00e5cd44;"
           ],
           "nativeLabels": [
             "FLOW_hoist_lab_00e5c45a_2",
             "FLOW_hoist_lab_00e5c45a_3",
             "FLOW_hoist_lab_00e5c469_1",
-            "FLOW_hoist_lab_00e5ce8a_1",
             "FLOW_hoist_lab_00e5cec4_1",
             "FLOW_native_label_1",
             "FLOW_native_label_2",
@@ -1452,7 +1423,6 @@
             "FLOW_past_lab_00e5c69b",
             "FLOW_past_lab_00e5caf0",
             "FLOW_past_lab_00e5cd44",
-            "FLOW_past_lab_00e5ce8a",
             "FLOW_past_lab_00e5cea1",
             "FLOW_past_lab_00e5cec4",
             "LAB_00e5b649",
@@ -1461,6 +1431,7 @@
             "LAB_00e5bb51",
             "LAB_00e5bb58",
             "LAB_00e5bc19",
+            "LAB_00e5c30a",
             "LAB_00e5c3a1",
             "LAB_00e5c3a8",
             "LAB_00e5c45a",
@@ -1474,8 +1445,6 @@
             "LAB_00e5ce35",
             "LAB_00e5ce3a",
             "LAB_00e5ce43",
-            "LAB_00e5ce6e",
-            "LAB_00e5ce8a",
             "LAB_00e5cea1",
             "LAB_00e5cec4",
             "LAB_00e5cedc"
@@ -1557,16 +1526,10 @@
       "missing": [],
       "syntax": {
         "runtime": "Lua 5.4",
-        "ok": false,
+        "ok": true,
         "checked": 3,
-        "passed": 2,
-        "errors": [
-          {
-            "path": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua",
-            "line": 227,
-            "message": "FSE/V_BeggarAndChild/Entities/BeggarBully.lua:227: ')' expected near 'p1'"
-          }
-        ]
+        "passed": 3,
+        "errors": []
       },
       "controlMode": "structured draft",
       "bindingFiles": {
@@ -1651,33 +1614,196 @@
           ]
         }
       },
-      "declaredFreeLocals": {
-        "FSE/V_BeggarAndChild/Entities/LookoutPointBeggar.lua": {
-          "Main": [
-            "xStack_19c",
-            "xStack_1fc",
-            "xStack_c0"
-          ]
-        },
-        "FSE/V_BeggarAndChild/Entities/BeggarBully.lua": {
-          "Main": [
-            "pppuVar20_b3",
-            "uStack_158_b2",
-            "xStack_110",
-            "xStack_150",
-            "xStack_78",
-            "xStack_fc"
-          ]
-        }
+      "blockingSpeechCancellation": {
+        "FSE/V_BeggarAndChild/Entities/LookoutPointBeggar.lua": [
+          {
+            "line": 106,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e59935",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 152,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e59935",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 237,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e59935",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 283,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5b1b8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 333,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e59429",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 423,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5b1b8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 476,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5b1e6",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 519,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5b1e6",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 604,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5b1e6",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 651,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5b1e6",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 724,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5a527",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 812,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "goto LAB_00e5b231",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 846,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar4",
+            "exit": "-- LAB_00e5a527_c2: (native jump target)\n                                    quest:PauseAllNonScriptedEntities(false)\n                                    resources:DestroyMovie(xStack_1d0)\n                                    goto LAB_00e5b19b",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ],
+        "FSE/V_BeggarAndChild/Entities/BeggarBully.lua": [
+          {
+            "line": 113,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5c30a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 155,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5c30a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 188,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5c30a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 248,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5c30a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 293,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5c30a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 381,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5c30a",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 422,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5bab8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 467,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5bab8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 552,
+            "actor": "me",
+            "query": "iVar9",
+            "loop": "cVar5",
+            "exit": "goto LAB_00e5bab8",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "summary": {
         "owners": 3,
         "functions": 11,
         "missing": 0,
-        "functionSyntaxPassed": 10,
-        "fileSyntaxPassed": 2,
+        "functionSyntaxPassed": 11,
+        "fileSyntaxPassed": 3,
         "fileSyntaxChecked": 3,
-        "todo": 48
+        "todo": 25
       }
     }
   ],
@@ -1685,9 +1811,9 @@
     "owners": 3,
     "functions": 11,
     "missing": 0,
-    "functionSyntaxPassed": 10,
-    "fileSyntaxPassed": 2,
+    "functionSyntaxPassed": 11,
+    "fileSyntaxPassed": 3,
     "fileSyntaxChecked": 3,
-    "todo": 48
+    "todo": 25
   }
 }

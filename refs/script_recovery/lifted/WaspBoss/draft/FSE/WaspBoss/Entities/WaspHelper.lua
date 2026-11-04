@@ -96,6 +96,9 @@ function Main(quest, me)
                 pcVar11 = "TEXT_QST_072_HELPER_LONG_TIME_FOLLOW_ME_10"
                 pCVar6 = quest:GetHero()
                 r2 = me:Speak(pCVar6, pcVar11, iVar13, (iVar15 ~= 0), (iVar12 ~= 0), (iVar14 ~= 0))
+                if not r2 then
+                    goto LAB_00e0fd75
+                end
                 iVar13 = me:IsPerformingScriptTask()
                 cVar5 = iVar13
                 while cVar5 do
@@ -140,6 +143,9 @@ function Main(quest, me)
                 pcVar11 = "TEXT_QST_072_HELPER_FOLLOW_ME_10"
                 pCVar6 = quest:GetHero()
                 r3 = me:Speak(pCVar6, pcVar11, iVar13, (iVar15 ~= 0), (iVar12 ~= 0), (iVar14 ~= 0))
+                if not r3 then
+                    goto LAB_00e0fd75
+                end
                 iVar13 = me:IsPerformingScriptTask()
                 cVar5 = iVar13
                 while cVar5 do
@@ -202,9 +208,9 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then goto LAB_00e109a6 end
-            xStack_40 = (quest:GetDistanceBetweenThings(me, r1) ^ 2)
+            xStack_40 = (("<f"):unpack(("<f"):pack(resources:DistanceBetweenThings(me, r1))))
             pCVar8 = quest:GetHero()
-            fVar10 = (quest:GetDistanceBetweenThings(pCVar8, r1) ^ 2)
+            fVar10 = resources:DistanceBetweenThings(pCVar8, r1)
             fVar18 = xStack_40
             fVar17 = 9.0
             pCVar8 = quest:GetHero()
@@ -311,7 +317,7 @@ function Main(quest, me)
                     quest:AddPersonToConversation(iVar15, pCVar6)
                     pCVar6 = quest:GetHero()
                     quest:AddLineToConversation(iVar15, "TEXT_QST_072_HELPER_OVER_HERE", me, pCVar6, false)
-                    me:PlayAnimation("ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED", false, false, false, true, true, false, false)
+                    resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_OPINION_NEUTRAL_SHOUTING_WITH_HANDS_CUPPED", false, false, false, true, false, false)
                     iVar13 = me:IsPerformingScriptTask()
                     cVar5 = iVar13
                     while cVar5 do
@@ -327,7 +333,7 @@ function Main(quest, me)
                     if bVar4 then goto LAB_00e109a6 end
                     quest:Pause(0.8)
                     pCVar6 = 0x1
-                    me:PlayAnimation("ST_OPINION_APPROVAL_WAVING_AT_DISTANCE", false, false, false, true, true, false, false)
+                    resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_OPINION_APPROVAL_WAVING_AT_DISTANCE", false, false, false, true, false, false)
                     iVar13 = me:IsPerformingScriptTask()
                     cVar5 = iVar13
                     while cVar5 do
@@ -391,7 +397,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then goto LAB_00e109ab end
-        me:PlayAnimation("STANDARD_WAVE", false, false, false, true, true, false, false)
+        resources:PlayAnimationWithNativeArgument5(xStack_20, "STANDARD_WAVE", false, false, false, true, false, false)
         iVar13 = me:IsPerformingScriptTask()
         cVar5 = iVar13
         while cVar5 do
@@ -419,7 +425,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if bVar4 then goto LAB_00e109ab end
-        me:PlayAnimation("ST_CALL_OVER", false, false, false, true, true, false, false)
+        resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_CALL_OVER", false, false, false, true, false, false)
         iVar13 = me:IsPerformingScriptTask()
         cVar5 = iVar13
         while cVar5 do
@@ -503,7 +509,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then break end
-            me:PlayAnimation("STANDARD_WAVE", false, false, false, true, true, false, false)
+            resources:PlayAnimationWithNativeArgument5(xStack_20, "STANDARD_WAVE", false, false, false, true, false, false)
             iVar13 = me:IsPerformingScriptTask()
             cVar5 = iVar13
             while cVar5 do
@@ -531,7 +537,7 @@ function Main(quest, me)
             alive = not quest:IsActiveThreadTerminating()
             bVar4 = not alive
             if bVar4 then break end
-            me:PlayAnimation("ST_CALL_OVER", false, false, false, true, true, false, false)
+            resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_CALL_OVER", false, false, false, true, false, false)
             iVar13 = me:IsPerformingScriptTask()
             cVar5 = iVar13
             while cVar5 do

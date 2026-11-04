@@ -11,9 +11,9 @@ function Main(quest, me)
         quest:SetStateBool("BootyDugUp", true)
         predicateResult = not quest:GetStateBool("WifeAttacked")
     end
-    if predicateResult and not quest:IsActiveThreadTerminating() then
-        quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
-    end
+    if not (predicateResult and not quest:IsActiveThreadTerminating()) then return end
+    local pQuestName = quest:GetActiveQuestName()
+    quest:SetQuestAsCompleted(pQuestName, false, false, false)
 end
 
 -- ExtraBooty.Init (retail 0x00cdebb0)

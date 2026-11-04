@@ -25,6 +25,7 @@
           "todo": [],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
@@ -69,6 +70,7 @@
             "GetNearestEnabledDiggingSpot",
             "IsAlive",
             "GetHero",
+            "ENGINE_IsHorizontalDistanceBetweenThingsUnder",
             "IsActiveThreadTerminating",
             "GetHero",
             "EntitySetFacingAngleTowardsThing",
@@ -104,9 +106,11 @@
             "GetActiveQuestName",
             "DeactivateQuestLater",
             "RESOURCE_DestroyMovie",
-            "RESOURCE_ReleaseResource"
+            "RESOURCE_ReleaseResource",
+            "TrackThingOutput",
+            "RetireThingOutput"
           ],
-          "lines": 159,
+          "lines": 160,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -225,14 +229,10 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CScriptThing::operator=((CScriptThing *)xStack_6c,iStack_60 + iVar12 * 0xc);",
-            "unlifted: xStack_30 = (undefined **)puVar7.x;",
-            "unlifted: xStack_2c = puVar7.y;",
-            "unlifted: fret_0 = quest:GetWaterHeightAtPosition(&xStack_30)"
-          ],
+          "todo": [],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
@@ -281,6 +281,7 @@
             "IsActiveThreadTerminating",
             "IsFishingSpotEnabled",
             "IsActiveThreadTerminating",
+            "LOCALLIST_At",
             "IsActiveThreadTerminating",
             "IsAlive",
             "IsActiveThreadTerminating",
@@ -342,9 +343,14 @@
             "GetActiveQuestName",
             "DeactivateQuestLater",
             "RESOURCE_DestroyMovie",
-            "RESOURCE_ReleaseResource"
+            "RESOURCE_ReleaseResource",
+            "CopyThingOutput",
+            "TrackThingOutput",
+            "AssignThingOutput",
+            "GetThingPosition",
+            "RetireThingOutput"
           ],
-          "lines": 269,
+          "lines": 271,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -362,7 +368,7 @@
             "goto LAB_00ee98de;",
             "goto LAB_00ee9adf;",
             "goto LAB_00ee9cd6;",
-            "if (100.0 <= (pCVar8.x - (float)xStack_30) * (pCVar8.x - (float)xStack_30) + fVar1 * fVar1 + fVar10 * fVar10) goto LAB_00ee9adf;",
+            "if (100.0 <= (pCVar8.x - native_fishingX) * (pCVar8.x - native_fishingX) + fVar1 * fVar1 + fVar10 * fVar10) goto LAB_00ee9adf;",
             "if (bVar2) goto LAB_00ee9ea5;",
             "if (bVar2) goto LAB_00ee9ee4;",
             "if (bVar3) goto LAB_00ee9ea5;",
@@ -453,14 +459,6 @@
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
-      "declaredFreeLocals": {
-        "FSE/Expression_Fish/Expression_Fish.lua": {
-          "Main": [
-            "xStack_2c",
-            "xStack_30"
-          ]
-        }
-      },
       "summary": {
         "owners": 1,
         "functions": 3,
@@ -468,7 +466,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 4
+        "todo": 0
       }
     },
     {
@@ -496,6 +494,7 @@
           "todo": [],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_NewResource",
@@ -514,9 +513,10 @@
             "Pause",
             "FadeScreenIn",
             "RESOURCE_DestroyMovie",
-            "RESOURCE_ReleaseResource"
+            "RESOURCE_ReleaseResource",
+            "WithRetailResources"
           ],
-          "lines": 38,
+          "lines": 39,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -590,11 +590,10 @@
             "returnKind": null,
             "bsimVoid": false
           },
-          "todo": [
-            "unlifted: cVar2 = (**(*piStack_18 + 0x12c))()"
-          ],
+          "todo": [],
           "calls": [
             "GetHeroTargetedThing",
+            "IsAlive",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
             "DeactivateQuestLater",
@@ -602,12 +601,15 @@
             "RESOURCE_NewResource",
             "RESOURCE_TryAcquire",
             "GetHero",
+            "FollowThing",
             "IsActiveThreadTerminating",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
-            "RESOURCE_ReleaseResource"
+            "RESOURCE_ReleaseResource",
+            "TrackThingOutput",
+            "RetireThingOutput"
           ],
-          "lines": 44,
+          "lines": 36,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -632,13 +634,6 @@
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
-      "declaredFreeLocals": {
-        "FSE/Expression_Follow/Expression_Follow.lua": {
-          "FollowThread": [
-            "piStack_18"
-          ]
-        }
-      },
       "summary": {
         "owners": 1,
         "functions": 4,
@@ -646,7 +641,7 @@
         "functionSyntaxPassed": 4,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 1
+        "todo": 0
       }
     },
     {
@@ -674,6 +669,7 @@
           "todo": [],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
@@ -716,7 +712,7 @@
             "IsActiveThreadTerminating",
             "IsAlive",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "EntitySetAsPickLocked",
             "ChangeHeroMoralityDueToPicklock",
@@ -727,9 +723,11 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
-            "DeactivateQuestLater"
+            "DeactivateQuestLater",
+            "TrackThingOutput",
+            "RetireThingOutput"
           ],
-          "lines": 159,
+          "lines": 160,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -856,11 +854,11 @@
             "verify cleanup at LAB_00eeb4fa (lifted as early return)",
             "label LAB_00eeb5dd",
             "label LAB_00eeb583",
-            "GetPThing: CScriptThing method not in FSE manifest",
             "verify cleanup at LAB_00eeb4fa (lifted as early return)"
           ],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
@@ -909,7 +907,7 @@
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
@@ -937,11 +935,9 @@
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
-            "GetPThing",
-            "GetHero",
-            "SendEntityEvent",
+            "ENGINE_SendEntityEventFromHeroWithThingData",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "PauseAllNonScriptedEntities",
             "RESOURCE_DestroyMovie",
@@ -953,9 +949,12 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
-            "DeactivateQuestLater"
+            "DeactivateQuestLater",
+            "TrackThingOutput",
+            "AssignThingOutput",
+            "RetireThingOutput"
           ],
-          "lines": 260,
+          "lines": 253,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1038,11 +1037,13 @@
         "FSE/Expression_Pickpocket/Expression_Pickpocket.lua": {
           "LAB_00eeb4fa": [
             "quest:PauseAllNonScriptedEntities(false)",
-            "resources:DestroyMovie(xStack_10)"
+            "resources:DestroyMovie(xStack_10)",
+            "resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0"
           ],
           "LAB_00eeb5dd": [
             "quest:PauseAllNonScriptedEntities(false)",
-            "resources:DestroyMovie(xStack_10)"
+            "resources:DestroyMovie(xStack_10)",
+            "resources:RetireThingOutput(pickpocketTargetOwner); pickpocketTargetOwner = 0"
           ]
         }
       },
@@ -1053,7 +1054,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 14
+        "todo": 13
       }
     },
     {
@@ -1081,6 +1082,7 @@
           "todo": [],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
@@ -1120,7 +1122,7 @@
             "IsActiveThreadTerminating",
             "IsAlive",
             "IsActiveThreadTerminating",
-            "ENGINE_Rand",
+            "RetailRandModulo",
             "IsActiveThreadTerminating",
             "EntitySetAsStolen",
             "ChangeHeroMoralityDueToTheft",
@@ -1131,9 +1133,11 @@
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
-            "DeactivateQuestLater"
+            "DeactivateQuestLater",
+            "TrackThingOutput",
+            "RetireThingOutput"
           ],
-          "lines": 155,
+          "lines": 156,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1247,11 +1251,10 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CScriptBase::KillSpawnedFunction((CScriptBase *)this,(int)&xStack_34,0);"
-          ],
+          "todo": [],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_NewResource",
@@ -1265,6 +1268,7 @@
             "RESOURCE_StartMovie",
             "FadeScreenOut",
             "Pause",
+            "ENGINE_KillSpawnedFunction",
             "DeactivateQuest",
             "CameraDefault",
             "Pause",
@@ -1272,9 +1276,10 @@
             "GetActiveQuestName",
             "DeactivateQuestLater",
             "RESOURCE_DestroyMovie",
-            "RESOURCE_ReleaseResource"
+            "RESOURCE_ReleaseResource",
+            "WithRetailResources"
           ],
-          "lines": 41,
+          "lines": 42,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1355,7 +1360,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 1
+        "todo": 0
       }
     },
     {
@@ -1682,12 +1687,10 @@
             "returnKind": null,
             "bsimVoid": true
           },
-          "todo": [
-            "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);",
-            "unlifted: CDefendingCombatantInfo::CCombatWheel::ResetRings((CCombatWheel *)&iStack_2c);"
-          ],
+          "todo": [],
           "calls": [
             "GetHero",
+            "ENGINE_RegisterQuestConsciousCondition",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "GetActiveQuestName",
@@ -1697,9 +1700,11 @@
             "GetMostRecentValidUsedTarget",
             "IsAlive",
             "IsActiveThreadTerminating",
-            "GetNumberOfKeysNeededToUnlockChest",
+            "ENGINE_ChestKeyResult",
+            "ENGINE_ChestKeyCount",
+            "ENGINE_ChestKeyName",
             "IsActiveThreadTerminating",
-            "GetNumberOfItemsOfTypeInInventory",
+            "ENGINE_InventoryCountWithKeyName",
             "IsActiveThreadTerminating",
             "IsActiveThreadTerminating",
             "PlayCriteriaSoundOnThing",
@@ -1724,7 +1729,7 @@
             "SetCutsceneMode",
             "EntitySetCutsceneBehaviour",
             "PauseAllEntities",
-            "GetItemDefNamesFromContainer",
+            "ENGINE_GetContainerItemDefCount",
             "OpenChest",
             "IsActiveThreadTerminating",
             "MsgOnChestOpeningCancelled",
@@ -1762,9 +1767,12 @@
             "RESOURCE_DestroyMovie",
             "RESOURCE_ReleaseResource",
             "GetActiveQuestName",
-            "DeactivateQuestLater"
+            "DeactivateQuestLater",
+            "WithRetailResources",
+            "TrackThingOutput",
+            "RetireThingOutput"
           ],
-          "lines": 211,
+          "lines": 212,
           "syntax": {
             "runtime": "Lua 5.4",
             "ok": true,
@@ -1874,13 +1882,6 @@
       },
       "controlMode": "structured draft",
       "bindingFiles": {},
-      "declaredFreeLocals": {
-        "FSE/Global_OpenChest/Global_OpenChest.lua": {
-          "Main": [
-            "i_stk_28"
-          ]
-        }
-      },
       "summary": {
         "owners": 1,
         "functions": 3,
@@ -1888,7 +1889,7 @@
         "functionSyntaxPassed": 3,
         "fileSyntaxPassed": 1,
         "fileSyntaxChecked": 1,
-        "todo": 2
+        "todo": 0
       }
     },
     {
@@ -2328,6 +2329,6 @@
     "functionSyntaxPassed": 41,
     "fileSyntaxPassed": 13,
     "fileSyntaxChecked": 13,
-    "todo": 43
+    "todo": 34
   }
 }

@@ -59,7 +59,7 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar1 = not alive
                             if bVar1 then goto LAB_00e02855 end
-                            me:PlayAnimation("ST_MUNCH", false, false, false, true, true, false, false)
+                            resources:PlayAnimationWithNativeArgument5(xStack_20, "ST_MUNCH", false, false, false, true, false, false)
                             quest:EntityPlayObjectAnimation(r1, "EATEN_BY_BALVERINE", false)
                         end
                         dist = 25.0

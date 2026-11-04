@@ -27,12 +27,14 @@ class ScriptDefOffsetTests(unittest.TestCase):
         self.assertEqual(self.table['0xd64']['name'], 'OVI_MoralityChangePerDeed')
         self.assertEqual(self.table['0xf10']['name'], 'GUI_MeleeBeetles')
 
-    def test_unproven_middle_keeps_its_number(self):
-        self.assertIs(self.table['0x270'].get('verified'), False)
-        src = 'x = quest:ReadGlobalGameData(0x270)\ny = quest:ReadGlobalGameData(0x168)\n'
+    def test_native_transfer_proves_middle_without_guessing_vector_end(self):
+        self.assertEqual(self.table['0x270']['name'], 'RansomVictimHaveVictimKilledCost')
+        self.assertEqual(self.table['0x74c']['name'], 'SickChildsSisterAttentionAnims')
+        self.assertNotIn('0x750', self.table)
+        src = 'x = quest:ReadGlobalGameData(0x270)\ny = quest:ReadGlobalGameData(0x750)\n'
         out, n = name_script_def_reads(src)
-        self.assertIn('quest:ReadGlobalGameData(0x270)', out)
-        self.assertIn('quest:ReadGlobalGameData(SCRIPT_DEF.OFEvilNakedBoastCost)', out)
+        self.assertIn('quest:ReadGlobalGameData(SCRIPT_DEF.RansomVictimHaveVictimKilledCost)', out)
+        self.assertIn('quest:ReadGlobalGameData(0x750)', out)
         self.assertEqual(n, 1)
 
 

@@ -2,11 +2,12 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local resources = quest:RetailResources()
+    return quest:WithRetailResources(function(resources)
     local bVar2, iVar5, pCVar3, pppuVar4, u_stk_38, xStack_20, xStack_30
     local alive = true
     u_stk_38 = 0
     pCVar3 = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(pCVar3)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar2 = not alive
@@ -41,6 +42,7 @@ function Main(quest)
         ::LAB_00eea22f::
         resources:ReleaseResource(xStack_30)
     end
+    end)
 end
 
 function Init(quest)
@@ -50,31 +52,25 @@ function OnPersist(quest, context)
 end
 
 function FollowThread(quest)
-    local resources = quest:RetailResources()
-    local bVar3, cVar2, hero, native_arg_sequence_1, pQuestName, piStack_18, xStack_10
+    return quest:WithRetailResources(function(resources)
+    local followTargetOwner = 0
+    local bVar3, hero, pQuestName, xStack_10
     local alive = true
     local r1 = quest:GetHeroTargetedThing()
-    native_arg_sequence_1 = false
-    if piStack_18 == nil then
-        native_arg_sequence_1 = true
-    else
-        native_arg_sequence_1 = false
+    followTargetOwner = resources:TrackThingOutput(r1)
+    local __native_condition_1 = r1 == nil
+    local cVar2
+    if not __native_condition_1 then
+        cVar2 = (r1 ~= nil and r1:IsAlive())
+        __native_condition_1 = not cVar2
     end
-    if not native_arg_sequence_1 then
-        -- TODO(native): cVar2 = (**(*piStack_18 + 0x12c))()
-        cVar2 = nil --[[unresolved native value]]
-        if not cVar2 then
-            native_arg_sequence_1 = true
-        else
-            native_arg_sequence_1 = false
-        end
-    end
-    if native_arg_sequence_1 then
+    if __native_condition_1 then
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
             pQuestName = quest:GetActiveQuestName()
             quest:DeactivateQuestLater(pQuestName, 0)
+            resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0
             return
         end
     else
@@ -84,6 +80,7 @@ function FollowThread(quest)
             xStack_10 = resources:NewResource()
             resources:TryAcquire(xStack_10, r1, 4)
             hero = quest:GetHero()
+            resources:FollowThing(xStack_10, hero, 1.0, true)
             alive = not quest:IsActiveThreadTerminating()
             bVar3 = not alive
             while not bVar3 do
@@ -92,8 +89,11 @@ function FollowThread(quest)
                 bVar3 = not alive
             end
             resources:ReleaseResource(xStack_10)
+            resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0
             return
         end
     end
+    resources:RetireThingOutput(followTargetOwner); followTargetOwner = 0
+    end)
 end
 

@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local bVar3, bVar5, cVar4, ctr_c8, dist, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar6, iVar9, i_stk_c4, native_arg_sequence_1, native_arg_switch_2, pCVar7, pScriptObject, pcVar10, r1, r2, r3, r4, r5, r6, xStack_10, xStack_20, xStack_30, xStack_58, xStack_64, xStack_70, xStack_84, xStack_94, xStack_a4, xStack_b4
+    local bVar3, bVar5, cVar4, ctr_c8, dist, fVar2, fret_0, fret_00, fret_01, iVar11, iVar12, iVar13, iVar6, iVar9, i_stk_c4, native_arg_sequence_1, native_arg_switch_2, pCVar7, pScriptObject, pcVar10, r1, r2, r3, xStack_10, xStack_20, xStack_30, xStack_58, xStack_64, xStack_70, xStack_84, xStack_94, xStack_a4, xStack_b4
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -148,8 +148,8 @@ function Main(quest, me)
                 iVar6 = 0
                 pcVar10 = "TEXT_QST_009_ASSASSIN1_ATTACKED"
                 pCVar7 = quest:GetHero()
-                r4 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-                iVar6 = me:IsPerformingScriptTask()
+                resources:Speak(xStack_a4, pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                iVar6 = resources:IsPerformingScriptTask(xStack_a4)
                 cVar4 = iVar6
                 while cVar4 do
                     alive = quest:NewScriptFrame(me)
@@ -167,7 +167,7 @@ function Main(quest, me)
                         r1 = nil
                         return
                     end
-                    iVar6 = me:IsPerformingScriptTask()
+                    iVar6 = resources:IsPerformingScriptTask(xStack_a4)
                     cVar4 = iVar6
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -195,8 +195,8 @@ function Main(quest, me)
                 iVar6 = 0
                 pcVar10 = "TEXT_QST_009_ASSASSIN2_ATTACKED"
                 pCVar7 = quest:GetHero()
-                r5 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-                iVar6 = me:IsPerformingScriptTask()
+                resources:Speak(xStack_84, pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                iVar6 = resources:IsPerformingScriptTask(xStack_84)
                 cVar4 = iVar6
                 while cVar4 do
                     alive = quest:NewScriptFrame(me)
@@ -215,7 +215,7 @@ function Main(quest, me)
                         r1 = nil
                         return
                     end
-                    iVar6 = me:IsPerformingScriptTask()
+                    iVar6 = resources:IsPerformingScriptTask(xStack_84)
                     cVar4 = iVar6
                 end
                 alive = not quest:IsActiveThreadTerminating()
@@ -234,8 +234,8 @@ function Main(quest, me)
                 iVar6 = 0
                 pcVar10 = "TEXT_QST_009_ASSASSIN3_ATTACKED"
                 pCVar7 = quest:GetHero()
-                r6 = me:Speak(pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
-                iVar6 = me:IsPerformingScriptTask()
+                resources:Speak(xStack_94, pCVar7, pcVar10, iVar6, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                iVar6 = resources:IsPerformingScriptTask(xStack_94)
                 cVar4 = iVar6
                 while cVar4 do
                     alive = quest:NewScriptFrame(me)
@@ -247,7 +247,7 @@ function Main(quest, me)
                         quest:DeregisterTimer(i_stk_c4)
                         goto LAB_00d128bf
                     end
-                    iVar6 = me:IsPerformingScriptTask()
+                    iVar6 = resources:IsPerformingScriptTask(xStack_94)
                     cVar4 = iVar6
                 end
                 alive = not quest:IsActiveThreadTerminating()

@@ -48,7 +48,7 @@ function Main(quest, me)
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         if not bVar2 then
-            iVar4 = math.random(0, 32767)
+            iVar4 = quest:RetailRandModulo(32768)
             if iVar4 % 5 == 0 then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive

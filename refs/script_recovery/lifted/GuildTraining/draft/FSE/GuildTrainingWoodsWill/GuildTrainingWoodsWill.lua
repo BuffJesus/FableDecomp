@@ -109,7 +109,7 @@ function Main(quest)
                         pCVar6 = xStack_7c[(iVar12) / 0xc + 1]
                         bVar3 = false
                         fret_0 = quest:GetHealth(pCVar6)
-                        quest:ModifyThingHealth(pCVar6, (15.0 - fret_0), bVar3)
+                        quest:ModifyThingHealth(pCVar6, (string.unpack("<f", string.pack("<f", (15.0 - fret_0)))), bVar3)
                         xStack_7c[(iVar12) / 0xc + 1]:SetToKillOnLevelUnload(false)
                         ctr_88 = ctr_88 + 1
                         iVar12 = iVar12 + 0xc

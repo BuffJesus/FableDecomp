@@ -10,10 +10,9 @@ local initialAngle
 
 -- GTDI_Maze.Main (retail 0x00e27e90)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult3, predicateResult, this_00, movie, movie2, resource2, resource3, actorMap
-    local actorMap2
+    local actorMap2, scratchValue8
     if not quest:NewScriptFrame(me) then return end
     quest:SetThingHasInformation(me, false, true, false)
     local resource = resources:NewResource()
@@ -25,7 +24,8 @@ function Main(quest, me)
         quest:EntitySetAsKillable(me, false, true)
         quest:EntitySetAsDamageable(me, false)
         quest:SetIsPushableByHero(me, false)
-        quest:KickOffQuestStartScreen(quest:GetActiveQuestName(), false, false)
+        local getActiveQuestName = quest:GetActiveQuestName()
+        quest:KickOffQuestStartScreen(getActiveQuestName, false, false)
         quest:MiniMapAddMarker(me, "HUD_ORB_QUEST_CORE")
         if not quest:IsActiveThreadTerminating() then
             repeat
@@ -41,18 +41,22 @@ function Main(quest, me)
                 ::FLOW_past_lab_00e280a7::
                 if predicateResult3 then
                     if quest:IsActiveThreadTerminating() then break end
-                    quest:EntitySetThingAsAllyOfThing(me, hero)
+                    local hero3 = quest:GetHero()
+                    quest:EntitySetThingAsAllyOfThing(me, hero3)
+                    local hero = quest:GetHero()
                     quest:EntitySetThingAsAllyOfThing(hero, me)
                     resource2 = resources:NewResource()
                     resources:PrepareResource(resource2)
-                    if not resources:TryAcquire(resource2, hero, 4) then goto LAB_00e281e0 end
+                    local hero4 = quest:GetHero()
+                    if not resources:TryAcquire(resource2, hero4, 4) then goto LAB_00e281e0 end
                     goto LAB_00e28214
                 end
                 if me:IsTalkedToByHero() then
                     if quest:IsActiveThreadTerminating() then break end
                     resource3 = resources:NewResource()
                     resources:PrepareResource(resource3)
-                    if not resources:TryAcquire(resource3, hero, 4) then goto LAB_00e28460 end
+                    local hero5 = quest:GetHero()
+                    if not resources:TryAcquire(resource3, hero5, 4) then goto LAB_00e28460 end
                     goto LAB_00e28494
                 end
                 quest:NewScriptFrame(me)
@@ -73,7 +77,8 @@ function Main(quest, me)
             resources:ReleaseResource(resource)
             return
         end
-        if resources:TryAcquire(resource2, hero, 4) then break end
+        local hero6 = quest:GetHero()
+        if resources:TryAcquire(resource2, hero6, 4) then break end
     end
     ::LAB_00e28214::
     if quest:IsActiveThreadTerminating() then
@@ -113,7 +118,7 @@ function Main(quest, me)
     ::LAB_00e28c3f::
     quest:PauseAllNonScriptedEntities(false)
     ::LAB_00e28c85::
-    resources:ReleaseResource(this_00)
+    resources:DestroyMovie(this_00)
     resources:ReleaseResource(resource)
     do return end
     ::LAB_00e28460::
@@ -124,7 +129,8 @@ function Main(quest, me)
             resources:ReleaseResource(resource)
             return
         end
-        if resources:TryAcquire(resource3, hero, 4) then break end
+        local hero7 = quest:GetHero()
+        if resources:TryAcquire(resource3, hero7, 4) then break end
     end
     ::LAB_00e28494::
     if quest:IsActiveThreadTerminating() then
@@ -162,12 +168,14 @@ function Main(quest, me)
     ::LAB_00e28674::
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     quest:GiveHeroQuestCardDirectly("OBJECT_QUEST_CARD_FIND_TROPHY_DEALER", "V_TrophyDealer", false)
-    quest:SetTeleporterAsActive(quest:GetThingWithScriptName("WitchwoodTeleporter"), true)
+    local witchwoodTeleporter = quest:GetThingWithScriptName("WitchwoodTeleporter")
+    quest:SetTeleporterAsActive(witchwoodTeleporter, true)
     quest:ClearThingHasInformation(me)
     quest:MiniMapRemoveMarker(me)
     quest:EntitySetFacingAngle(me, initialAngle, false)
     quest:AddLogbookStoryEntry(130)
-    quest:SetQuestAsCompleted(quest:GetActiveQuestName(), false, false, false)
+    local getActiveQuestName2 = quest:GetActiveQuestName()
+    quest:SetQuestAsCompleted(getActiveQuestName2, false, false, false)
     quest:SetStateBool("PieceOver", true)
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource); return end
     repeat
@@ -183,8 +191,10 @@ function Main(quest, me)
         ::FLOW_past_lab_00e28814::
         if predicateResult then
             if not quest:IsActiveThreadTerminating() then
-                quest:EntitySetThingAsAllyOfThing(me, hero)
-                quest:EntitySetThingAsAllyOfThing(hero, me)
+                local hero8 = quest:GetHero()
+                quest:EntitySetThingAsAllyOfThing(me, hero8)
+                local hero2 = quest:GetHero()
+                quest:EntitySetThingAsAllyOfThing(hero2, me)
                 resources:PrepareResource(resource)
                 while not resources:TryAcquire(resource, me, 4) do
                     if not quest:NewScriptFrame(me) then resources:ReleaseResource(resource); return end
@@ -192,22 +202,36 @@ function Main(quest, me)
                 if not quest:IsActiveThreadTerminating() then
                     local movie4 = resources:StartMovie("")
                     quest:PauseAllNonScriptedEntities(true)
-                    quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-                    local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
-                    if fret_0 <= 0.0 then
-                        goto LAB_00e28a13
+                    local hero9 = quest:GetHero()
+                    quest:EntitySetFacingAngleTowardsThing(me, hero9, false)
+                    local scratchValue = resources:ScriptThing(resource)
+                    local fret_0 = quest:GetHealth(scratchValue)
+                    if not (fret_0 <= 0.0) then
+                        goto FLOW_past_lab_00e28a13
                     end
-                    goto FLOW_past_lab_00e28a13
                     ::LAB_00e28a13::
-                    if 0.0 < quest:GetHealth(resources:ScriptThing(resource)) then
-                        if not me:Speak(hero, "TEXT_QST_077_MAZE_REPEAT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e28c3f end
+                    scratchValue8 = resources:ScriptThing(resource)
+                    if 0.0 < quest:GetHealth(scratchValue8) then
+                        local hero10 = quest:GetHero()
+                        if not me:Speak(hero10, "TEXT_QST_077_MAZE_REPEAT", GROUP_SELECT_FIRST, false, true, false) then
+                            goto LAB_00e28c3f
+                        end
+                        while me:IsPerformingScriptTask() do
+                            if not quest:NewScriptFrame(me) then goto LAB_00e28c3f end
+                        end
                         if quest:IsActiveThreadTerminating() then goto LAB_00e28c3f end
                     end
                     quest:PauseAllNonScriptedEntities(false)
                     resources:DestroyMovie(movie4)
                     goto LAB_00e28ac9
                     ::FLOW_past_lab_00e28a13::
-                    if not me:Speak(hero, "TEXT_QST_077_MAZE_ON_HIT", GROUP_SELECT_FIRST, false, true, false) then goto LAB_00e28c3f end
+                    local hero11 = quest:GetHero()
+                    if not me:Speak(hero11, "TEXT_QST_077_MAZE_ON_HIT", GROUP_SELECT_FIRST, false, true, false) then
+                        goto LAB_00e28c3f
+                    end
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then goto LAB_00e28c3f end
+                    end
                     if not quest:IsActiveThreadTerminating() then goto LAB_00e28a13 end
                     quest:PauseAllNonScriptedEntities(false)
                     this_00 = movie4
@@ -221,15 +245,21 @@ function Main(quest, me)
             if quest:IsActiveThreadTerminating() then break end
             local movie3 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
-            quest:EntitySetFacingAngleTowardsThing(me, hero, false)
-            local fret_01 = quest:GetHealth(resources:ScriptThing(resource))
+            local hero12 = quest:GetHero()
+            quest:EntitySetFacingAngleTowardsThing(me, hero12, false)
+            local scratchValue7 = resources:ScriptThing(resource)
+            local fret_01 = quest:GetHealth(scratchValue7)
             if 0.0 < fret_01 then
-                me:Speak(hero, "TEXT_QST_077_MAZE_REPEAT", GROUP_SELECT_FIRST, false, true, false)
-                while me:IsPerformingScriptTask() do
-                    if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e28c81 end
+                local hero13 = quest:GetHero()
+                if not me:Speak(hero13, "TEXT_QST_077_MAZE_REPEAT", GROUP_SELECT_FIRST, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                else
+                    while me:IsPerformingScriptTask() do
+                        if not quest:NewScriptFrame(me) then quest:PauseAllNonScriptedEntities(false); goto LAB_00e28c81 end
+                    end
+                    if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e28c81 end
+                    goto FLOW_past_lab_00e28c81
                 end
-                if quest:IsActiveThreadTerminating() then quest:PauseAllNonScriptedEntities(false); goto LAB_00e28c81 end
-                goto FLOW_past_lab_00e28c81
                 ::LAB_00e28c81::
                 this_00 = movie3
                 goto LAB_00e28c85

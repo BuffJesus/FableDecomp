@@ -1,0 +1,23 @@
+{
+  "quest": "V_BookCollecting",
+  "host": "V_BookCollecting",
+  "maps": "BowerstoneSlums$",
+  "legs": {},
+  "enemyNames": [],
+  "clear": false,
+  "answer": "yes",
+  "failed": "false",
+  "steps": [
+    {
+      "name": "verify grudging donation after fresh reload",
+      "do": [
+        "Runner.badIndex=quest:ReadGlobalGameData(1248); assert(quest:GetStateInt('BooksDonated')==3 and quest:GetStateInt('GoodBooksDonated')==2); assert(not quest:GetStateBool('ReadingBook') and not quest:IsInCutscene() and not quest:IsInMovieSequence()); for _,name in ipairs({'BookDonated','BookOwned'}) do assert(quest:GetStateFlagVectorCount(name)==40); for i=0,39 do assert(quest:GetStateFlagVectorAt(name,i)==(i<2 or i==Runner.badIndex),name..'['..i..']') end end; for _,i in ipairs({0,1,Runner.badIndex}) do assert(not quest:IsObjectInThingsPossession(quest:ReadGlobalGameDataStringAt(0x4d4,i),quest:GetHero()),'donated inventory still present') end; Runner.badLoaded=true"
+      ],
+      "until": "Runner.badLoaded==true",
+      "timeout": 30,
+      "tries": 1
+    }
+  ],
+  "done": "Runner.badLoaded==true",
+  "stateStatus": "'BadIndex='..tostring(Runner.badIndex)..' BooksDonated='..tostring(quest:GetStateInt('BooksDonated'))..' GoodBooks='..tostring(quest:GetStateInt('GoodBooksDonated'))..' Reading='..tostring(quest:GetStateBool('ReadingBook'))..' Movie='..tostring(quest:IsInMovieSequence())"
+}

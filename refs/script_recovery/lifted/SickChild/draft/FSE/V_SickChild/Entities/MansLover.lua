@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, bVar2, bVar4, cVar3, c_stk_10d, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, iVar10, iVar11, iVar5, iVar9, native_arg_sequence_1, p0, pCVar6, pcVar8, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, uVar7, xStack_10c, xStack_120, xStack_124, xStack_128, xStack_12c, xStack_bc, xStack_cc, xStack_d0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_c
+    local __native_condition_1, bVar2, bVar4, cVar3, expectedLetterDefinition, fVar1, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, fret_10, fret_11, iVar10, iVar11, iVar5, iVar9, letterPresentationPending, letterQuestionAnswer, local_presentedItemName, mansLoverDialogueState, p0, pCVar6, pcVar8, r1, r10, r11, r12, r13, r14, r2, r3, r4, r5, r6, r7, r8, r9, uVar7, xStack_10c, xStack_120, xStack_124, xStack_bc, xStack_cc, xStack_d0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_48, x_stk_54, x_stk_60, x_stk_6c, x_stk_78, x_stk_84, x_stk_90, x_stk_9c, x_stk_c
     local alive = true
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
@@ -47,65 +47,23 @@ function Main(quest, me)
             end
             quest:SetThingHasInformation(me, true, true, false)
         end
-        c_stk_10d = 0
+        letterPresentationPending = false
         xStack_124 = quest:ReadGlobalGameDataString(0x73c)
-        xStack_128 = xStack_124
+        expectedLetterDefinition = xStack_124
         alive = not quest:IsActiveThreadTerminating()
         bVar2 = not alive
         while not bVar2 do
-            xStack_12c = ""
+            local_presentedItemName = ""
             cVar3 = me:MsgIsPresentedWithItem()
-            if cVar3 then xStack_12c = _G.g_PresentedItemName end
-            native_arg_sequence_1 = false
-            if cVar3 then
-                native_arg_sequence_1 = true
-            else
-                native_arg_sequence_1 = false
-            end
-            if native_arg_sequence_1 then
-                if xStack_128 == xStack_12c then
-                    native_arg_sequence_1 = true
-                else
-                    native_arg_sequence_1 = false
-                end
-                if not native_arg_sequence_1 then
-                    if xStack_128 ~= nil then
-                        native_arg_sequence_1 = true
-                    else
-                        native_arg_sequence_1 = false
-                    end
-                    if native_arg_sequence_1 then
-                        if xStack_12c ~= nil then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                    if native_arg_sequence_1 then
-                        if xStack_128[1] == xStack_12c[1] then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                    if native_arg_sequence_1 then
-                        -- TODO(native): iVar5 = CBasicString<char>::Compare((void *)*xStack_128,(void *)*xStack_12c);
-                        if iVar5 == 0 then
-                            native_arg_sequence_1 = true
-                        else
-                            native_arg_sequence_1 = false
-                        end
-                    end
-                end
-            end
-            if native_arg_sequence_1 then
+            if cVar3 then local_presentedItemName = _G.g_PresentedItemName end
+            if (cVar3) and (expectedLetterDefinition == local_presentedItemName) then
                 alive = not quest:IsActiveThreadTerminating()
                 bVar2 = not alive
                 if bVar2 then break end
-                c_stk_10d = 1
+                letterPresentationPending = true
             end
             cVar3 = me:IsTalkedToByHero()
-            if (not cVar3) and (c_stk_10d == 0) then
+            if (not cVar3) and (not letterPresentationPending) then
                 bVar2 = false
             else
                 bVar2 = true
@@ -116,7 +74,7 @@ function Main(quest, me)
                 if bVar2 then break end
                 xStack_10c = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                if c_stk_10d == 0 then
+                if not letterPresentationPending then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then
@@ -133,7 +91,7 @@ function Main(quest, me)
                     pCVar6 = quest:GetHero()
                     quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar2)
                     alive = quest:NewScriptFrame(me)
-                    quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0, -1)
+                    quest:CameraUseCameraPoint("CAM_REL_WOMAN", me, -1.0, 0, -1)
                 else
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
@@ -151,7 +109,7 @@ function Main(quest, me)
                     pCVar6 = quest:GetHero()
                     quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar2)
                     alive = quest:NewScriptFrame(me)
-                    quest:CameraUseCameraPoint(me, nil --[[missing]], -1.0, 0, -1)
+                    quest:CameraUseCameraPoint("CAM_REL_WOMANHERO", me, -1.0, 0, -1)
                 end
                 xStack_bc = quest:ReadGlobalGameDataString(0x73c)
                 pCVar6 = quest:GetHero()
@@ -160,15 +118,12 @@ function Main(quest, me)
                 bVar4 = not alive
                 if bVar2 then
                     if bVar4 then goto LAB_00ecaf49 end
-                    if c_stk_10d == 0 then
+                    if not letterPresentationPending then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if not bVar2 then
-                            x_stk_24 = resources:ScriptThing(xStack_120)
-                            pCVar6 = x_stk_24
-                            fret_0 = quest:GetHealth(pCVar6)
-                            fVar1 = 0.0
-                            if fVar1 < fret_0 then
+                            pCVar6, x_stk_24 = nil, nil
+                            if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                                 iVar11 = 0
                                 iVar10 = 1
                                 iVar9 = 0
@@ -176,6 +131,9 @@ function Main(quest, me)
                                 pcVar8 = "TEXT_QST_B10_MANS_LOVER_INTRO"
                                 pCVar6 = quest:GetHero()
                                 r1 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                                if not r1 then
+                                    goto LAB_00ecaf49
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar3 = iVar5
                                 while cVar3 do
@@ -191,27 +149,24 @@ function Main(quest, me)
                                 if bVar2 then goto LAB_00eca325 end
                             end
                             quest:GiveHeroYesNoQuestion("TEXT_QST_B10_MANS_LOVER_GIVE_LETTER_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                            iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
-                            while iVar5 < 0 do
+                            letterQuestionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                            while letterQuestionAnswer < 0 do
                                 alive = quest:NewScriptFrame(me)
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar2 = not alive
                                 if bVar2 then goto LAB_00ecaf49 end
-                                iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
+                                letterQuestionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                             end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then goto LAB_00eca325 end
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
-                            if iVar5 ~= 1 then
+                            if letterQuestionAnswer ~= 1 then
                                 if bVar2 then goto LAB_00ecaf49 end
-                                quest:CameraUseCameraPoint(me, pCVar6, -1.0, 0, -1)
-                                x_stk_c = resources:ScriptThing(xStack_120)
-                                pCVar6 = x_stk_c
-                                fret_00 = quest:GetHealth(pCVar6)
-                                fVar1 = 0.0
-                                if fret_00 <= fVar1 then goto LAB_00ecae14 end
+                                quest:CameraUseCameraPoint("CAM_REL_WOMANHERO", me, -1.0, 0, -1)
+                                pCVar6, x_stk_c = nil, nil
+                                if not resources:ResourceThingHealthAbove(xStack_120, 0.0) then goto LAB_00ecae14 end
                                 iVar11 = 0
                                 iVar10 = 1
                                 iVar9 = 0
@@ -219,6 +174,9 @@ function Main(quest, me)
                                 pcVar8 = "TEXT_QST_B10_MANS_LOVER_MAN_NOT_SEEN_10"
                                 pCVar6 = quest:GetHero()
                                 r2 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                                if not r2 then
+                                    goto LAB_00eca325
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar3 = iVar5
                                 while cVar3 do
@@ -246,24 +204,21 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if not bVar2 then
-                        if c_stk_10d == 0 then
+                        if not letterPresentationPending then
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then goto LAB_00eca325 end
-                            quest:CameraUseCameraPoint(me, pCVar6, -1.0, 0, -1)
+                            quest:CameraUseCameraPoint("CAM_REL_WOMANHERO", me, -1.0, 0, -1)
                         else
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then goto LAB_00ecaf49 end
-                            c_stk_10d = 0
+                            letterPresentationPending = false
                         end
                         xStack_d0 = quest:ReadGlobalGameDataString(0x73c)
                         quest:TakeObjectFromHero(xStack_d0)
-                        x_stk_90 = resources:ScriptThing(xStack_120)
-                        pCVar6 = x_stk_90
-                        fret_01 = quest:GetHealth(pCVar6)
-                        fVar1 = 0.0
-                        if fVar1 < fret_01 then
+                        pCVar6, x_stk_90 = nil, nil
+                        if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                             iVar11 = 0
                             iVar10 = 1
                             iVar9 = 0
@@ -271,6 +226,9 @@ function Main(quest, me)
                             pcVar8 = "TEXT_QST_B10_MANS_LOVER_FROM_YOU_10"
                             pCVar6 = quest:GetHero()
                             r3 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                            if not r3 then
+                                goto LAB_00ecaf49
+                            end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar3 = iVar5
                             while cVar3 do
@@ -286,27 +244,24 @@ function Main(quest, me)
                             if bVar2 then goto LAB_00eca325 end
                         end
                         quest:GiveHeroYesNoQuestion("TEXT_QST_B10_MANS_LOVER_LETTER_FROM_QUESTION", "TEXT_OBJECT_HERO_ANSWER_YES", "TEXT_OBJECT_HERO_ANSWER_NO", "", true)
-                        iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
-                        while iVar5 < 0 do
+                        letterQuestionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
+                        while letterQuestionAnswer < 0 do
                             alive = quest:NewScriptFrame(me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
                             if bVar2 then goto LAB_00ecaf49 end
-                            iVar5 = quest:MsgIsQuestionAnsweredYesOrNo()
+                            letterQuestionAnswer = quest:MsgIsQuestionAnsweredYesOrNo()
                         end
                         alive = not quest:IsActiveThreadTerminating()
                         bVar2 = not alive
                         if not bVar2 then
-                            quest:CameraUseCameraPoint(me, pCVar6, -1.0, 0, -1)
+                            quest:CameraUseCameraPoint("CAM_REL_WOMAN", me, -1.0, 0, -1)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar2 = not alive
-                            if iVar5 == 0 then
+                            if letterQuestionAnswer == 0 then
                                 if bVar2 then goto LAB_00ecaf49 end
-                                x_stk_48 = resources:ScriptThing(xStack_120)
-                                pCVar6 = x_stk_48
-                                fret_02 = quest:GetHealth(pCVar6)
-                                fVar1 = 0.0
-                                if fVar1 < fret_02 then
+                                pCVar6, x_stk_48 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                                     iVar11 = 0
                                     iVar10 = 1
                                     iVar9 = 0
@@ -314,6 +269,9 @@ function Main(quest, me)
                                     pcVar8 = "TEXT_QST_B10_MANS_LOVER_MAN_LIKES_ME_10"
                                     pCVar6 = quest:GetHero()
                                     r4 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                                    if not r4 then
+                                        goto LAB_00eca325
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar3 = iVar5
                                     while cVar3 do
@@ -328,11 +286,8 @@ function Main(quest, me)
                                     bVar2 = not alive
                                     if bVar2 then goto LAB_00ecaf49 end
                                 end
-                                x_stk_78 = resources:ScriptThing(xStack_120)
-                                pCVar6 = x_stk_78
-                                fret_03 = quest:GetHealth(pCVar6)
-                                fVar1 = 0.0
-                                if fVar1 < fret_03 then
+                                pCVar6, x_stk_78 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                                     iVar11 = 0
                                     iVar10 = 1
                                     iVar9 = 0
@@ -340,6 +295,9 @@ function Main(quest, me)
                                     pcVar8 = "TEXT_QST_B10_MANS_LOVER_MAN_LIKES_ME_20"
                                     pCVar6 = quest:GetHero()
                                     r5 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                                    if not r5 then
+                                        goto LAB_00eca325
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar3 = iVar5
                                     while cVar3 do
@@ -360,11 +318,8 @@ function Main(quest, me)
                                 quest:SetStateInt("MansLoverState", 2)
                             else
                                 if bVar2 then goto LAB_00eca325 end
-                                x_stk_18 = resources:ScriptThing(xStack_120)
-                                pCVar6 = x_stk_18
-                                fret_04 = quest:GetHealth(pCVar6)
-                                fVar1 = 0.0
-                                if fVar1 < fret_04 then
+                                pCVar6, x_stk_18 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                                     iVar11 = 0
                                     iVar10 = 1
                                     iVar9 = 0
@@ -372,6 +327,9 @@ function Main(quest, me)
                                     pcVar8 = "TEXT_QST_B10_MANS_LOVER_FROM_YOU_20"
                                     pCVar6 = quest:GetHero()
                                     r6 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                                    if not r6 then
+                                        goto LAB_00ecaf49
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar3 = iVar5
                                     while cVar3 do
@@ -386,11 +344,8 @@ function Main(quest, me)
                                     bVar2 = not alive
                                     if bVar2 then goto LAB_00eca325 end
                                 end
-                                x_stk_60 = resources:ScriptThing(xStack_120)
-                                pCVar6 = x_stk_60
-                                fret_05 = quest:GetHealth(pCVar6)
-                                fVar1 = 0.0
-                                if fVar1 < fret_05 then
+                                pCVar6, x_stk_60 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                                     iVar11 = 0
                                     iVar10 = 1
                                     iVar9 = 0
@@ -398,6 +353,9 @@ function Main(quest, me)
                                     pcVar8 = "TEXT_QST_B10_MANS_LOVER_FROM_YOU_30"
                                     pCVar6 = quest:GetHero()
                                     r7 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                                    if not r7 then
+                                        goto LAB_00ecaf49
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar3 = iVar5
                                     while cVar3 do
@@ -413,11 +371,8 @@ function Main(quest, me)
                                     if bVar2 then goto LAB_00eca325 end
                                 end
                                 quest:GiveHeroObject("OBJECT_SICK_CHILD_WOMANS_HERO_LETTER", -1, false)
-                                x_stk_30 = resources:ScriptThing(xStack_120)
-                                pCVar6 = x_stk_30
-                                fret_06 = quest:GetHealth(pCVar6)
-                                fVar1 = 0.0
-                                if fVar1 < fret_06 then
+                                pCVar6, x_stk_30 = nil, nil
+                                if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                                     iVar11 = 0
                                     iVar10 = 1
                                     iVar9 = 0
@@ -425,6 +380,9 @@ function Main(quest, me)
                                     pcVar8 = "TEXT_QST_B10_MANS_LOVER_LIKES_YOU_10"
                                     pCVar6 = quest:GetHero()
                                     r8 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                                    if not r8 then
+                                        goto LAB_00ecaf49
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar3 = iVar5
                                     while cVar3 do
@@ -452,7 +410,7 @@ function Main(quest, me)
                 end
                 goto FLOW_past_lab_00eca325
                 ::LAB_00eca325::
-                -- TODO(native): (**(code **)(*(int *)xStack_124 + 0x5ec))((void *)xStack_124,false);
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_10c)
                 break
                 ::FLOW_past_lab_00eca325::
@@ -461,7 +419,7 @@ function Main(quest, me)
                 if not __native_entity_state:GetStateBool("LeavingRegion") then
                     goto LAB_00ecab59
                 else
-                    uVar7 = math.random(0, 32767)
+                    uVar7 = quest:RetailRandModulo(32768)
                     uVar7 = uVar7 & 0x80000001
                     bVar2 = uVar7 == 0
                     if uVar7 < 0 then
@@ -471,11 +429,8 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar2 = not alive
                     if bVar2 then goto LAB_00eca325 end
-                    x_stk_9c = resources:ScriptThing(xStack_120)
-                    pCVar6 = x_stk_9c
-                    fret_07 = quest:GetHealth(pCVar6)
-                    fVar1 = 0.0
-                    if fVar1 < fret_07 then
+                    pCVar6, x_stk_9c = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                         iVar11 = 0
                         iVar10 = 1
                         iVar9 = 0
@@ -483,6 +438,9 @@ function Main(quest, me)
                         pcVar8 = "TEXT_QST_B10_MANS_LOVER_LEAVING_REGION_10"
                         pCVar6 = quest:GetHero()
                         r9 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                        if not r9 then
+                            goto LAB_00ecaf49
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar3 = iVar5
                         while cVar3 do
@@ -509,17 +467,14 @@ function Main(quest, me)
                 ::FLOW_past_lab_00ecab59::
                 goto FLOW_past_lab_00ecaf49
                 ::LAB_00ecaf49::
-                -- TODO(native): (**(code **)(*(int *)xStack_124 + 0x5ec))((void *)xStack_124,false);
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_10c)
                 break
                 ::FLOW_hoist_lab_00ecaf49_1::
-                iVar5 = quest:GetStateInt("MansLoverState")
-                if iVar5 == 0 then
-                    x_stk_3c = resources:ScriptThing(xStack_120)
-                    pCVar6 = x_stk_3c
-                    fret_11 = quest:GetHealth(pCVar6)
-                    fVar1 = 0.0
-                    if fVar1 < fret_11 then
+                mansLoverDialogueState = quest:GetStateInt("MansLoverState")
+                if mansLoverDialogueState == 0 then
+                    pCVar6, x_stk_3c = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                         iVar11 = 0
                         iVar10 = 1
                         iVar9 = 0
@@ -527,6 +482,9 @@ function Main(quest, me)
                         pcVar8 = "TEXT_QST_B10_MANS_LOVER_INTRO_PRELETTER"
                         pCVar6 = quest:GetHero()
                         r10 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                        if not r10 then
+                            goto LAB_00eca325
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar3 = iVar5
                         while cVar3 do
@@ -539,12 +497,9 @@ function Main(quest, me)
                         end
                         goto LAB_00ecae05
                     end
-                elseif iVar5 then
-                    x_stk_54 = resources:ScriptThing(xStack_120)
-                    pCVar6 = x_stk_54
-                    fret_10 = quest:GetHealth(pCVar6)
-                    fVar1 = 0.0
-                    if fVar1 < fret_10 then
+                elseif mansLoverDialogueState == 1 then
+                    pCVar6, x_stk_54 = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                         iVar11 = 0
                         iVar10 = 1
                         iVar9 = 0
@@ -552,6 +507,9 @@ function Main(quest, me)
                         pcVar8 = "TEXT_QST_B10_MANS_LOVER_IN_LOVE_WITH_YOU_10"
                         pCVar6 = quest:GetHero()
                         r11 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                        if not r11 then
+                            goto LAB_00eca325
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar3 = iVar5
                         while cVar3 do
@@ -564,12 +522,9 @@ function Main(quest, me)
                         end
                         goto LAB_00ecae05
                     end
-                elseif iVar5 == 2 then
-                    x_stk_6c = resources:ScriptThing(xStack_120)
-                    pCVar6 = x_stk_6c
-                    fret_09 = quest:GetHealth(pCVar6)
-                    fVar1 = 0.0
-                    if fVar1 < fret_09 then
+                elseif mansLoverDialogueState == 2 then
+                    pCVar6, x_stk_6c = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                         iVar11 = 0
                         iVar10 = 1
                         iVar9 = 0
@@ -577,6 +532,9 @@ function Main(quest, me)
                         pcVar8 = "TEXT_QST_B10_MANS_LOVER_IN_LOVE_WITH_MAN"
                         pCVar6 = quest:GetHero()
                         r12 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                        if not r12 then
+                            goto LAB_00eca325
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar3 = iVar5
                         while cVar3 do
@@ -590,11 +548,8 @@ function Main(quest, me)
                         goto LAB_00ecae05
                     end
                 else
-                    x_stk_84 = resources:ScriptThing(xStack_120)
-                    pCVar6 = x_stk_84
-                    fret_08 = quest:GetHealth(pCVar6)
-                    fVar1 = 0.0
-                    if fVar1 < fret_08 then
+                    pCVar6, x_stk_84 = nil, nil
+                    if resources:ResourceThingHealthAbove(xStack_120, 0.0) then
                         iVar11 = 0
                         iVar10 = 1
                         iVar9 = 0
@@ -602,6 +557,9 @@ function Main(quest, me)
                         pcVar8 = "TEXT_QST_B10_MANS_LOVER_IN_LOVE_WITH_YOU_10"
                         pCVar6 = quest:GetHero()
                         r13 = me:Speak(pCVar6, pcVar8, iVar5, (iVar9 ~= 0), (iVar10 ~= 0), (iVar11 ~= 0))
+                        if not r13 then
+                            goto LAB_00eca325
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar3 = iVar5
                         while cVar3 do
@@ -624,7 +582,7 @@ function Main(quest, me)
                 ::FLOW_past_lab_00ecaf49::
                 ::LAB_00ecae14::
                 quest:FixMovieSequenceCamera(false)
-                -- TODO(native): (**(code **)(*(int *)xStack_124 + 0x5ec))((void *)xStack_124,false);
+                quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_10c)
             end
             __native_condition_1 = __native_entity_state:GetStateBool("LeavingRegion")

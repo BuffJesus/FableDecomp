@@ -2,6 +2,8 @@
 local helper_EE6850
 function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
     local resources = quest:RetailResources()
+    return quest:WithRetailResources(function(owned)
+    local waypointOwner, resultOwner = 0, 0
     local __native_condition_1, bVar4, cVar5, iVar1, iVar9, native_arg_sequence_1, pCVar6, pCVar7, puVar8, uVar10, uVar11, uVar12, uVar13, xStack_18
     local alive = true
     bVar4 = (native_arg_param_1 ~= nil and native_arg_param_1:IsAlive())
@@ -21,11 +23,9 @@ function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
         alive = not quest:IsActiveThreadTerminating()
         bVar4 = not alive
         if not bVar4 then
-            -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 4);
-            -- TODO(native): xStack_18 = *(int **)(native_arg_param_1 + 8);
-            xStack_18 = nil
+            xStack_18 = owned:CopyThingOutput(native_arg_param_1)
+            waypointOwner = owned:TrackThingOutput(xStack_18)
             if xStack_18 ~= nil then
-                -- TODO(native): *xStack_18 = *xStack_18 + 1;
             end
             iVar1 = quest:GetStateInt("WaypointCounter")
             while true do
@@ -39,7 +39,7 @@ function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar4 = not alive
                 if bVar4 then goto LAB_00ee6a24 end
-                iVar9 = quest:GetStateInt("WaypointCounter") + 1
+                iVar9 = ((quest:GetStateInt("WaypointCounter") + 1 + 2147483648) % 4294967296 - 2147483648)
                 quest:SetStateInt("WaypointCounter", iVar9)
                 if iVar9 < 0x12 then
                     native_arg_sequence_1 = false
@@ -65,7 +65,10 @@ function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
                     quest:SetStateInt("WaypointCounter", 0)
                 end
                 pCVar7 = quest:GetThingWithScriptName(quest:GetStateString(("WaypointInfo_" .. quest:GetStateInt("WaypointCounter") .. "_locMarker")))
-                xStack_18 = pCVar7
+                resultOwner = owned:TrackThingOutput(pCVar7)
+                owned:AssignThingOutput(waypointOwner, pCVar7)
+                owned:RetireThingOutput(resultOwner)
+                resultOwner = 0
                 pCVar7 = nil
             end
             alive = not quest:IsActiveThreadTerminating()
@@ -79,9 +82,13 @@ function helper_EE6850(quest, me, native_arg_param_1, native_arg_param_2)
                 resources:MoveToPosition(native_arg_param_2, puVar8, 1.0, 0, false, true)
             end
             ::LAB_00ee6a24::
+            owned:RetireThingOutput(waypointOwner)
+            waypointOwner = 0
+            xStack_18 = nil
             return
         end
     end
+    end)
 end
 
 return {helper_EE6850 = helper_EE6850}

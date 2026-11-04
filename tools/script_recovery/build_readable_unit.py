@@ -38,7 +38,7 @@ from tools.script_recovery.script_units import unit as script_unit  # noqa: E402
 # renamer's own fallback: it is listed so a second pass over the *styled* text can name what the style folds
 # left behind (a slot with five disagreeing assignments in the draft often has one survivor afterwards).
 assert readable_lua.GENERATED.pattern.endswith(r')\Z')
-readable_lua.GENERATED = re.compile(readable_lua.GENERATED.pattern[:-3] + r'|\w*_stk_[0-9a-f]+|local_[0-9a-f]+|__native_condition_\d+|native_arg_sequence_\d+|scratchValue\d*)\Z')
+CONVERTER_GENERATED = re.compile(readable_lua.GENERATED.pattern[:-3] + r'|\w*_stk_[0-9a-f]+|local_[0-9a-f]+|__native_condition_\d+|native_arg_sequence_\d+|scratchValue\d*)\Z')
 
 TERMINATION = re.compile(
     r'^(?P<ind>[ \t]*)alive = not (?P<recv>\w+):IsActiveThreadTerminating\(\)\n'
@@ -154,26 +154,38 @@ def fold_byte_indices(chunk):
     return chunk, count
 
 
-NIL_BEFORE_RETURN = re.compile(r'^(?P<ind>[ \t]*)\w+ = nil\n(?=(?P=ind)return\b)', re.M)
-NIL_BEFORE_END = re.compile(r'^(?P<ind>[ \t]*)\w+ = nil\n(?=end\n)', re.M)
-
-
 def prune_nil_releases(chunk):
-    """`thing = nil` right before a return / function end is the native destructor's release."""
-    chunk, a = NIL_BEFORE_RETURN.subn('', chunk)
-    chunk, b = NIL_BEFORE_END.subn('', chunk)
-    return chunk, a + b
+    """Preserve nil writes: proximity to an exit does not prove a dead release.
+
+    Return expressions, escaped closures, globals and close handlers can observe
+    the assignment. Keep this report slot for compatibility; later passes must
+    establish their own dead-store proof rather than infer it from an exit.
+    """
+    return chunk, 0
 
 
-EMPTY_IF = re.compile(r'^(?P<ind>[ \t]*)if [^\n]+ then\n(?P=ind)end\n', re.M)
+EMPTY_IF = re.compile(
+    r'^(?P<ind>[ \t]*)if (?P<condition>true|false|'
+    r'\((?:0x[0-9a-fA-F]+|\d+) & (?:0x[0-9a-fA-F]+|\d+)\) (?:~=|==) 0) then\n'
+    r'(?P=ind)end\n', re.M)
 
 
 def prune_empty_ifs(chunk):
-    count = 0
-    while (m := EMPTY_IF.search(chunk)):
-        chunk = chunk[:m.start()] + chunk[m.end():]
-        count += 1
-    return chunk, count
+    """Drop only closed literal predicates with no lookup/call side effects."""
+    code=''.join(re.sub(r'[^\n]', ' ', t[0])
+        if t.lastgroup in ('string','longstring','comment','longcomment') else t[0]
+        for t in readable_lua.tokens(chunk))
+    matches = []
+    for match in EMPTY_IF.finditer(code):
+        if chunk[match.start():match.end()] != match[0]:
+            continue
+        operands = re.findall(r'0x[0-9a-fA-F]+|\d+', match['condition'])
+        if any(int(value, 16 if value.startswith('0x') else 10) > 0xffffffff for value in operands):
+            continue
+        matches.append(match)
+    for match in reversed(matches):
+        chunk=chunk[:match.start()]+chunk[match.end():]
+    return chunk,len(matches)
 
 
 def prune_dead_stores(chunk):
@@ -219,13 +231,17 @@ def decimal_literals(chunk):
 
 
 def drop_unused_alive(chunk):
-    """`alive` is only a read-back of the scheduler predicate; when nothing reads it, its pure
-    assignments go and `alive = quest:NewScriptFrame(...)` becomes the bare call."""
+    """Drop unused flags while preserving scheduler queries and frame calls.
+
+    A discarded result does not authorize discarding the call: termination
+    queries must still occur at their native resource-lifetime boundary.
+    """
     reads = re.sub(r'^[ \t]*(?:local )?alive = [^\n]*\n', '', chunk, flags=re.M)
     if 'alive' not in chunk or re.search(r'\balive\b', reads):
         return chunk, 0
     count = 0
-    chunk, k = re.subn(r'^[ \t]*(?:local )?alive = (?:true|not \w+:IsActiveThreadTerminating\(\))\n', '', chunk, flags=re.M); count += k
+    chunk, k = re.subn(r'^[ \t]*(?:local )?alive = true\n', '', chunk, flags=re.M); count += k
+    chunk, k = re.subn(r'^([ \t]*)(?:local )?alive = not (\w+:IsActiveThreadTerminating\(\))\n', r'\1\2\n', chunk, flags=re.M); count += k
     chunk, k = re.subn(r'^([ \t]*)alive = (\w+:NewScriptFrame\([^\n]*\))\n', r'\1\2\n', chunk, flags=re.M); count += k
     return chunk, count
 
@@ -245,18 +261,29 @@ def fold_flag_tests(chunk):
     return chunk, count
 
 
-def tidy_declarations(chunk):
-    """Drop names that no statement uses from declaration-only `local` lines."""
-    count = 0
-    body = re.sub(r'^[ \t]*local [\w, ]+\n', '', chunk, flags=re.M)
-    used = set(re.findall(r'\b\w+\b', body))
+DECLARATION_ONLY = re.compile(
+    r'^([ \t]*)local ([A-Za-z_]\w*(?:[ \t]*,[ \t]*[A-Za-z_]\w*)*)[ \t]*\n', re.M)
 
-    def repl(m):
-        nonlocal count
-        names = [n for n in m.group(2).split(', ') if n in used]
-        count += len(m.group(2).split(', ')) - len(names)
-        return f"{m.group(1)}local {', '.join(names)}\n" if names else ''
-    chunk = re.sub(r'^([ \t]*)local ([\w, ]+)\n', repl, chunk, flags=re.M)
+
+def tidy_declarations(chunk):
+    """Prune unused names only from complete, plain local declarations."""
+    count = 0
+    body = DECLARATION_ONLY.sub('', chunk)
+    used = set(re.findall(r'\b\w+\b', body))
+    used.add('_ENV')  # global lookups refer to this local implicitly
+    code = ''.join(re.sub(r'[^\n]', ' ', t[0])
+                   if t.lastgroup in ('string', 'longstring', 'comment', 'longcomment') else t[0]
+                   for t in readable_lua.tokens(chunk))
+    for match in reversed(list(DECLARATION_ONLY.finditer(code))):
+        # A newline can continue the name list or introduce its initializer.
+        # Comments/literals remain opaque, including trailing annotations.
+        if code[match.end():].lstrip().startswith((',', '=')) or chunk[match.start():match.end()] != match[0]:
+            continue
+        declared = [name.strip() for name in match[2].split(',')]
+        names = [name for name in declared if name in used]
+        count += len(declared) - len(names)
+        replacement = f"{match[1]}local {', '.join(names)}\n" if names else ''
+        chunk = chunk[:match.start()] + replacement + chunk[match.end():]
     return chunk, count
 
 
@@ -284,34 +311,105 @@ def fold_functions(source, functions, *, literals=False):
     return ''.join(out)
 
 
-def readable_file(source, *, style=True, frame_returns_alive=True, rel=None, writers=None):
+def readable_file(source, *, style=True, frame_returns_alive=True, rel=None, writers=None, integer_registrations=(), integer_manifest_bytes=None):
     """Apply every pass per function chunk; return (text, report). The folds run before and after the
     local-name pass: splitting reused temporaries exposes more dead stores and single-use flags; the
     quest-script style pass (readable_style) runs last on the renamed text."""
+    # These line-oriented passes only model emitted single-line text tokens.
+    # Preserve unsupported multiline text verbatim instead of treating its
+    # contents as local declarations, statements or formatting whitespace.
+    if any(t.lastgroup in ('string', 'longstring', 'longcomment') and '\n' in t[0]
+           for t in readable_lua.tokens(source)):
+        return source, {'functions': [], 'locals': [], 'wrappedDeclarations': 0,
+                        'style': {}, 'preservedMultilineText': True}
+    declaration_code = ''.join(re.sub(r'[^\n]', ' ', t[0])
+        if t.lastgroup in ('string', 'longstring', 'comment', 'longcomment') else t[0]
+        for t in readable_lua.tokens(source))
+    if re.search(r'\b_ENV\b', declaration_code):
+        # Global lookup dependencies are implicit in Lua. The line-oriented
+        # flow passes do not model changes to the lexical environment.
+        return source, {'functions': [], 'locals': [], 'wrappedDeclarations': 0,
+                        'style': {}, 'preservedEnvironment': True}
+    if re.search(r'^[ \t]*local [^=\n]*?(?:,[ \t\r]*\n|\n[ \t\r\n]*[,=])', declaration_code, re.M):
+        # The subsequent style passes model one declaration per physical line.
+        # Keep unsupported continued declarations intact, just like multiline text.
+        return source, {'functions': [], 'locals': [], 'wrappedDeclarations': 0,
+                        'style': {}, 'preservedMultilineDeclaration': True}
+    from tools.script_recovery.lua_binding_guard import ambiguous_bindings
+    ambiguous = ambiguous_bindings(source)
+    if ambiguous:
+        return source, {'functions': [], 'locals': [], 'wrappedDeclarations': 0,
+                        'style': {}, 'preservedAmbiguousBindings': sorted(ambiguous)}
+    from tools.script_recovery.readable_callback_scopes import rewrite as rewrite_callbacks
+    source, callback_reports = rewrite_callbacks(source, readable_file, style=style,
+        frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
     functions = {}
     text = fold_functions(source, functions)
-    text, mappings = readable_source(text, split_reused=True, inline_literals=True)
+    text, mappings = readable_source(text, split_reused=True, inline_literals=True, generated=CONVERTER_GENERATED)
     text = fold_functions(text, functions, literals=True)
+    # Function order survives helper renaming in both style rounds. Protect
+    # only accepted callback wrappers, preserving the parent's frame contract
+    # for all unrelated functions in the same file.
+    frame_keep_check_indices = tuple(i for i, name in enumerate(
+        re.findall(r'(?m)^(?:local )?function (\w+)', text)) if name in callback_reports)
     style_report = {}
     if style:
         # two rounds: the style folds expose more dead stores / nil releases / unused declarations to the
         # older passes, and those in turn expose loop / guard shapes to the style folds
-        text, style_report = style_source(text, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
+        text, style_report = style_source(text, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers, frame_keep_check_indices=frame_keep_check_indices)
         text = fold_functions(text, functions)
-        text, second = style_source(text, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
+        text, second = style_source(text, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers, frame_keep_check_indices=frame_keep_check_indices)
         text = fold_functions(text, functions)
         for name, entry in second['functions'].items():
             first = style_report['functions'].setdefault(name, {'rewrites': {}, 'before': entry['before'], 'after': entry['after']})
             for key, value in entry['rewrites'].items():
                 first['rewrites'][key] = first['rewrites'].get(key, 0) + value
             first['after'] = entry['after']
+            if entry.get('nativeDispatchSeeds'):
+                first.setdefault('nativeDispatchSeeds', []).extend(entry['nativeDispatchSeeds'])
         # the style folds dropped assignments, so a temporary the first pass could only call `scratchValue`
         # (its assignments disagreed) may now have one role left: name it from what survived
-        text, renamed = readable_source(text, split_reused=False)
+        text, renamed = readable_source(text, split_reused=False, generated=CONVERTER_GENERATED)
         mappings = mappings + renamed
     text, wrapped = wrap_local_declarations(text)
-    return text, {'functions': [{'function': n, 'rewrites': st} for n, st in functions.items()],
+    # A folded native producer can leave a local that is now nil for its
+    # entire lifetime. Prune only bindings with complete token/lexical proof;
+    # populated aliases retain their release stores. Run after final naming.
+    from tools.script_recovery.readable_nil_only_locals import prune as prune_nil_only
+    nil_reviews = {}
+    parts = FUNCTION_SPLIT.split(text)
+    for i, part in enumerate(parts):
+        if not part.startswith(('function ', 'local function ')):
+            continue
+        name = re.match(r'(?:local )?function (\w+)', part).group(1)
+        parts[i], reviews = prune_nil_only(part)
+        if reviews:
+            nil_reviews[name] = reviews
+            stats = functions.setdefault(name, {})
+            stats['declarations'] = stats.get('declarations', 0) + len(reviews)
+    integer_reviews = {}
+    if style and integer_registrations:
+        from tools.script_recovery.readable_integer_zero_stores import prune as prune_integer
+        for i, part in enumerate(parts):
+            if not part.startswith(('function ', 'local function ')):
+                continue
+            name = re.match(r'(?:local )?function (\w+)', part).group(1)
+            for registration in integer_registrations:
+                for review in registration.get('reviewedReadableIntegerZeroStores', {}).values():
+                    if review.get('file') != rel or review.get('function') != name:
+                        continue
+                    parts[i], proof = prune_integer(parts[i], review=review,
+                        registration=registration, manifest_bytes=integer_manifest_bytes,
+                        rel=rel, phase='after-final-naming-wrap-and-nil-only-pruning')
+                    integer_reviews[name] = proof
+    text = ''.join(parts)
+    report = {'callbackScopes': callback_reports, 'functions': [{'function': n, 'rewrites': st} for n, st in functions.items()],
                   'locals': mappings, 'wrappedDeclarations': len(wrapped), 'style': style_report}
+    if nil_reviews:
+        report['removedNilOnlyLocals'] = nil_reviews
+    if integer_reviews:
+        report['reviewedIntegerZeroStores'] = integer_reviews
+    return text, report
 
 
 def bsim_helper_names(sources, conversion, unit):
@@ -365,6 +463,15 @@ def function_headers(text, rel, conversion):
     return re.sub(r'^function (\w+)\(', repl, text, flags=re.M)
 
 
+def integer_registrations(unit):
+    registrations = []
+    for path in sorted((unit['evidence'] / 'units').glob(unit['ir_glob'])):
+        registration = json.loads(path.read_text(encoding='utf-8'))
+        if registration.get('reviewedReadableIntegerZeroStores'):
+            registrations.append(registration)
+    return registrations
+
+
 def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=True):
     u = script_unit(unit_name)
     lifted = ROOT / 'refs/script_recovery/lifted' / u['package']
@@ -381,10 +488,12 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
     drafts = {p.relative_to(draft).as_posix(): p.read_text(encoding='utf-8') for p in sorted(draft.rglob('*.lua'))}
     conversion = json.loads((draft / 'CONVERSION_REPORT.json').read_text(encoding='utf-8')) if (draft / 'CONVERSION_REPORT.json').exists() else {}
     writers = state_writers(drafts)
+    integer_reviews = integer_registrations(u) if style else []
+    integer_manifest = (ROOT / 'refs/fse_api_manifest.json').read_bytes() if integer_reviews else None
     for path in sorted(draft.rglob('*.lua')):
         rel = path.relative_to(draft).as_posix()
         try:
-            text, file_report = readable_file(drafts[rel], style=style, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers)
+            text, file_report = readable_file(drafts[rel], style=style, frame_returns_alive=frame_returns_alive, rel=rel, writers=writers, integer_registrations=integer_reviews, integer_manifest_bytes=integer_manifest)
         except ValueError as exc:            # a pass refused (irreversible rename, ...): ship the draft text for this file
             text, file_report = drafts[rel], {'functions': [], 'locals': [], 'wrappedDeclarations': 0, 'style': {}, 'error': str(exc)}
             print(f'{rel}: readable pass skipped: {exc}', file=sys.stderr)
@@ -397,6 +506,173 @@ def build(unit_name, *, draft=None, out=None, style=True, frame_returns_alive=Tr
         sources, renamed = bsim_helper_names(sources, conversion, u)
         report['bsimHelperNames'] = renamed
     for rel, text in sources.items():
+        if style:
+            # Keep layout after phase-sensitive passes and final helper naming.
+            # Every Lua token, including comments and semicolons, stays exact.
+            from tools.script_recovery.readable_compound_layout import expand
+            text, compound_layout = expand(text)
+            sources[rel] = text
+            if compound_layout:
+                report['files'][rel]['expandedCompoundBranches'] = compound_layout
+        if style:
+            from tools.script_recovery.readable_initial_literals import prune
+            parts = FUNCTION_SPLIT.split(text)
+            reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = prune(part)
+                if proof:
+                    reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if reviews:
+                report['files'][rel]['removedInitialLiteralStores'] = reviews
+        if style:
+            from tools.script_recovery.readable_retry_loop import restructure
+            parts = FUNCTION_SPLIT.split(text)
+            retry_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = restructure(part)
+                if proof:
+                    retry_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if retry_reviews:
+                report['files'][rel]['structuredRetryLoops'] = retry_reviews
+        if style:
+            from tools.script_recovery.readable_literal_query_chain import fold
+            parts = FUNCTION_SPLIT.split(text)
+            query_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = fold(part)
+                if proof:
+                    query_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if query_reviews:
+                report['files'][rel]['structuredLiteralQueries'] = query_reviews
+        if style:
+            from tools.script_recovery.readable_boolean_query_chain import fold
+            parts = FUNCTION_SPLIT.split(text)
+            boolean_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = fold(part)
+                if proof:
+                    boolean_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if boolean_reviews:
+                report['files'][rel]['structuredBooleanQueries'] = boolean_reviews
+        if style:
+            from tools.script_recovery.readable_unreachable_goto_tail import prune
+            parts = FUNCTION_SPLIT.split(text)
+            tail_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = prune(part)
+                if proof:
+                    tail_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if tail_reviews:
+                report['files'][rel]['removedUnreachableGotoTail'] = tail_reviews
+        if style:
+            from tools.script_recovery.readable_guard_region import fold
+            parts = FUNCTION_SPLIT.split(text)
+            region_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = fold(part)
+                if proof:
+                    region_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if region_reviews:
+                report['files'][rel]['structuredGuardRegions'] = region_reviews
+        if style:
+            from tools.script_recovery.readable_tail_else import fold
+            parts = FUNCTION_SPLIT.split(text)
+            tail_else_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = fold(part)
+                if proof:
+                    tail_else_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if tail_else_reviews:
+                report['files'][rel]['structuredTailElseRegions'] = tail_else_reviews
+        if style:
+            from tools.script_recovery.readable_empty_then import fold
+            parts = FUNCTION_SPLIT.split(text)
+            empty_then_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = fold(part)
+                if proof:
+                    empty_then_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if empty_then_reviews:
+                report['files'][rel]['normalizedEmptyThenGuards'] = empty_then_reviews
+        if style:
+            from tools.script_recovery.readable_scope_exit import fold
+            parts = FUNCTION_SPLIT.split(text)
+            scope_exit_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = fold(part, allow_intervening_labels=True)
+                if proof:
+                    scope_exit_reviews[name] = proof
+            text = ''.join(parts)
+            sources[rel] = text
+            if scope_exit_reviews:
+                report['files'][rel]['removedTransparentScopeExitJumps'] = scope_exit_reviews
+        if style:
+            from tools.script_recovery.readable_style import prune_unused_generated_labels
+            text, late_unused_labels = prune_unused_generated_labels(text)
+            sources[rel] = text
+            if late_unused_labels:
+                report['files'][rel]['removedLateUnusedGeneratedLabels'] = late_unused_labels
+        if style:
+            from tools.script_recovery.readable_label_alias import fold
+            parts = FUNCTION_SPLIT.split(text)
+            alias_reviews = {}
+            for i, part in enumerate(parts):
+                if not part.startswith(('function ', 'local function ')):
+                    continue
+                name = re.match(r'(?:local )?function (\w+)', part).group(1)
+                parts[i], proof = fold(part)
+                if proof:
+                    alias_reviews[name] = proof
+            text = ''.join(parts)
+            if alias_reviews:
+                report['files'][rel]['coalescedGeneratedLabelAliases'] = alias_reviews
+                text, alias_unused_labels = prune_unused_generated_labels(text)
+                if alias_unused_labels:
+                    report['files'][rel]['removedAliasedUnusedGeneratedLabels'] = alias_unused_labels
+            sources[rel] = text
         target = out / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text, encoding='utf-8')

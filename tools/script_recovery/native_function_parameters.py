@@ -9,7 +9,10 @@ def function_parameters(source, *, member=False):
     match = re.search(r'\(([^()]*)\)\s*$', header)
     if not match:
         return {'parameters': [], 'returnKind': None, 'problem': 'unparsed native signature'}
-    operands = split_arguments(match[1])
+    try:
+        operands = split_arguments(match[1], template_types=True)
+    except ValueError:
+        return {'parameters': [], 'returnKind': None, 'problem': 'unparsed native signature'}
     if operands == ['void']:
         operands = []
     if (member or '__thiscall' in header) and operands:
@@ -30,7 +33,10 @@ def function_parameters(source, *, member=False):
     # operand of all four wander calls was lifted as a number and dropped, 2026-09-28)
     proto = comment and re.search(r'__thiscall\s+[\w:~<>]+\(([^()]*)\)', comment.group(1))
     if proto:
-        reviewed = [] if proto.group(1).strip() in ('', 'void') else split_arguments(proto.group(1))
+        try:
+            reviewed = [] if proto.group(1).strip() in ('', 'void') else split_arguments(proto.group(1), template_types=True)
+        except ValueError:
+            reviewed = []  # An invalid comparison signature cannot refine the export.
         if len(reviewed) == len(params):
             for p, r in zip(params, reviewed):
                 ref = re.fullmatch(r'\s*class\s+(CScriptThing|C3DVector)\s+const\s*&\s*', r)

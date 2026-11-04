@@ -2,10 +2,12 @@
 -- Registration remains disabled until the package is verified.
 
 function Main(quest)
-    local resources = quest:RetailResources()
+    return quest:WithRetailResources(function(resources)
+    local digSpotOwner = 0
     local bVar2, bVar3, bVar4, bVar5, delay, duration, iVar10, iVar8, pCVar6, pCVar7, pThing, pppuVar9, r1, r2, xStack_20, xStack_30
     local alive = true
     pCVar6 = quest:GetHero()
+    quest:RegisterQuestConsciousCondition(pCVar6)
     alive = quest:NewScriptFrame()
     alive = not quest:IsActiveThreadTerminating()
     bVar3 = not alive
@@ -73,13 +75,14 @@ function Main(quest)
     resources:PlayLoopingAnimation(xStack_30, "ST_DIGGING_IDLE", 2, false, false, false, true, true, false, false)
     pCVar6 = quest:GetHero()
     r1 = quest:GetNearestEnabledDiggingSpot(pCVar6)
+    digSpotOwner = resources:TrackThingOutput(r1)
     iVar8 = (r1 ~= nil and r1:IsAlive())
     if not iVar8 then
         goto LAB_00eeaba2
     else
         iVar8 = 3.0
         pCVar6 = quest:GetHero()
-        iVar8 = Is2DDistanceBetweenThingsUnder(pCVar6,r1,iVar8)
+        iVar8 = resources:IsHorizontalDistanceBetweenThingsUnder(pCVar6, r1, 3.0)
         if not iVar8 then goto LAB_00eeaba2 end
         bVar2 = true
         alive = not quest:IsActiveThreadTerminating()
@@ -159,9 +162,11 @@ function Main(quest)
     ::FLOW_past_lab_00eeabfa::
     ::FLOW_past_lab_00eeaba2::
     ::LAB_00eead80::
+    resources:RetireThingOutput(digSpotOwner); digSpotOwner = 0
     resources:DestroyMovie(xStack_20)
     ::LAB_00eead92::
     resources:ReleaseResource(xStack_30)
+    end)
 end
 
 function Init(quest)

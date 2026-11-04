@@ -5,7 +5,8 @@
 function Main(quest, me)
     quest:NewScriptFrame(me)
     if quest:IsActiveThreadTerminating() then return end
-    quest:GiveThingBestEnemyTarget(me, quest:GetHero())
+    local pTarget = quest:GetHero()
+    quest:GiveThingBestEnemyTarget(me, pTarget)
     while quest:GetStateInt("DragonState") ~= 4 do
         if not quest:NewScriptFrame(me) then return end
     end
@@ -26,6 +27,7 @@ end
 function OnPredicateFail(quest, me)
     local summonerSpawnDelay = quest:GetStateInt("SummonerSpawnDelay")
     quest:SetStateInt("NumSummoners", quest:GetStateInt("NumSummoners") - 1)
-    quest:SetTimer(summonerSpawnDelay, quest:GetTimer(summonerSpawnDelay) + 20)
+    local timeRemaining = quest:GetTimer(summonerSpawnDelay)
+    quest:SetTimer(summonerSpawnDelay, timeRemaining + 20)
 end
 

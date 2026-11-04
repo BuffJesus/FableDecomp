@@ -231,7 +231,7 @@
             "ACTORMAP_Destroy",
             "RESOURCE_ReleaseResource",
             "PauseAllNonScriptedEntities",
-            "RESOURCE_ReleaseResource",
+            "RESOURCE_DestroyMovie",
             "NewScriptFrame",
             "IsActiveThreadTerminating",
             "RESOURCE_ReleaseResource",
@@ -485,6 +485,34 @@
             "bVar2"
           ]
         }
+      },
+      "blockingSpeechCancellation": {
+        "FSE/QS_GuardianTrophyDealerInfo/Entities/GTDI_Maze.lua": [
+          {
+            "line": 310,
+            "actor": "me",
+            "query": "iVar14",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e28c3f",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 335,
+            "actor": "me",
+            "query": "iVar14",
+            "loop": "cVar6",
+            "exit": "goto LAB_00e28c3f",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          },
+          {
+            "line": 379,
+            "actor": "me",
+            "query": "iVar14",
+            "loop": "cVar6",
+            "exit": "quest:PauseAllNonScriptedEntities(false)\n                            goto LAB_00e28c81",
+            "reason": "blocking Speak uses native wait termination cleanup before duplicate task poll"
+          }
+        ]
       },
       "summary": {
         "owners": 2,

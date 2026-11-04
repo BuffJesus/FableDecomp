@@ -350,11 +350,26 @@ class BossKingTests(unittest.TestCase):
         self.assertIn('C_stk_4c = f_stk_a4;', out)
         self.assertIn('CCharString::CCharString(&xStack_a4,"Q_BanditCamp_Barriers",-1);', out)   # the string life keeps its name
 
-    def test_copy_whose_target_is_never_read_as_float_keeps_the_slot(self):
+    def test_immediate_float_spill_keeps_the_scalar_snapshot(self):
         from tools.script_recovery.native_evidence_lowering import normalise_typed_decompile
         native = '\n'.join(['{', '  xStack_a4 = (CCharString)(float)(int)C_stk_4c;', '  pThing = xStack_a4;',
                             '  CCharString::CCharString(&xStack_a4,"x",-1);', '  GSI->Use(pThing);', '}'])
-        self.assertIn('pThing = xStack_a4;', normalise_typed_decompile(native))
+        out = normalise_typed_decompile(native)
+        self.assertIn('pThing = f_stk_a4;', out)
+        self.assertIn('CCharString::CCharString(&xStack_a4,"x",-1);', out)
+        self.assertIn('GSI->Use(pThing);', out)
+
+    def test_later_copy_without_float_use_keeps_the_slot(self):
+        from tools.script_recovery.native_evidence_lowering import normalise_typed_decompile
+        for boundary in ('GSI->Mutate();', 'LAB_other:', 'if (flag) {\n  }'):
+            with self.subTest(boundary=boundary):
+                native = '\n'.join(['{', '  xStack_a4 = (CCharString)(float)(int)C_stk_4c;',
+                                    '  ' + boundary, '  pThing = xStack_a4;',
+                                    '  CCharString::CCharString(&xStack_a4,"x",-1);',
+                                    '  GSI->Use(pThing);', '}'])
+                out = normalise_typed_decompile(native)
+                self.assertIn('pThing = xStack_a4;', out)
+                self.assertNotIn('pThing = f_stk_a4;', out)
 
 
 class CastCaseLabelTests(unittest.TestCase):

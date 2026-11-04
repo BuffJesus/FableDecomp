@@ -1,8 +1,9 @@
 -- Generated from the same native helper bodies as the quest draft.
 local helper_E91F20
 function helper_E91F20(quest, me)
-    local CVar2, bVar3, bVar6, iVar1, iVar4, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5
+    local CVar2, bVar3, bVar6, hiddenStringResult, iVar1, iVar4, native_arg_switch_3, native_arg_switch_4, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, pcVar7, uVar5, xStack_10
     local alive = true
+    xStack_10 = ""
     iVar1 = quest:GetMasterGameState("PostSavePosition")
     if iVar1 < 0x385 then
         if iVar1 == 900 then
@@ -356,9 +357,10 @@ function helper_E91F20(quest, me)
         ::FLOW_after_flow_native_label_2_357::
     end
     ::FLOW_after_flow_native_label_2::
+    xStack_10 = pcVar7
     CVar2 = quest:GetStateString("LastDialogueSaid")
-    if (CVar2 == pcVar7) then
-        uVar5 = math.random(0, 32767)
+    if (CVar2 == xStack_10) then
+        uVar5 = quest:RetailRandModulo(32768)
         uVar5 = uVar5 & 0x80000003
         bVar6 = uVar5 == 0
         if uVar5 < 0 then
@@ -384,11 +386,13 @@ function helper_E91F20(quest, me)
                     end
                 end
             end
+            xStack_10 = pcVar7
         end
     end
     ::LAB_00e924b3::
-    quest:SetStateString("LastDialogueSaid", pcVar7)
-    return pcVar7
+    quest:SetStateString("LastDialogueSaid", xStack_10)
+    hiddenStringResult = xStack_10
+    return hiddenStringResult
 end
 
 return {helper_E91F20 = helper_E91F20}

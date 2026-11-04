@@ -88,6 +88,10 @@ function Main(quest, me)
                                 pcVar9 = "TEXT_QST_074_CHIEF_BEEN_ATTACKED"
                                 pCVar7 = quest:GetHero()
                                 r1 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                if not r1 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    goto LAB_00e181f6
+                                end
                                 iVar10 = me:IsPerformingScriptTask()
                                 cVar6 = iVar10
                                 while cVar6 do
@@ -173,6 +177,9 @@ function Main(quest, me)
                             pcVar9 = "TEXT_QST_074_CHIEF_BALVERINE_AFTER_FIRST_ATTACK"
                             pCVar7 = quest:GetHero()
                             r2 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                            if not r2 then
+                                goto LAB_00e181ca
+                            end
                             iVar10 = me:IsPerformingScriptTask()
                             cVar6 = iVar10
                             while cVar6 do
@@ -209,6 +216,9 @@ function Main(quest, me)
                                 pcVar9 = "TEXT_QST_074_CHIEF_BALVERINE_IN_SECOND_ATTACK"
                                 pCVar7 = quest:GetHero()
                                 r3 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                if not r3 then
+                                    goto LAB_00e181ca
+                                end
                                 iVar10 = me:IsPerformingScriptTask()
                                 cVar6 = iVar10
                                 while cVar6 do
@@ -239,6 +249,9 @@ function Main(quest, me)
                                     pcVar9 = "TEXT_QST_074_CHIEF_BALVERINE_IN_THIRD_ATTACK"
                                     pCVar7 = quest:GetHero()
                                     r4 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    if not r4 then
+                                        goto LAB_00e181ca
+                                    end
                                     iVar10 = me:IsPerformingScriptTask()
                                     cVar6 = iVar10
                                     while cVar6 do
@@ -291,6 +304,9 @@ function Main(quest, me)
                                 pcVar9 = "TEXT_QST_074_CHIEF_BALVERINE_AFTER_THIRD_ATTACK"
                                 pCVar7 = quest:GetHero()
                                 r5 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                if not r5 then
+                                    goto LAB_00e181ca
+                                end
                                 iVar10 = me:IsPerformingScriptTask()
                                 cVar6 = iVar10
                                 while cVar6 do
@@ -315,6 +331,13 @@ function Main(quest, me)
                 bVar5 = me:MsgIsHitByHero()
                 if bVar5 then
                     goto LAB_00e17f13_c1
+                else
+                    bVar5 = me:MsgIsHitByAnySpecialAbilityFromHero()
+                    if bVar5 then
+                        bVar5 = me:MsgIsHitByHeroSpecialAbility(0xe)
+                        if not bVar5 then goto LAB_00e17f13_c1 end
+                    end
+                    goto LAB_00e17f21_c1
                 end
                 goto FLOW_past_lab_00e17f13_c1
                 ::LAB_00e17f13_c1::
@@ -359,6 +382,10 @@ function Main(quest, me)
                                     pcVar9 = "TEXT_QST_074_CHIEF_BEEN_ATTACKED"
                                     pCVar7 = quest:GetHero()
                                     r6 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                                    if not r6 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        goto LAB_00e181f6_c1
+                                    end
                                     iVar10 = me:IsPerformingScriptTask()
                                     cVar6 = iVar10
                                     while cVar6 do
@@ -425,6 +452,9 @@ function Main(quest, me)
                 pcVar9 = "TEXT_QST_074_CHIEF_BALVERINE_IN_FIRST_ATTACK"
                 pCVar7 = quest:GetHero()
                 r7 = me:Speak(pCVar7, pcVar9, iVar10, (iVar11 ~= 0), (iVar12 ~= 0), (iVar13 ~= 0))
+                if not r7 then
+                    goto LAB_00e181ca
+                end
                 iVar10 = me:IsPerformingScriptTask()
                 cVar6 = iVar10
                 while cVar6 do

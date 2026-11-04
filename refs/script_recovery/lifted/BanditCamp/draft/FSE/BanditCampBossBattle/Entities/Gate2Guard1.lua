@@ -102,6 +102,9 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_009_BANDIT2_HIT_FIRST"
                             pCVar7 = quest:GetHero()
                             r1 = me:Speak(pCVar7, pcVar13, iVar6, (iVar8 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                            if not r1 then
+                                goto LAB_00d0e8c4
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar5 = iVar6
                             while cVar5 do
@@ -132,6 +135,9 @@ function Main(quest, me)
                                     pcVar13 = "TEXT_QST_009_BANDIT2_HIT_SECOND"
                                     pCVar7 = quest:GetHero()
                                     r2 = me:Speak(pCVar7, pcVar13, iVar6, (iVar8 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                                    if not r2 then
+                                        goto LAB_00d0e8c4
+                                    end
                                     iVar6 = me:IsPerformingScriptTask()
                                     cVar5 = iVar6
                                     while cVar5 do
@@ -162,6 +168,9 @@ function Main(quest, me)
                                         pcVar13 = "TEXT_QST_009_BANDIT2_HIT_THIRD"
                                         pCVar7 = quest:GetHero()
                                         r3 = me:Speak(pCVar7, pcVar13, iVar6, (iVar8 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                                        if not r3 then
+                                            goto LAB_00d0e8c4
+                                        end
                                         iVar6 = me:IsPerformingScriptTask()
                                         cVar5 = iVar6
                                         while cVar5 do
@@ -192,6 +201,9 @@ function Main(quest, me)
                                             pcVar13 = "TEXT_QST_009_BANDIT2_HIT_FOURTH"
                                             pCVar7 = quest:GetHero()
                                             r4 = me:Speak(pCVar7, pcVar13, iVar6, (iVar8 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                                            if not r4 then
+                                                goto LAB_00d0e8c4
+                                            end
                                             iVar6 = me:IsPerformingScriptTask()
                                             cVar5 = iVar6
                                             while cVar5 do
@@ -288,6 +300,10 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_009_BANDIT2_GIVEN_CAMP_PASS"
                             pCVar7 = quest:GetHero()
                             r5 = me:Speak(pCVar7, pcVar13, iVar6, (iVar8 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                            if not r5 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00d0e942
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar5 = iVar6
                             while cVar5 do
@@ -339,6 +355,10 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_009_BANDIT2_GATE_BLOCKED"
                             pCVar7 = quest:GetHero()
                             r6 = me:Speak(pCVar7, pcVar13, iVar6, (iVar8 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                            if not r6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00d0e909
+                            end
                             iVar6 = me:IsPerformingScriptTask()
                             cVar5 = iVar6
                             while cVar5 do
@@ -403,6 +423,9 @@ function Main(quest, me)
                         pcVar13 = "TEXT_QST_009_BANDIT2_ASIDE"
                         pCVar7 = quest:GetHero()
                         r7 = me:Speak(pCVar7, pcVar13, iVar6, (iVar8 ~= 0), (iVar14 ~= 0), (iVar15 ~= 0))
+                        if not r7 then
+                            goto LAB_00d0e996
+                        end
                         iVar6 = me:IsPerformingScriptTask()
                         cVar5 = iVar6
                         while cVar5 do

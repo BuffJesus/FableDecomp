@@ -7,7 +7,6 @@ local HERO_ABILITY_HEAL_LIFE_SPELL = 14  -- EHeroAbility (Ego_r.pdb)
 
 -- Assassin2.Main (retail 0x00d05a60)
 function Main(quest, me)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local predicateResult, predicateResult7, assassinsUnderAttack
     if not quest:NewScriptFrame(me) then return end
@@ -43,9 +42,16 @@ function Main(quest, me)
                 if quest:IsActiveThreadTerminating() then goto LAB_00d05b79 end
                 local movie = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                local fret_00 = quest:GetHealth(resources:ScriptThing(resource))
-                if 0.0 >= fret_00 then quest:PauseAllNonScriptedEntities(false); assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack"); goto continue_1 end
-                me:Speak(hero, "TEXT_QST_009_ASSASSIN2_REPEAT", GROUP_SELECT_FIRST, false, true, false)
+                local scratchValue = resources:ScriptThing(resource)
+                local fret_00 = quest:GetHealth(scratchValue)
+                if not (0.0 < fret_00) then quest:PauseAllNonScriptedEntities(false); resources:DestroyMovie(movie); assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack"); goto continue_1 end
+                local hero = quest:GetHero()
+                if not me:Speak(hero, "TEXT_QST_009_ASSASSIN2_REPEAT", GROUP_SELECT_FIRST, false, true, false) then
+                    quest:PauseAllNonScriptedEntities(false)
+                    resources:DestroyMovie(movie)
+                    resources:ReleaseResource(resource)
+                    return
+                end
                 while me:IsPerformingScriptTask() do
                     quest:NewScriptFrame(me)
                     if quest:IsActiveThreadTerminating() then
@@ -62,13 +68,21 @@ function Main(quest, me)
                     return
                 end
                 quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie)
             else
                 if quest:IsActiveThreadTerminating() then goto LAB_00d05b79 end
                 local movie2 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
-                local fret_0 = quest:GetHealth(resources:ScriptThing(resource))
+                local scratchValue5 = resources:ScriptThing(resource)
+                local fret_0 = quest:GetHealth(scratchValue5)
                 if 0.0 < fret_0 then
-                    me:Speak(hero, "TEXT_QST_009_ASSASSIN2_INTRO", GROUP_SELECT_FIRST, false, true, false)
+                    local hero2 = quest:GetHero()
+                    if not me:Speak(hero2, "TEXT_QST_009_ASSASSIN2_INTRO", GROUP_SELECT_FIRST, false, true, false) then
+                        quest:PauseAllNonScriptedEntities(false)
+                        resources:DestroyMovie(movie2)
+                        resources:ReleaseResource(resource)
+                        return
+                    end
                     while me:IsPerformingScriptTask() do
                         quest:NewScriptFrame(me)
                         if quest:IsActiveThreadTerminating() then
@@ -87,16 +101,18 @@ function Main(quest, me)
                 end
                 predicateResult = true
                 quest:PauseAllNonScriptedEntities(false)
+                resources:DestroyMovie(movie2)
             end
             assassinsUnderAttack = quest:GetStateBool("AssassinsUnderAttack")
         end
         ::continue_1::
     end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d05b79 end
-    if not quest:GetStateBool("AssassinCutsceneTriggered") then quest:ClearThingHasInformation(me); goto LAB_00d05b79 end
-    if quest:IsActiveThreadTerminating() then goto LAB_00d05b79 end
-    resources:PrepareResource(resource)
-    quest:ClearThingHasInformation(me)
+    if not (quest:IsActiveThreadTerminating()) then
+        if not quest:GetStateBool("AssassinCutsceneTriggered") then quest:ClearThingHasInformation(me); goto LAB_00d05b79 end
+        if quest:IsActiveThreadTerminating() then goto LAB_00d05b79 end
+        resources:PrepareResource(resource)
+        quest:ClearThingHasInformation(me)
+    end
     ::LAB_00d05b79::
     resources:ReleaseResource(resource)
 end

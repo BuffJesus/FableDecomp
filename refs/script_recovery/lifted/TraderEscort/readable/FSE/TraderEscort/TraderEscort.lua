@@ -20,6 +20,7 @@ local SCRIPT_DEF = {
 
 -- Q_TraderEscort.Main (retail 0x00e00db0)
 function Main(quest)
+    local scratchValue
     quest:AddEntityBinding("DarkwoodTrader", "TraderEscort/Entities/DarkwoodTrader", 1)
     quest:AddEntityBinding("FleshEatingBalverine", "TraderEscort/Entities/FleshEatingBalverine", 1)
     quest:AddEntityBinding("InfectedBalverine", "TraderEscort/Entities/InfectedBalverine", 1)
@@ -35,23 +36,29 @@ function Main(quest)
     quest:AddEntityBinding("DW5_Bandit", "TraderEscort/Entities/DW5_Bandit", 1)
     quest:AddEntityBinding("EndTrader", "TraderEscort/Entities/EndTrader")
     quest:FinalizeEntityBindings()
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_01", "Darkwood1", "Greatwood")
+    local pQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(pQuestName, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_01", "Darkwood1", "Greatwood")
     quest:CreateThread("WatchForSurprisingBalverines")  -- native thread body CQ_TraderEscortScript::WatchForSurprisingBalverines: lift it as function WatchForSurprisingBalverines(quest)
+    if not scratchValue then
+    end
     quest:CreateThread("WatchForMissionRules")  -- native thread body 0x00E06440: lift it as function WatchForMissionRules(quest)
-    if quest:GetStateBool("QuestStartScreened") then return end
+    if quest:GetStateBool("QuestStartScreened") then quest:IsActiveThreadTerminating(); return end
     while true do
         if not quest:NewScriptFrame() then break end
         if quest:HeroHasExpression("EXPRESSION_PICKPOCKET") then
             if quest:IsActiveThreadTerminating() then return end
             local getActiveQuestName = quest:GetActiveQuestName()
             quest:AddBoast("TEXT_QST_BOAST_DESCRIPTION_PICKPOCKETTRADERS", 10, quest:ReadGlobalGameData(SCRIPT_DEF.TE_AllTradersAliveBoastCost), quest:ReadGlobalGameData(SCRIPT_DEF.TE_AllTradersAliveBoastReward), true, getActiveQuestName, 0)
+            quest:IsActiveThreadTerminating()
             return
         end
         if quest:GetStateBool("QuestStartScreened") then
-            return
+            quest:IsActiveThreadTerminating()
+            do return end
         end
     end
     do return end
+    quest:IsActiveThreadTerminating()
 end
 
 -- Q_TraderEscort.Init (retail 0x00e006d0)
@@ -102,83 +109,140 @@ end
 
 -- Q_TraderEscort.OnPersist (retail 0x00e00ce0)
 function OnPersist(quest, context)
-    quest:SetStateBool("IntroFinished", quest:PersistTransferBool(context, "IntroFinished", quest:GetStateBool("IntroFinished")))
-    quest:SetStateBool("SavedInMiddle", quest:PersistTransferBool(context, "SavedInMiddle", quest:GetStateBool("SavedInMiddle")))
-    quest:SetStateBool("SavedNearEnd", quest:PersistTransferBool(context, "SavedNearEnd", quest:GetStateBool("SavedNearEnd")))
-    quest:SetStateBool("EndStarted", quest:PersistTransferBool(context, "EndStarted", quest:GetStateBool("EndStarted")))
-    quest:SetStateBool("QuestStartScreened", quest:PersistTransferBool(context, "QuestStartScreened", quest:GetStateBool("QuestStartScreened")))
-    quest:SetStateBool("ShownBalverine", quest:PersistTransferBool(context, "ShownBalverine", quest:GetStateBool("ShownBalverine")))
-    quest:SetStateBool("ShownEarthTroll", quest:PersistTransferBool(context, "ShownEarthTroll", quest:GetStateBool("ShownEarthTroll")))
+    local introFinished = quest:GetStateBool("IntroFinished") or false
+    introFinished = quest:PersistTransferBool(context, "IntroFinished", introFinished)
+    quest:SetStateBool("IntroFinished", introFinished)
+    local savedInMiddle = quest:GetStateBool("SavedInMiddle") or false
+    savedInMiddle = quest:PersistTransferBool(context, "SavedInMiddle", savedInMiddle)
+    quest:SetStateBool("SavedInMiddle", savedInMiddle)
+    local savedNearEnd = quest:GetStateBool("SavedNearEnd") or false
+    savedNearEnd = quest:PersistTransferBool(context, "SavedNearEnd", savedNearEnd)
+    quest:SetStateBool("SavedNearEnd", savedNearEnd)
+    local endStarted = quest:GetStateBool("EndStarted") or false
+    endStarted = quest:PersistTransferBool(context, "EndStarted", endStarted)
+    quest:SetStateBool("EndStarted", endStarted)
+    local questStartScreened = quest:GetStateBool("QuestStartScreened") or false
+    questStartScreened = quest:PersistTransferBool(context, "QuestStartScreened", questStartScreened)
+    quest:SetStateBool("QuestStartScreened", questStartScreened)
+    local shownBalverine = quest:GetStateBool("ShownBalverine") or false
+    shownBalverine = quest:PersistTransferBool(context, "ShownBalverine", shownBalverine)
+    quest:SetStateBool("ShownBalverine", shownBalverine)
+    local shownEarthTroll = quest:GetStateBool("ShownEarthTroll") or false
+    shownEarthTroll = quest:PersistTransferBool(context, "ShownEarthTroll", shownEarthTroll)
+    quest:SetStateBool("ShownEarthTroll", shownEarthTroll)
 end
 
 -- Q_TraderEscort.WatchForSurprisingBalverines (retail 0x00e06050)
 function WatchForSurprisingBalverines(quest)
-    local scratchValue, scratchValue2, balverineEasy, scratchValue6
-    local hero = quest:GetHero()
-    if not quest:IsActiveThreadTerminating() then goto LAB_00e06074 end
-    ::FLOW_after_lab_00e06394::
-    goto FLOW_past_lab_00e06074
-    ::LAB_00e06074::
-    if quest:GetStateInt("BalverinesToSurpriseHeroNeeded") < 1 then goto LAB_00e06373 end
-    if not quest:IsActiveThreadTerminating() then
-        quest:Pause(2.0)
-        -- TODO(native): Std_Vector_Erase_Range(&xStack_30,(int)xStack_30,(int)x_stk_2c);
-        local balverineSurprise = quest:GetAllThingsWithScriptName("M_BalverineSurprise")
-        scratchValue6 = 0
-        if #balverineSurprise ~= 0 then
-            scratchValue2 = 0
-            repeat
-                if quest:IsActiveThreadTerminating() then goto LAB_00e063db end
-                if 0 >= quest:GetStateInt("BalverinesToSurpriseHeroNeeded") then scratchValue6 = scratchValue6 + 1; scratchValue2 = scratchValue2 + 1; goto continue_1 end
-                if not quest:IsCameraPosOnScreen(balverineSurprise[scratchValue2 + 1]:GetPos()) then
-                    if quest:IsActiveThreadTerminating() then return end
-                    balverineEasy = quest:CreateCreature("CREATURE_BALVERINE_EASY", balverineSurprise[scratchValue6 + 1]:GetPos(), "SurpriseBalverine")
-                    quest:EntitySetCutsceneBehaviour(balverineEasy, CUTSCENE_BEHAVIOUR_PAUSED)
-                    quest:EntitySetFacingAngleTowardsThing(balverineEasy, hero, false)
-                    quest:SetTimer(quest:GetStateInt("CommentTimer"), 0)
-                    MakeTraderComment(quest, "BALVERINE_SURPRISE", quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader"), 0)
-                    if math.random(0, 32767) % 5 == 0 then
-                        if quest:IsActiveThreadTerminating() then return end
-                        quest:GiveThingBestEnemyTarget(balverineEasy, quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader"))
-                    else
-                        if quest:IsActiveThreadTerminating() then return end
-                        quest:GiveThingBestEnemyTarget(balverineEasy, hero)
-                    end
-                    scratchValue = balverineEasy ~= nil and balverineEasy:IsAlive()
-                    goto LAB_00e06319
-                end
-                scratchValue6 = scratchValue6 + 1
-                scratchValue2 = scratchValue2 + 1
-                ::continue_1::
-            until scratchValue6 >= #balverineSurprise
+    quest:WithRetailResources(function(resources)
+        local surprisePositions = resources:NewThingPositionList()
+        local scratchValue, scratchValue2, retailRandModulo, position, scratchValue3, balverineEasy
+        local scratchValue4
+        local surpriseActorOwner, surpriseNearestOwner = 0, 0
+        scratchValue = quest:IsActiveThreadTerminating()
+        if not scratchValue then
+            goto LAB_00e06074
         end
-        goto LAB_00e06364
-    end
-    ::FLOW_past_lab_00e06074::
-    ::LAB_00e0642a::
-    do return end
-    ::LAB_00e063db::
-    goto LAB_00e0642a
-    ::LAB_00e06319::
-    if scratchValue then
-        if not quest:NewScriptFrame() then return end
-        scratchValue = balverineEasy ~= nil and balverineEasy:IsAlive()
-        goto LAB_00e06319
-    end
-    if quest:IsActiveThreadTerminating() then return end
-    quest:SetStateInt("BalverinesToSurpriseHeroNeeded", quest:GetStateInt("BalverinesToSurpriseHeroNeeded") - 1)
-    ::LAB_00e06364::
-    if quest:IsActiveThreadTerminating() then goto LAB_00e06415 end
-    ::LAB_00e06373::
-    if not quest:NewScriptFrame() then goto FLOW_after_lab_00e06394 end
-    goto LAB_00e06074
-    ::LAB_00e06415::
-    goto LAB_00e0642a
+        ::FLOW_after_lab_00e06394::
+        goto FLOW_past_lab_00e06074
+        ::LAB_00e06074::
+        if quest:GetStateInt("BalverinesToSurpriseHeroNeeded") < 1 then goto LAB_00e06373 end
+        scratchValue = quest:IsActiveThreadTerminating()
+        if not scratchValue then
+            quest:Pause(2.0)
+            surprisePositions:Clear()
+            surprisePositions:FillScriptName("M_BalverineSurprise")
+            scratchValue4 = 0
+            if surprisePositions:Count() ~= 0 then
+                retailRandModulo = 0
+                repeat
+                    scratchValue = quest:IsActiveThreadTerminating()
+                    if scratchValue then goto LAB_00e063db end
+                    if not (0 < quest:GetStateInt("BalverinesToSurpriseHeroNeeded")) then scratchValue4 = scratchValue4 + 1; retailRandModulo = retailRandModulo + 12; goto continue_1 end
+                    position = surprisePositions:GetPos(retailRandModulo / 12)
+                    scratchValue = quest:IsCameraPosOnScreen(position)
+                    if not scratchValue then
+                        scratchValue = quest:IsActiveThreadTerminating()
+                        if scratchValue then
+                            return
+                        end
+                        scratchValue = true
+                        position = surprisePositions:GetPos(scratchValue4)
+                        balverineEasy = quest:CreateCreature("CREATURE_BALVERINE_EASY", position, "SurpriseBalverine", scratchValue)
+                        surpriseActorOwner = resources:TrackThingOutput(balverineEasy)
+                        quest:EntitySetCutsceneBehaviour(balverineEasy, CUTSCENE_BEHAVIOUR_PAUSED)
+                        scratchValue = false
+                        scratchValue3 = quest:GetHero()
+                        quest:EntitySetFacingAngleTowardsThing(balverineEasy, scratchValue3, scratchValue)
+                        quest:SetTimer(quest:GetStateInt("CommentTimer"), 0)
+                        retailRandModulo = 0
+                        scratchValue3 = quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader")
+                        surpriseNearestOwner = resources:TrackThingOutput(scratchValue3)
+                        MakeTraderComment(quest, "BALVERINE_SURPRISE", scratchValue3, retailRandModulo)
+                        resources:RetireThingOutput(surpriseNearestOwner)
+                        surpriseNearestOwner = 0
+                        retailRandModulo = quest:RetailRandModulo(32768)
+                        if retailRandModulo % 5 == 0 then
+                            scratchValue = quest:IsActiveThreadTerminating()
+                            if scratchValue then return end
+                            scratchValue3 = quest:GetNearestWithScriptName(balverineEasy, "DarkwoodTrader")
+                            surpriseNearestOwner = resources:TrackThingOutput(scratchValue3)
+                            quest:GiveThingBestEnemyTarget(balverineEasy, scratchValue3)
+                            resources:RetireThingOutput(surpriseNearestOwner)
+                            surpriseNearestOwner = 0
+                        else
+                            scratchValue = quest:IsActiveThreadTerminating()
+                            if scratchValue then return end
+                            scratchValue3 = quest:GetHero()
+                            quest:GiveThingBestEnemyTarget(balverineEasy, scratchValue3)
+                        end
+                        scratchValue2 = balverineEasy ~= nil and balverineEasy:IsAlive()
+                        goto LAB_00e06319
+                    end
+                    scratchValue4 = scratchValue4 + 1
+                    retailRandModulo = retailRandModulo + 12
+                    ::continue_1::
+                until not (scratchValue4 < surprisePositions:Count())
+            end
+            goto LAB_00e06364
+        end
+        ::FLOW_past_lab_00e06074::
+        ::LAB_00e0642a::
+        do return end
+        ::LAB_00e063db::
+        goto LAB_00e0642a
+        ::LAB_00e06319::
+        if scratchValue2 then
+            quest:NewScriptFrame()
+            scratchValue = quest:IsActiveThreadTerminating()
+            if scratchValue then return end
+            scratchValue2 = balverineEasy ~= nil and balverineEasy:IsAlive()
+            goto LAB_00e06319
+        end
+        scratchValue = quest:IsActiveThreadTerminating()
+        if scratchValue then
+            return
+        end
+        quest:SetStateInt("BalverinesToSurpriseHeroNeeded", quest:GetStateInt("BalverinesToSurpriseHeroNeeded") - 1)
+        resources:RetireThingOutput(surpriseActorOwner)
+        surpriseActorOwner = 0
+        ::LAB_00e06364::
+        scratchValue = quest:IsActiveThreadTerminating()
+        if scratchValue then goto LAB_00e06415 end
+        ::LAB_00e06373::
+        quest:NewScriptFrame()
+        scratchValue = quest:IsActiveThreadTerminating()
+        if scratchValue then
+            goto FLOW_after_lab_00e06394
+        end
+        goto LAB_00e06074
+        ::LAB_00e06415::
+        goto LAB_00e0642a
+    end)
 end
 
 -- Q_TraderEscort.WatchForMissionRules (retail 0x00e06440)
 function WatchForMissionRules(quest)
-    local hero = quest:GetHero()
     local resources = quest:RetailResources()
     local isRegionLoaded, darkwoodTrader4, endTrader
     if not quest:GetStateBool("IntroFinished") then
@@ -187,11 +251,14 @@ function WatchForMissionRules(quest)
         while not quest:IsRegionLoaded("Darkwood1") do
             if not quest:NewScriptFrame() then return end
         end
-        local darkwoodTrader = quest:GetNearestWithScriptName(quest:GetThingWithScriptName("MK_DTE_INTRO_TRADER1"), "DarkwoodTrader")
+        if quest:IsActiveThreadTerminating() then return end
+        local mkDteIntroTrader1 = quest:GetThingWithScriptName("MK_DTE_INTRO_TRADER1")
+        local darkwoodTrader = quest:GetNearestWithScriptName(mkDteIntroTrader1, "DarkwoodTrader")
         local darkwoodTrader2 = quest:GetNearestWithScriptName(darkwoodTrader, "DarkwoodTrader")
         local resource3 = resources:NewResource()
         local resource = resources:NewResource()
         local resource2 = resources:NewResource()
+        local hero = quest:GetHero()
         resources:TryAcquire(resource2, hero, 4)
         resources:TryAcquire(resource3, darkwoodTrader, 4)
         resources:TryAcquire(resource, darkwoodTrader2, 4)
@@ -211,22 +278,26 @@ function WatchForMissionRules(quest)
         resources:ReleaseResource(resource)
         resources:ReleaseResource(resource3)
     end
-    quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_02", "Darkwood4", "Greatwood")
+    local getActiveQuestName = quest:GetActiveQuestName()
+    quest:SetQuestCardObjective(getActiveQuestName, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_02", "Darkwood4", "Greatwood")
     if not quest:GetStateBool("QuestStartScreened") then
         if quest:IsActiveThreadTerminating() then return end
         quest:SetStateBool("IntroFinished", true)
-        quest:KickOffQuestStartScreen(quest:GetActiveQuestName(), true, false)
+        local getActiveQuestName4 = quest:GetActiveQuestName()
+        quest:KickOffQuestStartScreen(getActiveQuestName4, true, false)
         quest:SetStateBool("QuestStartScreened", true)
     end
     if not quest:GetStateBool("FollowInfoGiven") then
         if quest:IsActiveThreadTerminating() then return end
         if quest:IsXbox() then
+            if quest:IsActiveThreadTerminating() then return end
             quest:DisplayGameInfo("TEXT_QST_067_INFO_USING_FOLLOW_WAIT")
             while not quest:MsgIsGameInfoClickedPast() do
                 if not quest:NewScriptFrame() then return end
             end
             if quest:IsActiveThreadTerminating() then return end
         else
+            if quest:IsActiveThreadTerminating() then return end
             quest:DisplayGameInfo("TEXT_QST_067_INFO_USING_FOLLOW_WAIT_PC")
             while not quest:MsgIsGameInfoClickedPast() do
                 if not quest:NewScriptFrame() then return end
@@ -241,10 +312,13 @@ function WatchForMissionRules(quest)
     if quest:IsActiveThreadTerminating() then return end
     endTrader = nil
     if quest:GetStateBool("SavedInMiddle") then
-        quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
+        if quest:IsActiveThreadTerminating() then return end
+        local getActiveQuestName2 = quest:GetActiveQuestName()
+        quest:SetQuestCardObjective(getActiveQuestName2, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
     end
     while not quest:IsActiveThreadTerminating() do
         if not (quest:GetStateBool("GoneWrongWay") or (not quest:IsRegionLoaded("GreatwoodCaves"))) then
+            if quest:IsActiveThreadTerminating() then break end
             quest:DisplayGameInfo("TEXT_QST_067_INFO_GONE_WRONG_WAY")
             while not quest:MsgIsGameInfoClickedPast() do
                 if not quest:NewScriptFrame() then return end
@@ -253,6 +327,7 @@ function WatchForMissionRules(quest)
             quest:SetStateBool("GoneWrongWay", true)
         end
         if not (quest:GetStateBool("ShownBalverine") or (not quest:IsRegionLoaded("Darkwood2"))) then
+            if quest:IsActiveThreadTerminating() then break end
             local actorMap = resources:NewActorMap()
             local movie2 = resources:StartMovie("")
             quest:PauseAllNonScriptedEntities(true)
@@ -266,20 +341,23 @@ function WatchForMissionRules(quest)
             if not quest:IsActiveThreadTerminating() then
                 endTrader = quest:GetThingWithScriptName("EndTrader")
                 local x_stk_d0_2 = quest:GetThingWithScriptName("M_EndTheQuestHere")
-                if endTrader ~= nil and endTrader:IsAlive() then goto LAB_00e06fb5 end
+                if endTrader ~= nil and endTrader:IsAlive() then goto FLOW_past_lab_00e073cf end
                 if not quest:GetStateBool("EndStarted") then
                     if not quest:IsActiveThreadTerminating() then
                         ::LAB_00e06e73::
                         if not (quest:GetStateBool("EndStarted") or (not quest:IsRegionLoaded("BarrowFields"))) then
                             if not quest:NewScriptFrame() then break end
-                            if quest:IsDistanceBetweenThingsUnder(hero, x_stk_d0_2, 4.0) then
+                            local hero2 = quest:GetHero()
+                            if quest:IsDistanceBetweenThingsUnder(hero2, x_stk_d0_2, 4.0) then
+                                if quest:IsActiveThreadTerminating() then break end
                                 if #quest:GetAllThingsWithScriptName("DarkwoodTrader") == quest:GetStateInt("TradersStillAliveCounter") then
+                                    if quest:IsActiveThreadTerminating() then break end
                                     quest:SetStateBool("EndStarted", true)
                                 end
                             end
                             goto LAB_00e06e73
                         end
-                        if not quest:IsActiveThreadTerminating() then goto LAB_00e06fb5 end
+                        if not quest:IsActiveThreadTerminating() then goto FLOW_past_lab_00e073cf end
                     end
                 else
                     goto LAB_00e073cf
@@ -290,8 +368,10 @@ function WatchForMissionRules(quest)
         goto FLOW_past_lab_00e073cf
         ::LAB_00e073cf::
         if not quest:IsActiveThreadTerminating() then
-            quest:GiveHeroGold(#quest:GetAllThingsWithScriptName("DarkwoodTrader") * quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderGoldReward))
-            quest:SetQuestAsCompleted(quest:GetActiveQuestName(), true, false, false)
+            darkwoodTrader4 = quest:GetAllThingsWithScriptName("DarkwoodTrader")
+            quest:GiveHeroGold((#darkwoodTrader4) * quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderGoldReward))
+            local getActiveQuestName5 = quest:GetActiveQuestName()
+            quest:SetQuestAsCompleted(getActiveQuestName5, true, false, false)
             quest:SetCreatureGeneratorsEnabled("Darkwood1", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood2", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood3", true)
@@ -303,7 +383,6 @@ function WatchForMissionRules(quest)
         ::FLOW_hoist_lab_00e073cf_2::
         break
         ::FLOW_past_lab_00e073cf::
-        ::LAB_00e06fb5::
         if quest:GetStateBool("EndStarted") then goto LAB_00e073cf end
         if quest:GetStateInt("TradersStillAliveCounter") == 0 then
             if quest:IsActiveThreadTerminating() then break end
@@ -312,7 +391,8 @@ function WatchForMissionRules(quest)
             quest:SetCreatureGeneratorsEnabled("Darkwood3", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood5", true)
             quest:SetCreatureGeneratorsEnabled("Darkwood6", true)
-            quest:SetQuestAsFailed(quest:GetActiveQuestName(), true, "TEXT_QST_067_QUEST_FAILED_TRADERS_DIED", true)
+            local getActiveQuestName6 = quest:GetActiveQuestName()
+            quest:SetQuestAsFailed(getActiveQuestName6, true, "TEXT_QST_067_QUEST_FAILED_TRADERS_DIED", true)
             quest:SetStateBool("MissionFailed", true)
             if quest:IsRegionLoaded("Darkwood1") and darkwoodTrader4:IsAlive() then
                 if not quest:IsActiveThreadTerminating() then
@@ -325,13 +405,15 @@ function WatchForMissionRules(quest)
                 break
             end
             ::LAB_00e07208::
-            quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+            local getActiveQuestName7 = quest:GetActiveQuestName()
+            quest:DeactivateQuestLater(getActiveQuestName7, 0)
         end
         if not quest:GetStateBool("SavedInMiddle") and quest:MsgOnRegionLoaded() then
             if "" ~= nil and "" == "Darkwood4" then
                 if quest:IsActiveThreadTerminating() then break end
                 quest:SetStateBool("SavedInMiddle", true)
-                quest:SetQuestCardObjective(quest:GetActiveQuestName(), "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
+                local getActiveQuestName3 = quest:GetActiveQuestName()
+                quest:SetQuestCardObjective(getActiveQuestName3, "TEXT_QUEST_DARKWOOD_TRADER_ESCORT_OBJECTIVE_03", "BarrowFields", "BarrowFields")
                 quest:AutoSaveCheckPoint()
             end
         end
@@ -354,7 +436,8 @@ function WatchForMissionRules(quest)
         goto LAB_00e07574
     end
     if quest:IsActiveThreadTerminating() then return end
-    quest:DeactivateQuestLater(quest:GetActiveQuestName(), 0)
+    local getActiveQuestName8 = quest:GetActiveQuestName()
+    quest:DeactivateQuestLater(getActiveQuestName8, 0)
     repeat
         quest:NewScriptFrame()
     until quest:IsActiveThreadTerminating()
@@ -363,7 +446,7 @@ end
 -- Q_TraderEscort.TurnToBalv (retail 0x00e0a820)
 function TurnToBalv(quest, me)
     local resources = quest:RetailResources()
-    local pPosition
+    local pPosition, balverine01, actorMap
     local resource2 = resources:NewResource()
     local resource3 = resources:NewResource()
     if not (me ~= nil and not me:IsNull()) then
@@ -371,12 +454,13 @@ function TurnToBalv(quest, me)
     else
         pPosition = me:GetPos()
     end
-    local balverine01 = quest:CreateCreature("CREATURE_BALVERINE_01", pPosition, "DarkwoodBalverineTrader")
+    balverine01 = quest:CreateCreature("CREATURE_BALVERINE_01", pPosition, "DarkwoodBalverineTrader", false)
     quest:EntitySetAsDrawable(balverine01, false)
     resources:PrepareResource(resource3)
     while not resources:TryAcquire(resource3, balverine01, 4) do
         quest:NewScriptFrame()
         if quest:IsActiveThreadTerminating() then
+            balverine01 = nil
             resources:ReleaseResource(resource3)
             resources:ReleaseResource(resource2)
             do return end
@@ -384,15 +468,14 @@ function TurnToBalv(quest, me)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); resources:ReleaseResource(resource2); return end
     resources:PrepareResource(resource2)
-    -- TODO(native): bVar3 = resources:TryAcquire(xStack_30, &native_arg_Me, 4)
-    while not nil --[[unresolved native value]] do
+    while not resources:TryAcquire(resource2, me, 4) do
         if not quest:NewScriptFrame() then resources:ReleaseResource(resource3); resources:ReleaseResource(resource2); return end
-        -- TODO(native): bVar3 = resources:TryAcquire(xStack_30, &native_arg_Me, 4)
     end
     if quest:IsActiveThreadTerminating() then resources:ReleaseResource(resource3); resources:ReleaseResource(resource2); return end
     local resource = resources:NewResource()
-    resources:TryAcquire(resource, quest:GetHero(), 4)
-    local actorMap = resources:NewActorMap()
+    local pThing = quest:GetHero()
+    resources:TryAcquire(resource, pThing, 4)
+    actorMap = resources:NewActorMap()
     resources:SetActor(actorMap, "HERO", resource)
     resources:SetActor(actorMap, "BALV", resource3)
     resources:SetActor(actorMap, "TRADER", resource2)
@@ -406,11 +489,16 @@ function TurnToBalv(quest, me)
     quest:Pause(0.3)
     resources:PrepareResource(resource3)
     repeat
-        local scratchValue = MakeTraderComment(quest, "TRANSFORMED", nil, 1)
-        if scratchValue then
+        actorMap = nil
+        local scratchValue = MakeTraderComment(quest, "TRANSFORMED", actorMap, 1)
+        actorMap = nil
+        if not scratchValue then
+            quest:NewScriptFrame()
+        else
+            quest:IsActiveThreadTerminating()
             break
+            quest:NewScriptFrame()
         end
-        quest:NewScriptFrame()
     until quest:IsActiveThreadTerminating()
     resources:ReleaseResource(resource3)
     resources:ReleaseResource(resource2)
@@ -418,172 +506,295 @@ end
 
 -- Q_TraderEscort.WatchForPickpocketing (retail 0x00e04f10)
 function WatchForPickpocketing(quest, trader)
+    local predicateResult, msgOnHeroPickedPocket
+    msgOnHeroPickedPocket = nil
+    predicateResult = quest:IsActiveThreadTerminating()
     repeat
-        if quest:IsActiveThreadTerminating() then return end
-        local scratchValue = quest:MsgOnHeroPickedPocket()
-        if scratchValue ~= nil then
-            if scratchValue ~= nil and scratchValue:IsEqualTo(trader) then
+        if predicateResult then
+            msgOnHeroPickedPocket = nil
+            return
+        end
+        msgOnHeroPickedPocket = quest:MsgOnHeroPickedPocket()
+        if msgOnHeroPickedPocket ~= nil then
+            if quest:IsActiveThreadTerminating() then msgOnHeroPickedPocket = nil; return end
+            if msgOnHeroPickedPocket ~= nil and msgOnHeroPickedPocket:IsEqualTo(trader) then
+                if quest:IsActiveThreadTerminating() then return end
                 quest:SetStateInt("TraderPickpocketedCount", quest:GetStateInt("TraderPickpocketedCount") + 1)
-                if 2 < quest:GetStateInt("TraderPickpocketedCount") and not quest:IsActiveThreadTerminating() then
+                local predicateResult4 = quest:IsActiveThreadTerminating()
+                local sequence = not predicateResult4 and 2 < quest:GetStateInt("TraderPickpocketedCount") and not quest:IsActiveThreadTerminating()
+                if sequence then
                     quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 2)
                 end
                 return
             end
             goto LAB_00e04f80
+            msgOnHeroPickedPocket = nil
             return
         end
         ::LAB_00e04f80::
-        if not ((trader ~= nil and not trader:IsNull()) and trader ~= nil and trader:MsgIsKilledBy("")) then
-            quest:NewScriptFrame()
+        local scratchValue = (trader ~= nil and not trader:IsNull()) and trader ~= nil and trader:MsgIsKilledBy("")
+        if not scratchValue then
+            quest:NewScriptFrame();
+            predicateResult = quest:IsActiveThreadTerminating();
         else
-            quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 0)
+            if not quest:IsActiveThreadTerminating() then
+                quest:SetMasterGameState("DarkwoodPickpocketedAllTraders", 0)
+            end
+            msgOnHeroPickedPocket = nil
             do return end
             quest:NewScriptFrame()
+            predicateResult = quest:IsActiveThreadTerminating()
         end
+        ::continue_1::
     until false
 end
 
 -- Q_TraderEscort.MakeTraderComment (retail 0x00e01900)
 function MakeTraderComment(quest, commentToMake, speaker, commentType)
-    local darkwoodTrader, scratchValue51
     local commentTimer = quest:GetStateInt("CommentTimer")
-    local hero = quest:GetHero()
-    -- TODO(native): xStack_30._4_4_ = *(undefined4 *)(native_arg_speaker + 0x4);
-    -- TODO(native): xStack_30 = *(int **)(native_arg_speaker + 0x8);
-    if nil ~= nil then
-        -- TODO(native): *xStack_30 = *xStack_30 + 1;
-    end
-    -- TODO(native): bVar2 = (*PTR__IsAlive_CScriptThing__UBE_NXZ_01238db8)(xStack_30)
-    --[[unresolved native value]]
-    if not nil then
-        if quest:IsActiveThreadTerminating() then
+    return quest:WithRetailResources(function(resources)
+    local speakerOwner, nearestOwner, furthestOwner, fallbackOwner, swapOwner, triggerOwner = 0, 0, 0, 0, 0, 0
+    local scratchValue, scratchValue2, retailImplementationIsEqualTo, getTimer, conversationId
+    local local_furthest_handle, native_reply_available, native_rock_troll_match, getDataString
+    local scratchValue3, getHero, getDataString2, getDataString3, scratchValue4, scratchValue5
+    local predicateResult
+    local native_conversation_speaker = speaker
+    local scratchValue7 = resources:CopyThingOutput(speaker)
+    speakerOwner = resources:TrackThingOutput(scratchValue7)
+    scratchValue2 = scratchValue7 ~= nil and scratchValue7:IsAlive()
+    if not scratchValue2 then
+        scratchValue2 = quest:IsActiveThreadTerminating()
+        if scratchValue2 then
             return false
         end
-        -- TODO(native): piVar13 = *(pCVar4 + 0x8)
-    --[[unresolved native value]]
-        -- TODO(native): piVar1 = *(pCVar4 + 0x4)
---[[unresolved native value]]
-        if nil ~= nil then
-            -- TODO(native): xStack_30._4_4_ = piVar1;
-            if nil ~= nil then
-                -- TODO(native): *piVar13 = *piVar13 + 1;
-            end
-        end
+        scratchValue3 = quest:GetHero()
+        scratchValue3 = quest:GetNearestWithScriptName(scratchValue3, "DarkwoodTrader")
+        fallbackOwner = resources:TrackThingOutput(scratchValue3)
+        resources:AssignThingOutput(speakerOwner, scratchValue3)
+        resources:RetireThingOutput(fallbackOwner)
     end
-    -- TODO(native): bVar2 = (**(xStack_30._0_4_ + 0x12c))(xStack_30)
-    --[[unresolved native value]]
-    if not nil then
+    scratchValue2 = scratchValue7 ~= nil and scratchValue7:IsAlive()
+    if not scratchValue2 then
+        quest:IsActiveThreadTerminating()
         return false
     end
     if commentType ~= 2 then
-        if 0 < quest:GetTimer(commentTimer) then
+        getTimer = quest:GetTimer(commentTimer)
+        if 0 < getTimer then
+            quest:IsActiveThreadTerminating()
             return false
         end
-        local conversationId = quest:AddNewConversation(nil, false, false)
-        quest:AddPersonToConversation(conversationId, hero)
-        if not (nil ~= nil and not (nil):IsNull()) then
+        conversationId = quest:AddNewConversation(scratchValue7, false, false)
+        scratchValue3 = quest:GetHero()
+        quest:AddPersonToConversation(conversationId, scratchValue3)
+        if not (scratchValue7 ~= nil and not scratchValue7:IsNull()) then
             speaker = ""
         else
-            speaker = (nil):GetDataString()
+            speaker = scratchValue7:GetDataString()
         end
-        local scratchValue32 = commentToMake
-        quest:AddLineToConversation(conversationId, (("TEXT_QST_067_" .. speaker) .. "_") .. commentToMake, nil, hero, false)
-        if commentType ~= 1 then goto LAB_00e02355 end
-        if quest:IsActiveThreadTerminating() then return false end
-        darkwoodTrader = quest:GetNearestWithScriptName(nil, "DarkwoodTrader")
-        if not (darkwoodTrader ~= nil and darkwoodTrader:IsAlive()) or (darkwoodTrader ~= nil and darkwoodTrader:IsEqualTo((nil)._4_4_)) then
-            goto LAB_00e02213
-        else
-            local scratchValue2 = quest:TextEntryExists(((("TEXT_QST_067_" .. darkwoodTrader:GetDataString()) .. "_") .. scratchValue32) .. "_RESPONSE")
-            speaker = CONCAT31(speaker._1_3_,1)
-            if not scratchValue2 then goto LAB_00e02213 end
-        end
-        goto FLOW_past_lab_00e02213
-        ::LAB_00e02213::
-        ::FLOW_past_lab_00e02213::
-        scratchValue51 = 31
-        if 31 & 16 ~= 0 then
-            scratchValue51 = 31 & 0xffffffef
-        end
-        if scratchValue51 & 8 ~= 0 then
-            scratchValue51 = scratchValue51 & 0xfffffff7
-        end
-        if scratchValue51 & 4 ~= 0 then
-            scratchValue51 = scratchValue51 & 0xfffffffb
-        end
-        if speaker ~= 0 then
-            if quest:IsActiveThreadTerminating() then
-                return false
+        getHero = quest:GetHero()
+        getDataString3 = commentToMake
+        scratchValue3 = scratchValue7
+        predicateResult = false
+        getDataString2 = commentToMake
+        getDataString = "TEXT_QST_067_" .. speaker
+        getDataString = getDataString .. "_"
+        getDataString2 = getDataString .. getDataString2
+        quest:AddLineToConversation(conversationId, getDataString2, scratchValue3, getHero, predicateResult)
+        if commentType == 1 then
+            scratchValue2 = quest:IsActiveThreadTerminating()
+            if scratchValue2 then return false end
+            speaker = "DarkwoodTrader"
+            local_furthest_handle = quest:GetNearestWithScriptName(scratchValue7, speaker)
+            if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end
+            furthestOwner = resources:TrackThingOutput(local_furthest_handle)
+            getTimer = local_furthest_handle ~= nil and local_furthest_handle:IsAlive()
+            scratchValue = not getTimer
+            if not scratchValue then
+                retailImplementationIsEqualTo = local_furthest_handle:RetailImplementationIsEqualTo(scratchValue7)
+                scratchValue = retailImplementationIsEqualTo
             end
-            quest:AddPersonToConversation(conversationId, darkwoodTrader)
-            quest:AddLineToConversation(conversationId, ((("TEXT_QST_067_" .. darkwoodTrader:GetDataString()) .. "_") .. scratchValue32) .. "_RESPONSE", darkwoodTrader, hero, false)
+            if scratchValue then
+                native_reply_available = 0
+            else
+                scratchValue4 = "_RESPONSE"
+                getDataString2 = getDataString3
+                getDataString = local_furthest_handle:GetDataString()
+                getDataString = "TEXT_QST_067_" .. getDataString
+                getDataString = getDataString .. "_"
+                getDataString2 = getDataString .. getDataString2
+                getDataString2 = getDataString2 .. scratchValue4
+                scratchValue2 = quest:TextEntryExists(getDataString2)
+                native_reply_available = 1
+                if not scratchValue2 then native_reply_available = 0 end
+            end
+            if native_reply_available ~= 0 then
+                scratchValue2 = quest:IsActiveThreadTerminating()
+                if scratchValue2 then
+                    return false
+                end
+                quest:AddPersonToConversation(conversationId, local_furthest_handle)
+                getHero = quest:GetHero()
+                scratchValue3 = local_furthest_handle
+                predicateResult = false
+                scratchValue4 = "_RESPONSE"
+                getDataString2 = local_furthest_handle:GetDataString()
+                getDataString2 = "TEXT_QST_067_" .. getDataString2
+                getDataString2 = getDataString2 .. "_"
+                getDataString3 = getDataString2 .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+            end
         end
-        ::LAB_00e02355::
+        resources:RetireThingOutput(furthestOwner)
+        furthestOwner = 0
         quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
         return true
     end
-    ::FLOW_after_lab_00e02355::
-    if quest:IsActiveThreadTerminating() then return false end
-    local darkwoodTrader8 = quest:GetNearestWithScriptName(nil, "DarkwoodTrader")
-    local darkwoodTrader9 = quest:GetFurthestWithScriptName(nil, "DarkwoodTrader")
-    if not (darkwoodTrader8 ~= nil and darkwoodTrader8:IsEqualTo(darkwoodTrader9._4_4_)) then
-        goto LAB_00e01afb
-    elseif not quest:IsActiveThreadTerminating() then
-        -- TODO(native): iVar5 = CCarriedReadableDef::CCarriedReadableDef((CCarriedReadableDef *)&xStack_c);
-        -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_18,iVar5);
-        goto LAB_00e01afb
+    scratchValue2 = quest:IsActiveThreadTerminating()
+    if scratchValue2 then return false end
+    commentType = "DarkwoodTrader"
+    local local_nearest_handle = quest:GetNearestWithScriptName(scratchValue7, commentType)
+    if local_nearest_handle == nil then local_nearest_handle = resources:CopyThingOutput(nil) end
+    nearestOwner = resources:TrackThingOutput(local_nearest_handle)
+    commentType = "DarkwoodTrader"
+    local_furthest_handle = quest:GetFurthestWithScriptName(scratchValue7, commentType)
+    if local_furthest_handle == nil then local_furthest_handle = resources:CopyThingOutput(nil) end
+    furthestOwner = resources:TrackThingOutput(local_furthest_handle)
+    retailImplementationIsEqualTo = local_nearest_handle:RetailImplementationIsEqualTo(local_furthest_handle)
+    if retailImplementationIsEqualTo then
+        scratchValue2 = quest:IsActiveThreadTerminating()
+        if scratchValue2 then return false end
+        resources:AssignThingOutput(furthestOwner, nil)
     end
-    do return false end
-    ::LAB_00e01afb::
-    if darkwoodTrader8:GetDataString() ~= "SCARED" then
-        if quest:IsActiveThreadTerminating() then return false end
-        -- TODO(native): xStack_24 = xStack_18;
-        -- TODO(native): CScriptThing::operator=((CScriptThing *)xStack_18,(int)&xStack_c);
+    scratchValue4 = "SCARED"
+    local this_00 = local_nearest_handle:GetDataString()
+    getTimer = this_00 ~= scratchValue4 and 1 or 0
+    if getTimer ~= 0 then
+        scratchValue2 = quest:IsActiveThreadTerminating()
+        if scratchValue2 then return false end
+        local native_swap_handle = resources:CopyThingOutput(local_nearest_handle)
+        swapOwner = resources:TrackThingOutput(native_swap_handle)
+        resources:AssignThingOutput(nearestOwner, local_furthest_handle)
+        resources:AssignThingOutput(furthestOwner, native_swap_handle)
+        resources:RetireThingOutput(swapOwner)
     end
-    local scratchValue35 = commentToMake
-    if commentToMake ~= nil then
-        local predicateResult = commentToMake == "ROCK_TROLL_CLOSE"
-        commentToMake = CONCAT31(commentToMake._1_3_,predicateResult)
-        if predicateResult then goto LAB_00e01ba2 end
+    getDataString3 = commentToMake
+    if commentToMake == nil then
+        scratchValue2 = false
+        if scratchValue2 then
+            goto LAB_00e01ba2
+        end
+    else
+        getTimer = commentToMake == "ROCK_TROLL_CLOSE" and 0 or 1
+        retailImplementationIsEqualTo = getTimer == 0
+        native_rock_troll_match = retailImplementationIsEqualTo
+        if retailImplementationIsEqualTo then goto LAB_00e01ba2 end
     end
     goto FLOW_past_lab_00e01ba2
     ::LAB_00e01ba2::
-    if quest:IsActiveThreadTerminating() then return false end
-    quest:PlayCriteriaSoundOnThing(quest:GetThingWithScriptName("RockTrollTrigger"), "EARTH_TROLL_OFFSCREEN_ROAR")
+    scratchValue2 = quest:IsActiveThreadTerminating()
+    if scratchValue2 then return false end
+    commentType = "EARTH_TROLL_OFFSCREEN_ROAR"
+    commentToMake = "RockTrollTrigger"
+    scratchValue3 = quest:GetThingWithScriptName(commentToMake)
+    triggerOwner = resources:TrackThingOutput(scratchValue3)
+    scratchValue5 = quest:PlayCriteriaSoundOnThing(scratchValue3, commentType)
+    resources:RetireThingOutput(triggerOwner)
     quest:Pause(1.0)
     ::FLOW_past_lab_00e01ba2::
-    local conversationId2 = quest:AddNewConversation(darkwoodTrader9, false, false)
-    quest:AddPersonToConversation(conversationId2, hero)
-    if not (darkwoodTrader8 ~= nil and darkwoodTrader8:IsAlive()) then
+    conversationId = quest:AddNewConversation(native_conversation_speaker, false, false)
+    scratchValue3 = quest:GetHero()
+    quest:AddPersonToConversation(conversationId, scratchValue3)
+    getTimer = local_nearest_handle ~= nil and local_nearest_handle:IsAlive()
+    if not getTimer then
         quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
         do return true end
-        goto FLOW_after_lab_00e02355
     end
-    if not quest:IsActiveThreadTerminating() then
-        quest:AddPersonToConversation(conversationId2, darkwoodTrader8)
-        if not (darkwoodTrader9 ~= nil and darkwoodTrader9:IsAlive()) then
-            if not quest:IsActiveThreadTerminating() then
-                quest:AddLineToConversation(conversationId2, (("TEXT_QST_067_" .. (nil):GetDataString()) .. "_") .. scratchValue35, nil, hero, false)
-                quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader8:GetDataString()) .. "_INTRO_RESPONSE_NO", darkwoodTrader8, hero, false)
-                local scratchValue = nil
-                quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. scratchValue:GetDataString()) .. "_INTRO_RESPONSE_REWARD", scratchValue, hero, false)
+    scratchValue2 = quest:IsActiveThreadTerminating()
+    if not scratchValue2 then
+        quest:AddPersonToConversation(conversationId, local_nearest_handle)
+        getTimer = local_furthest_handle ~= nil and local_furthest_handle:IsAlive()
+        if not getTimer then
+            scratchValue2 = quest:IsActiveThreadTerminating()
+            if not scratchValue2 then
+                getHero = quest:GetHero()
+                scratchValue3 = scratchValue7
+                predicateResult = false
+                getDataString2 = scratchValue7:GetDataString()
+                getDataString2 = "TEXT_QST_067_" .. getDataString2
+                getDataString2 = getDataString2 .. "_"
+                getDataString3 = getDataString2 .. getDataString3
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_nearest_handle
+                predicateResult = false
+                scratchValue4 = "_INTRO_RESPONSE_NO"
+                getDataString3 = local_nearest_handle:GetDataString()
+                getDataString3 = "TEXT_QST_067_" .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                scratchValue3 = quest:GetHero()
+                predicateResult = false
+                scratchValue4 = "_INTRO_RESPONSE_REWARD"
+                getHero = scratchValue7
+                getDataString3 = getHero:GetDataString()
+                getDataString3 = "TEXT_QST_067_" .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, getHero, scratchValue3, predicateResult)
                 quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
                 do return true end
-                goto FLOW_after_lab_00e01fb0
             end
-        elseif not quest:IsActiveThreadTerminating() then
-            quest:AddPersonToConversation(conversationId2, darkwoodTrader9)
-            quest:AddLineToConversation(conversationId2, (("TEXT_QST_067_" .. (nil):GetDataString()) .. "_") .. scratchValue35, nil, hero, false)
-            quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader8:GetDataString()) .. "_INTRO_RESPONSE_NO", darkwoodTrader8, hero, false)
-            quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader9:GetDataString()) .. "_INTRO_RESPONSE_OATH", darkwoodTrader9, hero, false)
-            quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. darkwoodTrader8:GetDataString()) .. "_INTRO_RESPONSE_BAD_NEWS", darkwoodTrader8, hero, false)
-            local scratchValue18 = nil
-            quest:AddLineToConversation(conversationId2, ("TEXT_QST_067_" .. scratchValue18:GetDataString()) .. "_INTRO_RESPONSE_REWARD", scratchValue18, hero, false)
-            quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
-            return true
+        else
+            scratchValue2 = quest:IsActiveThreadTerminating()
+            if not scratchValue2 then
+                quest:AddPersonToConversation(conversationId, local_furthest_handle)
+                getHero = quest:GetHero()
+                scratchValue3 = scratchValue7
+                predicateResult = false
+                getDataString2 = scratchValue7:GetDataString()
+                getDataString2 = "TEXT_QST_067_" .. getDataString2
+                getDataString2 = getDataString2 .. "_"
+                getDataString3 = getDataString2 .. getDataString3
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_nearest_handle
+                predicateResult = false
+                scratchValue4 = "_INTRO_RESPONSE_NO"
+                getDataString3 = local_nearest_handle:GetDataString()
+                getDataString3 = "TEXT_QST_067_" .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_furthest_handle
+                predicateResult = false
+                scratchValue4 = "_INTRO_RESPONSE_OATH"
+                getDataString3 = local_furthest_handle:GetDataString()
+                getDataString3 = "TEXT_QST_067_" .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                getHero = quest:GetHero()
+                scratchValue3 = local_nearest_handle
+                predicateResult = false
+                scratchValue4 = "_INTRO_RESPONSE_BAD_NEWS"
+                getDataString3 = local_nearest_handle:GetDataString()
+                getDataString3 = "TEXT_QST_067_" .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, scratchValue3, getHero, predicateResult)
+                scratchValue3 = quest:GetHero()
+                predicateResult = false
+                scratchValue4 = "_INTRO_RESPONSE_REWARD"
+                getHero = scratchValue7
+                getDataString3 = getHero:GetDataString()
+                getDataString3 = "TEXT_QST_067_" .. getDataString3
+                getDataString3 = getDataString3 .. scratchValue4
+                quest:AddLineToConversation(conversationId, getDataString3, getHero, scratchValue3, predicateResult)
+                quest:SetTimer(commentTimer, quest:ReadGlobalGameData(SCRIPT_DEF.TE_TraderCommentDelay))
+                return true
+            end
         end
-        ::FLOW_after_lab_00e01fb0::
     end
     return false
+    end)
 end
 

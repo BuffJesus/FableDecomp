@@ -100,8 +100,16 @@ def test_teacher_entity_resource_retains_its_owner():
     text = unwrap_statements(fn['decompile'])
     image = RData()
     proof = resource_call_evidence(image, fn, spec)
-    assert set(proof) == {0xe576ab, 0xe57769, 0xe5787a, 0xe57956}
-    assert all(p['family']=='self' and p['offset']==0x34 and p['slot']==0x30 for p in proof.values())
+    assert {a for a,p in proof.items() if p['slot']==0x30} == {0xe576ab, 0xe57769, 0xe5787a, 0xe57956}
+    assert all(p['family']=='self' and p['offset']==0x34 for p in proof.values())
+    assert {a for a,p in proof.items() if p['slot']==0x34} == {0xe576f9,0xe578cb,0xe579a0}
+    for site in (0xe576f9,0xe579a0):
+        assert proof[site]['pushes'][0][0]=='hero'
+        assert image.string_at(proof[site]['pushes'][1][1]).startswith('TEXT_QST_B16_')
+        assert proof[site]['pushes'][2:]==[('imm',2),('imm',0),('imm',1),('imm',0)]
+    assert proof[0xe578cb]['pushes'][1] is None  # dynamic text stays unresolved
+    assert {a for a,p in proof.items() if p['slot']==0x68} == {
+        0xe57700,0xe5772b,0xe577fc,0xe57822,0xe578d2,0xe578f7,0xe579a7,0xe579c7}
     out = recover_member_resource_calls(text, fn, _text_order_sites(text, fn), spec, image)
     assert out.count('RESOURCE_ScriptThing(RESOURCE_MemberResource("seh_me", (CScriptThing *)(this + 8)))') == 4
 
@@ -121,6 +129,20 @@ def test_mother_resource_calls_and_literal_speech():
         assert p['family']=='parent' and p['offset']==0x48
         assert p['pushes'][0][0]=='hero' and image.string_at(p['pushes'][1][1])==key
         assert p['pushes'][2:]==[('imm',selection),('imm',0),('imm',1),('imm',0)]
+
+
+def test_teacher_main_saved_interface_unpauses_on_interrupted_intro():
+    base = ROOT / 'refs/script_recovery/book_collecting'
+    unit = json.loads((base / 'units/V_BookCollecting.json').read_text())
+    fn = next(f for f in json.loads((base / 'translation_unit_typed.json').read_text())['functions']
+              if f['address'].lower() == '0x00e54e90')
+    image = RData()
+    spec = LoweringSpec(unit, 'BS_Teacher', entity=True, thing_slots={})
+    proof = resource_call_evidence(image,fn,spec,include_pause=True)
+    assert image.bytes_at(0xe559e2,12)==bytes.fromhex('8b03 6a00 8bcb ff90ec050000')
+    assert proof[0xe559e8]==dict(family='interface',offset=0,slot=0x5ec,pushes=[('imm',0)])
+    # The pause at scene entry has an unknown pending stack value; don't invent it.
+    assert proof[0xe551d3]['pushes']==[]
 
 
 @pytest.mark.parametrize('stage', ['draft', 'readable'])
@@ -145,7 +167,8 @@ def test_teacher_generated_health_uses_entity_owned_resource(stage, health):
         function quest:GetHero() return hero end
         function me:IsPerformingScriptTask() return false end
         function me:Speak(h,key,selection,a,b,c)
-            assert(h==hero and key=='TEXT_QST_B16_BOOK_NOT_FOUND' and selection==2)
+            -- With zero definitions retail keeps index -1 (NONE_FOUND); -2 is NOT_FOUND.
+            assert(h==hero and key=='TEXT_QST_B16_BOOK_NONE_FOUND' and selection==2)
             assert(a==false and b==true and c==false); spoken=spoken+1; return true
         end
         Init(quest,me);

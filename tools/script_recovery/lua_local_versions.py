@@ -38,6 +38,43 @@ def closure_ranges(lines):
     return None if start is not None else ranges
 
 
+def nil_clear_targets(line):
+    """A clear of one or more distinct bare locals; no value evaluation."""
+    match = re.fullmatch(r'\s*([A-Za-z_]\w*(?:\s*,\s*[A-Za-z_]\w*)*)\s*=\s*(nil(?:\s*,\s*nil)*)\s*',line)
+    if not match:return set()
+    names=[n.strip() for n in match[1].split(',')]
+    if len(names)!=len(match[2].split(',')) or len(set(names))!=len(names) or '_ENV' in names:return set()
+    return set(names)
+
+
+def compound_scalar_stores(lines, *, include_nil_clears=True):
+    """Scalar names written outside the supported first statement on a line.
+
+    Input is token-masked Lua. Pin these destinations rather than pretending
+    their writes are reads; keep analysis of unrelated bindings available.
+    Parallel destinations and same-line first stores are pinned together.
+    """
+    names = set()
+    pattern = re.compile(r'(?:;|\bthen\b|\bdo\b|\belse\b)\s*(?:local\s+)?'
+                         r'([A-Za-z_]\w*(?:\s*,\s*[A-Za-z_]\w*)*)\s*=(?!=)')
+    for line in lines:
+        clears=nil_clear_targets(line)
+        if clears:
+            if include_nil_clears:names.update(clears)
+            continue
+        parallel=re.match(r'\s*(?:local\s+)?([A-Za-z_]\w*(?:\s*,\s*[A-Za-z_]\w*)+)\s*=(?!=)',line)
+        if parallel:names.update(n.strip() for n in parallel[1].split(','))
+        found = list(pattern.finditer(line))
+        if not found:
+            continue
+        for match in found:
+            names.update(name.strip() for name in match[1].split(','))
+        first = re.match(r'\s*(?:local\s+)?([A-Za-z_]\w*)\s*=(?!=)', line)
+        if first:
+            names.add(first[1])
+    return names
+
+
 def flow_graph(lines):
     """Return successors for the emitter's structured one-statement-per-line Lua."""
     stack, blocks, owners, labels, inline = [], {}, {}, {}, {}
@@ -84,7 +121,7 @@ def flow_graph(lines):
             labels[line[2:-2]] = i
         elif re.match(r'^(if|elseif|for|function|local function|until)\b', line):
             return None
-        elif re.match(r'^\w+\s*,[\w, ]*=', line):
+        elif re.match(r'^\w+\s*,[\w, ]*=', line) and not nil_clear_targets(line):
             return None  # Parallel assignment needs simultaneous-definition handling.
         if 'function(' in line or 'function (' in line:
             return None
@@ -140,8 +177,25 @@ def flow_graph(lines):
     return edges
 
 
-def split_hoisted_locals(source):
+def random_result_locals(structure):
+    """Keep random-result assignments and releases on the same local storage.
+
+    Input has strings and comments masked, including Lua string-argument
+    sugar. Conservatively pin references to random getters without requiring
+    parentheses. The assignment form is one plain destination; ambiguous
+    control flow is rejected by callers.
+    """
+    names = set()
+    for line in structure:
+        match = re.match(r'\s*(?:local\s+)?([A-Za-z_]\w*)\s*=(?!=)', line)
+        if match and re.search(r'\bGetRandom\w*\b', line[match.end():]):
+            names.add(match[1])
+    return names
+
+
+def split_hoisted_locals(source, *, generated=None):
     from tools.script_recovery.readable_lua import GENERATED, rename_identifiers, tokens
+    generated = GENERATED if generated is None else generated
     original = source.splitlines(keepends=True)
     # Blank comments/literals for structure; retain newlines and all variable tokens.
     code = ''.join(re.sub(r'[^\n]', ' ', t[0]) if t.lastgroup in
@@ -152,7 +206,10 @@ def split_hoisted_locals(source):
     ranges = closure_ranges(lines)
     if ranges is None:
         return source, {}
-    pinned = set()
+    pinned = random_result_locals(lines)
+    # Nil clears are modeled below as writes to the incoming binding, not as
+    # unrelated fresh versions. Other compound destinations remain opaque.
+    pinned.update(compound_scalar_stores(lines,include_nil_clears=False))
     for a, b in ranges:
         for i in range(a, b + 1):
             pinned.update(t[0] for t in tokens(lines[i]) if t.lastgroup == 'identifier')
@@ -160,6 +217,7 @@ def split_hoisted_locals(source):
     graph = flow_graph(lines)
     if graph is None:
         return source, {}
+    clears={i:nil_clear_targets(line) for i,line in enumerate(lines) if nil_clear_targets(line)}
     declarations = {}
     local_count = len(re.findall(r'\b[A-Za-z_]\w*\b', lines[0].split('(', 1)[-1].split(')', 1)[0]))
     for i, line in enumerate(lines):
@@ -169,7 +227,7 @@ def split_hoisted_locals(source):
         match = re.fullmatch(r'\s*local ([\w, ]+)\s*', line)
         if match:
             for name in map(str.strip, match[1].split(',')):
-                if GENERATED.fullmatch(name):
+                if generated.fullmatch(name):
                     declarations[name] = i if name not in declarations else None
     occupied = {t[0] for t in tokens(source) if t.lastgroup == 'identifier'}
     parents = defaultdict(set)
@@ -181,7 +239,7 @@ def split_hoisted_locals(source):
         if declaration is None or name in pinned:
             continue
         pattern = re.compile(r'^(\s*)(?:local\s+)?' + re.escape(name) + r'\s*=(?!=)')
-        definitions = {i for i, line in enumerate(lines) if pattern.match(line)}
+        definitions = {i for i, line in enumerate(lines) if pattern.match(line) or name in clears.get(i,set())}
         if len(definitions) < 2:
             continue
         if re.search(r'\b' + re.escape(name) + r'\b', lines[0]):
@@ -224,6 +282,14 @@ def split_hoisted_locals(source):
             values = sorted(incoming[read])
             for value in values[1:]:
                 representative[root(value)] = root(values[0])
+        # The clear must write the same storage holding its incoming values.
+        # Join those versions with the nil definition, while still killing the
+        # old reaching definitions for successors. Readers of copied values
+        # keep their separate bindings and the readable pass pins clear targets.
+        for clear,names in clears.items():
+            if name not in names:continue
+            values=sorted(incoming[clear]|{clear})
+            for value in values[1:]:representative[root(value)]=root(values[0])
         used_definitions = set().union(*(incoming[i] for i in reads)) if reads else set()
         dead = sorted(definitions - used_definitions)
         for definition in dead[1:]:
@@ -280,9 +346,10 @@ def split_hoisted_locals(source):
     return result, info
 
 
-def prune_unused_literal_locals(source):
+def prune_unused_literal_locals(source, *, generated=None):
     """Remove only unused hoisted locals whose stores are side-effect-free literals."""
     from tools.script_recovery.readable_lua import GENERATED, rename_identifiers, tokens
+    generated = GENERATED if generated is None else generated
     code = ''.join(re.sub(r'[^\n]', ' ', t[0]) if t.lastgroup in ('comment', 'longcomment')
                    or t.lastgroup in ('string', 'longstring') and '\n' in t[0]
                    else t[0] for t in tokens(source))
@@ -297,7 +364,7 @@ def prune_unused_literal_locals(source):
         match = re.fullmatch(r'\s*local ([\w, ]+)\s*', line)
         if match:
             for name in map(str.strip, match[1].split(',')):
-                if GENERATED.fullmatch(name):
+                if generated.fullmatch(name):
                     declarations[name].append(i)
     marker = '__unused_local_marker__'
     while marker in source:

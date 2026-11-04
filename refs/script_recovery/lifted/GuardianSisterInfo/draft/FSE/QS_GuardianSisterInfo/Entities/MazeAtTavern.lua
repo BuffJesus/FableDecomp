@@ -12,8 +12,9 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local b2, b3, bVar4, cVar5, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c
+    local b2, b3, bVar4, cVar5, cleanupFlags, dist, fVar3, fret_0, iVar11, iVar7, i_stk_38, p0, p0_00, p1, p4, p5, pCVar12, pCVar6, pCVar9, r1, uVar10, uVar13, xStack_1c, xStack_2c, xStack_48, xStack_54, xStack_8c, x_stk_c
     local alive = true
+    cleanupFlags = 0
     alive = quest:NewScriptFrame(me)
     alive = not quest:IsActiveThreadTerminating()
     bVar4 = not alive
@@ -51,14 +52,14 @@ function Main(quest, me)
                             alive = not quest:IsActiveThreadTerminating()
                             bVar4 = not alive
                             if bVar4 then break end
-                            me:PlayAnimation("ST_HELLO", false, false, false, true, true, false, false)
+                            resources:PlayAnimationWithNativeArgument5(xStack_8c, "ST_HELLO", false, false, false, true, false, false)
                             iVar7 = quest:AddNewConversation(me, false, false)
                             pCVar6 = quest:GetHero()
                             quest:AddPersonToConversation(iVar7, pCVar6)
                             pCVar6 = quest:GetHero()
                             quest:AddLineToConversation(iVar7, "TEXT_QST_027_MAZE_CALL_HERO_OVER_10", me, pCVar6, false)
                             __native_entity_state:SetStateBool("WavedOver", true)
-                            uVar13 = xStack_8c
+                            uVar13 = cleanupFlags
                         end
                     end
                     if not quest:GetStateBool("GuardianSpokeToHero") then
@@ -70,17 +71,17 @@ function Main(quest, me)
                         quest:EntitySetFacingAngleTowardsThing(me, pCVar6, bVar4)
                     end
                     uVar10 = uVar13 | 1
-                    xStack_8c = uVar10
+                    cleanupFlags = uVar10
                     bVar4 = me:MsgIsHitByHero()
                     if bVar4 then
                         goto LAB_00e262d9
                     else
                         uVar10 = uVar13 | 3
-                        xStack_8c = uVar10
+                        cleanupFlags = uVar10
                         bVar4 = me:MsgIsHitByAnySpecialAbilityFromHero()
                         if bVar4 then
                             uVar10 = uVar13 | 7
-                            xStack_8c = uVar10
+                            cleanupFlags = uVar10
                             bVar4 = me:MsgIsHitByHeroSpecialAbility(0xe)
                             if not bVar4 then goto LAB_00e262d9 end
                         end
@@ -92,14 +93,14 @@ function Main(quest, me)
                     ::FLOW_past_lab_00e262d9::
                     if (uVar10 & 4) ~= 0 then
                         uVar10 = uVar10 & 0xfffffffb
-                        xStack_8c = uVar10
+                        cleanupFlags = uVar10
                     end
                     if (uVar10 & 2) ~= 0 then
                         uVar10 = uVar10 & 0xfffffffd
-                        xStack_8c = uVar10
+                        cleanupFlags = uVar10
                     end
                     if (uVar10 & 1) ~= 0 then
-                        -- TODO(native): xStack_8c = uVar10 & 0xfffffffe;
+                        cleanupFlags = uVar10 & 0xfffffffe
                     end
                     if bVar4 then
                         alive = not quest:IsActiveThreadTerminating()
@@ -132,6 +133,10 @@ function Main(quest, me)
                             p1 = "TEXT_QST_027_MAZE_ON_HIT_10"
                             pCVar6 = quest:GetHero()
                             r1 = me:Speak(pCVar6, p1, iVar11, (iVar7 ~= 0), (p4 ~= 0), (p5 ~= 0))
+                            if not r1 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                goto LAB_00e26754
+                            end
                             iVar11 = me:IsPerformingScriptTask()
                             cVar5 = iVar11
                             while cVar5 do
@@ -210,7 +215,7 @@ function Main(quest, me)
                     alive = quest:NewScriptFrame(me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar4 = not alive
-                    uVar13 = xStack_8c
+                    uVar13 = cleanupFlags
                     if bVar4 then
                         resources:ReleaseResource(xStack_8c)
                         return

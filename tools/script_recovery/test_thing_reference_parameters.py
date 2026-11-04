@@ -47,11 +47,11 @@ def test_a_temporary_read_later_keeps_the_staging():
     assert fold_thing_staged_from_reference(STAGED + '  Use(piVar2);\n') == STAGED + '  Use(piVar2);\n'
 
 
-def test_discarded_squared_distance_is_the_bare_call():
+def test_discarded_native_distance_is_the_bare_call():
     from tools.script_recovery.native_evidence_lowering import finish_lua
-    out = finish_lua('function Main(quest, me)\n    local d = ENGINE_SquaredDistance(a, b)\n    ENGINE_SquaredDistance(a, c)\nend\n')
-    assert 'local d = (quest:GetDistanceBetweenThings(a, b) ^ 2)' in out
-    assert '\n    quest:GetDistanceBetweenThings(a, c)\n' in out
+    out = finish_lua('function Main(quest, me)\n    local d = ENGINE_RetailDistance(a, b)\n    ENGINE_RetailDistance(a, c)\nend\n')
+    assert 'local d = resources:DistanceBetweenThings(a, b)' in out
+    assert '\n    resources:DistanceBetweenThings(a, c)\n' in out
 
 
 def test_string_getter_through_a_hidden_slot_assigns_it():

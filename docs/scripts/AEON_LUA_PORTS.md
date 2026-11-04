@@ -1,5 +1,7 @@
 # Aeon FSE upstream review — 2026-09-02
 
+> Third-party hand ports are comparison and style references. They are not a ground-truth oracle for retail behavior; resolve discrepancies with original native evidence. External checkout paths and playback observations below are historical.
+
 ## 2026-09-08 GuildMaster and LUAGameflowAssistance intake
 
 Aeon's `GuildMaster.zip` (`SHA-256

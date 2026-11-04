@@ -12,7 +12,7 @@ end
 
 function Main(quest, me)
     local resources = quest:RetailResources()
-    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, iStack_254, iVar14, iVar16, iVar5, iVar7, i_stk_210, i_stk_250, i_stk_258, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar6, pcVar13, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_54, x_stk_6c, x_stk_78, x_stk_90, x_stk_9c, x_stk_b4
+    local __native_condition_1, __native_condition_2, __native_condition_3, __native_condition_4, __native_condition_5, bVar3, cVar4, c_stk_249, fVar15, fVar2, fret_0, fret_00, fret_01, fret_02, fret_03, fret_04, fret_05, fret_06, fret_07, fret_08, fret_09, hb_stk_220, iStack_254, iVar14, iVar16, iVar5, iVar7, i_stk_210, i_stk_250, i_stk_258, native_arg_switch_5, native_arg_switch_6, native_arg_switch_7, native_arg_switch_8, p0, pCVar11, pCVar6, pcVar13, r1, r10, r11, r12, r13, r14, r15, r2, r3, r4, r5, r6, r7, r8, r9, uVar8, uVar9, u_stk_21c, xStack_100, xStack_1fc, xStack_20c, xStack_214, xStack_23c, xStack_c4, xStack_d4, xStack_e0, xStack_f0, x_stk_18, x_stk_24, x_stk_30, x_stk_3c, x_stk_54, x_stk_6c, x_stk_78, x_stk_90, x_stk_9c, x_stk_b4
     local alive = true
     local function __region_LAB_00d402b3_c31()
         quest:PauseAllNonScriptedEntities(false)
@@ -62,6 +62,8 @@ function Main(quest, me)
         i_stk_258 = iVar5
         i_stk_250 = quest:RegisterTimer()
         quest:SetTimer(i_stk_258, 1)
+        xStack_214 = 0xffffffff
+        hb_stk_220 = false
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         while not bVar3 do
@@ -73,11 +75,12 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d405fc end
-                    if (quest:GetStateInt("GameState") == 3) and (0 == 0) then
+                    if (quest:GetStateInt("GameState") == 3) and (not hb_stk_220) then
                         alive = not quest:IsActiveThreadTerminating()
                         bVar3 = not alive
                         if bVar3 then goto LAB_00d405fc end
                         quest:SetThingHasInformation(me, false, true, false)
+                        hb_stk_220 = true
                     end
                     fVar15 = 10.0
                     pCVar6 = quest:GetHero()
@@ -172,6 +175,14 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_BOAST"
                             pCVar6 = quest:GetHero()
                             r3 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                            if not r3 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                resources:DestroyMovie(xStack_20c)
+                                quest:DeregisterTimer(i_stk_250)
+                                quest:DeregisterTimer(i_stk_258)
+                                quest:DeregisterTimer(iStack_254)
+                                goto LAB_00d40749
+                            end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar4 = iVar5
                             while cVar4 do
@@ -247,6 +258,9 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_RUN"
                                 pCVar6 = quest:GetHero()
                                 r4 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                if not r4 then
+                                    goto LAB_00d405d6
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -273,10 +287,10 @@ function Main(quest, me)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc)))
                             quest:SetTimer(iStack_254, iVar7)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc) + 20.0))
-                            quest:SetTimer(i_stk_258, iVar7)
+                            quest:SetTimer(i_stk_250, iVar7)
                             xStack_214 = quest:AddQuestInfoTimer(iStack_254, "HUD_CLOCK_ICON", 1.0)
                             quest:DisplayQuestInfo(true)
-                            if 1 == 0 then
+                            if not hb_stk_220 then
                                 alive = not quest:IsActiveThreadTerminating()
                                 bVar3 = not alive
                                 if bVar3 then
@@ -286,6 +300,7 @@ function Main(quest, me)
                                     goto LAB_00d405fc
                                 end
                                 quest:SetThingHasInformation(me, false, true, false)
+                                hb_stk_220 = true
                             end
                         else
                             if bVar3 then
@@ -307,6 +322,9 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_REFUSE"
                                 pCVar6 = quest:GetHero()
                                 r5 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                if not r5 then
+                                    goto LAB_00d405d6
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -428,7 +446,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d405fc end
-                    quest:RemoveQuestInfoElement(xStack_214)
+                    quest:RemoveQuestInfoElement(((xStack_214 + 2147483648) % 4294967296 - 2147483648))
                     quest:DisplayQuestInfo(false)
                     if not quest:GetStateBool("ReachedPlatform") then
                         alive = not quest:IsActiveThreadTerminating()
@@ -448,6 +466,12 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_NO_PLATFORM"
                             pCVar6 = quest:GetHero()
                             r6 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                            if not r6 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                pCVar11 = xStack_c4
+                                resources:DestroyMovie(pCVar11)
+                                goto LAB_00d405fc
+                            end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar4 = iVar5
                             while cVar4 do
@@ -495,6 +519,12 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_TOO_SLOW"
                                 pCVar6 = quest:GetHero()
                                 r7 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                if not r7 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    pCVar11 = xStack_100
+                                    resources:DestroyMovie(pCVar11)
+                                    goto LAB_00d405fc
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -553,6 +583,12 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_SUCCEED"
                                 pCVar6 = quest:GetHero()
                                 r8 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                if not r8 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    pCVar11 = xStack_d4
+                                    resources:DestroyMovie(pCVar11)
+                                    goto LAB_00d405fc
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -581,6 +617,7 @@ function Main(quest, me)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xee0)))
                             quest:GiveHeroGold(iVar7)
                             quest:ClearThingHasInformation(me)
+                            hb_stk_220 = false
                             quest:PauseAllNonScriptedEntities(false)
                             pCVar11 = xStack_d4
                         end
@@ -592,7 +629,7 @@ function Main(quest, me)
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then goto LAB_00d405fc end
-                    quest:RemoveQuestInfoElement(xStack_214)
+                    quest:RemoveQuestInfoElement(((xStack_214 + 2147483648) % 4294967296 - 2147483648))
                     quest:DisplayQuestInfo(false)
                     if not quest:GetStateBool("ReachedPlatform") then
                         alive = not quest:IsActiveThreadTerminating()
@@ -709,6 +746,12 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_RETURN_FAIL"
                             pCVar6 = quest:GetHero()
                             r9 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                            if not r9 then
+                                quest:PauseAllNonScriptedEntities(false)
+                                pCVar11 = xStack_1fc
+                                resources:DestroyMovie(pCVar11)
+                                goto LAB_00d405fc
+                            end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar4 = iVar5
                             while cVar4 do
@@ -778,6 +821,12 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_RUN"
                                 pCVar6 = quest:GetHero()
                                 r10 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                if not r10 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    pCVar11 = xStack_1fc
+                                    resources:DestroyMovie(pCVar11)
+                                    goto LAB_00d405fc
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -807,7 +856,7 @@ function Main(quest, me)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc)))
                             quest:SetTimer(iStack_254, iVar7)
                             iVar7 = math.tointeger(math.modf(quest:ReadGlobalGameDataFloat(0xedc) + 20.0))
-                            quest:SetTimer(i_stk_258, iVar7)
+                            quest:SetTimer(i_stk_250, iVar7)
                             xStack_214 = quest:AddQuestInfoTimer(iStack_254, "HUD_CLOCK_ICON", 1.0)
                             pCVar6 = quest:GetThingWithScriptName("RaceMarker")
                             quest:MiniMapAddMarker(pCVar6, "HUD_ORB_QUEST_VIGNETTE")
@@ -830,6 +879,12 @@ function Main(quest, me)
                                 pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_REFUSE"
                                 pCVar6 = quest:GetHero()
                                 r11 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                if not r11 then
+                                    quest:PauseAllNonScriptedEntities(false)
+                                    pCVar11 = xStack_1fc
+                                    resources:DestroyMovie(pCVar11)
+                                    goto LAB_00d405fc
+                                end
                                 iVar5 = me:IsPerformingScriptTask()
                                 cVar4 = iVar5
                                 while cVar4 do
@@ -985,6 +1040,9 @@ function Main(quest, me)
                                         pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO"
                                         pCVar6 = quest:GetHero()
                                         r12 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                        if not r12 then
+                                            goto LAB_00d402b3
+                                        end
                                         iVar5 = me:IsPerformingScriptTask()
                                         cVar4 = iVar5
                                         while cVar4 do
@@ -1020,6 +1078,10 @@ function Main(quest, me)
                                     pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_YES"
                                     pCVar6 = quest:GetHero()
                                     r13 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                                    if not r13 then
+                                        quest:PauseAllNonScriptedEntities(false)
+                                        goto FLOW_after_lab_00d402b3
+                                    end
                                     iVar5 = me:IsPerformingScriptTask()
                                     cVar4 = iVar5
                                     while cVar4 do
@@ -1215,6 +1277,9 @@ function Main(quest, me)
                             pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_NO"
                             pCVar6 = quest:GetHero()
                             r14 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                            if not r14 then
+                                __region_LAB_00d402b3_c31(); goto LAB_00d405fc_c31
+                            end
                             iVar5 = me:IsPerformingScriptTask()
                             cVar4 = iVar5
                             while cVar4 do
@@ -1246,6 +1311,9 @@ function Main(quest, me)
                         pcVar13 = "TEXT_QST_028_FAST_APPRENTICE_SUCCEED_QUESTION_YES"
                         pCVar6 = quest:GetHero()
                         r15 = me:Speak(pCVar6, pcVar13, iVar5, (iVar7 ~= 0), (iVar14 ~= 0), (iVar16 ~= 0))
+                        if not r15 then
+                            __region_LAB_00d40716_c31(); goto LAB_00d405fc_c31
+                        end
                         iVar5 = me:IsPerformingScriptTask()
                         cVar4 = iVar5
                         while cVar4 do

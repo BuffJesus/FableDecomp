@@ -562,6 +562,7 @@ function IsThingCarryingCrate(quest, me, native_arg_thing)
 end
 
 function GetNearestCrateToMe(quest, me)
+    local resources = quest:RetailResources()
     local fVar5, iVar3, iVar4, v_stk_14, v_stk_18, x_stk_c
     v_stk_18 = 10000000.0
     x_stk_c = nil
@@ -569,10 +570,10 @@ function GetNearestCrateToMe(quest, me)
     if quest:GetStateListCount("CrateList") ~= 0 then
         iVar4 = 0
         repeat
-            fVar5 = (quest:GetDistanceBetweenThings(me, (quest:GetStateListAt("CrateList", (iVar4) / 0xc))) ^ 2)
+            fVar5 = resources:DistanceBetweenThings(me, (quest:GetStateListAt("CrateList", (iVar4) / 0xc)))
             if fVar5 < v_stk_18 then
                 iVar3 = quest:GetStateListRef("CrateList")
-                v_stk_18 = fVar5
+                v_stk_18 = (("<f"):unpack(("<f"):pack(fVar5)))
                 x_stk_c = quest:GetStateListAt("CrateList", (iVar4) / 0xc)
             end
             v_stk_14 = v_stk_14 + 1

@@ -4,16 +4,16 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 
 | Script | Owner | Function | Address | Compiles | TODO |
 |---|---|---|---|---|---:|
-| Q_Arena | Q_Arena | Main | 0x00f0fb70 | True | 3 |
-| Q_Arena | Q_Arena | Init | 0x00cfa700 | True | 1 |
+| Q_Arena | Q_Arena | Main | 0x00f0fb70 | True | 1 |
+| Q_Arena | Q_Arena | Init | 0x00cfa700 | True | 0 |
 | Q_Arena | Q_Arena | OnPersist | 0x00cfab10 | True | 0 |
 | Q_Arena | Q_Arena | WatchForTermination | 0x00f14300 | True | 1 |
-| Q_Arena | Q_Arena | CrowdChecker | 0x00f1cce0 | True | 14 |
+| Q_Arena | Q_Arena | CrowdChecker | 0x00f1cce0 | True | 4 |
 | Q_Arena | Q_Arena | InitialiseVariables | 0x00f25840 | True | 0 |
-| Q_Arena | Q_Arena | AnimateCrowd | 0x00f1ec70 | True | 1 |
+| Q_Arena | Q_Arena | AnimateCrowd | 0x00f1ec70 | True | 0 |
 | Q_Arena | Q_Arena | GetFanfareMusic | 0x00f14270 | True | 0 |
-| Q_Arena | Q_Arena | PlayWave | 0x00f1eed0 | True | 20 |
-| Q_Arena | Q_Arena | GivePrizeFund | 0x00f21300 | True | 8 |
+| Q_Arena | Q_Arena | PlayWave | 0x00f1eed0 | True | 7 |
+| Q_Arena | Q_Arena | GivePrizeFund | 0x00f21300 | True | 0 |
 | Q_Arena | Q_Arena | GetEndRoundQuestion | 0x00f21590 | True | 0 |
 | Q_Arena | Q_Arena | helper_F14250 | 0x00f14250 | True | 1 |
 | Q_Arena | Cham | Main | 0x00f14770 | True | 0 |
@@ -32,7 +32,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_Arena | Needle | Init | 0x00f15600 | True | 0 |
 | Q_Arena | Needle | OnPersist | 0x00f21720 | True | 0 |
 | Q_Arena | Needle | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_Arena | Roth | Main | 0x00f21880 | True | 47 |
+| Q_Arena | Roth | Main | 0x00f21880 | True | 25 |
 | Q_Arena | Roth | Init | 0x00f14610 | True | 0 |
 | Q_Arena | Roth | OnPersist | 0x00f21660 | True | 0 |
 | Q_Arena | Roth | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -44,7 +44,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_Arena | ArenaCellDoorGuard | Init | 0x00f17c20 | True | 0 |
 | Q_Arena | ArenaCellDoorGuard | OnPersist | 0x00f217e0 | True | 0 |
 | Q_Arena | ArenaCellDoorGuard | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_Arena | ArenaCellDoorGuard2 | Main | 0x00f19bb0 | True | 7 |
+| Q_Arena | ArenaCellDoorGuard2 | Main | 0x00f19bb0 | True | 8 |
 | Q_Arena | ArenaCellDoorGuard2 | Init | 0x00f19b60 | True | 0 |
 | Q_Arena | ArenaCellDoorGuard2 | OnPersist | 0x00f21830 | True | 0 |
 | Q_Arena | ArenaCellDoorGuard2 | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -52,10 +52,10 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_Arena | SUMMONED_CREATURE | Init | 0x00f1b1a0 | True | 0 |
 | Q_Arena | SUMMONED_CREATURE | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_Arena | SUMMONED_CREATURE | OnPredicateFail | 0x00f1b1b0 | True | 0 |
-| Q_Arena | ArenaEnemy | Main | 0x00f1a990 | True | 10 |
+| Q_Arena | ArenaEnemy | Main | 0x00f1a990 | True | 0 |
 | Q_Arena | ArenaEnemy | Init | 0x00f1a8c0 | True | 0 |
 | Q_Arena | ArenaEnemy | OnPersist | 0x00cdebc0 | True | 0 |
-| Q_Arena | ArenaEnemy | OnPredicateFail | 0x00f1a8f0 | True | 4 |
+| Q_Arena | ArenaEnemy | OnPredicateFail | 0x00f1a8f0 | True | 0 |
 | Q_Arena | ArenaSpawn | Main | 0x00f1b690 | True | 1 |
 | Q_Arena | ArenaSpawn | Init | 0x00f1b660 | True | 0 |
 | Q_Arena | ArenaSpawn | OnPersist | 0x00cdebc0 | True | 0 |
@@ -64,11 +64,11 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_Arena | CagedBalverine | Init | 0x00f1cae0 | True | 0 |
 | Q_Arena | CagedBalverine | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_Arena | CagedBalverine | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_Arena | ArenaCellExitGuard | Main | 0x00f1b9c0 | True | 23 |
+| Q_Arena | ArenaCellExitGuard | Main | 0x00f1b9c0 | True | 20 |
 | Q_Arena | ArenaCellExitGuard | Init | 0x00f1b990 | True | 0 |
 | Q_Arena | ArenaCellExitGuard | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_Arena | ArenaCellExitGuard | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_Arena | WhisperAlly | Main | 0x00f22d80 | True | 24 |
+| Q_Arena | WhisperAlly | Main | 0x00f22d80 | True | 10 |
 | Q_Arena | WhisperAlly | Init | 0x00f1b8b0 | True | 0 |
 | Q_Arena | WhisperAlly | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_Arena | WhisperAlly | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -76,4 +76,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_ArenaHoldingScript | Q_ArenaHoldingScript | Init | 0x00cf06d0 | True | 0 |
 | Q_ArenaHoldingScript | Q_ArenaHoldingScript | OnPersist | 0x00cbd4e0 | True | 0 |
 
-Summary: `{"owners": 22, "functions": 71, "missing": 0, "functionSyntaxPassed": 71, "fileSyntaxPassed": 22, "fileSyntaxChecked": 22, "todo": 231}`
+Summary: `{"owners": 22, "functions": 71, "missing": 0, "functionSyntaxPassed": 71, "fileSyntaxPassed": 22, "fileSyntaxChecked": 22, "todo": 144}`

@@ -9,9 +9,9 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCamp | Q_BanditCamp | OnPersist | 0x00d00a90 | True | 0 |
 | Q_BanditCamp | Q_BanditCamp | WatchForTermination | 0x00d01290 | True | 0 |
 | Q_BanditCamp | Q_BanditCamp | WatchForCostume | 0x00d00fd0 | True | 0 |
-| Q_BanditCamp | Q_BanditCamp | CheckAnyBanditsKilled | 0x00d032f0 | True | 2 |
+| Q_BanditCamp | Q_BanditCamp | CheckAnyBanditsKilled | 0x00d032f0 | True | 0 |
 | Q_BanditCamp | Q_BanditCamp | WatchForEndOfScript | 0x00d013a0 | True | 0 |
-| Q_BanditCamp | Gate1GuardOuter | Main | 0x00d01630 | True | 8 |
+| Q_BanditCamp | Gate1GuardOuter | Main | 0x00d01630 | True | 3 |
 | Q_BanditCamp | Gate1GuardOuter | Init | 0x00d01590 | True | 0 |
 | Q_BanditCamp | Gate1GuardOuter | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCamp | Gate1GuardOuter | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -22,12 +22,12 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | Main | 0x00d038e0 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | Init | 0x00d03610 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | OnPersist | 0x00cbd4e0 | True | 0 |
-| Q_BanditCampBossBattle | Q_BanditCampBossBattle | BanditKingMissionProcess | 0x00d109f0 | True | 4 |
+| Q_BanditCampBossBattle | Q_BanditCampBossBattle | BanditKingMissionProcess | 0x00d109f0 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | WatchForBanditCampGates | 0x00d04770 | True | 1 |
-| Q_BanditCampBossBattle | Q_BanditCampBossBattle | ProcessHostageCutscenes | 0x00d0fe80 | True | 4 |
+| Q_BanditCampBossBattle | Q_BanditCampBossBattle | ProcessHostageCutscenes | 0x00d0fe80 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | WatchForTermination | 0x00d04260 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForFirstAreaMassacre | 0x00d0ee70 | True | 5 |
-| Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForSecondAreaMassacre | 0x00d0f640 | True | 7 |
+| Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForSecondAreaMassacre | 0x00d0f640 | True | 0 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | CheckForSecondAreaDoorHelp | 0x00d043a0 | True | 1 |
 | Q_BanditCampBossBattle | Q_BanditCampBossBattle | OpenGate | 0x00d0ebc0 | True | 0 |
 | Q_BanditCampBossBattle | Gate2Guard1 | Main | 0x00d0d910 | True | 4 |
@@ -54,7 +54,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | Assassin3 | Init | 0x00d060b0 | True | 0 |
 | Q_BanditCampBossBattle | Assassin3 | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCampBossBattle | Assassin3 | OnPredicateFail | 0x00cdebd0 | True | 0 |
-| Q_BanditCampBossBattle | Gate3Guard | Main | 0x00d07490 | True | 2 |
+| Q_BanditCampBossBattle | Gate3Guard | Main | 0x00d07490 | True | 1 |
 | Q_BanditCampBossBattle | Gate3Guard | Init | 0x00d07410 | True | 0 |
 | Q_BanditCampBossBattle | Gate3Guard | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCampBossBattle | Gate3Guard | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -74,7 +74,7 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampBossBattle | CampHostageGuard | Init | 0x00d08f00 | True | 0 |
 | Q_BanditCampBossBattle | CampHostageGuard | OnPersist | 0x00cdebc0 | True | 0 |
 | Q_BanditCampBossBattle | CampHostageGuard | OnPredicateFail | 0x00d08fb0 | True | 0 |
-| Q_BanditCampBossBattle | BanditForger | Main | 0x00d0c410 | True | 8 |
+| Q_BanditCampBossBattle | BanditForger | Main | 0x00d0c410 | True | 6 |
 | Q_BanditCampBossBattle | BanditForger | Init | 0x00d0c390 | True | 0 |
 | Q_BanditCampBossBattle | BanditForger | OnPersist | 0x00d0ee40 | True | 0 |
 | Q_BanditCampBossBattle | BanditForger | OnPredicateFail | 0x00cdebd0 | True | 0 |
@@ -90,4 +90,4 @@ Compilation is not behavioral parity. Missing bodies and unresolved operations p
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | Init | 0x00d129b0 | True | 0 |
 | Q_BanditCampHoldingScript | Q_BanditCampHoldingScript | OnPersist | 0x00d12c20 | True | 0 |
 
-Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 73}`
+Summary: `{"owners": 19, "functions": 85, "missing": 0, "functionSyntaxPassed": 85, "fileSyntaxPassed": 19, "fileSyntaxChecked": 19, "todo": 48}`

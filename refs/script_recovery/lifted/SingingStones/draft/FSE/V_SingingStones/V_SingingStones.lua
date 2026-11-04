@@ -70,6 +70,16 @@ function OnPersist(quest, context)
     quest:SetStateBool("DoorManComplete", doorManComplete)
 end
 
+local function RemoveLiveEffects(quest)
+    local effects = quest:GetStateListCopy("EffectList")
+    for index = 1, #effects do
+        local effect = effects[index]
+        if effect:IsAlive() then
+            quest:RemoveThing(effect, false, true)
+        end
+    end
+end
+
 function WatchForCompleteTune(quest)
     local resources = quest:RetailResources()
     local bVar3, cVar2, c_stk_81, c_stk_82, c_stk_83, conversationID, elem_1, iStack_68, iVar5, i_stk_7c, native_arg_switch_2, p0, pCVar4, pPosition, piVar6, puVar7, r1, r2, r3, r4, u_stk_78, xStack_28, xStack_38
@@ -90,10 +100,8 @@ function WatchForCompleteTune(quest)
             c_stk_82 = 1
             c_stk_81 = 1
             iVar5 = 0
-            piVar6 = (this + 0x6c)
             repeat
-                -- TODO(native): if piVar6[-8] ~= *piVar6 then
-                if false then
+                if quest:GetStateInt("PlayList_" .. iVar5) ~= quest:GetStateInt("YourPersonalPlayList_" .. iVar5) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -101,8 +109,7 @@ function WatchForCompleteTune(quest)
                     end
                     c_stk_82 = 0
                 end
-                -- TODO(native): if piVar6[-4] ~= *piVar6 then
-                if false then
+                if quest:GetStateInt("RudePlayList_" .. iVar5) ~= quest:GetStateInt("YourPersonalPlayList_" .. iVar5) then
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
@@ -111,7 +118,6 @@ function WatchForCompleteTune(quest)
                     c_stk_81 = 0
                 end
                 iVar5 = iVar5 + 1
-                piVar6 = piVar6 + 1
             until not (iVar5 < 4)
             if c_stk_82 ~= 0 then
                 alive = not quest:IsActiveThreadTerminating()
@@ -137,16 +143,15 @@ function WatchForCompleteTune(quest)
                 if bVar3 then
                     return
                 end
+                local tuneName = "TEXT_QST_060_NAME_"
                 iVar5 = 0
-                puVar7 = (this + 0x6c)
                 repeat
                     alive = not quest:IsActiveThreadTerminating()
                     bVar3 = not alive
                     if bVar3 then
                         return
                     end
-                    -- TODO(native): native_arg_switch_2 = *puVar7
-                    native_arg_switch_2 = nil --[[unresolved native value]]
+                    native_arg_switch_2 = quest:GetStateInt("YourPersonalPlayList_" .. iVar5)
                     repeat
                         if native_arg_switch_2 == 0 then
                             p0 = "A"
@@ -170,10 +175,9 @@ function WatchForCompleteTune(quest)
                             end
                         end
                     until not (false)
-                    -- TODO(native): CCharString::operator+=(&xStack_80,(int)p0);
+                    tuneName = tuneName .. p0
                     ::FLOW_native_label_1::
                     iVar5 = iVar5 + 1
-                    puVar7 = puVar7 + 1
                 until not (iVar5 < 4)
                 alive = not quest:IsActiveThreadTerminating()
                 bVar3 = not alive
@@ -184,7 +188,7 @@ function WatchForCompleteTune(quest)
                 xStack_38 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 quest:Pause(1.0)
-                quest:CameraUseCameraPoint(r1, nil --[[missing]], 0x0, 0x0, -1.0)
+                quest:CameraUseCameraPoint("CAM_Stones", nil, nil, -1.0, 0, -1)
                 quest:SetStateInt("CurrentPlayListIndex", 0)
                 pCVar4 = quest:GetHero()
                 r2 = quest:GetNearestWithScriptName(pCVar4, "SpeakMarker")
@@ -192,10 +196,10 @@ function WatchForCompleteTune(quest)
                 pCVar4 = quest:GetHero()
                 quest:AddPersonToConversation(iVar5, pCVar4)
                 pCVar4 = quest:GetHero()
-                quest:AddLineToConversation(iVar5, "TEXT_QST_060_NAME_", r2, pCVar4, false)
+                quest:AddLineToConversation(iVar5, tuneName, r2, pCVar4, false)
                 quest:Pause(2.0)
                 quest:CameraDefault()
-                -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
+                RemoveLiveEffects(quest)
                 quest:StateListClear("EffectList")
                 r2 = nil
                 quest:PauseAllNonScriptedEntities(false)
@@ -210,7 +214,7 @@ function WatchForCompleteTune(quest)
                 xStack_28 = resources:StartMovie("")
                 quest:PauseAllNonScriptedEntities(true)
                 quest:Pause(1.0)
-                quest:CameraUseCameraPoint(nil --[[missing]], nil --[[missing]], 0x0, 0x0, -1.0)
+                quest:CameraUseCameraPoint("CAM_Stones", nil, nil, -1.0, 0, -1)
                 pCVar4 = quest:GetHero()
                 r3 = quest:GetNearestWithScriptName(pCVar4, "SpeakMarker")
                 iVar5 = quest:AddNewConversation(r3, true, true)
@@ -227,7 +231,7 @@ function WatchForCompleteTune(quest)
                         bVar3 = false
                         elem_1 = iStack_68[(i_stk_7c) / 0xc + 1]
                         pPosition = elem_1:GetPos()
-                        r4 = quest:CreateCreature("", pPosition, "CREATURE_BALVERINE_01")
+                        r4 = quest:CreateCreature("", pPosition, "CREATURE_BALVERINE_01", bVar3)
                         pCVar4 = quest:GetHero()
                         quest:GiveThingBestEnemyTarget(r4, pCVar4)
                         i_stk_7c = i_stk_7c + 0xc
@@ -236,7 +240,7 @@ function WatchForCompleteTune(quest)
                 end
                 quest:Pause(2.0)
                 quest:CameraDefault()
-                -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
+                RemoveLiveEffects(quest)
                 quest:StateListClear("EffectList")
                 quest:PauseAllNonScriptedEntities(false)
                 resources:DestroyMovie(xStack_28)
@@ -254,7 +258,7 @@ function WatchForCompleteTune(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar3 = not alive
         if not bVar3 then
-            -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
+            RemoveLiveEffects(quest)
             quest:StateListClear("EffectList")
             quest:DeactivateQuestLater("V_SingingStones", 0)
             quest:DeactivateQuestLater("V_SingingStones_Activate", 0)
@@ -331,8 +335,8 @@ function WatchForRegionLeaving(quest)
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive
         if bVar1 then break end
-        -- TODO(native): KillAllThingsInVector(*(void **)(this + 0x40),quest:GetStateListRef("EffectList"),0);
-        -- TODO(native): Std_Vector_Erase_Range(quest:GetStateListRef("EffectList"),quest:GetStateListRef("EffectList"),(quest:GetStateListCount("EffectList") * 0xc));
+        RemoveLiveEffects(quest)
+        quest:StateListClear("EffectList")
         alive = quest:NewScriptFrame()
         alive = not quest:IsActiveThreadTerminating()
         bVar1 = not alive

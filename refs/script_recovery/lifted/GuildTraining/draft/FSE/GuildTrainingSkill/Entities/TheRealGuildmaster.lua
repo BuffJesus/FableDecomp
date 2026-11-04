@@ -186,6 +186,13 @@ function Main(quest, me)
                         pcVar14 = "TEXT_QST_028_GUILDMASTER_SKILL_NOT_START"
                         pCVar7 = quest:GetHero()
                         r1 = me:Speak(pCVar7, pcVar14, iVar15, (iVar16 ~= 0), (iVar17 ~= 0), (iVar19 ~= 0))
+                        if not r1 then
+                            quest:PauseAllNonScriptedEntities(false)
+                            resources:DestroyMovie(xStack_1c0)
+                            quest:DeregisterTimer(i_stk_220)
+                            resources:ReleaseResource(xStack_210)
+                            return
+                        end
                         iVar15 = me:IsPerformingScriptTask()
                         cVar5 = iVar15
                         while cVar5 do
@@ -786,6 +793,7 @@ function Main(quest, me)
                 bVar4 = not alive
                 if not bVar4 then
                     CVar10 = quest:AddQuestInfoTickByText("GAME_ACTION_UNSHEATHE_RANGED_WEAPON", false, 1.0)
+                    xStack_1e4 = CVar10
                     i_stk_1ec = quest:AddQuestInfoTickByText("GAME_ACTION_TOGGLE_FIRST_PERSON_VIEW", false, 1.0)
                     xStack_1e8 = quest:AddQuestInfoTickByText("GAME_ACTION_FIRE_RANGED_WEAPON", false, 1.0)
                     goto LAB_00d5c6b1
@@ -804,6 +812,7 @@ function Main(quest, me)
                 return
             end
             CVar10 = quest:AddQuestInfoTickByText("HUD_BLACK_BUTTON", false, 1.0)
+            xStack_1e4 = CVar10
             i_stk_1ec = quest:AddQuestInfoTickByText("HUD_CONTROLLER_THUMBSTICK_LEFT_CLICK", false, 1.0)
             xStack_1e8 = quest:AddQuestInfoTickByText("HUD_CONTROLLER_X", false, 1.0)
             ::LAB_00d5c6b1::
@@ -1316,14 +1325,14 @@ function Main(quest, me)
             pCVar7 = quest:GetThingWithScriptName("SkillApprenticeMarker")
             bVar4 = false
             pCVar8 = pCVar7:GetPos()
-            r3 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "SkillApprentice")
+            r3 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "SkillApprentice", bVar4)
             if (r3 ~= nil and not r3:IsNull()) then
                 r3:SetToKillOnLevelUnload(false)
             end
             pCVar7 = quest:GetThingWithScriptName("BirdKillerMarker")
             bVar4 = false
             pCVar8 = pCVar7:GetPos()
-            r4 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "BirdKiller")
+            r4 = quest:CreateCreature("CREATURE_GUILD_EVIL_APPRENTICE_MALE", pCVar8, "BirdKiller", bVar4)
             quest:SetQuestCardObjective("Q_GuildTraining", "TEXT_QUEST_GUILD_TRAINING_OBJECTIVE_05", "", "")
             delay = 0
             pCVar11 = quest:GetActiveQuestName()
