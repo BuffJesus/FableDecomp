@@ -1,5 +1,7 @@
 # Decomp source-tree scaffold (task #12)
 
+> Class grouping is a navigation proxy, not recovery of the original translation-unit layout. An empty Ghidra SourceFileManager neither proves nor disproves raw PDB file/line records; the claim that those records exist requires direct PDB evidence.
+
 *2026-07-21.* The debug PDBs do NOT carry per-function **source-file/line** records into the
 Ghidra DB (probed via SourceFileManager: 0 rows on ego_r.exe). So the original TU/file tree
 cannot be reconstructed directly. **Fallback (correct proxy):** group by CLASS — one class ~= one

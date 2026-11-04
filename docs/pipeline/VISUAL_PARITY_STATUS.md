@@ -1,5 +1,7 @@
 # Frontend visual parity — status & resume guide (2026-08-07)
 
+> Historical visual-QA log, including later resolutions. The procedure requires an interactive desktop for window capture; its automated steps are not headless execution. Original OPEN labels are historical when a later resolution is recorded.
+
 Live visual QA of the reconstruction's D3D9 frontend against retail screenshots
 (`resources/UIScreenshots(Retail)/`). This doc is the resume point for the visual
 lane: how to build/run/drive the UI, what's fixed, and the one open artifact.

@@ -1,5 +1,7 @@
 # The VC7.1 QFE-4035 codegen gate (and how to close it)
 
+> Scope correction (2026-10-24): the recorded 128-function comparison establishes equality for that sample only. It does not prove identical code generation for every input or establish the vendor hotfix contents. Failed source/flag searches do not prove a function mathematically unmatchable. Inline-assembly workarounds below are historical byte oracles, not genuine-C++ reconstruction credit; current policy also accepts passing genuine near matches.
+
 > ## ⚠ CORRECTION (2026-08-16): 13.10.4035 codegen == 13.10.3077. The "gate" is a misdiagnosis.
 > We acquired the real 13.10.4035 compiler (WinDDK 3790.1830, verified `FileVersion 13.10.4035`)
 > and A/B-tested it against our RTM 3077 with `tools/permuter/qfe_codegen_diff.py`:

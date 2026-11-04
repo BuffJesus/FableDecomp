@@ -1,5 +1,7 @@
 # BSim name-port runbook (ego_r → Fable.exe)
 
+> The RUNNING/pending steps below are the historical export sequence, not live jobs. Related-build PDB and BSim names are donor evidence: they do not by themselves prove retail ownership, ABI or layout compatibility.
+
 Runbook for porting PDB-backed donor function names onto the stripped shipping `Fable.exe` using
 Ghidra **BSim** (decompiler-signature similarity). The first completed pass used `ego_r.exe`; the
 current expansion adds `FableWin.exe`, the richer editor/debug donor.

@@ -1,5 +1,7 @@
 # Full decompilation strategy — `Fable.exe`
 
+> Historical strategy and checkpoint record. Use `../HANDOFF.md`, `../ROADMAP.md` and the 2026-09-26 reconstruction standard for current state. Debug symbols are donor naming/type evidence; retail remains the correctness oracle. Intended promotion checks described below are not proof every historical acceptance enforced them.
+
 *User directive (2026-07-17): the end goal is a **fully decompiled** game — a complete, readable,
 buildable C/C++ source reconstruction of Fable: The Lost Chapters, not merely a modding surface.*
 
@@ -64,8 +66,9 @@ leans on automation because the target is large.
   decorated `ABV` const-reference qualifier as authoritative when `llvm-pdbutil pretty` omits it.
 - [x] Pass the 496-function first-1% milestone.
 - [ ] Prioritize boot-spine dependency closures and module-level link integration alongside small
-  background promotions. Defer installer, settings UI, x64, and broad modernization until the
-  reconstructed process reaches the game loop.
+  background promotions. Installer, settings UI, x64, and broad modernization are planned in
+  `docs/modern/MODERNIZATION.md`; the fork gate is source-complete (`near_match` and `functional`
+  count), not byte-complete.
 
 ## Current unattended reconstruction loops (updated 2026-07-25)
 

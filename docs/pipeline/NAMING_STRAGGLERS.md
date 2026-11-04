@@ -1,5 +1,7 @@
 # Naming straggler resolver
 
+> Historical naming snapshot. Counts, pending proposals and task-state statements below are not a current process inventory. Navigation-grade names are not automatically original recovered symbols.
+
 Raw function naming is complete (`49,553 / 49,553` non-default labels), but the final autonomous
 tranche contains a quality tail: 391 functions are low-confidence, address-suffixed, or both.
 

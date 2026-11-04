@@ -1,5 +1,7 @@
 # Decompilation accelerator assessment
 
+> This is the dated July assessment. Installed-tool and future-integration statements below are historical observations/proposals, not a current environment check. Donor PDB signatures must still be reconciled with retail ABI and ownership.
+
 Updated: 2026-07-22. This assessment is specific to the 32-bit VC7.1 Fable TLC reconstruction,
 the symbolized `Ego_r.pdb` donor, the existing Ghidra/BSim database, and the curated compile,
 behavior, and retail-parity gates.

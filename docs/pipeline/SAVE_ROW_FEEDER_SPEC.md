@@ -1,5 +1,7 @@
 # Save-Row Feeder — implementation spec (workflow-synthesized 2026-08-13)
 
+> Dated design and subsequent implementation notes. Later addenda supersede earlier proposed steps; local save payloads and runtime receipts were not reread in the documentation audit. This document is not a current instruction to rewrite saves.
+
 Wires live save-metadata rows into the frontend Load Game screen. Gap closed:
 `tools/save_metadata.py` proves the read contract (python, not in build); 
 `FableSetVisualFrontendSaveRows` is the renderer sink (authored defaults only). 

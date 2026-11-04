@@ -1,5 +1,7 @@
 # Unicorn-assisted x86 behavior oracle
 
+> Original feasibility plan. The not-implemented status, estimates and proposed work below describe that checkpoint; later bounded emulation fixtures exist. Neither an emulation plan nor passing bounded fixtures certifies the complete engine.
+
 *Assessment date: 2026-07-27. Status: recommended as an optional, local-only
 reverse-engineering pilot; not yet implemented and not part of the canonical
 build or parity totals.*

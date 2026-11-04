@@ -1,5 +1,7 @@
 # Workspace layout and housekeeping
 
+> Coordinate with the owners of active lanes before applying an organizer. Preview with `-WhatIf` first; the organizer moves files and rewrites paths. Its process guards cannot substitute for owner coordination.
+
 The checkout separates durable public reconstruction work from local analysis inputs and generated
 artifacts. Keep those boundaries intact: many tools assume these paths, and moving an entire live
 tree for cosmetic reasons can break reproducibility.
@@ -28,10 +30,10 @@ tree for cosmetic reasons can break reproducibility.
 Run:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File tools/organize_workspace.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/organize_workspace.ps1 -WhatIf
 ```
 
-The combined organizer is non-destructive. It:
+After reviewing the preview and coordinating active owners, an apply run preserves files but changes their locations. It:
 
 - moves old root-level `.obj` files to `work/scratch/root/objects/`;
 - moves root-level scratchpad source to `work/scratch/root/sources/`;

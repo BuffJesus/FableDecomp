@@ -1,5 +1,7 @@
 # RE methodology (inherited from Fable2RE)
 
+> Inherited methodology and example paths are historical priors. Confirm executable identity, boundaries and ABI in TLC before applying them; donor symbols and `.pdata` hints are not independent correctness proofs.
+
 *How Fable2RE actually drove Ghidra, distilled for reuse here. The mechanics transfer verbatim;
 only the loader (no XEX) and the absence of a recomp track differ.*
 

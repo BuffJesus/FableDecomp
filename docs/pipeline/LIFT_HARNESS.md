@@ -1,5 +1,7 @@
 # Lift harness plan — bar #2 (buildable source), first module
 
+> Historical first-lift plan. Structural or host-compiler success is candidate evidence; native reconstruction admission still requires the current compiler, behavior and retail-comparison contract.
+
 *Created 2026-07-19. Prereqs and setup for the module-by-module source lift per
 `docs/pipeline/FULL_DECOMP.md` step 4-5.*
 

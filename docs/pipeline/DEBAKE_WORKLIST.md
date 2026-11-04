@@ -1,5 +1,7 @@
 # De-bake worklist — replacing naked `_emit` bakes with genuine C++
 
+> Historical 2026-08 worklist; counts and active-job instructions below are not current assignments. A shared family skeleton establishes a byte-shape candidate, not candidate-bound behavior. Some replacement tools remove the old file before final admission; preserve a recoverable preimage and use the current verification contract.
+
 **North star:** byte-pure reconstruction from *genuine compiler-emitted C++*, not
 `__declspec(naked)` `_emit` byte-bakes. Bakes are byte-exact oracles at best; they
 are not faithful reconstructions. See memory `byte-purity-policy` / `faithful-decomp-policy`.
@@ -247,7 +249,7 @@ Gates: CANDIDATE_BUILD PASS objects=594; `compare_candidate_objects.py` → 64 M
 
 **Bakes remaining: 401 in 386 families — the tail is flat (largest family is 3).** Clone
 leverage is spent; from here each bake is roughly one authoring job. Regenerate the live
-family table any time with `scratchpad/bake_families.py` (groups landed `_emit` sources by
+family table any time with `tools/decomp_pipeline/crawl/bake_families.py` (groups landed `_emit` sources by
 length + call-masked skeleton straight from the catalog).
 
 ### Still open
@@ -273,7 +275,7 @@ length + call-masked skeleton straight from the catalog).
      `add esp,4`. `vchk.py` sweeps ["", g, s, t, gs, gt, ga, gsy]. `verify_and_land.py`
      PRAGMAS lacks `s`-combos beyond bare `s` — put the winning `#pragma` in-source (base
      compile honors it).
-3. Land the genuine head, then `harvest_skeleton.py <head> <N>` to clone the family.
+3. Land the genuine head, then `python tools/decomp_pipeline/crawl/harvest_skeleton.py <head> <N> <out_prefix>` to clone the family.
    The harness re-verifies every clone, so a bad match simply fails to land.
 
 **Win banked this session:** `CCountedPointer<T>::ShareData` (67-byte variant, template

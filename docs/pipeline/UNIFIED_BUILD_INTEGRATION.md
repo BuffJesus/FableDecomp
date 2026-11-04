@@ -1,5 +1,7 @@
 # Unified Fable Build — Integration into the RE Hub
 
+> Historical integration/asset inventory. Named or index-resolvable bank entries do not establish that appended assets are reachable by runtime name lookup; the later texture-bank findings in `GOTCHAS.md` qualify that claim. Recorded local builds are not fresh validation.
+
 *Integrated 2026-07-20. Source: `D:\Downloads\UnifiedFable.rar` (3.4 GB, RAR5), the
 "Unified Fable Build" by AlbionSecrets — the Fable TLC **PC debug editor** (`ego_r.exe`
 class) patched to read **RETAIL `.big` banks**. No game exes ship inside (you supply
