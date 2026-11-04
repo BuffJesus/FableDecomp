@@ -1,8 +1,26 @@
-#include <cstdio>
-struct P { char pad[0x2c]; int f2c; char pad3[0x34-0x30]; int f34; };
-struct S { char pad[8]; P* f8; char pad2[0x18-0xc]; int f18; void M(); };
-void S::M(){ P* p=this->f8; if(p) this->f18 = p->f2c - p->f34; }
-int main(){ P p; p.f2c=30; p.f34=8; S o; o.f8=&p; o.f18=0; o.M();
- if(o.f18!=22){ std::printf("009fbf50_TEST FAIL\n"); return 1;}
- o.f8=0; o.f18=5; o.M(); if(o.f18!=5){ std::printf("009fbf50_TEST FAIL\n"); return 1;}
- std::printf("009fbf50_TEST PASS\n"); return 0;}
+// CResource::SetAsUnloadable (0x009FBF50): back-date LastUsedFrame to the list's frame minus its
+// unload delay; no-op without a list. Drives the landed member on raw storage (no constructors).
+#include "fable_resource_list.h"
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    union { double align; unsigned char bytes[sizeof(CResourceList)]; } listStorage;
+    union { double align; unsigned char bytes[sizeof(CResource)]; } resourceStorage;
+    memset(&listStorage, 0, sizeof(listStorage));
+    memset(&resourceStorage, 0, sizeof(resourceStorage));
+    CResourceList* list = reinterpret_cast<CResourceList*>(listStorage.bytes);
+    CResource* resource = reinterpret_cast<CResource*>(resourceStorage.bytes);
+    list->CurrentFrame = 30;
+    list->SetResourceUnloadDelay(8);
+    resource->ResourceList = list;
+    resource->SetAsUnloadable();
+    if (resource->LastUsedFrame != 22) { printf("009fbf50_TEST FAIL\n"); return 1; }
+    resource->ResourceList = 0;
+    resource->LastUsedFrame = 5;
+    resource->SetAsUnloadable();
+    if (resource->LastUsedFrame != 5) { printf("009fbf50_TEST FAIL\n"); return 1; }
+    printf("009fbf50_TEST PASS\n");
+    return 0;
+}

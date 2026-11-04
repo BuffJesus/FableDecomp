@@ -1,0 +1,29 @@
+{
+  "status": "STANDALONE_DECREMENT_ORIGINAL_COMPILED_MODEL_PASS",
+  "cases": 20,
+  "fullarena_final_comparisons": 40,
+  "scenarios": {
+    "header": 4,
+    "left_leaf": 4,
+    "left_right_chain": 4,
+    "parent_direct": 4,
+    "parent_climb": 4
+  },
+  "input_sha256_before": {
+    "rebuild\\tests\\integration\\NativeAsyncRegistration_decrement_model.py": "0524357ca681cb775f085bde74953ac9fae0952dcb2d3b33158b27a7c05888dd",
+    "rebuild\\tests\\integration\\NativeAsyncRegistration_model.py": "092715237c4406537baee5f863fbaebf5dc31e3fb332d186fb5dee8c3b8854d5",
+    "C:\\Users\\Cornelio\\AppData\\Local\\Temp\\native-registration-5g7zp3k6\\root.obj": "20986d713de3607b018a7ca79a1742d31adc376d339de128a6579a3258e13487",
+    "tools\\decomp_pipeline\\pe_oracle.py": "07799d7e892b8fad3be20d969f0a5a0824fe4d51d7f05db4bb07edc6b1e5c9fd",
+    "tools\\decomp_pipeline\\gate_game_component_abi.py": "098e905eca036405bd3d26b0153527c6300cf35c6978f1e191f199924e4e6eb5"
+  },
+  "input_sha256_after": {
+    "rebuild\\tests\\integration\\NativeAsyncRegistration_decrement_model.py": "0524357ca681cb775f085bde74953ac9fae0952dcb2d3b33158b27a7c05888dd",
+    "rebuild\\tests\\integration\\NativeAsyncRegistration_model.py": "092715237c4406537baee5f863fbaebf5dc31e3fb332d186fb5dee8c3b8854d5",
+    "C:\\Users\\Cornelio\\AppData\\Local\\Temp\\native-registration-5g7zp3k6\\root.obj": "20986d713de3607b018a7ca79a1742d31adc376d339de128a6579a3258e13487",
+    "tools\\decomp_pipeline\\pe_oracle.py": "07799d7e892b8fad3be20d969f0a5a0824fe4d51d7f05db4bb07edc6b1e5c9fd",
+    "tools\\decomp_pipeline\\gate_game_component_abi.py": "098e905eca036405bd3d26b0153527c6300cf35c6978f1e191f199924e4e6eb5"
+  },
+  "original_sha256": "2444342210bbf0539e77602ef04cadcf5b615c598b15c6879531efafdbeef3c8",
+  "compiled_sha256": "ae0da0f7eb82e2f1094c6647a8f47310a0ee2e081ade8b950256207337ca31ee",
+  "boundary": "Standalone original79B and actual emitted78B iterator methods vs independent predecessor model. Synthetic compiled6000000, no helper retail mapping/parity/provider credit or registration branch claim. Void thiscall RET0/callee-save/fullarena effects, all paths bounded; no concurrency/invalidpointer guarantees."
+}

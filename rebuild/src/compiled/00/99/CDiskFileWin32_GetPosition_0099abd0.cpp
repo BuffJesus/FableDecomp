@@ -1,25 +1,27 @@
-// CDiskFileWin32::GetPosition @ 0x0099ABD0.
+// CDiskFileWin32::GetPosition @ 0x0099ABD0
+// (FableWin ?GetPosition@CDiskFileWin32@@UBEJXZ, vtable slot 7).
 //
-// Queries the current Win32 file pointer (via SetFilePointer with a zero move
-// and FILE_CURRENT) but discards the API result, returning the cached logical
-// position stored at this+0x08.
-//
-// The SetFilePointer call is emitted as an indirect call through the IAT slot,
-// modeled here as a function-pointer global.
+// Touches the Win32 file pointer (a zero FILE_CURRENT move whose result is
+// discarded) and returns the cached logical position.
 
-#include "engine/CDiskFileWin32.h"  // retyped onto the PDB layout; byte parity re-verified
-typedef unsigned long DWORD_0099abd0;
+#include "fable_disk_file.h"
 
-extern "C" DWORD_0099abd0 (__stdcall *CDiskFileWin32_SetFilePointerIAT_0099abd0)(
-    void* hFile,
-    long lDistanceToMove,
-    long* lpDistanceToMoveHigh,
-    DWORD_0099abd0 dwMoveMethod);
+typedef unsigned long FableDword;
+typedef void* FableHandle;
 
+extern "C" __declspec(dllimport) FableDword FABLE_STDCALL SetFilePointer(
+    FableHandle file,
+    long distanceToMove,
+    long* distanceToMoveHigh,
+    FableDword moveMethod);
 
-extern "C" long __fastcall
-GetPosition_0099abd0(CDiskFileWin32* self)
+namespace
 {
-    CDiskFileWin32_SetFilePointerIAT_0099abd0(self->WinFileHandle, 0, 0, 1 /*FILE_CURRENT*/);
-    return self->Position;
+    const FableDword kFileCurrent = 1;
+}
+
+long CDiskFileWin32::GetPosition() const
+{
+    SetFilePointer(WinFileHandle, 0, 0, kFileCurrent);
+    return Position;
 }

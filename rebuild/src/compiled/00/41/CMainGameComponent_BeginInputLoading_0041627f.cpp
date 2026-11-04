@@ -1,8 +1,15 @@
-#pragma optimize("s",on)
-// BeginInputLoading — forwards to a member of a fixed global object with a fixed
-// name argument. __stdcall, one stack arg (ret 4); ecx comes from the global, so the
-// function ignores any incoming this.
-struct CLoader { void Begin(const char* name, int arg); };
-extern CLoader* g_Loader;    // 0x013B8388
-extern const char g_Name[];  // 0x013B85E4
-void __stdcall BeginInputLoading(int arg) { g_Loader->Begin(g_Name, arg); }
+// CMainGameComponent::BeginInputLoading @ 0x0041627F (23 bytes).
+// FableWin ?BeginInputLoading@CMainGameComponent@@IAEXABVCWideString@@@Z.
+// Starts replaying a recorded input stream from fileName, checked against
+// GVersion. (Retail 0x0041627F calls CInputManager::StreamInputsFromFile.)
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+#include "fable_gfuninitialise.h"
+#include "fable_system_manager.h"
+
+void CMainGameComponent::BeginInputLoading(const CWideString& fileName)
+{
+    g_FableInputManager_013B8388->StreamInputsFromFile(g_Version_013B85E4, fileName);
+}

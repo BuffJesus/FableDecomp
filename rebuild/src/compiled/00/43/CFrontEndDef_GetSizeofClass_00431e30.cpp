@@ -1,3 +1,6 @@
-// Constant-return member: returns 0x54. __fastcall this=ecx.
-struct T { int Get(); };
-int T::Get() { return 0x54; }
+#include "fable_frontend_def.h"
+
+unsigned long CFrontEndDef::GetSizeofClass() const
+{
+    return 0x54;
+}

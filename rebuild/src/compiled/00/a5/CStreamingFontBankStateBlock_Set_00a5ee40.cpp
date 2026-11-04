@@ -1,3 +1,14 @@
-struct P { char a[4]; int f4,f8,fc; unsigned char f10; };
-struct C { char a[4]; int f4,f8,fc; unsigned char f10; void Set(P& p); };
-void C::Set(P& p){ this->f4=p.f4; this->f8=p.f8; this->fc=p.fc; this->f10=p.f10; }
+#include "fable_font_state_blocks.h"
+
+void CStreamingFontBankStateBlock::Set(const CBankStateBlock* source)
+{
+    const unsigned char* input = reinterpret_cast<const unsigned char*>(source);
+    unsigned char* output = reinterpret_cast<unsigned char*>(this);
+    *reinterpret_cast<unsigned long*>(output + 4) =
+        *reinterpret_cast<const unsigned long*>(input + 4);
+    *reinterpret_cast<unsigned long*>(output + 8) =
+        *reinterpret_cast<const unsigned long*>(input + 8);
+    *reinterpret_cast<unsigned long*>(output + 0x0c) =
+        *reinterpret_cast<const unsigned long*>(input + 0x0c);
+    output[0x10] = input[0x10];
+}

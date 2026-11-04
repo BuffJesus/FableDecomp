@@ -1,69 +1,7 @@
-extern "C" __declspec(naked) void candidate_0042951b(void)
-{
-    __asm {
-        _emit 0x8b
-        _emit 0x4c
-        _emit 0x24
-        _emit 0x04
-        _emit 0x8b
-        _emit 0x41
-        _emit 0x0c
-        _emit 0x8b
-        _emit 0x50
-        _emit 0x08
-        _emit 0x89
-        _emit 0x51
-        _emit 0x0c
-        _emit 0x8b
-        _emit 0x50
-        _emit 0x08
-        _emit 0x85
-        _emit 0xd2
-        _emit 0x74
-        _emit 0x03
-        _emit 0x89
-        _emit 0x4a
-        _emit 0x04
-        _emit 0x8b
-        _emit 0x51
-        _emit 0x04
-        _emit 0x89
-        _emit 0x50
-        _emit 0x04
-        _emit 0x8b
-        _emit 0x54
-        _emit 0x24
-        _emit 0x08
-        _emit 0x3b
-        _emit 0x0a
-        _emit 0x75
-        _emit 0x04
-        _emit 0x89
-        _emit 0x02
-        _emit 0xeb
-        _emit 0x10
-        _emit 0x8b
-        _emit 0x51
-        _emit 0x04
-        _emit 0x3b
-        _emit 0x4a
-        _emit 0x08
-        _emit 0x75
-        _emit 0x05
-        _emit 0x89
-        _emit 0x42
-        _emit 0x08
-        _emit 0xeb
-        _emit 0x03
-        _emit 0x89
-        _emit 0x42
-        _emit 0x0c
-        _emit 0x89
-        _emit 0x48
-        _emit 0x08
-        _emit 0x89
-        _emit 0x41
-        _emit 0x04
-        _emit 0xc3
-    }
-}
+// _STL::_Rb_global<bool>::_Rotate_left(_Rb_tree_node_base*, _Rb_tree_node_base*&)
+// @ 0x0042951B (STLport 4.6, cdecl static; /Os unit, see 0x004294E2).
+#pragma optimize("s", on)
+#include "fable_stlport_tree.h"
+
+template void __cdecl _STL::_Rb_global<bool>::_Rotate_left(_STL::_Rb_tree_node_base* __x,
+                                                           _STL::_Rb_tree_node_base*& __root);

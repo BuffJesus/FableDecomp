@@ -1,1 +1,0 @@
-void __stdcall CWADBankStateBlock_GetDefault(int arg0) {}

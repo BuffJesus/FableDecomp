@@ -1,10 +1,17 @@
-#include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld_Methods : CWorld {
-  void* DrawGetWorldMap();
+#include "fable_world.h"
+
+class CIDrawWorldMap
+{
+public:
+    virtual ~CIDrawWorldMap();
 };
-void* CWorld_Methods::DrawGetWorldMap() {
-  char* p = (char*)this->DefinitionManager;  // mov eax,[ecx+0x10]
-  if (p != 0)                                // test eax,eax / je
-    return p + 4;                            // add eax,4 / ret
-  return 0;                                  // xor eax,eax / ret
+
+class CWorldMapView : public CBaseClassNonCopyable, public CIDrawWorldMap
+{
+};
+
+const CIDrawWorldMap* CWorld::DrawGetWorldMap() const
+{
+    return static_cast<const CIDrawWorldMap*>(
+        reinterpret_cast<const CWorldMapView*>(PWorldMap));
 }

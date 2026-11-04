@@ -3,11 +3,11 @@
 unsigned long CMemoryAllocatorFixedSize::GetNoFreeAreas()
 {
     unsigned long total = 0;
-    CFixedSizeAllocatorNode* current = ControlledAreas;
+    CFixedSizeAllocatorNode* current = PFirstChunk;
     while (current != 0)
     {
-        total += AreaCapacity - current->AreaCount;
-        current = current->Next;
+        total += NoAreasPerChunk - current->NoAllocatedAreas;
+        current = current->PNextChunk;
     }
     return total;
 }

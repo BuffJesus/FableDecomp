@@ -1,106 +1,95 @@
-#include <cstdio>
+// Behaviour fixture for CDefinitionManager::ClearInstantiatedDefs (0x009AD950).
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-static int g_freed = 0;
-static int g_released = 0;
+#include "fable_definition_manager.h"
 
-struct CRef {
-    virtual void slot0() {}
-    virtual void OnZeroRefs() { ++g_released; }
-    int refcount;
-};
-struct CDef { void* v[3]; CRef* ref; };
-struct Vec { char* first; char* last; char* end; };
-struct Slot { char pad[0xc]; Vec v; };
-
-extern "C" char* engine_copy(char* dst, char* src, unsigned count) {
-    (void)src; (void)count; return dst;
-}
-extern "C" void engine_free(void* p) { (void)p; ++g_freed; }
-
-static inline char* erase_range(char* _First, char* _Last, char* _Dest)
+namespace
 {
-    char* _Res;
-    if (_First == _Last)
-        _Res = _Dest;
-    else {
-        unsigned count = (unsigned)(_Last - _First);
-        _Res = engine_copy(_Dest, _First, count) + count;
-    }
-    return _Res;
+    int g_deletes;
+    void* g_deleted[8];
+    int g_pointeeDeletes;
+    const void* g_pointeeDeleted;
 }
 
-struct CDefinitionManager {
-    char pad78[0x78];
-    Slot* s_first;
-    Slot* s_last;
-    char pad2[0xa4 - 0x80];
-    CDef** d_first;
-    CDef** d_last;
+void operator delete(void* p)
+{
+    if (g_deletes < 8)
+        g_deleted[g_deletes] = p;
+    ++g_deletes;
+    free(p);
+}
+
+void CIVCountedPointeeBase::DeleteCIVCountedPointeeBase() const
+{
+    ++g_pointeeDeletes;
+    g_pointeeDeleted = this;
+}
+
+struct RawVector
+{
+    void* start;
+    void* finish;
+    void* endOfStorage;
 };
 
-void __fastcall CDefinitionManager_ClearInstantiatedDefs(CDefinitionManager* self)
+struct ManagerView : CDefinitionManager
 {
-    CDef** p = self->d_first;
-    if (p != self->d_last) {
-        do {
-            CDef* d = *p;
-            if (d != 0) {
-                CRef* r = d->ref;
-                if (r != 0) {
-                    if (--r->refcount == 0)
-                        r->OnZeroRefs();
-                    d->ref = 0;
-                }
-                engine_free(d);
-            }
-            *p = 0;
-            ++p;
-        } while (p != self->d_last);
+    static RawVector& Defs(CDefinitionManager* m) { return *reinterpret_cast<RawVector*>(&static_cast<ManagerView*>(m)->InstantiatedDefs); }
+    static RawVector& Classes(CDefinitionManager* m) { return *reinterpret_cast<RawVector*>(&static_cast<ManagerView*>(m)->DefClassInfo); }
+    static void Clear(CDefinitionManager* m) { static_cast<ManagerView*>(m)->ClearInstantiatedDefs(); }
+};
+
+int main()
+{
+    static fable_u8 managerBytes[sizeof(CDefinitionManager)];
+    memset(managerBytes, 0, sizeof(managerBytes));
+    CDefinitionManager* manager = reinterpret_cast<CDefinitionManager*>(managerBytes);
+
+    CIVCountedPointeeBase shared;     // another holder keeps it alive
+    shared.IVRefCount = 2;
+    CIVCountedPointeeBase last;       // this record holds the last reference
+    last.IVRefCount = 1;
+
+    CDefinitionManager::CInstantiatedDefInfo* infos[3];
+    infos[0] = new CDefinitionManager::CInstantiatedDefInfo;
+    infos[0]->PDef.Reset(reinterpret_cast<CDefClassBase*>(&shared));
+    infos[1] = 0;
+    infos[2] = new CDefinitionManager::CInstantiatedDefInfo;
+    infos[2]->PDef.Reset(reinterpret_cast<CDefClassBase*>(&last));
+    CDefinitionManager::CInstantiatedDefInfo* first = infos[0];
+    CDefinitionManager::CInstantiatedDefInfo* third = infos[2];
+    RawVector& defs = ManagerView::Defs(manager);
+    defs.start = infos;
+    defs.finish = infos + 3;
+    defs.endOfStorage = infos + 3;
+
+    // Two def classes with global index lists of 2 and 0 entries.
+    unsigned long indices[4] = { 5, 9, 0, 0 };
+    struct Entry { unsigned long crc; void* name; void* alloc; unsigned long* s; unsigned long* f; unsigned long* e; };
+    Entry entries[2] = { { 1, 0, 0, indices, indices + 2, indices + 4 }, { 2, 0, 0, 0, 0, 0 } };
+    RawVector& classes = ManagerView::Classes(manager);
+    classes.start = entries;
+    classes.finish = entries + 2;
+    classes.endOfStorage = entries + 2;
+
+    g_deletes = 0;
+    ManagerView::Clear(manager);
+
+    const bool passed =
+        infos[0] == 0 && infos[1] == 0 && infos[2] == 0 &&
+        g_deletes == 2 && g_deleted[0] == first && g_deleted[1] == third &&
+        shared.IVRefCount == 1 && last.IVRefCount == 0 &&
+        g_pointeeDeletes == 1 && g_pointeeDeleted == &last &&
+        entries[0].f == indices && entries[0].e == indices + 4 && entries[1].f == 0 &&
+        defs.finish == infos + 3;
+    shared.IVRefCount = 1;
+    if (!passed)
+    {
+        printf("FABLETLC_CDEFINITIONMANAGER_CLEARINSTANTIATEDDEFS_009AD950 FAIL\n");
+        return 1;
     }
-
-    Slot* s = self->s_first;
-    if (s != self->s_last) {
-        do {
-            Vec* v = &s->v;
-            v->last = erase_range(v->last, v->last, v->first);
-            ++s;
-        } while (s != self->s_last);
-    }
-}
-
-int main() {
-    CRef r0; r0.refcount = 1;   // -> 0 -> release
-    CRef r1; r1.refcount = 3;   // stays
-
-    CDef d0; for (int i=0;i<3;i++) d0.v[i]=0; d0.ref = &r0;
-    CDef d1; for (int i=0;i<3;i++) d1.v[i]=0; d1.ref = &r1;
-    CDef d2; for (int i=0;i<3;i++) d2.v[i]=0; d2.ref = 0;
-
-    CDef* defs[4]; defs[0]=&d0; defs[1]=&d1; defs[2]=&d2; defs[3]=0;
-
-    Slot slots[2];
-    char buf0[8], buf1[8];
-    slots[0].v.first = buf0; slots[0].v.last = buf0+8; slots[0].v.end = buf0+8;
-    slots[1].v.first = buf1; slots[1].v.last = buf1+4; slots[1].v.end = buf1+8;
-
-    CDefinitionManager m;
-    m.d_first = &defs[0];
-    m.d_last  = &defs[4];
-    m.s_first = &slots[0];
-    m.s_last  = &slots[2];
-
-    CDefinitionManager_ClearInstantiatedDefs(&m);
-
-    int ok = 1;
-    if (r0.refcount != 0) ok = 0;
-    if (g_released != 1) ok = 0;
-    if (r1.refcount != 2) ok = 0;
-    if (d0.ref != 0 || d1.ref != 0) ok = 0;
-    if (g_freed != 3) ok = 0;
-    for (int i=0;i<4;i++) if (defs[i] != 0) ok = 0;
-    if (slots[0].v.last != slots[0].v.first) ok = 0;
-    if (slots[1].v.last != slots[1].v.first) ok = 0;
-
-    if (ok) { std::printf("CDefinitionManager_009ad950_TEST PASS\n"); return 0; }
-    std::printf("CDefinitionManager_009ad950_TEST FAIL\n"); return 1;
+    printf("FABLETLC_CDEFINITIONMANAGER_CLEARINSTANTIATEDDEFS_009AD950_PASS\n");
+    return 0;
 }

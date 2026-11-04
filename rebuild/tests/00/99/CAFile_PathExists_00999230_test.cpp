@@ -1,150 +1,149 @@
-#include "rebuild_abi.h"
-
 #include <stdio.h>
+#include <string.h>
 #include <wchar.h>
 
-struct FableWideString_00999230
-{
-    void* storage;
-};
+#include "fable_filesystem.h"
 
-extern "C" bool FABLE_FASTCALL
-FablePathExists_00999230(
-    const FableWideString_00999230& pathname,
-    void*);
+typedef int FableBool;
+typedef unsigned long FableDword;
+typedef void* FableHandle;
+
+extern "C" __declspec(dllimport) FableHandle FABLE_STDCALL CreateFileW(
+    const wchar_t* name,
+    FableDword access,
+    FableDword share,
+    void* security,
+    FableDword disposition,
+    FableDword flags,
+    FableHandle templateFile);
+extern "C" __declspec(dllimport) FableBool FABLE_STDCALL CloseHandle(
+    FableHandle object);
+extern "C" __declspec(dllimport) FableBool FABLE_STDCALL DeleteFileW(
+    const wchar_t* name);
+extern "C" __declspec(dllimport) FableDword FABLE_STDCALL GetTempPathW(
+    FableDword size,
+    wchar_t* buffer);
 
 namespace
 {
-    struct TestStorage
-    {
-        const wchar_t* text;
-    };
-
-    TestStorage g_input = {L"Data\\lang\\English\\lang_settings.txt"};
-    TestStorage g_context = {L"D:\\Fable"};
-    TestStorage g_expanded = {
-        L"D:\\Fable\\Data\\lang\\English\\lang_settings.txt"};
-    unsigned int g_constructCalls;
-    unsigned int g_contextCalls;
+    const unsigned int kTextCharacters = 300;
+    wchar_t g_tempDirectory[kTextCharacters];
+    int g_liveStrings;
+    unsigned int g_currentPathCalls;
     unsigned int g_expandCalls;
-    unsigned int g_assignCalls;
-    unsigned int g_convertCalls;
-    unsigned int g_destroyCalls;
-    unsigned int g_attributesCalls;
-    unsigned long g_attributeResult;
+}
 
-    unsigned long __stdcall GetAttributesStub(const wchar_t* pathname)
+// Minimal owning CWideString: storage_ points at a heap copy of the text.
+static CWideStringData* NewData(const wchar_t* text)
+{
+    // Raw block: CWideStringData has no default ctor.
+    CWideStringData* data = static_cast<CWideStringData*>(operator new(sizeof(CWideStringData)));
+    data->text = new wchar_t[wcslen(text) + 1];
+    wcscpy(data->text, text);
+    data->owners = 1;
+    return data;
+}
+
+CWideString::CWideString() : storage_(0) { ++g_liveStrings; }
+CWideString::CWideString(const wchar_t* text) : storage_(NewData(text))
+{
+    ++g_liveStrings;
+}
+CWideString::CWideString(const CWideString& other)
+    : storage_(other.storage_ ? NewData(other.storage_->text) : 0)
+{
+    ++g_liveStrings;
+}
+CWideString::~CWideString()
+{
+    --g_liveStrings;
+    if (storage_)
     {
-        ++g_attributesCalls;
-        if (wcscmp(pathname, g_expanded.text) != 0)
-        {
-            return 0xFFFFFFFFul;
-        }
-        return g_attributeResult;
+        wchar_t* text = storage_->text;  // (a property in delete[] trips VC7.1)
+        delete[] text;
+        delete storage_;
     }
 }
-
-typedef unsigned long (__stdcall *FableGetFileAttributesWProc)(
-    const wchar_t*);
-extern "C" FableGetFileAttributesWProc
-g_FableGetFileAttributesW_0143FDBC = GetAttributesStub;
-
-extern "C" void FABLE_FASTCALL
-FableWideStringConstruct_0099AED0(
-    FableWideString_00999230* self,
-    void*)
+CWideString& CWideString::operator=(const CWideString& other)
 {
-    ++g_constructCalls;
-    self->storage = 0;
+    CWideStringData* copy = other.storage_ ? NewData(other.storage_->text) : 0;
+    if (storage_)
+    {
+        wchar_t* text = storage_->text;  // (a property in delete[] trips VC7.1)
+        delete[] text;
+        delete storage_;
+    }
+    storage_ = copy;
+    return *this;
+}
+CWideString::operator const wchar_t*() const
+{
+    return storage_ ? storage_->text : L"";
 }
 
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableGetCurrentPath_00997F80(
-    FableWideString_00999230* result,
-    void*)
+CWideString FABLE_FASTCALL CAFile::GetCurrentPath()
 {
-    ++g_contextCalls;
-    result->storage = &g_context;
-    return result;
+    ++g_currentPathCalls;
+    return CWideString(g_tempDirectory);
 }
 
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableExpandPath_00998C90(
-    FableWideString_00999230* result,
-    const FableWideString_00999230* pathname,
-    const FableWideString_00999230* context)
+// Relative names resolve against the context directory.
+CWideString FABLE_FASTCALL CAFile::ExpandPath(
+    const CWideString& pathname,
+    const CWideString& context)
 {
     ++g_expandCalls;
-    if (pathname->storage != &g_input || context->storage != &g_context)
-    {
-        result->storage = 0;
-    }
-    else
-    {
-        result->storage = &g_expanded;
-    }
-    return result;
+    wchar_t text[kTextCharacters];
+    wcscpy(text, context);
+    wcscat(text, pathname);
+    return CWideString(text);
 }
 
-extern "C" FableWideString_00999230* FABLE_FASTCALL
-FableWideStringAssign_0099B7D0(
-    FableWideString_00999230* self,
-    void*,
-    const FableWideString_00999230* other)
+static int Run(const wchar_t* fileName)
 {
-    ++g_assignCalls;
-    self->storage = other->storage;
-    return self;
-}
+    wchar_t fullPath[kTextCharacters];
+    wcscpy(fullPath, g_tempDirectory);
+    wcscat(fullPath, fileName);
+    DeleteFileW(fullPath);
 
-extern "C" void FABLE_FASTCALL
-FableWideStringDestroy_0099B510(
-    FableWideString_00999230* self,
-    void*)
-{
-    ++g_destroyCalls;
-    self->storage = 0;
-}
+    const CWideString relative(fileName);
+    if (CAFile::PathExists(relative))
+        return 1;
 
-extern "C" const wchar_t* FABLE_FASTCALL
-FableWideStringGetBuffer_0099AF00(
-    FableWideString_00999230* self,
-    void*)
-{
-    ++g_convertCalls;
-    TestStorage* storage = static_cast<TestStorage*>(self->storage);
-    return storage ? storage->text : L"";
+    FableHandle file = CreateFileW(fullPath, 0x40000000ul, 0, 0, 2, 0x80, 0);
+    if (file == reinterpret_cast<FableHandle>(-1))
+        return 2;
+    CloseHandle(file);
+
+    const bool fileExists = CAFile::PathExists(relative);
+    DeleteFileW(fullPath);
+    if (!fileExists)
+        return 3;
+
+    // A directory is a path too.
+    if (!CAFile::PathExists(CWideString(L"")))
+        return 4;
+
+    if (CAFile::PathExists(relative))
+        return 5;
+    if (g_currentPathCalls != 4 || g_expandCalls != 4)
+        return 6;
+    return 0;
 }
 
 int main()
 {
-    FableWideString_00999230 pathname;
-    pathname.storage = &g_input;
+    const FableDword length = GetTempPathW(260, g_tempDirectory);
+    if (length == 0 || length > 260)
+        return 10;
 
-    g_attributeResult = 0x20;
-    if (!FablePathExists_00999230(pathname, 0))
+    const int result = Run(L"fabletlc_pathexists_00999230.tmp");
+    // Every temporary PathExists built was destroyed.
+    if (result != 0 || g_liveStrings != 0)
     {
-        return 1;
+        printf("FABLETLC_PATH_EXISTS_00999230 FAIL %d %d\n", result, g_liveStrings);
+        return result ? result : 11;
     }
-
-    g_attributeResult = 0xFFFFFFFFul;
-    if (FablePathExists_00999230(pathname, 0))
-    {
-        return 2;
-    }
-
-    if (
-        g_constructCalls != 2 ||
-        g_contextCalls != 2 ||
-        g_expandCalls != 2 ||
-        g_assignCalls != 2 ||
-        g_convertCalls != 2 ||
-        g_destroyCalls != 6 ||
-        g_attributesCalls != 2)
-    {
-        return 3;
-    }
-
     printf("FABLETLC_PATH_EXISTS_00999230 PASS\n");
     return 0;
 }

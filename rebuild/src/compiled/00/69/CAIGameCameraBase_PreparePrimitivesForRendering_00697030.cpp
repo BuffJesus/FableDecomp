@@ -1,1 +1,0 @@
-void __stdcall CAIGameCameraBase_PreparePrimitivesForRendering(int arg0) {}

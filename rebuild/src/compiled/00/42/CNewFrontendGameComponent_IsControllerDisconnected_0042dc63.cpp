@@ -1,53 +1,15 @@
-extern "C" __declspec(naked) void f_0042dc63(void) {
-__asm {
-_emit 0xe8
-_emit 0x28
-_emit 0xdf
-_emit 0x06
-_emit 0x00
-_emit 0x8b
-_emit 0xc8
-_emit 0xe8
-_emit 0xe1
-_emit 0xde
-_emit 0x06
-_emit 0x00
-_emit 0x84
-_emit 0xc0
-_emit 0x74
-_emit 0x1e
-_emit 0xe8
-_emit 0x18
-_emit 0xdf
-_emit 0x06
-_emit 0x00
-_emit 0x8b
-_emit 0xc8
-_emit 0xe8
-_emit 0xc1
-_emit 0xde
-_emit 0x06
-_emit 0x00
-_emit 0x8b
-_emit 0x0d
-_emit 0x88
-_emit 0x83
-_emit 0x3b
-_emit 0x01
-_emit 0x50
-_emit 0xe8
-_emit 0xc5
-_emit 0x75
-_emit 0x5c
-_emit 0x00
-_emit 0xf6
-_emit 0xd8
-_emit 0x1b
-_emit 0xc0
-_emit 0x40
-_emit 0xc3
-_emit 0x32
-_emit 0xc0
-_emit 0xc3
-}
+// CNewFrontendGameComponent::IsControllerDisconnected @ 0x0042DC63 (49 bytes).
+// FableWin ?IsControllerDisconnected@CNewFrontendGameComponent@@AAE_NXZ.
+// Only a main-player joystick the player explicitly picked can be
+// "disconnected": ask the global input manager whether that device is live.
+#include "fable_game.h"
+#include "fable_input_event.h"
+#include "fable_system_manager.h"
+
+bool CNewFrontendGameComponent::IsControllerDisconnected()
+{
+    if (CGameJoystickManager::Get().HasExplicitMainPlayerJoystickDeviceNumber())
+        return !g_FableInputManager_013B8388->IsJoystickDeviceNumberActive(
+            CGameJoystickManager::Get().GetMainPlayerJoystickDeviceNumber());
+    return false;
 }

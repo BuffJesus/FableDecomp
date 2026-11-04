@@ -1,8 +1,9 @@
-#include "fable_texture_lifecycle.h"
-#include "fable_pixel_format_table.h"
+// CPixelFormat::GetColourDepth (retail 0x009E3820).
+// FableWin.pdb ?GetColourDepth@CPixelFormat@@QBEKXZ.
+#include "fable_surface.h"
+#include "fable_d3d_format_info.h"
 
-fable_u32 CPixelFormatByteLengthView::GetColourDepth() const
+unsigned long CPixelFormat::GetColourDepth() const
 {
-    return static_cast<fable_u32>(
-        g_FablePixelFormatTable[value00].colourDepth08);
+    return GD3DFormats[FormatIndex].BitDepth;
 }

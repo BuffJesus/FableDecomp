@@ -1,1 +1,0 @@
-void __stdcall CEngine_AreaChanged(int arg0) {}

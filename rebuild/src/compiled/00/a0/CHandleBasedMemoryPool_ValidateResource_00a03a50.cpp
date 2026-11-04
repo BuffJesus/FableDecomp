@@ -1,1 +1,7 @@
-void __stdcall CHandleBasedMemoryPool_ValidateResource(int arg0) {}
+#include "fable_handle_memory_pool.h"
+#include "fable_game_text_bank.h"
+#include <string.h>
+void CHandleBasedMemoryPool::ValidateResource(void*)
+{
+    
+}

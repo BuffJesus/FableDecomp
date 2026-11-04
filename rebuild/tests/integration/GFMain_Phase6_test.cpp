@@ -85,10 +85,10 @@ int main()
         state.openFontBankCalls != 1 ||
         state.textLookupCalls[GFMainPhase6Text_PermissionError] != 1 ||
         state.textLookupCalls[GFMainPhase6Text_ErrorCaption] != 1 ||
-        state.groupEntryCalls[GFMainPhase6Text_PermissionError] != 1 ||
-        state.groupEntryCalls[GFMainPhase6Text_ErrorCaption] != 1 ||
-        state.bankHandleCalls[GFMainPhase6Text_PermissionError] != 1 ||
-        state.bankHandleCalls[GFMainPhase6Text_ErrorCaption] != 0 ||
+        state.textEntryCalls[GFMainPhase6Text_PermissionError] != 1 ||
+        state.textEntryCalls[GFMainPhase6Text_ErrorCaption] != 1 ||
+        state.getTextCalls[GFMainPhase6Text_PermissionError] != 1 ||
+        state.getTextCalls[GFMainPhase6Text_ErrorCaption] != 0 ||
         state.displayPermissionErrorCalls != 1 ||
         state.displayedPermissionError != 42)
     {

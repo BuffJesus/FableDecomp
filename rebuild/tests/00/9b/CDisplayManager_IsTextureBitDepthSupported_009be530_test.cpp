@@ -1,86 +1,82 @@
-#include <cstdio>
+// Fixture: CDisplayManager::IsTextureBitDepthSupported (0x009BE530)
+#include <stdio.h>
+#include <string.h>
+#include "fable_surface.h"
+#include "fable_d3d_format_info.h"
 
-// Backing storage; g_bitDepthTable points at record 0's key so that negative
-// indices reach the flag (-1) and payload (-2) fields, matching retail's edi.
-static int g_backing[64];
-int* const g_bitDepthTable = &g_backing[2];
+static int g_fail;
+#define EXPECT(c) do { if (!(c)) { printf("FAIL %d: %s\n", __LINE__, #c); ++g_fail; } } while (0)
 
-struct CDisplayManager {
-    char  pad0[0x54];
-    void* dev;                 // +0x54
-    char  pad1[0x04];
-    int   field5c;             // +0x5c
-    int   field60;             // +0x60
-    char  pad2[0x1c4 - 0x64];
-    int   field1c4;            // +0x1c4
-    bool  IsTextureBitDepthSupported(int fmt);
+extern const CD3DFormatInfo GD3DFormats[] = {
+    {(D3DFORMAT)20, PF_TYPE_RGBA, 24, 0, 8, 8, 8, 0, false},
+    {(D3DFORMAT)21, PF_TYPE_RGBA, 32, 8, 8, 8, 8, 0, false},
+    {(D3DFORMAT)22, PF_TYPE_RGBA, 32, 0, 8, 8, 8, 0, false},
+    {(D3DFORMAT)23, PF_TYPE_RGBA, 16, 0, 5, 6, 5, 0, false},
+    {(D3DFORMAT)25, PF_TYPE_RGBA, 16, 1, 5, 5, 5, 0, false},
+    {(D3DFORMAT)26, PF_TYPE_RGBA, 16, 4, 4, 4, 4, 0, false},
+    {(D3DFORMAT)60, PF_TYPE_BUMP, 16, 0, 8, 8, 0, 0, false},
+    {(D3DFORMAT)61, PF_TYPE_BUMP, 16, 0, 5, 5, 6, 0, false},
+    {(D3DFORMAT)64, PF_TYPE_BUMP, 32, 0, 16, 16, 0, 0, false},
+    {(D3DFORMAT)75, PF_TYPE_DEPTH, 16, 0, 0, 0, 0, 8, false},
+    {(D3DFORMAT)28, PF_TYPE_RGBA, 16, 8, 0, 0, 0, 0, false},
+    {(D3DFORMAT)102, PF_TYPE_UNKNOWN, -1, 0, 0, 0, 0, 0, false},
 };
 
-static int g_lastArg = -999;
-int __stdcall fake_check(void* dev, int a, int b, int c, int d, int e, int f)
+// Fake IDirect3D9: slot 10 = CheckDeviceFormat.
+struct FakeD3D { void** vt; };
+static void* g_vt[32];
+static FakeD3D g_d3d = { g_vt };
+static int g_checks; static long g_supported[8]; static int g_nSupported;
+static D3DFORMAT g_checked[32]; static DWORD g_usage[32];
+static bool g_argsOk = true;
+static HRESULT __stdcall FakeCheck(void* self, UINT adapter, D3DDEVTYPE type, D3DFORMAT adapterFormat,
+                                   DWORD usage, D3DRESOURCETYPE rtype, D3DFORMAT fmt)
 {
-    (void)dev; (void)a; (void)b; (void)c; (void)d; (void)e;
-    g_lastArg = f;
-    return (f == 7777) ? 0 : -1;   // supported only for payload 7777
+    if (self != &g_d3d || adapter != 7 || type != D3DDEVTYPE_REF || adapterFormat != (D3DFORMAT)22 || rtype != D3DRTYPE_TEXTURE)
+        g_argsOk = false;
+    g_checked[g_checks] = fmt; g_usage[g_checks] = usage; ++g_checks;
+    for (int i = 0; i < g_nSupported; ++i) if (g_supported[i] == (long)fmt) return 0;
+    return (HRESULT)0x8876086Al;
 }
 
-static void* g_vt[16];
+static int g_inits; static CPixelFormat* g_initThis; static D3DFORMAT g_initFmt;
 
-bool CDisplayManager::IsTextureBitDepthSupported(int fmt)
+static unsigned char g_storage[sizeof(CDisplayManager) + 16];
+static CDisplayManager* Setup(int n, const long* supported)
 {
-    if (g_bitDepthTable[0] != -1) {
-        int* p = g_bitDepthTable;
-        do {
-            if (p[-1] == 2 && fmt == p[0]) {
-                void*  dev = this->dev;
-                void** vt  = *(void***)dev;
-                int r = ((int(__stdcall*)(void*,int,int,int,int,int,int))vt[10])(
-                    dev, this->field60, this->field5c, this->field1c4, 0, 3, p[-2]);
-                if (r >= 0)
-                    return true;
-            }
-            p += 9;
-        } while (p[0] != -1);
-    }
-    return false;
+    memset(g_storage, 0xCD, sizeof(g_storage));
+    CDisplayManager* dm = reinterpret_cast<CDisplayManager*>(g_storage);
+    g_vt[10] = (void*)&FakeCheck;
+    dm->D3D = reinterpret_cast<IDirect3D9*>(&g_d3d);
+    dm->D3DDeviceCaps.AdapterOrdinal = 7;
+    dm->D3DDeviceCaps.DeviceType = D3DDEVTYPE_REF;
+    dm->CurrentMode.Format = (D3DFORMAT)22;
+    g_nSupported = n; for (int i = 0; i < n; ++i) g_supported[i] = supported[i];
+    g_checks = 0; g_inits = 0; g_initThis = 0; g_initFmt = (D3DFORMAT)0; g_argsOk = true;
+    return dm;
+}
+static void Neighbour() { EXPECT(g_storage[sizeof(CDisplayManager)] == 0xCD); EXPECT(g_argsOk); }
+
+static void Body()
+{
+    long s1[] = { 25 };
+    CDisplayManager* dm = Setup(1, s1);
+    EXPECT(dm->IsTextureBitDepthSupported(16) == true);
+    // RGBA 16-bit entries in order: 23 (refused), 25 (accepted) -> stop.
+    EXPECT(g_checks == 2 && g_checked[0] == 23 && g_checked[1] == 25 && g_usage[0] == 0);
+    Neighbour();
+    dm = Setup(0, s1);
+    EXPECT(dm->IsTextureBitDepthSupported(16) == false);
+    EXPECT(g_checks == 4);   // 23, 25, 26, 28 (bump/depth skipped)
+    Neighbour();
+    dm = Setup(1, s1);
+    EXPECT(dm->IsTextureBitDepthSupported(24) == false && g_checks == 1 && g_checked[0] == 20);
 }
 
 int main()
 {
-    g_vt[10] = (void*)&fake_check;
-    struct Dev { void* vt; } dev;
-    dev.vt = g_vt;
-
-    CDisplayManager dm;
-    dm.dev = &dev;
-    dm.field5c = 111;
-    dm.field60 = 222;
-    dm.field1c4 = 333;
-
-    for (int i = 0; i < 64; ++i) g_backing[i] = 0;
-
-    // record0: payload=[-2], flag=[-1], key=[0]. stride 9 dwords.
-    g_bitDepthTable[-2] = 7777; g_bitDepthTable[-1] = 2; g_bitDepthTable[0] = 500;
-    // record1 (base +9): payload=[7], flag=[8], key=[9]
-    g_bitDepthTable[7]  = 42;   g_bitDepthTable[8]  = 2; g_bitDepthTable[9] = 600;
-    // record2 key = -1 -> terminator (base +18)
-    g_bitDepthTable[18] = -1;
-
-    bool r1 = dm.IsTextureBitDepthSupported(500); // rec0 payload 7777 -> supported
-    bool r2 = dm.IsTextureBitDepthSupported(600); // rec1 payload 42 -> not, then term -> false
-    bool r3 = dm.IsTextureBitDepthSupported(999); // no match -> false
-
-    // Whole-table-disabled short circuit (key of record0 == -1)
-    int savedKey = g_bitDepthTable[0];
-    g_bitDepthTable[0] = -1;
-    bool r4 = dm.IsTextureBitDepthSupported(500);
-    g_bitDepthTable[0] = savedKey;
-
-    if (r1 == true && r2 == false && r3 == false && r4 == false && g_lastArg == 42) {
-        std::printf("CDisplayManager_009be530_TEST PASS\n");
-        return 0;
-    }
-    std::printf("FAIL r1=%d r2=%d r3=%d r4=%d lastArg=%d\n",
-                (int)r1, (int)r2, (int)r3, (int)r4, g_lastArg);
-    return 1;
+    Body();
+    if (g_fail) { printf("FAILED %d\n", g_fail); return 1; }
+    printf("CDisplayManager_009be530_TEST PASS\n");
+    return 0;
 }

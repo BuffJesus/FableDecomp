@@ -1,2 +1,0 @@
-#include "engine/CNavSwitchableLeafNode.h"  // retyped onto the PDB layout; byte parity re-verified
-unsigned char __fastcall GetPreferabilityCost(CNavSwitchableLeafNode* self){ if(!self->m_disabled) return self->b1c; return (unsigned char)0xFF; }

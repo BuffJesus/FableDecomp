@@ -1,8 +1,5 @@
-#include <cstdio>
-void __fastcall CMemoryDataOutputStream_Close() {}
-int main()
-{
-    CMemoryDataOutputStream_Close();
-    std::printf("AUTO_TINY_009945c0_TEST PASS\n");
-    return 0;
-}
+#include "../tests/integration/MemoryOutput_test.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_CMemoryDataOutputStream_00996af0.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_SetPosition_00994b10.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_GetPosition_009945b0.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_Destructor_00996b30.cpp"

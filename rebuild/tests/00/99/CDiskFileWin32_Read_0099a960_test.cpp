@@ -1,174 +1,202 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour fixture for CDiskFileWin32::Read (0x0099A960).
+// ---- CDiskFileWin32 fixture prelude --------------------------------------
+// The member under test is linked from the compiled source object and called
+// non-virtually on raw storage laid out as CDiskFileWin32 (no vtable needed).
+// It runs against a REAL temporary file through kernel32; the CCharString
+// members the inline CBBBFileException constructor uses are recording
+// stand-ins.
+#define private public
+#include "fable_disk_file.h"
+#include "fable_file_exception.h"
+#undef private
 
-#include "../../../src/compiled/00/99/CDiskFileWin32_Read_0099a960.cpp"
+#include <stdio.h>
+#include <string.h>
 
-extern "C" const char CDiskFileWin32_NullDestination_0099a960[] =
-    "Null dst parameter";
-extern "C" const char CDiskFileWin32_ReadPastEnd_0099a960[] =
-    "Cannot read past end of file";
-extern "C" const char CDiskFileWin32_ReadFailure_0099a960[] =
-    "Cannot read file";
-extern "C" unsigned char CDiskFileWin32_ThrowInfo_0099a960[1] = { 0 };
-
-struct TestDiskFile_0099a960
+// Minimal kernel32 surface (the VC7.1 tree has no Platform SDK headers).
+typedef void* HANDLE;
+typedef unsigned long DWORD;
+typedef int BOOL;
+#define MAX_PATH 260
+#define GENERIC_READ 0x80000000UL
+#define GENERIC_WRITE 0x40000000UL
+#define CREATE_ALWAYS 2
+#define OPEN_EXISTING 3
+#define FILE_ATTRIBUTE_NORMAL 0x80
+#define FILE_BEGIN 0
+#define FILE_CURRENT 1
+extern "C"
 {
-    unsigned long padding0;
-    unsigned long padding4;
-    unsigned long position;
-    unsigned long size;
-    void* handle;
+    __declspec(dllimport) DWORD __stdcall GetTempPathW(DWORD, wchar_t*);
+    __declspec(dllimport) unsigned int __stdcall GetTempFileNameW(const wchar_t*, const wchar_t*, unsigned int, wchar_t*);
+    __declspec(dllimport) HANDLE __stdcall CreateFileW(const wchar_t*, DWORD, DWORD, void*, DWORD, DWORD, HANDLE);
+    __declspec(dllimport) BOOL __stdcall CloseHandle(HANDLE);
+    __declspec(dllimport) BOOL __stdcall DeleteFileW(const wchar_t*);
+    __declspec(dllimport) DWORD __stdcall SetFilePointer(HANDLE, long, long*, DWORD);
+    __declspec(dllimport) BOOL __stdcall WriteFile(HANDLE, const void*, DWORD, DWORD*, void*);
+    __declspec(dllimport) BOOL __stdcall ReadFile(HANDLE, void*, DWORD, DWORD*, void*);
+    __declspec(dllimport) DWORD __stdcall GetFileSize(HANDLE, DWORD*);
+}
+
+static int g_strCtor, g_strCopy, g_strText, g_strDtor;
+static const char* g_strLiteral;
+static long g_strLength;
+
+CCharString::CCharString(const char* text, long length)
+{
+    storage_ = reinterpret_cast<CCharStringData*>(const_cast<char*>(text));
+    g_strLiteral = text;
+    g_strLength = length;
+    ++g_strCtor;
+}
+
+CCharString::CCharString(const CCharString& other)
+{
+    storage_ = other.storage_;
+    ++g_strCopy;
+}
+
+CCharString::operator const char*() const
+{
+    ++g_strText;
+    return reinterpret_cast<const char*>(storage_);
+}
+
+CCharString::~CCharString()
+{
+    ++g_strDtor;
+}
+
+static void ResetStrings()
+{
+    g_strCtor = g_strCopy = g_strText = g_strDtor = 0;
+    g_strLiteral = 0;
+    g_strLength = 0;
+}
+
+static bool StringsThrew(const char* text)
+{
+    return g_strCtor == 1 && g_strCopy == 1 && g_strText == 1 && g_strDtor == 1 &&
+        g_strLength == -1 && g_strLiteral != 0 && strcmp(g_strLiteral, text) == 0;
+}
+
+static bool StringsUntouched()
+{
+    return g_strCtor == 0 && g_strCopy == 0 && g_strText == 0 && g_strDtor == 0;
+}
+
+struct RawFile
+{
+    unsigned long words[7];
+    CDiskFileWin32* operator->() { return reinterpret_cast<CDiskFileWin32*>(words); }
+    CDiskFileWin32& operator*() { return *reinterpret_cast<CDiskFileWin32*>(words); }
 };
 
-static volatile int g_ReadCalls;
-static volatile unsigned long g_Requested;
-static volatile unsigned long g_BytesToReport;
-static void* volatile g_Handle;
-static void* volatile g_Destination;
-static void* volatile g_Overlapped;
-static volatile int g_ReadResult;
-static volatile int g_ThrowCalls;
-static volatile int g_ThrowCode;
-static void* volatile g_ThrowInfoSeen;
+static wchar_t g_tempPath[MAX_PATH];
 
-extern "C" int __stdcall TestReadFile_0099a960(
-    void* handle,
-    void* destination,
-    unsigned long requested,
-    unsigned long* bytesRead,
-    void* overlapped)
+static HANDLE OpenTemp(const char* contents, bool writable)
 {
-    ++g_ReadCalls;
-    g_Handle = handle;
-    g_Destination = destination;
-    g_Requested = requested;
-    g_Overlapped = overlapped;
-    *bytesRead = g_BytesToReport;
-    return g_ReadResult;
+    wchar_t dir[MAX_PATH];
+    GetTempPathW(MAX_PATH, dir);
+    GetTempFileNameW(dir, L"dfw", 0, g_tempPath);
+    HANDLE h = CreateFileW(g_tempPath, GENERIC_READ | GENERIC_WRITE, 0, 0,
+        CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
+    DWORD done = 0;
+    WriteFile(h, contents, (DWORD)strlen(contents), &done, 0);
+    if (!writable)
+    {
+        CloseHandle(h);
+        h = CreateFileW(g_tempPath, GENERIC_READ, 0, 0, OPEN_EXISTING,
+            FILE_ATTRIBUTE_NORMAL, 0);
+    }
+    return h;
 }
 
-extern "C" void* CDiskFileWin32_ReadFileIAT_0099a960 =
-    (void*)&TestReadFile_0099a960;
-
-extern "C" void* __fastcall
-CDiskFileWin32_ConstructErrorString_0099a960(
-    void* destination,
-    void*,
-    const char* text,
-    int)
+static void CloseTemp(HANDLE h)
 {
-    *(const char**)destination = text;
-    return destination;
+    CloseHandle(h);
+    DeleteFileW(g_tempPath);
 }
 
-extern "C" void* __fastcall
-CDiskFileWin32_CopyErrorString_0099a960(
-    void* destination,
-    void*,
-    const void* source)
+static long Pointer(HANDLE h)
 {
-    *(const char**)destination = *(const char* const*)source;
-    return destination;
+    return (long)SetFilePointer(h, 0, 0, FILE_CURRENT);
 }
 
-extern "C" char* __fastcall
-CDiskFileWin32_GetErrorText_0099a960(void* value, void*)
+static void Setup(RawFile& f, HANDLE h, FileAccessType access, long position, long length)
 {
-    return *(char**)value;
+    for (int i = 0; i < 7; ++i)
+        f.words[i] = 0xCDCDCDCD;
+    f->AccessType = access;
+    f->Position = position;
+    f->Length = length;
+    f->WinFileHandle = h;
+    f->Opened = true;
 }
 
-extern "C" void __fastcall
-CDiskFileWin32_DestroyErrorString_0099a960(void*, void*)
+// The bytes the member must never touch: the vptr slot, Opened and Pathname.
+static bool NeighboursIntact(RawFile& f)
 {
+    return f.words[0] == 0xCDCDCDCD && f->Opened == true &&
+        f.words[6] == 0xCDCDCDCD;
 }
+// ---------------------------------------------------------------------------
 
-extern "C" void __stdcall
-CDiskFileWin32_ThrowError_0099a960(void* exceptionValue, void* throwInfo)
-{
-    ++g_ThrowCalls;
-    g_ThrowCode = *(int*)exceptionValue;
-    g_ThrowInfoSeen = throwInfo;
-}
-
-static void ResetProbe(unsigned long bytesToReport)
-{
-    g_ReadCalls = 0;
-    g_Requested = 0;
-    g_BytesToReport = bytesToReport;
-    g_Handle = 0;
-    g_Destination = 0;
-    g_Overlapped = (void*)1;
-    g_ReadResult = 1;
-    g_ThrowCalls = 0;
-    g_ThrowCode = 0;
-    g_ThrowInfoSeen = 0;
-}
 
 int main()
 {
-    TestDiskFile_0099a960 file;
-    unsigned char destination[16];
-    file.padding0 = 0;
-    file.padding4 = 0;
-    file.position = 2;
-    file.size = 20;
-    file.handle = (void*)0x12345678;
+    int fail = 0;
+    RawFile f;
+    HANDLE h = OpenTemp("0123456789", true);
+    char buf[16];
 
-    typedef void (__fastcall *ReadFunction)(
-        void*,
-        void*,
-        void*,
-        long,
-        void*);
-    ReadFunction volatile read = &CDiskFileWin32_Read_0099a960;
+    // Null destination.
+    Setup(f, h, FILE_ACCESS_READ, 0, 10);
+    ResetStrings();
+    bool threw = false;
+    try { f->CDiskFileWin32::Read(0, 4, 0); }
+    catch (CBBBFileException& e) { threw = e.Type == CBBBFileException::BAD_PARAMETERS; }
+    if (!threw || !StringsThrew("Null dst parameter")) fail |= 1;
 
-    ResetProbe(5);
-    read(&file, 0, destination, 8, (void*)0xabcdef01);
-    int failures = 0;
-    if (g_ReadCalls != 1 ||
-        g_Handle != file.handle ||
-        g_Destination != destination ||
-        g_Requested != 8 ||
-        g_Overlapped != 0 ||
-        g_ThrowCalls != 0 ||
-        file.position != 7)
-    {
-        ++failures;
-    }
+    // Empty read: nothing, even at the end.
+    Setup(f, h, FILE_ACCESS_READ, 10, 10);
+    ResetStrings();
+    f->CDiskFileWin32::Read(buf, 0, 0);
+    if (f->Position != 10 || !StringsUntouched()) fail |= 2;
 
-    ResetProbe(9);
-    file.position = 7;
-    read(&file, 0, destination, 0, (void*)0xabcdef01);
-    if (g_ReadCalls != 0 ||
-        g_ThrowCalls != 0 ||
-        file.position != 7)
-    {
-        ++failures;
-    }
+    // At the cached end.
+    threw = false;
+    try { f->CDiskFileWin32::Read(buf, 1, 0); }
+    catch (CBBBFileException& e) { threw = e.Type == CBBBFileException::END_OF_FILE; }
+    if (!threw || !StringsThrew("Cannot read past end of file") || f->Position != 10) fail |= 4;
 
-    ResetProbe(0);
-    g_ReadResult = 0;
-    file.position = 2;
-    read(&file, 0, destination, 8, 0);
-    if (g_ReadCalls != 1 ||
-        g_ThrowCalls != 1 ||
-        g_ThrowCode != 4 ||
-        g_ThrowInfoSeen != CDiskFileWin32_ThrowInfo_0099a960 ||
-        file.position != 2)
-    {
-        ++failures;
-    }
+    // Normal read from the real pointer; position advances by the bytes read.
+    SetFilePointer(h, 3, 0, FILE_BEGIN);
+    Setup(f, h, FILE_ACCESS_READ, 3, 10);
+    ResetStrings();
+    memset(buf, 0, sizeof(buf));
+    f->CDiskFileWin32::Read(buf, 4, 0);
+    if (memcmp(buf, "3456", 5) != 0 || f->Position != 7 || f->Length != 10 || !StringsUntouched()) fail |= 8;
+    if (!NeighboursIntact(f)) fail |= 16;
 
-    if (failures != 0)
-    {
-        std::printf(
-            "DISK_READ_0099a960_TEST FAIL count=%d reads=%d position=%lu\n",
-            failures,
-            g_ReadCalls,
-            file.position);
-        return 1;
-    }
+    // A short read advances by what ReadFile actually returned.
+    f->CDiskFileWin32::Read(buf, 8, 0);
+    if (f->Position != 10 || memcmp(buf, "789", 3) != 0) fail |= 32;
 
-    std::printf("DISK_READ_0099a960_TEST PASS\n");
+    // ReadFile failure (write-only handle): CANNOT_READ, position unchanged.
+    CloseTemp(h);
+    h = CreateFileW(g_tempPath, GENERIC_WRITE, 0, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 0);
+    Setup(f, h, FILE_ACCESS_READ, 0, 10);
+    ResetStrings();
+    threw = false;
+    try { f->CDiskFileWin32::Read(buf, 4, 0); }
+    catch (CBBBFileException& e) { threw = e.Type == CBBBFileException::CANNOT_READ; }
+    if (!threw || !StringsThrew("Cannot read file") || f->Position != 0) fail |= 64;
+
+    CloseTemp(h);
+    if (fail == 0)
+        printf("DISK_READ_0099a960_TEST PASS\n");
+    else
+        printf("DISK_READ_0099a960_TEST FAIL %d\n", fail);
     return 0;
 }

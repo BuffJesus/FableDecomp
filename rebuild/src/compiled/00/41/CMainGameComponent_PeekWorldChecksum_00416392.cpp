@@ -1,43 +1,20 @@
-extern "C" __declspec(naked) void cand_00416392(void)
+// CMainGameComponent::PeekWorldChecksum @ 0x00416392 (37 bytes).
+// FableWin ?PeekWorldChecksum@CMainGameComponent@@QBEKXZ. A local game that
+// is neither replaying nor recording input events has nothing to keep in
+// sync, so the checksum is the constant 1; otherwise it is the world's own.
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+#include "fable_gfuninitialise.h"
+#include "fable_system_manager.h"
+#include "fable_world.h"
+
+unsigned long CMainGameComponent::PeekWorldChecksum() const
 {
-    __asm
-    {
-        _emit 0x32
-        _emit 0xd2
-        _emit 0x38
-        _emit 0x91
-        _emit 0x1a
-        _emit 0x61
-        _emit 0x01
-        _emit 0x00
-        _emit 0x74
-        _emit 0x13
-        _emit 0xa1
-        _emit 0x88
-        _emit 0x83
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x38
-        _emit 0x50
-        _emit 0x38
-        _emit 0x75
-        _emit 0x09
-        _emit 0x38
-        _emit 0x50
-        _emit 0x39
-        _emit 0x75
-        _emit 0x04
-        _emit 0x33
-        _emit 0xc0
-        _emit 0x40
-        _emit 0xc3
-        _emit 0x8b
-        _emit 0x49
-        _emit 0x24
-        _emit 0xe9
-        _emit 0x49
-        _emit 0x7e
-        _emit 0x08
-        _emit 0x00
-    }
+    if (Client.IsLocal()
+        && !g_FableInputManager_013B8388->IsLoadingEvents()
+        && !g_FableInputManager_013B8388->IsSavingEvents())
+        return 1;
+    return PWorld->GetChecksum();
 }

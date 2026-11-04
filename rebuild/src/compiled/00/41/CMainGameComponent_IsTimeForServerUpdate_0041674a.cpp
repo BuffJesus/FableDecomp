@@ -1,99 +1,29 @@
-extern "C" __declspec(naked) void F_0041674a(void)
+// CMainGameComponent::IsTimeForServerUpdate @ 0x0041674A (93 bytes).
+// FableWin ?IsTimeForServerUpdate@CMainGameComponent@@QBE_NJ@Z. Never while
+// the component is not running. A movie-recording replay (render only while
+// recording, events loading, not yet recording) and the AlwaysUpdateGameFrame
+// override always update; otherwise it is time once the next present lands
+// more than one world frame past `frame`.
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+#include "fable_gfuninitialise.h"
+#include "fable_system_manager.h"
+
+bool CMainGameComponent::IsTimeForServerUpdate(long frame) const
 {
-    __asm
+    if (Running)
     {
-        _emit 0x32
-        _emit 0xc0
-        _emit 0x38
-        _emit 0x41
-        _emit 0x09
-        _emit 0x74
-        _emit 0x51
-        _emit 0x38
-        _emit 0x05
-        _emit 0x0c
-        _emit 0x86
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x74
-        _emit 0x13
-        _emit 0x8b
-        _emit 0x15
-        _emit 0x88
-        _emit 0x83
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x38
-        _emit 0x42
-        _emit 0x38
-        _emit 0x74
-        _emit 0x08
-        _emit 0x38
-        _emit 0x05
-        _emit 0x29
-        _emit 0x86
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x74
-        _emit 0x32
-        _emit 0x38
-        _emit 0x05
-        _emit 0x88
-        _emit 0x86
-        _emit 0x3b
-        _emit 0x01
-        _emit 0x75
-        _emit 0x2a
-        _emit 0xe8
-        _emit 0x69
-        _emit 0xff
-        _emit 0xff
-        _emit 0xff
-        _emit 0xdb
-        _emit 0x05
-        _emit 0x50
-        _emit 0x55
-        _emit 0x37
-        _emit 0x01
-        _emit 0xd8
-        _emit 0x3d
-        _emit 0xd8
-        _emit 0xde
-        _emit 0x22
-        _emit 0x01
-        _emit 0xd8
-        _emit 0xf9
-        _emit 0xda
-        _emit 0x64
-        _emit 0x24
-        _emit 0x04
-        _emit 0xdd
-        _emit 0xd9
-        _emit 0xd9
-        _emit 0xc0
-        _emit 0xd8
-        _emit 0x1d
-        _emit 0xd8
-        _emit 0xde
-        _emit 0x22
-        _emit 0x01
-        _emit 0xdf
-        _emit 0xe0
-        _emit 0xdd
-        _emit 0xd8
-        _emit 0xf6
-        _emit 0xc4
-        _emit 0x41
-        _emit 0x75
-        _emit 0x04
-        _emit 0xb0
-        _emit 0x01
-        _emit 0xeb
-        _emit 0x02
-        _emit 0x32
-        _emit 0xc0
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+        if (g_RenderOnlyWhenRecordingMovie_013B860C
+            && g_FableInputManager_013B8388->IsLoadingEvents()
+            && !g_RecordMovie_013B8629)
+            return true;
+        if (AlwaysUpdateGameFrame)
+            return true;
+        float framesAhead = ConvertGTToWF(GetGameTimeOfNextPresentCompletion()) - frame;
+        if (framesAhead > 1.0f)
+            return true;
     }
+    return false;
 }

@@ -1,1 +1,0 @@
-void __stdcall CWADFile_SetLength(int arg0) {}

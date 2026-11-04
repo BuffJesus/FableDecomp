@@ -1,25 +1,28 @@
+#include "fable_world.h"
 #include <stdio.h>
-#include "engine/CWorld.h"
-struct CWorld_Methods : CWorld {
-  void* DrawGetWorldMap();
-};
-void* CWorld_Methods::DrawGetWorldMap() {
-  char* p = (char*)this->DefinitionManager;
-  if (p == 0) return 0;
-  return p + 4;
-}
-int main() {
-  // non-null case: DefinitionManager at +0x10 -> returns ptr+4
-  char buf[64];
-  CWorld_Methods w1;
-  w1.DefinitionManager = (CGameDefinitionManager*)buf;
-  void* r1 = w1.DrawGetWorldMap();
-  if (r1 != (void*)(buf + 4)) { printf("FAIL nonnull got %p exp %p\n", r1, (void*)(buf+4)); return 1; }
-  // null case: returns 0
-  CWorld_Methods w2;
-  w2.DefinitionManager = 0;
-  void* r2 = w2.DrawGetWorldMap();
-  if (r2 != 0) { printf("FAIL null got %p\n", r2); return 1; }
-  printf("OK_0x0049e1a0\n");
-  return 0;
+#include <string.h>
+
+int main()
+{
+    unsigned char worldStorage[sizeof(CWorld) + 8];
+    unsigned char mapStorage[64];
+    int cases = 0;
+    for (int offset = 0; offset != 4; ++offset) {
+        for (int state = 0; state != 3; ++state) {
+            memset(worldStorage, 0xa5, sizeof(worldStorage));
+            CWorld* world = reinterpret_cast<CWorld*>(worldStorage + offset);
+            CWorldMap* map = state ? reinterpret_cast<CWorldMap*>(mapStorage + state * 4) : 0;
+            *reinterpret_cast<CWorldMap**>(reinterpret_cast<char*>(world) + 0x14) = map;
+            const CIDrawWorldMap* got = world->CWorld::DrawGetWorldMap();
+            const CIDrawWorldMap* expected = map ?
+                reinterpret_cast<const CIDrawWorldMap*>(reinterpret_cast<const char*>(map) + 4) : 0;
+            if (got != expected) {
+                printf("FAIL offset=%d state=%d got=%p expected=%p\n", offset, state, got, expected);
+                return 1;
+            }
+            ++cases;
+        }
+    }
+    printf("WORLD_DRAW_MAP_PASS cases=%d\n", cases);
+    return 0;
 }

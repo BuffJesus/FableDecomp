@@ -1,0 +1,7 @@
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/49/CWorld_SetAsPaused_0049d8f0.cpp"
+#include "../src/compiled/00/43/CPlayerGui_GetPHeroInfoScreensManager_00437cd0.cpp"
+#include "../src/compiled/00/66/HeroInformationManager_Close_0066e73d.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/40/CVectorMapThingComponents_LowerBound_0040f020.cpp"
+#include "../tests/integration/ClosePhotoCapture_test.cpp"

@@ -1,84 +1,29 @@
-#include <cstdio>
-#include <cstring>
-
-#include "../../../src/compiled/00/9b/CPersistContext_CPersistContext_009baa30.cpp"
-
-struct TestPersistContext_009baa30
-{
-    unsigned long currentSection;
-    unsigned char untouched04[0x11];
-    unsigned char flag15;
-    unsigned char untouched16[2];
-    unsigned long mode;
-    unsigned char untouched1c[8];
-    void* inputStream;
-    void* outputStream;
-};
-
-static int CheckConstruction(bool option)
-{
-    TestPersistContext_009baa30 context;
-    std::memset(&context, 0xA5, sizeof(context));
-    unsigned long inputMarker = 0x13572468;
-
-    typedef void* (__fastcall *ConstructFunction)(
-        void*,
-        void*,
-        void*,
-        bool);
-    ConstructFunction volatile construct =
-        &CPersistContext_CPersistContext_009baa30;
-
-    void* result = construct(&context, 0, &inputMarker, option);
-    if (context.currentSection != 0 ||
-        context.flag15 != 0 ||
-        context.mode != 2 ||
-        context.inputStream != &inputMarker ||
-        context.outputStream != 0)
-    {
-        return 1;
-    }
-
-    // Retail leaves the surrounding state alone and does not establish an
-    // explicit return value.
-    for (int index = 0; index < 0x11; ++index)
-    {
-        if (context.untouched04[index] != 0xA5)
-        {
-            return 1;
-        }
-    }
-    if (context.untouched16[0] != 0xA5 ||
-        context.untouched16[1] != 0xA5)
-    {
-        return 1;
-    }
-    for (int index = 0; index < 8; ++index)
-    {
-        if (context.untouched1c[index] != 0xA5)
-        {
-            return 1;
-        }
-    }
-
-    (void)result;
-    return 0;
-}
+// Behaviour of CPersistContext::Init(CMemoryDataInputStream&, bool) 0x009BAA30:
+// binary-load mode over the stream, no save stream, no definition manager,
+// CRC check off; the flag is not stored and nothing else is written.
+#include "fable_persist_context.h"
+#include <stdio.h>
+#include <string.h>
 
 int main()
 {
-    int failures = 0;
-    failures += CheckConstruction(false);
-    failures += CheckConstruction(true);
-
-    if (failures != 0)
+    static unsigned char store[sizeof(CPersistContext)];
+    static unsigned char streamStore[64];
+    CPersistContext& c = *reinterpret_cast<CPersistContext*>(store);
+    for (int pass = 0; pass < 2; ++pass)
     {
-        std::printf(
-            "PERSIST_CONTEXT_CTOR_009baa30_TEST FAIL count=%d\n",
-            failures);
-        return 1;
+        memset(store, pass ? 0xFF : 0x11, sizeof(store));
+        unsigned char before[sizeof(CPersistContext)];
+        memcpy(before, store, sizeof(store));
+        c.Init(*reinterpret_cast<CMemoryDataInputStream*>(streamStore), pass == 1);
+        if (!(c.Mode == CPersistContext::MODE_BINARY_LOAD && c.PLoadStream == (void*)streamStore && c.PSaveStream == 0 && c.PDefinitionManager == 0 && !c.UseCRCCheck)) { printf("pass %d: fields\n", pass); return 1; }
+        // Everything else untouched.
+        for (unsigned i = 0; i < sizeof(store); ++i)
+        {
+            bool written = (i < 4) || i == 0x15 || (i >= 0x18 && i < 0x1C) || (i >= 0x24 && i < 0x2C);
+            if (!written && store[i] != before[i]) { printf("pass %d: byte %u\n", pass, i); return 1; }
+        }
     }
-
-    std::printf("PERSIST_CONTEXT_CTOR_009baa30_TEST PASS\n");
+    puts("FABLETLC_CPERSISTCONTEXT_INIT_LOAD_009BAA30_PASS");
     return 0;
 }

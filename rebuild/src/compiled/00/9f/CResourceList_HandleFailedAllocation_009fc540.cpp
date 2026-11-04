@@ -1,3 +1,9 @@
-#include "rebuild_abi.h"
-extern "C" void FABLE_STDCALL Helper_9fc540(void* a);
-extern "C" void FABLE_STDCALL Handle_9fc540(void* a){ Helper_9fc540(0); }
+// CResourceList::HandleFailedAllocation(unsigned long) @ 0x009FC540.
+#include "fable_resource_list.h"
+
+// A memory pool ran dry: unload the least recently used resource, whatever
+// its size.
+bool CResourceList::HandleFailedAllocation(unsigned long)
+{
+    return UnloadNextResource(0);
+}

@@ -1,0 +1,5 @@
+#include "../src/compiled/00/62/CWorld_EACloseLiveGUI_00629da0.cpp"
+#include "../src/compiled/00/66/HeroInformationManager_Close_0066e73d.cpp"
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/49/CWorld_SetAsPaused_0049d8f0.cpp"
+#include "../tests/integration/WorldCloseGui_test.cpp"

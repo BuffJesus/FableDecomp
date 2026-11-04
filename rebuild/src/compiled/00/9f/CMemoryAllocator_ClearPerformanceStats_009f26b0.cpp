@@ -1,19 +1,11 @@
-// CMemoryAllocator::ClearPerformanceStats @ 009f26b0
-struct CMemoryAllocator;
+// CMemoryAllocator::ClearPerformanceStats, retail 0x009F26B0
+// (FableWin ?ClearPerformanceStats@CMemoryAllocator@@QAEXXZ): the per-allocator
+// statistics are compiled out of retail (FableWin guards them with the
+// UsePerformanceStats constant), leaving only the lock round trip.
+#include "fable_memory_allocator.h"
 
-// stdcall so the callee cleans up its own 4-byte arg (no "add esp,4" after call).
-typedef void (__stdcall *ClearFn)(void*);
-
-// The object whose address (0x13caa70) is pushed to both calls.
-extern int g_perfStatsObject;
-
-// Two IAT-imported function pointers at [0x143fe0c] and [0x143fe10].
-extern ClearFn g_clearFn0;
-extern ClearFn g_clearFn1;
-
-void __fastcall ClearPerformanceStats(CMemoryAllocator* self)
+void CMemoryAllocator::ClearPerformanceStats()
 {
-    (void)self;
-    g_clearFn0(&g_perfStatsObject);
-    g_clearFn1(&g_perfStatsObject);
+    EnterSynchronisation();
+    LeaveSynchronisation();
 }

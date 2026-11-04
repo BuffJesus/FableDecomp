@@ -1,381 +1,278 @@
 #include <stdio.h>
 #include <string.h>
+#include <wchar.h>
 
-#include "fable_string.h"
-
-// The behavior fixture links the actual candidate object. These declarations
-// provide only the retail seams and test doubles; the Open body is not copied
-// into the fixture.
-
+#include "fable_filesystem.h"
 #include "fable_threaded_file.h"
+#include "test_support/base_class_stubs.h"
 
-extern "C" void FABLE_FASTCALL
-FableThreadedCharConstruct_0098E1E0(void* self);
-extern "C" void FABLE_FASTCALL
-FableThreadedCharDestroy_0098E1E0(void* self);
+// The fixture links the candidate object and defines the engine members it
+// calls as recorders. CreateFileW/GetFileSize are the real kernel32 imports,
+// run against a real temporary file.
 
-class CWideStringSlot
-{
-public:
-    void* data_;
-
-    ~CWideStringSlot()
-    {
-        FableThreadedCharDestroy_0098E1E0(this);
-    }
-};
-
-class CCharStringSlot
-{
-public:
-    void* data_;
-};
-
-class CDriveStringSlot
-{
-public:
-    void* data_;
-
-    CDriveStringSlot()
-    {
-        FableThreadedCharConstruct_0098E1E0(this);
-    }
-
-    ~CDriveStringSlot()
-    {
-        FableThreadedCharDestroy_0098E1E0(this);
-    }
-};
-
-extern "C" fable_u8 g_FableThreadedEmptyChar_0122D70E = 0;
-extern "C" char g_FableThreadedDDrive_0129A15C[] = "D:";
-extern "C" fable_u32 g_FableThreadedPhysicalSortKey_013BC9EC = 0;
-
-typedef void* (__stdcall* CreateFileWProc)(
-    const wchar_t*, unsigned long, unsigned long, void*,
-    unsigned long, unsigned long, void*);
-typedef unsigned long (__stdcall* GetFileSizeProc)(void*, unsigned long*);
-
-extern "C" CreateFileWProc g_FableThreadedCreateFileW_0143FE2C = 0;
-extern "C" GetFileSizeProc g_FableThreadedGetFileSize_0143FDF0 = 0;
-
-extern "C" CWideStringSlot* FABLE_FASTCALL
-FableThreadedConvertFullPath_0098E1E0(
-    CWideStringSlot* result,
-    const void* pathname);
-extern "C" void FABLE_FASTCALL
-FableThreadedSplitPath_0098E1E0(
-    CWideStringSlot* fullPath,
-    void* drive,
-    void* filename,
-    void* extension,
-    void* reserved);
-class CCharStringConvertShim
-{
-public:
-    void* ToCharPointer(CCharStringSlot* temporary, CCharStringSlot* result);
-};
-
-extern "C" void* FABLE_FASTCALL
-FableThreadedCharToUpper_0098E1E0(void* string);
-
-class CBasicStringCharShim
-{
-public:
-    bool Equals(const char* literal);
-};
-
-extern "C" const wchar_t* FABLE_FASTCALL
-FableThreadedWideConversion_0098E1E0(const void* string);
-extern "C" void FABLE_FASTCALL
-FableThreadedWideAssign_0098E1E0(
-    void* destination,
-    const void* source);
-
-class CWideAssignShim
-{
-public:
-    void Assign(const void* source);
-};
-
-// CThreadedFile::Open(CWideString const&, bool) @ 0x0098E1E0.
-#if 0
-bool CThreadedFile::Open(const CWideString& name, bool noCaching)
-{
-    CWideStringSlot fullPath;
-    FableThreadedConvertFullPath_0098E1E0(&fullPath, &name);
-
-    CCharStringSlot scratch;
-    CDriveStringSlot drive;
-    CCharStringSlot directory;
-    FableThreadedSplitPath_0098E1E0(&fullPath, &drive, 0, 0, 0);
-
-    openedForWrite_ = false;
-    void* upper = reinterpret_cast<CCharStringConvertShim*>(&drive)
-        ->ToCharPointer(&scratch, &directory);
-    upper = FableThreadedCharToUpper_0098E1E0(upper);
-
-    bool driveIsD;
-    if (*reinterpret_cast<void**>(upper) != 0)
-    {
-        driveIsD = reinterpret_cast<CBasicStringCharShim*>(
-            *reinterpret_cast<void**>(upper))->Equals(
-                g_FableThreadedDDrive_0129A15C);
-    }
-    else
-    {
-        driveIsD = memcmp(
-            &g_FableThreadedEmptyChar_0122D70E,
-            g_FableThreadedDDrive_0129A15C,
-            3) == 0;
-    }
-
-    FableThreadedCharDestroy_0098E1E0(&directory);
-    FableThreadedCharDestroy_0098E1E0(&scratch);
-
-    deviceId_ = driveIsD ? 1u : 0u;
-    unsigned long flags = 0x40000001UL;
-    if (noCaching)
-    {
-        flags = 0x60000001UL;
-    }
-
-    fileHandle_ = g_FableThreadedCreateFileW_0143FE2C(
-        FableThreadedWideConversion_0098E1E0(&fullPath),
-        0x80000000UL, 1UL, 0, 3UL, flags, 0);
-
-    if (fileHandle_ == reinterpret_cast<void*>(-1))
-    {
-        return false;
-    }
-
-    reinterpret_cast<CWideAssignShim*>(&filenameStorage_)->Assign(&name);
-
-    length_ = g_FableThreadedGetFileSize_0143FDF0(fileHandle_, 0);
-
-    physicalSortKey_ = ++g_FableThreadedPhysicalSortKey_013BC9EC;
-    openFlag_ = true;
-
-    return true;
-}
-#endif
+extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* object);
+extern "C" __declspec(dllimport) unsigned long __stdcall GetTempPathW(
+    unsigned long length, wchar_t* buffer);
 
 namespace
 {
-    struct CharData
-    {
-        char* text;
-    };
+    wchar_t g_realPath[260];
+    const wchar_t g_missingPath[] = L"Z:\\fabletlc\\no\\such\\file.big";
+    const wchar_t* g_fullPathText;
+    const wchar_t* g_driveText;
 
-    const wchar_t g_fullPath[] = L"D:\\banks\\text.big";
-    CharData g_driveData;
-    fable_u8 g_nameBytes[sizeof(CWideString)];
-    bool g_driveD;
-    bool g_createSucceeds;
+    unsigned long g_wideDataRaw_[16][4];
+    CWideStringData* const g_wideData = reinterpret_cast<CWideStringData*>(g_wideDataRaw_);
+    int g_wideDataUsed;
+    CCharStringData g_charData[16];
+    char g_charText[16][8];
+    int g_charDataUsed;
+
+    const CWideString* g_expectedName;
+    const CWideString* g_splitPath;
     bool g_argumentsValid;
-    unsigned int g_destroyCalls;
-    unsigned int g_assignCalls;
-    unsigned int g_getSizeCalls;
-    unsigned long g_lastFlags;
-    void* const g_handle = reinterpret_cast<void*>(0x1234);
+    int g_wideDestructs;
+    int g_charDestructs;
+    int g_assigns;
+    const CWideString* g_assignSource;
+    const CWideString* g_assignDestination;
+    int g_upperCalls;
 
-    CThreadedFile* RawFile(fable_u8* bytes)
+    CWideStringData* NewWideData(const wchar_t* text)
     {
-        return reinterpret_cast<CThreadedFile*>(bytes);
+        CWideStringData* data = &g_wideData[g_wideDataUsed++ & 15];
+        data->text = const_cast<wchar_t*>(text);
+        return data;
     }
 
-    const CWideString& Name()
+    void Reset(const wchar_t* fullPath, const wchar_t* drive)
     {
-        return *reinterpret_cast<const CWideString*>(g_nameBytes);
-    }
-
-    void Reset(bool driveD, bool createSucceeds)
-    {
-        g_driveD = driveD;
-        g_createSucceeds = createSucceeds;
+        g_fullPathText = fullPath;
+        g_driveText = drive;
         g_argumentsValid = true;
-        g_destroyCalls = 0;
-        g_assignCalls = 0;
-        g_getSizeCalls = 0;
-        g_lastFlags = 0;
-        g_driveData.text = const_cast<char*>(driveD ? "D:" : "C:");
-        memset(g_nameBytes, 0, sizeof(g_nameBytes));
-        g_FableThreadedPhysicalSortKey_013BC9EC = 40;
+        g_wideDestructs = 0;
+        g_charDestructs = 0;
+        g_assigns = 0;
+        g_assignSource = 0;
+        g_assignDestination = 0;
+        g_upperCalls = 0;
+        g_splitPath = 0;
     }
+}
 
-    bool CheckOpen(bool driveD, bool noCaching)
+CWideString::CWideString()
+{
+    storage_ = 0;
+}
+
+CWideString::CWideString(const wchar_t* text)
+{
+    storage_ = text ? NewWideData(text) : 0;
+}
+
+CWideString::~CWideString()
+{
+    ++g_wideDestructs;
+}
+
+CWideString::operator const wchar_t*() const
+{
+    return storage_ ? storage_->text : L"";
+}
+
+CWideString& CWideString::operator=(const CWideString& other)
+{
+    ++g_assigns;
+    g_assignSource = &other;
+    g_assignDestination = this;
+    storage_ = other.storage_;
+    return *this;
+}
+
+CCharString::CCharString(const char* text, long length)
+{
+    if (text == 0)
     {
-        Reset(driveD, true);
-        fable_u8 fileBytes[sizeof(CThreadedFile)];
-        memset(fileBytes, 0, sizeof(fileBytes));
-        CThreadedFile* file = RawFile(fileBytes);
+        storage_ = 0;
+        return;
+    }
+    const int index = g_charDataUsed++ & 15;
+    memcpy(g_charText[index], text, length);
+    g_charText[index][length] = 0;
+    storage_ = &g_charData[index];
+    storage_->text = g_charText[index];
+}
 
-        const bool result = file->Open(Name(), noCaching);
-        return
+CCharString::CCharString(const CCharString& other)
+{
+    storage_ = other.storage_;
+}
+
+CCharString::~CCharString()
+{
+    ++g_charDestructs;
+}
+
+CCharString CWideString::ToCharString() const
+{
+    if (storage_ == 0)
+        return CCharString(static_cast<const char*>(0), 0);
+    char narrow[8];
+    long length = 0;
+    for (const wchar_t* p = storage_->text; *p && length < 7; ++p)
+        narrow[length++] = static_cast<char>(*p);
+    return CCharString(narrow, length);
+}
+
+CCharString CCharString::GetAsUpperCase() const
+{
+    ++g_upperCalls;
+    if (storage_ == 0)
+        return CCharString(static_cast<const char*>(0), 0);
+    char upper[8];
+    long length = 0;
+    for (const char* p = storage_->text; *p && length < 7; ++p)
+        upper[length++] = (*p >= 'a' && *p <= 'z') ? *p - 32 : *p;
+    return CCharString(upper, length);
+}
+
+template<> bool CBasicString<char>::operator==(const char* other) const
+{
+    return strcmp(PData, other) == 0;
+}
+
+CWideString FABLE_FASTCALL CAFile::ConvertPathToFullPath(
+    const CWideString& path)
+{
+    g_argumentsValid = g_argumentsValid && &path == g_expectedName;
+    return CWideString(g_fullPathText);
+}
+
+void FABLE_FASTCALL CAFile::SplitPath(
+    const CWideString& path,
+    CWideString* drive,
+    CWideString* directory,
+    CWideString* filename,
+    CWideString* extension)
+{
+    g_splitPath = &path;
+    g_argumentsValid =
+        g_argumentsValid &&
+        wcscmp(path, g_fullPathText) == 0 &&
+        drive != 0 && directory == 0 && filename == 0 && extension == 0;
+    // Written through the storage the way the real SplitPath fills its outputs.
+    *reinterpret_cast<CWideStringData**>(drive) =
+        g_driveText ? NewWideData(g_driveText) : 0;
+}
+
+namespace
+{
+    bool CheckOpen(
+        const wchar_t* drive,
+        bool noCaching,
+        fable_u32 expectedDevice,
+        unsigned long expectedSortKey)
+    {
+        CWideString name(L"Data\\Levels\\test.big");
+        Reset(g_realPath, drive);
+        g_expectedName = &name;
+
+        CThreadedFile* file = new CThreadedFile;
+        const bool result = file->Open(name, noCaching);
+        const bool passed =
             result &&
             g_argumentsValid &&
-            file->deviceId_ == (driveD ? 1U : 0U) &&
-            file->fileHandle_ == g_handle &&
-            file->filenameStorage_ == g_nameBytes &&
-            file->length_ == 0x345678 &&
-            file->physicalSortKey_ == 41 &&
+            file->deviceId_ == expectedDevice &&
+            file->fileHandle_ != reinterpret_cast<void*>(-1) &&
+            g_assigns == 1 &&
+            g_assignSource == &name &&
+            g_assignDestination == &file->filenameStorage_ &&
+            wcscmp(file->filenameStorage_, L"Data\\Levels\\test.big") == 0 &&
+            file->length_ == 1234 &&
+            file->physicalSortKey_ == expectedSortKey &&
             !file->openedForWrite_ &&
             file->openFlag_ &&
-            g_FableThreadedPhysicalSortKey_013BC9EC == 41 &&
-            g_lastFlags ==
-                (noCaching ? 0x60000001UL : 0x40000001UL) &&
-            g_assignCalls == 1 &&
-            g_getSizeCalls == 1 &&
-            g_destroyCalls == 4;
+            g_upperCalls == 1 &&
+            g_charDestructs == 2 &&
+            g_wideDestructs == 2;
+        if (result)
+            CloseHandle(file->fileHandle_);
+        return passed;
     }
 
-    bool CheckFailure()
+    bool CheckMissing()
     {
-        Reset(false, false);
-        fable_u8 fileBytes[sizeof(CThreadedFile)];
-        memset(fileBytes, 0, sizeof(fileBytes));
-        CThreadedFile* file = RawFile(fileBytes);
+        CWideString name(L"Data\\Levels\\missing.big");
+        Reset(g_missingPath, L"z:");
+        g_expectedName = &name;
 
-        const bool result = file->Open(Name(), false);
+        CThreadedFile* file = new CThreadedFile;
+        const bool result = file->Open(name, false);
         return
             !result &&
             g_argumentsValid &&
+            file->deviceId_ == 0 &&
             file->fileHandle_ == reinterpret_cast<void*>(-1) &&
+            g_assigns == 0 &&
+            file->length_ == 0 &&
+            file->physicalSortKey_ == 0 &&
             !file->openedForWrite_ &&
             !file->openFlag_ &&
-            g_assignCalls == 0 &&
-            g_getSizeCalls == 0 &&
-            g_FableThreadedPhysicalSortKey_013BC9EC == 40 &&
-            g_destroyCalls == 4;
+            g_charDestructs == 2 &&
+            g_wideDestructs == 2;
+    }
+
+    bool MakeRealFile()
+    {
+        GetTempPathW(200, g_realPath);
+        wcscat(g_realPath, L"fabletlc_threaded_open.big");
+        FILE* stream = _wfopen(g_realPath, L"wb");
+        if (stream == 0)
+            return false;
+        static char payload[1234];
+        fwrite(payload, 1, sizeof(payload), stream);
+        fclose(stream);
+        return true;
     }
 }
 
-extern "C" CWideStringSlot* FABLE_FASTCALL
-FableThreadedConvertFullPath_0098E1E0(
-    CWideStringSlot* result,
-    const void* pathname)
+// The fixture's CThreadedFile ctor/dtor (the real ones are separate leaves).
+CThreadedFile::CThreadedFile()
 {
-    g_argumentsValid =
-        g_argumentsValid &&
-        pathname == g_nameBytes;
-    result->data_ = const_cast<wchar_t*>(g_fullPath);
-    return result;
+    deviceId_ = 0;
+    fileHandle_ = reinterpret_cast<void*>(-1);
+    length_ = 0;
+    physicalSortKey_ = 0;
+    openedForWrite_ = true;
+    openFlag_ = false;
 }
 
-extern "C" void FABLE_FASTCALL
-FableThreadedCharConstruct_0098E1E0(void* self)
-{
-    (void)self;
-}
-
-extern "C" void FABLE_FASTCALL
-FableThreadedSplitPath_0098E1E0(
-    CWideStringSlot*,
-    void*,
-    void*,
-    void*,
-    void*)
+CThreadedFile::~CThreadedFile()
 {
 }
 
-void* CCharStringConvertShim::ToCharPointer(
-    CCharStringSlot* temporary, CCharStringSlot* result)
+CBaseClassNonCopyable::CBaseClassNonCopyable()
 {
-    *reinterpret_cast<CharData**>(result) = &g_driveData;
-    temporary->data_ = &g_driveData;
-    return result;
 }
 
-extern "C" void* FABLE_FASTCALL
-FableThreadedCharToUpper_0098E1E0(void* string)
+CBaseClassNonCopyable::~CBaseClassNonCopyable()
 {
-    return string;
-}
-
-bool CBasicStringCharShim::Equals(const char* literal)
-{
-    g_argumentsValid =
-        g_argumentsValid &&
-        literal == g_FableThreadedDDrive_0129A15C;
-    return g_driveD;
-}
-
-extern "C" void FABLE_FASTCALL
-FableThreadedCharDestroy_0098E1E0(void*)
-{
-    ++g_destroyCalls;
-}
-
-extern "C" const wchar_t* FABLE_FASTCALL
-FableThreadedWideConversion_0098E1E0(const void*)
-{
-    return g_fullPath;
-}
-
-extern "C" void FABLE_FASTCALL
-FableThreadedWideAssign_0098E1E0(
-    void* destination,
-    const void* source)
-{
-    ++g_assignCalls;
-    g_argumentsValid =
-        g_argumentsValid &&
-        destination != 0 &&
-        source == g_nameBytes;
-    *reinterpret_cast<const void**>(destination) = source;
-}
-
-void CWideAssignShim::Assign(const void* source)
-{
-    FableThreadedWideAssign_0098E1E0(this, source);
-}
-
-extern "C" void* __stdcall
-FableThreadedCreateFileStub_0098E1E0(
-    const wchar_t* filename,
-    unsigned long desiredAccess,
-    unsigned long shareMode,
-    void*,
-    unsigned long creationDisposition,
-    unsigned long flags,
-    void*)
-{
-    g_lastFlags = flags;
-    g_argumentsValid =
-        g_argumentsValid &&
-        filename == g_fullPath &&
-        desiredAccess == 0x80000000 &&
-        shareMode == 1 &&
-        creationDisposition == 3;
-    return
-        g_createSucceeds ?
-            g_handle :
-            reinterpret_cast<void*>(-1);
-}
-
-extern "C" unsigned long __stdcall
-FableThreadedGetFileSizeStub_0098E1E0(
-    void* handle,
-    unsigned long*)
-{
-    ++g_getSizeCalls;
-    g_argumentsValid =
-        g_argumentsValid &&
-        handle == g_handle;
-    return 0x345678;
 }
 
 int main()
 {
-    g_FableThreadedCreateFileW_0143FE2C =
-        FableThreadedCreateFileStub_0098E1E0;
-    g_FableThreadedGetFileSize_0143FDF0 =
-        FableThreadedGetFileSizeStub_0098E1E0;
+    if (!MakeRealFile())
+    {
+        printf("FABLETLC_THREADED_FILE_OPEN FAIL (temp file)\n");
+        return 1;
+    }
 
     const bool passed =
-        CheckOpen(false, false) &&
-        CheckOpen(true, true) &&
-        CheckFailure();
+        CheckOpen(L"c:", false, 0, 1) &&
+        CheckMissing() &&
+        CheckOpen(L"d:", true, 1, 2) &&
+        CheckOpen(0, false, 0, 3);
+    _wremove(g_realPath);
     if (!passed)
     {
         printf("FABLETLC_THREADED_FILE_OPEN FAIL\n");

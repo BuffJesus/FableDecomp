@@ -1,6 +1,4 @@
-// Empty member hook. __fastcall this=ecx.
-#include "engine/CDefClassBase.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefClassBase_Methods : CDefClassBase {
-    void Hook(int a0, int a1);
-};
-void CDefClassBase_Methods::Hook(int a0, int a1) {}
+#include "fable_def_class_base.h"
+void CDefClassBase::Validate(const CValidateDefinitionInitBase&, const CCharString&) const
+{
+}

@@ -1,0 +1,5 @@
+#include "../tests/integration/IndexHeap_test.cpp"
+#include "../src/compiled/00/9b/STL_AdjustHeap_IndexEntry_009b2ff0.cpp"
+#include "../src/compiled/00/9b/STL_MakeHeap_IndexEntry_009b3c70.cpp"
+#include "../src/compiled/00/9b/STL_PartialSort_IndexEntry_009b6b70.cpp"
+#include "../src/compiled/00/9b/STL_PushHeap_IndexEntry_009b1d10.cpp"

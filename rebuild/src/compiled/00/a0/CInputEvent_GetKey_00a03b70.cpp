@@ -1,9 +1,8 @@
-// Member getter at this+0x0. __fastcall this=ecx. pack(1) keeps the field at
-// the retail byte offset (natural alignment would shift an odd one).
-#pragma pack(push,1)
-struct T {
-    int field;
-    int Get();
-};
-#pragma pack(pop)
-int T::Get() { return this->field; }
+// CInputEvent::GetKey (retail 0x00A03B70).
+// FableWin.pdb ?GetKey@CInputEvent@@QBE?AW4EInputKey@@XZ.
+#include "fable_input_event.h"
+
+EInputKey CInputEvent::GetKey() const
+{
+    return Key;
+}

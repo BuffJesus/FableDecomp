@@ -1,32 +1,44 @@
-#include "engine/CConsoleCommandBase.h"
-#include <cstdio>
+#include "fable_console.h"
+#include <stdio.h>
+#include <string.h>
 
-struct CCharString {
-    void* p;
-    CCharString() {}
-    CCharString(const CCharString& o) { p = o.p; }
-};
+static const CCharString* g_left;
+static const CCharString* g_right;
+static int g_calls;
 
-struct CConsoleCommandBase_Methods : CConsoleCommandBase {
-    CCharString GetFormattedName() const;
-};
+CCharString::CCharString() : storage_(0) {}
+CCharString::CCharString(const CCharString&) : storage_(0) {}
+CCharString::~CCharString() {}
 
-static void* g_lastField;
-static const char* g_lastLit;
-CCharString __fastcall sub_99f570(void* field, const char* lit)
+extern const CCharString g_013caa48;
+const CCharString g_013caa48;
+
+CCharString FABLE_FASTCALL operator+(const CCharString& left,
+                                    const CCharString& right)
 {
-    g_lastField = field; g_lastLit = lit;
-    CCharString r; r.p = (void*)0xABCD1234; return r;
+    ++g_calls;
+    g_left = &left;
+    g_right = &right;
+    return CCharString();
 }
+
+class FormatAccess : public CConsoleCommandBase
+{
+public:
+    CCharString Call() const { return CConsoleCommandBase::GetFormattedName(); }
+};
 
 int main()
 {
-    CConsoleCommandBase_Methods obj;
-    obj.__vftable = 0; obj.m_field4 = 7;
-    CCharString r = obj.GetFormattedName();
-    bool ok = g_lastField == (void*)&obj.m_field4 &&
-              g_lastLit == (const char*)0x13caa48 && r.p == (void*)0xABCD1234;
-    if (ok) printf("GETFMTNAME_OK\n");
-    else printf("GETFMTNAME_FAIL field=%p lit=%p p=%p\n", g_lastField, g_lastLit, r.p);
-    return ok ? 0 : 1;
+    unsigned char storage[sizeof(CConsoleCommandBase)];
+    memset(storage, 0, sizeof(storage));
+    FormatAccess* command = reinterpret_cast<FormatAccess*>(storage);
+    CCharString result = command->Call();
+    const CCharString* expectedName =
+        reinterpret_cast<const CCharString*>(storage + 4);
+    if (g_calls != 1 || g_left != expectedName ||
+        g_right != &g_013caa48 || sizeof(CConsoleCommandBase) != 0x14)
+        return 1;
+    puts("GETFMTNAME_OK");
+    return 0;
 }

@@ -1,16 +1,13 @@
-// CTexture::GenerateMipmaps @ 009f9e60
-// thiscall(this, ulong a, ulong b); this in ecx, a=[esp+4], b=[esp+8]; ret 8.
-// Harness rewrites __fastcall->__fastcall, so add a dummy EDX param to keep
-// both real args on the stack (matching retail's [esp+4]/[esp+8] reads).
-// body: sub_bfefce( *(void**)this, 0, b, a ); callee cleans its own 16 bytes.
+// CTexture::GenerateMipmaps(unsigned long, unsigned long) @ 0x009F9E60
+// (Ego_r/FableWin ?GenerateMipmaps@CTexture@@QAEXKK@Z): D3DX filters the chain
+// below the source level.
+#include "fable_surface_types.h"
 
-#include "engine/CTexture.h"  // retyped onto the PDB layout; byte parity re-verified
-typedef unsigned long ulong;
+// d3dx9tex.h (d3dx9_25 import thunk 0x00BFEFCE, IAT 0x014405EC).
+extern "C" HRESULT __stdcall D3DXFilterTexture(IDirect3DBaseTexture9* pBaseTexture,
+    const PALETTEENTRY* pPalette, UINT SrcLevel, DWORD Filter);
 
-
-extern void __stdcall sub_bfefce(void* p, int zero, ulong b, ulong a);
-
-void __fastcall GenerateMipmaps(CTexture* self, int /*edx*/, ulong a, ulong b)
+void CTexture::GenerateMipmaps(unsigned long filter, unsigned long sourceLevel)
 {
-    sub_bfefce(self->PD3DTexture, 0, b, a);
+    D3DXFilterTexture(PD3DTexture, 0, sourceLevel, filter);
 }

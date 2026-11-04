@@ -1,0 +1,5 @@
+#include "../tests/integration/WorldEventControl_test.cpp"
+#include "../src/compiled/00/9f/CGameEvent_GetDataPackage_009f17a0.cpp"
+#include "../src/compiled/00/62/CWorld_EAMoveHeroToRegion_00629260.cpp"
+#include "../src/compiled/00/62/CWorld_EAUpdateFrame_00629270.cpp"
+#include "../src/compiled/00/62/CWorld_EASetSlowMotion_00629330.cpp"

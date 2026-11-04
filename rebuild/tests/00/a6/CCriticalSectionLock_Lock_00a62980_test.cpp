@@ -1,59 +1,76 @@
-#include <cstdio>
-
-// Redefine the fixed thunk slot at a real, writable location for the test.
-typedef void (__stdcall *EnterFn)(void*);
-
-static int g_enterCalls = 0;
-static void* g_lastArg = 0;
-
-static void __stdcall FakeEnter(void* p)
-{
-    g_enterCalls++;
-    g_lastArg = p;
-}
-
-// A local writable slot standing in for 0x143fe0c.
-static EnterFn g_slot = FakeEnter;
-EnterFn * const g_pfnEnter = &g_slot;
-
-struct CCriticalSectionLock
-{
-    void* m_pSection;
-    unsigned char m_bLocked;
-    void Lock();
-};
-
-void CCriticalSectionLock::Lock()
-{
-    if (!m_bLocked)
+#include "fable_critical_section_lock.h"
+#include <stdio.h>
+#include <string.h>
+struct _RTL_CRITICAL_SECTION { int token; };
+static unsigned enterCalls, tryCalls, leaveCalls;
+static int tryResult;
+static _RTL_CRITICAL_SECTION* lastSection;
+static void __stdcall fakeEnter(_RTL_CRITICAL_SECTION* p) { ++enterCalls; lastSection=p; }
+static int __stdcall fakeTry(_RTL_CRITICAL_SECTION* p) { ++tryCalls; lastSection=p; return tryResult; }
+static void __stdcall fakeLeave(_RTL_CRITICAL_SECTION* p) { ++leaveCalls; lastSection=p; }
+extern "C" __declspec(dllimport) int __stdcall VirtualProtect(void*, unsigned long, unsigned long, unsigned long*);
+extern "C" char __ImageBase;
+    void** FindImportSlot(const char* name)
     {
-        (*g_pfnEnter)(m_pSection);
-        m_bLocked = 1;
+        char* base = &__ImageBase;
+        char* nt = base + *reinterpret_cast<fable_u32*>(base + 0x3C);
+        const fable_u32 rva = *reinterpret_cast<fable_u32*>(nt + 0x80);
+        if (rva == 0)
+            return 0;
+        for (fable_u32* entry = reinterpret_cast<fable_u32*>(base + rva);
+             entry[3] != 0;
+             entry += 5)
+        {
+            fable_u32* names = reinterpret_cast<fable_u32*>(
+                base + (entry[0] ? entry[0] : entry[4]));
+            void** slots = reinterpret_cast<void**>(base + entry[4]);
+            for (int i = 0; names[i] != 0; ++i)
+            {
+                if ((names[i] & 0x80000000u) == 0 &&
+                    strcmp(base + names[i] + 2, name) == 0)
+                {
+                    return &slots[i];
+                }
+            }
+        }
+        return 0;
     }
+
+    bool SwapImport(const char* name, void* replacement, void** previous)
+    {
+        void** slot = FindImportSlot(name);
+        unsigned long oldProtect = 0;
+        if (slot == 0 ||
+            !VirtualProtect(slot, sizeof(void*), 0x04, &oldProtect))
+        {
+            return false;
+        }
+        if (previous != 0)
+            *previous = *slot;
+        *slot = replacement;
+        VirtualProtect(slot, sizeof(void*), oldProtect, &oldProtect);
+        return true;
+    }
+
+
+static int RunCases() {
+    _RTL_CRITICAL_SECTION section;
+    unsigned char storage[8]; memset(storage,0xA5,8);
+    CCriticalSectionLock* lock=reinterpret_cast<CCriticalSectionLock*>(storage);
+    lock->CriticalSection=&section;
+    lock->Locked=false;
+    lock->Lock();
+    if(enterCalls!=1 || lastSection!=&section || lock->Locked!=true || lock->CriticalSection!=&section) return 1;
+    lock->Lock();
+    if(enterCalls!=1 || tryCalls || leaveCalls) return 2;
+    if(storage[5]!=0xA5 || storage[6]!=0xA5 || storage[7]!=0xA5) return 3;
+    return 0;
 }
 
-int main()
-{
-    int csobj = 0;
-    void* csptr = &csobj;
-    CCriticalSectionLock lk;
-    lk.m_pSection = csptr;
-    lk.m_bLocked = 0;
-
-    // First lock: should enter once, set flag.
-    lk.Lock();
-    // Second lock: idempotent, no additional enter.
-    lk.Lock();
-
-    bool ok = (g_enterCalls == 1) && (g_lastArg == csptr) && (lk.m_bLocked == 1);
-
-    // Pre-locked object: should not enter.
-    CCriticalSectionLock lk2;
-    lk2.m_pSection = csptr;
-    lk2.m_bLocked = 1;
-    lk2.Lock();
-    ok = ok && (g_enterCalls == 1);
-
-    printf(ok ? "LOCK_OK\n" : "LOCK_FAIL calls=%d\n", g_enterCalls);
-    return ok ? 0 : 1;
+int main() {
+    void* previous0=0; if(!SwapImport("EnterCriticalSection",(void*)&fakeEnter,&previous0)) return 90;
+    int result=RunCases();
+    if(!SwapImport("EnterCriticalSection",previous0,0)) return 91;
+    if(!result) puts("CRITICAL_SECTION_LOCK_PASS");
+    return result;
 }

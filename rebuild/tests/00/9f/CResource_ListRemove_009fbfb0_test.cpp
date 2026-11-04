@@ -1,50 +1,24 @@
+#include "fable_resource_list.h"
 #include <stdio.h>
-#include "engine/CResource.h"
-
-void __fastcall CResource_ListRemove(CResource* resource);
-
-static void Clear(CResource& resource)
-{
-    unsigned char* bytes = reinterpret_cast<unsigned char*>(&resource);
-    for (unsigned int i = 0; i < sizeof(resource); ++i)
-        bytes[i] = 0;
-}
-
-int main()
-{
-    CResource previous;
-    CResource current;
-    CResource next;
-    CResource outsider;
-    Clear(previous);
-    Clear(current);
-    Clear(next);
-    Clear(outsider);
-
-    previous.NextResource = &current;
-    current.PrevResource = &previous;
-    current.NextResource = &next;
-    next.PrevResource = &current;
-    CResource_ListRemove(&current);
-    if (previous.NextResource != &next || next.PrevResource != &previous ||
-        current.PrevResource != 0 || current.NextResource != 0)
-        return 1;
-
-    current.PrevResource = &previous;
-    current.NextResource = &next;
-    previous.NextResource = &outsider;
-    next.PrevResource = &current;
-    CResource_ListRemove(&current);
-    if (previous.NextResource != &outsider || next.PrevResource != &current ||
-        current.PrevResource != 0 || current.NextResource != 0)
-        return 2;
-
-    current.PrevResource = &previous;
-    current.NextResource = 0;
-    CResource_ListRemove(&current);
-    if (current.PrevResource != &previous || current.NextResource != 0)
-        return 3;
-
-    printf("RESOURCE_LIST_REMOVE PASS\n");
-    return 0;
-}
+#include <string.h>
+template<class T> struct Raw {
+ double bytes[(sizeof(T)+7)/8];
+ Raw(){memset(bytes,0,sizeof(bytes));}
+ T& get(){return *reinterpret_cast<T*>(bytes);}
+};
+class CResourceTestAccess {
+public:
+ static void Insert(CResource& r,CResource* prev,CResource* next){r.ListInsert(prev,next);}
+ static void Remove(CResource& r){r.ListRemove();}
+};
+int main(){Raw<CResource> ar,br,cr;CResource& a=ar.get();CResource& b=br.get();CResource& c=cr.get();
+ a.PrevResource=&b;a.NextResource=0;CResourceTestAccess::Remove(a);if(a.PrevResource!=&b||a.NextResource)return 1;
+ a.NextResource=&c;b.NextResource=&a;c.PrevResource=&a;a.ResourceSize=73;a.LastUsedFrame=11;
+ CResourceTestAccess::Remove(a);if(a.PrevResource||a.NextResource||b.NextResource!=&c||c.PrevResource!=&b||a.ResourceSize!=73||a.LastUsedFrame!=11)return 2;
+ a.PrevResource=&b;a.NextResource=&c;b.NextResource=&c;c.PrevResource=&a;
+ CResourceTestAccess::Remove(a);if(a.PrevResource||a.NextResource||b.NextResource!=&c||c.PrevResource!=&a)return 3;
+ a.PrevResource=&b;a.NextResource=&c;b.NextResource=&a;c.PrevResource=&b;
+ CResourceTestAccess::Remove(a);if(a.PrevResource||a.NextResource||b.NextResource!=&a||c.PrevResource!=&b)return 4;
+ a.PrevResource=a.NextResource=&b;b.PrevResource=b.NextResource=&a;
+ CResourceTestAccess::Remove(a);if(a.PrevResource||a.NextResource||b.PrevResource!=&b||b.NextResource!=&b)return 5;
+ puts("RESOURCE_REMOVE_PASS");return 0;}

@@ -4,11 +4,11 @@
 
 int main()
 {
-    fable_u8 storage[0xC48];
+    fable_u8 storage[0xC4C];
     memset(storage, 0, sizeof(storage));
     CMemoryAllocatorFixedSize* allocator = reinterpret_cast<CMemoryAllocatorFixedSize*>(storage);
-    allocator->AllocationSizeIncludingHeader = 112;
-    if (allocator->GetAllocationSizeIncludingHeader(0) != 112) return 1;
+    allocator->StatAreaSize = 112;
+    if (allocator->CMemoryAllocatorFixedSize::GetAllocationSizeIncludingHeader(0) != 112) return 1;
     printf("FIXED_ALLOCATOR_SIZE_WITH_HEADER_TEST PASS\n");
     return 0;
 }

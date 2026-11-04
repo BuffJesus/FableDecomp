@@ -1,10 +1,10 @@
-struct CUserProfileManager { char pad[0x33]; char flag; };
-extern "C" void __fastcall UPM_Prep(CUserProfileManager* self);
-extern "C" void __fastcall UPM_Commit(CUserProfileManager* self);
+// CUserProfileManager::Apply, retail 0x0040BC80 (FableWin ?Apply@CUserProfileManager@@QAEXXZ):
+// apply the profile values, and the video values too when the profile asks for it.
+#include "fable_user_profile.h"
 
-void __fastcall CUserProfileManager_Apply(CUserProfileManager* self)
+void CUserProfileManager::Apply()
 {
-    UPM_Prep(self);
-    if (self->flag)
-        UPM_Commit(self);
+    ApplyValues();
+    if (ApplyVideoValuesOnLoad)
+        ApplyVideoValues();
 }

@@ -1,9 +1,20 @@
-#include <cstdio>
-const char g_str[]="x";
-static char* g_p=0; static const char* g_s=0;
-struct S { int x; void N(const char* s); S* M(); };
-void S::N(const char* s){ g_p=(char*)this; g_s=s; }
-S* S::M(){ this->N(g_str); return this; }
-int main(){ S o; S* r=o.M();
- if(r!=&o||g_p!=(char*)&o||g_s!=g_str){ std::printf("0041a080_TEST FAIL\n"); return 1;}
- std::printf("0041a080_TEST PASS\n"); return 0;}
+// Behaviour: GetDefDir constructs its result (hidden return slot) from the literal
+// L"Data\\Defs\\" exactly once, and returns that slot.
+#include "fable_resource_directories.h"
+#include <stdio.h>
+#include <wchar.h>
+
+static int g_ctor; static const void* g_this; static const wchar_t* g_text;
+CWideString::CWideString(const wchar_t* text) { ++g_ctor; g_this = this; g_text = text; }
+CWideString::~CWideString() {}
+
+int main()
+{
+    g_ctor = 0;
+    {
+        CWideString result = NResourceDirectoryNames::GetDefDir();
+        if (g_ctor != 1 || g_this != &result || g_text == 0 || wcscmp(g_text, L"Data\\Defs\\") != 0) { printf("FAIL\n"); return 1; }
+    }
+    puts("FABLETLC_NRESOURCEDIRECTORYNAMES_GETDEFDIR_0041A080_PASS");
+    return 0;
+}

@@ -33,7 +33,7 @@ LS_LOADING_STATUS CEngineLandscapeMap::UpdateBackgroundLOD(
                     CMemoryDataInputStream* stream =
                         reinterpret_cast<CMemoryDataInputStream*>(streamStorage);
                     BackgroundTree->LoadHeader(*stream);
-                    ReleaseFileBlockLoad();
+                ReleaseLoadingPatchTreeBase();
                     stream->~CMemoryDataInputStream();
                 }
             }
@@ -57,7 +57,7 @@ LS_LOADING_STATUS CEngineLandscapeMap::UpdateBackgroundLOD(
             distanceToCamera, forceUpdate, StaticMapFileBlockManager);
 
     if (StaticMapFileBlockManager != 0)
-        StaticMapFileBlockManager->BankFileList_RemoveFinished();
+        StaticMapFileBlockManager->DeleteUnusedBlocks();
     LandscapeUpdateActive = false;
     return status;
 }

@@ -1,30 +1,23 @@
+// CDataInputStream::SetPosition(unsigned long) @ 0x00993BC0 (FableWin
+// ?SetPosition@CDataInputStream@@UAEXK@Z, vtable slot 1). A position inside
+// the current source window just moves the window cursor; anything else drops
+// the window, so the next read refills it from the new position.
+#include "fable_data_input_stream.h"
 
-class CDataInputStream
+void CDataInputStream::SetPosition(unsigned long position)
 {
-public:
-    void SetPosition(unsigned long pos);
-
-    unsigned long m_unused0;   // +0x00
-    unsigned long m_cursor;    // +0x04
-    unsigned long m_unused1;   // +0x08
-    unsigned long m_window;    // +0x0c
-    unsigned long m_srcbase;   // +0x10
-    unsigned long m_remaining; // +0x14
-};
-
-void CDataInputStream::SetPosition(unsigned long pos)
-{
-    if (m_window != 0 && pos >= m_srcbase && pos <= m_cursor + m_remaining)
+    if (CurrentSourcePtr != 0 && position >= SourceChunkStreamPos &&
+        position <= StreamPos + SourceChunkBytesRemaining)
     {
-        m_remaining = (m_cursor + m_remaining) - pos;
-        m_window = (m_window - m_cursor) + pos;
-        m_cursor = pos;
+        SourceChunkBytesRemaining = (StreamPos + SourceChunkBytesRemaining) - position;
+        CurrentSourcePtr = (CurrentSourcePtr - StreamPos) + position;
+        StreamPos = position;
     }
     else
     {
-        m_window = 0;
-        m_srcbase = 0;
-        m_remaining = 0;
-        m_cursor = pos;
+        CurrentSourcePtr = 0;
+        SourceChunkStreamPos = 0;
+        SourceChunkBytesRemaining = 0;
+        StreamPos = position;
     }
 }

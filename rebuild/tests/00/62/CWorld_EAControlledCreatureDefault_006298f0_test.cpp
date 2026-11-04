@@ -1,0 +1,4 @@
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/63/CPlayer_GetCurrentMode_00633be0.cpp"
+#include "../tests/integration/PlayerDefaultMode_test.cpp"

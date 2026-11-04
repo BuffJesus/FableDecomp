@@ -1,14 +1,8 @@
-extern int g_someCount;
-extern float g_someFactor;
-
-struct CTCCombat {
-    char pad[0x68];
-    int field_68;
-};
-
-char __fastcall CTCCombat_IsVulnerableToUnblockableAttack(const CTCCombat* self)
+#include "fable_thing_components.h"
+#include "fable_game.h"
+bool CTCCombat::IsVulnerableToUnblockableAttack() const
 {
-    if ((float)self->field_68 > (float)g_someCount * g_someFactor)
-        return 1;
-    return 0;
+    if (BlockingNumFrames > CMainGameComponent::GetConstantFPS() * 3.0f)
+        return true;
+    return false;
 }

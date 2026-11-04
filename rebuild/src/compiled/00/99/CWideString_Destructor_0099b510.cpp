@@ -2,7 +2,12 @@
 
 #include <stdlib.h>
 
-CWideString::~CWideString()
+// Retail's destructor is inline: every unit that destroys a CWideString
+// emits it as a pick-any COMDAT (the operator+ units inline it and emit one
+// too), and the linker kept this copy. Defining it inline here as well lets
+// these objects link together; the use below (link scaffolding, not retail
+// code, kept a call by noinline) makes this unit emit it.
+inline __declspec(noinline) CWideString::~CWideString()
 {
     CWideStringData* storage = storage_;
 
@@ -23,4 +28,12 @@ CWideString::~CWideString()
     }
 
     --g_CWideStringInstanceCount_013BCA20;
+}
+
+namespace
+{
+    void EmitDestructor(void* text)
+    {
+        static_cast<CWideString*>(text)->CWideString::~CWideString();
+    }
 }

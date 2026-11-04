@@ -1,8 +1,9 @@
-#include <cstdio>
-void __stdcall CHandleBasedMemoryPool_ValidateResource(int arg0) {}
-int main()
-{
-    CHandleBasedMemoryPool_ValidateResource(1);
-    std::printf("AUTO_TINY_00a03a50_TEST PASS\n");
-    return 0;
-}
+#include "fable_handle_memory_pool.h"
+#include "../src/compiled/00/a6/CMovableResourceMemoryPool_FreeResource_00a62ed0.cpp"
+#include "../src/compiled/00/a6/CMovableResourceMemoryPool_MoveResource_00a62f30.cpp"
+#include "../src/compiled/00/a6/CMovableResourceMemoryPool_CanMoveResource_00a62f70.cpp"
+#include "../src/compiled/00/a6/CMovableResourceMemoryPool_ValidateResource_00a62ec0.cpp"
+#include "../src/compiled/00/a0/CHandleBasedMemoryPool_MoveResource_00a02120.cpp"
+#include "../src/compiled/00/a0/CHandleBasedMemoryPool_CanMoveResource_00a03a40.cpp"
+#include "../src/compiled/00/a0/CHandleBasedMemoryPool_InternalSetResource_00a028b0.cpp"
+#include "../tests/integration/MovablePoolPolicy_test.cpp"

@@ -1,31 +1,13 @@
-// CTexture_Methods::GetRefCount  retail 0x009f9d60
-// member 0 = pointer to a COM-like interface object whose [0] is a vtable of
-// stdcall function pointers taking the object pointer explicitly.
-// slot1 ([vtbl+4]) called for side effect; slot2 ([vtbl+8]) returns the count.
+// CTexture::GetRefCount() @ 0x009F9D60 (Ego_r/FableWin ?GetRefCount@CTexture@@QAEJXZ).
+// COM has no reference-count query: AddRef, then Release returns the count.
+#include "fable_surface_types.h"
 
-#include "engine/CTexture.h"  // retyped onto the PDB layout; byte parity re-verified
-struct IDirect3DTexture9;
-struct IRefVtbl {
-    long (__stdcall *slot0)(IDirect3DTexture9*);
-    long (__stdcall *slot1)(IDirect3DTexture9*);
-    long (__stdcall *slot2)(IDirect3DTexture9*);
-};
-struct IDirect3DTexture9 {
-    IRefVtbl* vtbl;
-};
-
-struct CTexture_Methods : CTexture {
-    long GetRefCount();
-};
-
-long CTexture_Methods::GetRefCount()
+long CTexture::GetRefCount()
 {
-    IDirect3DTexture9* p = this->PD3DTexture;
-    if (p != 0)
+    if (PD3DTexture)
     {
-        p->vtbl->slot1(p);
-        p = this->PD3DTexture;
-        return p->vtbl->slot2(p);
+        PD3DTexture->AddRef();
+        return PD3DTexture->Release();
     }
     return 0;
 }

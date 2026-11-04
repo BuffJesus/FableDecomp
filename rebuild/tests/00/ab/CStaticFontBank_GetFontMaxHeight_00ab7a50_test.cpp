@@ -1,9 +1,6 @@
-#include "rebuild_abi.h"
-#include <cstdio>
-struct CStaticFontBank { char pad00[4]; unsigned int m_maxHeight; float GetFontMaxHeight(); };
-float CStaticFontBank::GetFontMaxHeight(){ return (float)m_maxHeight; }
-int main(){
-    CStaticFontBank b; b.m_maxHeight=20;
-    if(b.GetFontMaxHeight()!=20.0f){std::printf("BAD\n");return 1;}
-    std::printf("FONTH_OK\n"); return 0;
-}
+#include "../../integration/NativeFontHeight_test.cpp"
+#include "../../../src/compiled/00/99/CBaseClass_CBaseClass_0099a2d0.cpp"
+#include "../../../src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp"
+#include "../../../src/compiled/00/99/CCharString_Destructor_0099eae0.cpp"
+#include "../../../src/compiled/00/99/CCharString_UnassignString_0099e9b0.cpp"
+#include "../../../src/compiled/00/9a/CFontBank_Preload_009a0b20.cpp"

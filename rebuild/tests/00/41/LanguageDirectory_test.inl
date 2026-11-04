@@ -42,7 +42,7 @@ CWideString CCharString::ToWideString() const
 }
 
 CCharString FABLE_FASTCALL
-FableGetDefaultLanguageName_00415530()
+NLocalisation::GetLanguageFolder()
 {
     return CCharString("English", -1);
 }

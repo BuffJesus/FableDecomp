@@ -1,125 +1,92 @@
+#include <new>
 #include <stdio.h>
 #include <string.h>
 
-#include "fable_gfuninitialise.h"
+#include "fable_system_manager.h"
+#include "test_support/bank_manager_member_stubs.h"
+#include "test_support/profile_manager_member_stubs.h"
+#include "test_support/base_class_stubs.h"
 
-extern "C" fable_u8 g_FableDriveManagerVTable_0129AFF4;
-extern "C" void* g_FableDriveManagerPointer_013CAA28;
-extern "C" fable_u8 g_FableSystemInitialiseCount_013CA608;
+// CSystemManager::Initialise (0x9A6610) against recorders for its real
+// callees. Every callee appends a token to one trace, so each scenario checks
+// both what ran and the order it ran in.
+
+extern "C" __declspec(dllimport) void* FABLE_STDCALL ConvertThreadToFiber(
+    void* parameter);
+extern "C" __declspec(dllimport) void FABLE_STDCALL InitializeCriticalSection(
+    void* criticalSection);
+extern "C" __declspec(dllimport) void* FABLE_STDCALL GetCurrentProcess();
+extern "C" __declspec(dllimport) int FABLE_STDCALL VirtualProtect(
+    void* address,
+    unsigned long size,
+    unsigned long protect,
+    unsigned long* oldProtect);
+
+extern "C" char __ImageBase;
 
 namespace
 {
-    struct Calls
-    {
-        fable_u32 wideAssign;
-        fable_u32 preInitialise;
-        fable_u32 convertFiber;
-        fable_u32 coInitialise;
-        fable_u32 criticalSection;
-        fable_u32 guid;
-        fable_u32 initWindow;
-        fable_u32 uninitialise;
-        fable_u32 currentProcess;
-        fable_u32 scratch;
-        fable_u32 allocations;
-        fable_u32 displayCopy;
-        fable_u32 displayConstruct;
-        fable_u32 displayReset;
-        fable_u32 displayInitialise;
-        fable_u32 stringDestroy;
-        fable_u32 inputConstruct;
-        fable_u32 inputReset;
-        fable_u32 driveReset;
-        fable_u32 driveInitialise;
-        fable_u32 profileConstruct;
-        fable_u32 profileReset;
-        fable_u32 fontConstruct;
-        fable_u32 fontReset;
-        fable_u32 textConstruct;
-        fable_u32 textReset;
-        fable_u32 meshConstruct;
-        fable_u32 meshReset;
-        fable_u32 addComponent;
-        fable_u32 coloursConstruct;
-        fable_u32 coloursReset;
-        fable_u32 cosine;
-        fable_u32 vectorMath;
-        fable_u32 initColours;
-        fable_u32 initApplicationName;
-    };
+    fable_u32 g_managerStorage[0x180 / 4];
+    fable_u32 g_initStorage[0xC8 / 4];
+    fable_u32 g_arena[0x1000];
+    fable_u32 g_arenaUsed;
 
-    Calls g_calls;
-    bool g_preInitialiseResult;
+    char g_trace[1024];
+    bool g_baseResult;
     bool g_windowResult;
     ESystemCode g_driveResult;
-    unsigned char g_allocations[8][0x2C8];
-    unsigned char g_managerStorage[0x180];
-    unsigned char g_initStorage[0xC8];
+    bool g_coloursMarksActive;
+
+    CCharStringData g_fontData;
+    CCharStringData g_streamingFontData;
+    unsigned long g_shaderPathDataRaw_[4];
+    CWideStringData& g_shaderPathData = *reinterpret_cast<CWideStringData*>(g_shaderPathDataRaw_);
+
+    const void* g_fiberParameter;
+    const void* g_criticalSection;
+    const char* g_guidName;
+    long g_windowWidth;
+    long g_windowHeight;
+    long g_scratchSize;
+    const CSystemManager* g_displayOwner;
     void* g_displayObject;
+    const void* g_displayInitShaderPath;
+    void* g_displayInitWindow;
+    bool g_displayInitSkipConfig;
+    long g_displayInitWidth;
+    bool g_displayExclusive;
+    const void* g_inputInit;
+    bool g_inputExclusive;
     void* g_inputObject;
-    void* g_profileObject;
+    const void* g_soundInit;
+    bool g_soundExclusive;
+    void* g_soundObject;
+    const void* g_fontBank;
+    const void* g_streamingFontBank;
     void* g_fontObject;
-    void* g_textObject;
-    void* g_meshObject;
-    void* g_coloursObject;
-    void* g_observedWindowFirst;
-    fable_u32 g_observedWindowSecond;
-    const void* g_observedDisplayInit;
-    const void* g_observedInputInit;
-    const void* g_observedProfileInit;
-    const void* g_observedFontA;
-    const void* g_observedFontB;
-    fable_u32 g_observedExclusive;
-    fable_u32 g_observedScratchSize;
+    void* g_graphicBankObject;
+    void* g_meshBankObject;
+    CDeviceResetCallback* g_resetCallback;
+    const CDisplayManager* g_callbackDisplay;
+    void* g_profileObject;
+    const CDriveManager* g_driveObject;
+    const CSystemManager* g_driveSystem;
+    const void* g_wideAssignSource[2];
+    fable_u32 g_wideAssigns;
 
-    fable_u32& Dword(unsigned char* value, size_t offset)
+    typedef void* (FABLE_STDCALL* FiberFunction)(void*);
+    typedef void (FABLE_STDCALL* CriticalSectionFunction)(void*);
+    typedef void* (FABLE_STDCALL* ProcessFunction)();
+
+    FiberFunction g_realFiber;
+    CriticalSectionFunction g_realCriticalSection;
+    ProcessFunction g_realProcess;
+
+    void Trace(const char* token)
     {
-        return *reinterpret_cast<fable_u32*>(value + offset);
-    }
-
-    void Reset()
-    {
-        memset(&g_calls, 0, sizeof(g_calls));
-        memset(g_allocations, 0, sizeof(g_allocations));
-        memset(g_managerStorage, 0xCD, sizeof(g_managerStorage));
-        g_managerStorage[0x09] = 0;
-        memset(g_initStorage, 0, sizeof(g_initStorage));
-        g_preInitialiseResult = true;
-        g_windowResult = true;
-        g_driveResult = kSystemCodeSuccess;
-        g_displayObject = 0;
-        g_inputObject = 0;
-        g_profileObject = 0;
-        g_fontObject = 0;
-        g_textObject = 0;
-        g_meshObject = 0;
-        g_coloursObject = 0;
-        g_observedWindowFirst = 0;
-        g_observedWindowSecond = 0;
-        g_observedDisplayInit = 0;
-        g_observedInputInit = 0;
-        g_observedProfileInit = 0;
-        g_observedFontA = 0;
-        g_observedFontB = 0;
-        g_observedExclusive = 0;
-        g_observedScratchSize = 0;
-        g_FableDriveManagerPointer_013CAA28 = 0;
-        g_FableSystemInitialiseCount_013CA608 = 0;
-
-        Dword(g_initStorage, 0x00) = 0x11111111;
-        Dword(g_initStorage, 0x04) = 0x22222222;
-        Dword(g_initStorage, 0x08) = 7;
-        Dword(g_initStorage, 0x24) = 0x33333333;
-        Dword(g_initStorage, 0x28) = 0x44444444;
-        Dword(g_initStorage, 0x9C) = 0;
-        Dword(g_initStorage, 0xC0) = 0x55555555;
-        Dword(g_initStorage, 0xC4) = 0x66666666;
-        g_initStorage[0x10] = 1;
-        g_initStorage[0x11] = 1;
-        g_initStorage[0x20] = 1;
-        g_initStorage[0x21] = 1;
-        g_initStorage[0x34] = 1;
-        g_initStorage[0x35] = 1;
+        if (g_trace[0] != 0)
+            strcat(g_trace, " ");
+        strcat(g_trace, token);
     }
 
     CSystemManager& Manager()
@@ -127,465 +94,720 @@ namespace
         return *reinterpret_cast<CSystemManager*>(g_managerStorage);
     }
 
-    CSystemManagerInit* Init()
+    fable_u8* ManagerBytes()
     {
-        return reinterpret_cast<CSystemManagerInit*>(g_initStorage);
+        return reinterpret_cast<fable_u8*>(g_managerStorage);
     }
 
-    bool CheckEarlyBootstrapSkip()
+    CSystemManagerInit& Init()
+    {
+        return *reinterpret_cast<CSystemManagerInit*>(g_initStorage);
+    }
+
+    // Names a counted-pointer slot by its offset in the manager.
+    void TraceSlot(const char* prefix, const void* slot)
+    {
+        char token[32];
+        const fable_u8* at = static_cast<const fable_u8*>(slot);
+        if (at >= ManagerBytes() && at < ManagerBytes() + 0x180)
+            sprintf(token, "%s%X", prefix, static_cast<unsigned>(at - ManagerBytes()));
+        else
+            sprintf(token, "%sPClass", prefix);
+        Trace(token);
+    }
+
+    void* FABLE_STDCALL TestConvertThreadToFiber(void* parameter)
+    {
+        Trace("fiber");
+        g_fiberParameter = parameter;
+        return reinterpret_cast<void*>(0xF1B0F1B0);
+    }
+
+    void FABLE_STDCALL TestInitializeCriticalSection(void* section)
+    {
+        Trace("critsec");
+        g_criticalSection = section;
+    }
+
+    void* FABLE_STDCALL TestGetCurrentProcess()
+    {
+        Trace("process");
+        return reinterpret_cast<void*>(-1);
+    }
+
+    long FABLE_STDCALL TestCoInitialize(void* reserved)
+    {
+        Trace(reserved == 0 ? "coinit" : "coinit-bad");
+        return 0;
+    }
+
+    void** FindImport(const char* name)
+    {
+        char* base = &__ImageBase;
+        char* nt = base + *reinterpret_cast<fable_u32*>(base + 0x3C);
+        fable_u32 rva = *reinterpret_cast<fable_u32*>(nt + 0x80);
+        for (fable_u32* entry = reinterpret_cast<fable_u32*>(base + rva);
+             entry[3] != 0;
+             entry += 5)
+        {
+            fable_u32* names = reinterpret_cast<fable_u32*>(
+                base + (entry[0] ? entry[0] : entry[4]));
+            void** slots = reinterpret_cast<void**>(base + entry[4]);
+            for (int i = 0; names[i] != 0; ++i)
+            {
+                if ((names[i] & 0x80000000u) == 0 &&
+                    strcmp(base + names[i] + 2, name) == 0)
+                    return &slots[i];
+            }
+        }
+        return 0;
+    }
+
+    bool Patch(const char* name, void* replacement, void** original)
+    {
+        void** slot = FindImport(name);
+        unsigned long oldProtect = 0;
+        if (slot == 0 || !VirtualProtect(slot, sizeof(void*), 0x04, &oldProtect))
+            return false;
+        *original = *slot;
+        *slot = replacement;
+        VirtualProtect(slot, sizeof(void*), oldProtect, &oldProtect);
+        return true;
+    }
+
+    bool InstallImports()
+    {
+        return
+            Patch(
+                "ConvertThreadToFiber",
+                reinterpret_cast<void*>(&TestConvertThreadToFiber),
+                reinterpret_cast<void**>(&g_realFiber)) &&
+            Patch(
+                "InitializeCriticalSection",
+                reinterpret_cast<void*>(&TestInitializeCriticalSection),
+                reinterpret_cast<void**>(&g_realCriticalSection)) &&
+            Patch(
+                "GetCurrentProcess",
+                reinterpret_cast<void*>(&TestGetCurrentProcess),
+                reinterpret_cast<void**>(&g_realProcess));
+    }
+
+    bool SameFunction(bool (FABLE_FASTCALL* value)(ESystemCode), bool expectDefault)
+    {
+        // DefaultErrorFunc is private; the default is the one pointer that
+        // answers false for every code without being the custom one.
+        return expectDefault ? value != 0 && !value(kSystemCodeSuccess) : true;
+    }
+
+    bool FABLE_FASTCALL CustomErrorFunc(ESystemCode)
+    {
+        return true;
+    }
+
+    void Reset()
+    {
+        memset(g_managerStorage, 0xCD, sizeof(g_managerStorage));
+        memset(g_initStorage, 0, sizeof(g_initStorage));
+        memset(g_arena, 0, sizeof(g_arena));
+        g_arenaUsed = 0;
+        g_trace[0] = 0;
+        g_baseResult = true;
+        g_windowResult = true;
+        g_driveResult = kSystemCodeSuccess;
+        g_coloursMarksActive = false;
+        g_fiberParameter = 0;
+        g_criticalSection = 0;
+        g_guidName = 0;
+        g_windowWidth = 0;
+        g_windowHeight = 0;
+        g_scratchSize = 0;
+        g_displayOwner = 0;
+        g_displayObject = 0;
+        g_displayInitShaderPath = 0;
+        g_displayInitWindow = 0;
+        g_displayInitSkipConfig = false;
+        g_displayInitWidth = 0;
+        g_displayExclusive = false;
+        g_inputInit = 0;
+        g_inputExclusive = false;
+        g_inputObject = 0;
+        g_soundInit = 0;
+        g_soundExclusive = false;
+        g_soundObject = 0;
+        g_fontBank = 0;
+        g_streamingFontBank = 0;
+        g_fontObject = 0;
+        g_graphicBankObject = 0;
+        g_meshBankObject = 0;
+        g_resetCallback = 0;
+        g_callbackDisplay = 0;
+        g_profileObject = 0;
+        g_driveObject = 0;
+        g_driveSystem = 0;
+        g_wideAssignSource[0] = 0;
+        g_wideAssignSource[1] = 0;
+        g_wideAssigns = 0;
+        CSystemManager::NoInstances = 0;
+        memset(&g_fontData, 0, sizeof(g_fontData));
+        memset(&g_streamingFontData, 0, sizeof(g_streamingFontData));
+
+        // The constructor leaves the counted pointers empty; the rest of the
+        // object stays poisoned so unwritten fields show up.
+        CSystemManager& manager = Manager();
+        manager.ApplicationActive = false;
+        manager.Restore = false;
+        manager.PInputManager.Data = 0;
+        manager.PDisplayManager.Data = 0;
+        manager.PGraphicBankManager.Data = 0;
+        manager.PMeshBankManager.Data = 0;
+        manager.PSoundManager.Data = 0;
+        manager.PFontManager.Data = 0;
+        manager.ProfileManager.Data = 0;
+
+        CSystemManagerInit& init = Init();
+        init.InstanceHandle = reinterpret_cast<void*>(0x11110000);
+        init.CommandLine = reinterpret_cast<char*>(0x22220000);
+        init.WindowsShow = 5;
+        init.ExclusiveMode = true;
+        init.PreferPrimaryDisplayDevice = true;
+        init.Flags = 0;
+        init.UseAccurateTimer = true;
+        init.AttachToExternalWindow = false;
+        init.ApplicationWindowHandle = reinterpret_cast<void*>(0x33330000);
+        init.PreventExclusiveModeChanges = true;
+        init.AppReinitFunc = reinterpret_cast<void (*)(void*)>(0x44440000);
+        init.AppReinitContext = reinterpret_cast<void*>(0x55550000);
+        init.WaitWhileInactive = true;
+        init.SkipConfigDetection = true;
+        init.DisplayManagerInit.Width = 640;
+        init.DisplayManagerInit.Height = 480;
+        init.DisplayManagerInit.WindowHandle = reinterpret_cast<void*>(0x66660000);
+        init.DisplayManagerInit.SkipConfigDetection = false;
+        *reinterpret_cast<CWideStringData**>(&init.DisplayManagerInit.ShaderResourcePath) =
+            &g_shaderPathData;
+        strcpy(init.Identifier, "FableIdentifier");
+        init.ScratchBufferSize = 0;
+        init.IMEMessageFunc = reinterpret_cast<FableIMEMessageFunction>(0x77770000);
+        init.MessageFilter = reinterpret_cast<FableWindowMessageFilter>(0x88880000);
+    }
+
+    void SetFonts(long fontLength, long streamingLength)
+    {
+        g_fontData.unknown04 = fontLength;
+        g_streamingFontData.unknown04 = streamingLength;
+        *reinterpret_cast<CCharStringData**>(&Init().FontBankHandle) = &g_fontData;
+        *reinterpret_cast<CCharStringData**>(&Init().StreamingFontBankHandle) =
+            &g_streamingFontData;
+    }
+
+    // Fields the prologue writes whatever the base-class result is.
+    bool CheckPrologue()
+    {
+        const CSystemManager& manager = Manager();
+        return
+            !manager.DDrawInitialised &&
+            !manager.WindowValid &&
+            !manager.RestoreExclusive &&
+            manager.WaitWhileInactive &&
+            manager.MouseZMove == 0 &&
+            !manager.ForceMusicPlay &&
+            manager.ForceMusicPlayOffset == 0.0f &&
+            manager.PreventExclusiveModeChanges &&
+            manager.ExclusiveMode == Init().ExclusiveMode &&
+            g_wideAssignSource[0] == &Init().TempPath &&
+            manager.IMEMessageFunc == Init().IMEMessageFunc &&
+            manager.MessageFilter == Init().MessageFilter &&
+            manager.EverBeenActive &&
+            manager.ApplicationActive &&
+            CSystemManager::NoInstances == 1;
+    }
+
+    // The base class refuses: only the always-built tail runs.
+    bool CheckBaseRefused()
     {
         Reset();
-        g_preInitialiseResult = false;
-
-        const ESystemCode result = Manager().Initialise(Init());
-
+        g_baseResult = false;
+        Init().Flags = 0x15;
+        const ESystemCode result = Manager().Initialise(&Init());
         return
             result == kSystemCodeSuccess &&
-            g_calls.preInitialise == 1 &&
-            g_calls.convertFiber == 0 &&
-            g_calls.driveInitialise == 0 &&
-            g_calls.coloursConstruct == 1 &&
-            g_calls.coloursReset == 1 &&
-            g_calls.cosine == 1 &&
-            g_calls.vectorMath == 1 &&
-            g_calls.initColours == 1 &&
-            g_calls.initApplicationName == 1 &&
-            g_FableSystemInitialiseCount_013CA608 == 1 &&
-            g_managerStorage[0x09] == 1 &&
-            g_managerStorage[0xDC] == 1 &&
-            g_managerStorage[0xEA] == 1 &&
-            Dword(g_managerStorage, 0x178) == 0x55555555 &&
-            Dword(g_managerStorage, 0x17C) == 0x66666666;
+            strcmp(g_trace,
+                "wassign164 base new78 profile resetF8 maths vectormaths "
+                "colours appname") == 0 &&
+            CheckPrologue() &&
+            !Manager().WindowInitialised &&
+            !Manager().Restore &&
+            Manager().ProfileManager.Data == g_profileObject;
     }
 
     bool CheckWindowFailure()
     {
         Reset();
-        Dword(g_initStorage, 0x14) = 4;
-        Dword(g_initStorage, 0x5C) = 0x77777777;
-        Dword(g_initStorage, 0x60) = 0x88888888;
+        Init().Flags = 4;
         g_windowResult = false;
-
-        const ESystemCode result = Manager().Initialise(Init());
-
+        const ESystemCode result = Manager().Initialise(&Init());
         return
             result == kSystemCodeWindowInitialisationFailed &&
-            g_calls.convertFiber == 1 &&
-            g_calls.coInitialise == 1 &&
-            g_calls.criticalSection == 1 &&
-            g_calls.guid == 1 &&
-            g_calls.initWindow == 1 &&
-            g_observedWindowFirst ==
-                reinterpret_cast<void*>(0x77777777) &&
-            g_observedWindowSecond == 0x88888888 &&
-            g_calls.uninitialise == 1 &&
-            g_calls.driveInitialise == 0 &&
-            g_calls.coloursConstruct == 0;
+            strcmp(g_trace,
+                "wassign164 base fiber coinit critsec wassignA0 guid window "
+                "uninitialise") == 0 &&
+            g_windowWidth == 640 &&
+            g_windowHeight == 480 &&
+            !Manager().WindowInitialised &&
+            CSystemManager::NoInstances == 0;
     }
 
-    bool CheckDriveFailurePropagation()
+    bool CheckDriveFailure()
     {
         Reset();
         g_driveResult = static_cast<ESystemCode>(7);
-
-        const ESystemCode result = Manager().Initialise(Init());
-
+        const ESystemCode result = Manager().Initialise(&Init());
         return
             result == static_cast<ESystemCode>(7) &&
-            g_calls.currentProcess == 1 &&
-            g_calls.driveReset == 1 &&
-            g_calls.driveInitialise == 1 &&
-            g_FableDriveManagerPointer_013CAA28 != 0 &&
-            *reinterpret_cast<void**>(
-                g_FableDriveManagerPointer_013CAA28) ==
-                &g_FableDriveManagerVTable_0129AFF4 &&
-            g_calls.uninitialise == 1 &&
-            g_calls.profileConstruct == 0 &&
-            g_calls.coloursConstruct == 0;
+            strcmp(g_trace,
+                "wassign164 base fiber coinit critsec wassignA0 guid process "
+                "new8 resetPClass drive uninitialise") == 0 &&
+            g_driveObject == &CTBaseSingletonNoDefaultAlloc<CDriveManager>::Get() &&
+            g_driveSystem == &Manager() &&
+            CSystemManager::NoInstances == 0;
     }
 
-    bool CheckFullSuccess()
+    // Everything, with the manager's own window and no font banks.
+    bool CheckFullOwnWindow()
     {
         Reset();
-        Dword(g_initStorage, 0x14) = 0x15;
-        Dword(g_initStorage, 0x5C) = 0xABCDEF01;
-        Dword(g_initStorage, 0x60) = 0x12345678;
-        Dword(g_initStorage, 0xB4) = 0x4000;
-
-        unsigned char fontA[8] = {0};
-        unsigned char fontB[8] = {0};
-        Dword(fontA, 4) = 1;
-        Dword(fontB, 4) = 1;
-        Dword(g_initStorage, 0x2C) =
-            reinterpret_cast<fable_u32>(fontA);
-        Dword(g_initStorage, 0x30) =
-            reinterpret_cast<fable_u32>(fontB);
-
-        const ESystemCode result = Manager().Initialise(Init());
-
+        Init().Flags = 0x15;
+        Init().ScratchBufferSize = 0x4000;
+        Init().ExclusiveMode = false;
+        SetFonts(0, 0);
+        const ESystemCode result = Manager().Initialise(&Init());
+        const CSystemManager& manager = Manager();
         return
             result == kSystemCodeSuccess &&
-            g_calls.initWindow == 1 &&
-            g_managerStorage[0x8C] == 1 &&
-            g_calls.scratch == 1 &&
-            g_observedScratchSize == 0x4000 &&
-            g_calls.displayCopy == 1 &&
-            g_observedDisplayInit == g_initStorage + 0x5C &&
-            g_calls.displayConstruct == 1 &&
-            g_calls.displayReset == 1 &&
-            g_calls.displayInitialise == 1 &&
-            g_observedExclusive == 1 &&
-            *reinterpret_cast<void**>(g_managerStorage + 0x60) ==
-                g_displayObject &&
-            g_calls.stringDestroy == 1 &&
-            g_calls.inputConstruct == 1 &&
-            g_observedInputInit == g_initStorage + 0x58 &&
-            g_calls.inputReset == 1 &&
-            *reinterpret_cast<void**>(g_managerStorage + 0x58) ==
-                g_inputObject &&
-            g_calls.driveInitialise == 1 &&
-            g_calls.profileConstruct == 1 &&
-            g_observedProfileInit == g_initStorage + 0x38 &&
-            g_calls.profileReset == 1 &&
-            *reinterpret_cast<void**>(g_managerStorage + 0x7C) ==
-                g_profileObject &&
-            g_calls.fontConstruct == 1 &&
-            g_observedFontA == g_initStorage + 0x2C &&
-            g_observedFontB == g_initStorage + 0x30 &&
-            g_calls.fontReset == 1 &&
-            *reinterpret_cast<void**>(g_managerStorage + 0x84) ==
-                g_fontObject &&
-            g_calls.textConstruct == 1 &&
-            g_calls.textReset == 1 &&
-            g_calls.meshConstruct == 1 &&
-            g_calls.meshReset == 1 &&
-            g_calls.addComponent == 1 &&
-            g_calls.coloursConstruct == 1 &&
-            g_calls.coloursReset == 1 &&
-            g_calls.uninitialise == 0 &&
-            g_calls.allocations == 8 &&
-            g_managerStorage[0x09] == 1 &&
-            g_managerStorage[0xDC] == 1;
+            strcmp(g_trace,
+                "wassign164 base fiber coinit critsec wassignA0 guid window "
+                "process scratch wcopy new2C8 display reset60 displayinit "
+                "wdestroy new84 input reset58 new8 resetPClass drive "
+                "new80 sound reset7C new8 graphicbank reset6C newC meshbank "
+                "reset74 callback new78 profile resetF8 maths vectormaths "
+                "colours appname") == 0 &&
+            CheckPrologue() &&
+            g_fiberParameter == &manager &&
+            g_criticalSection == &manager.CriticalSection &&
+            manager.MainFibre == reinterpret_cast<void*>(0xF1B0F1B0) &&
+            manager.PreferPrimaryDevice &&
+            manager.WinInstanceHandle == Init().InstanceHandle &&
+            manager.WinCommandLine == Init().CommandLine &&
+            manager.WinShow == 5 &&
+            g_wideAssignSource[1] == &Init().AppName &&
+            g_guidName == Init().Identifier &&
+            SameFunction(manager.ErrorFunc, true) &&
+            manager.InitFlags == 0x15 &&
+            manager.AppReinitFunc == Init().AppReinitFunc &&
+            manager.AppReinitContext == Init().AppReinitContext &&
+            manager.UsingAccurateTimer &&
+            manager.WindowInitialised &&
+            g_scratchSize == 0x4000 &&
+            g_displayOwner == &manager &&
+            manager.PDisplayManager.Data == g_displayObject &&
+            g_displayInitWidth == 640 &&
+            g_displayInitShaderPath == &g_shaderPathData &&
+            g_displayInitWindow == manager.ApplicationWinHandle &&
+            g_displayInitSkipConfig &&
+            !g_displayExclusive &&
+            g_inputInit == &Init().InputManagerInit &&
+            !g_inputExclusive &&
+            manager.PInputManager.Data == g_inputObject &&
+            g_soundInit == &Init().SoundManagerInit &&
+            !g_soundExclusive &&
+            manager.PSoundManager.Data == g_soundObject &&
+            manager.PGraphicBankManager.Data == g_graphicBankObject &&
+            manager.PMeshBankManager.Data == g_meshBankObject &&
+            g_callbackDisplay == manager.PDisplayManager.Data &&
+            reinterpret_cast<fable_u8*>(g_resetCallback) ==
+                static_cast<fable_u8*>(g_meshBankObject) + 4 &&
+            manager.ProfileManager.Data == g_profileObject &&
+            *reinterpret_cast<void* const*>(g_driveObject) != 0;
+    }
+
+    // An external window, a custom error function, the streaming font bank
+    // only, and no display, input or sound flags.
+    bool CheckExternalWindowNoDisplay()
+    {
+        Reset();
+        Init().AttachToExternalWindow = true;
+        Init().IsErrorFailureFunc = &CustomErrorFunc;
+        Init().Flags = 0;
+        SetFonts(0, 3);
+        g_coloursMarksActive = true;
+        const ESystemCode result = Manager().Initialise(&Init());
+        const CSystemManager& manager = Manager();
+        return
+            result == kSystemCodeSuccess &&
+            strcmp(g_trace,
+                "wassign164 base fiber coinit critsec wassignA0 guid process "
+                "new8 resetPClass drive new3C font reset84 new8 graphicbank "
+                "reset6C newC meshbank reset74 new78 profile resetF8 maths "
+                "vectormaths colours appname") == 0 &&
+            manager.ErrorFunc == &CustomErrorFunc &&
+            manager.AttachedToExternalWindow &&
+            !manager.WindowInitialised &&
+            g_fontBank == &Init().FontBankHandle &&
+            g_streamingFontBank == &Init().StreamingFontBankHandle &&
+            manager.PFontManager.Data == g_fontObject &&
+            manager.Restore;
+    }
+
+    // With the display flag, an external window is taken from the init;
+    // exclusive mode reaches the display and sound managers.
+    bool CheckExternalWindowDisplay()
+    {
+        Reset();
+        Init().AttachToExternalWindow = true;
+        Init().Flags = 0x14;
+        SetFonts(2, 0);
+        const ESystemCode result = Manager().Initialise(&Init());
+        const CSystemManager& manager = Manager();
+        return
+            result == kSystemCodeSuccess &&
+            strcmp(g_trace,
+                "wassign164 base fiber coinit critsec wassignA0 guid process "
+                "wcopy new2C8 display reset60 displayinit wdestroy new8 "
+                "resetPClass drive new80 sound reset7C new3C font reset84 "
+                "new8 graphicbank "
+                "reset6C newC meshbank reset74 callback new78 profile resetF8 "
+                "maths vectormaths colours appname") == 0 &&
+            manager.WindowInitialised &&
+            manager.ApplicationWinHandle == Init().ApplicationWindowHandle &&
+            g_displayInitWindow == Init().ApplicationWindowHandle &&
+            g_displayExclusive &&
+            g_soundExclusive &&
+            !manager.Restore;
     }
 }
 
-extern "C" fable_u8 g_FableDriveManagerVTable_0129AFF4 = 0;
-extern "C" void* g_FableDriveManagerPointer_013CAA28 = 0;
-extern "C" fable_u8 g_FableScratchBuffer_013CB498 = 0;
-extern "C" fable_u8 g_FableSystemInitialiseCount_013CA608 = 0;
+// ---- Real callees, as recorders ----------------------------------------
 
-extern "C" void* FABLE_STDCALL TestConvertThreadToFiber(void*)
-{
-    ++g_calls.convertFiber;
-    return reinterpret_cast<void*>(0xFA1B0001);
-}
+fable_u8 CSystemManager::NoInstances = 0;
+#include "test_support/scratch_buffer_storage.h"
 
-extern "C" long FABLE_STDCALL TestCoInitialize(void*)
-{
-    ++g_calls.coInitialise;
-    return 0;
-}
-
-extern "C" void FABLE_STDCALL TestInitializeCriticalSection(void*)
-{
-    ++g_calls.criticalSection;
-}
-
-extern "C" void* FABLE_STDCALL TestGetCurrentProcess()
-{
-    ++g_calls.currentProcess;
-    return reinterpret_cast<void*>(0xFFFFFFFF);
-}
-
-extern "C" void* (FABLE_STDCALL* g_FableConvertThreadToFiber_009a6610)(void*) =
-    &TestConvertThreadToFiber;
-extern "C" long (FABLE_STDCALL* g_FableCoInitialize_009a6610)(void*) =
+extern "C" long (FABLE_STDCALL* FixtureCoInitializeImport)(void*) =
     &TestCoInitialize;
-extern "C" void (FABLE_STDCALL* g_FableInitializeCriticalSection_009a6610)(void*) =
-    &TestInitializeCriticalSection;
-extern "C" void* (FABLE_STDCALL* g_FableGetCurrentProcess_009a6610)() =
-    &TestGetCurrentProcess;
+// ole32 is not linked here; the reconstruction's CoInitialize import slot
+// resolves to the recorder instead.
+#pragma comment(linker, "/alternatename:__imp__CoInitialize@4=_FixtureCoInitializeImport")
 
-extern "C" bool __fastcall
-FableSystemPreInitialise_009a6610(void*, void*)
+void* operator new(size_t size)
 {
-    ++g_calls.preInitialise;
-    return g_preInitialiseResult;
-}
-
-extern "C" void __fastcall
-FableSystemWideAssign_009a6610(void*, void*, const void*)
-{
-    ++g_calls.wideAssign;
-}
-
-extern "C" void __fastcall
-FableSystemInitGuid_009a6610(void*, void*, const void*)
-{
-    ++g_calls.guid;
-}
-
-extern "C" void FableSystemDefaultErrorCallback_009a6610() {}
-
-extern "C" bool __fastcall FableSystemInitWindow_009a6610(
-    void*,
-    void*,
-    fable_u32 first,
-    fable_u32 second)
-{
-    ++g_calls.initWindow;
-    g_observedWindowFirst = reinterpret_cast<void*>(first);
-    g_observedWindowSecond = second;
-    return g_windowResult;
-}
-
-extern "C" void __fastcall
-FableSystemUninitialise_009a6610(void*, void*)
-{
-    ++g_calls.uninitialise;
-}
-
-extern "C" void __fastcall FableSystemScratchInitialise_009a6610(
-    void*,
-    void*,
-    fable_u32 size)
-{
-    ++g_calls.scratch;
-    g_observedScratchSize = size;
-}
-
-extern "C" void __fastcall FableSystemDisplayInitCopy_009a6610(
-    void*,
-    void*,
-    const void* source)
-{
-    ++g_calls.displayCopy;
-    g_observedDisplayInit = source;
-}
-
-extern "C" void* __cdecl FableSystemOperatorNew_009a6610(fable_u32)
-{
-    void* result = g_allocations[g_calls.allocations];
-    ++g_calls.allocations;
+    char token[16];
+    sprintf(token, "new%X", static_cast<unsigned>(size));
+    Trace(token);
+    void* result = &g_arena[g_arenaUsed];
+    g_arenaUsed += static_cast<fable_u32>((size + 3) / 4);
     return result;
 }
 
-extern "C" void* __fastcall FableSystemDisplayConstruct_009a6610(
-    void* object,
-    void*,
-    void*)
+void operator delete(void*)
 {
-    ++g_calls.displayConstruct;
-    g_displayObject = object;
-    return object;
 }
 
-extern "C" void __fastcall FableSystemDisplayReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+bool CInitBaseClass::Initialise()
 {
-    ++g_calls.displayReset;
-    *reinterpret_cast<void**>(slot) = object;
+    Trace("base");
+    return g_baseResult;
 }
 
-extern "C" void __fastcall FableSystemDisplayInitialise_009a6610(
-    void*,
-    void*,
-    void*,
-    fable_u32 exclusive)
+CWideString::CWideString(const CWideString& other)
+    : storage_(other.storage_)
 {
-    ++g_calls.displayInitialise;
-    g_observedExclusive = exclusive;
+    Trace("wcopy");
 }
 
-extern "C" void __fastcall
-FableSystemCharStringDestroy_009a6610(void*, void*)
+CWideString::~CWideString()
 {
-    ++g_calls.stringDestroy;
+    Trace("wdestroy");
 }
 
-extern "C" void* __fastcall FableSystemInputConstruct_009a6610(
-    void* object,
-    void*,
-    const void* init,
-    fable_u32)
+CWideString& CWideString::operator=(const CWideString& other)
 {
-    ++g_calls.inputConstruct;
-    g_inputObject = object;
-    g_observedInputInit = init;
-    return object;
+    TraceSlot("wassign", this);
+    if (g_wideAssigns < 2)
+        g_wideAssignSource[g_wideAssigns] = &other;
+    ++g_wideAssigns;
+    return *this;
 }
 
-extern "C" void __fastcall FableSystemInputReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+void CSystemManager::InitGUIDFromName(const char* name)
 {
-    ++g_calls.inputReset;
-    *reinterpret_cast<void**>(slot) = object;
+    Trace("guid");
+    g_guidName = name;
 }
 
-extern "C" void __fastcall FableSystemDriveReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+bool CSystemManager::InitWindow(long width, long height)
 {
-    ++g_calls.driveReset;
-    *reinterpret_cast<void**>(slot) = object;
+    Trace("window");
+    g_windowWidth = width;
+    g_windowHeight = height;
+    return g_windowResult;
 }
 
-extern "C" ESystemCode __fastcall FableSystemDriveInitialise_009a6610(
-    void*,
-    void*,
-    void*)
+void CSystemManager::Uninitialise()
 {
-    ++g_calls.driveInitialise;
+    Trace("uninitialise");
+}
+
+bool FABLE_FASTCALL CSystemManager::DefaultErrorFunc(ESystemCode)
+{
+    return false;
+}
+
+void CSystemManager::InitSystemColours()
+{
+    Trace(NoInstances == 0 ? "colours" : "colours-late");
+    if (g_coloursMarksActive)
+        EverBeenActive = true;
+}
+
+void CSystemManager::InitApplicationName()
+{
+    // The instance count is bumped between the colours and the name.
+    Trace(NoInstances == 1 ? "appname" : "appname-early");
+}
+
+bool CScratchBuffer::Initialise(long size)
+{
+    Trace(this == &GScratchBuffer ? "scratch" : "scratch-bad");
+    g_scratchSize = size;
+    return true;
+}
+
+void FABLE_FASTCALL GFInitMaths()
+{
+    Trace("maths");
+}
+
+void NVectorMath::GFInitVectorMath()
+{
+    Trace("vectormaths");
+}
+
+template<typename T>
+void CCountedPointer<T>::Reset(T* data)
+{
+    TraceSlot("reset", this);
+    Data = data;
+}
+
+template void CCountedPointer<CDisplayManager>::Reset(CDisplayManager*);
+template void CCountedPointer<CInputManager>::Reset(CInputManager*);
+template void CCountedPointer<CDriveManager>::Reset(CDriveManager*);
+template void CCountedPointer<CASoundManager>::Reset(CASoundManager*);
+template void CCountedPointer<CFontManager>::Reset(CFontManager*);
+template void CCountedPointer<CGraphicBankManager>::Reset(CGraphicBankManager*);
+template void CCountedPointer<CMeshBankManager>::Reset(CMeshBankManager*);
+template void CCountedPointer<CProfileManager>::Reset(CProfileManager*);
+
+template<typename T>
+CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+
+CDriveManager::~CDriveManager()
+{
+}
+
+ESystemCode CDriveManager::Initialise(CSystemManager* systemManager)
+{
+    Trace("drive");
+    g_driveObject = this;
+    g_driveSystem = systemManager;
     return g_driveResult;
 }
 
-extern "C" void* __fastcall FableSystemProfileConstruct_009a6610(
-    void* object,
-    void*,
-    const void* init,
-    fable_u32)
+// Fixture boundary: device-creation defaults are outside this coordinator test.
+
+
+CDisplayManager::CDisplayManager(CSystemManager& systemManager)
 {
-    ++g_calls.profileConstruct;
-    g_profileObject = object;
-    g_observedProfileInit = init;
-    return object;
+    Trace("display");
+    g_displayOwner = &systemManager;
+    g_displayObject = this;
 }
 
-extern "C" void __fastcall FableSystemProfileReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+void CDisplayManager::Init(const CDisplayManagerInit& init, bool exclusiveMode)
 {
-    ++g_calls.profileReset;
-    *reinterpret_cast<void**>(slot) = object;
+    Trace("displayinit");
+    g_displayInitWidth = init.Width;
+    g_displayInitShaderPath =
+        *reinterpret_cast<CWideStringData* const*>(&init.ShaderResourcePath);
+    g_displayInitWindow = init.WindowHandle;
+    g_displayInitSkipConfig = init.SkipConfigDetection;
+    g_displayExclusive = exclusiveMode;
 }
 
-extern "C" void* __fastcall FableSystemFontConstruct_009a6610(
-    void* object,
-    void*,
-    const void* first,
-    const void* second)
+void CDisplayManager::AddDeviceResetCallback(CDeviceResetCallback* callback)
 {
-    ++g_calls.fontConstruct;
-    g_fontObject = object;
-    g_observedFontA = first;
-    g_observedFontB = second;
-    return object;
+    Trace("callback");
+    g_callbackDisplay = this;
+    g_resetCallback = callback;
 }
 
-extern "C" void __fastcall FableSystemFontReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+// The base's constructor and destructor are out of line in retail; the
+// fixture only needs them to exist (no member is touched here).
+CInputManager::CInputManager(const CInputManagerInit&, bool) : Checksum(0, 0, 0) {}
+CInputManager::~CInputManager() {}
+// CInputManager's members (the package file and event vectors) bring these
+// in through its constructor/destructor; none is reached.
+class CFileInformation { public: long Words[4]; };
+CAFile::CAFile() {}
+CInputEvent::~CInputEvent() {}
+void CDiskFileWin32::Open(const CWideString&, FileAccessType, unsigned long) {}
+void CDiskFileWin32::Close() {}
+void CDiskFileWin32::Read(void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::Write(const void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::SetPosition(long) {}
+void CDiskFileWin32::MovePosition(long) {}
+long CDiskFileWin32::GetPosition() const { return 0; }
+void CDiskFileWin32::SetLength(long) {}
+CAFile* CDiskFileWin32::Clone() const { return 0; }
+CFileInformation CDiskFileWin32::GetFileInformation() { CFileInformation f = { 0 }; return f; }
+
+CInputManagerDX::CInputManagerDX(const CInputManagerInit& init, bool exclusiveMode)
+    : CInputManager(init, exclusiveMode)
 {
-    ++g_calls.fontReset;
-    *reinterpret_cast<void**>(slot) = object;
+    Trace("input");
+    g_inputInit = &init;
+    g_inputExclusive = exclusiveMode;
+    g_inputObject = static_cast<CInputManager*>(this);
 }
 
-extern "C" void* __fastcall
-FableSystemTextConstruct_009a6610(void* object, void*)
+// CInputManager's own virtual slots (retail vtable 0x0129D620); never reached here.
+bool CInputManager::SetExclusiveMode(bool) { return false; }
+void CInputManager::Update() {}
+
+CSoundManagerLH::CSoundManagerLH(const CSoundManagerInit& init, bool exclusiveMode)
 {
-    ++g_calls.textConstruct;
-    g_textObject = object;
-    return object;
+    Trace("sound");
+    g_soundInit = &init;
+    g_soundExclusive = exclusiveMode;
+    g_soundObject = static_cast<CASoundManager*>(this);
 }
 
-extern "C" void __fastcall FableSystemTextReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+CFontManager::CFontManager(
+    const CCharString& fontBankHandle,
+    const CCharString& streamingFontBankHandle)
 {
-    ++g_calls.textReset;
-    *reinterpret_cast<void**>(slot) = object;
+    Trace("font");
+    g_fontBank = &fontBankHandle;
+    g_streamingFontBank = &streamingFontBankHandle;
+    g_fontObject = this;
+}
+CFontManager::~CFontManager() {}
+
+CGraphicBankManager::CGraphicBankManager()
+{
+    Trace("graphicbank");
+    g_graphicBankObject = this;
 }
 
-extern "C" void* __fastcall
-FableSystemMeshConstruct_009a6610(void* object, void*)
+CMeshBankManager::CMeshBankManager()
 {
-    ++g_calls.meshConstruct;
-    g_meshObject = object;
-    Dword(static_cast<unsigned char*>(object), 4) = 0xCAFEBABE;
-    return object;
+    Trace("meshbank");
+    g_meshBankObject = this;
 }
 
-extern "C" void __fastcall FableSystemMeshReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+CProfileManager::CProfileManager()
 {
-    ++g_calls.meshReset;
-    *reinterpret_cast<void**>(slot) = object;
+    Trace("profile");
+    g_profileObject = this;
 }
 
-extern "C" void __fastcall
-FableSystemAddComponent_009a6610(void*, void*, void*)
+// Bases the recorders' constructors and the drive manager's vtable need.
+CBaseClassNonCopyable::CBaseClassNonCopyable()
 {
-    ++g_calls.addComponent;
 }
 
-extern "C" void* __fastcall
-FableSystemColoursConstruct_009a6610(void* object, void*)
+CBaseClassNonCopyable::~CBaseClassNonCopyable()
 {
-    ++g_calls.coloursConstruct;
-    g_coloursObject = object;
-    return object;
 }
 
-extern "C" void __fastcall FableSystemColoursReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
+void CDeviceResetCallback::OnPreDeviceReset()
 {
-    ++g_calls.coloursReset;
-    *reinterpret_cast<void**>(slot) = object;
 }
 
-extern "C" void FableSystemInitialiseCosine_009a6610()
+bool CDeviceResetCallback::OnPostDeviceReset()
 {
-    ++g_calls.cosine;
+    return true;
 }
 
-extern "C" void FableSystemInitialiseVectorMath_009a6610()
+void CMeshBankManager::OnPreDeviceReset() {}
+bool CMeshBankManager::OnPostDeviceReset() { return true; }
+
+void CASoundManager::GenerateLipSyncData(
+    const CWideString&,
+    LHA::CBinaryDataWriter&)
 {
-    ++g_calls.vectorMath;
 }
 
-extern "C" void __fastcall
-FableSystemInitColours_009a6610(void* manager, void*)
-{
-    ++g_calls.initColours;
-    static_cast<unsigned char*>(manager)[0xDC] = 1;
-}
-
-extern "C" void __fastcall
-FableSystemInitApplicationName_009a6610(void*, void*)
-{
-    ++g_calls.initApplicationName;
-}
+#define FABLE_UNKNOWN_SLOT(n) void CASoundManager::UnknownSlot##n() {}
+FABLE_UNKNOWN_SLOT(01) FABLE_UNKNOWN_SLOT(02) FABLE_UNKNOWN_SLOT(03)
+FABLE_UNKNOWN_SLOT(04) FABLE_UNKNOWN_SLOT(05) FABLE_UNKNOWN_SLOT(06)
+FABLE_UNKNOWN_SLOT(07) FABLE_UNKNOWN_SLOT(08) FABLE_UNKNOWN_SLOT(09)
+FABLE_UNKNOWN_SLOT(10) FABLE_UNKNOWN_SLOT(11) FABLE_UNKNOWN_SLOT(12)
+FABLE_UNKNOWN_SLOT(13) FABLE_UNKNOWN_SLOT(14) FABLE_UNKNOWN_SLOT(15)
+FABLE_UNKNOWN_SLOT(16) FABLE_UNKNOWN_SLOT(17) void CASoundManager::UnknownSlot18(long) {}
+FABLE_UNKNOWN_SLOT(19) FABLE_UNKNOWN_SLOT(20) FABLE_UNKNOWN_SLOT(21)
+FABLE_UNKNOWN_SLOT(22) FABLE_UNKNOWN_SLOT(23) FABLE_UNKNOWN_SLOT(24)
+FABLE_UNKNOWN_SLOT(25) FABLE_UNKNOWN_SLOT(26) FABLE_UNKNOWN_SLOT(27)
+FABLE_UNKNOWN_SLOT(28) FABLE_UNKNOWN_SLOT(29) FABLE_UNKNOWN_SLOT(30)
+FABLE_UNKNOWN_SLOT(31) FABLE_UNKNOWN_SLOT(32) FABLE_UNKNOWN_SLOT(33)
+FABLE_UNKNOWN_SLOT(34) FABLE_UNKNOWN_SLOT(35) FABLE_UNKNOWN_SLOT(36)
+FABLE_UNKNOWN_SLOT(37) FABLE_UNKNOWN_SLOT(38) FABLE_UNKNOWN_SLOT(39)
+FABLE_UNKNOWN_SLOT(40) FABLE_UNKNOWN_SLOT(41) FABLE_UNKNOWN_SLOT(42)
+FABLE_UNKNOWN_SLOT(43) FABLE_UNKNOWN_SLOT(44) FABLE_UNKNOWN_SLOT(45)
+FABLE_UNKNOWN_SLOT(48) FABLE_UNKNOWN_SLOT(50)
+void CASoundManager::UnknownSlot46(unsigned long, float, float) {}
+float CASoundManager::UnknownSlot47(unsigned long) { return 0.0f; }
+bool CASoundManager::UnknownSlot49(float&) { return false; }
 
 int main()
 {
-    const bool early = CheckEarlyBootstrapSkip();
-    const bool window = CheckWindowFailure();
-    const bool drive = CheckDriveFailurePropagation();
-    const bool full = CheckFullSuccess();
-    const bool passed = early && window && drive && full;
+    if (!InstallImports())
+    {
+        printf("FABLETLC_SYSTEM_MANAGER_INITIALISE_BEHAVIOR FAIL imports\n");
+        return 1;
+    }
+
+    const bool baseRefused = CheckBaseRefused();
+    const bool windowFailure = CheckWindowFailure();
+    const bool driveFailure = CheckDriveFailure();
+    const bool fullOwnWindow = CheckFullOwnWindow();
+    const bool externalNoDisplay = CheckExternalWindowNoDisplay();
+    const bool externalDisplay = CheckExternalWindowDisplay();
+    const bool passed =
+        baseRefused &&
+        windowFailure &&
+        driveFailure &&
+        fullOwnWindow &&
+        externalNoDisplay &&
+        externalDisplay;
     if (!passed)
     {
         printf(
             "FABLETLC_SYSTEM_MANAGER_INITIALISE_BEHAVIOR FAIL "
-            "early=%u window=%u drive=%u full=%u\n",
-            early,
-            window,
-            drive,
-            full);
+            "base=%u window=%u drive=%u full=%u external=%u externalDisplay=%u\n"
+            "last trace: %s\n",
+            baseRefused,
+            windowFailure,
+            driveFailure,
+            fullOwnWindow,
+            externalNoDisplay,
+            externalDisplay,
+            g_trace);
         return 1;
     }
+
     printf("FABLETLC_SYSTEM_MANAGER_INITIALISE_BEHAVIOR PASS\n");
     return 0;
 }
+
+#include "test_support/display_ownership_boundary.h"
+CWideString::CWideString() : storage_(0) {}

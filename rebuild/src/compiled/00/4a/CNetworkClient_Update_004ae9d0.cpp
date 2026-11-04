@@ -1,11 +1,13 @@
-// CNetworkClient::Update @ 0x004ae9d0  (__fastcall, ret 0xc)
+// CNetworkClient::Update, retail 0x004AE9D0 (FableWin ?Update@CNetworkClient@@QAEXJKK@Z):
+// a local game records the current server frame and the two world checksums.
+#include "fable_game.h"
 
-#include "engine/CNetworkClient.h"  // retyped onto the PDB layout; byte parity re-verified
-void __fastcall Update(CNetworkClient *self, void * /*edx*/, int a, int b, int c)
+void CNetworkClient::Update(long serverFrame, unsigned long worldChecksum, unsigned long worldSeed)
 {
-    if (self->LocalGame) {
-        self->LocalFrame = a;
-        self->Checksum1 = b;
-        self->Checksum2 = c;
+    if (LocalGame)
+    {
+        LocalFrame = serverFrame;
+        Checksum1 = worldChecksum;
+        Checksum2 = worldSeed;
     }
 }

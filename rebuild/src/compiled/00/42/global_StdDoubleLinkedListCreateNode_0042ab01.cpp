@@ -1,44 +1,8 @@
-#pragma optimize("s",on)
-
-void* __cdecl memmove(void* destination, const void* source, unsigned int count);
-void* __cdecl malloc(unsigned int size);
-
-void* __fastcall Copy_MemoryStepped(
-    void* begin, void* end, void* destination, void* unused)
-{
-    if (end != begin) {
-        unsigned int count = (unsigned char*)end - (unsigned char*)begin;
-        destination = memmove(destination, begin, count);
-        destination = (unsigned char*)destination + count;
-    }
-    return destination;
+#pragma optimize("s", on)
+#include "fable_nui_manager.h"
+namespace _STL {
+template<class T,class A> list<T,A>::list(const A&) : _M_node(0) {
+ _Node* p=static_cast<_Node*>(malloc(sizeof(_Node)));p->_M_next=p;p->_M_prev=p;_M_node=p;
 }
-
-void* __fastcall CActiveFile_CopyRange(
-    void* begin, void* end, void* destination, void* unused)
-{
-    if (end != begin) {
-        unsigned int count = (unsigned char*)end - (unsigned char*)begin;
-        destination = memmove(destination, begin, count);
-        destination = (unsigned char*)destination + count;
-    }
-    return destination;
-}
-
-struct DoubleListNode
-{
-    DoubleListNode* previous;
-    DoubleListNode* next;
-    unsigned long value;
-};
-
-DoubleListNode** __fastcall Std_DoubleLinkedList_CreateNode(
-    DoubleListNode** output, void* unused_edx, void* unused_stack)
-{
-    *output = 0;
-    DoubleListNode* node = (DoubleListNode*)malloc(12);
-    node->previous = node;
-    node->next = node;
-    *output = node;
-    return output;
+template list<NUISystem::CActionParam*>::list(const allocator<NUISystem::CActionParam*>&);
 }

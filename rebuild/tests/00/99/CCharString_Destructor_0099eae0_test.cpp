@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 
 #include "fable_string.h"
@@ -20,7 +21,8 @@ void CCharString::UnassignString()
 
 static int VerifyStringRelease()
 {
-    CCharStringData storage = {};
+    CCharStringData storage;
+    memset(&storage, 0, sizeof(storage));
     fable_u32 objectStorage =
         reinterpret_cast<fable_u32>(&storage);
     CCharString* value =

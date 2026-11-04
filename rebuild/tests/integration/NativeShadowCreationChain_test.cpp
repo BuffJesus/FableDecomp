@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "shadow_creation_chain_aliases.h"
+#include "shadow_creation_chain_retail.h"
+#define REQUIRE(x) do {if(!(x)){fprintf(stderr,"line %d case %u\n",__LINE__,cases);exit(70);}}while(0)
+extern "C" __declspec(dllimport) void* __stdcall VirtualAlloc(void*,unsigned long,unsigned long,unsigned long);
+extern "C" bool __fastcall Initialise(void*,void*);
+extern "C" void* DisplayGlobal;extern "C" void* SurfaceVtable[];
+static unsigned char* nativeCode;
+static unsigned char* arena;static unsigned char* shadow;static unsigned p[5],cases,events,textureCalls,fallbackCalls,builds,depthSize,fallbackSize;static bool firstValid;static void* temporary;static FILE* output;
+static unsigned& A(void* x,unsigned off){return *(unsigned*)((unsigned char*)x+off);}
+static unsigned Offset(void* self){unsigned off=(unsigned char*)self-arena;return off<8192?off:0xffffffff;}
+static void Record(unsigned tag,void*self=0,unsigned a=0,unsigned b=0,unsigned c=0,unsigned d=0){
+ REQUIRE(++events<100);unsigned words[7]={tag,Offset(self),a,b,c,d,(unsigned)DisplayGlobal};fwrite(words,4,7,output);fwrite(arena,1,8192,output);
+}
+extern "C" void __fastcall PixelInit(void*self,void*,unsigned format){A(self,0)=format;Record(2,0,format);}
+extern "C" bool __fastcall ValidTexture(void*self,void*,const unsigned* format){
+ REQUIRE(self==DisplayGlobal);bool ok;
+ if(firstValid){REQUIRE(*format==80);firstValid=false;ok=(p[2]&1)!=0;}
+ else{unsigned i=fallbackCalls++;REQUIRE(i<8&&*format==(i==0?21:i==1?32:0));ok=i==p[3];}
+ if(p[4]==1)DisplayGlobal=arena+0x1c40;Record(3,self,*format,ok);return ok;
+}
+extern "C" bool __fastcall BestOpaque(void*self,void*,unsigned bits,unsigned* format,bool target){
+ REQUIRE(self==DisplayGlobal&&bits==16&&*format==0xffffffff&&target);*format=23;Record(4,self,bits);return false;
+}
+extern "C" bool __fastcall ValidTarget(void*self,void*,const unsigned* colour,const unsigned* depth){
+ REQUIRE(self==DisplayGlobal&&*depth==80);bool ok=*colour==23?(p[2]&2)!=0:true;Record(5,self,*colour,*depth,ok);return ok;
+}
+extern "C" unsigned __fastcall ShaderVersion(void*self,void*){REQUIRE(self==DisplayGlobal);unsigned version=(p[2]&64)?1400:1399;Record(6,self,version);return version;}
+extern "C" bool __fastcall TextureInit(void*self,void*,const long* size,long levels,const unsigned* format,unsigned flags,unsigned pool,bool dynamic,bool mips){
+ REQUIRE(levels==1&&pool==0&&!dynamic&&mips&&size[0]==size[1]);bool ok;
+ if(self==shadow+0x2e8&&flags==2){REQUIRE(*format==80&&(unsigned)size[0]==A(shadow,0x338));depthSize=(unsigned)size[0];ok=(p[2]&4)!=0;}
+ else if(self==shadow+0x318){REQUIRE(flags==1&&*format==23&&(unsigned)size[0]==depthSize);ok=(p[2]&8)!=0;}
+ else{REQUIRE(self==shadow+0x2e8&&flags==1&&(*format==21||*format==32||*format==0)&&(unsigned)size[0]==A(shadow,0x338));fallbackSize=(unsigned)size[0];ok=(p[2]&16)!=0;}
+ if(ok){A(self,0)=(unsigned)(arena+0x1800+(self==shadow+0x318?32:0));A(self,4)=0x20012345;}
+ if(p[4]==2)A(shadow,0x338)=512;++textureCalls;Record(7,self,(unsigned)size[0],*format,flags,ok);return ok;
+}
+extern "C" bool __fastcall DepthInit(void*self,void*,const long* size,const unsigned* format,unsigned multi,bool discard){
+ REQUIRE(self==shadow+0x2f8&&(unsigned)size[0]==fallbackSize&&size[0]==size[1]&&*format==80&&multi==0&&discard);bool ok=(p[2]&32)!=0;
+ if(ok){A(self,4)=(unsigned)(arena+0x1840);A(self,8)=1;}Record(8,self,(unsigned)size[0],ok);return ok;
+}
+static unsigned __stdcall AddRef(void*self){++A(self,4);Record(19,self);return A(self,4);}
+static unsigned __stdcall Release(void*self){--A(self,4);Record(20,self);return A(self,4);}
+static long __stdcall Mipmap(void*self,unsigned level,void** out){
+ REQUIRE(level==0&&Offset(out)==0xffffffff&&(self==arena+0x1800||self==arena+0x1820));
+ *out=arena+(self==arena+0x1800?0x1880:0x18a0);Record(21,self);return 0;
+}
+extern "C" void __fastcall BuildLookup(void*self,void*){REQUIRE(self==shadow);++builds;if(p[4]==3)A(shadow,0x334)=0;Record(17,self);}
+static unsigned Target(unsigned address){
+ switch(address){
+ case 0xb4b830:return (unsigned)(nativeCode+816);case 0x9e3830:return (unsigned)&PixelInit;case 0x9be8f0:return (unsigned)&ValidTexture;case 0x9be610:return (unsigned)&BestOpaque;case 0x9be930:return (unsigned)&ValidTarget;case 0x9bee00:return (unsigned)&ShaderVersion;
+ case 0x9fa280:return (unsigned)&TextureInit;case 0x9f32a0:return (unsigned)&DepthInit;case 0x9fa1c0:return (unsigned)(nativeCode+1200);case 0x9f9e00:return (unsigned)(nativeCode+1312);case 0x9f2e70:return (unsigned)(nativeCode+1040);case 0x9f2e20:return (unsigned)(nativeCode+1120);case 0x9f9f70:return (unsigned)(nativeCode+1152);case 0xa10e30:return (unsigned)(nativeCode+896);case 0xa10e60:return (unsigned)(nativeCode+944);case 0xa10e90:return (unsigned)(nativeCode+992);case 0xb4f420:return (unsigned)&BuildLookup;case 0x1436e1c:return (unsigned)&DisplayGlobal;case 0x122f84c:return (unsigned)SurfaceVtable;
+ case 0x9f2d60:return (unsigned)(nativeCode+1408);case 0x9f2f10:return (unsigned)(nativeCode+1472);default:abort();return 0;
+ }
+}
+int main(int argc,char**argv){
+ if(argc!=4||DisplayGlobal)return 2;FILE*in=fopen(argv[1],"rb");output=fopen(argv[2],"wb");if(!in||!output)return 3;
+ arena=(unsigned char*)VirtualAlloc((void*)0x24000000,0x10000,0x3000,4);if(arena!=(void*)0x24000000)return 4;
+ unsigned char* code=(unsigned char*)VirtualAlloc(0,4096,0x3000,0x40);if(!code)return 5;nativeCode=code;memcpy(code,retailCode,sizeof(retailCode));
+ for(unsigned i=0;i<sizeof(retailFixups)/sizeof(retailFixups[0]);++i){unsigned val=Target(retailFixups[i][1]);if(retailFixups[i][2])val-=(unsigned)(code+retailFixups[i][0]+4);*(unsigned*)(code+retailFixups[i][0])=val;}
+ static void* resourceTable[19];resourceTable[1]=(void*)&AddRef;resourceTable[2]=(void*)&Release;resourceTable[18]=(void*)&Mipmap;
+ typedef bool(__fastcall *Fn)(void*,void*);Fn fn=strcmp(argv[3],"retail")==0?(Fn)code:&Initialise;
+ while(fread(p,4,5,in)==5){
+  if(fread(arena,1,8192,in)!=8192)return 6;shadow=arena+p[0];DisplayGlobal=arena+0x1c00;events=textureCalls=fallbackCalls=builds=0;firstValid=true;temporary=0;
+  for(unsigned ri=0;ri<24;++ri)A(arena,0x1800+32*ri)=(unsigned)resourceTable;
+  const unsigned slots[6]={0x2cc,0x2dc,0x30c,0x2fc,0x318,0x2e8};for(ri=0;ri<6;++ri)A(shadow,slots[ri])=(p[2]&(1<<ri))?(unsigned)(arena+0x1900+32*ri):0;
+  unsigned tech=0,wantCalls=0,wantFallback=0,wantBuilds=0;
+  if((long)p[1]>0){
+   if((p[2]&3)==3){++wantCalls;if(p[2]&4){++wantCalls;if(p[2]&8)tech=1;}}
+   if(!tech&&(p[2]&64)){wantFallback=p[3]<8?p[3]+1:8;if(p[3]<8){++wantCalls;if((p[2]&48)==48){tech=2;wantBuilds=1;}}}
+  }
+  if(tech==2&&p[4]==3)tech=0;unsigned finalSize=p[4]==2&&wantCalls?512:p[1];
+  bool result=fn(shadow,0);REQUIRE(!temporary&&textureCalls==wantCalls&&fallbackCalls==wantFallback&&builds==wantBuilds&&A(shadow,0x334)==tech&&A(shadow,0x338)==finalSize&&shadow[0x2af]==(tech!=0)&&result==(tech!=0||finalSize==0));Record(18,shadow,result,tech);++cases;
+ }
+ fclose(in);fclose(output);printf("NATIVE_SHADOW_CREATION_CHAIN_PASS cases=%u\n",cases);return 0;
+}

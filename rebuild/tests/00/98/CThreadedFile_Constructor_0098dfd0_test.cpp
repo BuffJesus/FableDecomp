@@ -3,38 +3,43 @@
 #include <string.h>
 
 #include "fable_threaded_file.h"
-
-extern "C" fable_u8 g_FableThreadedFileVTable_0129A158 = 0;
+#include "test_support/base_class_stubs.h"
 
 namespace
 {
     void* g_expectedFile;
-    bool g_baseCalled;
-    bool g_pathCalled;
-    bool g_argumentsValid;
+    int g_step;
+    int g_baseStep;
+    int g_filenameStep;
+    void* g_baseSelf;
+    void* g_filenameSelf;
+    unsigned int g_destructorCalls;
 }
 
-extern "C" void FABLE_FASTCALL
-FableThreadedFileBaseConstruct_0098DFD0(
-    void* file,
-    void*)
+CBaseClassNonCopyable::CBaseClassNonCopyable()
 {
-    g_baseCalled = true;
-    g_argumentsValid =
-        g_argumentsValid &&
-        file == g_expectedFile;
+    g_baseStep = ++g_step;
+    g_baseSelf = this;
 }
 
-extern "C" void FABLE_FASTCALL
-FableThreadedFilePathConstruct_0098DFD0(
-    void* pathname,
-    void*)
+CBaseClassNonCopyable::~CBaseClassNonCopyable()
 {
-    g_pathCalled = true;
-    g_argumentsValid =
-        g_argumentsValid &&
-        pathname == reinterpret_cast<fable_u8*>(g_expectedFile) + 0x0C;
-    *reinterpret_cast<fable_u32*>(pathname) = 0x24681357;
+}
+
+CWideString::CWideString()
+{
+    g_filenameStep = ++g_step;
+    g_filenameSelf = this;
+    storage_ = reinterpret_cast<CWideStringData*>(0x24681357);
+}
+
+CWideString::~CWideString()
+{
+}
+
+CThreadedFile::~CThreadedFile()
+{
+    ++g_destructorCalls;
 }
 
 int main()
@@ -42,28 +47,28 @@ int main()
     fable_u8 storage[sizeof(CThreadedFile)];
     memset(storage, 0xA5, sizeof(storage));
     g_expectedFile = storage;
-    g_baseCalled = false;
-    g_pathCalled = false;
-    g_argumentsValid = true;
 
     CThreadedFile* file = new (storage) CThreadedFile;
 
+    // The constructor must leave the CThreadedFile vtable installed.
+    static_cast<CBaseClass*>(file)->~CBaseClass();
+
     const bool passed =
         file == reinterpret_cast<CThreadedFile*>(storage) &&
-        g_baseCalled &&
-        g_pathCalled &&
-        g_argumentsValid &&
-        file->vtable_ ==
-            reinterpret_cast<fable_u32>(
-                &g_FableThreadedFileVTable_0129A158) &&
+        g_baseStep == 1 &&
+        g_baseSelf == storage &&
+        g_filenameStep == 2 &&
+        g_filenameSelf == storage + 0x0C &&
+        g_destructorCalls == 1 &&
         file->fileHandle_ == reinterpret_cast<void*>(-1) &&
-        file->filenameStorage_ ==
-            reinterpret_cast<void*>(0x24681357) &&
+        *reinterpret_cast<fable_u32*>(storage + 0x0C) == 0x24681357 &&
         !file->openedForWrite_ &&
         !file->openFlag_ &&
         file->deviceId_ == 0xA5A5A5A5 &&
         file->length_ == 0xA5A5A5A5 &&
-        file->physicalSortKey_ == 0xA5A5A5A5;
+        file->physicalSortKey_ == 0xA5A5A5A5 &&
+        storage[0x1A] == 0xA5 &&
+        storage[0x1B] == 0xA5;
 
     if (!passed)
     {

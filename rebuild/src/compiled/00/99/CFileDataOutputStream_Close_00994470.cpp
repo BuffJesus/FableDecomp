@@ -1,1 +1,2 @@
-void __fastcall CFileDataOutputStream_Close() {}
+#include "fable_file_data_output_stream.h"
+void CFileDataOutputStream::Close() {}

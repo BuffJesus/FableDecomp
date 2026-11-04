@@ -1,1 +1,4 @@
-void __stdcall CJoystick_UpdateInsertionsAndRemovals(int arg0, int arg1) {}
+#include "fable_input_devices.h"
+void CJoystick::UpdateInsertionsAndRemovals(unsigned long, unsigned long)
+{
+}

@@ -1,40 +1,33 @@
-#pragma pack(push, 1)
-struct CCharStringData
-{
-    char* text;
-    unsigned int unknown04;
-    unsigned int unknown08;
-    unsigned char flags0C;
-    int owners;
-};
-#pragma pack(pop)
+// CCharString::UnassignString @ 0x0099E9B0 (FableWin ?UnassignString@CCharString@@AAEXXZ).
+//
+// Drops this string's reference on its shared data. The last owner releases
+// the CBasicString<char> buffer (delete[]), resets its length and the 31-bit
+// capacity (keeping the UseFastExtend top bit), then deletes the data block.
 
-struct CCharString
-{
-    CCharStringData* storage_;
+#include "fable_string.h"
 
-    void __fastcall UnassignString();
-};
+// Retail calls MSVCR71 ??_V (operator delete[]) for the buffer: VC7.1 only
+// routes delete[] there when the array form is declared.
+#include <new>
 
-void __fastcall CCharString::UnassignString()
+void CCharString::UnassignString()
 {
-    CCharStringData* p = storage_;
-    if (p != 0)
+    CCharStringData* shared = storage_;
+    if (shared != 0)
     {
-        if (--p->owners <= 0)
+        if (--shared->owners <= 0)
         {
-            CCharStringData* data = storage_;
-            if (data != 0)
+            CCharStringData* storage = storage_;
+            if (storage != 0)
             {
-                if (data->text != 0)
+                if (storage->Data.PData != 0)
                 {
-                    delete[] data->text;
-                    data->text = 0;
+                    delete[] storage->Data.PData;
+                    storage->Data.PData = 0;
                 }
-                unsigned int flag = data->unknown08 & 0x80000000;
-                data->unknown04 = 0;
-                data->unknown08 = flag;
-                delete data;
+                storage->Data.StringLength = 0;
+                storage->Data.DataLength = 0;
+                delete storage;
             }
         }
         storage_ = 0;

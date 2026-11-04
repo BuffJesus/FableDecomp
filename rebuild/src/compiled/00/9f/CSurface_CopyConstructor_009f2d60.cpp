@@ -1,33 +1,7 @@
-struct IUnknownLike
-{
-    virtual void __stdcall QueryInterfacePlaceholder() = 0;
-    virtual unsigned long __stdcall AddRef() = 0;
-    virtual unsigned long __stdcall Release() = 0;
-};
-
-class CSurface
-{
-public:
-    virtual void VTableAnchor();
-
-    IUnknownLike* surface04;
-    unsigned long ownership08;
-    unsigned long mipLevel0C;
-
-    CSurface(const CSurface& source);
-};
-
+#include "fable_surface_types.h"
 CSurface::CSurface(const CSurface& source)
-    : surface04(source.surface04),
-      ownership08(source.ownership08)
+    : PD3DSurface(source.PD3DSurface), AllocationSource(source.AllocationSource)
 {
-    if (ownership08 == 2)
-    {
-        mipLevel0C = source.mipLevel0C;
-    }
-
-    if (surface04 != 0)
-    {
-        surface04->AddRef();
-    }
+    if(AllocationSource == 2)PAllocatedMemory = source.PAllocatedMemory;
+    if(PD3DSurface)PD3DSurface->AddRef();
 }

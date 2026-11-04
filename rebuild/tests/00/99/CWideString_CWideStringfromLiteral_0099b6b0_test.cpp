@@ -7,7 +7,8 @@ fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
 
 namespace
 {
-    CWideStringData g_storage;
+    unsigned long g_storageRaw_[4];
+    CWideStringData& g_storage = *reinterpret_cast<CWideStringData*>(g_storageRaw_);
     int g_allocationCalls = 0;
     const wchar_t* g_observedText = 0;
     long g_observedLength = 0;

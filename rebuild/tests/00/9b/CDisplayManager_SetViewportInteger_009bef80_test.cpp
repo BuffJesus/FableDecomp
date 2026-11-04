@@ -3,6 +3,7 @@
 
 #include "fable_display_viewport.h"
 #include "fable_shader_render_manager.h"
+#include "../../integration/ShaderManagerFixtureLifetime.h"
 
 struct FableD3DViewport
 {

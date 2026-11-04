@@ -1,8 +1,6 @@
-struct CProceduralTexture;
-struct CWorld;
+#include "fable_world.h"
 
-CProceduralTexture const * __fastcall CWorld_DrawGetProceduralTexture(CWorld *self)
+const CProceduralTexture* CWorld::DrawGetProceduralTexture() const
 {
-    (void)self;
     return 0;
 }

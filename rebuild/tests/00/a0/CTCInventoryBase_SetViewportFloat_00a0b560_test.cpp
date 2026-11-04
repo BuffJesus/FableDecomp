@@ -53,7 +53,7 @@ int main()
 {
     CDisplayManager manager;
     CTCInventoryBaseViewportFloatView inventory = {};
-    C2DBoxF viewport = {10.5f, 20.5f, 630.5f, 460.5f};
+    C2DBoxF viewport(10.5f, 20.5f, 630.5f, 460.5f);
     inventory.displayManager3A3C = &manager;
 
     inventory.SetViewportFloat_00A0B560(viewport);

@@ -1,28 +1,21 @@
-// ~CInitBaseClass 0x0099a410
-// Virtual destructor: stores derived vtable, conditionally deregisters, stores base vtable.
-// Modeled as a struct method so ecx=self (__fastcall). The two vtable pointers and the
-// global registration counter are the module's absolute addresses (relocated at link time).
+#include "fable_init_base_class.h"
 
-extern int g_initCount; // 0x013bca14 (extern symbol -> relocated, folds to dec [mem])
-
-struct CInitBaseClass
+// CBaseClass's destructor and CInitBaseClass::Uninitialise share this translation
+// unit and inline into the destructor.
+inline CBaseClass::~CBaseClass()
 {
-    void* m_vtable;       // +0
-    char  m_registered;   // +4
-    void dtor_CInitBaseClass();
-};
+}
 
-// Absolute vtable addresses from the retail image (immediates in the store).
-#define VT_DERIVED ((void*)0x0129a7cc)
-#define VT_BASE    ((void*)0x01231710)
-
-void CInitBaseClass::dtor_CInitBaseClass()
+void CInitBaseClass::Uninitialise()
 {
-    m_vtable = VT_DERIVED;
-    if (m_registered == 1)
+    if (Valid == true)
     {
-        --g_initCount;
-        m_registered = 0;
+        --g_CInitBaseClassValid_013BCA14;
+        Valid = false;
     }
-    m_vtable = VT_BASE;
+}
+
+CInitBaseClass::~CInitBaseClass()
+{
+    Uninitialise();
 }

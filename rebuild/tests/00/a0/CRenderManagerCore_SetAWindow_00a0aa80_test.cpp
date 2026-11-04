@@ -14,9 +14,13 @@ void CDisplayManager::SetViewport(
 
 int main()
 {
-    CDisplayManager displayManager;
+    // CDisplayManager has no default constructor (retail builds it from
+    // its CSystemManager); the call only needs an address.
+    static fable_u8 displayManagerStorage[0x2C8];
+    CDisplayManager& displayManager =
+        *reinterpret_cast<CDisplayManager*>(displayManagerStorage);
     CRenderManagerCoreWindowView rendererCore = {};
-    const C2DBoxF viewport = {1.0f, 2.0f, 639.0f, 479.0f};
+    const C2DBoxF viewport(1.0f, 2.0f, 639.0f, 479.0f);
     rendererCore.displayManager3A3C = &displayManager;
 
     rendererCore.SetAWindow(viewport);

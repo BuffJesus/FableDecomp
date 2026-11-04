@@ -1,11 +1,10 @@
-#include <cstdio>
-int __fastcall CStreamingFontDataBank_GetDataFormatVersion()
-{
-    return 109;
-}
-int main()
-{
-    if (CStreamingFontDataBank_GetDataFormatVersion() == 109) { std::printf("AUTO_TINY_00a5ee90_TEST PASS\n"); return 0; }
-    std::printf("AUTO_TINY_00a5ee90_TEST FAIL\n");
-    return 1;
-}
+#include "../src/compiled/00/9c/CBankFile_AdjustUpdateEntries_009cba70.cpp"
+#include "../src/compiled/00/9c/CBankFile_IsDiskFile_009cbc40.cpp"
+#include "../src/compiled/00/a6/CFontDataBank_GetDataFormatVersion_00a63340.cpp"
+#include "../src/compiled/00/a6/CFontDataBank_IsDiskFile_00a63ac0.cpp"
+#include "../src/compiled/00/a5/CStreamingFontDataBank_IsDiskFile_00a5f9c0.cpp"
+#include "../src/compiled/00/9c/CBankFile_EntryExists_009cc190.cpp"
+#include "../src/compiled/00/9c/CBankFile_EntrySetUpdate_009cc300.cpp"
+#include "../src/compiled/00/a5/CStreamingFontDataBank_AdjustUpdateEntries_00a5eea0.cpp"
+#include "../src/compiled/00/a6/CPackedUIntArray_Get_00a629f0.cpp"
+#include "../tests/integration/BankUpdate_test.cpp"

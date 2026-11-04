@@ -1,40 +1,21 @@
+// Behaviour of CParentDefClassBase::GetInstantiationName 0x004303B0: returns
+// (through the hidden result pointer) a CDefString with the table index at +0x25.
+#include "fable_def_class_base.h"
 #include <stdio.h>
-
-#pragma pack(push,1)
-struct CDefString {
-    unsigned long value;
-};
-struct CParentDefClassBase {
-    char pad[0x25];
-    unsigned long instantiationName; // at +0x25
-};
-#pragma pack(pop)
-
-CDefString GetInstantiationName(CParentDefClassBase *this_)
-{
-    CDefString r;
-    r.value = this_->instantiationName;
-    return r;
-}
+#include <string.h>
 
 int main()
 {
-    CParentDefClassBase obj;
-    for (int i = 0; i < (int)sizeof(obj); ++i) ((char*)&obj)[i] = 0;
-    obj.instantiationName = 0xDEADBEEFu;
-
-    CDefString got = GetInstantiationName(&obj);
-    if (got.value != 0xDEADBEEFu) {
-        printf("FAIL got=%08lx\n", got.value);
-        return 1;
-    }
-
-    // field must be read from offset 0x25
-    if ((char*)&obj.instantiationName - (char*)&obj != 0x25) {
-        printf("FAIL offset\n");
-        return 1;
-    }
-
+    static unsigned char store[sizeof(CParentDefClassBase)];
+    memset(store, 0xCC, sizeof(store));
+    long index = 0x1234567;
+    memcpy(store + 0x25, &index, 4);
+    const CParentDefClassBase* def = reinterpret_cast<const CParentDefClassBase*>(store);
+    CDefString name = def->CParentDefClassBase::GetInstantiationName();
+    if (name.TablePos != 0x1234567) { printf("got %lx\n", name.TablePos); return 1; }
+    index = -1;
+    memcpy(store + 0x25, &index, 4);
+    if (def->CParentDefClassBase::GetInstantiationName().TablePos != -1) { puts("unnamed"); return 1; }
     printf("OK_0x004303b0\n");
     return 0;
 }

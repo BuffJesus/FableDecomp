@@ -2,5 +2,5 @@
 
 unsigned long CMemoryAllocatorFixedSize::GetAllocationSize(void*)
 {
-    return AllocationSize;
+    return AreaSize;
 }

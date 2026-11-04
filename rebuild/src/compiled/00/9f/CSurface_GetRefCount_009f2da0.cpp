@@ -1,33 +1,15 @@
-// Byte-exact reconstruction of CSurface::GetRefCount @ 0x009f2da0
-// The member at [esi+4] is a COM-style interface pointer whose "vtable"
-// entries are __stdcall functions that take the interface as a stack arg.
+// CSurface::GetRefCount (retail 0x009F2DA0; Ego_r ?GetRefCount@CSurface@@QBEJXZ,
+// between the copy constructor 0x009F2D60 and Unlock 0x009F2DC0 in module order).
+// D3D9 has no reference-count query, so the engine bumps the count and returns
+// what Release reports.
+#include "fable_surface.h"
 
-struct IRefObj;
-
-typedef long (__stdcall *PFN)(IRefObj*);
-
-struct IRefVtbl {
-    PFN slot0;   // +0
-    PFN slot1;   // +4  (called, result discarded)
-    PFN slot2;   // +8  (called, result returned)
-};
-
-struct IRefObj {
-    IRefVtbl* vtbl;  // +0
-};
-
-struct CSurface {
-    void* pad0;      // +0
-    IRefObj* obj;    // +4
-};
-
-long __fastcall GetRefCount(CSurface* self)
+long CSurface::GetRefCount() const
 {
-    IRefObj* p = self->obj;
-    if (p) {
-        p->vtbl->slot1(p);
-        IRefObj* q = self->obj;
-        return q->vtbl->slot2(q);
+    if (PD3DSurface)
+    {
+        PD3DSurface->AddRef();
+        return PD3DSurface->Release();
     }
     return 0;
 }

@@ -1,31 +1,9 @@
-struct VolObj;
-typedef void (__stdcall *VolFn)(VolObj*);
-
-struct VolVtbl
-{
-    VolFn f0;
-    VolFn f1;
-    VolFn release;
-};
-
-struct VolObj
-{
-    VolVtbl* vtbl;
-};
-
-struct CVolume
-{
-    int pad0;
-    VolObj* m_vol;
-    void ReleaseVolume();
-};
-
+#include "fable_volume_types.h"
 void CVolume::ReleaseVolume()
 {
-    VolObj* v = m_vol;
-    if (v)
+    if (PD3DVolume)
     {
-        v->vtbl->release(v);
-        m_vol = 0;
+        PD3DVolume->Release();
+        PD3DVolume = 0;
     }
 }

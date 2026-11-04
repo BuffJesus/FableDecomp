@@ -1,101 +1,163 @@
-#include "fable_string.h"
-
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <wchar.h>
 
-namespace
-{
-    wchar_t g_leftBuffer[64];
-    wchar_t g_resultBuffer[64];
-    CWideStringData g_leftStorage;
-    CWideStringData g_resultStorage;
-    unsigned int g_copyCalls;
-    unsigned int g_appendLiteralCalls;
+#include "fable_string.h"
+#include <stdlib.h>
 
-    CWideStringData*& Storage(CWideString& text)
-    {
-        return *reinterpret_cast<CWideStringData**>(&text);
-    }
+// The unit's inline AllocStringData/MakeOwnCopyOfData copies now construct
+// CWideStringData through STLport, whose length-error path (retail 0x0099C550)
+// is out of line; these paths never reach it.
+void _STL::_String_base<wchar_t, _STL::allocator<wchar_t> >::_M_throw_length_error() const
+{
+    abort();
 }
 
 fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
+wchar_t g_FableEmptyWideString_0129A8E0[1] = {L'\0'};
 
-extern "C" const CWideString& __fastcall
-FableWideStringAppendLiteral_0099B940(
-    CWideString* self,
-    void*,
-    const wchar_t* text)
+namespace
 {
-    return self->operator+=(text);
+    unsigned int g_newCalls;
+    unsigned int g_deleteCalls;
+    // Copies and appends go through the real STLport range initialiser
+    // (0x0099C670) and append (0x0099C7E0), so they are checked by content.
+    unsigned int g_appendCalls;
+
+    CWideStringData* GetStorage(const CWideString& value)
+    {
+        return *reinterpret_cast<CWideStringData* const*>(&value);
+    }
+
+    // A CWideString whose storage the fixture owns, never destroyed.
+    CWideString& MakeString(fable_u8* bytes, CWideStringData* storage)
+    {
+        *reinterpret_cast<CWideStringData**>(bytes) = storage;
+        return *reinterpret_cast<CWideString*>(bytes);
+    }
+
+    wchar_t* HeapText(const wchar_t* text)
+    {
+        const size_t length = wcslen(text);
+        wchar_t* copy =
+            static_cast<wchar_t*>(malloc((length + 1) * sizeof(wchar_t)));
+        memcpy(copy, text, (length + 1) * sizeof(wchar_t));
+        return copy;
+    }
+
+    void Reset()
+    {
+        g_newCalls = 0;
+        g_deleteCalls = 0;
+        g_appendCalls = 0;
+    }
+
+    bool TextIs(const CWideString& value, const wchar_t* expected)
+    {
+        const CWideStringData* storage = GetStorage(value);
+        return storage != 0 && storage->text != 0 &&
+            wcscmp(storage->text, expected) == 0;
+    }
+
+    // Both sides populated: the shared copy of left is detached, then appended.
+    bool CheckJoin()
+    {
+        Reset();
+        unsigned long leftStorageRaw_[4] = {reinterpret_cast<unsigned long>(HeapText(L"left")), 0, 0, 1};
+        CWideStringData& leftStorage = *reinterpret_cast<CWideStringData*>(leftStorageRaw_);
+        fable_u8 leftBytes[sizeof(CWideString)];
+        const CWideString& left = MakeString(leftBytes, &leftStorage);
+        g_CWideStringInstanceCount_013BCA20 = 20;
+
+        bool passed;
+        {
+            CWideString result = left + L"right";
+            passed =
+                TextIs(result, L"leftright") &&
+                GetStorage(result) != &leftStorage &&
+                GetStorage(result)->owners == 1 &&
+                wcscmp(leftStorage.text, L"left") == 0 &&
+                leftStorage.owners == 1 &&
+                g_newCalls == 1 &&
+                g_deleteCalls == 0 &&
+                g_CWideStringInstanceCount_013BCA20 == 21;
+        }
+        return passed &&
+            g_deleteCalls == 1 &&
+            g_CWideStringInstanceCount_013BCA20 == 20;
+    }
+
+    // An empty left side allocates fresh data for the literal.
+    bool CheckEmptyLeft()
+    {
+        Reset();
+        fable_u8 leftBytes[sizeof(CWideString)];
+        const CWideString& left = MakeString(leftBytes, 0);
+        g_CWideStringInstanceCount_013BCA20 = 0;
+
+        bool passed;
+        {
+            CWideString result = left + L"right";
+            passed =
+                TextIs(result, L"right") &&
+                GetStorage(result)->owners == 1 &&
+                g_newCalls == 1 &&
+                g_CWideStringInstanceCount_013BCA20 == 1;
+        }
+        return passed &&
+            g_deleteCalls == 1 &&
+            g_CWideStringInstanceCount_013BCA20 == 0;
+    }
+
+    // An empty left side and an empty literal stay unallocated.
+    bool CheckEmptyRight()
+    {
+        Reset();
+        fable_u8 leftBytes[sizeof(CWideString)];
+        const CWideString& left = MakeString(leftBytes, 0);
+        g_CWideStringInstanceCount_013BCA20 = 0;
+
+        bool passed;
+        {
+            CWideString result = left + L"";
+            passed =
+                GetStorage(result) == 0 &&
+                g_newCalls == 0 &&
+                g_CWideStringInstanceCount_013BCA20 == 1;
+        }
+        return passed &&
+            g_deleteCalls == 0 &&
+            g_CWideStringInstanceCount_013BCA20 == 0;
+    }
 }
 
-extern "C" void __fastcall
-FableWideStringUnassign_0099B4D0(CWideString* self)
+void* operator new(size_t size)
 {
-    Storage(*self) = 0;
+    ++g_newCalls;
+    return malloc(size);
 }
 
-extern "C" void __cdecl FableWideStringFree_00BFEA14(void*)
+void operator delete(void* memory)
 {
+    if (memory != 0)
+        ++g_deleteCalls;
+    free(memory);
 }
 
-extern "C" void __cdecl FableWideStringDelete_00BFE9BC(void*)
-{
-}
-
-const CWideString& CWideString::operator+=(const wchar_t* text)
-{
-    ++g_appendLiteralCalls;
-    ++g_copyCalls;
-    g_resultStorage = *Storage(*this);
-    wcscpy(g_resultBuffer, g_resultStorage.text);
-    g_resultStorage.text = g_resultBuffer;
-    g_resultStorage.owners = 8;
-    Storage(*this) = &g_resultStorage;
-    wcscat(Storage(*this)->text, text);
-    return *this;
-}
 
 int main()
 {
-    wcscpy(g_leftBuffer, L"Data\\lang\\English");
-    g_leftStorage.text = g_leftBuffer;
-    g_leftStorage.unknown04 = 0;
-    g_leftStorage.unknown08 = 0;
-    g_leftStorage.owners = 8;
-
-    CWideString left;
-    Storage(left) = &g_leftStorage;
-    CWideString result = left + L"\\lang_settings.txt";
-
-    if (
-        wcscmp(
-            static_cast<const wchar_t*>(result),
-            L"Data\\lang\\English\\lang_settings.txt") != 0 ||
-        wcscmp(g_leftBuffer, L"Data\\lang\\English") != 0 ||
-        g_copyCalls != 1 ||
-        g_appendLiteralCalls != 1 ||
-        g_resultStorage.owners != 8 ||
-        g_CWideStringInstanceCount_013BCA20 != 1)
+    const bool passed =
+        CheckJoin() &&
+        CheckEmptyLeft() &&
+        CheckEmptyRight();
+    if (!passed)
     {
+        printf("FABLETLC_WIDE_STRING_ADD_RIGHT FAIL\n");
         return 1;
     }
 
     printf("FABLETLC_WIDE_STRING_ADD_RIGHT PASS\n");
     return 0;
-}
-
-CWideString::CWideString()
-{
-    Storage(*this) = 0;
-}
-
-CWideString::~CWideString()
-{
-    Storage(*this) = 0;
-}
-
-CWideString::operator const wchar_t*() const
-{
-    return Storage(const_cast<CWideString&>(*this))->text;
 }

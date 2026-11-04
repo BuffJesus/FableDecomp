@@ -1,110 +1,53 @@
+// Behaviour of _Rb_global<bool>::_Rotate_right 0x0042955B: x's left child y
+// takes x's place (root, or x's parent's right or left link), y's right
+// subtree becomes x's left, x becomes y's right.
+#include "fable_stlport_tree.h"
+#include <stdio.h>
+#include <string.h>
 
-struct CMemoryArea
-{
-    int unused0;
-    CMemoryArea* parent;
-    CMemoryArea* right;
-    CMemoryArea* left;
-};
+typedef _STL::_Rb_tree_node_base B;
+typedef _STL::_Rb_global<bool> G;
 
-void RotateLeft(CMemoryArea* x, CMemoryArea** root)
+static B g_n[16];
+
+static void Link(B* n, B* parent, B* left, B* right, bool color)
 {
-    CMemoryArea* y = x->right;
-    x->right = y->left;
-    if (y->left)
-    {
-        y->left->parent = x;
-    }
-    y->parent = x->parent;
-    if (x == *root)
-    {
-        *root = y;
-    }
-    else if (x == x->parent->left)
-    {
-        x->parent->left = y;
-    }
-    else
-    {
-        x->parent->right = y;
-    }
-    y->left = x;
-    x->parent = y;
+    n->_M_parent = parent; n->_M_left = left; n->_M_right = right; n->_M_color = color;
 }
 
-#include <cstdio>
+static int Check(int x, int parent, int left, int right, const char* what)
+{
+    B* n = &g_n[x];
+    if (n->_M_parent != (parent < 0 ? 0 : &g_n[parent]) || n->_M_left != (left < 0 ? 0 : &g_n[left]) ||
+        n->_M_right != (right < 0 ? 0 : &g_n[right])) { printf("%s: node %d\n", what, x); return 1; }
+    return 0;
+}
 
 int main()
 {
-    CMemoryArea nodeX;
-    CMemoryArea nodeY;
-    CMemoryArea nodeYLeft;
-    CMemoryArea nodeParent;
-
-    // Case 1: x is root, y->left exists.
-    nodeX.unused0 = 0;
-    nodeX.parent = 0;
-    nodeX.left = 0;
-    nodeX.right = &nodeY;
-
-    nodeY.unused0 = 0;
-    nodeY.parent = &nodeX;
-    nodeY.left = &nodeYLeft;
-    nodeY.right = 0;
-
-    nodeYLeft.unused0 = 0;
-    nodeYLeft.parent = &nodeY;
-    nodeYLeft.left = 0;
-    nodeYLeft.right = 0;
-
-    CMemoryArea* root = &nodeX;
-
-    RotateLeft(&nodeX, &root);
-
-    bool ok = true;
-    if (root != &nodeY) ok = false;
-    if (nodeY.parent != 0) ok = false;
-    if (nodeY.left != &nodeX) ok = false;
-    if (nodeX.parent != &nodeY) ok = false;
-    if (nodeX.right != &nodeYLeft) ok = false;
-    if (nodeYLeft.parent != &nodeX) ok = false;
-
-    // Case 2: x is a left child of parent, y->left is null.
-    CMemoryArea px, py, pparent;
-    px.unused0 = 0; px.parent = &pparent; px.left = 0; px.right = &py;
-    py.unused0 = 0; py.parent = &px; py.left = 0; py.right = 0;
-    pparent.unused0 = 0; pparent.parent = 0; pparent.left = &px; pparent.right = 0;
-
-    CMemoryArea* root2 = &pparent;
-    RotateLeft(&px, &root2);
-
-    if (pparent.left != &py) ok = false;
-    if (py.parent != &pparent) ok = false;
-    if (py.left != &px) ok = false;
-    if (px.parent != &py) ok = false;
-    if (px.right != 0) ok = false;
-
-    // Case 3: x is a right child of parent.
-    CMemoryArea qx, qy, qparent;
-    qx.unused0 = 0; qx.parent = &qparent; qx.left = 0; qx.right = &qy;
-    qy.unused0 = 0; qy.parent = &qx; qy.left = 0; qy.right = 0;
-    qparent.unused0 = 0; qparent.parent = 0; qparent.left = 0; qparent.right = &qx;
-
-    CMemoryArea* root3 = &qparent;
-    RotateLeft(&qx, &root3);
-
-    if (qparent.right != &qy) ok = false;
-    if (qy.parent != &qparent) ok = false;
-    if (qy.left != &qx) ok = false;
-    if (qx.parent != &qy) ok = false;
-
-    if (ok)
-    {
-        printf("ROTATE_LEFT_OK\n");
-    }
-    else
-    {
-        printf("ROTATE_LEFT_FAIL\n");
-    }
+    // x=1 is the root: left child 2 (children 3, 4), right child 5.
+    B* root = &g_n[1];
+    Link(&g_n[1], &g_n[0], &g_n[2], &g_n[5], 0);
+    Link(&g_n[2], &g_n[1], &g_n[3], &g_n[4], 0);
+    Link(&g_n[3], &g_n[2], 0, 0, 0); Link(&g_n[4], &g_n[2], 0, 0, 0); Link(&g_n[5], &g_n[1], 0, 0, 0);
+    G::_Rotate_right(&g_n[1], root);
+    if (root != &g_n[2] || Check(2, 0, 3, 1, "root") || Check(1, 2, 4, 5, "root") || Check(4, 1, -1, -1, "root")) return 1;
+    // x=6 is its parent 8's right child; y=7 has no right child.
+    root = &g_n[8];
+    Link(&g_n[8], &g_n[0], 0, &g_n[6], 0);
+    Link(&g_n[6], &g_n[8], &g_n[7], 0, 0);
+    Link(&g_n[7], &g_n[6], 0, 0, 0);
+    G::_Rotate_right(&g_n[6], root);
+    if (root != &g_n[8] || g_n[8]._M_right != &g_n[7] || g_n[8]._M_left != 0 || Check(7, 8, -1, 6, "right") ||
+        Check(6, 7, -1, -1, "right")) return 1;
+    // x=9 is its parent 10's left child.
+    Link(&g_n[10], &g_n[0], &g_n[9], 0, 0);
+    Link(&g_n[9], &g_n[10], &g_n[11], 0, 0);
+    Link(&g_n[11], &g_n[9], 0, &g_n[12], 0);
+    Link(&g_n[12], &g_n[11], 0, 0, 0);
+    G::_Rotate_right(&g_n[9], root);
+    if (root != &g_n[8] || g_n[10]._M_left != &g_n[11] || g_n[10]._M_right != 0 || Check(11, 10, -1, 9, "left") ||
+        Check(9, 11, 12, -1, "left") || Check(12, 9, -1, -1, "left")) return 1;
+    puts("FABLETLC_RB_GLOBAL_ROTATE_RIGHT_0042955B_PASS");
     return 0;
 }

@@ -1,23 +1,14 @@
-#include "fable_render_capture.h"
+#include "fable_render_state_manager.h"
 
-void CRenderStateManagerCaptureView::RestoreCaptureBlock()
+void CRenderStateManager::RestoreCaptureBlock()
 {
-    --captureCount2808;
-    CRenderStateEntry* entry =
-        captures0008[captureCount2808].entry00;
-    while (entry->captureType11 != 4)
+    CStateInfo* entry = StateStack[--StateStackSize].State;
+    while (entry->StateType != 4)
     {
-        entry->captureOffset08 -= captureOffset2814;
-        entry->capturedValue04 =
-            captures0008[captureCount2808].value04;
-        if (entry->queuedForRestore10 == 0)
-        {
-            entry->queuedForRestore10 = 1;
-            pendingRestores2008[pendingRestoreCount280C] = entry;
-            ++pendingRestoreCount280C;
-        }
-        --captureCount2808;
-        entry = captures0008[captureCount2808].entry00;
+        entry->BookmarkMask -= CurrentBookmarkMask;
+        entry->DesiredState = StateStack[StateStackSize].Value;
+        AddStateToUpdateList(*entry);
+        entry = StateStack[--StateStackSize].State;
     }
-    captureOffset2814 >>= 1;
+    CurrentBookmarkMask >>= 1;
 }

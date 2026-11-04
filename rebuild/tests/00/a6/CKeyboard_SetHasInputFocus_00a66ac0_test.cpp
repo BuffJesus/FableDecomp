@@ -1,8 +1,25 @@
-#include <cstdio>
-void __stdcall CKeyboard_SetHasInputFocus(int arg0) {}
-int main()
-{
-    CKeyboard_SetHasInputFocus(1);
-    std::printf("AUTO_TINY_00a66ac0_TEST PASS\n");
-    return 0;
-}
+#include "../tests/integration/InputCore_test.cpp"
+#include "../src/compiled/00/9f/CInputManager_EventScanStart_009f4ed0.cpp"
+#include "../src/compiled/00/9f/CInputManager_EventScanNext_009f4f10.cpp"
+#include "../src/compiled/00/9f/CInputManager_EventScanEnd_009f4ac0.cpp"
+#include "../src/compiled/00/9f/CInputManager_UpdateChecksum_009f4a90.cpp"
+#include "../src/compiled/00/9f/CInputManager_SetHasInputFocus_009f4e20.cpp"
+#include "../src/compiled/00/9f/CInputManager_SetExclusiveMode_009f4e70.cpp"
+#include "../src/compiled/00/9f/CInputManager_IsJoystickDeviceNumberActive_009f5250.cpp"
+#include "../src/compiled/00/9f/CInputManager_ClearEvents_009f5540.cpp"
+#include "../src/compiled/00/9f/CInputManager_StreamInputsToFile_009f4cf0.cpp"
+#include "../src/compiled/00/9f/CInputManager_StreamInputsFromFile_009f5e10.cpp"
+#include "../src/compiled/00/9f/STLInputEventVector_erase_009f67e0.cpp"
+#include "../src/compiled/00/a6/CMouse_SetHasInputFocus_00a673a0.cpp"
+#include "../src/compiled/00/a6/CKeyboard_GetKeyName_00a66ad0.cpp"
+#include "../src/compiled/00/9e/CJoystick_SetExclusiveMode_009e41a0.cpp"
+#include "../src/compiled/00/9e/CJoystick_Update_009e41b0.cpp"
+#include "../src/compiled/00/9e/CJoystick_UpdateInsertionsAndRemovals_009e4930.cpp"
+#include "../src/compiled/00/9e/CJoystick_Clear_009e4940.cpp"
+#include "../src/compiled/00/9e/CJoystick_SetHasInputFocus_009e4950.cpp"
+#include "../src/compiled/00/9e/CJoystick_EventScanStart_009e4230.cpp"
+#include "../src/compiled/00/9e/CJoystick_EventScanNext_009e4280.cpp"
+#include "../src/compiled/00/9e/CJoystick_EventScanEnd_009e41c0.cpp"
+#include "../src/compiled/00/9e/CJoystick_ClearAllMaintainedEvents_009e42c0.cpp"
+#include "../src/compiled/00/a6/CMouse_ClearAllMaintainedEvents_00a66c00.cpp"
+#include "../src/compiled/00/a6/CKeyboard_ClearAllMaintainedEvents_00a66860.cpp"

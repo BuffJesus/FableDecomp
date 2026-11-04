@@ -1,13 +1,7 @@
-struct CKeyboardDX {
-    char pad0[0x341c];
-    unsigned char keyStates[0x100];   // at 0x341c
-    unsigned short keyMap[0x100];      // at 0x351c
-    bool IsKeyPressed(int key);
-};
+// CKeyboardDX::IsKeyPressed (retail 0x00AB6220): a game key is down when its DirectInput key's state byte is set.
+#include "fable_keyboard_dx.h"
 
-bool CKeyboardDX::IsKeyPressed(int key)
+bool CKeyboardDX::IsKeyPressed(EInputKey key)
 {
-    if (this->keyStates[ this->keyMap[key] ])
-        return true;
-    return false;
+    return KeyStates[InputKeyToDXKey[key]] ? true : false;   // `!= 0` zeroes eax first; retail tests the byte in al
 }

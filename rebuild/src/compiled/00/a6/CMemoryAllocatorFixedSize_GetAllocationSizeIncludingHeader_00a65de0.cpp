@@ -2,5 +2,5 @@
 
 unsigned long CMemoryAllocatorFixedSize::GetAllocationSizeIncludingHeader(void*)
 {
-    return AllocationSizeIncludingHeader;
+    return StatAreaSize;
 }

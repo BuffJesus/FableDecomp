@@ -1,44 +1,27 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour fixture for CKeyboardDX::IsKeyPressed (provider CKeyboardDX_IsKeyPressed_00ab6220.cpp; it does not define
+// it). The keyboard is raw storage at the retail offsets fable_keyboard_dx.h pins, driven by a qualified call.
+#include "fable_keyboard_dx.h"
+#include <stdio.h>
+#include <string.h>
 
-struct CKeyboardDX {
-    char pad0[0x341c];
-    unsigned char keyStates[0x100];   // at 0x341c
-    unsigned short keyMap[0x100];      // at 0x351c
-    bool IsKeyPressed(int key);
-};
+static int g_fail;
+#define CHECK(x) do { if (!(x)) { printf("FAIL line %d: %s\n", __LINE__, #x); ++g_fail; } } while (0)
 
-bool CKeyboardDX::IsKeyPressed(int key)
-{
-    if (this->keyStates[ this->keyMap[key] ])
-        return true;
-    return false;
-}
+static unsigned char storage[sizeof(CKeyboardDX)];
+static void Map(int key, unsigned short dik) { memcpy(storage + 0x351C + key * 2, &dik, 2); }
 
 int main()
 {
-    CKeyboardDX kb;
-    memset(&kb, 0, sizeof(kb));
-
-    // key 5 maps to slot 42, which is pressed
-    kb.keyMap[5] = 42;
-    kb.keyStates[42] = 1;
-
-    // key 7 maps to slot 99, which is NOT pressed
-    kb.keyMap[7] = 99;
-    kb.keyStates[99] = 0;
-
-    // key 9 maps to slot 100, pressed with value 0x80
-    kb.keyMap[9] = 100;
-    kb.keyStates[100] = 0x80;
-
-    bool ok = true;
-    if (kb.IsKeyPressed(5) != true)  ok = false;
-    if (kb.IsKeyPressed(7) != false) ok = false;
-    if (kb.IsKeyPressed(9) != true)  ok = false;
-    if (kb.IsKeyPressed(0) != false) ok = false;
-
-    if (ok) printf("ISKEYPRESSED_OK\n");
-    else    printf("ISKEYPRESSED_FAIL\n");
-    return ok ? 0 : 1;
+    memset(storage, 0, sizeof(storage));
+    CKeyboardDX* k = reinterpret_cast<CKeyboardDX*>(storage);
+    Map(KB_A, 0x1E); Map(KB_B, 0x30); Map(KB_Y, 0xFF);
+    storage[0x341C + 0x1E] = 0x80;              // DIK_A down (DirectInput sets the high bit)
+    storage[0x341C + 0xFF] = 0x01;              // any non-zero state byte counts
+    CHECK(k->CKeyboardDX::IsKeyPressed(KB_A));
+    CHECK(!k->CKeyboardDX::IsKeyPressed(KB_B));
+    CHECK(k->CKeyboardDX::IsKeyPressed(KB_Y));
+    storage[0x341C + 0x1E] = 0;
+    CHECK(!k->CKeyboardDX::IsKeyPressed(KB_A));
+    printf(g_fail ? "FAIL\n" : "KEYBOARD_DX_ISKEYPRESSED_OK\n");
+    return g_fail != 0;
 }

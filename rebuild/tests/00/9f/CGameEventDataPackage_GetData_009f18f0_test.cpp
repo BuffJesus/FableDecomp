@@ -1,0 +1,5 @@
+#include "../tests/integration/EventReader_test.cpp"
+#include "../src/compiled/00/9f/CGameEvent_GetDataPackage_009f17a0.cpp"
+#include "../src/compiled/00/49/CWorld_SetAsPaused_0049d8f0.cpp"
+#include "../src/compiled/00/62/CWorld_EASetPauseMode_006292d0.cpp"
+#include "../src/compiled/00/62/CWorld_EASetSlowMotion_00629330.cpp"

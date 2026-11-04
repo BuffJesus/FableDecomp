@@ -1,0 +1,6 @@
+#include "../src/compiled/00/62/CWorld_EAOpenPCMapMenu_0062c8e0.cpp"
+#include "../src/compiled/00/62/CWorld_EAOpenPCStatusMenu_0062c930.cpp"
+#include "../src/compiled/00/62/CWorld_EADeleteMenuComponents_0062c980.cpp"
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../tests/integration/InventoryEvents_test.cpp"

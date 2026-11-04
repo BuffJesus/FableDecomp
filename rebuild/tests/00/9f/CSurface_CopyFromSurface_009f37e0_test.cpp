@@ -1,181 +1,148 @@
 #include <stdio.h>
 #include <string.h>
 
-class C2DBoxI
-{
-public:
-    long left;
-    long top;
-    long right;
-    long bottom;
-};
+#include "fable_surface.h"
 
-struct CPixelFormat
-{
-    unsigned long value;
-};
+// Formats are modelled by value: 100 is the one "signed" format.
+static const long kSignedFormat = 100;
 
-class CSurface
+struct FakeD3DSurface : IDirect3DSurface9
 {
-public:
-    void* vtable00;
-    void* surface04;
-    unsigned long ownership08;
-    unsigned long mipLevel0C;
-
-    void CopyFromSurface(
-        const C2DBoxI* destinationBox,
-        const CSurface& source,
-        const C2DBoxI* sourceBox,
-        unsigned long filter);
-};
-
-struct FakeD3DSurface
-{
-    void** vtable;
-    unsigned long format;
-    unsigned long width;
-    unsigned long height;
+    D3DFORMAT format;
+    UINT width;
+    UINT height;
     unsigned long getDescCalls;
     unsigned long unlockCalls;
     unsigned long releaseCalls;
+
+    HRESULT __stdcall QueryInterface(REFIID, void**) { return -1; }
+    unsigned long __stdcall AddRef() { return 1; }
+    unsigned long __stdcall Release() { return ++releaseCalls; }
+    HRESULT __stdcall GetDevice(IDirect3DDevice9**) { return -1; }
+    HRESULT __stdcall SetPrivateData(REFGUID, const void*, DWORD, DWORD) { return -1; }
+    HRESULT __stdcall GetPrivateData(REFGUID, void*, DWORD*) { return -1; }
+    HRESULT __stdcall FreePrivateData(REFGUID) { return -1; }
+    DWORD __stdcall SetPriority(DWORD) { return 0; }
+    DWORD __stdcall GetPriority() { return 0; }
+    void __stdcall PreLoad() {}
+    D3DRESOURCETYPE __stdcall GetType() { return D3DRTYPE_SURFACE; }
+    HRESULT __stdcall GetContainer(REFIID, void**) { return -1; }
+    HRESULT __stdcall GetDesc(D3DSURFACE_DESC* desc)
+    {
+        memset(desc, 0, sizeof(*desc));
+        desc->Format = format;
+        desc->Width = width;
+        desc->Height = height;
+        ++getDescCalls;
+        return 0;
+    }
+    HRESULT __stdcall LockRect(D3DLOCKED_RECT*, const RECT*, DWORD) { return -1; }
+    HRESULT __stdcall UnlockRect()
+    {
+        ++unlockCalls;
+        return 0;
+    }
+    HRESULT __stdcall GetDC(void**) { return -1; }
+    HRESULT __stdcall ReleaseDC(void*) { return -1; }
 };
 
 struct TestState
 {
     unsigned long d3dxCalls;
-    void* d3dxDestination;
-    void* d3dxSource;
-    C2DBoxI d3dxDestinationRect;
-    C2DBoxI d3dxSourceRect;
+    IDirect3DSurface9* d3dxDestination;
+    IDirect3DSurface9* d3dxSource;
+    RECT d3dxDestinationRect;
+    RECT d3dxSourceRect;
     bool d3dxHadDestinationRect;
     bool d3dxHadSourceRect;
     unsigned long d3dxFilter;
     unsigned long canConvertCalls;
     unsigned long initialiseImageCalls;
-    unsigned long initialiseWidth;
-    unsigned long initialiseHeight;
-    unsigned long initialiseFormat;
+    long initialiseWidth;
+    long initialiseHeight;
+    long initialiseFormat;
     unsigned long lockCalls;
     unsigned long conversionCalls;
     const void* conversionData;
     long conversionPitch;
-    unsigned long conversionFormat;
+    long conversionFormat;
 };
 
-extern "C" unsigned long g_CSurfaceVTable_0122F84C = 0;
 static TestState g_state;
 static FakeD3DSurface g_temporarySurface;
-static void* g_fakeVTable[15];
 static unsigned char g_lockedPixels[64];
 
-static long __stdcall FakeGetDesc(FakeD3DSurface* self, void* output)
+void CPixelFormat::Initialise(D3DFORMAT format)
 {
-    unsigned long* description = static_cast<unsigned long*>(output);
-    memset(description, 0, 32);
-    description[0] = self->format;
-    description[6] = self->width;
-    description[7] = self->height;
-    ++self->getDescCalls;
-    return 0;
+    FormatIndex = format;
 }
 
-static unsigned long __stdcall FakeRelease(FakeD3DSurface* self)
+bool CPixelFormat::IsSigned() const
 {
-    return ++self->releaseCalls;
+    return FormatIndex == kSignedFormat;
 }
 
-static long __stdcall FakeUnlock(FakeD3DSurface* self)
-{
-    ++self->unlockCalls;
-    return 0;
-}
-
-extern "C" void __fastcall FablePixelFormatInitialise_009E3830(
-    CPixelFormat* self,
-    void*,
-    unsigned long d3dFormat)
-{
-    self->value = d3dFormat;
-}
-
-extern "C" bool __fastcall FablePixelFormatIsSigned_009E3970(
-    CPixelFormat* self)
-{
-    return self->value == 100;
-}
-
-extern "C" bool __fastcall FableSurfaceCanDoProperSignedConversion_009F35D0(
-    CSurface*,
-    void*,
+bool CSurface::CanDoProperSignedConversion(
     const C2DBoxI* destinationBox,
     const C2DBoxI* sourceBox,
-    const CPixelFormat* sourceFormat)
+    const CPixelFormat& format)
 {
     ++g_state.canConvertCalls;
     return
         destinationBox == 0 &&
         sourceBox == 0 &&
-        sourceFormat->value == 0x15;
+        format.FormatIndex == D3DFMT_A8R8G8B8;
 }
 
-extern "C" bool __fastcall FableSurfaceInitialiseAsImage_009F3230(
-    CSurface* self,
-    void*,
-    const void* dimensions,
-    const CPixelFormat* format,
+bool CSurface::InitialiseAsImage(
+    const C2DExtentsI& dimensions,
+    const CPixelFormat& format,
     bool dynamic)
 {
-    const unsigned long* extents = static_cast<const unsigned long*>(dimensions);
     ++g_state.initialiseImageCalls;
-    g_state.initialiseWidth = extents[0];
-    g_state.initialiseHeight = extents[1];
-    g_state.initialiseFormat = format->value;
-    self->surface04 = &g_temporarySurface;
-    self->ownership08 = 1;
+    g_state.initialiseWidth = dimensions.X;
+    g_state.initialiseHeight = dimensions.Y;
+    g_state.initialiseFormat = format.FormatIndex;
+    PD3DSurface = &g_temporarySurface;
+    AllocationSource = 1;
     return !dynamic;
 }
 
-extern "C" void __fastcall FableSurfaceLock_009F33E0(
-    CSurface* self,
-    void*,
-    void* result,
-    unsigned long flags)
+CSurfaceLockedRect CSurface::Lock(unsigned long flags)
 {
-    unsigned long* fields = static_cast<unsigned long*>(result);
+    CSurfaceLockedRect result;
     ++g_state.lockCalls;
-    fields[2] = 16;
-    fields[3] = reinterpret_cast<unsigned long>(g_lockedPixels);
-    if (self->surface04 != &g_temporarySurface || flags != 0)
+    result.Dimensions = C2DExtentsI(0, 0);
+    result.Pitch = 16;
+    result.PMem = g_lockedPixels;
+    if (PD3DSurface != &g_temporarySurface || flags != 0)
     {
-        fields[2] = 0;
-        fields[3] = 0;
+        result.Pitch = 0;
+        result.PMem = 0;
     }
+    return result;
 }
 
-extern "C" void __fastcall
-FableSurfaceCopyFromUnsignedDataToSignedSurface_009F36E0(
-    CSurface*,
-    void*,
-    const void* sourceData,
-    const CPixelFormat* sourceFormat,
-    long sourcePitch)
+void CSurface::CopyFromUnsignedDataToSignedSurface(
+    const void* data,
+    const CPixelFormat& format,
+    long pitch)
 {
     ++g_state.conversionCalls;
-    g_state.conversionData = sourceData;
-    g_state.conversionPitch = sourcePitch;
-    g_state.conversionFormat = sourceFormat->value;
+    g_state.conversionData = data;
+    g_state.conversionPitch = pitch;
+    g_state.conversionFormat = format.FormatIndex;
 }
 
-extern "C" long __stdcall FableD3DXLoadSurfaceFromSurface_00BFEFC2(
-    void* destinationSurface,
-    const void* destinationPalette,
-    const void* destinationRect,
-    void* sourceSurface,
-    const void* sourcePalette,
-    const void* sourceRect,
-    unsigned long filter,
-    unsigned long colourKey)
+extern "C" HRESULT __stdcall D3DXLoadSurfaceFromSurface(
+    IDirect3DSurface9* destinationSurface,
+    const PALETTEENTRY* destinationPalette,
+    const RECT* destinationRect,
+    IDirect3DSurface9* sourceSurface,
+    const PALETTEENTRY* sourcePalette,
+    const RECT* sourceRect,
+    DWORD filter,
+    D3DCOLOR colourKey)
 {
     ++g_state.d3dxCalls;
     g_state.d3dxDestination = destinationSurface;
@@ -184,12 +151,11 @@ extern "C" long __stdcall FableD3DXLoadSurfaceFromSurface_00BFEFC2(
     g_state.d3dxHadSourceRect = sourceRect != 0;
     if (destinationRect != 0)
     {
-        g_state.d3dxDestinationRect =
-            *static_cast<const C2DBoxI*>(destinationRect);
+        g_state.d3dxDestinationRect = *destinationRect;
     }
     if (sourceRect != 0)
     {
-        g_state.d3dxSourceRect = *static_cast<const C2DBoxI*>(sourceRect);
+        g_state.d3dxSourceRect = *sourceRect;
     }
     g_state.d3dxFilter = filter;
     return
@@ -200,34 +166,40 @@ extern "C" long __stdcall FableD3DXLoadSurfaceFromSurface_00BFEFC2(
 
 static void InitialiseFakeSurface(
     FakeD3DSurface& surface,
-    unsigned long format,
-    unsigned long width,
-    unsigned long height)
+    long format,
+    UINT width,
+    UINT height)
 {
-    memset(&surface, 0, sizeof(surface));
-    surface.vtable = g_fakeVTable;
-    surface.format = format;
+    surface.format = static_cast<D3DFORMAT>(format);
     surface.width = width;
     surface.height = height;
+    surface.getDescCalls = 0;
+    surface.unlockCalls = 0;
+    surface.releaseCalls = 0;
+}
+
+static bool SameRect(const RECT& rect, const C2DBoxI& box)
+{
+    return
+        rect.left == box.left &&
+        rect.top == box.top &&
+        rect.right == box.right &&
+        rect.bottom == box.bottom;
 }
 
 int main()
 {
-    memset(g_fakeVTable, 0, sizeof(g_fakeVTable));
-    g_fakeVTable[2] = reinterpret_cast<void*>(&FakeRelease);
-    g_fakeVTable[12] = reinterpret_cast<void*>(&FakeGetDesc);
-    g_fakeVTable[14] = reinterpret_cast<void*>(&FakeUnlock);
-
     FakeD3DSurface destinationResource;
     FakeD3DSurface sourceResource;
     InitialiseFakeSurface(destinationResource, 200, 640, 480);
     InitialiseFakeSurface(sourceResource, 200, 320, 240);
 
-    CSurface destination = {};
-    CSurface source = {};
-    destination.surface04 = &destinationResource;
-    source.surface04 = &sourceResource;
+    CSurface destination;
+    CSurface source;
+    destination.PD3DSurface = &destinationResource;
+    source.PD3DSurface = &sourceResource;
 
+    // Unsigned destination: one D3DX copy with both boxes as RECTs.
     C2DBoxI destinationBox = {1, 2, 301, 202};
     C2DBoxI sourceBox = {3, 4, 123, 94};
     destination.CopyFromSurface(&destinationBox, source, &sourceBox, 7);
@@ -237,42 +209,73 @@ int main()
         g_state.d3dxSource != &sourceResource ||
         !g_state.d3dxHadDestinationRect ||
         !g_state.d3dxHadSourceRect ||
-        memcmp(
-            &g_state.d3dxDestinationRect,
-            &destinationBox,
-            sizeof(C2DBoxI)) != 0 ||
-        memcmp(&g_state.d3dxSourceRect, &sourceBox, sizeof(C2DBoxI)) != 0 ||
+        !SameRect(g_state.d3dxDestinationRect, destinationBox) ||
+        !SameRect(g_state.d3dxSourceRect, sourceBox) ||
         g_state.d3dxFilter != 7 ||
+        g_state.canConvertCalls != 0 ||
         g_state.conversionCalls != 0)
     {
         printf("FABLETLC_SURFACE_COPY_FROM_SURFACE_BEHAVIOR FAIL code=1\n");
         return 1;
     }
 
+    // Null boxes stay null.
     memset(&g_state, 0, sizeof(g_state));
-    InitialiseFakeSurface(destinationResource, 100, 640, 480);
+    destination.CopyFromSurface(0, source, 0, 3);
+    if (
+        g_state.d3dxCalls != 1 ||
+        g_state.d3dxHadDestinationRect ||
+        g_state.d3dxHadSourceRect ||
+        g_state.d3dxFilter != 3)
+    {
+        printf("FABLETLC_SURFACE_COPY_FROM_SURFACE_BEHAVIOR FAIL code=2\n");
+        return 2;
+    }
+
+    // Signed destination, unsigned source: copy through an A8R8G8B8 image
+    // of the destination's size (default filter), then convert its bits.
+    memset(&g_state, 0, sizeof(g_state));
+    InitialiseFakeSurface(destinationResource, kSignedFormat, 640, 480);
     InitialiseFakeSurface(sourceResource, 200, 320, 240);
     InitialiseFakeSurface(g_temporarySurface, 200, 640, 480);
-    destination.CopyFromSurface(0, source, 0, 5);
+    destination.CopyFromSurface(&destinationBox, source, &sourceBox, 5);
     if (
         g_state.canConvertCalls != 1 ||
         g_state.initialiseImageCalls != 1 ||
         g_state.initialiseWidth != 640 ||
         g_state.initialiseHeight != 480 ||
-        g_state.initialiseFormat != 0x15 ||
+        g_state.initialiseFormat != D3DFMT_A8R8G8B8 ||
         g_state.d3dxCalls != 1 ||
         g_state.d3dxDestination != &g_temporarySurface ||
         g_state.d3dxSource != &sourceResource ||
+        !SameRect(g_state.d3dxDestinationRect, destinationBox) ||
+        !SameRect(g_state.d3dxSourceRect, sourceBox) ||
+        g_state.d3dxFilter != 0xffffffff ||
         g_state.lockCalls != 1 ||
         g_state.conversionCalls != 1 ||
         g_state.conversionData != g_lockedPixels ||
         g_state.conversionPitch != 16 ||
-        g_state.conversionFormat != 0x15 ||
+        g_state.conversionFormat != D3DFMT_A8R8G8B8 ||
         g_temporarySurface.unlockCalls != 1 ||
-        g_temporarySurface.releaseCalls != 1)
+        g_temporarySurface.releaseCalls != 1 ||
+        destinationResource.releaseCalls != 0)
     {
-        printf("FABLETLC_SURFACE_COPY_FROM_SURFACE_BEHAVIOR FAIL code=2\n");
-        return 2;
+        printf("FABLETLC_SURFACE_COPY_FROM_SURFACE_BEHAVIOR FAIL code=3\n");
+        return 3;
+    }
+
+    // Signed on both sides: straight D3DX copy.
+    memset(&g_state, 0, sizeof(g_state));
+    InitialiseFakeSurface(sourceResource, kSignedFormat, 320, 240);
+    destination.CopyFromSurface(0, source, 0, 9);
+    if (
+        g_state.canConvertCalls != 0 ||
+        g_state.d3dxCalls != 1 ||
+        g_state.d3dxDestination != &destinationResource ||
+        g_state.conversionCalls != 0)
+    {
+        printf("FABLETLC_SURFACE_COPY_FROM_SURFACE_BEHAVIOR FAIL code=4\n");
+        return 4;
     }
 
     printf("FABLETLC_SURFACE_COPY_FROM_SURFACE_BEHAVIOR PASS\n");

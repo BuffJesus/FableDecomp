@@ -3,9 +3,9 @@
 CCharString FABLE_FASTCALL
 FableGetStreamingFontBankName_00415440()
 {
-    switch (FableGetCurrentLanguage_00415070())
+    switch (NLocalisation::GetLanguage())
     {
-    case 16:
+    case 12:
         return CCharString("STREAMING_FONT_FRENCH_PC", -1);
     case 17:
         return CCharString("STREAMING_FONT_JAPANESE_PC", -1);
@@ -17,7 +17,7 @@ FableGetStreamingFontBankName_00415440()
         return CCharString("STREAMING_FONT_CHINESE_PC", -1);
     case 10:
         return CCharString("STREAMING_FONT_SPANISH_PC", -1);
-    case 12:
+    case 16:
         return CCharString("STREAMING_FONT_ITALIAN_PC", -1);
     default:
         return CCharString("STREAMING_FONT_ENGLISH_PC", -1);

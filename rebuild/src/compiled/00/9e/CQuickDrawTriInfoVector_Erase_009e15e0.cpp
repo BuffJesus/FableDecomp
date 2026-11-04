@@ -1,78 +1,12 @@
-#include "rebuild_abi.h"
-
-struct CWideStringEraseView
+#include <new>
+#include "fable_quick_draw_info.h"
+#include "fable_stlport_algobase.h"
+namespace _STL {
+template<> CQuickDrawTriInfo* vector<CQuickDrawTriInfo>::erase(CQuickDrawTriInfo* first,CQuickDrawTriInfo* last)
 {
-    void* data00;
-
-    ~CWideStringEraseView();
-};
-
-struct CTextureEraseView
-{
-    fable_u8 unknown00[8];
-
-    void Uninitialise();
-};
-
-struct CQuickDrawTriInfoEraseView
-{
-    fable_u8 unknown00[0x14];
-    CWideStringEraseView name14;
-    CTextureEraseView texture18;
-    fable_u8 unknown20[0x1C];
-};
-
-CQuickDrawTriInfoEraseView* __fastcall
-FableCopyQuickDrawRange(
-    CQuickDrawTriInfoEraseView* first,
-    CQuickDrawTriInfoEraseView* last,
-    CQuickDrawTriInfoEraseView* destination,
-    CQuickDrawTriInfoEraseView** checkedDestination,
-    fable_i32 nonscalarTag);
-
-struct CQuickDrawTriInfoVectorView
-{
-    CQuickDrawTriInfoEraseView* begin00;
-    CQuickDrawTriInfoEraseView* end04;
-    CQuickDrawTriInfoEraseView* capacity08;
-
-    __forceinline void Destroy(
-        CQuickDrawTriInfoEraseView* first,
-        CQuickDrawTriInfoEraseView* last)
-    {
-        while (first != last)
-        {
-            first->texture18.Uninitialise();
-            first->name14.~CWideStringEraseView();
-            ++first;
-        }
-    }
-
-    CQuickDrawTriInfoEraseView* Erase(
-        CQuickDrawTriInfoEraseView* first,
-        CQuickDrawTriInfoEraseView* last);
-};
-
-CQuickDrawTriInfoEraseView*
-CQuickDrawTriInfoVectorView::Erase(
-    CQuickDrawTriInfoEraseView* first,
-    CQuickDrawTriInfoEraseView* last)
-{
-    CQuickDrawTriInfoVectorView* const activeVector = this;
-    CQuickDrawTriInfoEraseView* const result = first;
-    CQuickDrawTriInfoEraseView* const newEnd =
-        FableCopyQuickDrawRange(
-            last,
-            activeVector->end04,
-            first,
-            &first,
-            0);
-    if (newEnd != activeVector->end04)
-    {
-        Destroy(newEnd, activeVector->end04);
-        activeVector->end04 = newEnd;
-        return first;
-    }
-    activeVector->end04 = newEnd;
-    return result;
+ CQuickDrawTriInfo* finish=__copy(last,this->_M_finish,first,random_access_iterator_tag(),(ptrdiff_t*)0);
+ _Destroy(finish,this->_M_finish);
+ this->_M_finish=finish;
+ return first;
+}
 }

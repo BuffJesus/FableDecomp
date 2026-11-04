@@ -20,19 +20,19 @@ namespace
     void* g_secondCharAddress = 0;
 }
 
-void FABLE_FASTCALL FableConstructWideString(CWideString* value)
+CWideString::CWideString()
 {
     ++g_wideConstructCalls;
-    g_wideAddress = value;
+    g_wideAddress = this;
 }
 
-void FABLE_FASTCALL FableConstructCharString(CCharString* value)
+CCharString::CCharString()
 {
     ++g_charConstructCalls;
     if (g_firstCharAddress == 0)
-        g_firstCharAddress = value;
+        g_firstCharAddress = this;
     else
-        g_secondCharAddress = value;
+        g_secondCharAddress = this;
 }
 
 int main()
@@ -45,7 +45,12 @@ int main()
 
     if (
         display->vftable00 != &g_CProgressDisplayVTable_012388B4 ||
-        display->value04 != 0 ||
+        display->ProgressTextures.first != 0 ||
+        display->GuildSealTextures.last != 0 ||
+        display->LoadingScreenTextures.end != 0 ||
+        display->LoadingScreenIndex != 0 ||
+        display->TextTags.first != 0 ||
+        display->TextTagsPC.end != 0 ||
         display->value44 != 0 ||
         display->value54 != 0 ||
         display->value58 != 0)

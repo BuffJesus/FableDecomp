@@ -1,0 +1,678 @@
+// Owned Windows worker submission probe; no installed-game process is started.
+#include "fable_threaded_file_object.h"
+#include "fable_file_installer.h"
+#include "fable_bank_async_entry.h"
+#include "NativeThreadedReadAPC_win32.h"
+#include <process.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+extern "C" {
+void* __fastcall FixtureBankBeginRead(CBankFileAsyncEntry*,void*,void*,unsigned long,void*,unsigned long,unsigned long,EThreadedFilePriority);
+__declspec(dllimport) void __stdcall InitializeCriticalSection(void*);
+__declspec(dllimport) void* __stdcall GlobalAlloc(unsigned int,size_t);
+__declspec(dllimport) void __stdcall DeleteCriticalSection(void*);
+__declspec(dllimport) void __stdcall EnterCriticalSection(void*);
+__declspec(dllimport) void __stdcall LeaveCriticalSection(void*);
+__declspec(dllimport) DWORD __stdcall WaitForSingleObjectEx(HANDLE,DWORD,BOOL);
+__declspec(dllimport) DWORD __stdcall GetCurrentThreadId();
+__declspec(dllimport) int __stdcall GetThreadPriority(HANDLE);
+__declspec(dllimport) HANDLE __stdcall GetCurrentThread();
+__declspec(dllimport) BOOL __stdcall DuplicateHandle(HANDLE,HANDLE,HANDLE,HANDLE*,DWORD,BOOL,DWORD);
+void __cdecl FixtureBeginThread(void*);
+__declspec(dllimport) BOOL __stdcall WriteFileEx(HANDLE,const void*,DWORD,OVERLAPPED*,IOCompletion);
+void __fastcall FixtureProcess(CThreadedFileManager*,void*);
+void __stdcall FixtureReadCompletion(DWORD,DWORD,OVERLAPPED*);
+typedef void (__fastcall* HardError)(const char*);
+extern HardError FixtureHardError;
+}
+#pragma comment(linker,"/alternatename:@FixtureProcess@8=?ProcessObjects@CThreadedFileManager@@AAEXXZ")
+#pragma comment(linker,"/alternatename:_FixtureBeginThread=?BeginThread@CThreadedFileManager@@CAXPAX@Z")
+#pragma comment(linker,"/alternatename:_FixtureReadCompletion@12=?OnFileReadCompletion@CThreadedFileManager@@CGXKKPAU_OVERLAPPED@@@Z")
+#pragma comment(linker,"/alternatename:_FixtureHardError=?m_harddiskErrorCallback@CThreadedFileManager@@0P6IXPBD@ZA")
+#pragma comment(linker,"/alternatename:@FixtureBankBeginRead@32=?BeginReadData@CBankFileAsyncEntry@@QAE?AV?$CCountedPointer@VCBankFileAsyncData@@@@KPAXKKW4EThreadedFilePriority@@@Z")
+#pragma section(".livemgr",read,write)
+extern "C" __declspec(allocate(".livemgr")) __declspec(align(4096)) unsigned char FixtureGlobalManagerStorage[4096]={0};
+#pragma comment(linker,"/alternatename:?g_FableThreadedFileManager_013BC870@@3VCThreadedFileManager@@A=_FixtureGlobalManagerStorage")
+static void Fail(const char* expr,int line) {
+ fprintf(stderr,"NATIVE_WORKER_FAILURE line=%d expr=%s error=%lu\n",line,expr,GetLastError());fflush(stderr);ExitProcess(80);
+}
+#define CHECK(x) do {if(!(x)) Fail(#x,__LINE__);}while(0)
+CCountedFileInstaller g_CFileInstallerSingleton_013CA818={0,0};
+void* __cdecl FableFileInstallerAllocate(fable_u32) {Fail("unexpected installer allocation",__LINE__);return 0;}
+CFileInstaller::CFileInstaller() {Fail("unexpected installer constructor",__LINE__);}
+CFileInstaller::~CFileInstaller() {Fail("unexpected installer destructor",__LINE__);}
+void CCountedFileInstaller::operator=(CFileInstaller*) {Fail("unexpected singleton assignment",__LINE__);}
+extern "C" bool FixtureInstallerDirty;
+#pragma comment(linker,"/alternatename:_FixtureInstallerDirty=?DirtyDisc@CFileInstaller@@1_NA")
+static unsigned long* g_installer;
+static DWORD g_afterCycle;
+double __fastcall GFGetTime();
+extern bool g_FableTimerInitialised_013CAA10;
+extern bool g_FableHighResolutionTimer_013CAA00;
+extern __int64 g_FableTimerFrequency_013CAA08;
+static DWORD g_mainThread,g_workerThread;
+static HANDLE g_ownedWorker;
+static unsigned long* g_manager;
+static bool g_shutdown,g_managerAllocated;
+static void* AllocateBankStorage(size_t);
+static bool DeleteBankStorage(void*);
+void* __cdecl operator new(size_t size) {
+ if(size==sizeof(CThreadedFileManager)) {
+  CHECK(!g_managerAllocated);g_managerAllocated=true;
+  memset(FixtureGlobalManagerStorage,0xcd,sizeof(FixtureGlobalManagerStorage));return FixtureGlobalManagerStorage;
+ }
+ if(size==72 || size==12)return AllocateBankStorage(size);
+ void* block=malloc(size);CHECK(block);return block;
+}
+struct Slot {
+ void** vtable;
+ unsigned long bankWords[(sizeof(CBankFileAsync)+32)/4],entryWords[12],bankHeader[5],restartHeader[5],runtimeEntry[3],ownerWords[2];
+ void* bankDataBlock;void* bankInfoBlock;void* bankNodeBlock;bool bankDataDeleted,bankInfoDeleted,bankNodeDeleted;unsigned bankEnters,bankLeaves,bankTries;
+ unsigned char bankExpected[72];
+ CThreadedFileManager::CFileObject* request;
+ void* overlap;
+ unsigned uid,offset,length,priority,device,begun,completed,frees,deletes,apcCompletions;
+ bool write,callback,retained,removing,userRemoved,cancelling,cancelled,probing,child;
+ unsigned long file[0x1c/4];
+ unsigned char buffer[128];
+};
+static Slot g_slots[56];static unsigned g_count,g_protectedCalls;
+static Slot* g_constructingBank;static Slot* g_releasingBank;
+static unsigned g_nativeBankCompletions,g_nativeBankDataDeletes,g_nativeBankInfoDeletes,g_nativeBankNodeDeletes;
+static unsigned g_startUID,g_childSubmissions,g_requestReuses,g_overlapReuses,g_successAPCs,g_successBytes;
+static unsigned g_zeroSubmissions,g_zeroPriorityMoves,g_zeroImmediateDeletes,g_zeroCallerDeletes,g_zeroExitDeletes;
+typedef void* (__stdcall* GlobalFreeFunction)(void*);
+extern "C" GlobalFreeFunction FixtureGlobalFreeImport;
+#pragma comment(linker,"/alternatename:_FixtureGlobalFreeImport=__imp__GlobalFree@4")
+static GlobalFreeFunction g_realGlobalFree;
+static void* __stdcall ObserveGlobalFree(void* block) {
+ unsigned i=0;while(i<g_count && (g_slots[i].overlap!=block || g_slots[i].frees))++i;CHECK(i<g_count);
+ Slot& slot=g_slots[i];CHECK(GetCurrentThreadId()==(slot.removing?g_mainThread:g_workerThread));
+ CHECK(!slot.probing && ++slot.frees==1 && !slot.deletes && (slot.removing?(!g_shutdown && (slot.retained || slot.cancelling)):g_shutdown==slot.retained));
+ void* result=g_realGlobalFree(block);CHECK(result==0);return result;
+}
+void __cdecl operator delete(void* block) {
+ if(DeleteBankStorage(block))return;
+ if(block==FixtureGlobalManagerStorage) {
+  CHECK(g_managerAllocated && g_shutdown);g_managerAllocated=false;
+  for(unsigned j=sizeof(CThreadedFileManager);j<sizeof(FixtureGlobalManagerStorage);++j)CHECK(FixtureGlobalManagerStorage[j]==0xcd);
+  return;
+ }
+ for(unsigned i=0;i<g_count;++i)if(g_slots[i].request==block && !g_slots[i].deletes) {
+  Slot& slot=g_slots[i];CHECK(GetCurrentThreadId()==(slot.removing?g_mainThread:g_workerThread) && slot.frees==1);
+  CHECK(!slot.probing && ++slot.deletes==1 && (slot.removing?(!g_shutdown && (slot.retained || slot.cancelling)):g_shutdown==slot.retained));
+  if(slot.child) {
+   CBankFileAsyncData* data=static_cast<CBankFileAsyncData*>(slot.bankDataBlock);
+   CHECK(slot.bankEnters==2 && slot.bankLeaves==4 && slot.bankTries==2);
+   CHECK(data && data->Finished && !data->ThreadedFileUID && data->Buffer==slot.buffer+16);
+   ++g_nativeBankCompletions;
+  }
+  if(!slot.uid) {if(slot.removing)++g_zeroCallerDeletes;else if(g_shutdown)++g_zeroExitDeletes;else ++g_zeroImmediateDeletes;}break;
+ }
+ free(block);
+}
+static DWORD g_installerThread;
+static HANDLE g_installerHandle;
+static HANDLE g_waitRelease;static unsigned g_waitSleeps;static volatile DWORD g_waitStarted;static volatile unsigned g_waitUID;
+static unsigned g_ackSignals,g_resumeSignals,g_pauseWaits,g_pauseReturns,g_idleReads,g_idleAlways;
+void __cdecl FableInstallerWorker_009C5870(void*);
+void CFileInstaller::DecompressionThreadMain() {Fail("cold decompression worker",__LINE__);}
+void CFileInstaller::PostFileReadCompletion(CActiveRead*) {Fail("cold installer completion",__LINE__);}
+void CFileInstaller::ProcessActiveFileForWrite(CActiveFile&) {Fail("cold installer write",__LINE__);}
+void CFileInstaller::ProcessReads() {
+ CHECK(GetCurrentThreadId()==g_installerThread && g_installer[(4+12)/4]==GetCurrentThreadId());++g_idleReads;
+}
+void CFileInstaller::ProcessAlways() {
+ CHECK(GetCurrentThreadId()==g_installerThread && g_installer[(4+12)/4]==GetCurrentThreadId());++g_idleAlways;
+}
+static unsigned __stdcall InstallerLaunch(void* object) {
+ g_installerThread=GetCurrentThreadId();FableInstallerWorker_009C5870(object);return 0;
+}
+typedef BOOL (__stdcall* SignalFunction)(HANDLE);
+typedef DWORD (__stdcall* WaitFunction)(HANDLE,DWORD,BOOL);
+typedef DWORD (__stdcall* SleepFunction)(DWORD,BOOL);
+extern "C" SleepFunction FixtureSleepImport;
+#pragma comment(linker,"/alternatename:_FixtureSleepImport=__imp__SleepEx@8")
+static SleepFunction g_realSleep;
+static DWORD __stdcall ObserveSleep(DWORD delay,BOOL alertable) {
+ if(GetCurrentThreadId()==g_mainThread) {
+ if(GetTickCount()-g_waitStarted>=5000) {
+  fprintf(stderr,"WAIT_DIAGNOSTIC uid=%u ack=%u resume=%u waits=%u returns=%u paused=%lu manager_count=%lu current=%08lx sleep=%u\n",g_waitUID,g_ackSignals,g_resumeSignals,g_pauseWaits,g_pauseReturns,g_installer[0x7c/4],g_manager[0x140/4],g_manager[0x138/4],g_waitSleeps);
+  for(unsigned i=0;i<g_count;++i)fprintf(stderr,"SLOT %u free=%u delete=%u begun=%u completed=%u status=%u priority=%u\n",i,g_slots[i].frees,g_slots[i].deletes,g_slots[i].begun,g_slots[i].completed,g_slots[i].deletes?99:unsigned(g_slots[i].request->LoadingStatus),g_slots[i].deletes?99:unsigned(g_slots[i].request->Desc.Priority));
+ }
+ CHECK(delay==0 && alertable && GetTickCount()-g_waitStarted<5000);++g_waitSleeps;CHECK(SetEvent(g_waitRelease));}
+ return g_realSleep(delay,alertable);
+}
+extern "C" SignalFunction FixtureSetEventImport;
+extern "C" WaitFunction FixtureWaitImport;
+#pragma comment(linker,"/alternatename:_FixtureSetEventImport=__imp__SetEvent@4")
+#pragma comment(linker,"/alternatename:_FixtureWaitImport=__imp__WaitForSingleObjectEx@12")
+static SignalFunction g_realSignal;static WaitFunction g_realWait;
+static BOOL __stdcall ObserveSignal(HANDLE event) {
+ if(g_installer) {
+  CFileInstaller* installer=reinterpret_cast<CFileInstaller*>(g_installer);
+  if(event==installer->PauseStartEvent) {CHECK(GetCurrentThreadId()==g_installerThread);if(!g_ackSignals)CHECK(WaitForSingleObject(g_waitRelease,5000)==WAIT_OBJECT_0);++g_ackSignals;}
+  if(event==installer->PauseFinishEvent) {CHECK(GetCurrentThreadId()==g_workerThread);++g_resumeSignals;}
+ }
+ return g_realSignal(event);
+}
+static DWORD __stdcall ObserveWait(HANDLE event,DWORD timeout,BOOL alertable) {
+ bool pause=g_installer && event==reinterpret_cast<CFileInstaller*>(g_installer)->PauseStartEvent;
+ if(pause) {CHECK(GetCurrentThreadId()==g_workerThread && timeout==0xffffffffUL && alertable);++g_pauseWaits;}
+ DWORD result=g_realWait(event,timeout,alertable);
+ if(pause) {CHECK(result==WAIT_OBJECT_0);++g_pauseReturns;}
+ return result;
+}
+static void InstallBankLockObservers();
+static void InstallObservers() {
+ InstallBankLockObservers();
+ DWORD protection,restored;
+ CHECK(VirtualProtect(&FixtureSleepImport,sizeof(FixtureSleepImport),4,&protection));
+ g_realSleep=FixtureSleepImport;FixtureSleepImport=ObserveSleep;
+ CHECK(VirtualProtect(&FixtureSleepImport,sizeof(FixtureSleepImport),protection,&restored));
+ CHECK(VirtualProtect(&FixtureSetEventImport,sizeof(FixtureSetEventImport),4,&protection));
+ g_realSignal=FixtureSetEventImport;FixtureSetEventImport=ObserveSignal;
+ CHECK(VirtualProtect(&FixtureSetEventImport,sizeof(FixtureSetEventImport),protection,&restored));
+ CHECK(VirtualProtect(&FixtureWaitImport,sizeof(FixtureWaitImport),4,&protection));
+ g_realWait=FixtureWaitImport;FixtureWaitImport=ObserveWait;
+ CHECK(VirtualProtect(&FixtureWaitImport,sizeof(FixtureWaitImport),protection,&restored));
+}
+extern "C" bool FixtureManagerDirty;
+#pragma comment(linker,"/alternatename:_FixtureManagerDirty=?m_bDirtyDiscError@CThreadedFileManager@@0_NA")
+static unsigned g_errorCallbacks,g_totalAPCErrors,g_totalHardErrors,g_readingRefusals,g_completedRefusals,g_pendingChecks;
+typedef BOOL (__stdcall* ReadFunction)(HANDLE,void*,DWORD,OVERLAPPED*,IOCompletion);
+extern "C" ReadFunction FixtureReadImport;
+#pragma comment(linker,"/alternatename:_FixtureReadImport=__imp__ReadFileEx@20")
+static ReadFunction g_realRead;static IOCompletion g_realCompletion;
+static void __fastcall ObserveHardError(const char* text) {
+ CHECK(text && !*text && GetCurrentThreadId()==g_workerThread);
+ CThreadedFileManager::CFileObject* object=reinterpret_cast<CThreadedFileManager::CFileObject*>(g_manager[0x138/4]);
+ CHECK(object && object->LoadingStatus==2 && object->PFile->deviceId_==0);++g_errorCallbacks;++g_totalHardErrors;
+}
+static void __stdcall ObserveAPC(DWORD error,DWORD transferred,OVERLAPPED* overlap) {
+ CHECK(GetCurrentThreadId()==g_workerThread);
+ unsigned i=0;while(i<g_count && (g_slots[i].overlap!=overlap || g_slots[i].frees))++i;CHECK(i<g_count);
+ Slot& slot=g_slots[i];CHECK(error==(slot.child?0:38) && transferred==(slot.child?slot.length:0));CHECK(++slot.apcCompletions==1 && overlap->hEvent==slot.request && slot.request->LoadingStatus==2);
+ unsigned char preserved[64];memcpy(preserved,slot.request,sizeof(preserved));slot.probing=true;
+ CHECK(!reinterpret_cast<CThreadedFile*>(slot.file)->RemoveObject(slot.uid));
+ CHECK(!slot.frees && !slot.deletes && memcmp(preserved,slot.request,sizeof(preserved))==0);slot.probing=false;++g_readingRefusals;
+ bool dirty=FixtureManagerDirty;unsigned before=g_errorCallbacks;if(slot.child) {++g_successAPCs;g_successBytes+=transferred;}else ++g_totalAPCErrors;
+ g_realCompletion(error,transferred,overlap);
+ CHECK(slot.request->LoadingStatus==3 && !reinterpret_cast<CFileInstaller*>(g_installer)->Paused);
+ CHECK(g_errorCallbacks==before+unsigned(!slot.child && slot.device==0));
+ CHECK(FixtureManagerDirty==(!slot.child && slot.device==1?true:dirty));
+}
+static BOOL __stdcall ObserveRead(HANDLE file,void* buffer,DWORD bytes,OVERLAPPED* overlap,IOCompletion completion) {
+ CHECK(completion && (!g_realCompletion || completion==g_realCompletion));g_realCompletion=completion;
+ unsigned i=0;while(i<g_count && (g_slots[i].overlap!=overlap || g_slots[i].frees))++i;CHECK(i<g_count);
+ if(g_slots[i].child)CHECK(g_slots[i].bankEnters==1 && g_slots[i].bankLeaves==3 && g_slots[i].bankTries==2);
+ CHECK(buffer==g_slots[i].buffer+16 && bytes==g_slots[i].length && file==reinterpret_cast<HANDLE>(g_slots[i].file[2]));
+ BOOL result=g_realRead(file,buffer,bytes,overlap,ObserveAPC);CHECK(result);return result;
+}
+static void InstallReadObserver() {
+ DWORD protection,restored;
+ CHECK(VirtualProtect(&FixtureReadImport,sizeof(FixtureReadImport),4,&protection));
+ g_realRead=FixtureReadImport;FixtureReadImport=ObserveRead;
+ CHECK(VirtualProtect(&FixtureReadImport,sizeof(FixtureReadImport),protection,&restored));
+}
+// Observe the newly created worker through an owned synchronization handle.
+struct ThreadEntry {DWORD size,usage,id,process;long basePriority,deltaPriority;DWORD flags;};
+extern "C" {
+__declspec(dllimport) HANDLE __stdcall CreateToolhelp32Snapshot(DWORD,DWORD);
+__declspec(dllimport) BOOL __stdcall Thread32First(HANDLE,ThreadEntry*);
+__declspec(dllimport) BOOL __stdcall Thread32Next(HANDLE,ThreadEntry*);
+__declspec(dllimport) DWORD __stdcall GetCurrentProcessId();
+__declspec(dllimport) HANDLE __stdcall OpenThread(DWORD,BOOL,DWORD);
+}
+static unsigned Threads(DWORD* ids) {
+ HANDLE snapshot=CreateToolhelp32Snapshot(4,0);CHECK(snapshot!=INVALID_HANDLE_VALUE);
+ ThreadEntry entry;entry.size=sizeof(entry);unsigned count=0;
+ BOOL found=Thread32First(snapshot,&entry);CHECK(found);
+ do {if(entry.process==GetCurrentProcessId()) {CHECK(count<128);ids[count++]=entry.id;}}while(Thread32Next(snapshot,&entry));
+ CHECK(CloseHandle(snapshot));return count;
+}
+static void CaptureWorker(DWORD* before,unsigned count) {
+ DWORD after[128];unsigned amount=Threads(after);g_workerThread=0;g_ownedWorker=0;
+ for(unsigned i=0;i<amount;++i) {unsigned n=0;while(n<count && before[n]!=after[i])++n;if(n==count) {CHECK(!g_workerThread);g_workerThread=after[i];}}
+ CHECK(g_workerThread && g_workerThread!=g_mainThread);g_ownedWorker=OpenThread(0x00100040,0,g_workerThread);CHECK(g_ownedWorker);
+}
+
+static void ReleaseBankOwner(Slot&);
+static void SubmitChild(Slot& parent);
+static void __fastcall Complete(void* self,void*,bool success) {
+ Slot& slot=*static_cast<Slot*>(self);
+ CHECK(success && slot.callback && GetCurrentThreadId()==g_workerThread);
+ CHECK(slot.request->LoadingStatus==CThreadedFileManager::FILE_LOADING_STATUS_READ_COMPLETED);
+ CHECK(g_manager[(0x14c+12)/4]!=GetCurrentThreadId() && g_installer[(4+12)/4]!=GetCurrentThreadId() && g_installer[0x7c/4]==g_afterCycle);
+ CHECK(++slot.completed==1 && !slot.frees && !slot.deletes && slot.apcCompletions==1);
+ unsigned char preserved[64];memcpy(preserved,slot.request,sizeof(preserved));slot.probing=true;
+ CHECK(!reinterpret_cast<CThreadedFile*>(slot.file)->RemoveObject(slot.uid));
+ CHECK(!slot.frees && !slot.deletes && memcmp(preserved,slot.request,sizeof(preserved))==0);slot.probing=false;++g_completedRefusals;
+
+ CHECK(slot.request->Desc.Priority==slot.priority || slot.request->Desc.Priority==THREADED_FILE_PRIORITY_BLOCKING);
+ OVERLAPPED* live=reinterpret_cast<OVERLAPPED*>(slot.request->Overlapped);
+ CHECK(live==slot.overlap && live->Offset==slot.offset && !live->OffsetHigh && live->hEvent==slot.request);
+ unsigned char parentBytes[64];memcpy(parentBytes,slot.request,sizeof(parentBytes));SubmitChild(slot);
+ CHECK(memcmp(parentBytes,slot.request,sizeof(parentBytes))==0);
+}
+static bool __fastcall Begin(void* self,void*,void** dst,EThreadedFilePriority priority) {
+ Slot& slot=*static_cast<Slot*>(self);
+ CHECK(slot.callback && !slot.write && dst==&slot.request->Desc.PDst && (priority==slot.request->Desc.Priority || slot.request->Desc.Priority==THREADED_FILE_PRIORITY_BLOCKING));
+ CHECK(slot.request->LoadingStatus==CThreadedFileManager::FILE_LOADING_STATUS_PENDING_LOCKED);
+ CHECK(g_manager[(0x14c+12)/4]!=GetCurrentThreadId());
+ EnterCriticalSection(g_manager+0x14c/4);++slot.begun;
+ if(slot.begun==1) {
+  unsigned char before[64];memcpy(before,slot.request,sizeof(before));slot.probing=true;
+  CHECK(!reinterpret_cast<CThreadedFile*>(slot.file)->RemoveObject(slot.uid));
+  CHECK(!slot.frees && !slot.deletes && memcmp(before,slot.request,sizeof(before))==0);slot.probing=false;++g_protectedCalls;
+  slot.priority=(unsigned(slot.request->Desc.Priority)+1)%7;
+  reinterpret_cast<CThreadedFile*>(slot.file)->SetObjectPriority(slot.uid,static_cast<EThreadedFilePriority>(slot.priority));
+  CHECK(slot.request->LoadingStatus==CThreadedFileManager::FILE_LOADING_STATUS_PENDING_LOCKED && slot.request->Desc.Priority==slot.priority);
+  LeaveCriticalSection(g_manager+0x14c/4);return false;
+ }
+ CHECK(slot.begun==2 && (slot.request->Desc.Priority==slot.priority || slot.request->Desc.Priority==THREADED_FILE_PRIORITY_BLOCKING));
+ LeaveCriticalSection(g_manager+0x14c/4);return true;
+}
+struct Node {unsigned char color,pad[3];Node* parent;Node* left;Node* right;unsigned key;CThreadedFileManager::CFileObject* value;};
+static Node* g_seen[56];static Node* g_order[56];static unsigned g_seenCount,g_orderCount;
+static unsigned Walk(Node* node,Node* parent) {
+ if(!node)return 1;CHECK(g_seenCount<56);
+ for(unsigned i=0;i<g_seenCount;++i)CHECK(g_seen[i]!=node);g_seen[g_seenCount++]=node;
+ CHECK(node->parent==parent && node->color<=1);
+ if(!node->color) {CHECK(!node->left || node->left->color==1);CHECK(!node->right || node->right->color==1);}
+ unsigned left=Walk(node->left,node);g_order[g_orderCount++]=node;unsigned right=Walk(node->right,node);CHECK(left==right);return left+node->color;
+}
+static void ValidateUID(bool completed) {
+ Node* header=reinterpret_cast<Node*>(g_manager[0x13c/4]);CHECK(header && !header->color);
+ g_seenCount=g_orderCount=0;Walk(header->parent,header);unsigned expected[56],index=0;
+ for(unsigned i=0;i<g_count;++i)if(!g_slots[i].cancelled && (!completed || (g_slots[i].retained && !g_slots[i].userRemoved)) && (!g_slots[i].deletes || (g_shutdown && g_slots[i].retained)))expected[index++]=i;
+ for(unsigned i=1;i<index;++i) {unsigned value=expected[i],j=i;while(j && g_slots[value].uid<g_slots[expected[j-1]].uid) {expected[j]=expected[j-1];--j;}expected[j]=value;}
+ CHECK(index==g_seenCount && index==g_orderCount && index==g_manager[0x140/4]);
+ for(unsigned i=0;i<index;++i)CHECK(g_order[i]->key==g_slots[expected[i]].uid && g_order[i]->value==g_slots[expected[i]].request);
+ if(index)CHECK(header->parent->color==1 && header->left==g_order[0] && header->right==g_order[index-1]);
+ else CHECK(!header->parent && header->left==header && header->right==header);
+}
+static Node* FindPendingNode(Node* node,CThreadedFileManager::CFileObject* object) {
+ if(!node || node->value==object)return node;Node* found=FindPendingNode(node->left,object);return found?found:FindPendingNode(node->right,object);
+}
+static void ValidatePendingQueues() {
+ unsigned total=0;
+ for(unsigned device=0;device<2;++device)for(unsigned priority=0;priority<7;++priority) {
+  unsigned at=1+(device*7+priority)*4;Node* header=reinterpret_cast<Node*>(g_manager[at]);
+  CHECK(header && !header->color);g_seenCount=g_orderCount=0;Walk(header->parent,header);
+  unsigned expected[56],count=0;
+  for(unsigned n=0;n<g_count;++n)if(!g_slots[n].cancelled && g_slots[n].device==device && (g_slots[n].callback?(g_slots[n].priority+1)%7:g_slots[n].priority)==priority)expected[count++]=n;
+  for(unsigned i=1;i<count;++i) {unsigned value=expected[i],j=i;while(j && (value%3<expected[j-1]%3 || (value%3==expected[j-1]%3 && value<expected[j-1]))) {expected[j]=expected[j-1];--j;}expected[j]=value;}
+  CHECK(count==g_seenCount && count==g_orderCount && count==g_manager[at+1]);total+=count;
+  if(count)CHECK(header->parent->color==1 && header->left==g_order[0] && header->right==g_order[count-1]);
+  else CHECK(!header->parent && header->left==header && header->right==header);
+  bool cursorValid=g_manager[at+3]==reinterpret_cast<DWORD>(header);
+  for(unsigned i=0;i<count;++i) {CHECK(g_order[i]->value==g_slots[expected[i]].request && g_order[i]->key==reinterpret_cast<DWORD>(g_slots[expected[i]].request));if(g_manager[at+3]==reinterpret_cast<DWORD>(g_order[i]))cursorValid=true;}
+  CHECK(cursorValid);
+ }
+ unsigned live=0;for(unsigned n=0;n<g_count;++n)if(!g_slots[n].cancelled)++live;CHECK(total==live);++g_pendingChecks;
+}
+static unsigned g_statisticsChecks;
+static void ValidateStatistics(unsigned pending,unsigned pendingBytes,unsigned finished,unsigned finishedBytes) {
+ const CThreadedFileManager& manager=*reinterpret_cast<CThreadedFileManager*>(g_manager);
+ CHECK(manager.GetTotalObjectsPendingCount()==long(pending));
+ CHECK(manager.GetTotalBytesPendingCount()==long(pendingBytes));
+ CHECK(manager.GetTotalObjectsFinishedCount()==long(finished));
+ CHECK(manager.GetTotalBytesFinishedCount()==long(finishedBytes));++g_statisticsChecks;
+}
+static void ValidateFinishedStatistics() {
+ unsigned count=0,bytes=0;
+ for(unsigned i=0;i<g_count;++i)if(g_slots[i].retained && !g_slots[i].userRemoved) {++count;bytes+=g_slots[i].length;}
+ ValidateStatistics(0,0,count,bytes);
+}
+static void ValidateCallbackStatistics(Slot& current) {
+ unsigned pending=0,pendingBytes=0,finished=0,finishedBytes=0;
+ for(unsigned i=0;i<g_count;++i) {
+  Slot& slot=g_slots[i];if(slot.cancelled || slot.userRemoved)continue;
+  if(&slot==&current || !slot.apcCompletions) {++pending;pendingBytes+=slot.length;}
+  else if(slot.retained) {++finished;finishedBytes+=slot.length;}
+ }
+ ValidateStatistics(pending,pendingBytes,finished,finishedBytes);
+}
+static void SubmitChild(Slot& parent) {
+ CHECK(GetCurrentThreadId()==g_workerThread && !parent.child && parent.callback && parent.completed==1);
+ CHECK(g_manager[(0x14c+12)/4]!=GetCurrentThreadId());EnterCriticalSection(g_manager+0x14c/4);
+ ValidateCallbackStatistics(parent);unsigned n=g_count;CHECK(n>=28 && n<40);
+ Slot& child=g_slots[n];child.child=true;child.priority=(parent.priority+2)%7;child.device=parent.device;child.offset=0x1000+n*64;child.length=19+n%7;
+ child.file[1]=child.device;child.file[2]=parent.file[2];child.file[5]=n%3;memset(child.buffer,0xcd,sizeof(child.buffer));
+ CThreadedFileObjectDesc desc;memset(&desc,0,sizeof(desc));desc.PDst=child.buffer+16;desc.FilePos=child.offset;desc.Size=child.length;desc.Priority=static_cast<EThreadedFilePriority>(child.priority);
+ LeaveCriticalSection(g_manager+0x14c/4);CHECK(g_manager[(0x14c+12)/4]!=GetCurrentThreadId());
+
+ // The native public API allocates the data and control block and registers it.
+ CBankFileAsync* bank=reinterpret_cast<CBankFileAsync*>(child.bankWords+4);
+ CBankFileAsyncEntry* entry=reinterpret_cast<CBankFileAsyncEntry*>(child.entryWords+4);
+ memset(child.bankWords,0,sizeof(child.bankWords));memset(child.entryWords,0,sizeof(child.entryWords));
+ for(unsigned guard=0;guard<4;++guard) {child.bankWords[guard]=0xcdcdcdcd;child.bankWords[guard+4+sizeof(CBankFileAsync)/4]=0xcdcdcdcd;}
+ InitializeCriticalSection(bank->CriticalSection);
+ child.bankHeader[0]=0;child.bankHeader[1]=0;child.bankHeader[2]=child.bankHeader[3]=reinterpret_cast<DWORD>(child.bankHeader);
+ child.restartHeader[0]=0;child.restartHeader[1]=0;child.restartHeader[2]=child.restartHeader[3]=reinterpret_cast<DWORD>(child.restartHeader);
+ *reinterpret_cast<void**>(reinterpret_cast<char*>(bank)+0x128)=child.bankHeader;
+ *reinterpret_cast<void**>(reinterpret_cast<char*>(bank)+0x134)=child.restartHeader;
+ *reinterpret_cast<CThreadedFile**>(reinterpret_cast<char*>(bank)+0x110)=reinterpret_cast<CThreadedFile*>(child.file);
+ *reinterpret_cast<void**>(reinterpret_cast<char*>(bank)+0x20)=child.runtimeEntry;
+ bank->Alignment=1;bank->PackedDataOffset.Size=0;child.runtimeEntry[0]=0;
+ *reinterpret_cast<CBankFileAsync**>(reinterpret_cast<char*>(entry)+4)=bank;entry->Index=0;
+ g_constructingBank=&child;
+ CHECK(FixtureBankBeginRead(entry,0,child.ownerWords,child.offset,child.buffer+16,child.length,sizeof(child.buffer)-32,static_cast<EThreadedFilePriority>(child.priority))==child.ownerWords);
+ g_constructingBank=0;
+ CCountedPointer<CBankFileAsyncData>* owner=reinterpret_cast<CCountedPointer<CBankFileAsyncData>*>(child.ownerWords);
+ CBankFileAsyncData* bankData=owner->Data;CHECK(bankData==child.bankDataBlock && owner->Info==child.bankInfoBlock);
+ CHECK(owner->Info && owner->Info->RefCount==1 && owner->Info->Data==bankData && owner->Info->DeleteFunc);
+ CHECK(bankData->Length==child.length && !bankData->SkipBytes && !bankData->Aborted && !bankData->BufferLocked && !bankData->AllowRestart);
+ CHECK(!bankData->Finished && bankData->Buffer==child.buffer+16 && bankData->Data==child.buffer+16 && !bankData->MemoryPool && bankData->MemoryHandle==-1 && !bankData->InternalAllocatedBufferSize);
+ child.uid=bankData->ThreadedFileUID;desc.PCallback=bankData;
+ // Native descriptor construction preserves its three alignment bytes.
+ for(unsigned pad=17;pad<20;++pad)reinterpret_cast<unsigned char*>(&desc)[pad]=0xcd;
+ CHECK(memcmp(&desc,&bankData->LoadDesc,sizeof(desc))==0);
+ CHECK(*reinterpret_cast<unsigned long*>(reinterpret_cast<char*>(bank)+0x12c)==1);
+ CHECK(child.bankHeader[1] && *reinterpret_cast<CBankFileAsyncData**>(child.bankHeader[1]+16)==bankData);
+ memcpy(child.bankExpected,bankData,72);
+
+ CHECK(g_manager[(0x14c+12)/4]!=GetCurrentThreadId());EnterCriticalSection(g_manager+0x14c/4);
+ CHECK(child.uid==unsigned(g_startUID+n));
+ Node* header=reinterpret_cast<Node*>(g_manager[0x13c/4]);Node* node=header->parent;
+ while(node && node->key!=child.uid)node=child.uid<node->key?node->left:node->right;CHECK(node);
+ child.request=node->value;child.overlap=child.request->Overlapped;
+ CHECK(child.request->UID==child.uid && child.request->PManager==reinterpret_cast<CThreadedFileManager*>(g_manager) && child.request->PFile==reinterpret_cast<CThreadedFile*>(child.file));
+ CHECK(memcmp(&child.request->Desc,&desc,sizeof(desc))==0 && child.request->LoadingStatus==0);
+ child.request->Desc.PDst=0; // Require native OnFileReadBegin to publish Buffer.
+ unsigned queue=1+(child.device*7+child.priority)*4;Node* pendingHeader=reinterpret_cast<Node*>(g_manager[queue]);
+ Node* pendingNode=FindPendingNode(pendingHeader->parent,child.request);
+ CHECK(pendingNode && pendingNode->key==reinterpret_cast<DWORD>(child.request) && g_manager[queue+1]>0);
+ bool requestReuse=false,overlapReuse=false;
+ for(unsigned i=0;i<n;++i) {
+  if(g_slots[i].request==child.request) {CHECK(g_slots[i].deletes==1);requestReuse=true;}
+  if(g_slots[i].overlap==child.overlap) {CHECK(g_slots[i].frees==1);overlapReuse=true;}
+ }
+ if(requestReuse)++g_requestReuses;if(overlapReuse)++g_overlapReuses;
+ for(unsigned i=0;i<20;++i)CHECK(reinterpret_cast<unsigned char*>(child.overlap)[i]==0);
+ ++g_count;++g_childSubmissions;ValidateUID(false);ValidateCallbackStatistics(parent);
+ CHECK(g_manager[0x168/4]==unsigned(g_startUID+g_count));LeaveCriticalSection(g_manager+0x14c/4);
+ CHECK(g_manager[(0x14c+12)/4]!=GetCurrentThreadId());
+}
+static unsigned __stdcall Launch(void* context) {FixtureBeginThread(context);return 0;}
+static unsigned char Payload(unsigned i) {return static_cast<unsigned char>(i*37+23);}
+static void Run(HANDLE input,HANDLE output,unsigned variant,DWORD paused,bool running,bool dirty) {
+ g_count=0;g_protectedCalls=0;g_errorCallbacks=g_readingRefusals=g_completedRefusals=0;FixtureManagerDirty=false;g_shutdown=false;g_installerThread=0;g_waitSleeps=0;g_waitRelease=CreateEventA(0,1,0,0);CHECK(g_waitRelease);g_ackSignals=g_resumeSignals=g_pauseWaits=g_pauseReturns=g_idleReads=g_idleAlways=0;memset(g_slots,0,sizeof(g_slots));
+ unsigned long installer[0xa0/4];memset(installer,0,sizeof(installer));g_installer=installer;
+ CFileInstaller* installerObject=reinterpret_cast<CFileInstaller*>(installer);
+ CHECK(!paused && running && !dirty);installerObject->Running=false;installerObject->Paused=0;FixtureInstallerDirty=false;
+ HANDLE installerEvent=CreateEventA(0,0,0,0),pauseStart=CreateEventA(0,0,0,0),pauseFinish=CreateEventA(0,0,0,0);
+ CHECK(installerEvent && pauseStart && pauseFinish);
+ installerObject->Event=installerEvent;installerObject->PauseStartEvent=pauseStart;installerObject->PauseFinishEvent=pauseFinish;
+ InitializeCriticalSection(installerObject->CriticalSection);
+ g_CFileInstallerSingleton_013CA818.object=installerObject;
+ void* startHead[2];void* startNode[2];void* idleHead[2];
+ startHead[0]=startHead[1]=startNode;startNode[0]=startNode[1]=startHead;idleHead[0]=idleHead[1]=idleHead;
+ installer[0x38/4]=reinterpret_cast<DWORD>(startHead);installer[0x3c/4]=reinterpret_cast<DWORD>(idleHead);installer[0x68/4]=1;
+ unsigned installerID;g_installerHandle=reinterpret_cast<HANDLE>(_beginthreadex(0,0,InstallerLaunch,installer,0,&installerID));CHECK(g_installerHandle);
+ DWORD installerStarted=GetTickCount();
+ for(;;) {
+  EnterCriticalSection(installerObject->CriticalSection);bool ready=installerObject->Running;LeaveCriticalSection(installerObject->CriticalSection);
+  if(ready)break;CHECK(GetTickCount()-installerStarted<5000);Sleep(1);
+ }
+ CHECK(g_installerThread==installerID && GetThreadPriority(g_installerHandle)==1);
+ CHECK(WaitForSingleObject(pauseStart,0)==WAIT_TIMEOUT && WaitForSingleObject(pauseFinish,0)==WAIT_TIMEOUT);
+
+ DWORD afterPause=paused+1;g_afterCycle=afterPause ? afterPause-1:0;
+ DWORD previousThreads[128];unsigned previousCount=Threads(previousThreads);g_mainThread=GetCurrentThreadId();
+ CThreadedFileManager* owner=new CThreadedFileManager;CHECK(owner==reinterpret_cast<CThreadedFileManager*>(FixtureGlobalManagerStorage) && owner==&g_FableThreadedFileManager_013BC870);CaptureWorker(previousThreads,previousCount);unsigned long* manager=reinterpret_cast<unsigned long*>(owner);
+ EnterCriticalSection(manager+0x14c/4);
+ for(unsigned i=0;i<15;++i) {
+  unsigned at=i==14 ? 0x13c/4 : 1+i*4;unsigned long* header=reinterpret_cast<unsigned long*>(manager[at]);
+  CHECK(header && !manager[at+1] && !header[1] && header[2]==reinterpret_cast<DWORD>(header) && header[3]==reinterpret_cast<DWORD>(header));
+  if(i<14)CHECK(manager[at+3]==reinterpret_cast<DWORD>(header));
+  for(unsigned j=0;j<i;++j)CHECK(manager[j==14 ? 0x13c/4 : 1+j*4]!=manager[at]);
+ }
+ CHECK(!manager[0x138/4] && manager[0x168/4]==1 && !manager[0x16c/4]);
+ g_manager=manager;ValidateStatistics(0,0,0,0);
+ unsigned startUID=variant?0xfffffffeUL:0xfffffff0UL;manager[0x168/4]=startUID;g_startUID=startUID;
+ void* vtable[3]={0,reinterpret_cast<void*>(Begin),reinterpret_cast<void*>(Complete)};
+ const CThreadedFileManager& view=*owner;unsigned submittedBytes=0;
+ for(unsigned n=0;n<28;++n) {
+  Slot& slot=g_slots[n];slot.vtable=vtable;slot.priority=n%7;slot.device=(n/7)%2;slot.offset=0x9000+n*64;slot.length=17+n%7;
+  slot.write=false;slot.callback=((n/2+variant)%2)!=0;slot.retained=((n/4+variant)%2)!=0;
+  slot.file[1]=slot.device;slot.file[2]=reinterpret_cast<DWORD>(slot.write?output:input);slot.file[5]=n%3;
+  reinterpret_cast<unsigned char*>(slot.file)[0x18]=slot.write;
+  memset(slot.buffer,0xcd,sizeof(slot.buffer));
+  if(slot.write)for(unsigned j=0;j<slot.length;++j)slot.buffer[16+j]=Payload(slot.offset+j)^0x5a;
+  CThreadedFileObjectDesc desc;memset(&desc,0,sizeof(desc));
+  desc.PDst=slot.buffer+16;desc.FilePos=slot.offset;desc.Size=slot.length;
+  desc.Priority=static_cast<EThreadedFilePriority>(slot.callback && !slot.write?(slot.priority+1)%7:slot.priority);
+  desc.QueueWhenFinished=slot.retained;desc.PCallback=slot.callback?reinterpret_cast<CThreadedFileCallback*>(&slot):0;
+  unsigned uid=reinterpret_cast<CThreadedFile*>(slot.file)->AddObject(desc);CHECK(uid==unsigned(startUID+n));slot.uid=uid;if(!uid)++g_zeroSubmissions;
+  Node* header=reinterpret_cast<Node*>(manager[0x13c/4]);Node* node=header->parent;
+  while(node && node->key!=uid)node=uid<node->key?node->left:node->right;CHECK(node);
+  slot.request=node->value;slot.overlap=slot.request->Overlapped;++g_count;
+  CHECK(slot.request->UID==uid && slot.request->PManager==owner && slot.request->PFile==reinterpret_cast<CThreadedFile*>(slot.file));
+  for(unsigned j=0;j<20;++j)CHECK(reinterpret_cast<unsigned char*>(slot.overlap)[j]==0);
+  CHECK(reinterpret_cast<CThreadedFile*>(slot.file)->ObjectExists(uid) && !reinterpret_cast<CThreadedFile*>(slot.file)->IsObjectFinished(uid));ValidateUID(false);submittedBytes+=slot.length;ValidateStatistics(n+1,submittedBytes,0,0);
+ }
+ CHECK(manager[0x168/4]==unsigned(startUID+28));
+ unsigned zeroIndex=variant?2:16;Slot& zero=g_slots[zeroIndex];CHECK(!zero.uid && !zero.callback);
+ zero.priority=(zero.priority+3)%7;reinterpret_cast<CThreadedFile*>(zero.file)->SetObjectPriority(0,static_cast<EThreadedFilePriority>(zero.priority));
+ CHECK(zero.request->Desc.Priority==zero.priority && zero.request->LoadingStatus==0);++g_zeroPriorityMoves;
+ ValidateUID(false);
+ ValidatePendingQueues();unsigned remainingBytes=submittedBytes;
+ for(unsigned step=0;step<4;++step) {
+  Slot& slot=g_slots[step*7];unsigned priority=slot.request->Desc.Priority;
+  unsigned at=1+(slot.device*7+priority)*4;Node* header=reinterpret_cast<Node*>(manager[at]);Node* target=FindPendingNode(header->parent,slot.request);CHECK(target);
+  if(step%2==0)manager[at+3]=reinterpret_cast<DWORD>(target);
+  slot.removing=slot.cancelling=true;CHECK(reinterpret_cast<CThreadedFile*>(slot.file)->RemoveObject(slot.uid));
+  slot.removing=slot.cancelling=false;slot.cancelled=slot.userRemoved=true;remainingBytes-=slot.length;
+  CHECK(slot.frees==1 && slot.deletes==1 && manager[at+3]!=reinterpret_cast<DWORD>(target));
+  CHECK(!reinterpret_cast<CThreadedFile*>(slot.file)->ObjectExists(slot.uid) && reinterpret_cast<CThreadedFile*>(slot.file)->IsObjectFinished(slot.uid));
+  CHECK(reinterpret_cast<CThreadedFile*>(slot.file)->RemoveObject(slot.uid) && slot.frees==1 && slot.deletes==1);
+  ValidateUID(false);ValidatePendingQueues();ValidateStatistics(27-step,remainingBytes,0,0);
+ }
+ for(unsigned p=0;p<7;++p)manager[0xe4/4+p]=0;
+ for(unsigned p=0;p<7;++p)reinterpret_cast<double*>(reinterpret_cast<unsigned char*>(manager)+0x100)[p]=9.0;
+ reinterpret_cast<float*>(reinterpret_cast<unsigned char*>(manager)+0x170)[0]=0.25f;
+ reinterpret_cast<float*>(reinterpret_cast<unsigned char*>(manager)+0x170)[1]=0.5f;
+ CHECK(manager[0x164/4] && reinterpret_cast<unsigned char*>(manager)[0x148]);
+ CHECK(g_mainThread==GetCurrentThreadId() && g_workerThread && g_ownedWorker);
+ LeaveCriticalSection(manager+0x14c/4);
+ g_waitStarted=GetTickCount();
+ for(unsigned n=0;n<28;++n) {g_waitUID=g_slots[n].uid;reinterpret_cast<CThreadedFile*>(g_slots[n].file)->WaitForObjectToFinish(g_waitUID);}
+ CHECK(g_count==40 && g_waitSleeps>0);
+ for(unsigned n=28;n<g_count;++n) {g_waitUID=g_slots[n].uid;reinterpret_cast<CThreadedFile*>(g_slots[n].file)->WaitForObjectToFinish(g_waitUID);}
+ // Repeat every completed/missing UID and an unrelated UID; all must return.
+ for(unsigned n=0;n<28;++n) {g_waitUID=g_slots[n].uid;reinterpret_cast<CThreadedFile*>(g_slots[n].file)->WaitForObjectToFinish(g_waitUID);}
+ reinterpret_cast<CThreadedFile*>(g_slots[0].file)->WaitForObjectToFinish(0x7fffffffUL);
+ EnterCriticalSection(manager+0x14c/4);ValidateUID(true);ValidateFinishedStatistics();CHECK(!manager[0x138/4]);
+ for(unsigned n=0;n<g_count;++n) {
+  Slot& slot=g_slots[n];
+  if(slot.cancelled) {
+   CHECK(slot.frees==1 && slot.deletes==1 && !slot.apcCompletions && !slot.begun && !slot.completed);
+   CHECK(!reinterpret_cast<CThreadedFile*>(slot.file)->ObjectExists(slot.uid) && reinterpret_cast<CThreadedFile*>(slot.file)->IsObjectFinished(slot.uid));
+   for(unsigned j=0;j<sizeof(slot.buffer);++j)CHECK(slot.buffer[j]==0xcd);continue;
+  }
+  CHECK(reinterpret_cast<CThreadedFile*>(slot.file)->ObjectExists(slot.uid)==slot.retained && reinterpret_cast<CThreadedFile*>(slot.file)->IsObjectFinished(slot.uid));
+  CHECK(slot.frees==unsigned(!slot.retained) && slot.deletes==unsigned(!slot.retained));
+  CHECK(slot.completed==unsigned(slot.callback) && slot.begun==2*unsigned(slot.callback && !slot.write));
+  if(slot.retained)CHECK(slot.request->LoadingStatus==4 && (slot.request->Desc.Priority==slot.priority || slot.request->Desc.Priority==THREADED_FILE_PRIORITY_BLOCKING));
+  for(unsigned j=0;j<slot.length;++j)CHECK(slot.buffer[16+j]==(slot.child?Payload(slot.offset+j):0xcd));
+  CHECK(slot.apcCompletions==1);
+  for(unsigned j=0;j<16;++j)CHECK(slot.buffer[j]==0xcd);
+  for(unsigned j=16+slot.length;j<sizeof(slot.buffer);++j)CHECK(slot.buffer[j]==0xcd);
+ }
+ CHECK(g_protectedCalls==12 && g_readingRefusals==36 && g_completedRefusals==12 && g_errorCallbacks==12 && FixtureManagerDirty);
+ for(unsigned n=0;n<28;++n) {
+  Slot& slot=g_slots[n];if(slot.cancelled || !slot.retained || n%2)continue;
+  slot.removing=true;CHECK(reinterpret_cast<CThreadedFile*>(slot.file)->RemoveObject(slot.uid));slot.removing=false;slot.userRemoved=true;
+  CHECK(slot.frees==1 && slot.deletes==1);
+  CHECK(!reinterpret_cast<CThreadedFile*>(slot.file)->ObjectExists(slot.uid) && reinterpret_cast<CThreadedFile*>(slot.file)->IsObjectFinished(slot.uid));
+  CHECK(reinterpret_cast<CThreadedFile*>(slot.file)->RemoveObject(slot.uid) && slot.frees==1 && slot.deletes==1);ValidateUID(true);ValidateFinishedStatistics();
+ }
+ CHECK(reinterpret_cast<CThreadedFile*>(g_slots[0].file)->RemoveObject(0x7fffffffUL));ValidateFinishedStatistics();
+ for(unsigned q=0;q<14;++q) {
+  unsigned at=1+q*4;Node* header=reinterpret_cast<Node*>(manager[at]);
+  CHECK(!manager[at+1] && !header->parent && header->left==header && header->right==header && manager[at+3]==reinterpret_cast<DWORD>(header));
+ }
+ CHECK(view.IsObjectFinished(0x7fffffffUL) && !view.ObjectExists(0x7fffffffUL));
+ CHECK(GetThreadPriority(g_ownedWorker)==1);g_shutdown=true;
+ LeaveCriticalSection(manager+0x14c/4);
+ reinterpret_cast<CThreadedFileManager*>(manager)->Uninitialise();
+ HANDLE thread=g_ownedWorker;CHECK(thread && WaitForSingleObject(thread,5000)==WAIT_OBJECT_0);
+ CHECK(g_workerThread && g_workerThread!=g_mainThread);
+ for(unsigned bankIndex=28;bankIndex<g_count;++bankIndex)ReleaseBankOwner(g_slots[bankIndex]);
+ for(unsigned n=0;n<g_count;++n)CHECK(g_slots[n].frees==1 && g_slots[n].deletes==1);
+ CHECK(!reinterpret_cast<unsigned char*>(manager)[0x148] && reinterpret_cast<unsigned char*>(manager)[0x149] && reinterpret_cast<unsigned char*>(manager)[0x14a]);
+ CHECK(manager[0x164/4]==0);
+ ValidateUID(true);
+ CHECK(installerObject->Paused==0 && installerObject->Running && !FixtureInstallerDirty);
+ CHECK(g_ackSignals==36 && g_resumeSignals==36 && g_pauseWaits==36 && g_pauseReturns==36);
+ CHECK(g_idleReads && g_idleAlways);
+ EnterCriticalSection(installerObject->CriticalSection);reinterpret_cast<unsigned char*>(installer)[0x7a]=1;LeaveCriticalSection(installerObject->CriticalSection);
+ CHECK(SetEvent(installerEvent) && WaitForSingleObject(g_installerHandle,5000)==WAIT_OBJECT_0);
+ CHECK(reinterpret_cast<unsigned char*>(installer)[0x78]==1 && !installerObject->Running && installerObject->Paused==0);
+ CHECK(CloseHandle(g_installerHandle));g_installerHandle=0;
+ DeleteCriticalSection(installerObject->CriticalSection);
+ CHECK(CloseHandle(installerEvent) && CloseHandle(pauseStart) && CloseHandle(pauseFinish));
+ g_CFileInstallerSingleton_013CA818.object=0;g_installer=0;
+ delete owner;CHECK(!g_managerAllocated);for(unsigned n=0;n<g_count;++n)CHECK(g_slots[n].frees==1 && g_slots[n].deletes==1);
+ CHECK(CloseHandle(thread) && CloseHandle(g_waitRelease));g_waitRelease=0;g_ownedWorker=0;g_manager=0;g_count=0;
+}
+int main(int argc,char** argv) {
+ CHECK(argc==3 && !FixtureHardError);InstallObservers();InstallReadObserver();FixtureHardError=ObserveHardError;
+ DWORD importProtection,restoredProtection;CHECK(VirtualProtect(&FixtureGlobalFreeImport,sizeof(FixtureGlobalFreeImport),4,&importProtection));
+ g_realGlobalFree=FixtureGlobalFreeImport;FixtureGlobalFreeImport=ObserveGlobalFree;
+ CHECK(VirtualProtect(&FixtureGlobalFreeImport,sizeof(FixtureGlobalFreeImport),importProtection,&restoredProtection));
+ // Actual manager allocation uses the global storage addressed by file wrappers.
+ CHECK(!g_managerAllocated);
+ CHECK(!g_FableTimerInitialised_013CAA10);
+ HANDLE input=CreateFileA(argv[1],GENERIC_READ,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,0);
+ HANDLE output=CreateFileA(argv[2],GENERIC_READ|0x40000000UL,FILE_SHARE_READ,0,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,0);
+ CHECK(input!=INVALID_HANDLE_VALUE && output!=INVALID_HANDLE_VALUE);
+ unsigned count=0;
+ for(unsigned repetition=0;repetition<12;++repetition)for(unsigned variant=0;variant<2;++variant) {
+  Run(input,output,variant,0,true,false);++count;
+ }
+ CHECK(CloseHandle(input) && CloseHandle(output));
+ CHECK(g_FableTimerInitialised_013CAA10 && g_FableHighResolutionTimer_013CAA00 && g_FableTimerFrequency_013CAA08>0);
+ CHECK(GFGetTime()>0.0);
+ CHECK(g_statisticsChecks==1560 && g_totalAPCErrors==576 && g_totalHardErrors==288 && g_pendingChecks==120 && g_zeroSubmissions==24 && g_zeroPriorityMoves==24 && g_zeroImmediateDeletes==12 && g_zeroCallerDeletes==12 && !g_zeroExitDeletes && g_childSubmissions==288 && g_successAPCs==288 && g_successBytes==6216 && FixtureManagerDirty);
+ printf("NATIVE_BANK_BEGIN_READ_PASS batches=%u requests=960 reads=864 writes=0 joins=24 shutdowns=24 callbacks=288 immediate_deletions=576 exit_objects=144 overlap_frees=960 installer_joins=24 acknowledgments=864 pause_waits=864 resumes=864 wait_calls=1656 blocking_batches=24 global_managers=24 file_submissions=960 file_priorities=312 caller_retirements=144 protected_refusals=1440 missing_removals=264 statistics_checks=1560 statistic_calls=6240 eof_apcs=576 hard_errors=288 dvd_errors=288 pending_cancellations=96 pending_tree_checks=120 zero_submissions=24 zero_priority_moves=24 zero_immediate=12 zero_caller=12 child_submissions=288 child_bytes=6216\n",count);CHECK(g_nativeBankCompletions==288 && g_nativeBankDataDeletes==288 && g_nativeBankInfoDeletes==288 && g_nativeBankNodeDeletes==288);printf("BANK_LIFETIME completions=%u data_deletes=%u info_deletes=%u nodes=%u\n",g_nativeBankCompletions,g_nativeBankDataDeletes,g_nativeBankInfoDeletes,g_nativeBankNodeDeletes);printf("ALLOCATION_REUSE requests=%u overlaps=%u\n",g_requestReuses,g_overlapReuses);return 0;
+}
+
+typedef void (__stdcall* BankLockCall)(void*);
+typedef int (__stdcall* BankTryCall)(void*);
+extern "C" BankLockCall FixtureBankEnterImport,FixtureBankLeaveImport;
+extern "C" BankTryCall FixtureBankTryImport;
+#pragma comment(linker,"/alternatename:_FixtureBankEnterImport=__imp__EnterCriticalSection@4")
+#pragma comment(linker,"/alternatename:_FixtureBankLeaveImport=__imp__LeaveCriticalSection@4")
+#pragma comment(linker,"/alternatename:_FixtureBankTryImport=__imp__TryEnterCriticalSection@4")
+static BankLockCall g_realBankEnter,g_realBankLeave;static BankTryCall g_realBankTry;
+static Slot* BankForSection(void* section) {
+ if(g_constructingBank && section==reinterpret_cast<CBankFileAsync*>(g_constructingBank->bankWords+4)->CriticalSection)return g_constructingBank;
+ for(unsigned i=28;i<g_count;++i)if(g_slots[i].child && !g_slots[i].bankDataDeleted && section==reinterpret_cast<CBankFileAsync*>(g_slots[i].bankWords+4)->CriticalSection)return &g_slots[i];
+ return 0;
+}
+static void __stdcall ObserveBankEnter(void* section) {
+ Slot* slot=BankForSection(section);
+ if(slot) {
+  CHECK(*reinterpret_cast<unsigned long*>(static_cast<char*>(section)+8)==0);
+  CHECK(GetCurrentThreadId()==(g_releasingBank?g_mainThread:g_workerThread));
+  CHECK(++slot->bankEnters<=3);
+  if(slot==g_constructingBank)CHECK(static_cast<CBankFileAsyncData*>(slot->bankDataBlock)->InternalAllocatedBufferSize==0xcdcdcdcdUL);
+ }
+ g_realBankEnter(section);
+}
+static void __stdcall ObserveBankLeave(void* section) {
+ Slot* slot=BankForSection(section);
+ if(slot) {CHECK(GetCurrentThreadId()==(g_releasingBank?g_mainThread:g_workerThread));CHECK(++slot->bankLeaves<=5);}
+ g_realBankLeave(section);
+}
+static int __stdcall ObserveBankTry(void* section) {
+ Slot* slot=BankForSection(section);
+ if(slot) {
+  CHECK(GetCurrentThreadId()==g_workerThread && slot->bankTries<2);
+  CHECK(*reinterpret_cast<unsigned long*>(static_cast<char*>(section)+8)==slot->bankTries);++slot->bankTries;
+ }
+ int result=g_realBankTry(section);if(slot)CHECK(result);return result;
+}
+static void InstallBankLockObservers() {
+ DWORD protection,restored;
+ CHECK(VirtualProtect(&FixtureBankEnterImport,sizeof(FixtureBankEnterImport),4,&protection));
+ g_realBankEnter=FixtureBankEnterImport;FixtureBankEnterImport=ObserveBankEnter;
+ CHECK(VirtualProtect(&FixtureBankEnterImport,sizeof(FixtureBankEnterImport),protection,&restored));
+ CHECK(VirtualProtect(&FixtureBankLeaveImport,sizeof(FixtureBankLeaveImport),4,&protection));
+ g_realBankLeave=FixtureBankLeaveImport;FixtureBankLeaveImport=ObserveBankLeave;
+ CHECK(VirtualProtect(&FixtureBankLeaveImport,sizeof(FixtureBankLeaveImport),protection,&restored));
+ CHECK(VirtualProtect(&FixtureBankTryImport,sizeof(FixtureBankTryImport),4,&protection));
+ g_realBankTry=FixtureBankTryImport;FixtureBankTryImport=ObserveBankTry;
+ CHECK(VirtualProtect(&FixtureBankTryImport,sizeof(FixtureBankTryImport),protection,&restored));
+}
+static void CheckBankAllocation(void* block,unsigned size) {
+ unsigned char* bytes=static_cast<unsigned char*>(block);
+ for(unsigned i=0;i<16;++i)CHECK(bytes[int(i)-16]==0xcd && bytes[size+i]==0xcd);
+}
+static void* AllocateBankStorage(size_t size) {
+ CHECK(g_constructingBank && GetCurrentThreadId()==g_workerThread && (size==72 || size==12));
+ void*& output=size==72?g_constructingBank->bankDataBlock:g_constructingBank->bankInfoBlock;CHECK(!output);
+ unsigned char* allocation=static_cast<unsigned char*>(malloc(size+32));CHECK(allocation);memset(allocation,0xcd,size+32);
+ output=allocation+16;return output;
+}
+static bool DeleteBankStorage(void* block) {
+ for(unsigned i=0;i<g_count;++i) {
+  Slot& slot=g_slots[i];bool data=block==slot.bankDataBlock,info=block==slot.bankInfoBlock;
+  if(!data && !info)continue;
+  CHECK(g_releasingBank==&slot && GetCurrentThreadId()==g_mainThread && g_shutdown);
+  bool& deleted=data?slot.bankDataDeleted:slot.bankInfoDeleted;CHECK(!deleted);deleted=true;
+  CHECK(slot.bankEnters==3 && slot.bankLeaves==5 && slot.bankTries==2);
+  CheckBankAllocation(block,data?72:12);if(data)++g_nativeBankDataDeletes;else ++g_nativeBankInfoDeletes;
+  free(static_cast<unsigned char*>(block)-16);return true;
+ }
+ return false;
+}
+static void ReleaseBankOwner(Slot& slot) {
+ CBankFileAsync* bank=reinterpret_cast<CBankFileAsync*>(slot.bankWords+4);
+ CCountedPointer<CBankFileAsyncData>* owner=reinterpret_cast<CCountedPointer<CBankFileAsyncData>*>(slot.ownerWords);
+ CHECK(slot.child && slot.deletes==1 && slot.frees==1 && owner->Data==slot.bankDataBlock && owner->Info==slot.bankInfoBlock);
+ unsigned char expected[72];memcpy(expected,slot.bankExpected,72);memset(expected+0x18,0,4);expected[0x44]=1;
+ CHECK(*reinterpret_cast<unsigned long*>(bank->CriticalSection+8)==0 && *reinterpret_cast<unsigned long*>(bank->CriticalSection+12)==0);
+ CHECK(memcmp(expected,owner->Data,72)==0 && owner->Info->RefCount==1 && owner->Data->Finished && !owner->Data->ThreadedFileUID);
+ CheckBankAllocation(slot.bankDataBlock,72);CheckBankAllocation(slot.bankInfoBlock,12);
+ g_releasingBank=&slot;owner->~CCountedPointer<CBankFileAsyncData>();g_releasingBank=0;
+ CHECK(slot.bankDataDeleted && slot.bankInfoDeleted && slot.bankNodeDeleted && !owner->Data && !owner->Info);
+ CHECK(!*reinterpret_cast<unsigned long*>(reinterpret_cast<char*>(bank)+0x12c) && !*reinterpret_cast<unsigned long*>(reinterpret_cast<char*>(bank)+0x138));
+ CHECK(!slot.bankHeader[1] && slot.bankHeader[2]==reinterpret_cast<DWORD>(slot.bankHeader) && slot.bankHeader[3]==reinterpret_cast<DWORD>(slot.bankHeader));
+ CHECK(!slot.restartHeader[1] && slot.restartHeader[2]==reinterpret_cast<DWORD>(slot.restartHeader) && slot.restartHeader[3]==reinterpret_cast<DWORD>(slot.restartHeader));
+ DeleteCriticalSection(bank->CriticalSection);
+ for(unsigned guard=0;guard<4;++guard)CHECK(slot.bankWords[guard]==0xcdcdcdcd && slot.bankWords[guard+4+sizeof(CBankFileAsync)/4]==0xcdcdcdcd);
+}
+extern "C" void* __cdecl FixtureBankTreeMalloc(size_t size) {
+ CHECK(g_constructingBank && GetCurrentThreadId()==g_workerThread && size==20 && !g_constructingBank->bankNodeBlock);
+ unsigned char* allocation=static_cast<unsigned char*>(malloc(size+32));CHECK(allocation);memset(allocation,0xcd,size+32);
+ g_constructingBank->bankNodeBlock=allocation+16;return allocation+16;
+}
+extern "C" void __cdecl FixtureBankTreeFree(void* block) {
+ CHECK(g_releasingBank && block==g_releasingBank->bankNodeBlock && !g_releasingBank->bankNodeDeleted && GetCurrentThreadId()==g_mainThread);
+ CheckBankAllocation(block,20);g_releasingBank->bankNodeDeleted=true;++g_nativeBankNodeDeletes;
+ free(static_cast<unsigned char*>(block)-16);
+}
+extern "C" void __cdecl UnusedBankBoundary() {Fail("cold bank dependency",__LINE__);}
+#pragma comment(linker,"/alternatename:__purecall=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?CanRelocateData@CMovableResource@@UBE_NJ@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:??ACPackedUIntArray@@QBEKK@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?GetEntryDataSize@CBankFile@@QBEKK@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?LeaveSynchronisation@CMemoryAllocator@@KIXXZ=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?InternalAllocate@CMemoryAllocator@@IAEPAXJK_N@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?EnterSynchronisation@CMemoryAllocator@@KIXXZ=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?Create@CMemoryAllocator@@KIXXZ=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAVCMovableResource@@KK@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:??3CMemoryAllocator@@KIXPAX@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:??1CMemoryAllocator@@IAE@XZ=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?GetNoAllocations@CMemoryAllocator@@QAEKXZ=_UnusedBankBoundary")
+#pragma comment(linker,"/alternatename:?InternalDeallocate@CMemoryAllocator@@IAEXPAX@Z=_UnusedBankBoundary")
+class CMemoryAllocator; CMemoryAllocator* g_FableMemoryAllocator_013CAA90=0;
+bool g_FableAllocatorShutdownRequested_013CAA94=false;
+fable_u32 g_CBankFileAsyncFailureHandlingMode_013CA868=0;

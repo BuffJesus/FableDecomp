@@ -1,6 +1,5 @@
-
-#include "engine/CMemoryFile.h"  // retyped onto the PDB layout; byte parity re-verified
-long __fastcall CMemoryFile_GetLength(const CMemoryFile* self)
+#include "fable_memory_file.h"
+long CMemoryFile::GetLength() const
 {
-    return self->Length;
+    return Length;
 }

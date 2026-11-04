@@ -1,40 +1,26 @@
+// Fixture: CPixelFormat::GetColourDepth (0x009E3820).
 #include <stdio.h>
+#include "fable_surface.h"
+#include "fable_d3d_format_info.h"
 
-#include "fable_texture_lifecycle.h"
-#include "../../../src/compiled/01/29/CPixelFormat_Table_0129ba40.cpp"
+static int g_fail;
+#define EXPECT(c) do { if (!(c)) { printf("FAIL %d: %s\n", __LINE__, #c); ++g_fail; } } while (0)
+
+extern const CD3DFormatInfo GD3DFormats[] = {
+    {(D3DFORMAT)20, PF_TYPE_RGBA, 24, 0, 8, 8, 8, 0, false},
+    {(D3DFORMAT)23, PF_TYPE_RGBA, 16, 0, 5, 6, 5, 0, false},
+    {D3DFMT_DXT1, PF_TYPE_COMPRESSED_BOOLEAN_ALPHA, 4, 0, 0, 0, 0, 0, false},
+    {(D3DFORMAT)99, PF_TYPE_UNKNOWN, -1, 0, 0, 0, 0, 0, false},
+};
 
 int main()
 {
-    CPixelFormatByteLengthView format;
-    for (
-        fable_u32 index = 0;
-        index < FABLE_PIXEL_FORMAT_TABLE_COUNT;
-        ++index)
-    {
-        format.value00 = index;
-        if (
-            format.GetColourDepth() !=
-            static_cast<fable_u32>(
-                g_FablePixelFormatTable[index].colourDepth08))
-        {
-            printf(
-                "FABLETLC_PIXEL_FORMAT_COLOUR_DEPTH FAIL index=%lu\n",
-                index);
-            return 1;
-        }
-    }
-
-    if (
-        g_FablePixelFormatTable[0].d3dFormat00 != 20 ||
-        g_FablePixelFormatTable[1].colourDepth08 != 32 ||
-        g_FablePixelFormatTable[18].colourDepth08 != 128 ||
-        g_FablePixelFormatTable[31].d3dFormat00 != 0x31545844 ||
-        g_FablePixelFormatTable[46].colourDepth08 != -1)
-    {
-        printf("FABLETLC_PIXEL_FORMAT_COLOUR_DEPTH FAIL table\n");
-        return 2;
-    }
-
+    CPixelFormat f;
+    f.FormatIndex = 0; EXPECT(f.GetColourDepth() == 24);
+    f.FormatIndex = 1; EXPECT(f.GetColourDepth() == 16);
+    f.FormatIndex = 2; EXPECT(f.GetColourDepth() == 4);
+    EXPECT(f.FormatIndex == 2);
+    if (g_fail) { printf("FAILED %d\n", g_fail); return 1; }
     printf("FABLETLC_PIXEL_FORMAT_COLOUR_DEPTH PASS\n");
     return 0;
 }

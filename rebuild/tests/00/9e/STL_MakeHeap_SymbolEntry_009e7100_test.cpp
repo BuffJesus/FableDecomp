@@ -1,0 +1,7 @@
+#include "../src/compiled/00/9e/STL_PushHeap_SymbolEntry_009e67c0.cpp"
+#include "../src/compiled/00/9e/STL_AdjustHeap_SymbolEntry_009e6db0.cpp"
+#include "../src/compiled/00/9e/STL_PopHeap_SymbolEntry_009e7060.cpp"
+#include "../src/compiled/00/9e/STL_SortHeap_SymbolEntry_009e7950.cpp"
+#include "../src/compiled/00/9e/STL_PartialSort_SymbolEntry_009e7b40.cpp"
+#include "../src/compiled/00/9e/CCharString_FastCompare_009e6530.cpp"
+#include "../tests/integration/SymbolHeapChain_test.cpp"

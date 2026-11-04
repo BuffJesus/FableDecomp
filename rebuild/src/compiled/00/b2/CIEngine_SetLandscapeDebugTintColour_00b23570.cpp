@@ -1,1 +1,0 @@
-void __stdcall CIEngine_SetLandscapeDebugTintColour(int arg0, int arg1) {}

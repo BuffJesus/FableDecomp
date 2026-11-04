@@ -1,27 +1,16 @@
-extern "C" __declspec(naked) void __fastcall candidate_0042dbd8(void)
+#pragma optimize("s", on)
+// CNewFrontendGameComponent::ReleaseXMVCode @ 0x0042DBD8 (22 bytes).
+// FableWin ?ReleaseXMVCode@CNewFrontendGameComponent@@AAEXXZ: if the XMV
+// movie code was loaded, release it (CXMVPlayer::StaticReleaseXMVCode
+// 0x009BCFC0) and clear the flag (+0xB1).
+#include "fable_game.h"
+#include "fable_movie.h"
+
+void CNewFrontendGameComponent::ReleaseXMVCode()
 {
-    __asm {
-        _emit 0x56
-        _emit 0x8d
-        _emit 0xb1
-        _emit 0xb1
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x80
-        _emit 0x3e
-        _emit 0x00
-        _emit 0x74
-        _emit 0x08
-        _emit 0xe8
-        _emit 0xd7
-        _emit 0xf3
-        _emit 0x58
-        _emit 0x00
-        _emit 0xc6
-        _emit 0x06
-        _emit 0x00
-        _emit 0x5e
-        _emit 0xc3
+    if (XMVCodeLoaded)
+    {
+        CXMVPlayer::StaticReleaseXMVCode();
+        XMVCodeLoaded = false;
     }
 }

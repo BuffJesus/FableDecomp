@@ -1,39 +1,25 @@
-#include <cstdio>
+#include <stdio.h>
+#include <string.h>
+#include "fable_font_state_blocks.h"
 
-struct CBankStateBlock {
-    int f0;
-    int f4;
-    int f8;
-    int fC;
-    char f10;
-};
-
-struct CStreamingFontBankStateBlock {
-    void GetDefault(CBankStateBlock &out);
-};
-
-void CStreamingFontBankStateBlock::GetDefault(CBankStateBlock &out)
-{
-    out.f4 = 0;
-    out.f8 = 0x190;
-    out.fC = 0;
-    out.f10 = 0;
-}
+CStreamingFontBankStateBlock::~CStreamingFontBankStateBlock() {}
+unsigned long CStreamingFontBankStateBlock::CreateCRC() { return 0; }
+void CStreamingFontBankStateBlock::Set(const CBankStateBlock*) {}
 
 int main()
 {
-    CBankStateBlock b;
-    b.f0 = 0x11111111;
-    b.f4 = 0x22222222;
-    b.f8 = 0x33333333;
-    b.fC = 0x44444444;
-    b.f10 = 0x55;
-    CStreamingFontBankStateBlock s;
-    s.GetDefault(b);
-    if (b.f0 == 0x11111111 && b.f4 == 0 && b.f8 == 0x190 && b.fC == 0 && b.f10 == 0) {
-        printf("GETDEFAULT_OK\n");
-        return 0;
-    }
-    printf("GETDEFAULT_FAIL\n");
-    return 1;
+    CStreamingFontBankStateBlock bank;
+    unsigned char output[0x14];
+    memset(output, 0xA5, sizeof(output));
+    bank.CStreamingFontBankStateBlock::GetDefault(
+        *reinterpret_cast<CBankStateBlock*>(output));
+    if (*reinterpret_cast<unsigned long*>(output) != 0xA5A5A5A5 ||
+        *reinterpret_cast<unsigned long*>(output + 4) != 0 ||
+        *reinterpret_cast<unsigned long*>(output + 8) != 400 ||
+        *reinterpret_cast<unsigned long*>(output + 0x0c) != 0 ||
+        output[0x10] != 0 || output[0x11] != 0xA5 ||
+        output[0x12] != 0xA5 || output[0x13] != 0xA5)
+        return 1;
+    puts("GETDEFAULT_OK");
+    return 0;
 }

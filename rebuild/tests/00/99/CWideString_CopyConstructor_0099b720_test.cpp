@@ -33,7 +33,8 @@ static CWideStringData* ReadStorage(const CWideString& value)
 
 int main()
 {
-    CWideStringData sharedStorage;
+    unsigned long sharedStorageRaw_[4];
+    CWideStringData& sharedStorage = *reinterpret_cast<CWideStringData*>(sharedStorageRaw_);
     sharedStorage.text = 0;
     sharedStorage.unknown04 = 0;
     sharedStorage.unknown08 = 0;

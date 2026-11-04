@@ -1,5 +1,5 @@
-#include <cstdio>
-struct CSystemManager; struct S { char pad[4]; void* f4; int Initialise(CSystemManager* a); };
-int S::Initialise(CSystemManager* a){ this->f4 = a; return 1; }
-int main(){ int m; S o; if(o.Initialise((CSystemManager*)&m)!=1||o.f4!=&m){ std::printf("009e4ad0_TEST FAIL\n"); return 1;}
- std::printf("009e4ad0_TEST PASS\n"); return 0;}
+#include <stdio.h>
+#include <string.h>
+#include "fable_system_manager.h"
+CDriveManager::~CDriveManager(){}
+int main(){CDriveManager p;void* vtable=*(void**)&p;CSystemManager* cases[]={0,(CSystemManager*)0x1234,(CSystemManager*)0x4321,0};for(int i=0;i<4;++i){if(p.Initialise(cases[i])!=kSystemCodeSuccess||((CSystemManager**)&p)[1]!=cases[i]||*(void**)&p!=vtable)return 1;}puts("DRIVE_INIT_PASS");return 0;}

@@ -1,30 +1,31 @@
-#include <cstdio>
+// CTexture::GenerateMipmaps (0x009F9E60): D3DXFilterTexture(texture, no palette, sourceLevel, filter).
+// The test supplies D3DXFilterTexture and records its arguments.
+#include "fable_surface_types.h"
+#include <stdio.h>
+#include <string.h>
 
-typedef unsigned long ulong;
+static void* seenTexture;
+static const void* seenPalette = (const void*)1;
+static unsigned int seenLevel;
+static unsigned long seenFilter;
 
-struct CTexture {
-    void* field0;
-};
-
-static void* g_p;
-static int   g_zero = -1;
-static ulong g_b, g_a;
-
-extern void __stdcall sub_bfefce(void* p, int zero, ulong b, ulong a);
-void __stdcall sub_bfefce(void* p, int zero, ulong b, ulong a)
+extern "C" HRESULT __stdcall D3DXFilterTexture(IDirect3DBaseTexture9* texture,
+    const PALETTEENTRY* palette, UINT sourceLevel, DWORD filter)
 {
-    g_p = p; g_zero = zero; g_b = b; g_a = a;
+    seenTexture = texture; seenPalette = palette; seenLevel = sourceLevel; seenFilter = filter;
+    return 0;
 }
-
-void __fastcall GenerateMipmaps(CTexture* self, int edx, ulong a, ulong b);
 
 int main()
 {
-    CTexture t; t.field0 = (void*)0xDEAD;
-    GenerateMipmaps(&t, 0, 11u, 22u);
-    if (g_p == (void*)0xDEAD && g_zero == 0 && g_b == 22u && g_a == 11u)
+    union { double align; unsigned char bytes[sizeof(CTexture)]; } storage;
+    memset(&storage, 0, sizeof(storage));
+    CTexture* texture = reinterpret_cast<CTexture*>(storage.bytes);
+    texture->PD3DTexture = reinterpret_cast<IDirect3DTexture9*>(0xDEAD);
+    texture->GenerateMipmaps(11, 22);
+    if (seenTexture == (void*)0xDEAD && seenPalette == 0 && seenLevel == 22 && seenFilter == 11)
         printf("009f9e60_TEST PASS\n");
     else
-        printf("FAIL p=%p z=%d b=%lu a=%lu\n", g_p, g_zero, g_b, g_a);
+        printf("FAIL p=%p pal=%p level=%u filter=%lu\n", seenTexture, seenPalette, seenLevel, seenFilter);
     return 0;
 }

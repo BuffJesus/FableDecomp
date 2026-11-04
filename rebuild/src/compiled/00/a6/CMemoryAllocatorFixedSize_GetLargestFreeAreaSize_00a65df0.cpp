@@ -2,15 +2,15 @@
 
 unsigned long CMemoryAllocatorFixedSize::GetLargestFreeAreaSize()
 {
-    CFixedSizeAllocatorNode* current = ControlledAreas;
+    CFixedSizeAllocatorNode* current = PFirstChunk;
     if (current != 0)
     {
-        unsigned long areaCapacity = AreaCapacity;
+        unsigned long areaCapacity = NoAreasPerChunk;
         do
         {
-            if (areaCapacity - current->AreaCount != 0)
-                return AllocationSize;
-            current = current->Next;
+            if (areaCapacity - current->NoAllocatedAreas != 0)
+                return AreaSize;
+            current = current->PNextChunk;
         } while (current != 0);
     }
     return 0;

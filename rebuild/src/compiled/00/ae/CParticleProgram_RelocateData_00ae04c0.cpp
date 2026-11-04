@@ -1,15 +1,9 @@
-// CParticleProgram::RelocateData  0x00ae04c0
-// void __fastcall(CParticleProgram*, long a, void* oldBase, void* newBase, long d)
+// CParticleProgram::RelocateData (retail 0x00AE04C0, vtable slot 1; Ego_r name): the non-simulated positions live in a
+// movable-pool block; when the pool moves it, shift the pointer by the same distance.
+#include "fable_particle_program.h"
 
-struct CParticleProgram {
-    char pad[0xc0];
-    char* data;   // +0xc0
-    void RelocateData(long a, void* oldBase, void* newBase, long d);
-};
-
-void CParticleProgram::RelocateData(long a, void* oldBase, void* newBase, long d)
+void CParticleProgram::RelocateData(long, void* oldAddress, void* newAddress, long)
 {
-    if (this->data != 0) {
-        this->data = this->data - (long)oldBase + (long)newBase;
-    }
+    if (NonSimPositions)
+        NonSimPositions = (C4DVector*)((char*)NonSimPositions - (char*)oldAddress + (char*)newAddress);
 }

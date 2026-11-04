@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "fable_d3dx9_texture.h"
+#include "volume_texture_copy_levels_retail.h"
+#include "volume_texture_copy_levels_aliases.h"
+extern "C" __declspec(dllimport) void* __stdcall VirtualAlloc(void*,unsigned long,unsigned long,unsigned long);
+extern "C" __declspec(dllimport) int __stdcall VirtualFree(void*,unsigned long,unsigned long);
+extern "C" void __fastcall TextureCopyLevels(void*,void*,void*,unsigned long);
+extern "C" unsigned VolumeVTable[],BaseVTable[];
+extern "C" void AbortBoundary(){abort();}
+static unsigned arena[4096],initial[4096],images[32][4096],mode,step,count,snapshots,location,profile,mutation;
+static unsigned owner,source,counts[2],countCalls,getCalls,copyCalls,releases;
+static unsigned* active[2];
+static unsigned ptr(unsigned o){return (unsigned)arena+location+o;}
+static unsigned& word(unsigned p,unsigned o){return *(unsigned*)(p+o);}
+static void require(bool b){if(!b)abort();}
+static unsigned pattern(unsigned n){const unsigned p[8]={0,1,2,3,0x7fffffff,0x80000000,0xfffffffe,0xffffffff};return p[n&7];}
+static void snapshot(){if(!mode){require(count<32);memcpy(images[count++],arena,sizeof(arena));}else{require(step<count&&!memcmp(images[step++],arena,sizeof(arena)));++snapshots;}}
+static void event(unsigned kind,unsigned argument){unsigned log=ptr(0x2000);word(log,0)=kind;word(log,4)=argument;word(log,8)=countCalls;word(log,12)=getCalls;word(log,16)=copyCalls;word(log,20)=releases;for(unsigned i=0;i<2;++i){word(log,24+i*8)=active[i]?active[i][0]:0;word(log,28+i*8)=active[i]?active[i][1]:0;}snapshot();}
+static unsigned long __stdcall levelCount(void* self){require(countCalls<2&&!active[0]&&!active[1]);unsigned which=countCalls++;require((unsigned)self==word(which?owner:source,4));if(mutation&1){word(owner,4)=ptr(0x800);word(source,4)=ptr(0x400);word(owner,8)^=pattern(profile+which);}event(1,(unsigned)self);return counts[which];}
+extern "C" void* __fastcall GetLevel(void* self,void*,void* output,long level){unsigned which=getCalls&1;require(countCalls==2&&(unsigned)self==(which?owner:source)&&(unsigned)level==copyCalls&&!active[which]);require(which?(active[0]!=0):(active[1]==0));++getCalls;active[which]=(unsigned*)output;active[which][0]=(unsigned)VolumeVTable;active[which][1]=ptr(which?0xe00:0xc00);if(mutation&2){word(owner,4)=ptr(0x400);word(source,4)=ptr(0x800);word(source,12)=pattern(profile+getCalls);}event(2,(unsigned)level);return output;}
+extern "C" HRESULT __stdcall LoadVolume(IDirect3DVolume9* dst,const PALETTEENTRY* dp,const D3DBOX* db,IDirect3DVolume9* src,const PALETTEENTRY* sp,const D3DBOX* sb,unsigned long filter,D3DCOLOR key){require(active[0]&&active[1]&&(unsigned)dst==active[1][1]&&(unsigned)src==active[0][1]&&!dp&&!db&&!sp&&!sb&&!key&&filter==pattern(profile+3)&&getCalls==2*(copyCalls+1));++copyCalls;word(ptr(0x2000),40)=(unsigned)dst;word(ptr(0x2000),44)=(unsigned)src;word(ptr(0x2000),48)=filter;word(ptr(0x2000),52)=pattern(profile+5);if(mutation&4){active[0][0]=pattern(profile);active[1][0]=pattern(profile+1);if(active[0][1])active[0][1]=ptr(0xe00);if(active[1][1])active[1][1]=ptr(0xc00);word(owner,8)^=pattern(profile+copyCalls);word(source,12)^=pattern(profile+6);}event(3,filter);return (HRESULT)pattern(profile+5);}
+static unsigned long __stdcall release(void* self){unsigned which=active[1]?1:0;require(active[which]&&active[which][0]==(unsigned)VolumeVTable&&(unsigned)self==active[which][1]);++releases;if(mutation)word(owner,12)^=pattern(profile+releases);event(4,(unsigned)self);active[which]=0;return pattern(profile+releases);}
+static void destroy(unsigned* volume){volume[0]=(unsigned)VolumeVTable;if(volume[1]){release((void*)volume[1]);volume[1]=0;}else{if(active[1]==volume)active[1]=0;else active[0]=0;}volume[0]=(unsigned)BaseVTable;}
+static void model(){long a=(long)levelCount((void*)word(source,4)),b=(long)levelCount((void*)word(owner,4)),n=a<b?a:b;for(long level=0;level<n;++level){unsigned s[2],d[2];GetLevel((void*)source,0,s,level);GetLevel((void*)owner,0,d,level);LoadVolume((IDirect3DVolume9*)d[1],0,0,(IDirect3DVolume9*)s[1],0,0,pattern(profile+3),0);destroy(d);destroy(s);}}
+int main(){unsigned char* code=(unsigned char*)VirtualAlloc(0,sizeof(retailCode),0x3000,0x40);require(code!=0);memcpy(code,retailCode,sizeof(retailCode));unsigned targets[4]={(unsigned)VolumeVTable,(unsigned)BaseVTable,(unsigned)GetLevel,(unsigned)LoadVolume};for(unsigned f=0;f<sizeof(fixups)/sizeof(*fixups);++f){unsigned target=fixups[f].target>=0x80000000?targets[fixups[f].target-0x80000000]:(unsigned)(code+fixups[f].target);*(unsigned*)(code+fixups[f].site)=fixups[f].kind==20?target-(unsigned)(code+fixups[f].site+4):target;}unsigned textureTable[14]={0},volumeTable[3]={0};textureTable[13]=(unsigned)levelCount;volumeTable[2]=(unsigned)release;const unsigned values[6]={0,1,2,3,0x80000000,0xffffffff};unsigned cases=0;
+for(profile=0;profile<8;++profile)for(unsigned self=0;self<2;++self)for(unsigned a=0;a<6;++a)for(unsigned b=0;b<6;++b)for(mutation=0;mutation<8;++mutation)for(unsigned place=0;place<2;++place)for(unsigned fill=0;fill<2;++fill){location=place?0x1800:0;owner=ptr(0x100);source=self?owner:ptr(0x300);counts[0]=values[a];counts[1]=values[b];memset(arena,fill?0xa9:0,sizeof(arena));word(owner,4)=ptr(0x400);word(source,4)=ptr(0x800);word(ptr(0x400),0)=word(ptr(0x800),0)=(unsigned)textureTable;word(ptr(0xc00),0)=word(ptr(0xe00),0)=(unsigned)volumeTable;memset((void*)ptr(0x2000),0,64);memcpy(initial,arena,sizeof(arena));count=0;
+for(mode=0;mode<3;++mode){memcpy(arena,initial,sizeof(arena));step=countCalls=getCalls=copyCalls=releases=0;active[0]=active[1]=0;if(!mode)model();else(mode==1?((void(__fastcall*)(void*,void*,void*,unsigned long))code):TextureCopyLevels)((void*)owner,0,(void*)source,pattern(profile+3));long n=(long)counts[0]<(long)counts[1]?(long)counts[0]:(long)counts[1];require(!active[0]&&!active[1]&&countCalls==2&&copyCalls==(n>0?(unsigned)n:0)&&getCalls==copyCalls*2);snapshot();if(mode)require(step==count);}++cases;}
+VirtualFree(code,0,0x8000);printf("NATIVE_VOLUME_TEXTURE_COPY_LEVELS_PASS cases=%u snapshots=%u\n",cases,snapshots);return 0;}

@@ -1,6 +1,6 @@
 #include <cstdio>
 
-struct CCreatureAction_ForcePushOutOf;
+class CCreatureAction_ForcePushOutOf;
 
 struct CCreatureAction_ForcePushOutOf_vtbl {
     void (__fastcall *slot0)(CCreatureAction_ForcePushOutOf*);
@@ -9,7 +9,8 @@ struct CCreatureAction_ForcePushOutOf_vtbl {
     void (__fastcall *slot3)(CCreatureAction_ForcePushOutOf*);
 };
 
-struct CCreatureAction_ForcePushOutOf {
+class CCreatureAction_ForcePushOutOf {
+public:
     CCreatureAction_ForcePushOutOf_vtbl* vtbl;
     int marker;
 };

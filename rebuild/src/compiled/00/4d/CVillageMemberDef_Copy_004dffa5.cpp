@@ -1,5 +1,5 @@
 #include "engine/CVillageMemberDef.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CDefClassBase;
+class CDefClassBase;
 
 struct CVillageMemberBase {
   void Duplicate(const CDefClassBase* src);  // 0x431f10, __fastcall

@@ -1,6 +1,15 @@
-#include <stdio.h>
-int main()
-{
-    puts("batch9_part4_0043e4d0_pass");
-    return 0;
-}
+#include "../../integration/NativeFontVirtualExtents_test.cpp"
+#include "../../../src/compiled/00/43/CFontBank_GetVStringExtents_00437210.cpp"
+#include "../../../src/compiled/00/99/CBaseClass_CBaseClass_0099a2d0.cpp"
+#include "../../../src/compiled/00/99/CCharString_DefaultConstructor_0099e4b0.cpp"
+#include "../../../src/compiled/00/99/CCharString_Destructor_0099eae0.cpp"
+#include "../../../src/compiled/00/99/CCharString_UnassignString_0099e9b0.cpp"
+#include "../../../src/compiled/00/9a/CFontBank_Preload_009a0b20.cpp"
+#include "../../../src/compiled/00/ab/CStaticFontBank_GetFontMaxHeight_00ab7a50.cpp"
+#include "../../../src/compiled/00/ab/CStaticFontBank_GetStringExtents_00ab7b00.cpp"
+#include "../../../src/compiled/00/9b/CDisplayManager_GetRenderTargetDimensions_009bedc0.cpp"
+#include "../../../src/compiled/00/99/CWideString_Constructor_0099aed0.cpp"
+#include "../../../src/compiled/00/99/CWideString_Destructor_0099b510.cpp"
+#include "../../../src/compiled/00/99/CCharString_operatorcharconstptr2_0099af10.cpp"
+#include "../../../src/compiled/00/9e/Global_VirtualCoordinateHelpers_009e1d00.cpp"
+#include "../../../src/compiled/00/9e/Global_GFAYToVY_009e1dd0.cpp"

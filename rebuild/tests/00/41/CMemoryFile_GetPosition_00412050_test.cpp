@@ -1,29 +1,18 @@
-#include <cstdio>
-
-struct CMemoryFile {
-    int pad0;
-    int pad4;
-    long position;
-};
-
-long __fastcall CMemoryFile_GetPosition(const CMemoryFile* self) {
-    return self->position;
-}
-
-int main() {
-    CMemoryFile f;
-    f.pad0 = 111;
-    f.pad4 = 222;
-    f.position = 1234567;
-    if (CMemoryFile_GetPosition(&f) != 1234567) {
-        std::printf("FAIL: wrong position\n");
-        return 1;
-    }
-    f.position = -9;
-    if (CMemoryFile_GetPosition(&f) != -9) {
-        std::printf("FAIL: negative position\n");
-        return 1;
-    }
-    std::printf("CMemoryFile_00412050_TEST PASS\n");
-    return 0;
-}
+#include "../tests/integration/MemoryFile_test.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e90a0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_SetPosition_009e90c0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_MovePosition_009e9140.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Read_009e9220.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_DumpToFile_009e9330.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Close_009e9390.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e93c0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_OpenFromFile_009e9420.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e94a0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Write_009e95f0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_SetLength_009e9730.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Copy_009e9760.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_CMemoryFile_009e97b0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Clone_009e97f0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_CopyConstructor_009e99c0.cpp"
+#include "../src/compiled/00/41/CMemoryFile_GetLength_00412060.cpp"
+#include "../src/compiled/00/40/CMemoryFile_IsOpen_00405d30.cpp"

@@ -1,44 +1,24 @@
+#include "fable_game.h"
 #include <cstring>
-
-struct CGameEvent
-{
-    long type;
-    unsigned char player;
-    unsigned char data[0x20];
-    unsigned char endPos;
-    unsigned char valid;
-    unsigned char replacement;
-};
-struct CGameEventPackage
-{
-    unsigned long sequence;
-    unsigned long eventCount;
-    CGameEvent events[40];
-};
-class CGameEventPackageSet
-{
-public:
-    unsigned long packageCount;
-    CGameEventPackage packages[50];
-    long CompressIntoBuffer(unsigned char* buffer) const;
-};
 
 long CGameEventPackageSet::CompressIntoBuffer(unsigned char* buffer) const
 {
+    // The retail loop walks from each event's +4 byte. This tail view keeps
+    // the same packed 0x28 stride and byte-copy sequence as the compiler.
     struct EventTail
     {
-        unsigned char player;
-        unsigned char data[0x20];
-        unsigned char endPos;
+        unsigned char Player;
+        unsigned char Data[0x20];
+        unsigned char EndPos;
         unsigned char valid;
-        unsigned char replacement;
+        unsigned char Replacement;
     };
     unsigned char* out = buffer;
-    *out++ = static_cast<unsigned char>(packageCount);
+    *out++ = static_cast<unsigned char>(NoPackages);
     unsigned long packageIndex = 0;
-    if (packageCount > 0)
+    if (NoPackages > 0)
     {
-        const unsigned long* packageEventCount = &packages[0].eventCount;
+        const unsigned long* packageEventCount = &Packages[0].NoEvents;
         do
         {
             *out++ = static_cast<unsigned char>(*packageEventCount);
@@ -53,14 +33,14 @@ long CGameEventPackageSet::CompressIntoBuffer(unsigned char* buffer) const
                 {
                     unsigned short type = *reinterpret_cast<const unsigned short*>(
                         reinterpret_cast<const unsigned char*>(event) - 4);
-                    if (event->replacement != 0)
+                    if (event->Replacement != 0)
                         type = static_cast<unsigned short>(type | 0x8000);
                     *reinterpret_cast<unsigned short*>(out) = type;
                     out += 2;
-                    *out++ = event->player;
-                    unsigned char payloadSize = event->endPos;
+                    *out++ = event->Player;
+                    unsigned char payloadSize = event->EndPos;
                     *out++ = payloadSize;
-                    const unsigned char* source = &event->data[0];
+                    const unsigned char* source = &event->Data[0];
                     std::memcpy(out, source, payloadSize);
                     out += payloadSize;
                     ++eventIndex;
@@ -73,7 +53,7 @@ long CGameEventPackageSet::CompressIntoBuffer(unsigned char* buffer) const
             packageEventCount = reinterpret_cast<const unsigned long*>(
                 reinterpret_cast<const unsigned char*>(packageEventCount) + 0x648);
         }
-        while (packageIndex < packageCount);
+        while (packageIndex < NoPackages);
     }
     return static_cast<long>(out - buffer);
 }

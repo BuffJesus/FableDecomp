@@ -1,49 +1,19 @@
-#include "rebuild_abi.h"
+#include "fable_shader_render_manager.h"
+#include "fable_pixel_shader_data.h"
+#include "fable_shader_constant_layout.h"
+#include "fable_d3d9.h"
+#include "fable_4d_vector.h"
 
-struct FableLightGlobalsDevice;
-typedef long (__stdcall *FableSetLightGlobalsCall)(
-    FableLightGlobalsDevice* device,
-    fable_i32 startRegister,
-    const void* data,
-    fable_u32 vectorCount);
+typedef HRESULT (__stdcall *SetPixelShaderCall)(IDirect3DDevice9*,IDirect3DPixelShader9*);
+typedef HRESULT (__stdcall *SetConstantsCall)(IDirect3DDevice9*,long,const void*,unsigned long);
 
-struct FableLightGlobalsDevice
+void CShaderRenderManager::UpdateLightGlobals()
 {
-    void** vtable;
-};
-
-struct CLightGlobalLayoutView
-{
-    fable_u8 unknown00[0x60];
-    fable_i32 startRegister60;
-    fable_u32 vectorCount64;
-};
-
-struct CShaderRenderManagerUpdateLightGlobalsView
-{
-    fable_u8 unknown000[4];
-    CLightGlobalLayoutView* lightLayout04;
-    fable_u8 unknown008[0x18C];
-    const void* lightGlobals194;
-    fable_u8 unknown198[0x3C];
-    FableLightGlobalsDevice* displayDevice1D4;
-    fable_u8 unknown1D8[0x200];
-    fable_u32 shaderStateMask3D8;
-
-    void UpdateLightGlobals();
-};
-
-void CShaderRenderManagerUpdateLightGlobalsView::UpdateLightGlobals()
-{
-    const fable_u32 vectorCount = lightLayout04->vectorCount64;
-    if (vectorCount != 0)
+    const unsigned long count=CurrentVSConstantLayout->LightGlobals.Count;
+    if(count)
     {
-        reinterpret_cast<FableSetLightGlobalsCall>(
-            displayDevice1D4->vtable[0x5E])(
-                displayDevice1D4,
-                lightLayout04->startRegister60,
-                lightGlobals194,
-                vectorCount);
+        void** methods=*reinterpret_cast<void***>(D3DDevice);
+        reinterpret_cast<SetConstantsCall>(methods[94])(D3DDevice,CurrentVSConstantLayout->LightGlobals.Offset,LightGlobals._M_start,count);
     }
-    shaderStateMask3D8 &= ~0x400u;
+    updateFlags3D8 &= ~0x400u;
 }

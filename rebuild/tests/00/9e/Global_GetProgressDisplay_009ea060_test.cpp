@@ -1,63 +1,58 @@
 #include <stdio.h>
 
-#if defined(_MSC_VER)
-#define FABLE_FASTCALL __fastcall
-#else
-#define FABLE_FASTCALL
-#endif
+#include "fable_boot.h"
 
-struct CProgressDisplay
+CCountedProgressDisplay g_FableProgressDisplay_013CAA38;
+
+namespace
 {
-    int marker;
-};
+    int g_destroyCalls = 0;
+    int g_deleteCalls = 0;
 
-struct FableReferenceCount
+    void FABLE_FASTCALL DestroyDisplay(void* /* object */)
+    {
+        ++g_destroyCalls;
+    }
+}
+
+void FABLE_CDECL FableOperatorDelete(void* /* allocation */)
 {
-    long owners;
-    void* destroy;
-    void* object;
-};
-
-struct CCountedProgressDisplay
-{
-    CProgressDisplay* object;
-    FableReferenceCount* reference;
-};
-
-CProgressDisplay* g_FableProgressDisplayObject_013CAA38 = 0;
-FableReferenceCount* g_FableProgressDisplayReference_013CAA3C = 0;
-
-CCountedProgressDisplay* FABLE_FASTCALL GetProgressDisplay(
-    CCountedProgressDisplay* result);
+    ++g_deleteCalls;
+}
 
 int main()
 {
-    CProgressDisplay display = {0x12345678};
-    FableReferenceCount reference = {2, 0, &display};
-    g_FableProgressDisplayObject_013CAA38 = &display;
-    g_FableProgressDisplayReference_013CAA3C = &reference;
+    fable_u8 displayStorage[sizeof(CProgressDisplay)] = {};
+    CProgressDisplay* display =
+        reinterpret_cast<CProgressDisplay*>(displayStorage);
+    FableReferenceCount reference = {2, DestroyDisplay, display};
+    g_FableProgressDisplay_013CAA38.object = display;
+    g_FableProgressDisplay_013CAA38.reference = &reference;
 
-    CCountedProgressDisplay result = {};
-    if (
-        GetProgressDisplay(&result) != &result ||
-        result.object != &display ||
-        result.reference != &reference ||
-        reference.owners != 3)
     {
-        return 1;
+        CCountedProgressDisplay result = GetProgressDisplay();
+        if (
+            result.object != display ||
+            result.reference != &reference ||
+            reference.owners != 3 ||
+            g_FableProgressDisplay_013CAA38.object != display ||
+            g_FableProgressDisplay_013CAA38.reference != &reference)
+        {
+            return 1;
+        }
     }
-
-    g_FableProgressDisplayObject_013CAA38 = 0;
-    g_FableProgressDisplayReference_013CAA3C = 0;
-    CCountedProgressDisplay empty = {};
-    if (
-        GetProgressDisplay(&empty) != &empty ||
-        empty.object != 0 ||
-        empty.reference != 0 ||
-        reference.owners != 3)
-    {
+    if (reference.owners != 2 || g_destroyCalls != 0 || g_deleteCalls != 0)
         return 2;
+
+    g_FableProgressDisplay_013CAA38.object = 0;
+    g_FableProgressDisplay_013CAA38.reference = 0;
+    {
+        CCountedProgressDisplay empty = GetProgressDisplay();
+        if (empty.object != 0 || empty.reference != 0)
+            return 3;
     }
+    if (reference.owners != 2 || g_destroyCalls != 0 || g_deleteCalls != 0)
+        return 4;
 
     printf("FABLETLC_GET_PROGRESS_DISPLAY_BEHAVIOR PASS\n");
     return 0;

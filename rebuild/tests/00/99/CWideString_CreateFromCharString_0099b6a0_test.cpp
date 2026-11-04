@@ -4,7 +4,8 @@
 
 namespace
 {
-    CWideStringData g_storage;
+    unsigned long g_storageRaw_[4];
+    CWideStringData& g_storage = *reinterpret_cast<CWideStringData*>(g_storageRaw_);
     const CCharString* g_observedSource = 0;
     int g_conversionConstructorCalls = 0;
 }

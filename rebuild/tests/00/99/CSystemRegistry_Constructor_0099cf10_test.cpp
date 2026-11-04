@@ -74,7 +74,8 @@ CWideString::operator const wchar_t*() const
 int main()
 {
     wchar_t keyText[] = L"Software\\Lionhead Studios Ltd\\Fable";
-    CWideStringData storage;
+    unsigned long storageRaw_[4];
+    CWideStringData& storage = *reinterpret_cast<CWideStringData*>(storageRaw_);
     CWideStringData* slot = 0;
     CWideString& key = MakeWide(slot, storage, keyText);
 

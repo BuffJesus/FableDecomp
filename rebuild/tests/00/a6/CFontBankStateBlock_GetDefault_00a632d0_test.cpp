@@ -1,31 +1,25 @@
-#include <cstdio>
+#include <stdio.h>
+#include <string.h>
+#include "fable_font_state_blocks.h"
 
-struct CFontBankStateBlock {
-    int   f0;
-    int   f4;
-    int   f8;
-    char  fc;
-};
-
-void __stdcall GetDefault(CFontBankStateBlock* p)
-{
-    p->f4 = 0;
-    p->f8 = 0x190;
-    p->fc = 0;
-}
+CFontBankStateBlock::~CFontBankStateBlock() {}
+unsigned long CFontBankStateBlock::CreateCRC() { return 0; }
+void CFontBankStateBlock::Set(const CBankStateBlock*) {}
 
 int main()
 {
-    CFontBankStateBlock b;
-    b.f0 = 0x11111111;
-    b.f4 = 0x22222222;
-    b.f8 = 0x33333333;
-    b.fc = (char)0x44;
-    GetDefault(&b);
-    if (b.f0 != 0x11111111) { printf("FAIL f0\n"); return 1; }
-    if (b.f4 != 0) { printf("FAIL f4\n"); return 1; }
-    if (b.f8 != 0x190) { printf("FAIL f8\n"); return 1; }
-    if (b.fc != 0) { printf("FAIL fc\n"); return 1; }
-    printf("OK_00a632d0\n");
+    CFontBankStateBlock bank;
+    unsigned char output[0x14];
+    memset(output, 0xA5, sizeof(output));
+    bank.CFontBankStateBlock::GetDefault(
+        *reinterpret_cast<CBankStateBlock*>(output));
+    if (*reinterpret_cast<unsigned long*>(output) != 0xA5A5A5A5 ||
+        *reinterpret_cast<unsigned long*>(output + 4) != 0 ||
+        *reinterpret_cast<unsigned long*>(output + 8) != 400 ||
+        output[0x0c] != 0 || output[0x0d] != 0xA5 ||
+        output[0x0e] != 0xA5 || output[0x0f] != 0xA5 ||
+        output[0x10] != 0xA5)
+        return 1;
+    puts("OK_00a632d0");
     return 0;
 }

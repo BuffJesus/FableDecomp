@@ -25,8 +25,9 @@ struct CThingOverlay
     unsigned char m_Flags91;
 };
 
-struct CGameScriptInterface
+class CGameScriptInterface
 {
+public:
     unsigned char m_Pad00[0x14];
     void*         m_Field14;
 };

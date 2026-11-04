@@ -1,41 +1,38 @@
-#include <cstdio>
+// Behaviour fixture for CCompressorZlib::FinishCompressStream 0x00A3A930, linked against the provider object (it
+// does not define the member). The compressor is laid out in raw storage at the offsets the shared header pins.
+#include "engine/CCompressorZlib.h"
+#include <stdio.h>
+#include <string.h>
 
-extern "C" int __cdecl EndDeflateStream(void* strm);
-
-struct CCompressorZlib {
-    char pad[0x1c];
-    char zstream[0x38];
-    char active;
-    void FinishCompressStream();
-};
-
-static int g_ended = 0;
-static void* g_last = 0;
-extern "C" int __cdecl EndDeflateStream(void* strm) {
-    g_ended++;
-    g_last = strm;
+static int g_ended;
+static z_stream_s* g_last;
+extern "C" int __cdecl z_deflateEnd(z_stream_s* stream)
+{
+    ++g_ended;
+    g_last = stream;
     return 0;
 }
 
-int main() {
-    CCompressorZlib c;
-    // Case 1: active -> helper called, flag cleared, arg = self+0x1c
-    c.active = 1;
-    g_ended = 0; g_last = 0;
-    c.FinishCompressStream();
-    bool ok1 = (g_ended == 1) && (c.active == 0) &&
-               (g_last == (void*)&c.zstream);
+int main()
+{
+    static unsigned char storage[sizeof(CCompressorZlib)];
+    memset(storage, 0xAB, sizeof(storage));
+    CCompressorZlib* zlib = reinterpret_cast<CCompressorZlib*>(storage);
 
-    // Case 2: inactive -> nothing happens
-    c.active = 0;
-    g_ended = 0; g_last = 0;
-    c.FinishCompressStream();
-    bool ok2 = (g_ended == 0) && (c.active == 0);
+    zlib->ZlibInitialised = true;
+    zlib->FinishCompressStream();
+    const bool ended = g_ended == 1 && g_last == &zlib->Stream && !zlib->ZlibInitialised &&
+                       storage[0x55] == 0xAB && storage[0x56] == 0xAB;
 
-    if (ok1 && ok2) {
+    g_ended = 0;
+    zlib->FinishCompressStream();
+    const bool idle = g_ended == 0 && !zlib->ZlibInitialised;
+
+    if (ended && idle)
+    {
         printf("FINISH_STREAM_OK\n");
         return 0;
     }
-    printf("FAIL o1=%d o2=%d\n", ok1, ok2);
+    printf("FAIL ended=%d idle=%d\n", ended, idle);
     return 1;
 }

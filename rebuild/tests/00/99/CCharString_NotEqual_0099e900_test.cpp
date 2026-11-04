@@ -1,72 +1,50 @@
+// Behaviour test for the genuine CCharString::operator!=(const CCharString&)
+// (retail 0x0099E900): shared storage compares equal, a null side differs,
+// different lengths differ without comparing, otherwise the characters
+// decide. The strings are raw storage pointers laid out as CCharStringData's
+// leading CBasicString<char> (text, length), which is all the comparison reads.
 #include <cstdio>
 #include <cstring>
 
 #include "../../../src/compiled/00/99/CCharString_NotEqual_0099e900.cpp"
 
-struct TestStringStorage_0099e900
+struct TestStorage
 {
     const char* text;
     unsigned long length;
 };
 
-struct TestCharString_0099e900
+struct TestString
 {
-    TestStringStorage_0099e900* storage;
+    TestStorage* storage;
 };
 
-static int g_CompareCalls;
-
-extern "C" long __fastcall
-CCharString_CompareBytes_0099e900(const char* left, const char* right)
+static bool NotEqual(TestStorage* left, TestStorage* right)
 {
-    ++g_CompareCalls;
-    return std::strcmp(left, right);
-}
-
-static int Check(
-    TestStringStorage_0099e900* leftStorage,
-    TestStringStorage_0099e900* rightStorage,
-    unsigned char expected,
-    int expectedCompareCalls)
-{
-    TestCharString_0099e900 left;
-    TestCharString_0099e900 right;
-    left.storage = leftStorage;
-    right.storage = rightStorage;
-    g_CompareCalls = 0;
-
-    typedef unsigned char (__fastcall *Predicate)(
-        const void*,
-        void*,
-        const void*);
-    Predicate volatile notEqual = &CCharString_NotEqual_0099e900;
-    unsigned char result = notEqual(&left, 0, &right);
-    return result != expected || g_CompareCalls != expectedCompareCalls;
+    TestString a = {left};
+    TestString b = {right};
+    return reinterpret_cast<const CCharString&>(a) != reinterpret_cast<const CCharString&>(b);
 }
 
 int main()
 {
-    TestStringStorage_0099e900 headerA = { "HEADER", 6 };
-    TestStringStorage_0099e900 headerB = { "HEADER", 6 };
-    TestStringStorage_0099e900 player = { "PLAYER", 6 };
-    TestStringStorage_0099e900 shortName = { "HEAD", 4 };
-
+    TestStorage abc = {"abc", 3};
+    TestStorage abc2 = {"abc", 3};
+    TestStorage abd = {"abd", 3};
+    TestStorage abcd = {"abcd", 4};
     int failures = 0;
-    failures += Check(&headerA, &headerA, 0, 0);
-    failures += Check(&headerA, &headerB, 0, 1);
-    failures += Check(&headerA, &player, 1, 1);
-    failures += Check(&headerA, &shortName, 1, 0);
-    failures += Check(&headerA, 0, 1, 0);
-    failures += Check(0, 0, 0, 0);
-
+    failures += NotEqual(&abc, &abc) != false;   // shared storage
+    failures += NotEqual(0, 0) != false;         // both empty
+    failures += NotEqual(&abc, 0) != true;       // one empty
+    failures += NotEqual(0, &abc) != true;
+    failures += NotEqual(&abc, &abcd) != true;   // lengths differ
+    failures += NotEqual(&abc, &abc2) != false;  // same characters
+    failures += NotEqual(&abc, &abd) != true;    // characters differ
     if (failures != 0)
     {
-        std::printf(
-            "CHAR_STRING_NOT_EQUAL_0099e900_TEST FAIL count=%d\n",
-            failures);
+        std::printf("CHAR_STRING_NOT_EQUAL_0099e900_TEST FAIL %d\n", failures);
         return 1;
     }
-
     std::printf("CHAR_STRING_NOT_EQUAL_0099e900_TEST PASS\n");
     return 0;
 }

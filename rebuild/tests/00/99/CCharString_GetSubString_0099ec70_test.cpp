@@ -1,129 +1,80 @@
-#include <cstdio>
-#include <cstring>
+#include "fable_string.h"
+#include <stdio.h>
+#include <string.h>
 
-extern "C" long g_charStringRefTrace = 0;
-extern "C" char g_emptyCharStringData = 0;
+fable_i32 g_CCharStringInstanceCount_013BD800;
+char g_FableEmptyNarrowString_0129AAF4[1] = {0};
 
-struct CCharStringData
+static CCharStringData g_sourceData;
+static CCharStringData g_resultData;
+static const char* g_allocText;
+static long g_allocLength;
+static int g_allocCalls;
+static int g_unassignCalls;
+
+CCharStringData* CCharString::AllocStringData(const char* text, long length)
 {
-    char* data;
-    long length;
-    char pad[16]; // real header has more fields; refCount-ish byte lives at +0xd
-};
-
-struct CCharString
-{
-    CCharStringData* storage;
-
-    CCharStringData* AllocStringData(char* data, long len);
-    void UnassignString();
-    CCharString* GetSubString(CCharString* retVal, unsigned long start, unsigned long len);
-};
-
-static char g_buf[64];
-static long g_freeCount = 0;
-static long g_allocCount = 0;
-
-CCharStringData* CCharString::AllocStringData(char* data, long len)
-{
-    ++g_allocCount;
-    CCharStringData* d = new CCharStringData();
-    d->data = new char[len + 1];
-    for (long i = 0; i < len; ++i) d->data[i] = data[i];
-    d->data[len] = 0;
-    d->length = len;
-    for (int i = 0; i < 16; ++i) d->pad[i] = 0;
-    return d;
+    ++g_allocCalls;
+    g_allocText = text;
+    g_allocLength = length;
+    g_resultData.owners = 1;
+    return &g_resultData;
 }
 
 void CCharString::UnassignString()
 {
-    if (storage != 0)
+    ++g_unassignCalls;
+    CCharStringData*& data = *reinterpret_cast<CCharStringData**>(this);
+    if (data != 0)
     {
-        ++g_freeCount;
+        --data->owners;
+        data = 0;
     }
-    storage = 0;
 }
 
-CCharString* CCharString::GetSubString(CCharString* retVal, unsigned long start, unsigned long len)
+static CCharStringData* data_of(const CCharString& value)
 {
-    ++g_charStringRefTrace;
+    return *reinterpret_cast<CCharStringData* const*>(&value);
+}
 
-    CCharString localTmp;
-    localTmp.storage = 0;
-
-    CCharStringData* storage_ = this->storage;
-    char* base = storage_ ? storage_->data : &g_emptyCharStringData;
-
-    char* subPtr = base + start;
-    if (subPtr != 0 && *subPtr != 0)
+static int run_case(const char* text, unsigned long start, unsigned long end,
+                    bool expectAllocation)
+{
+    unsigned char sourceBytes[sizeof(CCharString)];
+    *reinterpret_cast<CCharStringData**>(sourceBytes) = text ? &g_sourceData : 0;
+    g_sourceData.Data.PData = const_cast<char*>(text);
+    g_sourceData.owners = 1;
+    const CCharString& source = *reinterpret_cast<const CCharString*>(sourceBytes);
+    g_allocCalls = g_unassignCalls = 0;
+    g_allocText = 0;
+    g_allocLength = -99;
     {
-        long subLen = (long)len - (long)start;
-        CCharStringData* newStorage = localTmp.AllocStringData(subPtr, subLen);
-        localTmp.storage = newStorage;
-    }
-
-    retVal->storage = 0;
-    ++g_charStringRefTrace;
-
-    if ((void*)&localTmp != (void*)retVal)
-    {
-        if (retVal->storage != 0)
+        CCharString result = source.GetSubString(start, end);
+        if (g_CCharStringInstanceCount_013BD800 != 1 || g_unassignCalls != 1)
+            return 1;
+        if (expectAllocation)
         {
-            retVal->UnassignString();
+            if (g_allocCalls != 1 || g_allocText != text + start ||
+                g_allocLength != static_cast<long>(end - start) ||
+                data_of(result) != &g_resultData || g_resultData.owners != 1)
+                return 2;
         }
-        if (localTmp.storage != 0)
-        {
-            retVal->storage = localTmp.storage;
-            ++*((long*)((char*)localTmp.storage + 0xd));
-        }
+        else if (g_allocCalls != 0 || data_of(result) != 0)
+            return 3;
     }
-
-    localTmp.UnassignString();
-    --g_charStringRefTrace;
-
-    return retVal;
+    if (g_CCharStringInstanceCount_013BD800 != 0 || g_unassignCalls != 2)
+        return 4;
+    if (expectAllocation && g_resultData.owners != 0)
+        return 5;
+    return 0;
 }
 
 int main()
 {
-    strcpy(g_buf, "HelloWorld");
-    CCharStringData sd;
-    sd.data = g_buf;
-    sd.length = (long)strlen(g_buf);
-    for (int i = 0; i < 16; ++i) sd.pad[i] = 0;
-
-    CCharString src;
-    src.storage = &sd;
-
-    CCharString result;
-    CCharString* r = src.GetSubString(&result, 2, 7);
-
-    bool ok = (r == &result);
-    ok = ok && (result.storage != 0);
-    ok = ok && (result.storage->length == 5);
-    ok = ok && (strncmp(result.storage->data, "lloWo", 5) == 0);
-
-    // empty-substring case: start beyond terminator
-    CCharString src2;
-    src2.storage = &sd;
-    CCharString result2;
-    result2.storage = 0;
-    src2.GetSubString(&result2, 10, 10);
-    bool ok2 = (result2.storage == 0);
-
-    // null storage case
-    CCharString src3;
-    src3.storage = 0;
-    CCharString result3;
-    result3.storage = 0;
-    src3.GetSubString(&result3, 0, 0);
-    bool ok3 = (result3.storage == 0);
-
-    if (ok && ok2 && ok3)
-        std::printf("GETSUBSTRING_OK\n");
-    else
-        std::printf("GETSUBSTRING_FAIL ok=%d ok2=%d ok3=%d\n", ok, ok2, ok3);
-
+    const char text[] = "HelloWorld";
+    if (run_case(text, 2, 7, true) != 0) return 1;
+    if (run_case(text, 10, 10, false) != 0) return 2;
+    if (run_case(0, 0, 0, false) != 0) return 3;
+    puts("GETSUBSTRING_OK");
     return 0;
 }

@@ -1,153 +1,130 @@
+// Behaviour fixture for the DataInputStream unit's Close pair:
+// CDataInputStream::Close 0x00993C80 and CFileDataInputStream::Close 0x00994300.
 #include <stdio.h>
+#include <string.h>
+#include <new>
 
-static int g_freeCalls = 0;
-static void* g_lastFreed = 0;
+#include "fable_data_input_stream.h"
+#include "fable_filesystem.h"
+#include "test_support/base_class_stubs.h"
+#define FABLE_STUBS_NO_DATA_INPUT_STREAM_CLOSE
+#define FABLE_STUBS_NO_FILE_DATA_INPUT_STREAM_CLOSE
+#include "test_support/data_input_stream_stubs.h"
 
-extern "C" void __cdecl FreeStreamBuffer(void* p)
+class CFileInformation
 {
-    g_freeCalls++;
-    g_lastFreed = p;
+};
+
+namespace
+{
+    int g_deletes;
+    void* g_deleted;
+    int g_setPositions;
+    long g_setPositionValue;
+    bool g_open;
 }
 
-class IOwnedFile
+void operator delete[](void* p)
 {
-public:
-    virtual void   Slot00() = 0;
-    virtual void   Slot04() = 0;
-    virtual void   Slot08() = 0;
-    virtual void   Slot0C() = 0;
-    virtual void   Slot10() = 0;
-    virtual void   ReleaseHandle(int id) = 0;
-    virtual void   Slot18() = 0;
-    virtual void   Slot1C() = 0;
-    virtual void   Slot20() = 0;
-    virtual void   Slot24() = 0;
-    virtual bool   ShouldRelease() = 0;
-};
-
-class CFileDataInputStream
-{
-public:
-    virtual void Unused00() = 0;
-    virtual void Unused04() = 0;
-    virtual int  GetHandleId() = 0;
-
-    void* field04;
-    void* field08;
-    void* field0C;
-    void* field10;
-    void* field14;
-    IOwnedFile* ownedFile;
-    void* buffer;
-    int   bufferCount;
-
-    void Close();
-};
-
-void CFileDataInputStream::Close()
-{
-    if (buffer != 0)
-    {
-        FreeStreamBuffer(buffer);
-        buffer = 0;
-        bufferCount = 0;
-    }
-
-    if (ownedFile != 0)
-    {
-        if (ownedFile->ShouldRelease())
-        {
-            ownedFile->ReleaseHandle(GetHandleId());
-        }
-    }
-
-    ownedFile = 0;
-    field04 = 0;
-    field08 = 0;
-    field10 = 0;
-    field14 = 0;
-    field0C = 0;
+    ++g_deletes;
+    g_deleted = p;
 }
 
-static int g_getIdCalls = 0;
-static int g_shouldReleaseCalls = 0;
-static int g_releaseCalls = 0;
-static int g_releaseId = 0;
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
+CDataInputStream::CDataInputStream()
+    : StreamPos(0), StreamSize(0), CurrentSourcePtr(0), SourceChunkStreamPos(0), SourceChunkBytesRemaining(0)
+{
+}
+void CDataInputStream::SetPosition(unsigned long position) { StreamPos = position; }
+CFileDataInputStream::CFileDataInputStream(CAFile* file, unsigned long bufferSize)
+{
+    File = file;
+    Buffer = 0;
+    BufferSize = (long)bufferSize;
+}
+CFileDataInputStream::~CFileDataInputStream() {}
 
-class FakeOwnedFile : public IOwnedFile
+CAFile::CAFile() {}
+
+CFileInformation CAFile::GetFileInformation() { return CFileInformation(); }
+CWideString::CWideString() : storage_(0) {}
+CWideString::~CWideString() {}
+
+class FakeFile : public CAFile
 {
 public:
-    virtual void Slot00() {}
-    virtual void Slot04() {}
-    virtual void Slot08() {}
-    virtual void Slot0C() {}
-    virtual void Slot10() {}
-    virtual void Slot18() {}
-    virtual void Slot1C() {}
-    virtual void Slot20() {}
-    virtual void Slot24() {}
-    virtual bool ShouldRelease()
-    {
-        g_shouldReleaseCalls++;
-        return true;
-    }
-    virtual void ReleaseHandle(int id)
-    {
-        g_releaseCalls++;
-        g_releaseId = id;
-    }
+    virtual void Open(const CWideString&, FileAccessType, unsigned long) {}
+    virtual void Close() {}
+    virtual void Read(void*, long, CASuspendableProcess*) {}
+    virtual void Write(const void*, long, CASuspendableProcess*) {}
+    virtual void SetPosition(long position) { ++g_setPositions; g_setPositionValue = position; }
+    virtual void MovePosition(long) {}
+    virtual long GetPosition() const { return 0; }
+    virtual void SetLength(long) {}
+    virtual long GetLength() const { return 0; }
+    virtual bool IsOpen() const { return g_open; }
+    virtual CWideString GetPathname() const { return CWideString(); }
+    virtual CAFile* Clone() const { return 0; }
 };
 
-class FakeStream : public CFileDataInputStream
+namespace
 {
-public:
-    virtual void Unused00() {}
-    virtual void Unused04() {}
-    virtual int GetHandleId()
+    void Fill(CDataInputStream* s)
     {
-        g_getIdCalls++;
-        return 0x1234;
+        s->StreamPos = 21;
+        s->StreamSize = 99;
+        s->CurrentSourcePtr = (fable_u8*)0x1000;
+        s->SourceChunkStreamPos = 20;
+        s->SourceChunkBytesRemaining = 5;
     }
-};
+
+    bool Cleared(const CDataInputStream* s)
+    {
+        return s->StreamPos == 0 && s->StreamSize == 0 && s->CurrentSourcePtr == 0 &&
+               s->SourceChunkStreamPos == 0 && s->SourceChunkBytesRemaining == 0;
+    }
+}
 
 int main()
 {
-    int dummyBuffer = 0;
+    int fail = 0;
+    FakeFile file;
+    fable_u8 buffer[16];
 
-    FakeOwnedFile ownedFileObj;
-    FakeStream stream;
+    // The base Close clears the stream state only.
+    CFileDataInputStream a(&file, 16);
+    Fill(&a);
+    a.CDataInputStream::Close();
+    if (!Cleared(&a) || a.File != &file || a.BufferSize != 16) fail |= 1;
 
-    stream.field04 = (void*)1;
-    stream.field08 = (void*)2;
-    stream.field0C = (void*)3;
-    stream.field10 = (void*)4;
-    stream.field14 = (void*)5;
-    stream.ownedFile = &ownedFileObj;
-    stream.buffer = &dummyBuffer;
-    stream.bufferCount = 42;
+    // A buffered stream on an open file: the buffer is freed and the file left
+    // at the stream's position.
+    CFileDataInputStream b(&file, 16);
+    Fill(&b);
+    b.Buffer = buffer;
+    g_open = true; g_deletes = 0; g_setPositions = 0;
+    b.Close();
+    if (!Cleared(&b) || b.File != 0 || b.Buffer != 0 || b.BufferSize != 0 || g_deletes != 1 ||
+        g_deleted != buffer || g_setPositions != 1 || g_setPositionValue != 21)
+        fail |= 2;
 
-    stream.Close();
+    // No buffer, a closed file: nothing freed, the file untouched.
+    CFileDataInputStream c(&file, 8);
+    Fill(&c);
+    g_open = false; g_deletes = 0; g_setPositions = 0;
+    c.Close();
+    if (!Cleared(&c) || c.File != 0 || c.BufferSize != 8 || g_deletes != 0 || g_setPositions != 0) fail |= 4;
 
-    bool ok = true;
-    if (g_freeCalls != 1) ok = false;
-    if (g_lastFreed != &dummyBuffer) ok = false;
-    if (stream.buffer != 0) ok = false;
-    if (stream.bufferCount != 0) ok = false;
-    if (g_shouldReleaseCalls != 1) ok = false;
-    if (g_getIdCalls != 1) ok = false;
-    if (g_releaseCalls != 1) ok = false;
-    if (g_releaseId != 0x1234) ok = false;
-    if (stream.ownedFile != 0) ok = false;
-    if (stream.field04 != 0) ok = false;
-    if (stream.field08 != 0) ok = false;
-    if (stream.field0C != 0) ok = false;
-    if (stream.field10 != 0) ok = false;
-    if (stream.field14 != 0) ok = false;
+    // No file at all.
+    CFileDataInputStream d(0, 8);
+    Fill(&d);
+    d.Close();
+    if (!Cleared(&d) || g_setPositions != 0) fail |= 8;
 
-    if (ok)
-        printf("CLOSE_TEST_OK\n");
+    if (fail == 0)
+        printf("FABLETLC_DATAINPUTSTREAM_CLOSE_00994300_PASS\n");
     else
-        printf("CLOSE_TEST_FAIL\n");
-
-    return 0;
+        printf("FABLETLC_DATAINPUTSTREAM_CLOSE_00994300 FAIL %d\n", fail);
+    return fail;
 }

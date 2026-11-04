@@ -1,0 +1,8 @@
+#include "../src/compiled/00/62/CWorld_EAOpenPCScoreboard_0062c640.cpp"
+#include "../src/compiled/00/62/CWorld_EAOpenPCSkillsMenu_0062c690.cpp"
+#include "../src/compiled/00/62/CWorld_EAOpenPCInventoryMenu_0062c700.cpp"
+#include "../src/compiled/00/62/CWorld_EAOpenPCPhotoJournalMenu_0062c7a0.cpp"
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/40/CVectorMapThingComponents_LowerBound_0040f020.cpp"
+#include "../tests/integration/InventoryMenus_test.cpp"

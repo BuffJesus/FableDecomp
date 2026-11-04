@@ -1,51 +1,37 @@
-#include <cstdio>
+#include <stdio.h>
+#include <string.h>
+#include "fable_init_base_class.h"
 
-int g_initCount = 5;
+// The compiled vtables, reached without spelling a mangled identifier.
+#pragma comment(linker, "/alternatename:_g_testCInitBaseClassVTable=??_7CInitBaseClass@@6B@")
+#pragma comment(linker, "/alternatename:_g_testCBaseVTable=??_7CBaseClass@@6B@")
+extern "C" void* g_testCInitBaseClassVTable[];
+extern "C" void* g_testCBaseVTable[];
 
-struct CInitBaseClass
-{
-    void* m_vtable;
-    char  m_registered;
-    void dtor_CInitBaseClass();
-};
-
-#define VT_DERIVED ((void*)0x0129a7cc)
-#define VT_BASE    ((void*)0x01231710)
-
-void CInitBaseClass::dtor_CInitBaseClass()
-{
-    m_vtable = VT_DERIVED;
-    if (m_registered == 1)
-    {
-        --g_initCount;
-        m_registered = 0;
-    }
-    m_vtable = VT_BASE;
-}
+long g_CInitBaseClassConstructed_013BCA18 = 0;
+long g_CInitBaseClassValid_013BCA14 = 0;
+void CInitBaseClass::Validate() const {}
 
 int main()
 {
-    // Registered instance: dtor deregisters (count--), clears flag, leaves base vtable.
+    const unsigned char before[] = { 1, 0, 2 };
+    const unsigned char after[] = { 0, 0, 2 };
+    const long counter[] = { 2, 3, 3 };
+    for (int i = 0; i < 3; ++i)
     {
-        CInitBaseClass a;
-        a.m_vtable = 0;
-        a.m_registered = 1;
-        a.dtor_CInitBaseClass();
-        if (g_initCount != 4)           { printf("FAIL count=%d\n", g_initCount); return 1; }
-        if (a.m_registered != 0)        { printf("FAIL flag\n"); return 1; }
-        if (a.m_vtable != VT_BASE)      { printf("FAIL vt\n"); return 1; }
+        unsigned char storage[12];
+        memset(storage, 0x3C, sizeof(storage));
+        *reinterpret_cast<void**>(storage) = g_testCInitBaseClassVTable;
+        storage[4] = before[i];
+        g_CInitBaseClassValid_013BCA14 = 3;
+        CInitBaseClass* object = reinterpret_cast<CInitBaseClass*>(storage);
+        object->CInitBaseClass::~CInitBaseClass();
+        // Unwinds to the CBase vtable after the inlined Uninitialise.
+        if (*reinterpret_cast<void**>(storage) != g_testCBaseVTable) return 1 + i;
+        if (storage[4] != after[i]) return 10 + i;
+        if (g_CInitBaseClassValid_013BCA14 != counter[i]) return 20 + i;
+        if (storage[5] != 0x3C || storage[8] != 0x3C) return 30 + i;
     }
-    // Unregistered instance: no deregister, base vtable still stored.
-    {
-        g_initCount = 9;
-        CInitBaseClass b;
-        b.m_vtable = 0;
-        b.m_registered = 0;
-        b.dtor_CInitBaseClass();
-        if (g_initCount != 9)           { printf("FAIL noreg=%d\n", g_initCount); return 1; }
-        if (b.m_registered != 0)        { printf("FAIL flag2\n"); return 1; }
-        if (b.m_vtable != VT_BASE)      { printf("FAIL vt2\n"); return 1; }
-    }
-    printf("PASS_INITBASE_DTOR\n");
+    puts("PASS_INITBASE_DTOR");
     return 0;
 }

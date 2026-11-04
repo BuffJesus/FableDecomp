@@ -1,108 +1,104 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
+// Behaviour fixture for CCharString::UnassignString (0x0099E9B0).
+// Links the compiled source object; records operator delete / delete[].
+#define private public
+#include "fable_string.h"
+#undef private
 
-#pragma pack(push, 1)
-struct CCharStringData
+// The header declares UnassignString private (mangled AAE); the fixture
+// reaches it through the public spelling and an alias to the real symbol.
+#pragma comment(linker, "/alternatename:?UnassignString@CCharString@@QAEXXZ=?UnassignString@CCharString@@AAEXXZ")
+
+#include <stdio.h>
+#include <string.h>
+
+static int g_seq;
+static void* g_arr; static int g_arrOrder; static int g_arrs;
+static void* g_obj; static int g_objOrder; static int g_objs;
+static unsigned long g_lenAtDelete;
+static unsigned long g_capAtDelete;
+static char* g_textAtDelete;
+
+void operator delete[](void* p)
 {
-    char* text;
-    unsigned int unknown04;
-    unsigned int unknown08;
-    unsigned char flags0C;
-    int owners;
-};
-#pragma pack(pop)
-
-struct CCharString
-{
-    CCharStringData* storage_;
-
-    void __fastcall UnassignString();
-};
-
-void __fastcall CCharString::UnassignString()
-{
-    CCharStringData* p = storage_;
-    if (p != 0)
-    {
-        if (--p->owners <= 0)
-        {
-            CCharStringData* data = storage_;
-            if (data != 0)
-            {
-                if (data->text != 0)
-                {
-                    delete[] data->text;
-                    data->text = 0;
-                }
-                unsigned int flag = data->unknown08 & 0x80000000;
-                data->unknown04 = 0;
-                data->unknown08 = flag;
-                delete data;
-            }
-        }
-        storage_ = 0;
-    }
+    g_arr = p; g_arrOrder = ++g_seq; ++g_arrs;
 }
 
-static int g_freeArrayCount = 0;
-static int g_freeScalarCount = 0;
+void operator delete(void* p)
+{
+    CCharStringData* d = static_cast<CCharStringData*>(p);
+    g_textAtDelete = d->text;
+    g_lenAtDelete = d->unknown04;
+    g_capAtDelete = d->unknown08;
+    g_obj = p; g_objOrder = ++g_seq; ++g_objs;
+}
+
+static void Reset()
+{
+    g_seq = g_arrs = g_objs = 0;
+    g_arr = g_obj = 0;
+}
+
+struct Holder
+{
+    unsigned long before;
+    CCharStringData* storage;
+    unsigned long after;
+};
+
+static CCharString* AsString(Holder& h)
+{
+    return reinterpret_cast<CCharString*>(&h.storage);
+}
 
 int main()
 {
-    // Case 1: null storage_ pointer -- no-op.
-    CCharString cs1;
-    cs1.storage_ = 0;
-    cs1.UnassignString();
-    if (cs1.storage_ != 0) { printf("FAIL case1\n"); return 1; }
+    int fail = 0;
+    char text[8];
+    CCharStringData data;
 
-    // Case 2: owners=2 (shared) -- decrements to 1, does NOT free, resets storage_ to 0.
-    CCharStringData* d2 = (CCharStringData*)malloc(sizeof(CCharStringData));
-    char* txt2 = (char*)malloc(8);
-    strcpy(txt2, "hi");
-    d2->text = txt2;
-    d2->unknown04 = 0x1234;
-    d2->unknown08 = 0x80000005;
-    d2->flags0C = 0;
-    d2->owners = 2;
-    CCharString cs2;
-    cs2.storage_ = d2;
-    cs2.UnassignString();
-    if (cs2.storage_ != 0) { printf("FAIL case2 storage not reset\n"); return 1; }
-    if (d2->owners != 1) { printf("FAIL case2 owners=%d\n", d2->owners); return 1; }
-    if (d2->text != txt2) { printf("FAIL case2 text freed early\n"); return 1; }
-    free(txt2);
-    free(d2);
+    // Last owner: delete[] text, clear text/length, keep only the top
+    // capacity bit and the flag byte, then delete the block.
+    Reset();
+    data.text = text; data.unknown04 = 5; data.unknown08 = 0x80000010; data.flags0C = 0x5A; data.owners = 1;
+    Holder h1 = { 0x11111111, &data, 0x22222222 };
+    AsString(h1)->UnassignString();
+    if (h1.storage != 0 || h1.before != 0x11111111 || h1.after != 0x22222222) fail |= 1;
+    if (g_arrs != 1 || g_arr != text || g_arrOrder != 1) fail |= 2;
+    if (g_objs != 1 || g_obj != &data || g_objOrder != 2) fail |= 4;
+    if (g_textAtDelete != 0 || g_lenAtDelete != 0 || g_capAtDelete != 0x80000000) fail |= 8;
+    if (data.flags0C != 0x5A || data.owners != 0) fail |= 16;
 
-    // Case 3: owners=1 (last owner) -- decrements to 0, frees text via delete[],
-    // clears unknown04, masks unknown08 to only the high bit, frees the block itself.
-    CCharStringData* d3 = new CCharStringData();
-    char* txt3 = new char[8];
-    strcpy(txt3, "bye");
-    d3->text = txt3;
-    d3->unknown04 = 0xAAAA;
-    d3->unknown08 = 0x80000007;
-    d3->flags0C = 0;
-    d3->owners = 1;
-    CCharString cs3;
-    cs3.storage_ = d3;
-    cs3.UnassignString();
-    if (cs3.storage_ != 0) { printf("FAIL case3 storage not reset\n"); return 1; }
-    // d3 and txt3 are now freed memory -- we cannot safely dereference them again,
-    // so this test only validates the reachable postconditions (storage_ reset).
+    // Capacity without the top bit clears to zero.
+    Reset();
+    data.text = text; data.unknown04 = 5; data.unknown08 = 0x7FFFFFFF; data.owners = 1;
+    Holder h2 = { 0, &data, 0 };
+    AsString(h2)->UnassignString();
+    if (g_capAtDelete != 0) fail |= 32;
 
-    // Case 4: owners=0 already (<=0 branch with no text pointer) -- frees block, no text free call.
-    CCharStringData* d4 = new CCharStringData();
-    d4->text = 0;
-    d4->unknown04 = 0x55;
-    d4->unknown08 = 0x80000009;
-    d4->flags0C = 0;
-    d4->owners = 0;
-    CCharString cs4;
-    cs4.storage_ = d4;
-    cs4.UnassignString();
-    if (cs4.storage_ != 0) { printf("FAIL case4 storage not reset\n"); return 1; }
+    // No buffer: no delete[], block still released, length reset.
+    Reset();
+    data.text = 0; data.unknown04 = 3; data.unknown08 = 4; data.owners = 1;
+    Holder h3 = { 0, &data, 0 };
+    AsString(h3)->UnassignString();
+    if (g_arrs != 0 || g_objs != 1 || g_lenAtDelete != 0) fail |= 64;
 
-    printf("UNASSIGN_STRING_OK\n");
+    // Shared: only the count drops.
+    Reset();
+    data.text = text; data.unknown04 = 3; data.unknown08 = 4; data.owners = 2;
+    Holder h4 = { 0, &data, 0 };
+    AsString(h4)->UnassignString();
+    if (h4.storage != 0 || data.owners != 1 || g_arrs != 0 || g_objs != 0) fail |= 128;
+    if (data.text != text || data.unknown04 != 3 || data.unknown08 != 4) fail |= 256;
+
+    // Empty handle.
+    Reset();
+    Holder h5 = { 0, 0, 0 };
+    AsString(h5)->UnassignString();
+    if (h5.storage != 0 || g_arrs != 0 || g_objs != 0) fail |= 512;
+
+    if (fail == 0)
+        printf("UNASSIGN_STRING_OK\n");
+    else
+        printf("UNASSIGN_STRING_FAIL %d\n", fail);
     return 0;
 }

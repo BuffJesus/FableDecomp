@@ -1,26 +1,13 @@
-struct DisplayEngineState {
-    int f00;
-    int f04;
-    int f08;
-    int f0c;
-    int f10;
-    int f14;
-    int f18;
-    int handle;   // +0x1c
-    int f20;
-    int f24;
-};
+#include "fable_display_engine.h"
 
-void* __fastcall CDisplayEngineInit(DisplayEngineState* self)
+CDisplayEngineInit::CDisplayEngineInit()
 {
-    self->handle = -1;
-    self->f00 = 0;
-    self->f04 = 0;
-    self->f08 = 0;
-    self->f0c = 0;
-    self->f10 = 0;
-    self->f14 = 0;
-    self->f18 = 0;
-    self->f20 = 0;
-    return self;
+    Component=0;
+    DefinitionManager=0;
+    PlayerManager=0;
+    World=0;
+    MainGraphicBank=0;
+    Width=0;
+    Height=0;
+    MeshBank=0;
 }

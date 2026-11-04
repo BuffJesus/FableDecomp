@@ -1,114 +1,66 @@
+// Behaviour fixture for CDataInputStream::SetPosition (0x00993BC0), called
+// non-virtually on raw storage laid out as CDataInputStream.
+#include <stdio.h>
+#include <string.h>
 
-#include <cstdio>
+#include "fable_data_input_stream.h"
 
-class CDataInputStream
+namespace
 {
-public:
-    void SetPosition(unsigned long pos);
+    fable_u8 g_window[64];
 
-    unsigned long m_unused0;
-    unsigned long m_cursor;
-    unsigned long m_unused1;
-    unsigned long m_window;
-    unsigned long m_srcbase;
-    unsigned long m_remaining;
-};
-
-void CDataInputStream::SetPosition(unsigned long pos)
-{
-    if (m_window != 0 && pos >= m_srcbase && pos <= m_cursor + m_remaining)
+    CDataInputStream* Stream(unsigned long* words, fable_u8* ptr, unsigned long pos,
+                             unsigned long chunkPos, long remaining)
     {
-        m_remaining = (m_cursor + m_remaining) - pos;
-        m_window = (m_window - m_cursor) + pos;
-        m_cursor = pos;
-    }
-    else
-    {
-        m_window = 0;
-        m_srcbase = 0;
-        m_remaining = 0;
-        m_cursor = pos;
+        memset(words, 0xA5, 6 * sizeof(unsigned long));
+        CDataInputStream* s = reinterpret_cast<CDataInputStream*>(words);
+        s->StreamPos = pos;
+        s->StreamSize = 100;
+        s->CurrentSourcePtr = ptr;
+        s->SourceChunkStreamPos = chunkPos;
+        s->SourceChunkBytesRemaining = remaining;
+        return s;
     }
 }
 
 int main()
 {
-    // Case 1: window nonzero, pos inside [srcbase, cursor+remaining] -> adjust branch
-    CDataInputStream s1;
-    s1.m_unused0 = 0;
-    s1.m_cursor = 100;
-    s1.m_window = 5000;
-    s1.m_srcbase = 50;
-    s1.m_remaining = 40; // valid range end = 140
+    int fail = 0;
+    unsigned long words[6];
 
-    s1.SetPosition(120);
-    // expected: remaining = (100+40)-120 = 20 ; window = (5000-100)+120 = 5020 ; cursor = 120
-    if (s1.m_remaining != 20 || s1.m_window != 5020 || s1.m_cursor != 120)
-    {
-        printf("FAIL_CASE1\n");
-        return 1;
-    }
+    // Window [10, 30): cursor at 14 (ptr g_window+4), 16 bytes left.
+    CDataInputStream* s = Stream(words, g_window + 4, 14, 10, 16);
+    s->CDataInputStream::SetPosition(20);
+    if (s->StreamPos != 20 || s->CurrentSourcePtr != g_window + 10 || s->SourceChunkBytesRemaining != 10 ||
+        s->SourceChunkStreamPos != 10 || s->StreamSize != 100 || words[0] != 0xA5A5A5A5)
+        fail |= 1;
 
-    // Case 2: window is zero -> else branch
-    CDataInputStream s2;
-    s2.m_unused0 = 0;
-    s2.m_cursor = 100;
-    s2.m_window = 0;
-    s2.m_srcbase = 50;
-    s2.m_remaining = 40;
+    // Both window edges stay inside.
+    s = Stream(words, g_window + 4, 14, 10, 16);
+    s->CDataInputStream::SetPosition(10);
+    if (s->CurrentSourcePtr != g_window || s->SourceChunkBytesRemaining != 20) fail |= 2;
+    s = Stream(words, g_window + 4, 14, 10, 16);
+    s->CDataInputStream::SetPosition(30);
+    if (s->CurrentSourcePtr != g_window + 20 || s->SourceChunkBytesRemaining != 0) fail |= 4;
 
-    s2.SetPosition(999);
-    if (s2.m_window != 0 || s2.m_srcbase != 0 || s2.m_remaining != 0 || s2.m_cursor != 999)
-    {
-        printf("FAIL_CASE2\n");
-        return 1;
-    }
+    // Outside the window (before and after): the window is dropped.
+    s = Stream(words, g_window + 4, 14, 10, 16);
+    s->CDataInputStream::SetPosition(9);
+    if (s->StreamPos != 9 || s->CurrentSourcePtr != 0 || s->SourceChunkStreamPos != 0 ||
+        s->SourceChunkBytesRemaining != 0 || s->StreamSize != 100)
+        fail |= 8;
+    s = Stream(words, g_window + 4, 14, 10, 16);
+    s->CDataInputStream::SetPosition(31);
+    if (s->StreamPos != 31 || s->CurrentSourcePtr != 0) fail |= 16;
 
-    // Case 3: window nonzero but pos < srcbase -> else branch
-    CDataInputStream s3;
-    s3.m_unused0 = 0;
-    s3.m_cursor = 100;
-    s3.m_window = 5000;
-    s3.m_srcbase = 50;
-    s3.m_remaining = 40;
+    // No window at all.
+    s = Stream(words, 0, 14, 10, 16);
+    s->CDataInputStream::SetPosition(20);
+    if (s->StreamPos != 20 || s->SourceChunkStreamPos != 0 || s->SourceChunkBytesRemaining != 0) fail |= 32;
 
-    s3.SetPosition(10);
-    if (s3.m_window != 0 || s3.m_srcbase != 0 || s3.m_remaining != 0 || s3.m_cursor != 10)
-    {
-        printf("FAIL_CASE3\n");
-        return 1;
-    }
-
-    // Case 4: window nonzero but pos > cursor+remaining -> else branch
-    CDataInputStream s4;
-    s4.m_unused0 = 0;
-    s4.m_cursor = 100;
-    s4.m_window = 5000;
-    s4.m_srcbase = 50;
-    s4.m_remaining = 40; // valid range end = 140
-
-    s4.SetPosition(200);
-    if (s4.m_window != 0 || s4.m_srcbase != 0 || s4.m_remaining != 0 || s4.m_cursor != 200)
-    {
-        printf("FAIL_CASE4\n");
-        return 1;
-    }
-
-    // Case 5: pos exactly at boundary (pos == cursor+remaining) -> adjust branch (inclusive <=)
-    CDataInputStream s5;
-    s5.m_unused0 = 0;
-    s5.m_cursor = 100;
-    s5.m_window = 5000;
-    s5.m_srcbase = 50;
-    s5.m_remaining = 40; // valid range end = 140
-
-    s5.SetPosition(140);
-    if (s5.m_remaining != 0 || s5.m_window != 5040 || s5.m_cursor != 140)
-    {
-        printf("FAIL_CASE5\n");
-        return 1;
-    }
-
-    printf("SETPOSITION_OK\n");
-    return 0;
+    if (fail == 0)
+        printf("FABLETLC_CDATAINPUTSTREAM_SETPOSITION_00993BC0_PASS\n");
+    else
+        printf("FABLETLC_CDATAINPUTSTREAM_SETPOSITION_00993BC0 FAIL %d\n", fail);
+    return fail;
 }

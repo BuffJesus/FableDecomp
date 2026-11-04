@@ -1,50 +1,25 @@
-#include <cstdio>
+// CTexture::GetRefCount (0x009F9D60): AddRef, then return Release's count; 0 without a texture.
+// Drives the landed member through a fake COM vtable (slot 1 AddRef, slot 2 Release).
+#include "fable_surface_types.h"
+#include <stdio.h>
+#include <string.h>
 
-struct IRefObj;
-struct IRefVtbl {
-    long (__stdcall *slot0)(IRefObj*);
-    long (__stdcall *slot1)(IRefObj*);
-    long (__stdcall *slot2)(IRefObj*);
-};
-struct IRefObj {
-    IRefVtbl* vtbl;
-    long count;
-};
-
-struct CTexture {
-    IRefObj* obj;
-    long GetRefCount();
-};
-
-long CTexture::GetRefCount()
-{
-    IRefObj* p = this->obj;
-    if (p == 0)
-        return 0;
-    p->vtbl->slot1(p);
-    p = this->obj;
-    return p->vtbl->slot2(p);
-}
-
-static int g_slot1_calls = 0;
-long __stdcall my_slot0(IRefObj*) { return 0; }
-long __stdcall my_slot1(IRefObj* o) { g_slot1_calls++; return 999; }
-long __stdcall my_slot2(IRefObj* o) { return o->count; }
+static int addRefs;
+static unsigned long __stdcall FakeAddRef(void*) { ++addRefs; return 7; }
+static unsigned long __stdcall FakeRelease(void*) { return 42; }
 
 int main()
 {
-    IRefVtbl vt = { my_slot0, my_slot1, my_slot2 };
-    IRefObj o; o.vtbl = &vt; o.count = 42;
-
-    CTexture a; a.obj = &o;
-    CTexture b; b.obj = 0;
-
-    long ra = a.GetRefCount();
-    long rb = b.GetRefCount();
-
-    if (ra == 42 && rb == 0 && g_slot1_calls == 1)
-        printf("GETREFCOUNT_OK\n");
-    else
-        printf("FAIL ra=%ld rb=%ld c=%d\n", ra, rb, g_slot1_calls);
-    return (ra == 42 && rb == 0 && g_slot1_calls == 1) ? 0 : 1;
+    void* table[32] = {0};
+    table[1] = (void*)FakeAddRef;
+    table[2] = (void*)FakeRelease;
+    struct { void** vtbl; } com = { table };
+    union { double align; unsigned char bytes[sizeof(CTexture)]; } storage;
+    memset(&storage, 0, sizeof(storage));
+    CTexture* texture = reinterpret_cast<CTexture*>(storage.bytes);
+    if (texture->GetRefCount() != 0 || addRefs != 0) { printf("FAIL null\n"); return 1; }
+    texture->PD3DTexture = reinterpret_cast<IDirect3DTexture9*>(&com);
+    if (texture->GetRefCount() != 42 || addRefs != 1) { printf("FAIL count\n"); return 1; }
+    printf("GETREFCOUNT_OK\n");
+    return 0;
 }

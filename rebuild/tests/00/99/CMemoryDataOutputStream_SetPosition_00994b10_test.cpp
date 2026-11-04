@@ -1,0 +1,5 @@
+#include "../tests/integration/MemoryOutput_test.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_CMemoryDataOutputStream_00996af0.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_GetPosition_009945b0.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_Close_009945c0.cpp"
+#include "../src/compiled/00/99/CMemoryDataOutputStream_Destructor_00996b30.cpp"

@@ -1,116 +1,76 @@
 #include <stdio.h>
-#include "candidates/build_number_compiled.h"
+#include "fable_disk_file.h"
 
-enum BuildEvent
+class CFileInformation {};
+
+enum Event { WIDE_LITERAL, PATH_EXISTS, WIDE_DESTROY, DISK_CONSTRUCT,
+             STRING_FROM_FILE, STRING_ASSIGN, STRING_DESTROY, DISK_CLOSE };
+static Event events[20];
+static int count;
+static bool pathExists;
+static void record(Event event) { events[count++] = event; }
+
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
+CAFile::CAFile() {}
+CFileInformation CAFile::GetFileInformation() { return CFileInformation(); }
+
+CWideString::CWideString() : storage_(0) {}
+CWideString::CWideString(const wchar_t*) : storage_(0) { record(WIDE_LITERAL); }
+CWideString::CWideString(const CWideString&) : storage_(0) {}
+CWideString::~CWideString() { record(WIDE_DESTROY); }
+
+bool FABLE_FASTCALL CAFile::PathExists(const CWideString&)
 {
-    EVENT_ASSIGN_WIDE,
-    EVENT_PATH_EXISTS,
-    EVENT_DESTROY,
-    EVENT_DISK_CONSTRUCT,
-    EVENT_FILE_CONSTRUCT,
-    EVENT_ASSIGN_STRING,
-    EVENT_DISK_CLOSE,
-    EVENT_DISK_BASE_CLEANUP
-};
+    record(PATH_EXISTS);
+    return pathExists;
+}
 
-struct BuildCall
+CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, unsigned long)
+    : Opened(false)
 {
-    BuildEvent Event;
-    const void* Self;
-    const void* Argument;
-    int ValueA;
-    int ValueB;
-};
+    record(DISK_CONSTRUCT);
+}
+void CDiskFileWin32::Open(const CWideString&, FileAccessType, unsigned long) {}
+void CDiskFileWin32::Close() { record(DISK_CLOSE); }
+void CDiskFileWin32::Read(void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::Write(const void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::SetPosition(long) {}
+void CDiskFileWin32::MovePosition(long) {}
+long CDiskFileWin32::GetPosition() const { return 0; }
+void CDiskFileWin32::SetLength(long) {}
+CAFile* CDiskFileWin32::Clone() const { return 0; }
+CFileInformation CDiskFileWin32::GetFileInformation() { return CFileInformation(); }
 
+CCharString::CCharString() : storage_(0) {}
+CCharString::CCharString(CAFile*, long) : storage_(0) { record(STRING_FROM_FILE); }
+CCharString::~CCharString() { record(STRING_DESTROY); }
+CCharString& CCharString::operator=(const CCharString&)
+{
+    record(STRING_ASSIGN);
+    return *this;
+}
 CCharString FableFullBuildVersion;
-void* FableDiskFileWin32Vftable[1];
-static BuildCall gCalls[20];
-static int gCallCount;
-static bool gPathExists;
 
-static void Record(BuildEvent event, const void* self, const void* argument, int valueA, int valueB)
-{
-    BuildCall& call = gCalls[gCallCount++];
-    call.Event = event;
-    call.Self = self;
-    call.Argument = argument;
-    call.ValueA = valueA;
-    call.ValueB = valueB;
-}
-
-void CCharString::AssignFromWide(const wchar_t* text)
-{
-    Record(EVENT_ASSIGN_WIDE, this, text, 0, 0);
-}
-
-bool CWideString::PathExists() const
-{
-    Record(EVENT_PATH_EXISTS, this, 0, 0, 0);
-    return gPathExists;
-}
-
-void CCharString::Destroy()
-{
-    Record(EVENT_DESTROY, this, 0, 0, 0);
-}
-
-void CDiskFileWin32::Construct(const CWideString& path, int accessMode, int shareMode)
-{
-    Record(EVENT_DISK_CONSTRUCT, this, &path, accessMode, shareMode);
-}
-
-void CCharString::ConstructFromFile(CAFile* file, int length)
-{
-    Record(EVENT_FILE_CONSTRUCT, this, file, length, 0);
-}
-
-CCharString* CCharString::Assign(const CCharString& other)
-{
-    Record(EVENT_ASSIGN_STRING, this, &other, 0, 0);
-    return this;
-}
-
-void CDiskFileWin32::Close()
-{
-    Record(EVENT_DISK_CLOSE, this, Vftable, 0, 0);
-}
-
-void CDiskFileWin32::BaseCleanup()
-{
-    Record(EVENT_DISK_BASE_CLEANUP, this, 0, 0, 0);
-}
+void FABLE_CDECL GFGetBuildNumber2();
 
 int main()
 {
-    gPathExists = false;
+    pathExists = false;
     GFGetBuildNumber2();
-    if (gCallCount != 3) return 1;
-    if (gCalls[0].Event != EVENT_ASSIGN_WIDE) return 2;
-    if (gCalls[1].Event != EVENT_PATH_EXISTS) return 3;
-    if (gCalls[2].Event != EVENT_DESTROY) return 4;
-
-    gCallCount = 0;
-    gPathExists = true;
+    const Event absent[] = { WIDE_LITERAL, PATH_EXISTS, WIDE_DESTROY };
+    if (count != 3) return 1;
+    for (int i = 0; i < 3; ++i) if (events[i] != absent[i]) return 2;
+    count = 0;
+    pathExists = true;
     GFGetBuildNumber2();
-    if (gCallCount != 12) return 5;
-    if (gCalls[0].Event != EVENT_ASSIGN_WIDE ||
-        gCalls[1].Event != EVENT_PATH_EXISTS ||
-        gCalls[2].Event != EVENT_DESTROY) return 6;
-    if (gCalls[3].Event != EVENT_ASSIGN_WIDE) return 7;
-    if (gCalls[4].Event != EVENT_DISK_CONSTRUCT ||
-        gCalls[4].ValueA != 1 || gCalls[4].ValueB != 2) return 8;
-    if (gCalls[5].Event != EVENT_DESTROY) return 9;
-    if (gCalls[6].Event != EVENT_FILE_CONSTRUCT || gCalls[6].ValueA != -1) return 10;
-    if (gCalls[7].Event != EVENT_ASSIGN_STRING ||
-        gCalls[7].Self != &FableFullBuildVersion ||
-        gCalls[7].Argument != gCalls[6].Self) return 11;
-    if (gCalls[8].Event != EVENT_DESTROY || gCalls[8].Self != gCalls[6].Self) return 12;
-    if (gCalls[9].Event != EVENT_DISK_CLOSE ||
-        gCalls[9].Argument != FableDiskFileWin32Vftable) return 13;
-    if (gCalls[10].Event != EVENT_DESTROY) return 14;
-    if (gCalls[11].Event != EVENT_DISK_BASE_CLEANUP ||
-        gCalls[11].Self != gCalls[9].Self) return 15;
-
-    printf("GF_GET_BUILD_NUMBER_2_TEST PASS\n");
+    const Event present[] = { WIDE_LITERAL, PATH_EXISTS, WIDE_DESTROY,
+        WIDE_LITERAL, DISK_CONSTRUCT, WIDE_DESTROY, STRING_FROM_FILE,
+        STRING_ASSIGN, STRING_DESTROY, DISK_CLOSE, WIDE_DESTROY };
+    if (count != 11) return 3;
+    for (int i = 0; i < 11; ++i) if (events[i] != present[i]) return 4;
+    puts("GF_GET_BUILD_NUMBER_TYPED_PASS");
     return 0;
 }

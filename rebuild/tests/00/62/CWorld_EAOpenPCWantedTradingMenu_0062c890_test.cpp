@@ -1,0 +1,7 @@
+#include "../src/compiled/00/62/CWorld_EAOpenPCBuyTradingMenu_0062c7f0.cpp"
+#include "../src/compiled/00/62/CWorld_EAOpenPCSellTradingMenu_0062c840.cpp"
+#include "../src/compiled/00/62/CWorld_EADeleteTradeActiveMenu_0062c9d0.cpp"
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/40/CVectorMapThingComponents_LowerBound_0040f020.cpp"
+#include "../tests/integration/InventoryTrade_test.cpp"

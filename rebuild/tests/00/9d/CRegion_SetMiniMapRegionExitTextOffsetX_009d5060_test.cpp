@@ -1,34 +1,28 @@
-#include <cstdio>
+// Behaviour of CDefString::SetString(const CCharString&) 0x009D5060 (and the inline converting ctor): asks
+// GDefStringTable (and no other table) to add the given string and stores the
+// returned index as TablePos.
+#include "fable_def_string.h"
+#include <stdio.h>
 
-struct CRegion;
-
-struct Singleton {
-    void* method(void* arg);
-};
-
-static void* g_last_arg;
-static void* g_ret_val = (void*)0xABCD1234;
-Singleton g_singleton_13ca828;
-
-void* Singleton::method(void* arg) {
-    g_last_arg = arg;
-    return g_ret_val;
+CDefStringTable GDefStringTable;
+static const CDefStringTable* g_table;
+static const CCharString* g_text;
+static long g_next = 41;
+long CDefStringTable::AddString(const CCharString& text)
+{
+    g_table = this;
+    g_text = &text;
+    return ++g_next;
 }
 
-struct CRegion {
-    void* f0;
-};
-
-void __fastcall SetMiniMapRegionExitTextOffsetX(CRegion* self, int edx, void* arg);
-
-int main() {
-    CRegion r; r.f0 = 0;
-    void* a = (void*)0x55667788;
-    SetMiniMapRegionExitTextOffsetX(&r, 0, a);
-    if (r.f0 == g_ret_val && g_last_arg == a) {
-        std::printf("009d5060_TEST PASS\n");
-    } else {
-        std::printf("FAIL f0=%p arg=%p\n", r.f0, g_last_arg);
-    }
+int main()
+{
+    static char textStore[4];
+    const CCharString& text = *reinterpret_cast<const CCharString*>(textStore);
+    CDefString a(text);
+    if (a.TablePos != 42 || g_table != &GDefStringTable || g_text != &text) { printf("got %ld\n", a.TablePos); return 1; }
+    CDefString b(text);
+    if (b.TablePos != 43) { puts("second"); return 1; }
+    printf("009d5060_TEST PASS\n");
     return 0;
 }

@@ -1,73 +1,56 @@
 #include <cstdio>
+#include <malloc.h>
+#include <stdlib.h>
 
-class FrontEndHistoryDequeMapAllocator_0059a9e0
+// Declaration only: the call must bind to the instantiation in the source.
+template<class T>
+class FrontEndHistoryDequeMapAllocator
 {
 public:
-    void** Allocate(unsigned long count, const void* hint);
+    T* Allocate(unsigned long count, const void* hint);
 };
-
-static int g_AllocateCalls;
-static unsigned long g_LastSize;
-static void* g_ReturnAllocation;
-
-extern "C" void* __cdecl
-FrontEndHistoryDequeMapAllocate_0059a9e0(unsigned long size)
-{
-    ++g_AllocateCalls;
-    g_LastSize = size;
-    return g_ReturnAllocation;
-}
-
-static void ResetProbe(void* result)
-{
-    g_AllocateCalls = 0;
-    g_LastSize = 0;
-    g_ReturnAllocation = result;
-}
 
 int main()
 {
     int failures = 0;
-    FrontEndHistoryDequeMapAllocator_0059a9e0 allocator;
-    void* slots[8];
+    FrontEndHistoryDequeMapAllocator<void*> allocator;
     int hint_a = 1;
     int hint_b = 2;
 
-    ResetProbe(slots);
-    if (allocator.Allocate(0, &hint_a) != 0 ||
-        g_AllocateCalls != 0 ||
-        g_LastSize != 0)
+    if (allocator.Allocate(0, &hint_a) != 0)
     {
         std::printf("zero-count allocation failed\n");
         ++failures;
     }
 
-    ResetProbe(slots);
-    if (allocator.Allocate(1, &hint_a) != slots ||
-        g_AllocateCalls != 1 ||
-        g_LastSize != 4)
+    void** single = allocator.Allocate(1, &hint_a);
+    if (single == 0 || _msize(single) != 4)
     {
         std::printf("single-slot allocation failed\n");
         ++failures;
     }
 
-    ResetProbe(slots);
-    if (allocator.Allocate(7, &hint_b) != slots ||
-        g_AllocateCalls != 1 ||
-        g_LastSize != 28)
+    void** multi = allocator.Allocate(7, 0);
+    if (multi == 0 || multi == single || _msize(multi) != 28)
     {
         std::printf("multi-slot allocation/hint handling failed\n");
         ++failures;
     }
-
-    ResetProbe(0);
-    if (allocator.Allocate(3, &hint_a) != 0 ||
-        g_AllocateCalls != 1 ||
-        g_LastSize != 12)
+    else
     {
-        std::printf("allocator null-result forwarding failed\n");
-        ++failures;
+        for (int i = 0; i < 7; ++i)
+        {
+            multi[i] = &hint_b;
+        }
+        if (multi[6] != &hint_b)
+        {
+            std::printf("multi-slot storage failed\n");
+            ++failures;
+        }
     }
+
+    free(single);
+    free(multi);
 
     if (failures != 0)
     {

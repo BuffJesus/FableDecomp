@@ -1,72 +1,29 @@
-extern "C" __declspec(naked) void F_00416005(void)
+// CMainGameComponent::InitDefinitions @ 0x00416005 (66 bytes).
+// FableWin ?InitDefinitions@CMainGameComponent@@IAE_N_N@Z. Runs the game
+// definition manager's InitAndCompile (vtable slot 2), clears the compiler's
+// symbol table when compiling, and returns true. The allocator totals it
+// samples before and after only fed a debug print that retail compiles out;
+// the out-of-line GetTotalMemoryAllocated calls remain.
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+#include "fable_definition_manager.h"
+#include "fable_memory_allocator.h"
+
+bool CMainGameComponent::InitDefinitions(bool compile)
 {
-    __asm
-    {
-        _emit 0x8b
-        _emit 0x0d
-        _emit 0x90
-        _emit 0xaa
-        _emit 0x3c
-        _emit 0x01
-        _emit 0x85
-        _emit 0xc9
-        _emit 0x74
-        _emit 0x05
-        _emit 0xe8
-        _emit 0x3c
-        _emit 0xc4
-        _emit 0x5d
-        _emit 0x00
-        _emit 0xe8
-        _emit 0x97
-        _emit 0x66
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x10
-        _emit 0x8b
-        _emit 0xc8
-        _emit 0xff
-        _emit 0x52
-        _emit 0x08
-        _emit 0x80
-        _emit 0x7c
-        _emit 0x24
-        _emit 0x04
-        _emit 0x00
-        _emit 0x74
-        _emit 0x0c
-        _emit 0xe8
-        _emit 0x84
-        _emit 0x66
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8b
-        _emit 0xc8
-        _emit 0xe8
-        _emit 0xdd
-        _emit 0x6a
-        _emit 0x59
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x0d
-        _emit 0x90
-        _emit 0xaa
-        _emit 0x3c
-        _emit 0x01
-        _emit 0x85
-        _emit 0xc9
-        _emit 0x74
-        _emit 0x05
-        _emit 0xe8
-        _emit 0x0e
-        _emit 0xc4
-        _emit 0x5d
-        _emit 0x00
-        _emit 0xb0
-        _emit 0x01
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+    unsigned long memoryBefore = 0;
+    if (CMemoryAllocator::Get())
+        memoryBefore = CMemoryAllocator::Get()->GetTotalMemoryAllocated();
+
+    CGameDefinitionManager::Get().InitAndCompile();
+    if (compile)
+        CGameDefinitionManager::Get().ClearSymbols();
+
+    unsigned long memoryAfter = 0;
+    if (CMemoryAllocator::Get())
+        memoryAfter = CMemoryAllocator::Get()->GetTotalMemoryAllocated();
+
+    return true;
 }

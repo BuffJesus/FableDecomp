@@ -1,92 +1,22 @@
-#include "rebuild_abi.h"
+#include "fable_shader_render_manager.h"
+#include "fable_vertex_shader.h"
+#include "fable_display_viewport.h"
 
-struct FableVertexShaderDevice;
-typedef long (__stdcall *FableSetVertexShaderCall)(
-    FableVertexShaderDevice* device,
-    void* vertexShader);
-typedef long (__stdcall *FableSetVertexDeclarationCall)(
-    FableVertexShaderDevice* device,
-    void* vertexDeclaration);
-
-struct FableVertexShaderDevice
+void CShaderRenderManager::ApplyVertexShader(const CVertexShader& shader,bool)
 {
-    void** vtable;
-};
-
-struct CDisplayEngineApplyVertexShaderView
-{
-    fable_u8 unknown0000[0x2908];
-    fable_i32 vertexShaderMode2908;
-    fable_u8 unknown290C[0x13F1];
-    fable_u8 vertexShaderDisabled3CFD;
-};
-
-struct CVertexShaderDataView
-{
-    void* unknown00;
-    void* vertexDeclaration04;
-    void* vertexShader08;
-};
-
-struct CVertexShaderApplyView
-{
-    fable_u8 unknown00[4];
-    CVertexShaderDataView* data04;
-};
-
-struct CShaderRenderManagerApplyVertexShaderView
-{
-    fable_u8 unknown000[0x1D0];
-    CDisplayEngineApplyVertexShaderView* displayEngine1D0;
-    FableVertexShaderDevice* displayDevice1D4;
-    void* currentVertexShader1D8;
-    void* currentVertexDeclaration1DC;
-    fable_u8 unknown1E0[0x1B3];
-    fable_u8 vertexShaderModeA393;
-    fable_u8 vertexShaderModeB394;
-    fable_u8 useVertexShaderModeB395;
-
-    void ApplyVertexShader(
-        const CVertexShaderApplyView& shader,
-        bool force);
-};
-
-void CShaderRenderManagerApplyVertexShaderView::ApplyVertexShader(
-    const CVertexShaderApplyView& shader,
-    bool)
-{
-    const fable_u8 expectedMode =
-        useVertexShaderModeB395
-            ? vertexShaderModeB394
-            : vertexShaderModeA393;
-    const fable_u8 actualMode =
-        static_cast<fable_u8>(
-            displayEngine1D0->vertexShaderMode2908 != 0);
-    if (
-        expectedMode != actualMode)
-    {
-        currentVertexShader1D8 = 0;
-    }
-
-    if (
-        currentVertexShader1D8 == shader.data04->vertexShader08 &&
-        currentVertexDeclaration1DC ==
-            shader.data04->vertexDeclaration04)
-    {
+    const bool expectedMode=FixedFunctionVertexMode?SoftwareFixedFunctionEnable:SoftwareVertexShaderEnable;
+    const bool actualMode=RenderManager->DeviceState.SoftwareVertexProcessing.CurrentState!=0;
+    if(expectedMode!=actualMode)
+        CurrentVertexShader=0;
+    if(CurrentVertexShader==shader.Data->VertexShader &&
+       CurrentVertexShaderVertexDeclairation==shader.Data->VertexDeclaration)
         return;
-    }
-
-    currentVertexShader1D8 = shader.data04->vertexShader08;
-    currentVertexDeclaration1DC =
-        shader.data04->vertexDeclaration04;
-    displayEngine1D0->vertexShaderDisabled3CFD = 0;
-
-    reinterpret_cast<FableSetVertexShaderCall>(
-        displayDevice1D4->vtable[0x5C])(
-            displayDevice1D4,
-            currentVertexShader1D8);
-    reinterpret_cast<FableSetVertexDeclarationCall>(
-        displayDevice1D4->vtable[0x57])(
-            displayDevice1D4,
-            currentVertexDeclaration1DC);
+    CurrentVertexShader=shader.Data->VertexShader;
+    CurrentVertexShaderVertexDeclairation=shader.Data->VertexDeclaration;
+    RenderManager->FixedFunctionPipelineEnabled=false;
+    typedef HRESULT (__stdcall *SetShaderCall)(IDirect3DDevice9*,void*);
+    void** methods=*reinterpret_cast<void***>(D3DDevice);
+    reinterpret_cast<SetShaderCall>(methods[92])(D3DDevice,CurrentVertexShader);
+    methods=*reinterpret_cast<void***>(D3DDevice);
+    reinterpret_cast<SetShaderCall>(methods[87])(D3DDevice,CurrentVertexShaderVertexDeclairation);
 }

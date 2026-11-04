@@ -1,6 +1,5 @@
-#include "engine/CStreamingFontBank.h"
-
-float __fastcall GetFontMaxHeight(CStreamingFontBank* self)
+#include "fable_font_instances.h"
+float CStreamingFontBank::GetFontMaxHeight() const
 {
-    return (float)(unsigned long)self->m_maxHeight;
+    return static_cast<float>(FontHeight);
 }

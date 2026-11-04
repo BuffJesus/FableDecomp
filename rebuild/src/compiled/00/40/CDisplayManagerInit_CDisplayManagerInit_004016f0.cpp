@@ -1,0 +1,2 @@
+#include "fable_system.h"
+CDisplayManagerInit::CDisplayManagerInit(){UseRenderManager=true;UseShaderRenderManager=true;PresentationIntevalVSyncCount=1;PresentImmediatelyIfMissedVSync=true;PresentImmediate=true;Width=0;Height=0;Depth=0;RefreshRate=0;WindowHandle=0;MultisampleType=0;RenderManagerInitFlags=0;ZBufferDepth=16;NoBackBuffers=1;PushBufferSize=0x80000;KickOffSize=0x8000;}

@@ -1,28 +1,28 @@
-#include "candidates/build_number_compiled.h"
+#include <new>
+#include "fable_disk_file.h"
+
+extern CCharString FableFullBuildVersion;
 
 void FABLE_CDECL GFGetBuildNumber2()
 {
-    CCharString pathText;
-    CCharString fileContents;
-    CDiskFileWin32 diskFile;
-
-    pathText.AssignFromWide(L"full_build_version.txt");
-    const bool pathExists = reinterpret_cast<const CWideString*>(&pathText)->PathExists();
-    pathText.Destroy();
-
-    if (pathExists)
+    bool exists;
     {
-        pathText.AssignFromWide(L"full_build_version.txt");
-        diskFile.Construct(*reinterpret_cast<const CWideString*>(&pathText), 1, 2);
-        pathText.Destroy();
-
-        fileContents.ConstructFromFile(reinterpret_cast<CAFile*>(&diskFile), -1);
-        FableFullBuildVersion.Assign(fileContents);
-        fileContents.Destroy();
-
-        diskFile.Vftable = FableDiskFileWin32Vftable;
-        diskFile.Close();
-        diskFile.Path.Destroy();
-        diskFile.BaseCleanup();
+        CWideString path(L"full_build_version.txt");
+        exists = CAFile::PathExists(path);
     }
+    if (!exists)
+        return;
+
+    unsigned char fileStorage[sizeof(CDiskFileWin32)];
+    {
+        CWideString path(L"full_build_version.txt");
+        new (fileStorage) CDiskFileWin32(path, FILE_ACCESS_READ, 2);
+    }
+    {
+        CCharString contents(
+            reinterpret_cast<CDiskFileWin32*>(fileStorage), -1);
+        FableFullBuildVersion = contents;
+    }
+    reinterpret_cast<CDiskFileWin32*>(fileStorage)
+        ->CDiskFileWin32::~CDiskFileWin32();
 }

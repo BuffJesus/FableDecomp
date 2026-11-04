@@ -1,115 +1,102 @@
-#include "rebuild_abi.h"
+#include "fable_base_class.h"
 
-struct FableCharString_0099F2E0
+// PDB shapes (Ego_r.pdb). fable_string.h keeps CCharStringData as a flat
+// aggregate for fixtures that brace-initialise it, so this file carries the
+// real CBasicString-backed layout whose inline constructors retail expands here.
+class CWideString;
+class CASuspendableProcess;
+
+enum FileAccessType
 {
-    void* storage;
 };
 
-extern "C" void FABLE_FASTCALL
-FableCharStringRelease_0099E9B0(
-    FableCharString_0099F2E0* self,
-    void*);
-extern "C" void* FABLE_CDECL
-FableCharStringAllocate_00BFEA1A(unsigned long size);
-extern "C" void FABLE_FASTCALL
-FableCharStringStorageInitialise_009A0390(
-    void* storage,
-    void*,
-    long length,
-    unsigned long growth);
+class CAFile : public CBaseClassNonCopyable
+{
+public:
+    virtual void Open(
+        const CWideString& pathname,
+        FileAccessType accessType,
+        unsigned long flags) = 0;
+    virtual void Close() = 0;
+    virtual void Read(
+        void* data,
+        long length,
+        CASuspendableProcess* process) = 0;
+    virtual void Write(
+        const void* data,
+        long length,
+        CASuspendableProcess* process) = 0;
+    virtual void SetPosition(long position) = 0;
+    virtual void MovePosition(long offset) = 0;
+    virtual long GetPosition() const = 0;
+    virtual void SetLength(long length) = 0;
+    virtual long GetLength() const = 0;
+};
 
-// CCharString::LoadFromFile(
-//     CAFile&,
-//     CASuspendableProcess*,
-//     long) @ 0x0099F2E0.
-//
-// A length of -1 means "from the current file position to EOF". Retail
-// replaces any prior string allocation, creates a 17-byte shared string
-// descriptor, initializes its buffer with growth 0x20, then requests exactly
-// the selected byte count from CAFile.
-extern "C" __declspec(naked) void FABLE_FASTCALL
-FableCharStringLoadFromFile_0099F2E0(
-    FableCharString_0099F2E0* self,
-    void*,
-    void* file,
-    void* suspendableProcess,
+#pragma pack(push, 1)
+template<typename T>
+class CBasicString
+{
+public:
+    CBasicString(unsigned long length, T fill)
+        : PData(0),
+          StringLength(0),
+          DataLength(0),
+          UseFastExtend(true)
+    {
+        SetString(length, fill);
+    }
+
+    T* PData;
+    unsigned long StringLength;
+    unsigned long DataLength : 31;
+    bool UseFastExtend : 1;
+
+protected:
+    void SetString(unsigned long length, T fill);
+};
+
+struct CCharStringData
+{
+    CCharStringData(unsigned long length, char fill)
+        : Data(length, fill),
+          NoRefs(1)
+    {
+    }
+
+    CBasicString<char> Data;
+    long NoRefs;
+};
+#pragma pack(pop)
+
+class CCharString
+{
+public:
+    void LoadFromFile(
+        CAFile& file,
+        CASuspendableProcess* process,
+        long length);
+
+private:
+    void UnassignString();
+
+    CCharStringData* PStringData;
+};
+
+// CCharString::LoadFromFile(CAFile&, CASuspendableProcess*, long) @ 0x0099F2E0.
+// A length of -1 reads from the current position to the end of the file.
+void CCharString::LoadFromFile(
+    CAFile& file,
+    CASuspendableProcess* process,
     long length)
 {
-    __asm
-    {
-        push ecx
-        push ebx
-        mov ebx, ecx
-        cmp dword ptr [ebx], 0
-        push ebp
-        push esi
-        push edi
-        mov dword ptr [esp + 10h], ebx
-        je noOldString
-        call FableCharStringRelease_0099E9B0
+    if (PStringData)
+        UnassignString();
 
-noOldString:
-        mov edi, dword ptr [esp + 20h]
-        cmp edi, -1
-        mov ebp, dword ptr [esp + 18h]
-        jne haveLength
-        mov eax, dword ptr [ebp]
-        mov ecx, ebp
-        call dword ptr [eax + 24h]
-        mov edx, dword ptr [ebp]
-        mov ecx, ebp
-        mov edi, eax
-        call dword ptr [edx + 1Ch]
-        sub edi, eax
+    if (length == -1)
+        length = file.GetLength() - file.GetPosition();
 
-haveLength:
-        push 11h
-        call FableCharStringAllocate_00BFEA1A
-        mov esi, eax
-        add esp, 4
-        test esi, esi
-        je allocationFailed
-        mov ebx, dword ptr [esi + 8]
-        mov dl, byte ptr [esi + 0Ch]
-        and ebx, 80000000h
-        mov dword ptr [esi + 8], ebx
-        mov ebx, 1
-        push 20h
-        or dl, bl
-        push edi
-        mov ecx, esi
-        mov dword ptr [esi], 0
-        mov dword ptr [esi + 4], 0
-        mov byte ptr [esi + 0Ch], dl
-        call FableCharStringStorageInitialise_009A0390
-        mov dword ptr [esi + 0Dh], ebx
-        mov ebx, dword ptr [esp + 10h]
-        jmp publishStorage
-
-allocationFailed:
-        xor esi, esi
-
-publishStorage:
-        test esi, esi
-        mov dword ptr [ebx], esi
-        je done
-        test edi, edi
-        jle done
-        mov ecx, dword ptr [esp + 1Ch]
-        mov edx, dword ptr [esi]
-        mov eax, dword ptr [ebp]
-        push ecx
-        push edi
-        push edx
-        mov ecx, ebp
-        call dword ptr [eax + 0Ch]
-
-done:
-        pop edi
-        pop esi
-        pop ebp
-        pop ebx
-        pop ecx
-        ret 0Ch
-    }
+    PStringData = new CCharStringData(length, ' ');
+    if (PStringData && length > 0)
+        file.Read(PStringData->Data.PData, length, process);
 }

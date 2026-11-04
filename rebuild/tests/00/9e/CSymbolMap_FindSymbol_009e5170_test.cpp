@@ -1,0 +1,5 @@
+#include "../src/compiled/00/9e/CVectorMap_SymbolMap_LowerBound_009e6910.cpp"
+#include "../src/compiled/00/9e/CSymbolMap_GetSymbolSLONG_009e5120.cpp"
+#include "../src/compiled/00/9e/CSymbolMap_SymbolExists_009e51c0.cpp"
+#include "../src/compiled/00/9e/CCharString_FastCompare_009e6530.cpp"
+#include "../tests/integration/FindSymbolChain_test.cpp"

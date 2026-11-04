@@ -1,7 +1,21 @@
-#include "rebuild_abi.h"
-#include <cstdio>
-char g_str_9a76a0=7; static int hit=0;
-struct C { int x; void Helper(char* s); C* Get(); };
-void C::Helper(char* s){ hit=1; }
-C* C::Get(){ this->Helper(&g_str_9a76a0); return this; }
-int main(){ C o; if(o.Get()!=&o){std::printf("B1");return 1;} if(!hit){std::printf("B2");return 1;} std::printf("RB_9a76a0_OK\n"); return 0; }
+// Behaviour: GetHeaderDir copy-constructs its result (hidden return slot) from
+// the stored bank header directory (0x013CA7D4) exactly once.
+#include "fable_bank_file.h"
+#include <stdio.h>
+
+extern "C" fable_u8 g_FableBankHeaderDirectory_013CA7D4[sizeof(CWideString)];
+fable_u8 g_FableBankHeaderDirectory_013CA7D4[sizeof(CWideString)];
+
+static int g_copies; static const void* g_this; static const void* g_from;
+CWideString::CWideString(const CWideString& other) { ++g_copies; g_this = this; g_from = &other; }
+CWideString::~CWideString() {}
+
+int main()
+{
+    {
+        CWideString result = NBankFileManager::GetHeaderDir();
+        if (g_copies != 1 || g_this != &result || g_from != g_FableBankHeaderDirectory_013CA7D4) { puts("FAIL"); return 1; }
+    }
+    puts("FABLETLC_NBANKFILEMANAGER_GETHEADERDIR_009A76A0_PASS");
+    return 0;
+}

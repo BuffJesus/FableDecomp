@@ -1,6 +1,7 @@
 #include <cstdio>
 
-struct CCreatureActionBase { int _vfptr; };
+class CCreatureActionBase {
+public: int _vfptr; };
 
 bool __fastcall CCreatureActionBase_IsStrikeEventActive(const CCreatureActionBase* self);
 

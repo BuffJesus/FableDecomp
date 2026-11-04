@@ -1,3 +1,7 @@
-// Constant-false predicate: `xor al,al; ret`. __fastcall this=ecx, no args.
-struct T { bool IsEditorActive(); };
-bool T::IsEditorActive() { return false; }
+#include "fable_game.h"
+
+// Release builds have no editor: vtable slot 9 of CMainGameComponent.
+bool CMainGameComponent::IsEditorActive() const
+{
+    return false;
+}

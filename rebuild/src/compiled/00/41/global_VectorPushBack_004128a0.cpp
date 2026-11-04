@@ -1,32 +1,11 @@
-struct CWideString
-{
-    unsigned long value;
-    void CopyConstruct(CWideString* source);
-};
+// _STL::vector<CWideString>::push_back(const CWideString&) @ 0x004128A0 (STLport;
+// CStartupDefinitionManager::InitAndCompilePlatformSpecific 0x004336BC builds
+// its path lists with it). The body (copy into the spare slot, or grow the
+// storage by one through _M_insert_overflow) is STLport's, in
+// fable_stlport_vector_impl.h.
+#include "fable_string.h"
+#include "fable_stlport_vector_impl.h"
 
-struct VectorPushBackOverlay
-{
-    unsigned char unused[4];
-    CWideString* finish;
-    CWideString* end_of_storage;
+#include <new>
 
-    void InsertRange(
-        CWideString* position,
-        CWideString* value,
-        CWideString** value_copy,
-        int count,
-        int copies);
-};
-
-void __fastcall Vector_PushBack(VectorPushBackOverlay* self, void*, CWideString* value)
-{
-    CWideString* finish = self->finish;
-    if (finish != self->end_of_storage) {
-        if (finish != 0) {
-            finish->CopyConstruct(value);
-        }
-        self->finish = (CWideString*)((unsigned char*)self->finish + 4);
-        return;
-    }
-    self->InsertRange(finish, value, &value, 1, 1);
-}
+template void _STL::vector<CWideString>::push_back(const CWideString& __x);

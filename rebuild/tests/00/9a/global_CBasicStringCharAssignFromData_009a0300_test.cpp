@@ -1,88 +1,51 @@
+// Behaviour of CBasicString<char>::SetString(const char*, unsigned long)
+// 0x009A0300: an old buffer is freed with delete[]; the new one comes from
+// new[] sized (length + 4) & ~3, holds exactly `length` characters (not
+// stopping at embedded NULs), a terminator and zeroed slack; StringLength and
+// the 31-bit DataLength are set and the UseFastExtend byte and top bit kept.
+#include "fable_basic_string.h"
+#include <new>
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
-void* operator new[](unsigned int size) { return malloc(size); }
-void operator delete[](void* p) { free(p); }
-
-struct CBasicStringChar
+static unsigned char g_heap[2][32];
+static int g_next;
+static unsigned int g_newSize;
+static void* g_deleted;
+void* operator new[](unsigned int size)
 {
-    char* data;
-    unsigned int len;
-    unsigned int capField;
+    g_newSize = size;
+    memset(g_heap[g_next], 0xEE, sizeof(g_heap[g_next]));
+    return g_heap[g_next++];
+}
+void operator delete[](void* p) { g_deleted = p; }
 
-    void __fastcall AssignFromData(void* edx_unused, const char* src, unsigned int newLen);
+// Exposes the protected member to the fixture.
+struct Probe : CBasicString<char>
+{
+    void Set(const char* text, unsigned long length) { SetString(text, length); }
 };
 
-void __fastcall CBasicStringChar::AssignFromData(void* edx_unused, const char* src, unsigned int newLen)
-{
-    (void)edx_unused;
-    const char* srcKeep = src;
-
-    if (data != 0)
-    {
-        operator delete[](data);
-        data = 0;
-    }
-
-    unsigned int allocSize = (newLen + 4) & ~3u;
-    char* newData = (char*)operator new[](allocSize);
-
-    unsigned int mergedCap = capField ^ ((capField ^ allocSize) & 0x7fffffff);
-
-    data = newData;
-    capField = mergedCap;
-    len = newLen;
-    newData[newLen] = 0;
-
-    unsigned int padStartOff = len;
-    char* padPtr = data;
-    padStartOff = padStartOff + 1;
-    unsigned int alignedPadEnd = (padStartOff + 3) & ~3u;
-    unsigned int padCount = alignedPadEnd - padStartOff;
-    padPtr = padPtr + padStartOff;
-
-    memset(padPtr, 0, padCount);
-
-    memcpy(data, srcKeep, newLen);
-}
+static unsigned long U32(const unsigned char* p, int o) { return *reinterpret_cast<const unsigned long*>(p + o); }
 
 int main()
 {
-    CBasicStringChar str;
-    str.data = 0;
-    str.len = 0;
-    str.capField = 0x80000005u;
+    unsigned char storage[sizeof(CBasicString<char>)];
+    memset(storage, 0, sizeof(storage));
+    storage[8 + 3] = 0x80;           // spare top bit of the size dword
+    storage[12] = 0x01;              // UseFastExtend
+    Probe* s = reinterpret_cast<Probe*>(storage);
 
-    str.AssignFromData(0, "Hello World!", 12);
+    s->Set("abcde", 5);
+    char* first = s->PData;
+    if (first != (char*)g_heap[0] || g_newSize != 8 || g_deleted != 0) { puts("alloc"); return 1; }
+    if (memcmp(first, "abcde\0\0\0", 8) != 0 || first[8] != (char)0xEE) { puts("text"); return 1; }
+    if (U32(storage, 4) != 5 || U32(storage, 8) != (0x80000000 | 8) || storage[12] != 0x01) { puts("fields"); return 1; }
 
-    int ok = 1;
-    if (str.len != 12) ok = 0;
-    if (str.data == 0) ok = 0;
-    if (ok && memcmp(str.data, "Hello World!", 12) != 0) ok = 0;
-    if (ok && str.data[12] != 0) ok = 0;
-
-    if ((str.capField & 0x80000000u) == 0) ok = 0;
-    if ((str.capField & 0x7fffffffu) != 16) ok = 0;
-
-    unsigned int start = str.len + 1;
-    unsigned int alignedEnd = (start + 3) & ~3u;
-    for (unsigned int i = start; i < alignedEnd; i++)
-    {
-        if (str.data[i] != 0) ok = 0;
-    }
-
-    str.AssignFromData(0, "Hi", 2);
-    if (str.len != 2) ok = 0;
-    if (ok && memcmp(str.data, "Hi", 2) != 0) ok = 0;
-    if (ok && str.data[2] != 0) ok = 0;
-
-    if (ok)
-        printf("ASSIGNFROMDATA_TEST_OK\n");
-    else
-        printf("ASSIGNFROMDATA_TEST_FAIL\n");
-
-    operator delete[](str.data);
-
+    static const char kEmbedded[] = { 'x', 0, 'y', 'z' };
+    s->Set(kEmbedded, 4);
+    if (g_deleted != first || s->PData != (char*)g_heap[1] || g_newSize != 8) { puts("realloc"); return 1; }
+    if (memcmp(s->PData, "x\0yz\0\0\0\0", 8) != 0 || U32(storage, 4) != 4) { puts("embedded"); return 1; }
+    puts("FABLETLC_CBASICSTRING_CHAR_SETSTRING_009A0300_PASS");
     return 0;
 }

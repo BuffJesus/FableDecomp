@@ -1,30 +1,32 @@
 #include <stdio.h>
+#include <string.h>
 
-#include "rebuild_abi.h"
-
-struct CTCInventoryBaseQuickAssignView
-{
-    fable_u8 unknown0000[0x3A54];
-    bool canItemBeQuickAssigned3A54;
-};
-
-bool FABLE_FASTCALL
-FableGetCanItemBeQuickAssigned_00A0AA60(
-    const CTCInventoryBaseQuickAssignView* inventory);
+#include "fable_render_state_manager.h"
 
 int main()
 {
-    CTCInventoryBaseQuickAssignView inventory = {};
+    // CRenderManagerCore has no default constructor (retail builds it from
+    // its CDisplayManager); the getter only reads Rendering (+0x3A54).
+    static fable_u8 rendererStorage[sizeof(CRenderManagerCore)];
+    memset(rendererStorage, 0, sizeof(rendererStorage));
+    CRenderManagerCore& renderer =
+        *reinterpret_cast<CRenderManagerCore*>(rendererStorage);
 
-    inventory.canItemBeQuickAssigned3A54 = true;
-    if (!FableGetCanItemBeQuickAssigned_00A0AA60(&inventory))
+    if (offsetof(CRenderManagerCore, Rendering) != 0x3A54)
+    {
+        printf("FABLETLC_INVENTORY_QUICK_ASSIGN_BEHAVIOR FAIL code=3\n");
+        return 3;
+    }
+
+    renderer.Rendering = true;
+    if (!renderer.IsRendering())
     {
         printf("FABLETLC_INVENTORY_QUICK_ASSIGN_BEHAVIOR FAIL code=1\n");
         return 1;
     }
 
-    inventory.canItemBeQuickAssigned3A54 = false;
-    if (FableGetCanItemBeQuickAssigned_00A0AA60(&inventory))
+    renderer.Rendering = false;
+    if (renderer.IsRendering())
     {
         printf("FABLETLC_INVENTORY_QUICK_ASSIGN_BEHAVIOR FAIL code=2\n");
         return 2;

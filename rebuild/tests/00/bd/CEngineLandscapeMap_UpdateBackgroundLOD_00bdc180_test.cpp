@@ -9,6 +9,17 @@ static LS_LOADING_STATUS g_updateStatus;
 static unsigned long g_width, g_height;
 static unsigned char g_blockData[8];
 
+// Lifetime boundaries: this unit exercises background-LOD dispatch only.
+CEngineLandscapeMap::~CEngineLandscapeMap() {}
+void CEngineLandscapeMap::RelocateData(long,void*,void*,long) {}
+bool CEngineLandscapeMap::CanRelocateData(long) const { return !MemoryFreeingLocked; }
+bool CMovableResource::CanRelocateData(long) const { return true; }
+unsigned long CMovableResource::Verify() const { return 0x7b; }
+CEngineMap::~CEngineMap() {}
+CEngineStaticMapFileBlockManager::~CEngineStaticMapFileBlockManager() {}
+CCharString::CCharString() : storage_(0) {}
+CCharString::~CCharString() {}
+
 void* __fastcall AllocateLandscapeBackgroundTreeNode(unsigned long bytes, CEngineLandscapeMap*)
 {
     return operator new(bytes);
@@ -17,16 +28,17 @@ void* __fastcall AllocateLandscapeBackgroundTreeNode(unsigned long bytes, CEngin
 void CEngineStaticMapFileBlockManager::AddRequest(long, unsigned long, bool) { ++g_addRequests; }
 bool CEngineStaticMapFileBlockManager::IsBlockLoaded(long) { return g_loaded; }
 unsigned char* CEngineStaticMapFileBlockManager::GetBlockData(long, unsigned long) { return g_blockData; }
-void CEngineStaticMapFileBlockManager::BankFileList_RemoveFinished() { ++g_finished; }
+void CEngineStaticMapFileBlockManager::DeleteUnusedBlocks() { ++g_finished; }
 CMemoryDataInputStream::CMemoryDataInputStream(unsigned char*) {}
 CMemoryDataInputStream::~CMemoryDataInputStream() {}
 CLandscapeBackgroundTreeNode::CLandscapeBackgroundTreeNode(CEngineLandscapeMap*, void*, long) { ++g_constructed; }
+CLandscapeBackgroundTreeNode::~CLandscapeBackgroundTreeNode() {}
 void CLandscapeBackgroundTreeNode::BuildDefaultSection(unsigned long, unsigned long, unsigned long width, unsigned long height)
 { ++g_defaults; g_width = width; g_height = height; }
 void CLandscapeBackgroundTreeNode::LoadHeader(CMemoryDataInputStream&) { ++g_headers; }
 LS_LOADING_STATUS CLandscapeBackgroundTreeNode::UpdateStaticLOD(double, bool, CEngineStaticMapFileBlockManager*)
 { ++g_updates; return g_updateStatus; }
-void CEngineLandscapeMap::ReleaseFileBlockLoad() { ++g_releases; }
+void CEngineLandscapeMap::ReleaseLoadingPatchTreeBase() { ++g_releases; }
 
 static void Reset()
 {
@@ -38,8 +50,10 @@ static void Reset()
 
 int main()
 {
-    CEngineLandscapeMap map;
-    CEngineMap owner;
+    union { double align; unsigned char bytes[sizeof(CEngineLandscapeMap)]; } mapStorage;
+    CEngineLandscapeMap& map=*reinterpret_cast<CEngineLandscapeMap*>(mapStorage.bytes);
+    union { double align; unsigned char bytes[sizeof(CEngineMap)]; } ownerStorage;
+    CEngineMap& owner=*reinterpret_cast<CEngineMap*>(ownerStorage.bytes);
     CEngineStaticMapFileBlockManager manager;
     CLandscapeGPUUpdateQueue queue;
     CLandscapeBackgroundTreeNode existing(&map, 0, 0);

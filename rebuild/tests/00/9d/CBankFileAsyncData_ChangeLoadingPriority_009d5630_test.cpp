@@ -1,61 +1,40 @@
-#include <cstdio>
-typedef int EThreadedFilePriority;
+#include "fable_threaded_file.h"
+#include "fable_game_text_bank.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-struct Inner { int id; };
-
-static int g_called = 0;
-static Inner* g_item = 0;
-static EThreadedFilePriority g_prio = -1;
-
-struct Consumer {
-    char pad[0x100];
-    void SetPriority(Inner* item, EThreadedFilePriority prio) {
-        g_called++;
-        g_item = item;
-        g_prio = prio;
-    }
-};
-
-struct Manager {
-    char pad[0x110];
-    Consumer* field_110;
-};
-
-struct CBankFileAsyncData {
-    char pad0[0x18];
-    Inner* field_18;
-    char pad1[0x28 - 0x1c];
-    Manager* field_28;
-};
-
-void ChangeLoadingPriority(CBankFileAsyncData* self, EThreadedFilePriority prio)
+static CThreadedFile* expectedFile;
+static unsigned long expectedUID,expectedPriority,calls;
+void CThreadedFile::SetObjectPriority(unsigned long uid,EThreadedFilePriority priority)
 {
-    Inner* item = self->field_18;
-    if (item) {
-        Consumer* c = self->field_28->field_110;
-        c->SetPriority(item, prio);
-    }
+    if (this!=expectedFile || uid!=expectedUID || static_cast<unsigned long>(priority)!=expectedPriority)
+        exit(81);
+    ++calls;
 }
 
-int main() {
-    Consumer cons;
-    Manager mgr; mgr.field_110 = &cons;
-    Inner item; item.id = 7;
-
-    CBankFileAsyncData a;
-    a.field_18 = &item;
-    a.field_28 = &mgr;
-
-    // Case 1: field_18 non-null -> calls SetPriority(item, prio)
-    ChangeLoadingPriority(&a, 42);
-    if (g_called != 1 || g_item != &item || g_prio != 42) { printf("BAD1\n"); return 1; }
-
-    // Case 2: field_18 null -> no call
-    g_called = 0;
-    a.field_18 = 0;
-    ChangeLoadingPriority(&a, 99);
-    if (g_called != 0) { printf("BAD2\n"); return 1; }
-
-    printf("PARITY_OK\n");
-    return 0;
+int main()
+{
+    const unsigned long uids[]={0,1,0x7fffffff,0x80000000,0xfffffffe,0xffffffff};
+    const unsigned long priorities[]={0,1,2,3,4,5,6,7,0xffffffff};
+    unsigned cases=0;
+    for(unsigned seed=0;seed<4;++seed)for(unsigned u=0;u<6;++u)
+    for(unsigned p=0;p<9;++p)for(unsigned ordinal=0;ordinal<4;++ordinal) {
+        unsigned long dataWords[40],bankWords[(sizeof(CBankFileAsync)+32)/4],fileWords[24];
+        memset(dataWords,seed*51,sizeof(dataWords));memset(bankWords,seed*37,sizeof(bankWords));memset(fileWords,seed*19,sizeof(fileWords));
+        CBankFileAsyncData* data=reinterpret_cast<CBankFileAsyncData*>(dataWords+4+ordinal);
+        CBankFileAsync* bank=reinterpret_cast<CBankFileAsync*>(bankWords+4);
+        expectedFile=reinterpret_cast<CThreadedFile*>(fileWords+ordinal);
+        expectedUID=uids[u];expectedPriority=priorities[p];calls=0;
+        data->ThreadedFileUID=expectedUID;
+        // Populate the reference storage without constructing bank runtime services.
+        *reinterpret_cast<CBankFileAsync**>(reinterpret_cast<char*>(data)+0x28)=expectedUID?bank:0;
+        bank->ThreadedFile.data_=expectedFile;
+        unsigned long dataBefore[40],bankBefore[(sizeof(CBankFileAsync)+32)/4],fileBefore[24];
+        memcpy(dataBefore,dataWords,sizeof(dataWords));memcpy(bankBefore,bankWords,sizeof(bankWords));memcpy(fileBefore,fileWords,sizeof(fileWords));
+        data->ChangeLoadingPriority(static_cast<EThreadedFilePriority>(expectedPriority));
+        if(calls!=(expectedUID?1UL:0UL) || memcmp(dataBefore,dataWords,sizeof(dataWords)) || memcmp(bankBefore,bankWords,sizeof(bankWords)) || memcmp(fileBefore,fileWords,sizeof(fileWords)))return 82;
+        ++cases;
+    }
+    printf("NATIVE_BANK_PRIORITY_HOST_PASS cases=%u\n",cases);return cases==864?0:83;
 }

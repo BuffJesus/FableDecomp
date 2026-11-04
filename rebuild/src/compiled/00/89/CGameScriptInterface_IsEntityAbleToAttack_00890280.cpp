@@ -1,19 +1,19 @@
-#include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
+// CGameScriptInterface::IsEntityAbleToAttack(const CScriptThing&) const @ 00890280
+// (labels_rtti_port: ?IsEntityAbleToAttack@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z).
+#include "engine/CScriptThing.h"
+#include "fable_world.h"
 
-struct CAttackEntityView {
-    void* __vftable;
-    unsigned char _pad_0x04[0x91 - 4];
-    unsigned char Flags;
-};
+// Retail 0085f3e0 (__fastcall, CThing in ecx); name not yet confirmed.
+extern char __fastcall Entity_CanAttack(const CThing* thing);
 
-typedef CAttackEntityView* (__fastcall* GetAttackEntityFn)(CGameScriptInterface*);
-extern char __fastcall Entity_CanAttack(CAttackEntityView* self);
+typedef CThing* (__fastcall* GetScriptThingFn)(const CScriptThing*);
 
-bool __stdcall CGameScriptInterface_IsEntityAbleToAttack(CGameScriptInterface* self)
+// The retail body does not access its CGameScriptInterface `this`; this ABI-normalized
+// free function therefore exposes only the one stack argument used by the body.
+bool __stdcall CGameScriptInterface_IsEntityAbleToAttack(const CScriptThing* scriptThing)
 {
-    GetAttackEntityFn* vtable = (GetAttackEntityFn*)self->__vftable;
-    CAttackEntityView* entity = vtable[0x2c / 4](self);
-    if (entity != 0 && (entity->Flags & 1) == 0)
+    CThing* entity = ((GetScriptThingFn)((void**)scriptThing->__vftable)[0x2c / 4])(scriptThing);
+    if (IS_THING_ALIVE(entity))
         return Entity_CanAttack(entity);
     return false;
 }

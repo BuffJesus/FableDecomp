@@ -1,15 +1,13 @@
-#include "rebuild_abi.h"
+#include "fable_handle_memory_pool.h"
 
-// CHandleBasedMemoryPool::GetPointerFromHandle @ 0x00a026b0
-// __fastcall: indexes the pointer table at this+0x438 by the handle, returns the
-// slot pointer offset by +0x20 (past the block header). One stack arg, ret 4.
-struct FablePool_00a026b0
+// Retail 00A026B0: the payload immediately follows its allocation header.
+void* CHandleBasedMemoryPool::GetPointerFromHandle(long handle)
 {
-    void* GetPointerFromHandle(int handle);
-};
+    return Handles[handle].Header + 1;
+}
 
-void* FablePool_00a026b0::GetPointerFromHandle(int handle)
+// Retail 00A026D0: report the allocation's size without its tail padding.
+unsigned long CHandleBasedMemoryPool::GetSizeFromHandle(long handle)
 {
-    char** table = *(char***)((char*)this + 0x438);
-    return table[handle] + 0x20;
+    return Handles[handle].Header->Size;
 }

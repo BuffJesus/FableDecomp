@@ -1,5 +1,5 @@
-int * __stdcall GetInstantiationName(int *out)
+#include "fable_def_class_base.h"
+CDefString CDefClassBase::GetInstantiationName() const
 {
-    *out = -1;
-    return out;
+    return CDefString();
 }

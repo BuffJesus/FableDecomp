@@ -1,11 +1,6 @@
-#include <stdio.h>
-struct CPlayerManager { long mainNumber; long GetMainPlayerNumber() const; };
-long CPlayerManager::GetMainPlayerNumber() const { return mainNumber; }
-struct CPlayer { char a[0x10]; CPlayerManager* manager; char b[0x14]; long number;
- unsigned char IsMainPlayer() const; };
-unsigned char CPlayer::IsMainPlayer() const { long playerNumber=number;
- return playerNumber==manager->GetMainPlayerNumber(); }
-int main() { CPlayerManager manager; manager.mainNumber=2; CPlayer player;
- player.manager=&manager; player.number=2; if(!player.IsMainPlayer()) return 1;
- player.number=1; if(player.IsMainPlayer()) return 2;
- printf("IS_MAIN_PLAYER PASS\n"); return 0; }
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/40/CVectorMapThingComponents_LowerBound_0040f020.cpp"
+#include "../src/compiled/00/44/CPlayerManager_GetMainPlayerNumber_00449700.cpp"
+#include "../src/compiled/00/62/CWorld_EAControlledCreatureBlockEnd_0062b000.cpp"
+#include "../tests/integration/BlockEndEvent_test.cpp"

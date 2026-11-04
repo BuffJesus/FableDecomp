@@ -23,6 +23,10 @@ CFileInstaller::CFileInstaller()
     ++g_constructorCalls;
 }
 
+// This singleton lookup fixture constructs no installer resources. Its static
+// recorder still needs the virtual destructor introduced by the shipping ABI.
+CFileInstaller::~CFileInstaller() {}
+
 void CCountedFileInstaller::operator=(CFileInstaller* value)
 {
     ++g_assignmentCalls;

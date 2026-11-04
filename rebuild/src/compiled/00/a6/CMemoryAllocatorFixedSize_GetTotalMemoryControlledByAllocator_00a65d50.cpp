@@ -2,14 +2,14 @@
 
 unsigned long CMemoryAllocatorFixedSize::GetTotalMemoryControlledByAllocator()
 {
-    CFixedSizeAllocatorNode* current = ControlledAreas;
-    unsigned long total = BaseControlledMemory;
+    CFixedSizeAllocatorNode* current = PFirstChunk;
+    unsigned long total = ExtraMemUsedByOS;
     if (current != 0)
     {
         do
         {
-            current = current->Next;
-            total += ControlledAreaSize;
+            current = current->PNextChunk;
+            total += ChunkSize;
         } while (current != 0);
     }
     return total;

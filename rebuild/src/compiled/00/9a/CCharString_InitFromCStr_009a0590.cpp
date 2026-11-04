@@ -1,33 +1,15 @@
-struct CCharString
+// CBasicString<char>::CBasicString(char const*) @ 0x009A0590.
+#include "fable_basic_string.h"
+
+// An empty, fast-extending string set to a copy of the C string.
+template <class T>
+CBasicString<T>::CBasicString(const T* text)
+    : PData(0), StringLength(0), DataLength(0), UseFastExtend(true)
 {
-    char* m_data;
-    long m_length;
-    unsigned long m_flags;
-    unsigned char m_flagByte;
-
-    void AssignFromData(const char* data, int len);
-
-    CCharString* InitFromCStr(const char* s);
-};
-
-CCharString* CCharString::InitFromCStr(const char* s)
-{
-    m_flags = m_flags & 0x80000000;
-    m_flagByte = m_flagByte | 1;
-    m_data = 0;
-    m_length = 0;
-
-    const char* p = s;
-    int len = 0;
-    if (*p != 0)
-    {
-        do
-        {
-            ++p;
-            ++len;
-        } while (*p != 0);
-    }
-
-    AssignFromData(s, len);
-    return this;
+    unsigned long length = 0;
+    while (text[length] != 0)
+        ++length;
+    SetString(text, length);
 }
+
+template CBasicString<char>::CBasicString(const char* text);

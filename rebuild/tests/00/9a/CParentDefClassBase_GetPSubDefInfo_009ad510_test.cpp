@@ -1,0 +1,8 @@
+#include "../tests/integration/ParentDef_test.cpp"
+#include "../src/compiled/00/43/CParentDefClassBase_GetInstantiationName_004303b0.cpp"
+#include "../src/compiled/00/43/CParentDefClassBase_SetInstantiationName_004303c0.cpp"
+#include "../src/compiled/00/43/CParentDefClassBase_IsParentDef_004303d0.cpp"
+#include "../src/compiled/00/43/CParentDefClassBase_GetPSubDefInfoMap_004303e0.cpp"
+#include "../src/compiled/00/9a/CParentDefClassBase_GetPSubDefInfoConst_009ad4a0.cpp"
+#include "../src/compiled/00/9b/CParentDefClassBase_AddSubDef_009b00d0.cpp"
+#include "../src/compiled/00/9b/CParentDefClassBase_InternalSaveBinary_009b0200.cpp"

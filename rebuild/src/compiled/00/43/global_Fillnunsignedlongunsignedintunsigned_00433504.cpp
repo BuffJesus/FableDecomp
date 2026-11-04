@@ -1,42 +1,6 @@
-extern "C" __declspec(naked) void f_00433504(void) {
-__asm {
-_emit 0x85
-_emit 0xd2
-_emit 0x56
-_emit 0x8b
-_emit 0xf1
-_emit 0x76
-_emit 0x19
-_emit 0x57
-_emit 0x8b
-_emit 0xfa
-_emit 0x85
-_emit 0xf6
-_emit 0x74
-_emit 0x0b
-_emit 0xff
-_emit 0x74
-_emit 0x24
-_emit 0x0c
-_emit 0x8b
-_emit 0xce
-_emit 0xe8
-_emit 0x13
-_emit 0xb7
-_emit 0x56
-_emit 0x00
-_emit 0x83
-_emit 0xc6
-_emit 0x04
-_emit 0x4f
-_emit 0x75
-_emit 0xeb
-_emit 0x5f
-_emit 0x8b
-_emit 0xc6
-_emit 0x5e
-_emit 0xc2
-_emit 0x04
-_emit 0x00
-}
-}
+#pragma optimize("s", on)
+#include <new>
+#include "fable_stlport_char_string_vector.h"
+template<class T> T* FABLE_FASTCALL _STL::uninitialized_fill_n(T* first,size_t count,const T& value)
+{ T* current=first; for(;count>0;--count,++current)new(current)T(value);return current; }
+template CCharString* FABLE_FASTCALL _STL::uninitialized_fill_n<CCharString>(CCharString*,size_t,const CCharString&);

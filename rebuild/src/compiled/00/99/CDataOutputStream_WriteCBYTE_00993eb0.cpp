@@ -1,3 +1,9 @@
-struct S { virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
-           virtual void Write(void* p, int n); void WriteCBYTE(char c); };
-void S::WriteCBYTE(char c){ this->Write(&c, 4); }
+// CDataOutputStream::WriteSLONG(long) @ 0x00993EB0 (FableWin
+// ?WriteSLONG@CDataOutputStream@@QAEXJ@Z): the four bytes of the value through the virtual
+// Write. Out of line for the def members' binary transfer 0x00431102 and GFSerialiseVectorBinaryOut 0x00433227.
+#include "fable_data_output_stream.h"
+
+void CDataOutputStream::WriteSLONG(long value)
+{
+    Write(&value, 4);
+}

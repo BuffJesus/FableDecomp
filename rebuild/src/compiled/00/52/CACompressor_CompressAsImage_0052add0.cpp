@@ -1,1 +1,8 @@
-void __stdcall CACompressor_CompressAsImage(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {}
+// CACompressor::CompressAsImage @ 0x0052ADD0 (Ego_r ?CompressAsImage@CACompressor@@...; slot 1):
+// the base compressor compresses nothing (vtable 0x0129B424; CCompressorZlib's
+// vtable 0x01245974 inherits it).
+#include "engine/CACompressor.h"
+
+void CACompressor::CompressAsImage(void*, unsigned long, void*, unsigned long, long, long, long, CCompressionInfo&)
+{
+}

@@ -1,35 +1,20 @@
-#include <cstdio>
-
-struct CResource {
-    char pad[0xc];
-    CResource* a;   // +0xc
-    CResource* b;   // +0x10
-    void ListInsert(CResource* p1, CResource* p2);
+#include "fable_resource_list.h"
+#include <stdio.h>
+#include <string.h>
+template<class T> struct Raw {
+ double bytes[(sizeof(T)+7)/8];
+ Raw(){memset(bytes,0,sizeof(bytes));}
+ T& get(){return *reinterpret_cast<T*>(bytes);}
 };
-
-void CResource::ListInsert(CResource* p1, CResource* p2)
-{
-    this->a = p1;
-    this->b = p2;
-    p1->b = this;
-    this->b->a = this;
-}
-
-int main()
-{
-    CResource n, p1, p2;
-    n.a = n.b = 0;
-    p1.a = p1.b = 0;
-    p2.a = p2.b = 0;
-
-    n.ListInsert(&p1, &p2);
-
-    bool ok = (n.a == &p1) && (n.b == &p2) &&
-              (p1.b == &n) && (p2.a == &n);
-    if (ok) {
-        printf("LISTINSERT_OK\n");
-        return 0;
-    }
-    printf("LISTINSERT_FAIL\n");
-    return 1;
-}
+class CResourceTestAccess {
+public:
+ static void Insert(CResource& r,CResource* prev,CResource* next){r.ListInsert(prev,next);}
+ static void Remove(CResource& r){r.ListRemove();}
+};
+int main(){Raw<CResource> ar,br,cr;CResource& a=ar.get();CResource& b=br.get();CResource& c=cr.get();
+ a.ResourceSize=70;a.LastUsedFrame=22;b.NextResource=&c;c.PrevResource=&b;
+ CResourceTestAccess::Insert(a,&b,&c);
+ if(a.PrevResource!=&b||a.NextResource!=&c||b.NextResource!=&a||c.PrevResource!=&a||a.ResourceSize!=70||a.LastUsedFrame!=22)return 1;
+ b.PrevResource=b.NextResource=&b;CResourceTestAccess::Insert(a,&b,&b);
+ if(b.PrevResource!=&a||b.NextResource!=&a||a.PrevResource!=&b||a.NextResource!=&b)return 2;
+ puts("RESOURCE_INSERT_PASS");return 0;}

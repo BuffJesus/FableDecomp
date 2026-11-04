@@ -1,53 +1,22 @@
-extern "C" __declspec(naked) void fn_0041732a(void)
+// CMainGameComponent::InitPlayerManager @ 0x0041732A (48 bytes).
+// FableWin ?InitPlayerManager@CMainGameComponent@@IAEXXZ. Replaces the
+// player manager with a new one bound to this component and the game
+// definition manager.
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+#include "fable_definition_manager.h"
+#include "fable_player_manager.h"
+
+// ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ;
+// inline in retail.
+inline const CGameDefinitionManager& CMainGameComponent::PeekDefinitionManager() const
 {
-    __asm {
-        _emit 0x56
-        _emit 0x57
-        _emit 0x6a
-        _emit 0x2c
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xe5
-        _emit 0x76
-        _emit 0x7e
-        _emit 0x00
-        _emit 0x8b
-        _emit 0xf8
-        _emit 0x85
-        _emit 0xff
-        _emit 0x59
-        _emit 0x74
-        _emit 0x10
-        _emit 0xe8
-        _emit 0x6f
-        _emit 0x53
-        _emit 0x03
-        _emit 0x00
-        _emit 0x50
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x66
-        _emit 0x30
-        _emit 0x03
-        _emit 0x00
-        _emit 0xeb
-        _emit 0x02
-        _emit 0x33
-        _emit 0xc0
-        _emit 0x50
-        _emit 0x8d
-        _emit 0x4e
-        _emit 0x1c
-        _emit 0xe8
-        _emit 0x49
-        _emit 0x20
-        _emit 0x00
-        _emit 0x00
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc3
-    }
+    return CGameDefinitionManager::Get();
+}
+
+void CMainGameComponent::InitPlayerManager()
+{
+    PPlayerManager.reset(new CPlayerManager(*this, PeekDefinitionManager()));
 }

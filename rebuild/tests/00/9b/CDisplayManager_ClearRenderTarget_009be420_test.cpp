@@ -1,123 +1,73 @@
+// Fixture: CDisplayManager::ClearRenderTarget (0x009BE420).
 #include <stdio.h>
+#include <string.h>
+#include "fable_surface.h"
+#include "fable_d3d_format_info.h"
+#include "fable_rgb_colour.h"
 
-#include "rebuild_abi.h"
+static int g_fail;
+#define EXPECT(c) do { if (!(c)) { printf("FAIL %d: %s\n", __LINE__, #c); ++g_fail; } } while (0)
 
-struct CRGBColour
-{
-    fable_u32 value;
+// Table: [0] X8R8G8B8 depth-less; [1] D24S8-like (stencil 8); [2] D24X8 (no stencil); terminator.
+extern const CD3DFormatInfo GD3DFormats[] = {
+    {(D3DFORMAT)22, PF_TYPE_RGBA, 32, 0, 8, 8, 8, 0, false},
+    {(D3DFORMAT)75, PF_TYPE_DEPTH, 32, 0, 0, 0, 0, 8, false},
+    {(D3DFORMAT)77, PF_TYPE_DEPTH, 32, 0, 0, 0, 0, 0, false},
+    {(D3DFORMAT)102, PF_TYPE_UNKNOWN, -1, 0, 0, 0, 0, 0, false},
 };
 
-struct FablePixelFormatInfo
+static int g_findCalls; static D3DFORMAT g_findArg;
+long FABLE_FASTCALL CPixelFormat::FindFormatInfoIndexFromD3DFormat(D3DFORMAT f)
 {
-    fable_i32 d3dFormat00;
-    fable_u8 unknown04[0x18];
-    fable_i32 supportsDepthStencil1C;
-    fable_u32 unknown20;
-};
-
-FablePixelFormatInfo
-    g_FablePixelFormatInfoTable_0129BA40[2] = {};
-
-static fable_i32 g_observedFormat = 0;
-
-fable_i32 __fastcall
-FableFindFormatInfoIndexFromD3DFormat_009E3620(
-    fable_i32 d3dFormat)
-{
-    g_observedFormat = d3dFormat;
-    return 1;
+    ++g_findCalls; g_findArg = f;
+    for (long i = 0; GD3DFormats[i].BitDepth != -1; ++i) if (GD3DFormats[i].D3DFormat == f) return i;
+    return -1;
 }
 
-struct FableDisplayDevice;
-typedef long (__stdcall *FableDisplayDeviceClearCall)(
-    FableDisplayDevice* device,
-    fable_u32 rectangleCount,
-    void* rectangles,
-    fable_u32 clearFlags,
-    fable_u32 colour,
-    float depth,
-    fable_u32 stencil);
-
-struct FableDisplayDevice
+struct FakeDev { void** vt; };
+static void* g_vt[64];
+static int g_clearCalls; static void* g_self; static DWORD g_count, g_flags, g_colour, g_stencil; static const void* g_rects; static float g_z;
+static HRESULT __stdcall FakeClear(void* self, DWORD count, const void* rects, DWORD flags, DWORD colour, float z, DWORD stencil)
 {
-    FableDisplayDeviceClearCall* vtable;
-};
-
-struct CDisplayManagerClearRenderTargetView
-{
-    fable_u8 unknown000[0x58];
-    FableDisplayDevice* displayDevice58;
-    fable_u8 unknown05C[0x150];
-    fable_u32 depthFormatIndex1AC;
-
-    void ClearRenderTarget(
-        const CRGBColour& colour,
-        fable_u32 requestedFlags);
-};
-
-static int g_clearCalls = 0;
-static fable_u32 g_observedFlags = 0;
-static fable_u32 g_observedColour = 0;
-static float g_observedDepth = 0.0f;
-
-static long __stdcall ClearFixture(
-    FableDisplayDevice*,
-    fable_u32 rectangleCount,
-    void* rectangles,
-    fable_u32 clearFlags,
-    fable_u32 colour,
-    float depth,
-    fable_u32 stencil)
-{
-    ++g_clearCalls;
-    if (rectangleCount != 0 || rectangles != 0 || stencil != 0)
-        return -1;
-    g_observedFlags = clearFlags;
-    g_observedColour = colour;
-    g_observedDepth = depth;
+    ++g_clearCalls; g_self = self; g_count = count; g_rects = rects; g_flags = flags; g_colour = colour; g_z = z; g_stencil = stencil;
     return 0;
 }
 
-static int VerifyFlags(
-    CDisplayManagerClearRenderTargetView& display,
-    const CRGBColour& colour,
-    fable_u32 requested,
-    fable_u32 expected)
+static unsigned char g_storage[sizeof(CDisplayManager) + 16];
+
+static void Run(long depthIndex, unsigned long flags, DWORD expectFlags, int expectFind)
 {
-    display.ClearRenderTarget(colour, requested);
-    return g_observedFlags == expected ? 0 : 1;
+    CDisplayManager* dm = reinterpret_cast<CDisplayManager*>(g_storage);
+    memset(g_storage, 0xCD, sizeof(g_storage));
+    static FakeDev dev = { g_vt };
+    dm->D3DDevice = reinterpret_cast<IDirect3DDevice9*>(&dev);
+    dm->DepthBufferFormatStorage_ = depthIndex;
+    g_clearCalls = 0; g_findCalls = 0;
+    CRGBColour colour(0x11, 0x22, 0x33, 0x44);
+    dm->ClearRenderTarget(colour, flags);
+    EXPECT(g_clearCalls == 1);
+    EXPECT(g_self == &dev);
+    EXPECT(g_count == 0 && g_rects == 0);
+    EXPECT(g_flags == expectFlags);
+    EXPECT(g_colour == 0x44112233ul);
+    EXPECT(g_z == 1.0f && g_stencil == 0);
+    EXPECT(g_findCalls == expectFind);
+    if (expectFind) EXPECT(g_findArg == GD3DFormats[depthIndex].D3DFormat);
+    EXPECT(g_storage[sizeof(CDisplayManager)] == 0xCD);  // untouched neighbour
+    EXPECT(dm->DepthBufferFormatStorage_ == depthIndex);
 }
 
 int main()
 {
-    FableDisplayDeviceClearCall vtable[0x2C] = {};
-    vtable[0x2B] = ClearFixture;
-    FableDisplayDevice device = {vtable};
-    CDisplayManagerClearRenderTargetView display = {};
-    display.displayDevice58 = &device;
-    display.depthFormatIndex1AC = 0;
-
-    g_FablePixelFormatInfoTable_0129BA40[0].d3dFormat00 = 75;
-    g_FablePixelFormatInfoTable_0129BA40[1].supportsDepthStencil1C = 1;
-    const CRGBColour colour = {0xA1B2C3D4};
-
-    if (VerifyFlags(display, colour, 1, 2) != 0 ||
-        VerifyFlags(display, colour, 2, 4) != 0 ||
-        VerifyFlags(display, colour, 4, 1) != 0 ||
-        VerifyFlags(display, colour, 7, 7) != 0)
-    {
-        printf("FABLETLC_DISPLAY_CLEAR_TARGET_BEHAVIOR FAIL code=1\n");
-        return 1;
-    }
-    if (g_clearCalls != 4 ||
-        g_observedFormat != 75 ||
-        g_observedColour != colour.value ||
-        g_observedDepth != 1.0f)
-    {
-        printf("FABLETLC_DISPLAY_CLEAR_TARGET_BEHAVIOR FAIL code=2\n");
-        return 2;
-    }
-
+    g_vt[43] = (void*)&FakeClear;
+    Run(1, 0, 0, 0);
+    Run(1, 1, D3DCLEAR_ZBUFFER, 0);
+    Run(1, 2, D3DCLEAR_STENCIL, 1);            // stencil format -> stencil flag
+    Run(2, 2, 0, 1);                           // no stencil bits -> dropped
+    Run(1, 4, D3DCLEAR_TARGET, 0);
+    Run(1, 7, D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL | D3DCLEAR_TARGET, 1);
+    Run(2, 5, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, 0);
+    if (g_fail) { printf("FAILED %d\n", g_fail); return 1; }
     printf("FABLETLC_DISPLAY_CLEAR_TARGET_BEHAVIOR PASS\n");
     return 0;
 }

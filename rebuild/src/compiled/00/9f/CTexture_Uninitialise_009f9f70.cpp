@@ -1,11 +1,11 @@
-#include "fable_texture_lifecycle.h"
+#include "fable_surface_types.h"
 
-void CTextureUninitialiseView::Uninitialise()
+void CTexture::Uninitialise()
 {
-    if (texture00 != 0)
+    if (PD3DTexture != 0)
     {
-        texture00->vtable->release08(texture00);
-        texture00 = 0;
-        flags04 &= 0x0FFFFFFF;
+        PD3DTexture->Release();
+        PD3DTexture = 0;
+        AllocationSource = 0;
     }
 }

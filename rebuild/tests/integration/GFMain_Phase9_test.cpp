@@ -4,6 +4,9 @@
 #include "fable_gfmain.h"
 #include "fable_movie.h"
 
+// Storage behind the CSystemManager singleton in the Phase 9 boundary.
+extern "C" fable_u32 g_FableStage2SystemManagerStorage[];
+
 namespace
 {
     void Reset(GFMainPhase9State& state)
@@ -40,8 +43,10 @@ int main()
         state.exactSystemTextConstructCalls != 0 ||
         state.exactSystemMeshConstructCalls != 0 ||
         state.exactSystemComponentAddCalls != 0 ||
-        state.systemManagerToken != 0x013CA618UL ||
-        state.secondSystemManagerToken != 0x013CA618UL ||
+        state.systemManagerToken !=
+            reinterpret_cast<fable_u32>(g_FableStage2SystemManagerStorage) ||
+        state.secondSystemManagerToken !=
+            reinterpret_cast<fable_u32>(g_FableStage2SystemManagerStorage) ||
         state.imePrimitiveToken == 0 ||
         state.imeInitialiseCalls != 1 ||
         state.observedImeWindowHandleToken != 0x00ABCDEFUL ||

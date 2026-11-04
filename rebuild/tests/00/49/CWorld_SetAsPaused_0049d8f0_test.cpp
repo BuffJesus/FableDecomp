@@ -1,7 +1,6 @@
-#include "rebuild_abi.h"
-#include <cstdio>
-struct CWorld { char pad[0xa4]; char m_paused; void SetAsPaused(char v); };
-void CWorld::SetAsPaused(char v){ if(v!=m_paused) m_paused=v; }
-int main(){ CWorld o; o.m_paused=0; o.SetAsPaused(1);
- if(o.m_paused!=1){std::printf("B1\n");return 1;}
- std::printf("SP_49d8f0_OK\n"); return 0; }
+#include "../tests/integration/WorldPause_test.cpp"
+#include "../src/compiled/00/9f/CGameEvent_GetDataPackage_009f17a0.cpp"
+#include "../src/compiled/00/62/CWorld_EAMoveHeroToRegion_00629260.cpp"
+#include "../src/compiled/00/62/CWorld_EAUpdateFrame_00629270.cpp"
+#include "../src/compiled/00/62/CWorld_EASetPauseMode_006292d0.cpp"
+#include "../src/compiled/00/62/CWorld_EASetSlowMotion_00629330.cpp"

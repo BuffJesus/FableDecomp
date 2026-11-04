@@ -14,7 +14,8 @@ int main()
         return 1;
 
     wchar_t text[] = L"names.bin";
-    CWideStringData storage;
+    unsigned long storageRaw_[4];
+    CWideStringData& storage = *reinterpret_cast<CWideStringData*>(storageRaw_);
     storage.text = text;
     storage.unknown04 = 0;
     storage.unknown08 = 0;

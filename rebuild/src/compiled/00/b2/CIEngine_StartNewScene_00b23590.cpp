@@ -1,1 +1,7 @@
-void __stdcall CIEngine_StartNewScene(int arg0, int arg1) {}
+// CIEngine::StartNewScene @ 0x00B23590 (Ego_r ?StartNewScene@CIEngine@@UAEXKM@Z; vtable slot of CIEngine):
+// the default does nothing.
+#include "fable_iengine.h"
+
+void CIEngine::StartNewScene(unsigned long, float)
+{
+}

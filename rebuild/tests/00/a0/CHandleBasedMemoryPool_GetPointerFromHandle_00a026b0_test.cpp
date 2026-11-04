@@ -1,20 +1,23 @@
-#include "rebuild_abi.h"
-#include <cstdio>
-#include <cstring>
-struct FablePool_00a026b0 { void* GetPointerFromHandle(int handle); };
-void* FablePool_00a026b0::GetPointerFromHandle(int handle)
-{
-    char** table = *(char***)((char*)this + 0x438);
-    return table[handle] + 0x20;
-}
+#include "fable_handle_memory_pool.h"
+#include <stdio.h>
+#include <string.h>
+// Calls the linked candidate; no local implementation of the tested method.
 int main() {
-    unsigned char buf[0x440];
-    std::memset(buf, 0, sizeof(buf));
-    char* slots[4];
-    char block[0x40];
-    slots[2] = block;
-    *(char***)(buf + 0x438) = slots;
-    void* p = ((FablePool_00a026b0*)buf)->GetPointerFromHandle(2);
-    if (p != block + 0x20) { std::printf("BAD_PTR\n"); return 1; }
-    std::printf("GPFH_00a026b0_OK\n"); return 0;
+    union { double align; unsigned char bytes[sizeof(CHandleBasedMemoryPool)]; } storage;
+    memset(&storage, 0xa5, sizeof(storage));
+    CHandleBasedMemoryPool* pool = (CHandleBasedMemoryPool*)&storage;
+    CHandleBasedMemoryPool::CHeader headers[4];
+    CHandleBasedMemoryPool::CHandleInfo handles[4];
+    pool->Handles._M_start = handles;
+    pool->Handles._M_finish = handles + 4;
+    pool->Handles._M_end_of_storage._M_data = handles + 4;
+    for (int i=0; i<4; ++i) handles[i].Header = &headers[3-i];
+    unsigned char before[sizeof(storage)];
+    memcpy(before, &storage, sizeof(storage));
+
+    for (int i = 0; i < 4; ++i)
+        if (pool->GetPointerFromHandle(i) != (void*)(&headers[3-i] + 1)) return 1;
+    if (memcmp(before, &storage, sizeof(storage))) return 2;
+    printf("GPFH_00a026b0_OK\n");
+    return 0;
 }

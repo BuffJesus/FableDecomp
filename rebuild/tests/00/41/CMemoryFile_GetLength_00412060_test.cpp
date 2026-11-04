@@ -1,29 +1,18 @@
-#include <cstdio>
-
-struct CMemoryFile {
-    int _pad0;
-    int _pad4;
-    int _pad8;
-    long m_length;
-};
-
-long __fastcall CMemoryFile_GetLength(const CMemoryFile* self)
-{
-    return self->m_length;
-}
-
-int main()
-{
-    CMemoryFile f;
-    f._pad0 = 111;
-    f._pad4 = 222;
-    f._pad8 = 333;
-    f.m_length = 4242;
-    long r = CMemoryFile_GetLength(&f);
-    if (r != 4242) {
-        std::printf("CMemoryFile_00412060_TEST FAIL got %ld\n", r);
-        return 1;
-    }
-    std::printf("CMemoryFile_00412060_TEST PASS\n");
-    return 0;
-}
+#include "../tests/integration/MemoryFile_test.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e90a0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_SetPosition_009e90c0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_MovePosition_009e9140.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Read_009e9220.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_DumpToFile_009e9330.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Close_009e9390.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e93c0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_OpenFromFile_009e9420.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e94a0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Write_009e95f0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_SetLength_009e9730.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Copy_009e9760.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_CMemoryFile_009e97b0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Clone_009e97f0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_CopyConstructor_009e99c0.cpp"
+#include "../src/compiled/00/41/CMemoryFile_GetPosition_00412050.cpp"
+#include "../src/compiled/00/40/CMemoryFile_IsOpen_00405d30.cpp"

@@ -1,63 +1,27 @@
-extern "C" __declspec(naked) void fn_004166a8(void)
+// CMainGameComponent::CreatePlayers @ 0x004166A8 (58 bytes).
+// FableWin ?CreatePlayers@CMainGameComponent@@IAEXXZ. Has the player manager
+// create the players, then starts the local network client; if that fails on
+// a client that did initialise, it is shut down again. (Retail keeps an
+// out-of-line CGameDefinitionManager::Get call whose result is unused, as
+// Ego_r's 0x0041596E does.)
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+#include "fable_definition_manager.h"
+#include "fable_player_manager.h"
+
+// ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ;
+// inline in retail.
+inline const CGameDefinitionManager& CMainGameComponent::PeekDefinitionManager() const
 {
-    __asm {
-        _emit 0x56
-        _emit 0x57
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0xe8
-        _emit 0xff
-        _emit 0x5f
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x4e
-        _emit 0x1c
-        _emit 0xe8
-        _emit 0x77
-        _emit 0x3e
-        _emit 0x03
-        _emit 0x00
-        _emit 0x8d
-        _emit 0xbe
-        _emit 0xb8
-        _emit 0x3a
-        _emit 0x01
-        _emit 0x00
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x79
-        _emit 0x82
-        _emit 0x09
-        _emit 0x00
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x75
-        _emit 0x14
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x5e
-        _emit 0x3c
-        _emit 0x58
-        _emit 0x00
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x74
-        _emit 0x09
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xe9
-        _emit 0xb1
-        _emit 0x82
-        _emit 0x09
-        _emit 0x00
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc3
-    }
+    return CGameDefinitionManager::Get();
+}
+
+void CMainGameComponent::CreatePlayers()
+{
+    PeekDefinitionManager();
+    PPlayerManager->CreatePlayers();
+    if (!Client.InitialiseAsLocal(this) && Client.IsValid())
+        Client.Uninitialise();
 }

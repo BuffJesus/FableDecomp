@@ -1,5 +1,6 @@
-#include "engine/CWorld.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CWorld_Methods : CWorld {
-    void PostLoadInit();
-};
-void CWorld_Methods::PostLoadInit(){ this->JustLoaded = 1; }
+#include "fable_world.h"
+
+void CWorld::PostLoadInit()
+{
+    JustLoaded = true;
+}

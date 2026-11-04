@@ -3,7 +3,8 @@
 typedef unsigned long ulong;
 
 struct StatMap { void* owner; int idx; ulong n; };
-struct C3DMeshInfo { int marker; };
+class C3DMeshInfo {
+public: int marker; };
 
 static C3DMeshInfo* g_self;
 static StatMap* g_map;

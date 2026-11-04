@@ -1,53 +1,39 @@
 #include "fable_resource_directories.h"
 
-namespace
+// directory_names.cpp, retail 0x0041A4C0-0x0041A69F: the "My Games\Fable\" user
+// directories (GetUserDataDir 0041A4C0, GetSaveDirWithoutTrailingBlackslash
+// 0041A4F0, GetSaveDir 0041A540, then the three below). Retail inlines the
+// helpers here: each temporary dies before the next append.
+CWideString FABLE_FASTCALL NResourceDirectoryNames::GetUserDataDir()
 {
-    const wchar_t kFableSaveRoot[] = L"My Games\\Fable\\";
-    const wchar_t kFableSaveLeaf[] = L"Saves";
-    const wchar_t kTrailingBackslash[] = L"\\";
+    return GetMyDocumentsDir() + L"My Games\\Fable\\";
 }
 
-extern "C" void* FABLE_FASTCALL
-FableGetMyDocumentsDir_0041A540(void* destination, void*);
-extern "C" void* FABLE_FASTCALL
-FableAppendWideLiteral_0041A540(
-    void* destination,
-    void* left,
-    const wchar_t* right);
-extern "C" void FABLE_FASTCALL
-FableDestroyWideTemporary_0041A540(void* value, void*);
-
-__declspec(naked) CWideString FABLE_FASTCALL
-NResourceDirectoryNames::GetSaveDir()
+CWideString FABLE_FASTCALL
+NResourceDirectoryNames::GetSaveDirWithoutTrailingBlackslash()
 {
-    __asm
-    {
-        sub esp, 0Ch
-        push esi
-        mov esi, ecx
-        push offset kFableSaveRoot
-        lea ecx, dword ptr [esp + 10h]
-        call FableGetMyDocumentsDir_0041A540
-        mov edx, eax
-        lea ecx, dword ptr [esp + 8]
-        call FableAppendWideLiteral_0041A540
-        lea ecx, dword ptr [esp + 0Ch]
-        call FableDestroyWideTemporary_0041A540
-        push offset kFableSaveLeaf
-        lea edx, dword ptr [esp + 8]
-        lea ecx, dword ptr [esp + 0Ch]
-        call FableAppendWideLiteral_0041A540
-        lea ecx, dword ptr [esp + 4]
-        call FableDestroyWideTemporary_0041A540
-        push offset kTrailingBackslash
-        lea edx, dword ptr [esp + 0Ch]
-        mov ecx, esi
-        call FableAppendWideLiteral_0041A540
-        lea ecx, dword ptr [esp + 8]
-        call FableDestroyWideTemporary_0041A540
-        mov eax, esi
-        pop esi
-        add esp, 0Ch
-        ret
-    }
+    return GetUserDataDir() + L"Saves";
+}
+
+CWideString FABLE_FASTCALL NResourceDirectoryNames::GetSaveDir()
+{
+    return GetSaveDirWithoutTrailingBlackslash() + L"\\";
+}
+
+// Retail 0041A5B0.
+CWideString FABLE_FASTCALL NResourceDirectoryNames::GetScoreboardImageCacheDir()
+{
+    return GetUserDataDir() + L"Scoreboard\\";
+}
+
+// Retail 0041A600.
+CWideString FABLE_FASTCALL NResourceDirectoryNames::GetPhotojournalDir()
+{
+    return GetUserDataDir() + L"Photojournal\\";
+}
+
+// Retail 0041A650.
+CWideString FABLE_FASTCALL NResourceDirectoryNames::GetTattooUserDir()
+{
+    return GetUserDataDir() + L"Tattoos\\";
 }

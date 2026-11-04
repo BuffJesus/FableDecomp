@@ -1,44 +1,27 @@
-#include <cstdio>
-#include <cstring>
+// Behaviour fixture for C3DMeshFileClothChunk::GetChunkDescription (provider
+// C3DMeshFileClothChunk_GetChunkDescriptionC3DMeshFileClothChunkUBEBVCCh_00ac69b0.cpp; it does not define it). The chunk
+// is raw storage driven by a qualified call; the CCharString constructor is a double that records the text and length.
+#include "fable_chunked_file.h"
+#include <stdio.h>
+#include <string.h>
 
-// Behaviour test: standalone CCharString + chunk, verifying GetChunkDescription
-// returns the expected description string by value.
+static int g_fail;
+static const char* g_text;
+static long g_length;
+#define CHECK(x) do { if (!(x)) { printf("FAIL line %d: %s\n", __LINE__, #x); ++g_fail; } } while (0)
 
-class CCharString {
-public:
-    CCharString(const char* s, int len) {
-        int n = (len < 0) ? (int)strlen(s) : len;
-        m_data = new char[n + 1];
-        memcpy(m_data, s, n);
-        m_data[n] = 0;
+CCharString::CCharString(const char* text, long length) { memset(this, 0, sizeof(*this)); g_text = text; g_length = length; }
+CCharString::CCharString(const CCharString&) { memset(this, 0, sizeof(*this)); }
+CCharString::~CCharString() {}
+
+static unsigned char storage[0x100];
+
+int main()
+{
+    {
+        CCharString s = reinterpret_cast<const C3DMeshFileClothChunk*>(storage)->C3DMeshFileClothChunk::GetChunkDescription();
     }
-    CCharString(const CCharString& o) {
-        int n = (int)strlen(o.m_data);
-        m_data = new char[n + 1];
-        memcpy(m_data, o.m_data, n + 1);
-    }
-    ~CCharString() { delete[] m_data; }
-    const char* c_str() const { return m_data; }
-private:
-    char* m_data;
-};
-
-class C3DMeshFileClothChunk {
-public:
-    virtual CCharString GetChunkDescription() const;
-};
-
-CCharString C3DMeshFileClothChunk::GetChunkDescription() const {
-    return CCharString("Cloth", -1);
-}
-
-int main() {
-    C3DMeshFileClothChunk chunk;
-    CCharString d = chunk.GetChunkDescription();
-    if (strcmp(d.c_str(), "Cloth") == 0) {
-        printf("CHUNKDESC_OK\n");
-        return 0;
-    }
-    printf("CHUNKDESC_FAIL\n");
-    return 1;
+    CHECK(g_text && strcmp(g_text, "Cloth") == 0 && g_length == -1);
+    printf(g_fail ? "FAIL\n" : "CHUNKDESC_OK\n");
+    return g_fail != 0;
 }

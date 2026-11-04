@@ -1,39 +1,30 @@
-#include <cstdio>
+#include <stdio.h>
 
-struct CCharString
-{
-    void* data;
-};
+#include "fable_string.h"
 
-extern "C" char g_empty;
-
-char* __fastcall CCharString_operator_char_const_ptr(CCharString* self, void* /*edx_unused*/)
-{
-    void* data = self->data;
-    if (!data)
-    {
-        return &g_empty;
-    }
-    return *(char**)data;
-}
-
-char g_empty = 0;
+wchar_t g_FableEmptyWideString_0129A8E0[1] = {0};
 
 int main()
 {
-    char* payload = "hello";
-    CCharString withData;
-    withData.data = &payload;
+    fable_u8 objectBytes[sizeof(CWideString)];
+    CWideString* value = reinterpret_cast<CWideString*>(objectBytes);
 
-    char* r1 = CCharString_operator_char_const_ptr(&withData, 0);
-    if (r1 != payload) { printf("FAIL_NONNULL\n"); return 1; }
+    *reinterpret_cast<CWideStringData**>(value) = 0;
+    if (value->GetAsCharArray() != g_FableEmptyWideString_0129A8E0)
+        return 1;
 
-    CCharString empty;
-    empty.data = 0;
+    wchar_t text[] = L"names.bin";
+    unsigned long storageRaw_[4];
+    CWideStringData& storage = *reinterpret_cast<CWideStringData*>(storageRaw_);
+    storage.text = text;
+    storage.unknown04 = 0;
+    storage.unknown08 = 0;
+    storage.owners = 1;
+    *reinterpret_cast<CWideStringData**>(value) = &storage;
 
-    char* r2 = CCharString_operator_char_const_ptr(&empty, 0);
-    if (r2 != &g_empty) { printf("FAIL_NULL\n"); return 1; }
+    if (value->GetAsCharArray() != text)
+        return 2;
 
-    printf("CCHARSTRING_OP_2_OK\n");
+    puts("FABLETLC_CWIDESTRING_GETASCHARARRAY_0099AF10_PASS");
     return 0;
 }

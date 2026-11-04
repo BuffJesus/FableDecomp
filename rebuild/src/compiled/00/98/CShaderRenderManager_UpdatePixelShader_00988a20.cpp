@@ -1,41 +1,18 @@
-#include "rebuild_abi.h"
+#include "fable_shader_render_manager.h"
+#include "fable_pixel_shader_data.h"
+#include "fable_shader_constant_layout.h"
+#include "fable_d3d9.h"
+#include "fable_4d_vector.h"
 
-struct FablePixelShaderDevice;
-typedef long (__stdcall *FableSetPixelShaderCall)(
-    FablePixelShaderDevice* device,
-    void* pixelShader);
+typedef HRESULT (__stdcall *SetPixelShaderCall)(IDirect3DDevice9*,IDirect3DPixelShader9*);
+typedef HRESULT (__stdcall *SetConstantsCall)(IDirect3DDevice9*,long,const void*,unsigned long);
 
-struct FablePixelShaderDevice
+void CShaderRenderManager::UpdatePixelShader()
 {
-    void** vtable;
-};
-
-struct CCountedPixelShaderView
-{
-    void* unknown00;
-    void* pixelShader04;
-};
-
-struct CShaderRenderManagerUpdatePixelShaderView
-{
-    fable_u8 unknown000[0x1D4];
-    FablePixelShaderDevice* displayDevice1D4;
-    fable_u8 unknown1D8[0x0C];
-    CCountedPixelShaderView* currentPixelShader1E4;
-    fable_u8 unknown1E8[0x1F0];
-    fable_u32 shaderStateMask3D8;
-
-    void UpdatePixelShader();
-};
-
-void CShaderRenderManagerUpdatePixelShaderView::UpdatePixelShader()
-{
-    if (currentPixelShader1E4 != 0)
+    if(CurrentPixelShader.Data)
     {
-        reinterpret_cast<FableSetPixelShaderCall>(
-            displayDevice1D4->vtable[0x6B])(
-                displayDevice1D4,
-                currentPixelShader1E4->pixelShader04);
+        void** methods=*reinterpret_cast<void***>(D3DDevice);
+        reinterpret_cast<SetPixelShaderCall>(methods[107])(D3DDevice,CurrentPixelShader.Data->PixelShader);
     }
-    shaderStateMask3D8 &= ~1u;
+    updateFlags3D8 &= ~1u;
 }

@@ -1,48 +1,30 @@
-extern "C" void* malloc(unsigned int size);
-extern "C" void free(void* p);
-extern "C" void* memcpy(void*, const void*, unsigned int);
-extern "C" void* memset(void*, int, unsigned int);
+// CBasicString<char>::SetString(char const*, unsigned long) @ 0x009A0300.
+#include "fable_basic_string.h"
 
-void* operator new[](unsigned int size) { return malloc(size); }
-void operator delete[](void* p) { free(p); }
+#include <new>
+#include <string.h>
 
-struct CBasicStringChar
+// Replace the buffer with a fresh one sized for the text plus its terminator,
+// rounded up to four bytes; the terminator and the rounding slack are zeroed
+// before the text is copied in.
+template <class T>
+void CBasicString<T>::SetString(const T* text, unsigned long length)
 {
-    char* data;
-    unsigned int len;
-    unsigned int capField;
-
-    void __fastcall AssignFromData(void* /*edx_unused*/, const char* src, unsigned int newLen);
-};
-
-void __fastcall CBasicStringChar::AssignFromData(void* /*edx_unused*/, const char* src, unsigned int newLen)
-{
-    const char* srcKeep = src;
-
-    if (data != 0)
+    if (PData != 0)
     {
-        operator delete[](data);
-        data = 0;
+        delete[] PData;
+        PData = 0;
     }
 
-    unsigned int allocSize = (newLen + 4) & ~3u;
-    char* newData = (char*)operator new[](allocSize);
+    unsigned long dataLength = (length + 4) & ~3;
+    PData = new T[dataLength];
+    DataLength = dataLength;
+    StringLength = length;
+    PData[length] = 0;
 
-    unsigned int mergedCap = capField ^ ((capField ^ allocSize) & 0x7fffffff);
-
-    data = newData;
-    capField = mergedCap;
-    len = newLen;
-    newData[newLen] = 0;
-
-    unsigned int padStartOff = len;
-    char* padPtr = data;
-    padStartOff = padStartOff + 1;
-    unsigned int alignedPadEnd = (padStartOff + 3) & ~3u;
-    unsigned int padCount = alignedPadEnd - padStartOff;
-    padPtr = padPtr + padStartOff;
-
-    memset(padPtr, 0, padCount);
-
-    memcpy(data, srcKeep, newLen);
+    unsigned long end = StringLength + 1;
+    memset(PData + end, 0, ((end + 3) & ~3) - end);
+    memcpy(PData, text, length);
 }
+
+template void CBasicString<char>::SetString(const char* text, unsigned long length);

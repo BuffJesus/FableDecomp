@@ -1,0 +1,6 @@
+#include "../tests/integration/PlayerCreature_test.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/a0/CBaseIntelligentPointer_Operations_00a01b20.cpp"
+#include "../src/compiled/00/62/CWorld_EAOpenPCMSNChatMenu_0062c6e0.cpp"
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/44/CPlayerManager_GetPlayer_004498c0.cpp"

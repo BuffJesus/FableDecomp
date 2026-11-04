@@ -1,91 +1,21 @@
+#include "fable_data_input_stream.h"
 #include "fable_definition_table.h"
-
-extern "C" fable_u8 g_FableDiskFileVTable_0122D06C;
-
-extern "C" bool FABLE_FASTCALL
-FableDefTablePathExists_009D4C30(void* pathname, void*);
-extern "C" void FABLE_FASTCALL
-FableDefTableFileBaseConstruct_009D4C30(void* file, void*);
-extern "C" void FABLE_FASTCALL
-FableDefTableCharStringConstruct_009D4C30(void* string, void*);
-extern "C" void FABLE_FASTCALL
-FableDefTableDiskFileOpen_009D4C30(
-    void* file,
-    void*,
-    const void* pathname,
-    fable_u32 access,
-    fable_u32 flags);
-extern "C" void FABLE_FASTCALL
-FableDefTableInputStreamConstruct_009D4C30(
-    void* stream,
-    void*,
-    void* file,
-    fable_u32 bufferSize);
-extern "C" void FABLE_FASTCALL
-FableDefTableRead_009D4C30(
-    void* table,
-    void*,
-    void* stream);
-extern "C" void FABLE_FASTCALL
-FableDefTableInputStreamDestroy_009D4C30(void* stream, void*);
-extern "C" void FABLE_FASTCALL
-FableDefTableDiskFileClose_009D4C30(void* file, void*);
-extern "C" void FABLE_FASTCALL
-FableDefTableCharStringDestroy_009D4C30(void* string, void*);
-extern "C" void FABLE_FASTCALL
-FableDefTableFileBaseDestroy_009D4C30(void* file, void*);
+#include "fable_disk_file.h"
 
 // CDefStringTable::LoadTable(bool) @ 0x009D4C30.
-__declspec(naked) void CDefStringTable::LoadTable(bool)
+// Callees by retail bytes: 0x999230 CAFile::PathExists, 0x99a2f0 CAFile
+// ctor, 0x99aed0 CWideString(), 0x99a6a0 CDiskFileWin32::Open, 0x994700
+// CFileDataInputStream ctor, 0x9d4ab0 ReadTable, 0x994780 its dtor, 0x99a920
+// CDiskFileWin32::Close, 0x99b510 ~CWideString, 0x99a300 CAFile dtor.
+void CDefStringTable::LoadTable(bool readOnly)
 {
-    __asm
+    if (CAFile::PathExists(TableFilename))
     {
-        sub esp, 40h
-        push esi
-        mov esi, ecx
-        push edi
-        lea edi, dword ptr [esi + 30h]
-        mov ecx, edi
-        call FableDefTablePathExists_009D4C30
-        test al, al
-        jz finished
-        lea ecx, dword ptr [esp + 8]
-        call FableDefTableFileBaseConstruct_009D4C30
-        lea ecx, dword ptr [esp + 20h]
-        mov dword ptr [esp + 8], offset g_FableDiskFileVTable_0122D06C
-        call FableDefTableCharStringConstruct_009D4C30
-        push 4
-        push 1
-        push edi
-        lea ecx, dword ptr [esp + 14h]
-        mov byte ptr [esp + 28h], 0
-        call FableDefTableDiskFileOpen_009D4C30
-        push 4000h
-        lea eax, dword ptr [esp + 0Ch]
-        push eax
-        lea ecx, dword ptr [esp + 2Ch]
-        call FableDefTableInputStreamConstruct_009D4C30
-        lea ecx, dword ptr [esp + 24h]
-        push ecx
-        mov ecx, esi
-        call FableDefTableRead_009D4C30
-        mov dl, byte ptr [esp + 4Ch]
-        lea ecx, dword ptr [esp + 24h]
-        mov byte ptr [esi + 34h], 1
-        mov byte ptr [esi + 35h], dl
-        call FableDefTableInputStreamDestroy_009D4C30
-        lea ecx, dword ptr [esp + 8]
-        mov dword ptr [esp + 8], offset g_FableDiskFileVTable_0122D06C
-        call FableDefTableDiskFileClose_009D4C30
-        lea ecx, dword ptr [esp + 20h]
-        call FableDefTableCharStringDestroy_009D4C30
-        lea ecx, dword ptr [esp + 8]
-        call FableDefTableFileBaseDestroy_009D4C30
-
-    finished:
-        pop edi
-        pop esi
-        add esp, 40h
-        ret 4
+        CDiskFileWin32 file;
+        file.Open(TableFilename, FileAccessType(1), 4);
+        CFileDataInputStream stream(&file, 0x4000);
+        ReadTable(stream);
+        Locked = true;
+        ReadOnly = readOnly;
     }
 }

@@ -45,7 +45,8 @@ int main()
         return 1;
 
     wchar_t fable[] = L"Fable";
-    CWideStringData storage;
+    unsigned long storageRaw_[4];
+    CWideStringData& storage = *reinterpret_cast<CWideStringData*>(storageRaw_);
     SetText(storage, fable);
     CWideString& value = MakeValue(slot, &storage);
     if (value != L"Fable")

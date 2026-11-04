@@ -1,134 +1,51 @@
-// CDiskFileWin32::Read @ 0x0099A960.
+// CDiskFileWin32::Read @ 0x0099A960
+// (FableWin ?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z, slot 3).
 //
-// LoadGameStateInternal first uses this for the eight-byte save header.  A
-// Retail validates the destination first; after that a zero-length request is
-// a no-op.  It reports reads at EOF via CAFileException, calls Win32 ReadFile,
-// reports API failure, and advances +8 by ReadFile's actual byte count.
+// Validates the destination (BAD_PARAMETERS), ignores empty reads, refuses a
+// read at the cached end (END_OF_FILE), reads through Win32 ReadFile
+// (CANNOT_READ on failure) and advances the cached position by the byte count
+// ReadFile reports. Synchronous: the suspendable process is unused.
 
-extern "C" const char CDiskFileWin32_NullDestination_0099a960[];
-extern "C" const char CDiskFileWin32_ReadPastEnd_0099a960[];
-extern "C" const char CDiskFileWin32_ReadFailure_0099a960[];
-extern "C" unsigned char CDiskFileWin32_ThrowInfo_0099a960[];
-extern "C" void* CDiskFileWin32_ReadFileIAT_0099a960;
+#include "fable_disk_file.h"
+#include "fable_file_exception.h"
 
-extern "C" void* __fastcall
-CDiskFileWin32_ConstructErrorString_0099a960(
-    void* destination,
-    void*,
-    const char* text,
-    int length);
-extern "C" void* __fastcall
-CDiskFileWin32_CopyErrorString_0099a960(
-    void* destination,
-    void*,
-    const void* source);
-extern "C" char* __fastcall
-CDiskFileWin32_GetErrorText_0099a960(void* value, void*);
-extern "C" void __fastcall
-CDiskFileWin32_DestroyErrorString_0099a960(void* value, void*);
-extern "C" void __stdcall
-CDiskFileWin32_ThrowError_0099a960(void* exceptionValue, void* throwInfo);
+typedef int FableBool;
+typedef unsigned long FableDword;
+typedef void* FableHandle;
 
-extern "C" __declspec(naked) void __fastcall
-CDiskFileWin32_Read_0099a960(
-    void*,
-    void*,
-    void*,
-    long,
-    void*)
+extern "C" __declspec(dllimport) FableBool FABLE_STDCALL ReadFile(
+    FableHandle file,
+    void* buffer,
+    FableDword bytesToRead,
+    FableDword* bytesRead,
+    void* overlapped);
+
+void CDiskFileWin32::Read(
+    void* data,
+    long size,
+    CASuspendableProcess*)
 {
-    __asm
+    if (data == 0)
     {
-        sub esp, 8
-        push esi
-        mov esi, ecx
-        mov ecx, dword ptr [esp + 10h]
-        test ecx, ecx
-        jne destination_valid
+        CCharString message("Null dst parameter");
+        throw CBBBFileException(message, CBBBFileException::BAD_PARAMETERS);
+    }
 
-        push -1
-        push offset CDiskFileWin32_NullDestination_0099a960
-        lea ecx, dword ptr [esp + 1Ch]
-        call CDiskFileWin32_ConstructErrorString_0099a960
-        lea eax, dword ptr [esp + 14h]
-        push eax
-        lea ecx, dword ptr [esp + 14h]
-        call CDiskFileWin32_CopyErrorString_0099a960
-        lea ecx, dword ptr [esp + 10h]
-        call CDiskFileWin32_GetErrorText_0099a960
-        lea ecx, dword ptr [esp + 10h]
-        call CDiskFileWin32_DestroyErrorString_0099a960
-        push offset CDiskFileWin32_ThrowInfo_0099a960
-        lea ecx, dword ptr [esp + 8]
-        push ecx
-        mov dword ptr [esp + 0Ch], 1
-        call CDiskFileWin32_ThrowError_0099a960
+    if (size != 0)
+    {
+        if (Position == Length)
+        {
+            CCharString message("Cannot read past end of file");
+            throw CBBBFileException(message, CBBBFileException::END_OF_FILE);
+        }
 
-    destination_valid:
-        mov eax, dword ptr [esp + 14h]
-        test eax, eax
-        je read_done
-        mov edx, dword ptr [esi + 8]
-        cmp edx, dword ptr [esi + 0Ch]
-        jne before_end_of_file
+        FableDword read;
+        if (ReadFile(WinFileHandle, data, size, &read, 0) != 1)
+        {
+            CCharString message("Cannot read file");
+            throw CBBBFileException(message, CBBBFileException::CANNOT_READ);
+        }
 
-        push -1
-        push offset CDiskFileWin32_ReadPastEnd_0099a960
-        lea ecx, dword ptr [esp + 1Ch]
-        call CDiskFileWin32_ConstructErrorString_0099a960
-        lea eax, dword ptr [esp + 14h]
-        push eax
-        lea ecx, dword ptr [esp + 14h]
-        call CDiskFileWin32_CopyErrorString_0099a960
-        lea ecx, dword ptr [esp + 10h]
-        call CDiskFileWin32_GetErrorText_0099a960
-        lea ecx, dword ptr [esp + 10h]
-        call CDiskFileWin32_DestroyErrorString_0099a960
-        push offset CDiskFileWin32_ThrowInfo_0099a960
-        lea ecx, dword ptr [esp + 8]
-        push ecx
-        mov dword ptr [esp + 0Ch], 3
-        call CDiskFileWin32_ThrowError_0099a960
-
-    before_end_of_file:
-        push 0
-        lea edx, dword ptr [esp + 0Ch]
-        push edx
-        push eax
-        mov eax, dword ptr [esi + 10h]
-        push ecx
-        push eax
-        call dword ptr [CDiskFileWin32_ReadFileIAT_0099a960]
-        cmp eax, 1
-        je update_position
-
-        push -1
-        push offset CDiskFileWin32_ReadFailure_0099a960
-        lea ecx, dword ptr [esp + 1Ch]
-        call CDiskFileWin32_ConstructErrorString_0099a960
-        lea ecx, dword ptr [esp + 14h]
-        push ecx
-        lea ecx, dword ptr [esp + 14h]
-        call CDiskFileWin32_CopyErrorString_0099a960
-        lea ecx, dword ptr [esp + 10h]
-        call CDiskFileWin32_GetErrorText_0099a960
-        lea ecx, dword ptr [esp + 10h]
-        call CDiskFileWin32_DestroyErrorString_0099a960
-        push offset CDiskFileWin32_ThrowInfo_0099a960
-        lea edx, dword ptr [esp + 8]
-        push edx
-        mov dword ptr [esp + 0Ch], 4
-        call CDiskFileWin32_ThrowError_0099a960
-
-    update_position:
-        mov ecx, dword ptr [esi + 8]
-        mov eax, dword ptr [esp + 8]
-        add ecx, eax
-        mov dword ptr [esi + 8], ecx
-
-    read_done:
-        pop esi
-        add esp, 8
-        ret 0Ch
+        Position += read;
     }
 }

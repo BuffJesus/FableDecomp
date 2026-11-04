@@ -3,21 +3,12 @@
 
 #include "fable_threaded_file.h"
 
-struct FableThreadedFileControl_009A9C80
-{
-    fable_i32 owners;
-    void (FABLE_FASTCALL *destroyObject)(void*, void*);
-    void* object;
-};
-
-extern "C" void FABLE_FASTCALL
-FableThreadedFileObjectDelete_009A9040(void* object, void*);
-
 namespace
 {
-    FableThreadedFileControl_009A9C80 g_newControl;
+    fable_u8 g_newControl[sizeof(CCPPointerInfo)];
     bool g_failAllocation;
     unsigned int g_allocateCalls;
+    size_t g_allocateSize;
     unsigned int g_controlDeleteCalls;
     unsigned int g_objectDeleteCalls;
     void* g_deletedControl;
@@ -25,13 +16,19 @@ namespace
 
     void ResetObservations()
     {
-        memset(&g_newControl, 0, sizeof(g_newControl));
+        memset(g_newControl, 0, sizeof(g_newControl));
         g_failAllocation = false;
         g_allocateCalls = 0;
+        g_allocateSize = 0;
         g_controlDeleteCalls = 0;
         g_objectDeleteCalls = 0;
         g_deletedControl = 0;
         g_deletedObject = 0;
+    }
+
+    CCPPointerInfo* NewControl()
+    {
+        return reinterpret_cast<CCPPointerInfo*>(g_newControl);
     }
 
     bool CheckSharedOwnerReplacement()
@@ -43,12 +40,9 @@ namespace
             reinterpret_cast<CThreadedFile*>(oldBytes);
         CThreadedFile* newObject =
             reinterpret_cast<CThreadedFile*>(newBytes);
-        FableThreadedFileControl_009A9C80 oldControl =
-        {
-            2,
-            &FableThreadedFileObjectDelete_009A9040,
-            oldObject
-        };
+        CCPPointerInfo oldControl(
+            &CCountedPointer<CThreadedFile>::DeleteData, oldObject);
+        oldControl.RefCount = 2;
         CCountedPointer<CThreadedFile> counted;
         counted.data_ = oldObject;
         counted.control_ = &oldControl;
@@ -56,16 +50,17 @@ namespace
         counted.Reset(newObject);
 
         return
-            oldControl.owners == 1 &&
+            oldControl.RefCount == 1 &&
             g_objectDeleteCalls == 0 &&
             g_controlDeleteCalls == 0 &&
             g_allocateCalls == 1 &&
+            g_allocateSize == sizeof(CCPPointerInfo) &&
             counted.data_ == newObject &&
-            counted.control_ == &g_newControl &&
-            g_newControl.owners == 1 &&
-            g_newControl.object == newObject &&
-            g_newControl.destroyObject ==
-                &FableThreadedFileObjectDelete_009A9040;
+            counted.control_ == NewControl() &&
+            NewControl()->RefCount == 1 &&
+            NewControl()->Data == newObject &&
+            NewControl()->DeleteFunc ==
+                &CCountedPointer<CThreadedFile>::DeleteData;
     }
 
     bool CheckLastOwnerRelease()
@@ -74,12 +69,8 @@ namespace
         fable_u8 oldBytes[sizeof(CThreadedFile)];
         CThreadedFile* oldObject =
             reinterpret_cast<CThreadedFile*>(oldBytes);
-        FableThreadedFileControl_009A9C80 oldControl =
-        {
-            1,
-            &FableThreadedFileObjectDelete_009A9040,
-            oldObject
-        };
+        CCPPointerInfo oldControl(
+            &CCountedPointer<CThreadedFile>::DeleteData, oldObject);
         CCountedPointer<CThreadedFile> counted;
         counted.data_ = oldObject;
         counted.control_ = &oldControl;
@@ -87,7 +78,7 @@ namespace
         counted.Reset(0);
 
         return
-            oldControl.owners == 0 &&
+            oldControl.RefCount == 0 &&
             g_objectDeleteCalls == 1 &&
             g_deletedObject == oldObject &&
             g_controlDeleteCalls == 1 &&
@@ -117,31 +108,28 @@ namespace
     }
 }
 
-extern "C" void* FABLE_CDECL
-FableThreadedFileControlAllocate_009A9C80(fable_u32 size)
+// Engine allocation returns null on failure; the fixture records every call.
+void* operator new(size_t size)
 {
     ++g_allocateCalls;
-    if (size != sizeof(g_newControl) || g_failAllocation)
+    g_allocateSize = size;
+    if (size > sizeof(g_newControl) || g_failAllocation)
     {
         return 0;
     }
-    return &g_newControl;
+    return g_newControl;
 }
 
-extern "C" void FABLE_CDECL
-FableThreadedFileControlDelete_009A9C80(void* control)
+void operator delete(void* pointer)
 {
     ++g_controlDeleteCalls;
-    g_deletedControl = control;
+    g_deletedControl = pointer;
 }
 
-extern "C" void FABLE_FASTCALL
-FableThreadedFileObjectDelete_009A9040(
-    void* object,
-    void*)
+void FABLE_FASTCALL CCountedPointer<CThreadedFile>::DeleteData(void* data)
 {
     ++g_objectDeleteCalls;
-    g_deletedObject = object;
+    g_deletedObject = data;
 }
 
 int main()

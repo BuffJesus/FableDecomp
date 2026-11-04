@@ -1,6 +1,5 @@
-#include "engine/CStaticFontBank.h"
-
-float __fastcall GetFontMaxHeight(CStaticFontBank* self)
+#include "fable_font_instances.h"
+float CStaticFontBank::GetFontMaxHeight() const
 {
-    return (float)(unsigned long)self->m_maxHeight;
+    return static_cast<float>(FontHeight);
 }

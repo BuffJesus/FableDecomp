@@ -1,61 +1,27 @@
-#include "rebuild_abi.h"
+#include "fable_persist_context.h"
 
-struct FablePersistContext_009BADD0
-{
-    void* definitionManager;
-    void* symbolMap;
-    void* parser;
-    void* errorCallback;
-    void* sourceName;
-    unsigned char reportErrors;
-    unsigned char field15;
-    unsigned char field16;
-    unsigned char field17;
-    unsigned long mode;
-};
-
-// CPersistContext::CPersistContext(
-//     CStringParser*,
-//     void (*)(CCharString*),
-//     bool,
-//     CDefinitionManager*,
-//     CSymbolMap*,
-//     CCharString*) @ 0x009BADD0.
+// CPersistContext::CPersistContext(CStringParser&, void (*)(const CCharString&),
+//     bool, const CDefinitionManager*, const CSymbolMap*, CCharString*) @ 0x009BADD0.
 //
-// This is the text-load context used by GFMain Phase 3 after constructing the
-// settings parser. The retail constructor stores the two manager pointers
-// first, then the parser/callback/source tuple, and clears all runtime state.
-extern "C" __declspec(naked) FablePersistContext_009BADD0* FABLE_FASTCALL
-FablePersistContextTextConstruct_009BADD0(
-    FablePersistContext_009BADD0* self,
-    void*,
-    void* parser,
-    void* errorCallback,
-    bool reportErrors,
-    void* definitionManager,
-    void* symbolMap,
-    void* sourceName)
+// The text-load context GFMain Phase 3 builds over the settings parser. Only
+// the mode is in the initialiser list; the zero it needs is what keeps every
+// argument copy in EDX in retail.
+CPersistContext::CPersistContext(
+    CStringParser& parser,
+    void (__fastcall* errorCallback)(const CCharString&),
+    bool useDefaults,
+    const CDefinitionManager* definitionManager,
+    const CSymbolMap* symbolMap,
+    CCharString* stringToClean)
+    : Mode(MODE_TEXT_LOAD)
 {
-    __asm
-    {
-        mov edx, dword ptr [esp + 10h]
-        mov eax, ecx
-        mov dword ptr [eax], edx
-        mov edx, dword ptr [esp + 14h]
-        mov dword ptr [eax + 4], edx
-        mov edx, dword ptr [esp + 4]
-        mov dword ptr [eax + 8], edx
-        mov edx, dword ptr [esp + 8]
-        mov dword ptr [eax + 0Ch], edx
-        mov edx, dword ptr [esp + 18h]
-        xor ecx, ecx
-        mov dword ptr [eax + 10h], edx
-        mov dl, byte ptr [esp + 0Ch]
-        mov dword ptr [eax + 18h], ecx
-        mov byte ptr [eax + 14h], dl
-        mov byte ptr [eax + 15h], cl
-        mov byte ptr [eax + 17h], cl
-        mov byte ptr [eax + 16h], cl
-        ret 18h
-    }
+    PDefinitionManager = definitionManager;
+    PSymbolMap = symbolMap;
+    PParser = &parser;
+    ErrorCallback = errorCallback;
+    PStringToClean = stringToClean;
+    UseDefaults = useDefaults;
+    UseCRCCheck = false;
+    Finished = false;
+    SingleTransfer = false;
 }

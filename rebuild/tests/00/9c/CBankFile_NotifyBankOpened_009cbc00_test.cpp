@@ -1,8 +1,6 @@
-#include <cstdio>
-void __fastcall CBankFile_NotifyBankOpened() {}
-int main()
-{
-    CBankFile_NotifyBankOpened();
-    std::printf("AUTO_TINY_009cbc00_TEST PASS\n");
-    return 0;
-}
+#include "../tests/integration/BankNotify_test.cpp"
+#include "../src/compiled/00/9c/CBankFile_NotifyBankSize_009cbbf0.cpp"
+#include "../src/compiled/00/9c/CBankFile_NotifyEntryAdded_009cbc20.cpp"
+#include "../src/compiled/00/9c/CBankFile_NotifyEntryUpdated_009cbc10.cpp"
+#include "../src/compiled/00/9c/CBankFile_NotifyEntryRemoved_009cbc30.cpp"
+#include "../src/compiled/00/50/CBankFile_NotifyPostEntriesLoaded_0050b440.cpp"

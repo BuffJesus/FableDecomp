@@ -1,32 +1,33 @@
 #include "fable_render_state.h"
 
-void CRenderStateManagerRealiseView::RealiseRenderState()
+void CRenderStateManager::RealiseRenderState()
 {
-    for (fable_i32 index = 0; index < StateUpdateListSize280C; ++index)
+    for (fable_i32 index = 0; index < StateUpdateListSize; ++index)
     {
-        CRenderStateInfo* state = StateUpdateList2008[index];
+        CStateInfo* state = StateUpdateList[index];
         fable_u32 desired = state->DesiredState;
         state->DirtyListFlag = 0;
         if (desired != state->CurrentState)
         {
+            FableRenderStateDevice* device=static_cast<FableRenderStateDevice*>(PD3DDevice);
             switch (state->StateType)
             {
             case 1:
-                PD3DDevice0004->vtable->SetRenderState(
-                    PD3DDevice0004,
+                device->vtable->SetRenderState(
+                    device,
                     state->StateParam,
                     desired);
                 break;
             case 2:
-                PD3DDevice0004->vtable->SetTextureStageState(
-                    PD3DDevice0004,
+                device->vtable->SetTextureStageState(
+                    device,
                     state->TextureStage,
                     state->StateParam,
                     desired);
                 break;
             case 3:
-                PD3DDevice0004->vtable->SetSamplerState(
-                    PD3DDevice0004,
+                device->vtable->SetSamplerState(
+                    device,
                     state->TextureStage,
                     state->StateParam,
                     desired);
@@ -35,5 +36,5 @@ void CRenderStateManagerRealiseView::RealiseRenderState()
             state->CurrentState = state->DesiredState;
         }
     }
-    StateUpdateListSize280C = 0;
+    StateUpdateListSize = 0;
 }

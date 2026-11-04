@@ -19,7 +19,7 @@ int main()
     if (page == 0) return 1;
     *reinterpret_cast<float*>(0x0122DEDC) = 0.375f;
     CMemoryAllocatorFixedSize* allocator = 0;
-    if (fabs(allocator->GetFragmentation() - 0.375f) > 0.0001f) return 2;
+    if (fabs(allocator->CMemoryAllocatorFixedSize::GetFragmentation() - 0.375f) > 0.0001f) return 2;
     VirtualFree(page, 0, kMemRelease);
     printf("FIXED_ALLOCATOR_FRAGMENTATION_TEST PASS\n");
     return 0;

@@ -46,8 +46,9 @@ struct CDefinitionManagerOverlay
     CPicklockMoralityDefinition* m_Definition;
 };
 
-struct CGameScriptInterface
+class CGameScriptInterface
 {
+public:
     unsigned char m_Pad00[0x14];
     void*         m_Field14;
 };

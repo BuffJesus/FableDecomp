@@ -1,17 +1,12 @@
-// CRegion::SetMiniMapRegionExitTextOffsetX @ 009d5060
-struct CRegion;
+// CDefString::SetString(const CCharString&) @ 0x009D5060 (FableWin
+// ?SetString@CDefString@@QAEXABVCCharString@@@Z; the inline
+// CDefString(const CCharString&) is this call, e.g. in
+// CDefinitionManager::InstantiateDef 0x009ADC90). Retyped from a wrongly
+// named CRegion::SetMiniMapRegionExitTextOffsetX landing.
+#include "fable_def_string.h"
 
-struct Singleton {
-    void* method(void* arg);  // __fastcall, ecx=this, pushes arg; at 0x9d4f90
-};
-
-extern Singleton g_singleton_13ca828;
-
-struct CRegion {
-    void* f0;
-};
-
-void __fastcall SetMiniMapRegionExitTextOffsetX(CRegion* self, int /*edx*/, void* arg)
+// Intern the text in the global def string table and keep its index.
+void CDefString::SetString(const CCharString& text)
 {
-    self->f0 = g_singleton_13ca828.method(arg);
+    TablePos = GDefStringTable.AddString(text);
 }

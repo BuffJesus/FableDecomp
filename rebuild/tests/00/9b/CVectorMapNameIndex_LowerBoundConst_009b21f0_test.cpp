@@ -1,0 +1,6 @@
+#include "../src/compiled/00/40/Global_CCRC_Calc_004014a0.cpp"
+#include "../src/compiled/00/9e/CVectorMap_SymbolMap_LowerBound_009e6910.cpp"
+#include "../src/compiled/00/9e/CCharString_FastCompare_009e6530.cpp"
+#include "../src/compiled/00/9e/CSymbolMap_FindSymbol_009e5170.cpp"
+#include "../src/compiled/00/9a/CDefinitionManager_GetDefGlobalIndexFromName_009ad410.cpp"
+#include "../tests/integration/NameIndexChain_test.cpp"

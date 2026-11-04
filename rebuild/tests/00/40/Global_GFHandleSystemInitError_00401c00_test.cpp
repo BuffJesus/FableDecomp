@@ -5,7 +5,11 @@
 
 namespace
 {
-    CSystemManager g_systemManager;
+    // CSystemManager has string members whose constructors live elsewhere;
+    // the leaf only needs the object's address and fields.
+    fable_u32 g_systemManagerStorage[sizeof(CSystemManager) / 4];
+    CSystemManager& g_systemManager =
+        *reinterpret_cast<CSystemManager*>(g_systemManagerStorage);
     CCharStringData g_applicationStorage;
     CCharStringData g_messageStorage;
     char g_messageBuffer[512];
@@ -28,6 +32,11 @@ CCharString::CCharString(const char* text, long)
 {
     g_applicationStorage.text = const_cast<char*>(text);
     Storage(*this) = &g_applicationStorage;
+}
+
+CCharString::CCharString(const CCharString& other)
+{
+    Storage(*this) = const_cast<CCharStringData*>(Storage(other));
 }
 
 CCharString::~CCharString()

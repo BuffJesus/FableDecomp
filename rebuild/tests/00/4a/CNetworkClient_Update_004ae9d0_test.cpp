@@ -1,52 +1,29 @@
-#include "engine/CNetworkClient.h"
+// Behaviour: Update writes LocalFrame/Checksum1/Checksum2 (+0x266C/+0x2670/+0x2674)
+// only when LocalGame (+0x2662) is set; nothing else in the object changes.
+#include "fable_game.h"
 #include <stdio.h>
 #include <string.h>
 
-
-void __fastcall Update(CNetworkClient *self, void * /*edx*/, int a, int b, int c)
-{
-    if (self->LocalGame) {
-        self->LocalFrame = a;
-        self->Checksum1 = b;
-        self->Checksum2 = c;
-    }
-}
-
-// __fastcall shim: this in ecx, args pushed right-to-left, callee cleans (ret 0xc)
-static void call_update(CNetworkClient *self, int a, int b, int c)
-{
-    __asm {
-        push c
-        push b
-        push a
-        mov  ecx, self
-        call Update
-    }
-}
+static unsigned char g_obj[sizeof(CNetworkClient)];
+static unsigned char g_before[sizeof(CNetworkClient)];
 
 int main()
 {
-    CNetworkClient obj;
-    memset(&obj, 0, sizeof(obj));
+    CNetworkClient* client = reinterpret_cast<CNetworkClient*>(g_obj);
+    memset(g_obj, 0x11, sizeof(g_obj));
+    g_obj[0x2662] = 0;
+    memcpy(g_before, g_obj, sizeof(g_obj));
+    client->Update(1, 2, 3);
+    if (memcmp(g_before, g_obj, sizeof(g_obj)) != 0) { printf("FAIL remote game wrote\n"); return 1; }
 
-    // enabled == 0 : must NOT write
-    obj.LocalGame = 0;
-    obj.LocalFrame = obj.Checksum1 = obj.Checksum2 = 0x11111111;
-    call_update(&obj, 1, 2, 3);
-    if (obj.LocalFrame != 0x11111111 || obj.Checksum1 != 0x11111111 || obj.Checksum2 != 0x11111111) {
-        printf("FAIL disabled path wrote\n");
-        return 1;
-    }
-
-    // enabled == 1 : must write all three
-    obj.LocalGame = 1;
-    obj.LocalFrame = obj.Checksum1 = obj.Checksum2 = 0;
-    call_update(&obj, 0xAAAA0001, 0xBBBB0002, 0xCCCC0003);
-    if (obj.LocalFrame != (int)0xAAAA0001 || obj.Checksum1 != (int)0xBBBB0002 || obj.Checksum2 != (int)0xCCCC0003) {
-        printf("FAIL enabled path wrong a=%08x b=%08x c=%08x\n", obj.LocalFrame, obj.Checksum1, obj.Checksum2);
-        return 1;
-    }
-
+    g_obj[0x2662] = 1;
+    memcpy(g_before, g_obj, sizeof(g_obj));
+    client->Update(static_cast<long>(0xAAAA0001), 0xBBBB0002, 0xCCCC0003);
+    if (*reinterpret_cast<unsigned long*>(g_obj + 0x266C) != 0xAAAA0001 ||
+        *reinterpret_cast<unsigned long*>(g_obj + 0x2670) != 0xBBBB0002 ||
+        *reinterpret_cast<unsigned long*>(g_obj + 0x2674) != 0xCCCC0003) { printf("FAIL local game values\n"); return 2; }
+    memcpy(g_before + 0x266C, g_obj + 0x266C, 12);
+    if (memcmp(g_before, g_obj, sizeof(g_obj)) != 0) { printf("FAIL neighbours\n"); return 3; }
     printf("OK_0x004ae9d0\n");
     return 0;
 }

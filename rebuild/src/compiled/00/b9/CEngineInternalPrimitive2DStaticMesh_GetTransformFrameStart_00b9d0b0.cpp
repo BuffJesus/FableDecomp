@@ -1,6 +1,7 @@
 #include "engine/CEngineInternalPrimitive2DStaticMesh.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CMatrix3x4 {
+class CMatrix3x4 {
+public:
     float m[12];
 };
 

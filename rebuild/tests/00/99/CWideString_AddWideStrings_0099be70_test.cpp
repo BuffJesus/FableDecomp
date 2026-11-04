@@ -1,103 +1,170 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
 
 #include "fable_string.h"
+#include <stdlib.h>
+
+// The unit's inline AllocStringData/MakeOwnCopyOfData copies now construct
+// CWideStringData through STLport, whose length-error path (retail 0x0099C550)
+// is out of line; these paths never reach it.
+void _STL::_String_base<wchar_t, _STL::allocator<wchar_t> >::_M_throw_length_error() const
+{
+    abort();
+}
 
 fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
+wchar_t g_FableEmptyWideString_0129A8E0[1] = {L'\0'};
 
 namespace
 {
-    CWideStringData g_sumStorage;
-    wchar_t g_sumText[] = L"left-right";
-    unsigned int g_addAssignCalls;
-    unsigned int g_unassignCalls;
-    unsigned int g_freeCalls;
+    unsigned int g_newCalls;
     unsigned int g_deleteCalls;
-    const void* g_observedRight;
-
-    void SetStorage(
-        CWideString& value,
-        CWideStringData* storage)
-    {
-        *reinterpret_cast<CWideStringData**>(&value) = storage;
-    }
+    // Copies and appends go through the real STLport range initialiser
+    // (0x0099C670) and append (0x0099C7E0), so they are checked by content.
+    unsigned int g_appendCalls;
 
     CWideStringData* GetStorage(const CWideString& value)
     {
         return *reinterpret_cast<CWideStringData* const*>(&value);
     }
-}
 
-extern "C" void FABLE_FASTCALL
-FableWideAddAssign_0099BE70(
-    void* self,
-    void*,
-    const void* right)
-{
-    ++g_addAssignCalls;
-    g_observedRight = right;
-    CWideStringData*& temporary =
-        *static_cast<CWideStringData**>(self);
-    if (temporary != 0)
+    // A CWideString whose storage the fixture owns, never destroyed.
+    CWideString& MakeString(fable_u8* bytes, CWideStringData* storage)
     {
-        --temporary->owners;
+        *reinterpret_cast<CWideStringData**>(bytes) = storage;
+        return *reinterpret_cast<CWideString*>(bytes);
     }
-    g_sumStorage.text = g_sumText;
-    g_sumStorage.owners = 1;
-    temporary = &g_sumStorage;
+
+    wchar_t* HeapText(const wchar_t* text)
+    {
+        const size_t length = wcslen(text);
+        wchar_t* copy =
+            static_cast<wchar_t*>(malloc((length + 1) * sizeof(wchar_t)));
+        memcpy(copy, text, (length + 1) * sizeof(wchar_t));
+        return copy;
+    }
+
+    void Reset()
+    {
+        g_newCalls = 0;
+        g_deleteCalls = 0;
+        g_appendCalls = 0;
+    }
+
+    bool TextIs(const CWideString& value, const wchar_t* expected)
+    {
+        const CWideStringData* storage = GetStorage(value);
+        return storage != 0 && storage->text != 0 &&
+            wcscmp(storage->text, expected) == 0;
+    }
+
+    // Both sides populated: a fresh "leftright" is built and left is untouched.
+    bool CheckJoin()
+    {
+        Reset();
+        unsigned long leftStorageRaw_[4] = {reinterpret_cast<unsigned long>(HeapText(L"left")), 0, 0, 1};
+        CWideStringData& leftStorage = *reinterpret_cast<CWideStringData*>(leftStorageRaw_);
+        unsigned long rightStorageRaw_[4] = {reinterpret_cast<unsigned long>(HeapText(L"right")), 0, 0, 1};
+        CWideStringData& rightStorage = *reinterpret_cast<CWideStringData*>(rightStorageRaw_);
+        fable_u8 leftBytes[sizeof(CWideString)];
+        fable_u8 rightBytes[sizeof(CWideString)];
+        const CWideString& left = MakeString(leftBytes, &leftStorage);
+        const CWideString& right = MakeString(rightBytes, &rightStorage);
+        g_CWideStringInstanceCount_013BCA20 = 20;
+
+        bool passed;
+        {
+            CWideString result = left + right;
+            passed =
+                TextIs(result, L"leftright") &&
+                GetStorage(result) != &leftStorage &&
+                GetStorage(result)->owners == 1 &&
+                wcscmp(leftStorage.text, L"left") == 0 &&
+                leftStorage.owners == 1 &&
+                rightStorage.owners == 1 &&
+                g_newCalls == 1 &&
+                g_deleteCalls == 0 &&
+                g_CWideStringInstanceCount_013BCA20 == 21;
+        }
+        return passed &&
+            g_deleteCalls == 1 &&
+            g_CWideStringInstanceCount_013BCA20 == 20;
+    }
+
+    // An empty left side shares the right side's data.
+    bool CheckEmptyLeft()
+    {
+        Reset();
+        unsigned long rightStorageRaw_[4] = {reinterpret_cast<unsigned long>(HeapText(L"right")), 0, 0, 1};
+        CWideStringData& rightStorage = *reinterpret_cast<CWideStringData*>(rightStorageRaw_);
+        fable_u8 leftBytes[sizeof(CWideString)];
+        fable_u8 rightBytes[sizeof(CWideString)];
+        const CWideString& left = MakeString(leftBytes, 0);
+        const CWideString& right = MakeString(rightBytes, &rightStorage);
+        g_CWideStringInstanceCount_013BCA20 = 0;
+
+        bool passed;
+        {
+            CWideString result = left + right;
+            passed =
+                GetStorage(result) == &rightStorage &&
+                rightStorage.owners == 2 &&
+                g_newCalls == 0 &&
+                g_CWideStringInstanceCount_013BCA20 == 1;
+        }
+        return passed &&
+            rightStorage.owners == 1 &&
+            g_deleteCalls == 0 &&
+            g_CWideStringInstanceCount_013BCA20 == 0;
+    }
+
+    // An empty right side still detaches the result from the left side.
+    bool CheckEmptyRight()
+    {
+        Reset();
+        unsigned long leftStorageRaw_[4] = {reinterpret_cast<unsigned long>(HeapText(L"left")), 0, 0, 1};
+        CWideStringData& leftStorage = *reinterpret_cast<CWideStringData*>(leftStorageRaw_);
+        fable_u8 leftBytes[sizeof(CWideString)];
+        fable_u8 rightBytes[sizeof(CWideString)];
+        const CWideString& left = MakeString(leftBytes, &leftStorage);
+        const CWideString& right = MakeString(rightBytes, 0);
+        g_CWideStringInstanceCount_013BCA20 = 0;
+
+        bool passed;
+        {
+            CWideString result = left + right;
+            passed =
+                TextIs(result, L"left") &&
+                GetStorage(result) != &leftStorage &&
+                leftStorage.owners == 1 &&
+                g_CWideStringInstanceCount_013BCA20 == 1;
+        }
+        return passed && g_CWideStringInstanceCount_013BCA20 == 0;
+    }
 }
 
-extern "C" void FABLE_FASTCALL
-FableWideUnassign_0099BE70(void*, void*)
+void* operator new(size_t size)
 {
-    ++g_unassignCalls;
+    ++g_newCalls;
+    return malloc(size);
 }
 
-extern "C" void FABLE_CDECL
-FableWideAddFree_0099BE70(void*)
+void operator delete(void* memory)
 {
-    ++g_freeCalls;
+    if (memory != 0)
+        ++g_deleteCalls;
+    free(memory);
 }
 
-extern "C" void FABLE_CDECL
-FableWideAddDelete_0099BE70(void*)
-{
-    ++g_deleteCalls;
-}
-
-CWideString::~CWideString()
-{
-}
 
 int main()
 {
-    wchar_t leftText[] = L"left";
-    wchar_t rightText[] = L"right";
-    CWideStringData leftStorage = {leftText, 0, 0, 1};
-    CWideStringData rightStorage = {rightText, 0, 0, 1};
-    fable_u8 leftBytes[sizeof(CWideString)] = {0};
-    fable_u8 rightBytes[sizeof(CWideString)] = {0};
-    CWideString& left =
-        *reinterpret_cast<CWideString*>(leftBytes);
-    CWideString& right =
-        *reinterpret_cast<CWideString*>(rightBytes);
-    SetStorage(left, &leftStorage);
-    SetStorage(right, &rightStorage);
-    g_CWideStringInstanceCount_013BCA20 = 20;
-
-    CWideString result = left + right;
-
     const bool passed =
-        g_addAssignCalls == 1 &&
-        g_observedRight == &right &&
-        g_unassignCalls == 0 &&
-        g_freeCalls == 0 &&
-        g_deleteCalls == 0 &&
-        leftStorage.owners == 1 &&
-        rightStorage.owners == 1 &&
-        g_sumStorage.owners == 1 &&
-        GetStorage(result) == &g_sumStorage &&
-        g_CWideStringInstanceCount_013BCA20 == 21;
+        CheckJoin() &&
+        CheckEmptyLeft() &&
+        CheckEmptyRight();
     if (!passed)
     {
         printf("FABLETLC_WIDE_STRING_ADD_WIDE FAIL\n");

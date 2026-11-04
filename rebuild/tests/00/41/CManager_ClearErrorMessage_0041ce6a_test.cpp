@@ -1,67 +1,68 @@
-#include <cstdio>
+#include <stdio.h>
+#include <string.h>
 
-static int g_slot0_calls = 0;
-static int g_slot48_calls = 0;
-static int g_arg0 = -1;
-static int g_arg48 = -1;
+#include "fable_nui_manager.h"
 
-struct ICanvas {
-    virtual void slot0(int a) { g_slot0_calls++; g_arg0 = a; }
-    virtual void v1() {} virtual void v2() {} virtual void v3() {}
-    virtual void v4() {} virtual void v5() {} virtual void v6() {}
-    virtual void v7() {} virtual void v8() {} virtual void v9() {}
-    virtual void v10() {} virtual void v11() {} virtual void v12() {}
-    virtual void v13() {} virtual void v14() {} virtual void v15() {}
-    virtual void v16() {} virtual void v17() {} virtual void v18() {}
-    virtual void v19() {} virtual void v20() {} virtual void v21() {}
-    virtual void v22() {} virtual void v23() {} virtual void v24() {}
-    virtual void v25() {} virtual void v26() {} virtual void v27() {}
-    virtual void v28() {} virtual void v29() {} virtual void v30() {}
-    virtual void v31() {} virtual void v32() {} virtual void v33() {}
-    virtual void v34() {} virtual void v35() {} virtual void v36() {}
-    virtual void v37() {} virtual void v38() {} virtual void v39() {}
-    virtual void v40() {} virtual void v41() {} virtual void v42() {}
-    virtual void v43() {} virtual void v44() {} virtual void v45() {}
-    virtual void v46() {} virtual void v47() {}
-    virtual void slot48(int a) { g_slot48_calls++; g_arg48 = a; }
-};
+// Behaviour fixture for NUISystem::CManager::ClearErrorMessage @ 0x0041CE6A.
+// Retail offsets: m_bHasErrorMessage +0x9C, m_pErrorMessage +0xA0. The error
+// component is a fake object whose vtable has the scalar deleting dtor in
+// slot 0 and ChangeState(unsigned long) in slot 48 (+0xC0); __fastcall
+// stand-ins take `this` in ecx and pop their stack argument like thiscall.
 
-struct CManager {
-    char pad[0x9c];
-    char flag9c;
-    char pad2[3];
-    ICanvas* canvas;
-};
-
-void __fastcall CManager_ClearErrorMessage(CManager* self)
+struct FakeComponent
 {
-    ICanvas* c = self->canvas;
-    self->flag9c = 0;
-    c->slot48(0);
-    c = self->canvas;
-    if (c) {
-        c->slot0(1);
-    }
-    self->canvas = 0;
+    void** vtable;
+};
+
+static int g_seq, g_stateAt, g_deleteAt;
+static void* g_stateThis;
+static void* g_deleteThis;
+static unsigned long g_stateArg;
+static unsigned int g_deleteFlag;
+
+static void* __fastcall FakeDelete(void* self, void*, unsigned int flags)
+{
+    g_deleteAt = ++g_seq; g_deleteThis = self; g_deleteFlag = flags;
+    return self;
 }
+
+static void __fastcall FakeChangeState(void* self, void*, unsigned long state)
+{
+    g_stateAt = ++g_seq; g_stateThis = self; g_stateArg = state;
+}
+
+static void* g_vtable[64];
+static FakeComponent g_component;
+static unsigned char g_manager[0xD0];
 
 int main()
 {
-    ICanvas canvas;
-    CManager mgr;
-    mgr.flag9c = 1;
-    mgr.canvas = &canvas;
+    for (int i = 0; i < 64; ++i) g_vtable[i] = 0;
+    g_vtable[0] = (void*)&FakeDelete;
+    g_vtable[48] = (void*)&FakeChangeState;
+    g_component.vtable = g_vtable;
 
-    CManager_ClearErrorMessage(&mgr);
+    memset(g_manager, 0x77, sizeof(g_manager));
+    g_manager[0x9C] = 1;
+    FakeComponent* p = &g_component;
+    memcpy(g_manager + 0xA0, &p, 4);
+    g_seq = g_stateAt = g_deleteAt = 0;
+    g_stateArg = 99; g_deleteFlag = 99;
 
-    int ok = 1;
-    if (mgr.flag9c != 0) ok = 0;
-    if (g_slot48_calls != 1 || g_arg48 != 0) ok = 0;
-    if (g_slot0_calls != 1 || g_arg0 != 1) ok = 0;
-    if (mgr.canvas != 0) ok = 0;
+    reinterpret_cast<NUISystem::CManager*>(g_manager)->ClearErrorMessage();
 
-    if (ok) { std::printf("CManager_0041ce6a_TEST PASS\n"); return 0; }
-    std::printf("CManager_0041ce6a_TEST FAIL f=%d s48=%d(%d) s0=%d(%d) cv=%p\n",
-        mgr.flag9c, g_slot48_calls, g_arg48, g_slot0_calls, g_arg0, mgr.canvas);
-    return 1;
+    bool ok = true;
+    ok = ok && g_manager[0x9C] == 0;
+    void* after; memcpy(&after, g_manager + 0xA0, 4);
+    ok = ok && after == 0;
+    ok = ok && g_stateAt == 1 && g_stateThis == &g_component && g_stateArg == 0;
+    ok = ok && g_deleteAt == 2 && g_deleteThis == &g_component && g_deleteFlag == 1;
+    for (int i = 0; i < 0xD0; ++i)
+    {
+        if (i == 0x9C || (i >= 0xA0 && i < 0xA4)) continue;
+        if (g_manager[i] != 0x77) { ok = false; break; }
+    }
+    if (ok) printf("CManager_0041ce6a_TEST PASS\n");
+    else printf("FAIL state@%d(%lu) delete@%d(%u)\n", g_stateAt, g_stateArg, g_deleteAt, g_deleteFlag);
+    return ok ? 0 : 1;
 }

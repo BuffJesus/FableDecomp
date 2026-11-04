@@ -1,17 +1,12 @@
-#include <stdio.h>
-
-int * __stdcall GetInstantiationName(int *out)
-{
-    *out = -1;
-    return out;
-}
-
-int main(void)
-{
-    int slot = 0x12345678;
-    int *r = GetInstantiationName(&slot);
-    if (slot != -1) { printf("FAIL slot=%d\n", slot); return 1; }
-    if (r != &slot) { printf("FAIL ret\n"); return 1; }
-    printf("OK_0x0042da10\n");
-    return 0;
-}
+#include "../tests/integration/DefClassBase_test.cpp"
+#include "../src/compiled/00/42/CDefClassBase_SetInstantiationName_0042da20.cpp"
+#include "../src/compiled/00/42/CDefClassBase_AddSubDef_0042da30.cpp"
+#include "../src/compiled/00/42/CDefClassBase_RemoveSubDef_0042da40.cpp"
+#include "../src/compiled/00/42/CDefClassBase_GetPSubDefInfo_0042da50.cpp"
+#include "../src/compiled/00/42/CDefClassBase_GetPSubDefInfoConst_0042da60.cpp"
+#include "../src/compiled/00/42/CDefClassBase_IsParentDef_0042da70.cpp"
+#include "../src/compiled/00/42/CDefClassBase_PostTransfer_0042da80.cpp"
+#include "../src/compiled/00/42/CDefClassBase_Validate_0042da90.cpp"
+#include "../src/compiled/00/42/CDefClassBase_GetPSubDefInfoMap_0042daa0.cpp"
+#include "../src/compiled/00/9a/CDefClassBase_InternalSaveBinary_009acab0.cpp"
+#include "../src/compiled/00/9a/CDefClassBase_UnloadResource_009ace90.cpp"

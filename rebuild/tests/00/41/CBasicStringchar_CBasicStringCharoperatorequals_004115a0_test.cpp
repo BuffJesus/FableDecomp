@@ -1,51 +1,11 @@
+#include "fable_basic_string.h"
 #include <stdio.h>
-
-struct CBasicStringChar
-{
-    char* m_str;
-
-    bool operator==(const char* other) const
-    {
-        const char* p = other;
-        const char* base = m_str - (int)p;
-
-        int result;
-
-        for (;;)
-        {
-            char a = base[(int)p];
-
-            if (a == 0 && *p == 0)
-            {
-                result = 0;
-                break;
-            }
-
-            char b = *p;
-
-            if (a < b)
-            {
-                result = -1;
-                break;
-            }
-            if (a > b)
-            {
-                result = 1;
-                break;
-            }
-
-            ++p;
-        }
-
-        return result == 0;
-    }
-};
 
 int main()
 {
     char buf1[] = "hello";
-    CBasicStringChar s1;
-    s1.m_str = buf1;
+    CBasicString<char> s1;
+    s1.PData = buf1;
 
     bool r1 = (s1 == "hello");
     bool r2 = (s1 == "world");
@@ -53,8 +13,8 @@ int main()
     bool r4 = (s1 == "hello!");
 
     char emptybuf[] = "";
-    CBasicStringChar s2;
-    s2.m_str = emptybuf;
+    CBasicString<char> s2;
+    s2.PData = emptybuf;
     bool r5 = (s2 == "");
     bool r6 = (s2 == "x");
 

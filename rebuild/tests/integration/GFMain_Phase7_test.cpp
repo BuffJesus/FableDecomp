@@ -99,7 +99,7 @@ int main()
     state.overrideRegionMode = true;
     state.alternateRegionMode = false;
     state.disableInactiveWait = true;
-    state.language = 16;
+    state.language = 12; // Retail French language ID; 16 selects Italian.
 
     if (
         FableRunGFMainPhase7(state) != 0 ||

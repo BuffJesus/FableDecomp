@@ -1,110 +1,101 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "rebuild_abi.h"
+#include <new>
 
-struct FableStringParserCommentNode_004046B0
-{
-    FableStringParserCommentNode_004046B0* next;
-    FableStringParserCommentNode_004046B0* previous;
-};
+#include "fable_string_parser.h"
 
-struct FableStringParserCommentList_004046B0
-{
-    FableStringParserCommentNode_004046B0* head;
-};
+// Link the reconstructed COMDAT instead of instantiating a local copy.
+#pragma warning(disable : 4231)
+extern template std::list<CStringParserCommentBoundaries>::~list();
 
-extern "C" void FABLE_FASTCALL
-FableStringParserCommentListDestroy_004046B0(
-    FableStringParserCommentList_004046B0* list);
+typedef std::list<CStringParserCommentBoundaries> CCommentList;
+typedef std::_List_node<CStringParserCommentBoundaries> CCommentNode;
 
 namespace
 {
-    void* g_deleted[4];
-    unsigned int g_deleteCount;
-    FableStringParserCommentNode_004046B0* g_expectedSentinel;
+    void* g_freed[4];
+    unsigned int g_freeCount;
+    CCommentNode* g_sentinel;
     bool g_sentinelWasRelinked;
 
-    void Reset()
+    void ResetObservations(CCommentNode* sentinel)
     {
-        memset(g_deleted, 0, sizeof(g_deleted));
-        g_deleteCount = 0;
-        g_expectedSentinel = 0;
+        memset(g_freed, 0, sizeof(g_freed));
+        g_freeCount = 0;
+        g_sentinel = sentinel;
         g_sentinelWasRelinked = false;
+    }
+
+    // Comments owns its sentinel through a single pointer member.
+    CCommentNode*& Sentinel(CCommentList& list)
+    {
+        return *reinterpret_cast<CCommentNode**>(&list);
     }
 
     bool CheckPopulatedList()
     {
-        FableStringParserCommentNode_004046B0 sentinel;
-        FableStringParserCommentNode_004046B0 first;
-        FableStringParserCommentNode_004046B0 second;
-        sentinel.next = &first;
-        sentinel.previous = &second;
-        first.next = &second;
-        first.previous = &sentinel;
-        second.next = &sentinel;
-        second.previous = &first;
+        CCommentNode first;
+        CCommentNode second;
+        void* storage[1];
+        CCommentList* list = new (storage) CCommentList;
+        CCommentNode* sentinel = Sentinel(*list);
+        sentinel->_M_next = &first;
+        sentinel->_M_prev = &second;
+        first._M_next = &second;
+        first._M_prev = sentinel;
+        second._M_next = sentinel;
+        second._M_prev = &first;
 
-        FableStringParserCommentList_004046B0 list = {&sentinel};
-        Reset();
-        g_expectedSentinel = &sentinel;
-        FableStringParserCommentListDestroy_004046B0(&list);
+        ResetObservations(sentinel);
+        list->~CCommentList();
 
         return
-            g_deleteCount == 3 &&
-            g_deleted[0] == &first &&
-            g_deleted[1] == &second &&
-            g_deleted[2] == &sentinel &&
+            g_freeCount == 3 &&
+            g_freed[0] == &first &&
+            g_freed[1] == &second &&
+            g_freed[2] == sentinel &&
             g_sentinelWasRelinked;
     }
 
     bool CheckEmptyList()
     {
-        FableStringParserCommentNode_004046B0 sentinel;
-        sentinel.next = &sentinel;
-        sentinel.previous = &sentinel;
-        FableStringParserCommentList_004046B0 list = {&sentinel};
+        void* storage[1];
+        CCommentList* list = new (storage) CCommentList;
+        CCommentNode* sentinel = Sentinel(*list);
 
-        Reset();
-        g_expectedSentinel = &sentinel;
-        FableStringParserCommentListDestroy_004046B0(&list);
+        ResetObservations(sentinel);
+        list->~CCommentList();
 
         return
-            g_deleteCount == 1 &&
-            g_deleted[0] == &sentinel &&
+            g_freeCount == 1 &&
+            g_freed[0] == sentinel &&
             g_sentinelWasRelinked;
-    }
-
-    bool CheckNullSentinel()
-    {
-        FableStringParserCommentList_004046B0 list = {0};
-        Reset();
-        FableStringParserCommentListDestroy_004046B0(&list);
-        return g_deleteCount == 0;
     }
 }
 
-extern "C" void FABLE_CDECL
-FableStringParserCommentNodeDelete_004046B0(void* node)
+// Records instead of releasing; the fixture's few blocks are left to exit.
+extern "C" void __cdecl free(void* block)
 {
-    if (g_deleteCount < 4)
+    if (block == 0)
     {
-        g_deleted[g_deleteCount] = node;
+        return;
     }
-    ++g_deleteCount;
-    if (node == g_expectedSentinel)
+    if (g_freeCount < 4)
+    {
+        g_freed[g_freeCount] = block;
+    }
+    ++g_freeCount;
+    if (block == g_sentinel)
     {
         g_sentinelWasRelinked =
-            g_expectedSentinel->next == g_expectedSentinel &&
-            g_expectedSentinel->previous == g_expectedSentinel;
+            g_sentinel->_M_next == g_sentinel &&
+            g_sentinel->_M_prev == g_sentinel;
     }
 }
 
 int main()
 {
-    // The retail routine assumes a non-null sentinel while entering its walk.
-    // The final null check only protects the operator-delete call, so exercise
-    // populated and empty valid lists here.
     const bool passed =
         CheckPopulatedList() &&
         CheckEmptyList();

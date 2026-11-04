@@ -1,127 +1,43 @@
-// CNewFrontendGameComponent::Init2 @ 0x0042E98F
-//
-// Exact retail startup coordinator. The helper bodies remain named seams
-// until native bank/manager ownership is linked into the executable. This
-// preserves the retail stack choreography around the compressed font stream
-// and the two temporary bank-pointer constructors.
+#pragma optimize("s", on)
+// CNewFrontendGameComponent::Init2 @ 0x0042E98F (256 bytes).
+// FableWin ?Init2@CNewFrontendGameComponent@@AAEXXZ. Hooks the component up
+// to the frontend manager singleton, brings up graphics / sounds / input,
+// opens the frontend text bank, initialises the manager with the frontend
+// banks and builds its screens, then asks for a 1024x768x16 display mode.
+// (FableWin's debug-only "no frontend manager" error box is compiled out.)
+#include "fable_game.h"
+#include "fable_nui_manager.h"
+#include "fable_particle_engine.h"
+#include "fable_game_text_bank.h"
+#include "fable_definition_manager.h"
+#include "fable_display_viewport.h"
+#include "fable_surface.h"
 
-extern "C" unsigned char FableInit2FrontendFlag_01375448;
-extern "C" void* FableInit2DisplayManager_013b8390;
+// ?GShowInitialMovies@@3_NA (retail 0x01375448); named as in
+// CNewFrontendGameComponent::Run 0x0042EC7C.
+extern bool g_FableFrontendFirstRun_01375448;
 
-extern "C" void FableInit2GetManager_00595582();
-extern "C" void FableInit2InitialiseGraphics_0042ddb3();
-extern "C" void FableInit2InitFrontendSounds_0042e17c();
-extern "C" void FableInit2InitialiseInput_0042dec5();
-extern "C" void FableInit2SetCurrentThingManager_00aeaa80();
-extern "C" void* FableInit2OperatorNew_00bfea1a();
-extern "C" void FableInit2CompressedDataCtor_009c85a0();
-extern "C" void FableInit2CountedPointerReset_00403e40();
-extern "C" void* FableInit2GetFontBankName_00415260();
-extern "C" void FableInit2StringCons_0099eae0();
-extern "C" void FableInit2StringPairSwap_0042fb40();
-extern "C" void* FableInit2GetPreMainMemoryUsed_0043368d();
-extern "C" void FableInit2BankPointerCtor_00428905();
-extern "C" void FableInit2BankPointerCtor_0041ba30();
-extern "C" void FableInit2ManagerInit_005958f5();
-extern "C" void FableInit2ManagerInit2_00598a1c();
-extern "C" void FableInit2SetDisplayMode_009bff40();
-
-extern "C" __declspec(naked) void __fastcall
-CNewFrontendGameComponent_Init2_0042e98f(void*)
+void CNewFrontendGameComponent::Init2()
 {
-    __asm
-    {
-        push ebp
-        mov ebp, esp
-        push ecx
-        push ecx
-        push ebx
-        push esi
-        push edi
-        mov esi, ecx
+    m_pFrontEndManager = NUISystem::CFrontEndManager::GetInstance();
+    m_pFrontEndManager->SetGameComponent(this);
+    m_pFrontEndManager->SetQuitFromGame(!g_FableFrontendFirstRun_01375448);
 
-        call FableInit2GetManager_00595582
-        mov dword ptr [esi + 0b4h], eax
-        mov dword ptr [eax + 01ch], esi
-        cmp byte ptr [FableInit2FrontendFlag_01375448], 0
-        mov ecx, dword ptr [esi + 0b4h]
-        sete al
-        mov byte ptr [ecx + 0c0h], al
+    InitialiseGraphics();
+    InitialiseSounds();
+    InitialiseInput();
 
-        mov ecx, esi
-        call FableInit2InitialiseGraphics_0042ddb3
-        mov ecx, esi
-        call FableInit2InitFrontendSounds_0042e17c
-        mov ecx, esi
-        call FableInit2InitialiseInput_0042dec5
-        mov ecx, dword ptr [esi + 040h]
-        call FableInit2SetCurrentThingManager_00aeaa80
+    NParticleEngine::SetGraphicBank(*m_pFrontEndGraphicBank.Get());
 
-        push 0214h
-        call FableInit2OperatorNew_00bfea1a
-        test eax, eax
-        pop ecx
-        je init2_no_stream
-        mov ecx, eax
-        call FableInit2CompressedDataCtor_009c85a0
-        jmp short init2_stream_ready
-init2_no_stream:
-        xor eax, eax
-init2_stream_ready:
-        lea edi, [esi + 060h]
-        push eax
-        mov ecx, edi
-        call FableInit2CountedPointerReset_00403e40
-        mov edi, dword ptr [edi]
-        mov ebx, dword ptr [edi]
-        push 0100h
-        lea ecx, [ebp - 04h]
-        call FableInit2GetFontBankName_00415260
-        push eax
-        mov ecx, edi
-        call dword ptr [ebx + 04h]
-        lea ecx, [ebp - 04h]
-        call FableInit2StringCons_0099eae0
-        call FableInit2StringPairSwap_0042fb40
+    m_pTextBank.reset(new NGameText::CDataBank);
+    m_pTextBank.Get()->OpenReadOnly(NLocalisation::GetTextBankName(), 0x100);
 
-        call FableInit2GetPreMainMemoryUsed_0043368d
-        push eax
-        push dword ptr [esi + 068h]
-        lea eax, [esi + 048h]
-        push ecx
-        push ecx
-        mov ecx, esp
-        push eax
-        call FableInit2BankPointerCtor_00428905
-        push ecx
-        push ecx
-        lea eax, [esi + 040h]
-        mov ecx, esp
-        push eax
-        call FableInit2BankPointerCtor_0041ba30
+    NUISystem::CManager::Clear();
 
-        mov ecx, dword ptr [esi + 0b4h]
-        call FableInit2ManagerInit_005958f5
-        cmp byte ptr [esi + 0144h], 0
-        mov ecx, dword ptr [esi + 0b4h]
-        sete al
-        push eax
-        call FableInit2ManagerInit2_00598a1c
+    m_pFrontEndManager->Init(m_pFrontEndGraphicBank, m_pMeshBank, m_pInputManager,
+                             &CStartupDefinitionManager::Get());
+    m_pFrontEndManager->BuildComponents(!unknown144_);
 
-        mov ecx, dword ptr [FableInit2DisplayManager_013b8390]
-        push 03ch
-        push 0
-        push 010h
-        lea eax, [ebp - 08h]
-        push eax
-        mov dword ptr [ebp - 08h], 0400h
-        mov dword ptr [ebp - 04h], 0300h
-        call FableInit2SetDisplayMode_009bff40
-
-        pop edi
-        pop esi
-        pop ebx
-        leave
-        ret
-    }
+    g_FableDisplayManager_013B8390->SetDisplayMode(
+        C2DExtentsI(1024, 768), 16, SURFACE_MULTISAMPLE_NONE, 60);
 }

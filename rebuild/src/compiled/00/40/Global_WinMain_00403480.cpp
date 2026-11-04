@@ -20,7 +20,7 @@ extern "C" __declspec(dllimport) FableHandle FABLE_STDCALL CreateMutexW(
 
 namespace MicroThread
 {
-    void FABLE_FASTCALL SetStack(fable_u8* stackTop, fable_u32 stackSize);
+    void FABLE_FASTCALL SetStack(fable_u8* stackTop, unsigned long stackSize);
 }
 
 extern "C" long FABLE_FASTCALL GFMain(

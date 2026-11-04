@@ -1,15 +1,9 @@
-#include "engine/CFileDataInputStream.h"  // retyped onto the PDB layout; byte parity re-verified
-#include "rebuild_abi.h"
+// CFileDataInputStream::NeedsBufferedRead(long) @ 0x009943B0 (Ego_r
+// ?NeedsBufferedRead@CFileDataInputStream@@EAE_NJ@Z, vtable 0x129A728 slot 9):
+// reads smaller than the buffer go through the buffered window.
+#include "fable_data_input_stream.h"
 
-// CFileDataInputStream::NeedsBufferedRead @ 0x009943b0
-// __fastcall: returns (requested < this->m_threshold at +0x20), signed-less.
-// One stack arg, ret 4.
-struct CFileDataInputStream_Methods : CFileDataInputStream {
-    bool NeedsBufferedRead(int requested);
-};
-
-bool CFileDataInputStream_Methods::NeedsBufferedRead(int requested)
+bool CFileDataInputStream::NeedsBufferedRead(long size)
 {
-    int threshold = *(const int*)((const char*)this + 0x20);
-    return requested < threshold;
+    return size < BufferSize;
 }

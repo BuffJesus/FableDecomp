@@ -46,7 +46,8 @@ int main()
     UserProfileManagerView& view =
         *reinterpret_cast<UserProfileManagerView*>(managerStorage);
 
-    CWideStringData profileStorage = {};
+    unsigned long profileStorageRaw_[4] = {0};
+    CWideStringData& profileStorage = *reinterpret_cast<CWideStringData*>(profileStorageRaw_);
     CWideStringData* profileSlot = &profileStorage;
     const CWideString& profileName =
         *reinterpret_cast<const CWideString*>(&profileSlot);

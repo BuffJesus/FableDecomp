@@ -1,43 +1,14 @@
-extern "C" __declspec(naked) void fn_004160a6(void)
+// CMainGameComponent::UninitEventPackageLoading @ 0x004160A6 (38 bytes).
+// FableWin ?UninitEventPackageLoading@CMainGameComponent@@IAEXXZ. Closes the
+// event-package file if it is open and clears LoadingEventPackages.
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+
+void CMainGameComponent::UninitEventPackageLoading()
 {
-    __asm {
-        _emit 0x56
-        _emit 0x57
-        _emit 0x8b
-        _emit 0xf9
-        _emit 0x8d
-        _emit 0xb7
-        _emit 0x54
-        _emit 0x61
-        _emit 0x01
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x06
-        _emit 0x8b
-        _emit 0xce
-        _emit 0xff
-        _emit 0x50
-        _emit 0x28
-        _emit 0x84
-        _emit 0xc0
-        _emit 0x74
-        _emit 0x07
-        _emit 0x8b
-        _emit 0x06
-        _emit 0x8b
-        _emit 0xce
-        _emit 0xff
-        _emit 0x50
-        _emit 0x08
-        _emit 0xc6
-        _emit 0x87
-        _emit 0x70
-        _emit 0x61
-        _emit 0x01
-        _emit 0x00
-        _emit 0x00
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc3
-    }
+    if (EventPackageFile.IsOpen())
+        EventPackageFile.Close();
+    LoadingEventPackages = false;
 }

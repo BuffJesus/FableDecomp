@@ -1,71 +1,66 @@
 #include <stdio.h>
+#include <string.h>
 
-struct C3DVector { float x, y, z; };
+#include "fable_game.h"
 
-struct FrontendInterpOut {
-    C3DVector a;   // +0x00
-    C3DVector b;   // +0x0c
-    C3DVector c;   // +0x18
-    C3DVector d;   // +0x24
-};
+// Behaviour fixture for CNewFrontendGameComponent::UpdateInterpolation @ 0x0042DBFA.
+// Retail offsets: m_fLastUpdateTime +0xB8, m_LastInterp +0xCC (3 floats).
+// info: Current +0x00, Last +0x0C, PausedCurrent +0x18, PausedLast +0x24.
 
-// Stub externs so the test links standalone.
-float __cdecl Frontend_GetInterpTime_0042dbfa() { return 10.0f; }
-float g_FrontendInterpScale_0042dbfa = 2.0f;
-
-struct CNewFrontendGameComponent {
-    unsigned char m_Pad0000[0xb8];
-    float         m_StartTime;                 // +0xb8
-    unsigned char m_Padbc[0xcc - 0xbc];
-    C3DVector     m_cc;                         // +0xcc
-
-    void UpdateInterpolation(FrontendInterpOut* out);
-};
-
-void CNewFrontendGameComponent::UpdateInterpolation(FrontendInterpOut* out)
+static double g_time;
+static int g_timeCalls;
+double FABLE_FASTCALL GFGetTime()
 {
-    C3DVector v;
-    v.x = 0.0f;
-    v.y = 0.0f;
-    v.z = (Frontend_GetInterpTime_0042dbfa() - this->m_StartTime)
-          * g_FrontendInterpScale_0042dbfa;
+    ++g_timeCalls;
+    return g_time;
+}
 
-    out->a = v;
-    out->b = this->m_cc;
-    out->c = v;
-    out->d = this->m_cc;
-    this->m_cc = v;
+static unsigned char g_component[0x148];
+static unsigned char g_info[0x70];
+
+static bool RunCase(const char* name, double now, float last)
+{
+    g_timeCalls = 0;
+    g_time = now;
+    memset(g_component, 0x44, sizeof(g_component));
+    memset(g_info, 0x55, sizeof(g_info));
+    memcpy(g_component + 0xB8, &last, 4);
+    float prev[3] = { 1.5f, -2.25f, 3.125f };
+    memcpy(g_component + 0xCC, prev, 12);
+
+    reinterpret_cast<CNewFrontendGameComponent*>(g_component)->UpdateInterpolation(
+        *reinterpret_cast<CEngineInterpolationInfo*>(g_info));
+
+    float expectZ = (float)((now - (double)last) * (double)14.999999046325684f);
+    float cur[3] = { 0.0f, 0.0f, expectZ };
+    bool ok = g_timeCalls == 1;
+    ok = ok && memcmp(g_info + 0x00, cur, 12) == 0;
+    ok = ok && memcmp(g_info + 0x0C, prev, 12) == 0;
+    ok = ok && memcmp(g_info + 0x18, cur, 12) == 0;
+    ok = ok && memcmp(g_info + 0x24, prev, 12) == 0;
+    for (int i = 0x30; i < 0x70; ++i)
+        if (g_info[i] != 0x55) { ok = false; break; }
+    ok = ok && memcmp(g_component + 0xCC, cur, 12) == 0;
+    for (int i = 0; i < 0x148; ++i)
+    {
+        if (i >= 0xB8 && i < 0xBC) continue;
+        if (i >= 0xCC && i < 0xD8) continue;
+        if (g_component[i] != 0x44) { ok = false; break; }
+    }
+    if (!ok)
+    {
+        float z; memcpy(&z, g_info + 8, 4);
+        printf("FAIL %s z=%.9g expect=%.9g\n", name, z, expectZ);
+    }
+    return ok;
 }
 
 int main()
 {
-    CNewFrontendGameComponent obj;
-    obj.m_StartTime = 3.0f;
-    obj.m_cc.x = 7.0f; obj.m_cc.y = 8.0f; obj.m_cc.z = 9.0f;
-
-    FrontendInterpOut out;
-    out.a.x = out.a.y = out.a.z = -1.0f;
-    out.b.x = out.b.y = out.b.z = -1.0f;
-    out.c.x = out.c.y = out.c.z = -1.0f;
-    out.d.x = out.d.y = out.d.z = -1.0f;
-
-    obj.UpdateInterpolation(&out);
-
-    // t = (10.0 - 3.0) * 2.0 = 14.0 -> v = {0,0,14}
-    const float ez = 14.0f;
-    int ok =
-        out.a.x == 0.0f && out.a.y == 0.0f && out.a.z == ez &&
-        out.b.x == 7.0f && out.b.y == 8.0f && out.b.z == 9.0f &&
-        out.c.x == 0.0f && out.c.y == 0.0f && out.c.z == ez &&
-        out.d.x == 7.0f && out.d.y == 8.0f && out.d.z == 9.0f &&
-        obj.m_cc.x == 0.0f && obj.m_cc.y == 0.0f && obj.m_cc.z == ez;
-
-    if (ok) {
-        printf("OK_0x0042dbfa\n");
-        return 0;
-    }
-    printf("FAIL a=(%f,%f,%f) b=(%f,%f,%f) mcc=(%f,%f,%f)\n",
-        out.a.x, out.a.y, out.a.z, out.b.x, out.b.y, out.b.z,
-        obj.m_cc.x, obj.m_cc.y, obj.m_cc.z);
-    return 1;
+    bool ok = true;
+    ok &= RunCase("half-frame", 10.0 + 1.0 / 30.0, 10.0f);
+    ok &= RunCase("zero", 4.0, 4.0f);
+    ok &= RunCase("two-frames", 7.25, 7.25f - 2.0f / 15.0f);
+    if (ok) printf("OK_0x0042dbfa\n");
+    return ok ? 0 : 1;
 }

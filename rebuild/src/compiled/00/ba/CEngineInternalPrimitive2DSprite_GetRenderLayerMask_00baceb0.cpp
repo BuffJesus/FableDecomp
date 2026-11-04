@@ -1,4 +1,5 @@
-int __fastcall CEngineInternalPrimitive2DSprite_GetRenderLayerMask(const unsigned char* self)
+#include "engine/CEngineInternalPrimitive2DSprite.h"
+unsigned long CEngineInternalPrimitive2DSprite::GetRenderLayerMask()
 {
-    return *reinterpret_cast<const int*>(self + 48);
+    return RenderLayerMask;
 }

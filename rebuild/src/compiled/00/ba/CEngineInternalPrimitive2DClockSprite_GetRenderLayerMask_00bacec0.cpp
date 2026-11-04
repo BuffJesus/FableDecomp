@@ -1,4 +1,5 @@
-int __fastcall CEngineInternalPrimitive2DClockSprite_GetRenderLayerMask()
+#include "engine/CEngineInternalPrimitive2DClockSprite.h"
+unsigned long CEngineInternalPrimitive2DClockSprite::GetRenderLayerMask()
 {
-    return 2147483648;
+    return 0x80000000UL;
 }

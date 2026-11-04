@@ -1,14 +1,5 @@
 #include "fable_resource_directories.h"
-
-typedef long (FABLE_STDCALL *FableGetFolderPathW_0041A430)(
-    void* window,
-    int folder,
-    void* token,
-    fable_u32 flags,
-    wchar_t* path);
-
-extern "C" FableGetFolderPathW_0041A430
-    g_FableGetFolderPathW_0041A430;
+#include "fable_shell_paths.h"
 
 CWideString FABLE_FASTCALL
 NResourceDirectoryNames::GetMyDocumentsDir()

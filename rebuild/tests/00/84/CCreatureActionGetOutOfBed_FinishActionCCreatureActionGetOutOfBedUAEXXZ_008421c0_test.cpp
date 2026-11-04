@@ -7,7 +7,8 @@ struct CCreatureVtbl {
     void (__fastcall *slot12)(void*);
 };
 
-struct CCreatureAction_GetOutOfBed {
+class CCreatureAction_GetOutOfBed {
+public:
     CCreatureVtbl* vtbl;
     char pad[0x62 - 4];
     bool interrupted;

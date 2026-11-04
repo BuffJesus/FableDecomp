@@ -1,163 +1,150 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "rebuild_abi.h"
+#include "fable_counted_pointer.h"
 
-struct FablePhysicsFacesControl_00403E40
+class CIPhysicsFacesSegmentBase
 {
-    fable_i32 owners;
-    void (FABLE_FASTCALL *destroyObject)(void*, void*);
-    const void* object;
+public:
+    virtual ~CIPhysicsFacesSegmentBase();
 };
 
-struct FablePhysicsFacesCountedPointer_00403E40
-{
-    const void* object;
-    FablePhysicsFacesControl_00403E40* control;
-};
-
-extern "C" void FABLE_FASTCALL
-FablePhysicsFacesCountedPointerReset_00403E40(
-    FablePhysicsFacesCountedPointer_00403E40* counted,
-    void*,
-    const void* object);
-extern "C" void FABLE_FASTCALL
-FablePhysicsFacesObjectDelete_00403650(
-    void* object,
-    void*);
+typedef CCountedPointer<const CIPhysicsFacesSegmentBase> CSegmentPointer;
 
 namespace
 {
-    FablePhysicsFacesControl_00403E40 g_newControl;
-    bool g_failAllocation;
-    unsigned int g_allocateCalls;
-    unsigned int g_controlDeleteCalls;
-    unsigned int g_objectDeleteCalls;
-    void* g_deletedControl;
-    void* g_deletedObject;
+    // Every heap block comes from this pool so the fixture can observe the
+    // control-block allocation and both deletes Reset performs.
+    unsigned char g_pool[8][32];
+    unsigned int g_poolUsed;
+    bool g_failNextAllocation;
+    unsigned int g_newCalls;
+    unsigned int g_lastNewSize;
+    void* g_deleted[4];
+    unsigned int g_deleteCount;
+    unsigned int g_segmentDestructions;
+    const void* g_destroyedSegment;
+
+    class CSegment : public CIPhysicsFacesSegmentBase
+    {
+    public:
+        virtual ~CSegment()
+        {
+            ++g_segmentDestructions;
+            g_destroyedSegment = this;
+        }
+    };
 
     void ResetObservations()
     {
-        memset(&g_newControl, 0, sizeof(g_newControl));
-        g_failAllocation = false;
-        g_allocateCalls = 0;
-        g_controlDeleteCalls = 0;
-        g_objectDeleteCalls = 0;
-        g_deletedControl = 0;
-        g_deletedObject = 0;
+        g_failNextAllocation = false;
+        g_newCalls = 0;
+        g_lastNewSize = 0;
+        memset(g_deleted, 0, sizeof(g_deleted));
+        g_deleteCount = 0;
+        g_segmentDestructions = 0;
+        g_destroyedSegment = 0;
     }
 
     bool CheckSharedOwnerReplacement()
     {
+        CSegment* oldSegment = new CSegment;
+        CSegment* newSegment = new CSegment;
+        CCPPointerInfo oldInfo(0, oldSegment);
+        oldInfo.RefCount = 2;
+        CSegmentPointer pointer;
+        pointer.Data = oldSegment;
+        pointer.Info = &oldInfo;
         ResetObservations();
-        int oldObject;
-        int newObject;
-        FablePhysicsFacesControl_00403E40 oldControl =
-        {
-            2,
-            &FablePhysicsFacesObjectDelete_00403650,
-            &oldObject
-        };
-        FablePhysicsFacesCountedPointer_00403E40 counted =
-        {
-            &oldObject,
-            &oldControl
-        };
 
-        FablePhysicsFacesCountedPointerReset_00403E40(
-            &counted,
-            0,
-            &newObject);
+        pointer.Reset(newSegment);
 
         return
-            oldControl.owners == 1 &&
-            g_objectDeleteCalls == 0 &&
-            g_controlDeleteCalls == 0 &&
-            g_allocateCalls == 1 &&
-            counted.object == &newObject &&
-            counted.control == &g_newControl &&
-            g_newControl.owners == 1 &&
-            g_newControl.object == &newObject &&
-            g_newControl.destroyObject ==
-                &FablePhysicsFacesObjectDelete_00403650;
+            oldInfo.RefCount == 1 &&
+            g_segmentDestructions == 0 &&
+            g_deleteCount == 0 &&
+            g_newCalls == 1 &&
+            g_lastNewSize == sizeof(CCPPointerInfo) &&
+            pointer.Data == newSegment &&
+            pointer.Info != 0 &&
+            pointer.Info != &oldInfo &&
+            pointer.Info->RefCount == 1 &&
+            pointer.Info->Data == newSegment &&
+            pointer.Info->DeleteFunc != 0;
     }
 
     bool CheckLastOwnerRelease()
     {
+        // Build the owner through Reset so the stored DeleteFunc is the
+        // reconstruction's own, then drop the last reference.
+        CSegment* segment = new CSegment;
+        CSegmentPointer pointer;
+        pointer.Data = 0;
+        pointer.Info = 0;
+        pointer.Reset(segment);
+        CCPPointerInfo* info = pointer.Info;
         ResetObservations();
-        int oldObject;
-        FablePhysicsFacesControl_00403E40 oldControl =
-        {
-            1,
-            &FablePhysicsFacesObjectDelete_00403650,
-            &oldObject
-        };
-        FablePhysicsFacesCountedPointer_00403E40 counted =
-        {
-            &oldObject,
-            &oldControl
-        };
 
-        FablePhysicsFacesCountedPointerReset_00403E40(
-            &counted,
-            0,
-            0);
+        pointer.Reset(0);
 
         return
-            oldControl.owners == 0 &&
-            g_objectDeleteCalls == 1 &&
-            g_deletedObject == &oldObject &&
-            g_controlDeleteCalls == 1 &&
-            g_deletedControl == &oldControl &&
-            g_allocateCalls == 0 &&
-            counted.object == 0 &&
-            counted.control == 0;
+            info != 0 &&
+            info->RefCount == 0 &&
+            g_segmentDestructions == 1 &&
+            g_destroyedSegment == segment &&
+            g_deleteCount == 2 &&
+            g_deleted[0] == segment &&
+            g_deleted[1] == info &&
+            g_newCalls == 0 &&
+            pointer.Data == 0 &&
+            pointer.Info == 0;
     }
 
     bool CheckAllocationFailure()
     {
+        CSegment* segment = new CSegment;
+        CSegmentPointer pointer;
+        pointer.Data = 0;
+        pointer.Info = 0;
         ResetObservations();
-        g_failAllocation = true;
-        int object;
-        FablePhysicsFacesCountedPointer_00403E40 counted = {0, 0};
+        g_failNextAllocation = true;
 
-        FablePhysicsFacesCountedPointerReset_00403E40(
-            &counted,
-            0,
-            &object);
+        pointer.Reset(segment);
 
         return
-            g_allocateCalls == 1 &&
-            counted.object == &object &&
-            counted.control == 0;
+            g_newCalls == 1 &&
+            pointer.Data == segment &&
+            pointer.Info == 0;
     }
 }
 
-extern "C" void* FABLE_CDECL
-FablePhysicsFacesControlAllocate_00403E40(fable_u32 size)
+CIPhysicsFacesSegmentBase::~CIPhysicsFacesSegmentBase()
 {
-    ++g_allocateCalls;
-    if (size != sizeof(g_newControl) || g_failAllocation)
+}
+
+void* operator new(unsigned int size)
+{
+    ++g_newCalls;
+    g_lastNewSize = size;
+    if (g_failNextAllocation)
+    {
+        g_failNextAllocation = false;
+        return 0;
+    }
+    if (g_poolUsed >= 8 || size > sizeof(g_pool[0]))
     {
         return 0;
     }
-    return &g_newControl;
+    return g_pool[g_poolUsed++];
 }
 
-extern "C" void FABLE_CDECL
-FablePhysicsFacesControlDelete_00403E40(void* control)
+void operator delete(void* block)
 {
-    ++g_controlDeleteCalls;
-    g_deletedControl = control;
-}
-
-extern "C" void FABLE_FASTCALL
-FablePhysicsFacesObjectDelete_00403650(
-    void* object,
-    void*)
-{
-    ++g_objectDeleteCalls;
-    g_deletedObject = object;
+    if (g_deleteCount < 4)
+    {
+        g_deleted[g_deleteCount] = block;
+    }
+    ++g_deleteCount;
 }
 
 int main()

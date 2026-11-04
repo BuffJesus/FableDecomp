@@ -9,7 +9,7 @@ namespace
     {
         kWideStringConstructed = 1,
         kCharStringConstructed = 2,
-        kRegionConstructed = 3,
+        kDisplayInitConstructed = 3,
         kWideStringAssigned = 4
     };
 
@@ -17,21 +17,33 @@ namespace
     {
         ConstructionEvent kind;
         const void* object;
-        wchar_t value;
+        const wchar_t* text;
     };
 
-    Event g_events[8];
+    Event g_events[16];
     int g_eventCount = 0;
 
     void Record(
         ConstructionEvent kind,
         const void* object,
-        wchar_t value)
+        const wchar_t* text)
     {
-        g_events[g_eventCount].kind = kind;
-        g_events[g_eventCount].object = object;
-        g_events[g_eventCount].value = value;
+        if (g_eventCount < 16)
+        {
+            g_events[g_eventCount].kind = kind;
+            g_events[g_eventCount].object = object;
+            g_events[g_eventCount].text = text;
+        }
         ++g_eventCount;
+    }
+
+    bool IsEvent(
+        int index,
+        ConstructionEvent kind,
+        const void* object)
+    {
+        return g_events[index].kind == kind &&
+            g_events[index].object == object;
     }
 }
 
@@ -43,7 +55,7 @@ void* operator new(size_t, void* address)
 CWideString::CWideString()
     : storage_(0)
 {
-    Record(kWideStringConstructed, this, L'\0');
+    Record(kWideStringConstructed, this, 0);
 }
 
 CWideString::~CWideString()
@@ -52,43 +64,23 @@ CWideString::~CWideString()
 
 const CWideString& CWideString::operator=(const wchar_t* text)
 {
-    storage_ = reinterpret_cast<CWideStringData*>(
-        text[0] == L'b' ? 0x0000000BUL : 0x0000000CUL);
-    Record(kWideStringAssigned, this, text[0]);
+    Record(kWideStringAssigned, this, text);
     return *this;
 }
 
 CCharString::CCharString()
     : storage_(0)
 {
-    Record(kCharStringConstructed, this, L'\0');
+    Record(kCharStringConstructed, this, 0);
 }
 
 CCharString::~CCharString()
 {
 }
 
-void FABLE_FASTCALL FableConstructWideString(CWideString* value)
+CDisplayManagerInit::CDisplayManagerInit()
 {
-    new (value) CWideString;
-}
-
-void FABLE_FASTCALL FableConstructCharString(CCharString* value)
-{
-    new (value) CCharString;
-}
-
-const CWideString& FABLE_FASTCALL FableAssignWideString(
-    CWideString* value,
-    void*,
-    const wchar_t* text)
-{
-    return *value = text;
-}
-
-void CRegionDef::ConstructStorage()
-{
-    Record(kRegionConstructed, this, L'\0');
+    Record(kDisplayInitConstructed, this, 0);
 }
 
 static int VerifyConstruction()
@@ -106,76 +98,77 @@ static int VerifyConstruction()
         new (storage.bytes) CSystemManagerInit;
 
     const fable_u8* base = storage.bytes;
-    const fable_u8* region = &value->regionStorage[0];
 
-    if (g_eventCount != 8)
+    // The display init's own ShaderResourcePath is built before its body runs.
+    if (g_eventCount != 9)
         return 1;
-    if (g_events[0].kind != kWideStringConstructed ||
-        g_events[0].object != base + 0x0C)
+    if (!IsEvent(0, kWideStringConstructed, base + 0x0C))
         return 2;
-    if (g_events[1].kind != kCharStringConstructed ||
-        g_events[1].object != base + 0x2C)
+    if (!IsEvent(1, kCharStringConstructed, base + 0x2C))
         return 3;
-    if (g_events[2].kind != kCharStringConstructed ||
-        g_events[2].object != base + 0x30)
+    if (!IsEvent(2, kCharStringConstructed, base + 0x30))
         return 4;
-    if (g_events[3].kind != kRegionConstructed ||
-        g_events[3].object != base + 0x5C)
+    if (!IsEvent(3, kWideStringConstructed, base + 0x5C + 0x38) ||
+        !IsEvent(4, kDisplayInitConstructed, base + 0x5C))
         return 5;
-    if (g_events[4].kind != kWideStringConstructed ||
-        g_events[4].object != base + 0xB8)
+    if (!IsEvent(5, kWideStringConstructed, base + 0xB8))
         return 6;
-    if (g_events[5].kind != kWideStringConstructed ||
-        g_events[5].object != base + 0xBC)
+    if (!IsEvent(6, kWideStringConstructed, base + 0xBC))
         return 7;
-    if (g_events[6].kind != kWideStringAssigned ||
-        g_events[6].object != base + 0xB8 ||
-        g_events[6].value != L'b')
+    if (!IsEvent(7, kWideStringAssigned, base + 0xB8) ||
+        wcscmp(g_events[7].text, L"bbb.log") != 0)
         return 8;
-    if (g_events[7].kind != kWideStringAssigned ||
-        g_events[7].object != base + 0xBC ||
-        g_events[7].value != L'C')
+    if (!IsEvent(8, kWideStringAssigned, base + 0xBC) ||
+        wcscmp(g_events[8].text, L"C:\\temp") != 0)
         return 9;
 
-    if (value->displayWidth != 128 ||
-        value->displayHeight != 64)
+    const CSoundManagerInit& sound = value->SoundManagerInit;
+    if (sound.unknown00 != 128 ||
+        sound.unknown04 != 64 ||
+        sound.unknown08 != 64.0f ||
+        sound.unknown0C != 2.0f ||
+        sound.unknown10 != 1.0f ||
+        sound.unknown14 != 0 ||
+        sound.unknown18 != 0 ||
+        sound.unknown1C != 0x40000)
         return 10;
-    if (value->displayDepth != 64.0f ||
-        value->nearPlane != 2.0f ||
-        value->scale != 1.0f)
+    if (value->InputManagerInit.UseMouse ||
+        value->InputManagerInit.UseJoystick ||
+        value->InputManagerInit.UseKeyboard)
         return 11;
-    if (value->memoryBudget != 0x00040000UL)
+    if (value->InstanceHandle != 0 ||
+        value->CommandLine != 0 ||
+        value->Flags != 0 ||
+        value->ApplicationWindowHandle != 0 ||
+        value->AppReinitFunc != 0 ||
+        value->AppReinitContext != 0 ||
+        value->IsErrorFailureFunc != 0 ||
+        value->IMEMessageFunc != 0 ||
+        value->MessageFilter != 0)
         return 12;
-    if (value->enabled != 1 ||
-        value->useDefaultDisplay != 1)
+    if (base[0x10] != 1 ||
+        base[0x34] != 1 ||
+        value->PreferPrimaryDisplayDevice ||
+        value->AttachToExternalWindow ||
+        value->PreventExclusiveModeChanges ||
+        value->UseAccurateTimer)
         return 13;
-    if (value->unknown14 != 0 ||
-        value->unknown1C != 0 ||
-        value->unknown24 != 0 ||
-        value->unknown28 != 0 ||
-        value->unknownC0 != 0 ||
-        value->unknownC4 != 0)
+    if (value->ScratchBufferSize != 0x20000)
         return 14;
-    if (value->unknown11 != 0 ||
-        value->unknown19 != 0 ||
-        value->unknown20 != 0 ||
-        value->unknown21 != 0 ||
-        value->unknown58 != 0 ||
-        value->unknown59 != 0 ||
-        value->unknown5A != 0)
+    if (memcmp(value->Identifier, "BBB GUID", 9) != 0)
         return 15;
-    if (memcmp(region + 0x44, "BBB GUID", 8) != 0 ||
-        region[0x4C] != '\0')
-        return 16;
-    if (*reinterpret_cast<const fable_u32*>(region + 0x40) != 0 ||
-        *reinterpret_cast<const fable_u32*>(region + 0x58) !=
-            0x00020000UL)
+    for (int i = 9; i < 17; ++i)
+    {
+        if (value->Identifier[i] != '\0')
+            return 16;
+    }
+
+    // Left for the caller to fill.
+    if (base[0x08] != 0xCD ||
+        base[0x18] != 0xCD ||
+        base[0x35] != 0xCD ||
+        base[0x98] != 0xCD)
         return 17;
-    if (*reinterpret_cast<const fable_u32*>(base + 0xB8) !=
-            0x0000000BUL ||
-        *reinterpret_cast<const fable_u32*>(base + 0xBC) !=
-            0x0000000CUL)
-        return 18;
 
     return 0;
 }

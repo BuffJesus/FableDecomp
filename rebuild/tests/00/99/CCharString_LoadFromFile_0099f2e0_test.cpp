@@ -1,181 +1,242 @@
-#include "rebuild_abi.h"
-
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-struct FableCharString_0099F2E0
+#include "fable_base_class.h"
+#include "test_support/base_class_stubs.h"
+
+// Same PDB shapes as the source file.
+class CWideString;
+class CASuspendableProcess;
+
+enum FileAccessType
 {
-    void* storage;
 };
 
-extern "C" void FABLE_FASTCALL
-FableCharStringLoadFromFile_0099F2E0(
-    FableCharString_0099F2E0* self,
-    void*,
-    void* file,
-    void* suspendableProcess,
-    long length);
+class CAFile : public CBaseClassNonCopyable
+{
+public:
+    virtual void Open(
+        const CWideString& pathname,
+        FileAccessType accessType,
+        unsigned long flags) = 0;
+    virtual void Close() = 0;
+    virtual void Read(
+        void* data,
+        long length,
+        CASuspendableProcess* process) = 0;
+    virtual void Write(
+        const void* data,
+        long length,
+        CASuspendableProcess* process) = 0;
+    virtual void SetPosition(long position) = 0;
+    virtual void MovePosition(long offset) = 0;
+    virtual long GetPosition() const = 0;
+    virtual void SetLength(long length) = 0;
+    virtual long GetLength() const = 0;
+};
+
+#pragma pack(push, 1)
+template<typename T>
+class CBasicString
+{
+public:
+    T* PData;
+    unsigned long StringLength;
+    unsigned long DataLength : 31;
+    bool UseFastExtend : 1;
+
+protected:
+    void SetString(unsigned long length, T fill);
+};
+
+struct CCharStringData
+{
+    CBasicString<char> Data;
+    long NoRefs;
+};
+#pragma pack(pop)
+
+class CCharString
+{
+public:
+    void LoadFromFile(
+        CAFile& file,
+        CASuspendableProcess* process,
+        long length);
+
+    CCharStringData* PStringData;
+
+private:
+    void UnassignString();
+};
 
 namespace
 {
-    struct TestFile
-    {
-        void** vtable;
-    };
-
-    unsigned char g_storage[17];
+    unsigned char g_storage[sizeof(CCharStringData)];
     char g_buffer[128];
-    void* g_vtable[10];
+    bool g_recordNew;
+    bool g_failAllocation;
     unsigned int g_releaseCalls;
     unsigned int g_allocateCalls;
-    unsigned int g_initialiseCalls;
+    unsigned int g_setStringCalls;
     unsigned int g_sizeCalls;
     unsigned int g_positionCalls;
     unsigned int g_readCalls;
-    unsigned long g_allocateSize;
-    long g_initialiseLength;
-    unsigned long g_initialiseGrowth;
+    unsigned int g_allocateSize;
+    unsigned long g_setStringLength;
+    char g_setStringFill;
+    bool g_setStringSawFreshData;
     void* g_readBuffer;
     long g_readLength;
-    void* g_readProcess;
+    CASuspendableProcess* g_readProcess;
     long g_fileSize;
     long g_filePosition;
-    bool g_failAllocation;
 
-    long FABLE_FASTCALL SizeStub(TestFile*, void*)
+    class TestFile : public CAFile
     {
-        ++g_sizeCalls;
-        return g_fileSize;
-    }
-
-    long FABLE_FASTCALL PositionStub(TestFile*, void*)
-    {
-        ++g_positionCalls;
-        return g_filePosition;
-    }
-
-    void FABLE_FASTCALL ReadStub(
-        TestFile*,
-        void*,
-        void* buffer,
-        long length,
-        void* process)
-    {
-        ++g_readCalls;
-        g_readBuffer = buffer;
-        g_readLength = length;
-        g_readProcess = process;
-    }
+    public:
+        virtual void Open(const CWideString&, FileAccessType, unsigned long) {}
+        virtual void Close() {}
+        virtual void Read(
+            void* data,
+            long length,
+            CASuspendableProcess* process)
+        {
+            ++g_readCalls;
+            g_readBuffer = data;
+            g_readLength = length;
+            g_readProcess = process;
+        }
+        virtual void Write(const void*, long, CASuspendableProcess*) {}
+        virtual void SetPosition(long) {}
+        virtual void MovePosition(long) {}
+        virtual long GetPosition() const
+        {
+            ++g_positionCalls;
+            return g_filePosition;
+        }
+        virtual void SetLength(long) {}
+        virtual long GetLength() const
+        {
+            ++g_sizeCalls;
+            return g_fileSize;
+        }
+    };
 
     void Reset()
     {
         memset(g_storage, 0xFF, sizeof(g_storage));
         memset(g_buffer, 0, sizeof(g_buffer));
-        memset(g_vtable, 0, sizeof(g_vtable));
-        g_vtable[3] = reinterpret_cast<void*>(&ReadStub);
-        g_vtable[7] = reinterpret_cast<void*>(&PositionStub);
-        g_vtable[9] = reinterpret_cast<void*>(&SizeStub);
+        g_failAllocation = false;
         g_releaseCalls = 0;
         g_allocateCalls = 0;
-        g_initialiseCalls = 0;
+        g_setStringCalls = 0;
         g_sizeCalls = 0;
         g_positionCalls = 0;
         g_readCalls = 0;
         g_allocateSize = 0;
-        g_initialiseLength = 0;
-        g_initialiseGrowth = 0;
+        g_setStringLength = 0;
+        g_setStringFill = 0;
+        g_setStringSawFreshData = false;
         g_readBuffer = 0;
         g_readLength = 0;
         g_readProcess = 0;
         g_fileSize = 91;
         g_filePosition = 27;
-        g_failAllocation = false;
     }
 }
 
-extern "C" void FABLE_FASTCALL
-FableCharStringRelease_0099E9B0(
-    FableCharString_0099F2E0* self,
-    void*)
+CBaseClassNonCopyable::CBaseClassNonCopyable()
 {
-    ++g_releaseCalls;
-    self->storage = 0;
 }
 
-extern "C" void* FABLE_CDECL
-FableCharStringAllocate_00BFEA1A(unsigned long size)
+CBaseClassNonCopyable::~CBaseClassNonCopyable()
 {
+}
+
+void* operator new(unsigned int size)
+{
+    if (!g_recordNew)
+        return malloc(size);
     ++g_allocateCalls;
     g_allocateSize = size;
     return g_failAllocation ? 0 : g_storage;
 }
 
-extern "C" void FABLE_FASTCALL
-FableCharStringStorageInitialise_009A0390(
-    void* storage,
-    void*,
-    long length,
-    unsigned long growth)
+void CCharString::UnassignString()
 {
-    ++g_initialiseCalls;
-    g_initialiseLength = length;
-    g_initialiseGrowth = growth;
-    *static_cast<void**>(storage) = g_buffer;
+    ++g_releaseCalls;
+    PStringData = 0;
+}
+
+template<>
+void CBasicString<char>::SetString(unsigned long length, char fill)
+{
+    ++g_setStringCalls;
+    g_setStringLength = length;
+    g_setStringFill = fill;
+    // The inline constructor clears the header before SetString runs.
+    g_setStringSawFreshData =
+        PData == 0 &&
+        StringLength == 0 &&
+        DataLength == 0 &&
+        UseFastExtend;
+    PData = g_buffer;
+    StringLength = length;
 }
 
 int main()
 {
-    TestFile file = {g_vtable};
-    int processToken;
-    FableCharString_0099F2E0 text;
+    TestFile file;
+    CASuspendableProcess* process =
+        reinterpret_cast<CASuspendableProcess*>(&file + 1);
+    CCharString text;
+    CCharStringData* data =
+        reinterpret_cast<CCharStringData*>(g_storage);
 
     Reset();
-    text.storage = reinterpret_cast<void*>(0x11111111);
-    FableCharStringLoadFromFile_0099F2E0(
-        &text,
-        0,
-        &file,
-        &processToken,
-        -1);
+    text.PStringData = reinterpret_cast<CCharStringData*>(0x11111111);
+    g_recordNew = true;
+    text.LoadFromFile(file, process, -1);
+    g_recordNew = false;
     if (
         g_releaseCalls != 1 ||
         g_allocateCalls != 1 ||
         g_allocateSize != 17 ||
         g_sizeCalls != 1 ||
         g_positionCalls != 1 ||
-        g_initialiseCalls != 1 ||
-        g_initialiseLength != 64 ||
-        g_initialiseGrowth != 0x20 ||
+        g_setStringCalls != 1 ||
+        g_setStringLength != 64 ||
+        g_setStringFill != ' ' ||
+        !g_setStringSawFreshData ||
         g_readCalls != 1 ||
         g_readBuffer != g_buffer ||
         g_readLength != 64 ||
-        g_readProcess != &processToken ||
-        text.storage != g_storage)
+        g_readProcess != process ||
+        text.PStringData != data)
     {
         return 1;
     }
+    // The bit-field neighbours of DataLength / UseFastExtend survive.
     if (
-        (*reinterpret_cast<unsigned long*>(&g_storage[8]) &
-            0x7FFFFFFFul) != 0 ||
-        (g_storage[12] & 1) == 0 ||
-        *reinterpret_cast<unsigned long*>(&g_storage[13]) != 1)
+        g_storage[11] != 0x80 ||
+        g_storage[12] != 0xFF ||
+        data->NoRefs != 1)
     {
         return 2;
     }
 
     Reset();
-    text.storage = 0;
-    FableCharStringLoadFromFile_0099F2E0(
-        &text,
-        0,
-        &file,
-        &processToken,
-        12);
+    text.PStringData = 0;
+    g_recordNew = true;
+    text.LoadFromFile(file, process, 12);
+    g_recordNew = false;
     if (
         g_releaseCalls != 0 ||
         g_sizeCalls != 0 ||
         g_positionCalls != 0 ||
-        g_initialiseLength != 12 ||
+        g_setStringLength != 12 ||
         g_readCalls != 1 ||
         g_readLength != 12)
     {
@@ -183,20 +244,30 @@ int main()
     }
 
     Reset();
-    g_failAllocation = true;
-    text.storage = 0;
-    FableCharStringLoadFromFile_0099F2E0(
-        &text,
-        0,
-        &file,
-        &processToken,
-        12);
+    text.PStringData = 0;
+    g_recordNew = true;
+    text.LoadFromFile(file, process, 0);
+    g_recordNew = false;
     if (
-        text.storage != 0 ||
-        g_initialiseCalls != 0 ||
+        text.PStringData != data ||
+        g_setStringCalls != 1 ||
         g_readCalls != 0)
     {
         return 4;
+    }
+
+    Reset();
+    g_failAllocation = true;
+    text.PStringData = 0;
+    g_recordNew = true;
+    text.LoadFromFile(file, process, 12);
+    g_recordNew = false;
+    if (
+        text.PStringData != 0 ||
+        g_setStringCalls != 0 ||
+        g_readCalls != 0)
+    {
+        return 5;
     }
 
     printf("FABLETLC_CHAR_STRING_LOAD_FILE_0099F2E0 PASS\n");

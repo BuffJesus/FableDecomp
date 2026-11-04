@@ -1,12 +1,11 @@
-struct StringRep { char* data; long len; };
-struct CCharString { StringRep* rep; };
+// CWideString::operator const wchar_t*() const @ 0x0099AF00 (FableWin
+// ??BCWideString@@QBEPBGXZ): the text, or the shared empty string when the
+// string has no data. GetAsCharArray 0x0099AF10 is the same body.
+#include "fable_string.h"
 
-extern char g_EmptyCharString_0129A8E0[1];
-
-const char* __fastcall CCharString_operator_char_const(const CCharString* self)
+CWideString::operator const wchar_t*() const
 {
-    StringRep* r = self->rep;
-    if (r == 0)
-        return g_EmptyCharString_0129A8E0;
-    return r->data;
+    if (storage_ == 0)
+        return g_FableEmptyWideString_0129A8E0;
+    return storage_->text;
 }

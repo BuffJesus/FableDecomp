@@ -1,1 +1,0 @@
-void __stdcall CNavBlockedQuadTreeNode_ConvertIndexesToPointers(int arg0) {}

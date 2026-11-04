@@ -1,17 +1,17 @@
-#include <cstdio>
-
-struct CProceduralTexture;
-struct CWorld;
-
-CProceduralTexture const * __fastcall CWorld_DrawGetProceduralTexture(CWorld *self);
+#include "fable_world.h"
+#include <stdio.h>
 
 int main()
 {
-    CWorld *w = (CWorld*)0x12345678;
-    CProceduralTexture const *r = CWorld_DrawGetProceduralTexture(w);
-    if (r == 0)
-        std::printf("004ae890_TEST PASS\n");
-    else
-        std::printf("FAIL %p\n", (const void*)r);
+    int cases = 0;
+    for (unsigned long p = 0; p != 32; ++p) {
+        CWorld* world = reinterpret_cast<CWorld*>(0x10000 + p * 4);
+        if (world->CWorld::DrawGetProceduralTexture() != 0) {
+            printf("FAIL case=%lu\n", p);
+            return 1;
+        }
+        ++cases;
+    }
+    printf("WORLD_DRAW_PROCEDURAL_PASS cases=%d\n", cases);
     return 0;
 }

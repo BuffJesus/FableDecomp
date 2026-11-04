@@ -1,1 +1,0 @@
-void __stdcall CIEngine_UpdateTextureMorphCache(int arg0, int arg1, int arg2, int arg3) {}

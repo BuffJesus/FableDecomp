@@ -30,8 +30,10 @@ public:
         C2DBoxF& formattedWindow) const;
 };
 
-static CWideStringData g_DefaultStorage = {0, 0, 0, 1};
-static CWideStringData g_WrappedStorage = {0, 0, 0, 1};
+static unsigned long g_DefaultStorageRaw_[4] = {0, 0, 0, 1};
+static CWideStringData& g_DefaultStorage = *reinterpret_cast<CWideStringData*>(g_DefaultStorageRaw_);
+static unsigned long g_WrappedStorageRaw_[4] = {0, 0, 0, 1};
+static CWideStringData& g_WrappedStorage = *reinterpret_cast<CWideStringData*>(g_WrappedStorageRaw_);
 static CWideStringData* g_NextStorage = &g_DefaultStorage;
 static int g_WrapCalls = 0;
 

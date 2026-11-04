@@ -1,8 +1,6 @@
-#include "rebuild_abi.h"
-
-struct CSystemManager;
+#include "fable_gfuninitialise.h"
 
 CSystemManager* FABLE_FASTCALL GFGetSystemManager()
 {
-    return reinterpret_cast<CSystemManager*>(0x013CA618);
+    return &GSystemManager;
 }

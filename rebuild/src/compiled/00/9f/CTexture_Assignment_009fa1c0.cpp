@@ -1,11 +1,10 @@
-#include "fable_texture_lifecycle.h"
+#include "fable_surface_types.h"
 
-CTextureAssignmentView& CTextureAssignmentView::operator=(
-    CTextureAssignmentView& rhs)
+const CTexture& CTexture::operator=(const CTexture& rhs)
 {
     if (PD3DTexture != 0)
     {
-        PD3DTexture->vtable->release08(PD3DTexture);
+        PD3DTexture->Release();
         PD3DTexture = 0;
         AllocationSource = 0;
     }
@@ -15,7 +14,7 @@ CTextureAssignmentView& CTextureAssignmentView::operator=(
     AllocationSource = rhs.AllocationSource;
     if (PD3DTexture != 0)
     {
-        PD3DTexture->vtable->addRef04(PD3DTexture);
+        PD3DTexture->AddRef();
     }
     return *this;
 }

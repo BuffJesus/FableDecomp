@@ -1,8 +1,17 @@
-#include <new>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "fable_game.h"
+// The component destructors destroy scoped_ptr members of these.
+#include "engine/CDisplayEngine.h"
+#include "engine/CGamePlayerInterface.h"
+#include "engine/CPlayerManager.h"
+#include "engine/CWorld.h"
+
+class CFileInformation
+{
+};
 
 fable_u8 g_FableCompileFrontendDefinitions_013B8648 = 0;
 fable_u8 g_FableStartMainGame_013B8605 = 0;
@@ -36,38 +45,35 @@ namespace
     bool g_continueFirstRun;
     CGameComponent* g_nextComponent;
 
+    // String constructions are counted only outside component
+    // constructors: the components' own string members are not Play's.
+    bool g_countStrings = true;
+
+    CGame& MockGame()
+    {
+        static unsigned char storage[sizeof(CGame)];
+        return *reinterpret_cast<CGame*>(storage);
+    }
+
+    // Stand-in for components the fixture creates itself (the next
+    // component and a retired one); the counted behaviour lives on the
+    // CGameComponent virtuals defined below.
     class MockGameComponent : public CGameComponent
     {
     public:
-        explicit MockGameComponent(ComponentKind kind)
-            : kind_(kind)
+        virtual bool Run(CGameComponent** next) { return CGameComponent::Run(next); }
+        virtual void ChangeTextureColourDepth(long) {}
+        virtual void OnPreDeviceReset() {}
+        virtual bool OnPostDeviceReset() { return true; }
+        MockGameComponent()
+            : CGameComponent(MockGame())
         {
+            g_countStrings = true;
         }
-
-        virtual ~MockGameComponent()
-        {
-            ++g_destroyCalls;
-        }
-
-        virtual void Init()
-        {
-            ++g_initCalls;
-        }
-
-        virtual bool Run(CGameComponent** nextComponent)
-        {
-            ++g_runCalls;
-            if (g_continueFirstRun && g_runCalls == 1)
-            {
-                *nextComponent = g_nextComponent;
-                return true;
-            }
-            return false;
-        }
-
-    private:
-        ComponentKind kind_;
     };
+
+    bool g_trackAllocations;
+    CGame* g_constructedGame;
 
     CGameComponent*& CurrentComponent(CGame& game)
     {
@@ -96,6 +102,8 @@ namespace
         g_constructedKind = COMPONENT_RETIRED;
         g_continueFirstRun = false;
         g_nextComponent = 0;
+        g_trackAllocations = false;
+        g_constructedGame = 0;
         g_FableRetiredGameComponent_013B7D58 = 0;
     }
 
@@ -114,7 +122,9 @@ namespace
 
         unsigned char storage[sizeof(CGame)];
         CGame& game = FreshGame(storage);
+        g_trackAllocations = true;
         game.Play();
+        g_trackAllocations = false;
 
         return
             g_compileDefsCalls == 1 &&
@@ -137,13 +147,16 @@ namespace
 
         unsigned char storage[sizeof(CGame)];
         CGame& game = FreshGame(storage);
+        g_trackAllocations = true;
         game.Play();
+        g_trackAllocations = false;
 
         CGameComponent* current = CurrentComponent(game);
         const bool passed =
             g_allocationCalls == 1 &&
             g_lastAllocationSize == 0x161E8 &&
             g_constructedKind == COMPONENT_MAIN &&
+            g_constructedGame == &game &&
             g_wideConstructCalls == 3 &&
             g_charConstructCalls == 1 &&
             g_wideAssignCalls == 1 &&
@@ -165,19 +178,22 @@ namespace
         g_FableStartMainGame_013B8605 = 0;
         g_FableUseLegacyFrontend_013B8642 = 1;
         g_continueFirstRun = true;
-        g_nextComponent = new MockGameComponent(COMPONENT_NEXT);
+        g_nextComponent = new MockGameComponent;
         g_FableRetiredGameComponent_013B7D58 =
-            new MockGameComponent(COMPONENT_RETIRED);
+            new MockGameComponent;
 
         unsigned char storage[sizeof(CGame)];
         CGame& game = FreshGame(storage);
+        g_trackAllocations = true;
         game.Play();
+        g_trackAllocations = false;
 
         CGameComponent* current = CurrentComponent(game);
         const bool passed =
             g_allocationCalls == 1 &&
             g_lastAllocationSize == 0x1E60 &&
             g_constructedKind == COMPONENT_LEGACY_FRONTEND &&
+            g_constructedGame == &game &&
             g_initCalls == 1 &&
             g_runCalls == 2 &&
             g_destroyCalls == 1 &&
@@ -190,108 +206,160 @@ namespace
     }
 }
 
+void* operator new(size_t size)
+{
+    if (g_trackAllocations)
+    {
+        ++g_allocationCalls;
+        g_lastAllocationSize = static_cast<fable_u32>(size);
+    }
+    return malloc(size ? size : 1);
+}
+
+void operator delete(void* block)
+{
+    free(block);
+}
+
 CWideString::CWideString()
     : storage_(0)
+{
+    if (g_countStrings)
+    {
+        ++g_wideConstructCalls;
+    }
+}
+
+CWideString::CWideString(const CWideString& other)
+    : storage_(other.storage_)
 {
 }
 
 CWideString::~CWideString()
 {
-}
-
-CGameComponent::~CGameComponent()
-{
-}
-
-void CGameComponent::Init()
-{
-}
-
-bool CGameComponent::Run(CGameComponent**)
-{
-    return false;
-}
-
-extern "C" void FableGameCompileFrontendDefinitions_00412f90()
-{
-    ++g_compileDefsCalls;
-}
-
-extern "C" void* __cdecl FableGameOperatorNew_00412f90(fable_u32 size)
-{
-    ++g_allocationCalls;
-    g_lastAllocationSize = size;
-    return ::operator new(size);
-}
-
-extern "C" void __fastcall
-FableGameWideStringCtor_00412f90(void* destination, void*)
-{
-    ++g_wideConstructCalls;
-    *reinterpret_cast<void**>(destination) = 0;
-}
-
-extern "C" void __fastcall
-FableGameCharStringCtor_00412f90(void* destination, void*)
-{
-    ++g_charConstructCalls;
-    *reinterpret_cast<void**>(destination) = 0;
-}
-
-extern "C" void __fastcall
-FableGameWideStringDtor_00412f90(void*, void*)
-{
     ++g_wideDestroyCalls;
 }
 
-extern "C" void __fastcall
-FableGameCharStringDtor_00412f90(void*, void*)
+CWideString& CWideString::operator=(const CWideString& other)
+{
+    ++g_wideAssignCalls;
+    storage_ = other.storage_;
+    return *this;
+}
+
+CCharString::CCharString()
+    : storage_(0)
+{
+    if (g_countStrings)
+    {
+        ++g_charConstructCalls;
+    }
+}
+
+CCharString::~CCharString()
 {
     ++g_charDestroyCalls;
 }
 
-extern "C" void __fastcall
-FableGameWideStringAssign_00412f90(
-    void* destination,
-    void*,
-    const CWideString*)
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+// ~CGameComponent is inline and empty (retail 0x00415940), so a component's
+// destruction is observed at the out-of-line base destructor it chains to.
+CBaseClassNonCopyable::~CBaseClassNonCopyable()
 {
-    ++g_wideAssignCalls;
-    *reinterpret_cast<void**>(destination) = 0;
+    ++g_destroyCalls;
 }
 
-extern "C" void* __fastcall
-FableGameMainComponentCtor_00412f90(
-    void* destination,
-    void*,
-    CGame*,
-    const CMainGameComponentInit*)
+void CDeviceResetCallback::OnPreDeviceReset() {}
+bool CDeviceResetCallback::OnPostDeviceReset() { return true; }
+void CGameComponent::SetQuit() {}
+
+#include "test_support/init_base_class_stubs.h"
+
+// Link stubs for the members the component constructors build.
+CInterpolationInfo::CInterpolationInfo() {}
+CGameEventPackageSet::CGameEventPackageSet() {}
+CNetworkClient::CNetworkClient() {}
+CFrameRateSmoother::CFrameRateSmoother() {}
+CRoughFrameCounter::CRoughFrameCounter() {}
+CStopWatch::CStopWatch() {}
+CAFile::CAFile() {}
+
+CFileInformation CAFile::GetFileInformation() { return CFileInformation(); }
+void CDiskFileWin32::Open(const CWideString&, FileAccessType, unsigned long) {}
+void CDiskFileWin32::Close() {}
+void CDiskFileWin32::Read(void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::Write(const void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::SetPosition(long) {}
+void CDiskFileWin32::MovePosition(long) {}
+long CDiskFileWin32::GetPosition() const { return 0; }
+void CDiskFileWin32::SetLength(long) {}
+CAFile* CDiskFileWin32::Clone() const { return 0; }
+CFileInformation CDiskFileWin32::GetFileInformation() { return CFileInformation(); }
+
+CGameComponent::CGameComponent(CGame& game)
 {
+    Game = &game;
+    g_countStrings = false;
+}
+
+
+void CGameComponent::Init()
+{
+    ++g_initCalls;
+}
+
+bool CGameComponent::Run(CGameComponent** nextComponent)
+{
+    ++g_runCalls;
+    if (g_continueFirstRun && g_runCalls == 1)
+    {
+        *nextComponent = g_nextComponent;
+        return true;
+    }
+    return false;
+}
+
+void FABLE_FASTCALL CNewFrontendGameComponent::CompileDefs()
+{
+    ++g_compileDefsCalls;
+}
+
+CMainGameComponent::CMainGameComponent(
+    CGame& game,
+    const CMainGameComponentInit&)
+    : CGameComponent(game)
+{
+    g_countStrings = true;
     g_constructedKind = COMPONENT_MAIN;
-    return new (destination) MockGameComponent(COMPONENT_MAIN);
+    g_constructedGame = &game;
 }
 
-extern "C" void* __fastcall
-FableGameLegacyFrontendCtor_00412f90(
-    void* destination,
-    void*,
-    CGame*,
-    const CFrontendGameComponentInit*)
+CFrontendGameComponent::CFrontendGameComponent(
+    CGame& game,
+    const CFrontendGameComponentInit& init)
+    : CGameComponent(game)
 {
-    g_constructedKind = COMPONENT_LEGACY_FRONTEND;
-    return new (destination) MockGameComponent(COMPONENT_LEGACY_FRONTEND);
+    g_countStrings = true;
+    g_constructedKind = init.Nowt == 0
+        ? COMPONENT_LEGACY_FRONTEND
+        : COMPONENT_RETIRED;
+    g_constructedGame = &game;
 }
 
-extern "C" void* __fastcall
-FableGameNewFrontendCtor_00412f90(
-    void* destination,
-    void*,
-    CGame*,
-    const CNewFrontendGameComponentInit*)
+CNewFrontendGameComponent::CNewFrontendGameComponent(
+    CGame& game,
+    const CNewFrontendGameComponentInit& init)
+    : CGameComponent(game)
 {
-    g_constructedKind = COMPONENT_NEW_FRONTEND;
-    return new (destination) MockGameComponent(COMPONENT_NEW_FRONTEND);
+    g_countStrings = true;
+    g_constructedKind = init.Nothing == 0
+        ? COMPONENT_NEW_FRONTEND
+        : COMPONENT_RETIRED;
+    g_constructedGame = &game;
 }
+
+CMainGameComponent::~CMainGameComponent() {}
+CNewFrontendGameComponent::~CNewFrontendGameComponent() {}
 
 int main()
 {
@@ -307,3 +375,29 @@ int main()
     puts("FABLETLC_CGAME_PLAY_BEHAVIOR PASS");
     return 0;
 }
+
+void CMainGameComponent::Init() { CGameComponent::Init(); }
+bool CMainGameComponent::Run(CGameComponent** next) { return CGameComponent::Run(next); }
+void CMainGameComponent::ChangeTextureColourDepth(long) {}
+void CMainGameComponent::SetQuit() {}
+void CMainGameComponent::OnPreDeviceReset() {}
+bool CMainGameComponent::OnPostDeviceReset() { return true; }
+void CMainGameComponent::Update() {}
+void CMainGameComponent::GetInputs() {}
+void CMainGameComponent::Render() {}
+void CMainGameComponent::PostInit() {}
+bool CMainGameComponent::IsEditorActive() const { return false; }
+
+void CFrontendGameComponent::Init() { CGameComponent::Init(); }
+bool CFrontendGameComponent::Run(CGameComponent** next) { return CGameComponent::Run(next); }
+void CFrontendGameComponent::ChangeTextureColourDepth(long) {}
+void CFrontendGameComponent::SetQuit() {}
+void CFrontendGameComponent::OnPreDeviceReset() {}
+bool CFrontendGameComponent::OnPostDeviceReset() { return true; }
+
+void CNewFrontendGameComponent::Init() { CGameComponent::Init(); }
+bool CNewFrontendGameComponent::Run(CGameComponent** next) { return CGameComponent::Run(next); }
+void CNewFrontendGameComponent::ChangeTextureColourDepth(long) {}
+void CNewFrontendGameComponent::SetQuit() {}
+void CNewFrontendGameComponent::OnPreDeviceReset() {}
+bool CNewFrontendGameComponent::OnPostDeviceReset() { return true; }

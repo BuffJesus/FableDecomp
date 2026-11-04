@@ -1,1 +1,0 @@
-void __stdcall CJoystickDX_AddRumble(int arg0, int arg1, int arg2) {}

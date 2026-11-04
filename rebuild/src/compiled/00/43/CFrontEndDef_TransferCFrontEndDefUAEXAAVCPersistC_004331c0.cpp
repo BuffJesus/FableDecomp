@@ -1,63 +1,17 @@
-extern "C" __declspec(naked) void F_004331c0(void)
+// CFrontEndDef::Transfer(CPersistContext&) @ 0x004331C0 (FableWin
+// ?Transfer@CFrontEndDef@@UAEXAAVCPersistContext@@@Z, vtable 0x01230FBC slot
+// 18): the attract-mode movie list, then the three graphic indices, each
+// through the binary-only member transfer (vector<CCharString> 0x004331F9,
+// long 0x00431102). Retail expands neither template here although both are
+// small and their bodies are in the unit: no inline expansion, /O2 registers.
+#pragma inline_depth(0)
+#include "fable_frontend_def.h"
+#include "fable_persist_context.h"
+
+void CFrontEndDef::Transfer(CPersistContext& context)
 {
-    __asm
-    {
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xf1
-        _emit 0x57
-        _emit 0x8b
-        _emit 0x7c
-        _emit 0x24
-        _emit 0x0c
-        _emit 0x8d
-        _emit 0x46
-        _emit 0x3c
-        _emit 0x50
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x26
-        _emit 0x00
-        _emit 0x00
-        _emit 0x00
-        _emit 0x8d
-        _emit 0x4e
-        _emit 0x48
-        _emit 0x51
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x24
-        _emit 0xdf
-        _emit 0xff
-        _emit 0xff
-        _emit 0x8d
-        _emit 0x56
-        _emit 0x4c
-        _emit 0x52
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x19
-        _emit 0xdf
-        _emit 0xff
-        _emit 0xff
-        _emit 0x83
-        _emit 0xc6
-        _emit 0x50
-        _emit 0x56
-        _emit 0x8b
-        _emit 0xcf
-        _emit 0xe8
-        _emit 0x0e
-        _emit 0xdf
-        _emit 0xff
-        _emit 0xff
-        _emit 0x5f
-        _emit 0x5e
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
-    }
+    context.TransferBinaryVector(vAttractModeMovie);
+    context.TransferBinaryMember(ErrorMessageBackgroundGraphic);
+    context.TransferBinaryMember(ButtonABigGraphic);
+    context.TransferBinaryMember(ButtonBBigGraphic);
 }

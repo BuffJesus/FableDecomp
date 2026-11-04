@@ -1,17 +1,11 @@
-extern unsigned char g_aggressiveEnabled;
+// CPlayer::ToggleAggressiveMode @ 00487E90; FableWin methods/global name.
+#include "fable_player_manager.h"
 
-struct CPlayer;
-extern "C" void __fastcall CPlayer_OnAggressiveChanged(CPlayer* self);
-
-struct CPlayer {
-    char pad[0x217];
-    unsigned char aggressive;
-};
-
-void __fastcall ToggleAggressiveMode(CPlayer* self)
+void CPlayer::ToggleAggressiveMode()
 {
-    if (g_aggressiveEnabled) {
-        self->aggressive = (self->aggressive == 0);
-        CPlayer_OnAggressiveChanged(self);
+    if (GUsePassiveAggressiveMode)
+    {
+        AggressiveMode = !IsAggressiveMode();
+        SetUpControlsBasedOnAggressiveMode();
     }
 }

@@ -1,64 +1,25 @@
-#include "rebuild_abi.h"
+#include "fable_shader_render_manager.h"
+#include "fable_pixel_shader_data.h"
+#include "fable_shader_constant_layout.h"
+#include "fable_d3d9.h"
+#include "fable_4d_vector.h"
 
-struct FableFogShaderDevice;
-typedef long (__stdcall *FableSetFogConstantsCall)(
-    FableFogShaderDevice* device,
-    fable_i32 startRegister,
-    const void* data,
-    fable_u32 vectorCount);
+typedef HRESULT (__stdcall *SetPixelShaderCall)(IDirect3DDevice9*,IDirect3DPixelShader9*);
+typedef HRESULT (__stdcall *SetConstantsCall)(IDirect3DDevice9*,long,const void*,unsigned long);
 
-struct FableFogShaderDevice
+void CShaderRenderManager::UpdateFogColour()
 {
-    void** vtable;
-};
-
-struct CFogConstantLayoutView
-{
-    fable_u8 unknown00[0x38];
-    fable_i32 startRegister38;
-    fable_u32 vectorCount3C;
-};
-
-struct CFogFloatColour
-{
-    float red;
-    float green;
-    float blue;
-    float alpha;
-};
-
-struct CShaderRenderManagerUpdateFogColourView
-{
-    fable_u8 unknown000[4];
-    CFogConstantLayoutView* constantLayout04;
-    fable_u8 unknown008[0x1B4];
-    CFogFloatColour fogColour1BC;
-    fable_u8 unknown1CC[8];
-    FableFogShaderDevice* displayDevice1D4;
-    fable_u8 unknown1D8[0x200];
-    fable_u32 shaderStateMask3D8;
-
-    void UpdateFogColour();
-};
-
-void CShaderRenderManagerUpdateFogColourView::UpdateFogColour()
-{
-    CFogConstantLayoutView* layout = constantLayout04;
-    if (layout->vectorCount3C != 0)
+    const CVertexShaderConstantLayout* layout=CurrentVSConstantLayout;
+    if(layout->FogColour.Count)
     {
-        CFogFloatColour fogColour;
-        const fable_i32 startRegister =
-            layout->startRegister38;
-        fogColour.red = fogColour1BC.red;
-        fogColour.green = fogColour1BC.green;
-        fogColour.blue = fogColour1BC.blue;
-        fogColour.alpha = fogColour1BC.alpha;
-        reinterpret_cast<FableSetFogConstantsCall>(
-            displayDevice1D4->vtable[0x5E])(
-                displayDevice1D4,
-                startRegister,
-                &fogColour,
-                1);
+        CRGBFloatColour fog;
+        const long startRegister=layout->FogColour.Offset;
+        fog.R=FogColour.R;
+        fog.G=FogColour.G;
+        fog.B=FogColour.B;
+        fog.A=FogColour.A;
+        void** methods=*reinterpret_cast<void***>(D3DDevice);
+        reinterpret_cast<SetConstantsCall>(methods[94])(D3DDevice,startRegister,&fog,1);
     }
-    shaderStateMask3D8 &= ~0x20000u;
+    updateFlags3D8 &= ~0x20000u;
 }

@@ -1,0 +1,2 @@
+#define FABLE_CATALOG_DELETE_PROVIDER
+#include "CMemoryAllocatorBase_OperatorDelete_00a66750_test.cpp"

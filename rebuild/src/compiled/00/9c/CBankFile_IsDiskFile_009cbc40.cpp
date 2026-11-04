@@ -1,5 +1,5 @@
-#include "engine/CBankFile.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CBankFile_Methods : CBankFile {
-    bool M(int x0, int x1);
-};
-bool CBankFile_Methods::M(int x0, int x1) { return true; }
+#include "fable_font_data_banks.h"
+bool CBankFile::IsDiskFile(unsigned long, unsigned long)
+{
+    return true;
+}

@@ -1,16 +1,21 @@
-#include <cstdio>
+#include <stdio.h>
+#include "fable_gfuninitialise.h"
 
-struct CSystemManager;
-CSystemManager* __fastcall GFGetSystemManager();
+// The singleton is raw storage here: its constructor is not under test.
+#pragma comment(linker, "/alternatename:?GSystemManager@@3VCSystemManager@@A=_g_testSystemManagerStorage")
+extern "C" double g_testSystemManagerStorage[sizeof(CSystemManager) / sizeof(double) + 1];
+extern "C" double g_testSystemManagerStorage[sizeof(CSystemManager) / sizeof(double) + 1] = {};
 
 int main()
 {
-    if (GFGetSystemManager() ==
-        reinterpret_cast<CSystemManager*>(0x013CA618))
+    CSystemManager* first = GFGetSystemManager();
+    CSystemManager* second = GFGetSystemManager();
+    if (first != &GSystemManager || second != first ||
+        static_cast<void*>(first) != static_cast<void*>(g_testSystemManagerStorage))
     {
-        std::printf("FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR PASS\n");
-        return 0;
+        printf("FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR FAIL\n");
+        return 1;
     }
-    std::printf("FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR FAIL\n");
-    return 1;
+    printf("FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR PASS\n");
+    return 0;
 }

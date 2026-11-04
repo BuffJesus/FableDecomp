@@ -1,25 +1,10 @@
-// CStreamingFontDataBankEntry_Methods::CanUnload  @ retail 0x00a63560
-// __fastcall bool CanUnload(CStreamingFontDataBankEntry* this)
-
-#include "engine/CStreamingFontDataBankEntry.h"  // retyped onto the PDB layout; byte parity re-verified
-enum EFontLoadState { FONT_LOADED = 1 };
-
-struct CCPPointerInfo {
-    EFontLoadState state; // [+0]
-};
-
-struct CStreamingFontDataBankEntry_Methods : CStreamingFontDataBankEntry {
-    // [+8]
-    bool CanUnload();
-};
-
-bool CStreamingFontDataBankEntry_Methods::CanUnload()
+#include "engine/CStreamingFontDataBankEntry.h"
+bool CStreamingFontDataBankEntry::CanUnload() const
 {
-    if (this->Font_Data != 0 && this->Font_Info != 0)
+    if (Font.Data && Font.Info)
     {
-        int s = this->Font_Info->state;
-        if (s == FONT_LOADED)
-            return s == FONT_LOADED;
+        unsigned long count = Font.Info->RefCount;
+        if (count == 1) return count == 1;
     }
     return false;
 }

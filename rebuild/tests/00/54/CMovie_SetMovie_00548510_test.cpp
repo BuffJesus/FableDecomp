@@ -5,8 +5,10 @@
 
 namespace
 {
-    CWideStringData g_sourceStorage;
-    CWideStringData g_destinationStorage;
+    unsigned long g_sourceStorageRaw_[4];
+    CWideStringData& g_sourceStorage = *reinterpret_cast<CWideStringData*>(g_sourceStorageRaw_);
+    unsigned long g_destinationStorageRaw_[4];
+    CWideStringData& g_destinationStorage = *reinterpret_cast<CWideStringData*>(g_destinationStorageRaw_);
     unsigned int g_assignmentCalls;
 
     CWideStringData*& Storage(CWideString& text)

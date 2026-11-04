@@ -1,3 +1,4 @@
-// Empty member hook. __fastcall this=ecx.
-struct T { void Hook(); };
-void T::Hook() {}
+#include "fable_game.h"
+
+// Retail 00415e83; uses the shared primary/secondary dispatch layout.
+void CMainGameComponent::OnPreDeviceReset() {}

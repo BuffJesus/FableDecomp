@@ -1,75 +1,48 @@
-#include <cstddef>
+#include "fable_string.h"
 
-extern "C" long g_charStringRefTrace; // 0x013bd800
-extern "C" char g_emptyCharStringData; // 0x0129aaf4 (empty-string storage byte)
-
-struct CCharStringData
+__forceinline CCharString::CCharString() : storage_(0)
 {
-    char* data;
-    long length;
-    long refCount; // real field is a byte at +0xd inside a larger header; kept opaque via byte-offset write below
-};
+    fable_i32 count = g_CCharStringInstanceCount_013BD800;
+    ++count;
+    g_CCharStringInstanceCount_013BD800 = count;
+}
 
-struct CCharString
+inline CCharString::CCharString(const CCharString& other) : storage_(0)
 {
-    CCharStringData* storage;
+    ++g_CCharStringInstanceCount_013BD800;
+    if (&other != this)
+    {
+        if (storage_ != 0)
+            UnassignString();
+        if (other.storage_ != 0)
+        {
+            storage_ = other.storage_;
+            ++storage_->owners;
+        }
+    }
+}
 
-    CCharStringData* AllocStringData(char* data, long len);
-    void UnassignString();
-    CCharString* GetSubString(CCharString* retVal, unsigned long start, unsigned long len);
-};
-
-// Real implementations live at 0x0099ea60 (AllocStringData) / 0x0099e9b0 (UnassignString);
-// they are separate retail functions and are intentionally left undefined here (external
-// callees only) so this translation unit authors ONLY GetSubString itself.
-
-// CCharString GetSubString(CCharString* this, ulong start, ulong len)
-// Hidden-return-pointer thiscall: ecx = this, [esp+4]=retptr, [esp+8]=start, [esp+0xc]=len
-CCharString* CCharString::GetSubString(CCharString* retVal, unsigned long start, unsigned long len)
+inline CCharString::~CCharString()
 {
+    UnassignString();
+    --g_CCharStringInstanceCount_013BD800;
+}
+
+CCharString CCharString::GetSubString(unsigned long start, unsigned long end) const
+{
+    CCharString result;
     CCharStringData* newStorage = 0;
-    CCharString localTmp;
-
-    ++g_charStringRefTrace;
-
-    CCharStringData* storage = this->storage;
-    localTmp.storage = newStorage;
-    char* base;
+    CCharStringData* storage = storage_;
+    const char* base;
     if (!storage)
-        base = &g_emptyCharStringData;
+        base = g_FableEmptyNarrowString_0129AAF4;
     else
-        base = storage->data;
-
-    char* subPtr = base + start;
-    if (subPtr == 0)
-        goto skipAlloc;
-    if (*subPtr == 0)
-        goto skipAlloc;
+        base = storage->Data.PData;
+    const char* sub = base + start;
+    if (sub != 0 && *sub != 0)
     {
-        long subLen = (long)len - (long)start;
-        newStorage = localTmp.AllocStringData(subPtr, subLen);
-        localTmp.storage = newStorage;
+        newStorage = result.AllocStringData(sub, static_cast<long>(end - start));
+        result.storage_ = newStorage;
     }
-skipAlloc:
-
-    retVal->storage = 0;
-    ++g_charStringRefTrace;
-
-    if ((void*)&localTmp != (void*)retVal)
-    {
-        if (retVal->storage != 0)
-        {
-            retVal->UnassignString();
-        }
-        if (newStorage != 0)
-        {
-            retVal->storage = newStorage;
-            ++*((long*)((char*)newStorage + 0xd));
-        }
-    }
-
-    localTmp.UnassignString();
-    --g_charStringRefTrace;
-
-    return retVal;
+    return result;
 }

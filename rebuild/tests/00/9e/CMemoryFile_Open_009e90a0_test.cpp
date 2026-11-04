@@ -1,35 +1,18 @@
-#include <cstdio>
-
-struct Sub { int called; const char* arg; };
-static void Sub_init(Sub* self, const char* name) { self->called = 1; self->arg = name; }
-
-struct CMemoryFile {
-    char pad0[8];
-    int  field8;
-    int  fieldC;
-    char pad10[0x0c];
-    char field1C;
-    char pad1D[3];
-    Sub  sub;
-};
-
-static void Open(CMemoryFile* self)
-{
-    Sub_init(&self->sub, (const char*)0x122d70c);
-    self->field8 = 0;
-    self->fieldC = 0;
-    self->field1C = 1;
-}
-
-int main() {
-    CMemoryFile f;
-    f.field8 = 99; f.fieldC = 99; f.field1C = 0; f.sub.called = 0;
-    Open(&f);
-    if (f.sub.called == 1 && f.sub.arg == (const char*)0x122d70c &&
-        f.field8 == 0 && f.fieldC == 0 && f.field1C == 1) {
-        printf("PARITY_OK\n");
-    } else {
-        printf("FAIL\n");
-    }
-    return 0;
-}
+#include "../tests/integration/MemoryFile_test.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_SetPosition_009e90c0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_MovePosition_009e9140.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Read_009e9220.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_DumpToFile_009e9330.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Close_009e9390.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e93c0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_OpenFromFile_009e9420.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Open_009e94a0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Write_009e95f0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_SetLength_009e9730.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Copy_009e9760.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_CMemoryFile_009e97b0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_Clone_009e97f0.cpp"
+#include "../src/compiled/00/9e/CMemoryFile_CopyConstructor_009e99c0.cpp"
+#include "../src/compiled/00/41/CMemoryFile_GetPosition_00412050.cpp"
+#include "../src/compiled/00/41/CMemoryFile_GetLength_00412060.cpp"
+#include "../src/compiled/00/40/CMemoryFile_IsOpen_00405d30.cpp"

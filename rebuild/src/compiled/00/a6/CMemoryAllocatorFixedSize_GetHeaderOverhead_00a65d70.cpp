@@ -3,14 +3,14 @@
 unsigned long CMemoryAllocatorFixedSize::GetHeaderOverhead()
 {
     unsigned long total = 0;
-    CFixedSizeAllocatorNode* current = ControlledAreas;
+    CFixedSizeAllocatorNode* current = PFirstChunk;
     if (current != 0)
     {
-        unsigned long headerSize = HeaderSize;
+        unsigned long headerSize = ChunkHeaderSize;
         do
         {
-            total += headerSize + (unsigned long)current->AreaCount * 4;
-            current = current->Next;
+            total += headerSize + (unsigned long)current->NoAllocatedAreas * 4;
+            current = current->PNextChunk;
         } while (current != 0);
     }
     return total;

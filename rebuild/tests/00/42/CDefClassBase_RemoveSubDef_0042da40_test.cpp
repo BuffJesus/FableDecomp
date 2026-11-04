@@ -1,2 +1,12 @@
-#include <stdio.h>
-int main(void){ printf("PASS_0042da40\n"); return 0; }
+#include "../tests/integration/DefClassBase_test.cpp"
+#include "../src/compiled/00/42/CDefClassBase_GetInstantiationName_0042da10.cpp"
+#include "../src/compiled/00/42/CDefClassBase_SetInstantiationName_0042da20.cpp"
+#include "../src/compiled/00/42/CDefClassBase_AddSubDef_0042da30.cpp"
+#include "../src/compiled/00/42/CDefClassBase_GetPSubDefInfo_0042da50.cpp"
+#include "../src/compiled/00/42/CDefClassBase_GetPSubDefInfoConst_0042da60.cpp"
+#include "../src/compiled/00/42/CDefClassBase_IsParentDef_0042da70.cpp"
+#include "../src/compiled/00/42/CDefClassBase_PostTransfer_0042da80.cpp"
+#include "../src/compiled/00/42/CDefClassBase_Validate_0042da90.cpp"
+#include "../src/compiled/00/42/CDefClassBase_GetPSubDefInfoMap_0042daa0.cpp"
+#include "../src/compiled/00/9a/CDefClassBase_InternalSaveBinary_009acab0.cpp"
+#include "../src/compiled/00/9a/CDefClassBase_UnloadResource_009ace90.cpp"

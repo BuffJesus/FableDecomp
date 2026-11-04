@@ -1,47 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-class C2DBoxI
-{
-public:
-    long left;
-    long top;
-    long right;
-    long bottom;
-};
-
-struct IDirect3DSurface9
-{
-};
-
-class CSurface
-{
-public:
-    virtual void VTableAnchor();
-
-    IDirect3DSurface9* surface04;
-    unsigned long ownership08;
-    unsigned long mipLevel0C;
-
-    CSurface(const CSurface& source);
-    void InitialiseFromTextureMipmap(IDirect3DSurface9* surface);
-    void Uninitialise();
-    void CopyFromSurface(
-        const C2DBoxI* destinationBox,
-        const CSurface& source,
-        const C2DBoxI* sourceBox,
-        unsigned long filter);
-};
-
-class CTexture
-{
-public:
-    void* texture00;
-
-    void CopyFromTexture(const CTexture& source, unsigned long filter);
-};
-
-extern "C" unsigned long g_CSurfaceVTable_0122F84C = 0;
+#include "fable_surface.h"
 
 enum EventKind
 {
@@ -53,11 +13,31 @@ enum EventKind
     EVENT_COPY_FROM_SURFACE
 };
 
+// Mip surfaces only carry an identity; CSurface's own recorders below do the
+// reference counting, so no COM method of these is expected to be called.
 struct RawSurface : IDirect3DSurface9
 {
     unsigned long id;
     unsigned long addRefCalls;
     unsigned long releaseCalls;
+
+    HRESULT __stdcall QueryInterface(REFIID, void**) { return -1; }
+    unsigned long __stdcall AddRef() { return ++addRefCalls; }
+    unsigned long __stdcall Release() { return ++releaseCalls; }
+    HRESULT __stdcall GetDevice(IDirect3DDevice9**) { return -1; }
+    HRESULT __stdcall SetPrivateData(REFGUID, const void*, DWORD, DWORD) { return -1; }
+    HRESULT __stdcall GetPrivateData(REFGUID, void*, DWORD*) { return -1; }
+    HRESULT __stdcall FreePrivateData(REFGUID) { return -1; }
+    DWORD __stdcall SetPriority(DWORD) { return 0; }
+    DWORD __stdcall GetPriority() { return 0; }
+    void __stdcall PreLoad() {}
+    D3DRESOURCETYPE __stdcall GetType() { return D3DRTYPE_SURFACE; }
+    HRESULT __stdcall GetContainer(REFIID, void**) { return -1; }
+    HRESULT __stdcall GetDesc(D3DSURFACE_DESC*) { return -1; }
+    HRESULT __stdcall LockRect(D3DLOCKED_RECT*, const RECT*, DWORD) { return -1; }
+    HRESULT __stdcall UnlockRect() { return -1; }
+    HRESULT __stdcall GetDC(void**) { return -1; }
+    HRESULT __stdcall ReleaseDC(void*) { return -1; }
 };
 
 struct Event
@@ -98,16 +78,12 @@ static RawSurface* AsRaw(IDirect3DSurface9* surface)
     return static_cast<RawSurface*>(surface);
 }
 
-void CSurface::VTableAnchor()
-{
-}
-
 CSurface::CSurface(const CSurface& source)
-    : surface04(source.surface04),
-      ownership08(source.ownership08),
-      mipLevel0C(source.mipLevel0C)
+    : PD3DSurface(source.PD3DSurface),
+      AllocationSource(source.AllocationSource),
+      PAllocatedMemory(source.PAllocatedMemory)
 {
-    RawSurface* raw = AsRaw(surface04);
+    RawSurface* raw = AsRaw(PD3DSurface);
     if (raw != 0)
     {
         ++raw->addRefCalls;
@@ -124,14 +100,14 @@ CSurface::CSurface(const CSurface& source)
 
 void CSurface::InitialiseFromTextureMipmap(IDirect3DSurface9* surface)
 {
-    RawSurface* oldSurface = AsRaw(surface04);
+    RawSurface* oldSurface = AsRaw(PD3DSurface);
     if (oldSurface != 0)
     {
         ++oldSurface->releaseCalls;
     }
 
-    surface04 = surface;
-    ownership08 = 3;
+    PD3DSurface = surface;
+    AllocationSource = 3;
     RawSurface* raw = AsRaw(surface);
     AddEvent(
         EVENT_INITIALISE,
@@ -145,7 +121,7 @@ void CSurface::InitialiseFromTextureMipmap(IDirect3DSurface9* surface)
 
 void CSurface::Uninitialise()
 {
-    RawSurface* raw = AsRaw(surface04);
+    RawSurface* raw = AsRaw(PD3DSurface);
     AddEvent(
         EVENT_UNINITIALISE,
         raw != 0 ? raw->id : 0,
@@ -157,8 +133,8 @@ void CSurface::Uninitialise()
     if (raw != 0)
     {
         ++raw->releaseCalls;
-        surface04 = 0;
-        ownership08 = 0;
+        PD3DSurface = 0;
+        AllocationSource = 0;
     }
 }
 
@@ -168,8 +144,8 @@ void CSurface::CopyFromSurface(
     const C2DBoxI* sourceBox,
     unsigned long filter)
 {
-    RawSurface* destinationRaw = AsRaw(surface04);
-    RawSurface* sourceRaw = AsRaw(source.surface04);
+    RawSurface* destinationRaw = AsRaw(PD3DSurface);
+    RawSurface* sourceRaw = AsRaw(source.PD3DSurface);
     AddEvent(
         EVENT_COPY_FROM_SURFACE,
         destinationRaw != 0 ? destinationRaw->id : 0,
@@ -180,57 +156,51 @@ void CSurface::CopyFromSurface(
         sourceBox == 0);
 }
 
-struct FakeTexture;
-
-typedef unsigned long (__stdcall *GetLevelCountFn)(FakeTexture* self);
-typedef long (__stdcall *GetSurfaceLevelFn)(
-    FakeTexture* self,
-    unsigned long level,
-    void** surface);
-
-struct FakeTextureVTable
+struct FakeTexture : IDirect3DTexture9
 {
-    void* beforeGetLevelCount[13];
-    GetLevelCountFn getLevelCount34;
-    void* beforeGetSurfaceLevel[4];
-    GetSurfaceLevelFn getSurfaceLevel48;
-};
-
-struct FakeTexture
-{
-    FakeTextureVTable* vtable;
     RawSurface surfaces[4];
     unsigned long levelCount;
     bool isSource;
     unsigned long getLevelCalls;
+
+    HRESULT __stdcall QueryInterface(REFIID, void**) { return -1; }
+    unsigned long __stdcall AddRef() { return 1; }
+    unsigned long __stdcall Release() { return 1; }
+    HRESULT __stdcall GetDevice(IDirect3DDevice9**) { return -1; }
+    HRESULT __stdcall SetPrivateData(REFGUID, const void*, DWORD, DWORD) { return -1; }
+    HRESULT __stdcall GetPrivateData(REFGUID, void*, DWORD*) { return -1; }
+    HRESULT __stdcall FreePrivateData(REFGUID) { return -1; }
+    DWORD __stdcall SetPriority(DWORD) { return 0; }
+    DWORD __stdcall GetPriority() { return 0; }
+    void __stdcall PreLoad() {}
+    D3DRESOURCETYPE __stdcall GetType() { return D3DRTYPE_TEXTURE; }
+    DWORD __stdcall SetLOD(DWORD) { return 0; }
+    DWORD __stdcall GetLOD() { return 0; }
+    DWORD __stdcall GetLevelCount() { return levelCount; }
+    HRESULT __stdcall SetAutoGenFilterType(D3DTEXTUREFILTERTYPE) { return -1; }
+    D3DTEXTUREFILTERTYPE __stdcall GetAutoGenFilterType() { return D3DTEXF_NONE; }
+    void __stdcall GenerateMipSubLevels() {}
+    HRESULT __stdcall GetLevelDesc(UINT, D3DSURFACE_DESC*) { return -1; }
+    HRESULT __stdcall GetSurfaceLevel(UINT level, IDirect3DSurface9** surface)
+    {
+        ++getLevelCalls;
+        RawSurface& raw = surfaces[level];
+        ++raw.addRefCalls;
+        *surface = &raw;
+        AddEvent(
+            isSource ? EVENT_GET_SOURCE : EVENT_GET_DESTINATION,
+            raw.id,
+            0,
+            level,
+            0,
+            false,
+            false);
+        return 0;
+    }
+    HRESULT __stdcall LockRect(UINT, D3DLOCKED_RECT*, const RECT*, DWORD) { return -1; }
+    HRESULT __stdcall UnlockRect(UINT) { return -1; }
+    HRESULT __stdcall AddDirtyRect(const RECT*) { return -1; }
 };
-
-static unsigned long __stdcall GetLevelCount(FakeTexture* self)
-{
-    return self->levelCount;
-}
-
-static long __stdcall GetSurfaceLevel(
-    FakeTexture* self,
-    unsigned long level,
-    void** surface)
-{
-    ++self->getLevelCalls;
-    RawSurface& raw = self->surfaces[level];
-    ++raw.addRefCalls;
-    *surface = &raw;
-    AddEvent(
-        self->isSource ? EVENT_GET_SOURCE : EVENT_GET_DESTINATION,
-        raw.id,
-        0,
-        level,
-        0,
-        false,
-        false);
-    return 0;
-}
-
-static FakeTextureVTable g_textureVTable;
 
 static void InitialiseFakeTexture(
     FakeTexture& texture,
@@ -238,13 +208,14 @@ static void InitialiseFakeTexture(
     unsigned long levelCount,
     unsigned long idBase)
 {
-    memset(&texture, 0, sizeof(texture));
-    texture.vtable = &g_textureVTable;
+    texture.getLevelCalls = 0;
     texture.levelCount = levelCount;
     texture.isSource = isSource;
     for (unsigned long level = 0; level != 4; ++level)
     {
         texture.surfaces[level].id = idBase + level;
+        texture.surfaces[level].addRefCalls = 0;
+        texture.surfaces[level].releaseCalls = 0;
     }
 }
 
@@ -320,8 +291,8 @@ static int RunMinCase(
 
     CTexture sourceWrapper;
     CTexture destinationWrapper;
-    sourceWrapper.texture00 = &source;
-    destinationWrapper.texture00 = &destination;
+    sourceWrapper.PD3DTexture = &source;
+    destinationWrapper.PD3DTexture = &destination;
     destinationWrapper.CopyFromTexture(sourceWrapper, filter);
 
     if (
@@ -370,10 +341,6 @@ static int RunMinCase(
 
 int main()
 {
-    memset(&g_textureVTable, 0, sizeof(g_textureVTable));
-    g_textureVTable.getLevelCount34 = GetLevelCount;
-    g_textureVTable.getSurfaceLevel48 = GetSurfaceLevel;
-
     int result = RunMinCase(2, 4, 2, 0x12345678, 10);
     if (result != 0)
     {
@@ -404,3 +371,6 @@ int main()
     printf("FABLETLC_TEXTURE_COPY_FROM_TEXTURE_BEHAVIOR PASS\n");
     return 0;
 }
+
+// The copy fixture owns mock resources; destruction is outside this probe.
+void CTexture::Uninitialise() {}

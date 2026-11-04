@@ -1,20 +1,10 @@
-#include "engine/CStreamingFontBankStateBlock.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CBankStateBlock {
-    int f0;
-    int f4;
-    int f8;
-    int fC;
-    char f10;
-};
+#include "fable_font_state_blocks.h"
 
-struct CStreamingFontBankStateBlock_Methods : CStreamingFontBankStateBlock {
-    void GetDefault(CBankStateBlock &out);
-};
-
-void CStreamingFontBankStateBlock_Methods::GetDefault(CBankStateBlock &out)
+void CStreamingFontBankStateBlock::GetDefault(CBankStateBlock& output)
 {
-    out.f4 = 0;
-    out.f8 = 0x190;
-    out.fC = 0;
-    out.f10 = 0;
+    unsigned char* state = reinterpret_cast<unsigned char*>(&output);
+    *reinterpret_cast<unsigned long*>(state + 4) = 0;
+    *reinterpret_cast<unsigned long*>(state + 8) = 400;
+    *reinterpret_cast<unsigned long*>(state + 0x0c) = 0;
+    state[0x10] = 0;
 }

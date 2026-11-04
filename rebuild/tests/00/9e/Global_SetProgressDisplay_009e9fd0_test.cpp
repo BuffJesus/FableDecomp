@@ -2,6 +2,10 @@
 
 #include "fable_boot.h"
 
+// Leaf-only storage; real CRT owner and shared boot identity are covered by
+// NativeProgressDisplayGlobal_test and ProgressCountedLifetime_test.
+CCountedProgressDisplay g_FableProgressDisplay_013CAA38;
+
 namespace
 {
     struct CountedDisplayView
@@ -65,14 +69,14 @@ int main()
     };
 
     ResetObservations();
-    g_FableProgressDisplayObject_013CAA38 = oldDisplay;
-    g_FableProgressDisplayReference_013CAA3C = &oldReference;
+    g_FableProgressDisplay_013CAA38.object = oldDisplay;
+    g_FableProgressDisplay_013CAA38.reference = &oldReference;
     SetProgressDisplay(
         reinterpret_cast<CCountedProgressDisplay*>(&incoming));
 
     if (
-        g_FableProgressDisplayObject_013CAA38 != incomingDisplay ||
-        g_FableProgressDisplayReference_013CAA3C != &incomingReference ||
+        g_FableProgressDisplay_013CAA38.object != incomingDisplay ||
+        g_FableProgressDisplay_013CAA38.reference != &incomingReference ||
         oldReference.owners != 0 ||
         incomingReference.owners != 3 ||
         g_destroyCalls != 1 ||
@@ -89,8 +93,8 @@ int main()
     SetProgressDisplay(
         reinterpret_cast<CCountedProgressDisplay*>(&empty));
     if (
-        g_FableProgressDisplayObject_013CAA38 != 0 ||
-        g_FableProgressDisplayReference_013CAA3C != 0 ||
+        g_FableProgressDisplay_013CAA38.object != 0 ||
+        g_FableProgressDisplay_013CAA38.reference != 0 ||
         incomingReference.owners != 0 ||
         g_destroyCalls != 1 ||
         g_destroyedObject != incomingDisplay ||
@@ -106,13 +110,13 @@ int main()
         DestroyDisplay,
         oldDisplay
     };
-    g_FableProgressDisplayObject_013CAA38 = 0;
-    g_FableProgressDisplayReference_013CAA3C = &orphanReference;
+    g_FableProgressDisplay_013CAA38.object = 0;
+    g_FableProgressDisplay_013CAA38.reference = &orphanReference;
     SetProgressDisplay(
         reinterpret_cast<CCountedProgressDisplay*>(&empty));
     if (
-        g_FableProgressDisplayObject_013CAA38 != 0 ||
-        g_FableProgressDisplayReference_013CAA3C != 0 ||
+        g_FableProgressDisplay_013CAA38.object != 0 ||
+        g_FableProgressDisplay_013CAA38.reference != 0 ||
         orphanReference.owners != 0 ||
         g_destroyCalls != 1 ||
         g_destroyedObject != oldDisplay ||

@@ -29,7 +29,11 @@ static bool CheckViewport(
 
 int main()
 {
-    CDisplayManager display;
+    // CDisplayManager has no default constructor (retail builds it from
+    // its CSystemManager); the call only needs an address.
+    static fable_u8 displayStorage[0x2C8];
+    CDisplayManager& display =
+        *reinterpret_cast<CDisplayManager*>(displayStorage);
 
     _controlfp(_RC_NEAR, _MCW_RC);
     C2DBoxF nearest = {10.6f, -20.6f, 630.4f, 460.5f};

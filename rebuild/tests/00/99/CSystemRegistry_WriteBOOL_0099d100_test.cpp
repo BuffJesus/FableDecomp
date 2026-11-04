@@ -51,7 +51,8 @@ CWideString::operator const wchar_t*() const
 int main()
 {
     wchar_t valueText[] = L"FirstRun";
-    CWideStringData wideStorage = {};
+    unsigned long wideStorageRaw_[4] = {0};
+    CWideStringData& wideStorage = *reinterpret_cast<CWideStringData*>(wideStorageRaw_);
     wideStorage.text = valueText;
     CWideStringData* wideSlot = &wideStorage;
     CWideString& valueName =

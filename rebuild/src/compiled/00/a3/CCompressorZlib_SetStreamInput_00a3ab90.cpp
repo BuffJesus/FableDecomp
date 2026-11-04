@@ -1,17 +1,8 @@
-struct CCompressorZlib {
-    char pad[0x1c];
-    void* streamInput;   // +0x1c
-    unsigned long size;  // +0x20
-    int field24;         // +0x24
-    int field28;         // +0x28
-    int field2c;         // +0x2c
-    void SetStreamInput(void* input, unsigned long size);
-};
+// CCompressorZlib::SetStreamInput(const void*, unsigned long) @ 0x00A3AB90
+// (Ego_r ?SetStreamInput@CCompressorZlib@@QAEXPBXK@Z). Points the stream at new input with no output buffer yet.
+#include "engine/CCompressorZlib.h"
 
-void CCompressorZlib::SetStreamInput(void* input, unsigned long sz)
+void CCompressorZlib::SetStreamInput(const void* data, unsigned long size)
 {
-    this->streamInput = input;
-    this->field28 = 0;
-    this->size = sz;
-    this->field2c = 0;
+    SetupStream(Stream, data, size, 0, 0);
 }

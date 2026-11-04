@@ -1,13 +1,6 @@
-union CPerformanceCounterValue {
-    struct { unsigned long LowPart; long HighPart; };
-    __int64 QuadPart;
-};
-__declspec(dllimport) int __stdcall QueryPerformanceCounter(CPerformanceCounterValue* value);
-struct CStopWatch { __int64 GetTicks() const; };
-__int64 CStopWatch::GetTicks() const
-{
-    CPerformanceCounterValue ticks;
-    if (QueryPerformanceCounter(&ticks))
-        return ticks.QuadPart;
-    return 0;
-}
+#include "fable_stopwatch.h"
+
+// Force the real inline member's out-of-line COMDAT to be emitted, as retail
+// does. This anchor is link scaffolding; the method body is in the header.
+typedef __int64 (CStopWatch::*StopWatchTicksMethod)() const;
+extern const StopWatchTicksMethod g_FableStopWatchGetTicks_0062F790 = &CStopWatch::GetTicks;

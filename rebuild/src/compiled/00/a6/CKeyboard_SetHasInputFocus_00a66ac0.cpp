@@ -1,1 +1,4 @@
-void __stdcall CKeyboard_SetHasInputFocus(int arg0) {}
+#include "fable_input_devices.h"
+void CKeyboard::SetHasInputFocus(bool)
+{
+}

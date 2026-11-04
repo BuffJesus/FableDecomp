@@ -1,101 +1,58 @@
-// Real-object ABI/behavior fixture for
-// NUISystem::CFrontEndManager::GetInstance @ 0x00595582.
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-#include <cstdio>
+#include "fable_nui_manager.h"
 
-extern "C" void* __fastcall
-CFrontEndManager_GetInstance_00595582();
+// Behaviour fixture for NUISystem::CFrontEndManager::GetInstance @ 0x00595582:
+// lazily allocates (0xE0 bytes) and constructs the singleton (m_pInstance);
+// an allocation failure caches and returns null without constructing.
 
-extern "C" void* FableFrontEndManagerSingleton = 0;
-
-static unsigned char g_storage[0xe0];
-static unsigned char g_constructed;
-static void* g_allocationResult;
-static void* g_constructorResult;
-static unsigned long g_allocatedBytes;
-static int g_allocateCalls;
-static void* g_constructorStorage;
-static int g_constructorCalls;
-
-extern "C" void* __cdecl
-FableFrontEndManagerAllocate(unsigned long bytes)
+static int g_newCalls;
+static size_t g_newSize;
+static bool g_newFails;
+void* operator new(size_t size)
 {
-    ++g_allocateCalls;
-    g_allocatedBytes = bytes;
-    return g_allocationResult;
+    ++g_newCalls;
+    g_newSize = size;
+    return g_newFails ? 0 : malloc(size);
 }
+void operator delete(void* p) { free(p); }
 
-extern "C" void* __fastcall
-FableFrontEndManagerConstructInstance(void* storage)
-{
-    ++g_constructorCalls;
-    g_constructorStorage = storage;
-    return g_constructorResult;
+NUISystem::CFrontEndManager* NUISystem::CFrontEndManager::m_pInstance = 0;
+
+CWideString::CWideString() {}
+CWideString::~CWideString() {}
+NUISystem::CObserver::CObserver() {}
+NUISystem::CObserver::~CObserver() {}
+CCharString::~CCharString() {}
+namespace _STL {
+template<class T,class A> list<T,A>::~list(){free(_M_node);}
+template<class T,class A> _Deque_base<T,A>::_Deque_base(const A&,size_t){}
+template<class T,class A> deque<T,A>::deque():_Deque_base<T,A>(A(),0){}
 }
+NUISystem::CFrontEndManager::~CFrontEndManager() {}
 
-static void Reset()
+static int g_ctorCalls;
+static void* g_ctorThis;
+NUISystem::CFrontEndManager::CFrontEndManager()
 {
-    FableFrontEndManagerSingleton = 0;
-    g_allocationResult = 0;
-    g_constructorResult = 0;
-    g_allocatedBytes = 0;
-    g_allocateCalls = 0;
-    g_constructorStorage = 0;
-    g_constructorCalls = 0;
-}
-
-static bool RunExisting()
-{
-    Reset();
-    FableFrontEndManagerSingleton = &g_constructed;
-    void* result = CFrontEndManager_GetInstance_00595582();
-    return result == &g_constructed &&
-        FableFrontEndManagerSingleton == &g_constructed &&
-        g_allocateCalls == 0 &&
-        g_constructorCalls == 0;
-}
-
-static bool RunAllocationFailure()
-{
-    Reset();
-    g_allocationResult = 0;
-    void* result = CFrontEndManager_GetInstance_00595582();
-    return result == 0 &&
-        FableFrontEndManagerSingleton == 0 &&
-        g_allocateCalls == 1 &&
-        g_allocatedBytes == 0xe0 &&
-        g_constructorCalls == 0;
-}
-
-static bool RunConstruction()
-{
-    Reset();
-    g_allocationResult = g_storage;
-    g_constructorResult = &g_constructed;
-    void* result = CFrontEndManager_GetInstance_00595582();
-    return result == &g_constructed &&
-        FableFrontEndManagerSingleton == &g_constructed &&
-        g_allocateCalls == 1 &&
-        g_allocatedBytes == 0xe0 &&
-        g_constructorCalls == 1 &&
-        g_constructorStorage == g_storage;
+    ++g_ctorCalls;
+    g_ctorThis = this;
+    m_bQuitFromGame = true;
 }
 
 int main()
 {
-    const bool existing = RunExisting();
-    const bool failed = RunAllocationFailure();
-    const bool constructed = RunConstruction();
-    if (!existing || !failed || !constructed)
-    {
-        std::printf(
-            "FSE2_00595582_TEST FAIL existing=%d failed=%d "
-            "constructed=%d\n",
-            existing ? 1 : 0,
-            failed ? 1 : 0,
-            constructed ? 1 : 0);
-        return 1;
-    }
-    std::puts("FSE2_00595582_TEST PASS");
-    return 0;
+    bool ok = true;
+    g_newFails = true;
+    ok = ok && NUISystem::CFrontEndManager::GetInstance() == 0 && g_ctorCalls == 0 && g_newCalls == 1;
+    g_newFails = false;
+    NUISystem::CFrontEndManager* first = NUISystem::CFrontEndManager::GetInstance();
+    ok = ok && first != 0 && g_ctorCalls == 1 && g_ctorThis == first && first->m_bQuitFromGame;
+    ok = ok && g_newCalls == 2 && g_newSize == 0xE0;
+    ok = ok && NUISystem::CFrontEndManager::GetInstance() == first && g_ctorCalls == 1 && g_newCalls == 2;
+    if (ok) printf("FSE2_00595582_TEST PASS\n");
+    else printf("FAIL ctor=%d new=%d size=%u\n", g_ctorCalls, g_newCalls, (unsigned)g_newSize);
+    return ok ? 0 : 1;
 }

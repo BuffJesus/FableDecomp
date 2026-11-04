@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stddef.h>
+#include "fable_graphic_info.h"
+#include "frame_data_stop_finished_retail.h"
+#include "frame_data_stop_finished_aliases.h"
+extern "C" __declspec(dllimport) void* __stdcall VirtualAlloc(void*,unsigned long,unsigned long,unsigned long);
+extern "C" __declspec(dllimport) int __stdcall VirtualFree(void*,unsigned long,unsigned long);
+extern "C" bool __fastcall StopLoading(void*,void*);
+static unsigned arena[4096],initial[4096],images[8][4096],mode,step,count,snapshots,location,mutation,finished,sizeProfile,calls;
+static unsigned ptr(unsigned o){return (unsigned)arena+location+o;}
+static unsigned& word(unsigned p,unsigned o){return *(unsigned*)(p+o);}
+static unsigned sizeValue(unsigned n){const unsigned p[3]={0,0x80000000,0xffffffff};return p[n%3];}
+static void require(bool b){if(!b)abort();}
+static void snapshot(){if(!mode){require(count<8);memcpy(images[count++],arena,sizeof(arena));}else{require(step<count&&!memcmp(images[step++],arena,sizeof(arena)));++snapshots;}}
+static void event(unsigned kind,unsigned arg){++calls;word(ptr(0x2000),0)=calls;word(ptr(0x2000),4)=kind;word(ptr(0x2000),8)=arg;if(kind==0&&mutation==1){word(ptr(0x100),48)=ptr(0x800);word(ptr(0x100),52)=ptr(0xa00);}if(kind==1&&mutation==2)word(ptr(0x100),52)=ptr(0xa00);if(kind==1&&mutation==3)word(ptr(0x100),52)=0;if(kind==3&&mutation==4){word(ptr(0x100),44)=0;word(ptr(0x100),28)=ptr(0x1400);}if(kind==4&&mutation==5){word(ptr(0x100),44)=ptr(0x1800);word(ptr(0x100),8)=ptr(0x1600);}if(kind==5&&mutation==6){word(ptr(0x100),8)=0;word(ptr(0x100),20)=0x12345678;}if(kind==0&&mutation==7)word(ptr(0x100),48)=0;snapshot();}
+static void __stdcall enter(void* section){require((unsigned)section==ptr(0x114c));event(0,ptr(0x400));}
+static void __stdcall leave(void* section){require((unsigned)section==ptr(0x114c));if(mutation==7)*(unsigned char*)ptr(0x444)=0;event(6,(unsigned)section);}
+static int __stdcall tryEnter(void*){abort();return 0;}
+extern "C"{unsigned EnterIAT=(unsigned)&enter,TryIAT=(unsigned)&tryEnter,LeaveIAT=(unsigned)&leave;}
+static bool modelFinished(unsigned data){unsigned section=word(data,40)+0x14c;enter((void*)section);bool result=*(unsigned char*)(data+68)!=0;if(result)*(unsigned char*)(data+70)=0;leave((void*)section);return result;}
+
+static void __fastcall deleteData(void* p){require((unsigned)p==ptr(0xc00)||(unsigned)p==ptr(0xd00));event(1,(unsigned)p);}
+void __cdecl operator delete(void* p){require(!p||(unsigned)p==ptr(0x600)||(unsigned)p==ptr(0xa00));event(2,(unsigned)p);}
+bool CManagedTexture::Release(){require((unsigned)this==ptr(0x128));event(3,(unsigned)this);return (mutation&1)!=0;}
+unsigned long CGraphicFrameData::Sizeof()const{require((unsigned)this==ptr(0x1400));event(4,(unsigned)this);return sizeValue(sizeProfile);}
+unsigned long CManagedTexture::Sizeof()const{require((unsigned)this==ptr(0x128));event(5,(unsigned)this);return sizeValue(sizeProfile+1);}
+static bool model(){unsigned self=ptr(0x100),data=word(self,48);if(data){if(!modelFinished(data))return false;unsigned info=word(self,52);if(info){--word(info,0);info=word(self,52);if(!word(info,0)){deleteData((void*)word(info,8));operator delete((void*)word(self,52));}}word(self,52)=word(self,48)=0;((CManagedTexture*)(self+40))->Release();}unsigned frame=word(self,28),frameSize=frame?((CGraphicFrameData*)frame)->Sizeof()+4:4;unsigned size=frameSize+68;if(word(self,44))size+=((CManagedTexture*)(self+40))->Sizeof();unsigned list=word(self,8);if(list){word(list,36)-=word(self,20);word(list,36)+=size;}word(self,20)=size;return true;}
+int main(){unsigned char* code=(unsigned char*)VirtualAlloc(0,sizeof(retailCode),0x3000,0x40);require(code!=0);memcpy(code,retailCode,sizeof(retailCode));bool(CBankFileAsyncData::*isFinished)()const=&CBankFileAsyncData::IsFinished;bool(CManagedTexture::*release)()=&CManagedTexture::Release;unsigned long(CGraphicFrameData::*frameSize)()const=&CGraphicFrameData::Sizeof;unsigned long(CManagedTexture::*managedSize)()const=&CManagedTexture::Sizeof;unsigned targets[8]={0,0,0,0,(unsigned)&operator delete,(unsigned)&EnterIAT,(unsigned)&TryIAT,(unsigned)&LeaveIAT};memcpy(&targets[0],&isFinished,4);memcpy(&targets[1],&release,4);memcpy(&targets[2],&frameSize,4);memcpy(&targets[3],&managedSize,4);for(unsigned f=0;f<sizeof(fixups)/sizeof(fixups[0]);++f){unsigned target=fixups[f].target>=0x80000000?targets[fixups[f].target-0x80000000]:(unsigned)(code+fixups[f].target);*(unsigned*)(code+fixups[f].site)=fixups[f].kind==20?target-(unsigned)(code+fixups[f].site+4):target;}const unsigned refs[6]={0,1,2,3,0x80000000,0xffffffff};unsigned cases=0;
+for(unsigned live=0;live<2;++live)for(finished=0;finished<2;++finished)for(unsigned infoLive=0;infoLive<2;++infoLive)for(unsigned ref=0;ref<6;++ref)for(unsigned frame=0;frame<2;++frame)for(unsigned managed=0;managed<2;++managed)for(mutation=0;mutation<8;++mutation)for(sizeProfile=0;sizeProfile<3;++sizeProfile)for(unsigned bank=0;bank<3;++bank)for(unsigned place=0;place<2;++place)for(unsigned fill=0;fill<2;++fill){location=place?0x1800:0;memset(arena,fill?0xa9:0,sizeof(arena));word(ptr(0x400),40)=ptr(0x1000);*(unsigned char*)ptr(0x444)=(unsigned char)finished;*(unsigned char*)ptr(0x446)=(unsigned char)refs[ref];word(ptr(0x100),48)=live?ptr(0x400):0;word(ptr(0x100),52)=infoLive?ptr(0x600):0;word(ptr(0x100),28)=frame?ptr(0x1400):0;word(ptr(0x100),44)=managed?ptr(0x1800):0;word(ptr(0x100),8)=bank==0?0:bank==1?ptr(0x1600):ptr(0xf0);word(ptr(0x100),20)=sizeValue(sizeProfile+2);word(ptr(0x1600),36)=sizeValue(sizeProfile+1);word(ptr(0x600),0)=refs[ref];word(ptr(0xa00),0)=refs[(ref+1)%6];word(ptr(0x600),4)=word(ptr(0xa00),4)=(unsigned)&deleteData;word(ptr(0x600),8)=ptr(0xc00);word(ptr(0xa00),8)=ptr(0xd00);memset((void*)ptr(0x2000),0,16);memcpy(initial,arena,sizeof(arena));count=0;for(mode=0;mode<3;++mode){memcpy(arena,initial,sizeof(arena));step=calls=0;bool result=!mode?model():(mode==1?((bool(__fastcall*)(void*,void*))code):StopLoading)((void*)ptr(0x100),0);word(ptr(0x2000),12)=result?1:0;snapshot();if(mode)require(step==count);}++cases;}
+VirtualFree(code,0,0x8000);printf("NATIVE_FRAME_DATA_STOP_FINISHED_PASS cases=%u snapshots=%u\n",cases,snapshots);return 0;}

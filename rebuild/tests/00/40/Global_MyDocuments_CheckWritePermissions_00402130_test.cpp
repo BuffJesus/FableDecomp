@@ -1,345 +1,342 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
+
+// kernel32 (the VC7.1 toolset here has no Platform SDK headers).
+extern "C"
+{
+    __declspec(dllimport) void* __stdcall CreateFileW(
+        const wchar_t*, unsigned long, unsigned long, void*,
+        unsigned long, unsigned long, void*);
+    __declspec(dllimport) int __stdcall CloseHandle(void*);
+    __declspec(dllimport) int __stdcall DeleteFileW(const wchar_t*);
+    __declspec(dllimport) unsigned long __stdcall GetFileAttributesW(
+        const wchar_t*);
+    __declspec(dllimport) unsigned long __stdcall GetTempPathW(
+        unsigned long, wchar_t*);
+    __declspec(dllimport) int __stdcall CreateDirectoryW(
+        const wchar_t*, void*);
+    __declspec(dllimport) int __stdcall RemoveDirectoryW(const wchar_t*);
+}
+
+#define MAX_PATH 260
+#define INVALID_HANDLE_VALUE (reinterpret_cast<void*>(-1))
+#define INVALID_FILE_ATTRIBUTES 0xFFFFFFFFu
+#define GENERIC_ALL 0x10000000u
+#define GENERIC_WRITE 0x40000000u
+#define FILE_SHARE_READ 1u
+#define FILE_SHARE_WRITE 2u
+#define CREATE_ALWAYS 2u
+#define OPEN_EXISTING 3u
 
 #include "fable_write_permissions.h"
 
-extern "C" fable_u8 g_FableWriteEmptyWide_0122D70C = 0;
-extern "C" fable_u8 g_FableWriteEmptyNarrow_0122D70E = 0;
-extern "C" fable_u8 g_FableWriteRestrictedKey_0122D710 = 0;
-extern "C" fable_u8 g_FableWriteOpenMode_0122D744 = 0;
-extern "C" fable_u8 g_FableWriteProbeSuffix_0122D750 = 0;
-extern "C" fable_u8 g_FableWriteRedirectedKey_0122D7E4 = 0;
-extern "C" wchar_t g_FableWriteRedirectedPrefix_0122D818[] = L"\\\\";
-extern "C" fable_u8 g_FableWriteEmptyCharData_0129AAF4 = 0;
+// Recorders for the real callees. The kernel32 import slots forward to the
+// real API, so the probe runs against a real temporary folder. A CWideString's
+// storage is a CWideStringData whose first/last words bound its text.
+char g_FableEmptyNarrowString_0129AAF4[1] = {0};
 
 namespace
 {
-    struct WideSpan
+    const char kRestricted[] = "TEXT_GUI_WINLOGO_ERROR_MY_DOCS_FOLDER_RESTRICTED";
+    const char kRedirected[] = "TEXT_GUI_WINLOGO_ERROR_MY_DOCS_FOLDER_REDIRECTED";
+    const wchar_t kProbeSuffix[] =
+        L"This directory has restricted permissions, and Fable cannot run properly";
+
+    struct WideRecord
     {
-        const wchar_t* begin;
-        const wchar_t* end;
+        // Raw storage: CWideStringData has no default ctor.
+        unsigned long dataRaw_[4];
+        CWideStringData& Data() { return *reinterpret_cast<CWideStringData*>(dataRaw_); }
+        wchar_t text[MAX_PATH * 2];
     };
 
-    struct NarrowData
+    WideRecord g_wide[8];
+    unsigned int g_wideUsed;
+    CCharStringData g_errorData;
+
+    enum Override
     {
-        const char* text;
-        fable_u32 length;
+        kReal,
+        kCreateSucceedsOnDevice,
+        kDeleteFails
     };
 
-    enum Failure
-    {
-        kSuccess,
-        kCreateFailure,
-        kOpenFailure,
-        kDeleteFailure
-    };
-
-    const wchar_t g_localPrefix[] = L"C:";
-    const wchar_t g_redirectPrefix[] = L"\\\\";
-    const wchar_t g_probePath[] = L"C:\\probe.tmp";
-    const char g_restrictedKey[] =
-        "TEXT_GUI_WINLOGO_ERROR_MY_DOCS_FOLDER_RESTRICTED";
-    const char g_redirectedKey[] =
-        "TEXT_GUI_WINLOGO_ERROR_MY_DOCS_FOLDER_REDIRECTED";
-    WideSpan g_span;
-    NarrowData g_errorData;
-    bool g_redirected;
-    Failure g_failure;
-    bool g_argumentsValid;
+    Override g_override;
     unsigned int g_createCalls;
-    unsigned int g_closeHandleCalls;
-    unsigned int g_openCalls;
-    unsigned int g_closeFileCalls;
+    unsigned int g_openedFiles;
     unsigned int g_deleteCalls;
-    unsigned int g_wideDestroyCalls;
-    unsigned int g_charDestroyCalls;
-    const char* g_assignedKey;
-    fable_u32 g_crc;
+    unsigned int g_subStringCalls;
+    unsigned int g_wideDestructs;
+    unsigned int g_charDestructs;
+    const char* g_crcText;
+    wchar_t g_probePath[MAX_PATH * 2];
 
-    void Reset(bool redirected, Failure failure)
+    CWideStringData*& Storage(CWideString& value)
     {
-        g_redirected = redirected;
-        g_failure = failure;
-        g_argumentsValid = true;
+        return *reinterpret_cast<CWideStringData**>(&value);
+    }
+
+    const CWideStringData* Storage(const CWideString& value)
+    {
+        return *reinterpret_cast<CWideStringData* const*>(&value);
+    }
+
+    CWideStringData* MakeWide(const wchar_t* text, size_t length)
+    {
+        WideRecord& record = g_wide[g_wideUsed++];
+        wcsncpy(record.text, text, length);
+        record.text[length] = 0;
+        record.Data().text = record.text;
+        record.Data().unknown04 =
+            reinterpret_cast<fable_u32>(record.text + length);
+        record.Data().unknown08 = record.Data().unknown04;
+        record.Data().owners = 1;
+        return &record.Data();
+    }
+
+    void* __stdcall CreateFileRecorder(
+        const wchar_t* fileName,
+        unsigned long desiredAccess,
+        unsigned long shareMode,
+        void* securityAttributes,
+        unsigned long creationDisposition,
+        unsigned long flagsAndAttributes,
+        void* templateFile)
+    {
+        ++g_createCalls;
+        wcscpy(g_probePath, fileName);
+        if (desiredAccess != GENERIC_ALL ||
+            shareMode != (FILE_SHARE_READ | FILE_SHARE_WRITE) ||
+            creationDisposition != CREATE_ALWAYS ||
+            flagsAndAttributes != 0)
+            return INVALID_HANDLE_VALUE;
+        if (g_override == kCreateSucceedsOnDevice)
+            return CreateFileW(L"NUL", GENERIC_WRITE, 0, 0, OPEN_EXISTING, 0, 0);
+        return CreateFileW(
+            fileName,
+            desiredAccess,
+            shareMode,
+            securityAttributes,
+            creationDisposition,
+            flagsAndAttributes,
+            templateFile);
+    }
+
+    int __stdcall CloseHandleRecorder(void* handle)
+    {
+        return CloseHandle(handle);
+    }
+
+    int __stdcall DeleteFileRecorder(const wchar_t* fileName)
+    {
+        ++g_deleteCalls;
+        if (g_override == kDeleteFails)
+        {
+            DeleteFileW(fileName);
+            return 0;
+        }
+        return DeleteFileW(fileName);
+    }
+
+    void Reset(Override override)
+    {
+        g_wideUsed = 0;
+        g_override = override;
         g_createCalls = 0;
-        g_closeHandleCalls = 0;
-        g_openCalls = 0;
-        g_closeFileCalls = 0;
         g_deleteCalls = 0;
-        g_wideDestroyCalls = 0;
-        g_charDestroyCalls = 0;
-        g_assignedKey = 0;
-        g_crc = 0;
-
-        const wchar_t* prefix =
-            redirected ? g_redirectPrefix : g_localPrefix;
-        g_span.begin = prefix;
-        g_span.end = prefix + 2;
-        g_errorData.text = 0;
-        g_errorData.length = 0;
+        g_subStringCalls = 0;
+        g_wideDestructs = 0;
+        g_charDestructs = 0;
+        g_crcText = 0;
+        g_probePath[0] = 0;
     }
 
-    bool Run(bool redirected, Failure failure, bool expectError)
+    fable_u32 Check(const wchar_t* path)
     {
-        Reset(redirected, failure);
-        fable_u8 pathBytes[sizeof(CWideString)] = {0};
-        const CWideString& path =
-            *reinterpret_cast<const CWideString*>(pathBytes);
+        CWideString input;
+        Storage(input) = MakeWide(path, wcslen(path));
         const fable_u32 result =
-            FableCheckMyDocumentsWritePermissions_00402130(path);
-        return
-            g_argumentsValid &&
-            (expectError ? result == g_crc && result != 0 : result == 0) &&
-            g_charDestroyCalls == 1;
+            FableCheckMyDocumentsWritePermissions_00402130(input);
+        Storage(input) = 0;
+        return result;
+    }
+
+    bool FileExists(const wchar_t* path)
+    {
+        return GetFileAttributesW(path) != INVALID_FILE_ATTRIBUTES;
     }
 }
 
-extern "C" void FABLE_FASTCALL
-FableWriteCharConstruct_00402130(void* string, void*)
+typedef void* (__stdcall* CreateFileSlot)(
+    const wchar_t*, unsigned long, unsigned long, void*,
+    unsigned long, unsigned long, void*);
+typedef int (__stdcall* CloseHandleSlot)(void*);
+typedef int (__stdcall* DeleteFileSlot)(const wchar_t*);
+
+extern "C" CreateFileSlot g_FableCreateFileW_0143FE2C = &CreateFileRecorder;
+extern "C" CloseHandleSlot g_FableCloseHandle_0143FE30 = &CloseHandleRecorder;
+extern "C" DeleteFileSlot g_FableDeleteFileW_0143FE34 = &DeleteFileRecorder;
+
+CWideString::CWideString()
+    : storage_(0)
 {
-    *reinterpret_cast<void**>(string) = 0;
 }
 
-extern "C" void* FABLE_FASTCALL
-FableWriteWideSubstring_00402130(
-    const void*,
-    void*,
-    void* result,
-    fable_i32 start,
-    fable_i32 count)
+CWideString::~CWideString()
 {
-    g_argumentsValid =
-        g_argumentsValid &&
-        start == 0 &&
-        count == 2;
-    *reinterpret_cast<WideSpan**>(result) = &g_span;
-    return result;
+    ++g_wideDestructs;
 }
 
-extern "C" fable_i32 FABLE_CDECL
-FableWriteWideCompare_00402130(
-    const wchar_t* left,
+CWideString::operator const wchar_t*() const
+{
+    return storage_ != 0 ? storage_->text : L"";
+}
+
+CWideString::CWideString(const wchar_t* text)
+    : storage_(MakeWide(text, wcslen(text)))
+{
+}
+
+CWideString CWideString::GetSubString(
+    unsigned long start,
+    unsigned long count) const
+{
+    ++g_subStringCalls;
+    wchar_t buffer[MAX_PATH * 2] = {0};
+    const wchar_t* text = storage_ != 0 ? storage_->text : L"";
+    const size_t length = wcslen(text);
+    if (start < length)
+    {
+        const size_t available = length - start;
+        wcsncpy(buffer, text + start, count < available ? count : available);
+    }
+    return CWideString(buffer);
+}
+
+CWideString FABLE_FASTCALL operator+(
+    const CWideString& left,
     const wchar_t* right)
 {
-    return wcscmp(left, right);
+    wchar_t buffer[MAX_PATH * 2];
+    wcscpy(buffer, static_cast<const wchar_t*>(left));
+    wcscat(buffer, right);
+    return CWideString(buffer);
 }
 
-extern "C" fable_i32 FABLE_CDECL
-FableWriteWideMemoryCompare_00402130(
-    const wchar_t* left,
-    const wchar_t* right,
-    fable_i32 count)
+int __cdecl MemCmp_Unsigned16(
+    const unsigned short* lhs,
+    const unsigned short* rhs,
+    unsigned long count)
 {
-    return memcmp(left, right, count * sizeof(wchar_t));
-}
-
-extern "C" void FABLE_FASTCALL
-FableWriteWideDestroy_00402130(void* string, void*)
-{
-    ++g_wideDestroyCalls;
-    *reinterpret_cast<void**>(string) = 0;
-}
-
-extern "C" void* FABLE_FASTCALL
-FableWriteCharAssignLiteral_00402130(
-    void* string,
-    void*,
-    const char* literal)
-{
-    const char* restricted =
-        reinterpret_cast<const char*>(&g_FableWriteRestrictedKey_0122D710);
-    const char* redirected =
-        reinterpret_cast<const char*>(&g_FableWriteRedirectedKey_0122D7E4);
-    g_assignedKey =
-        literal == redirected ? g_redirectedKey :
-        literal == restricted ? g_restrictedKey :
-        0;
-    g_argumentsValid =
-        g_argumentsValid &&
-        g_assignedKey != 0;
-    g_errorData.text = g_assignedKey;
-    g_errorData.length =
-        static_cast<fable_u32>(strlen(g_assignedKey));
-    *reinterpret_cast<NarrowData**>(string) = &g_errorData;
-    return string;
-}
-
-extern "C" void FABLE_FASTCALL
-FableWriteWideAppendLiteral_00402130(
-    void* result,
-    const void*,
-    const wchar_t* right)
-{
-    g_argumentsValid =
-        g_argumentsValid &&
-        right ==
-            reinterpret_cast<const wchar_t*>(
-                &g_FableWriteProbeSuffix_0122D750);
-    *reinterpret_cast<const wchar_t**>(result) = g_probePath;
-}
-
-extern "C" const wchar_t* FABLE_FASTCALL
-FableWriteWideConversion_00402130(const void*, void*)
-{
-    return g_probePath;
-}
-
-extern "C" void* FABLE_CDECL
-FableWriteWideFileOpen_00402130(
-    const wchar_t* filename,
-    const wchar_t*)
-{
-    ++g_openCalls;
-    g_argumentsValid =
-        g_argumentsValid &&
-        filename == g_probePath;
-    return g_failure == kOpenFailure ? 0 : &g_span;
-}
-
-extern "C" fable_i32 FABLE_CDECL
-FableWriteFileClose_00402130(void* stream)
-{
-    ++g_closeFileCalls;
-    g_argumentsValid =
-        g_argumentsValid &&
-        stream == &g_span;
+    for (unsigned long index = 0; index < count; ++index)
+    {
+        if (lhs[index] != rhs[index])
+            return lhs[index] < rhs[index] ? -1 : 1;
+    }
     return 0;
 }
 
-extern "C" bool FABLE_FASTCALL
-FableWriteCharNotEqual_00402130(
-    const void* string,
-    void*,
-    const char*)
+CCharString::CCharString()
+    : storage_(0)
 {
-    return *reinterpret_cast<NarrowData* const*>(string) != 0;
 }
 
-extern "C" fable_u32 FABLE_FASTCALL
-FableWriteCrc_00402130(
+CCharString::~CCharString()
+{
+    ++g_charDestructs;
+}
+
+const CCharString& CCharString::operator=(const char* text)
+{
+    g_errorData.text = const_cast<char*>(text);
+    g_errorData.unknown04 = static_cast<fable_u32>(strlen(text));
+    storage_ = &g_errorData;
+    return *this;
+}
+
+bool CCharString::operator!=(const char* other) const
+{
+    const char* text = storage_ != 0 ? storage_->text : "";
+    return strcmp(text, other) != 0;
+}
+
+fable_u32 FABLE_FASTCALL FableCRC_Calc_004014A0(
     fable_u32 seed,
     const void* data,
-    fable_u32 length)
+    fable_u32 byteCount)
 {
-    g_argumentsValid =
-        g_argumentsValid &&
-        seed == 0 &&
-        data == g_assignedKey &&
-        length == strlen(g_assignedKey);
-    g_crc =
-        g_assignedKey == g_redirectedKey ?
-            0xD1EC7EDU :
-            0x5E571C7U;
-    return g_crc;
+    const char* text = static_cast<const char*>(data);
+    g_crcText =
+        seed == 0 && byteCount == strlen(text) ? text : "bad-crc-input";
+    return 0xC0DE0000u + byteCount;
 }
-
-extern "C" void FABLE_FASTCALL
-FableWriteCharDestroy_00402130(void* string, void*)
-{
-    ++g_charDestroyCalls;
-    *reinterpret_cast<void**>(string) = 0;
-}
-
-extern "C" void* __stdcall
-FableWriteCreateFileStub_00402130(
-    const wchar_t* filename,
-    unsigned long desiredAccess,
-    unsigned long shareMode,
-    void*,
-    unsigned long creationDisposition,
-    unsigned long flags,
-    void*)
-{
-    ++g_createCalls;
-    g_argumentsValid =
-        g_argumentsValid &&
-        filename == g_probePath &&
-        desiredAccess == 0x10000000 &&
-        shareMode == 3 &&
-        creationDisposition == 2 &&
-        flags == 0;
-    return
-        g_failure == kCreateFailure ?
-            reinterpret_cast<void*>(-1) :
-            &g_errorData;
-}
-
-extern "C" int __stdcall
-FableWriteCloseHandleStub_00402130(void* handle)
-{
-    ++g_closeHandleCalls;
-    g_argumentsValid =
-        g_argumentsValid &&
-        handle == &g_errorData;
-    return 1;
-}
-
-extern "C" int __stdcall
-FableWriteDeleteFileStub_00402130(const wchar_t* filename)
-{
-    ++g_deleteCalls;
-    g_argumentsValid =
-        g_argumentsValid &&
-        filename == g_probePath;
-    return g_failure == kDeleteFailure ? 0 : 1;
-}
-
-extern "C" void* g_FableCreateFileW_0143FE2C =
-    FableWriteCreateFileStub_00402130;
-extern "C" void* g_FableCloseHandle_0143FE30 =
-    FableWriteCloseHandleStub_00402130;
-extern "C" void* g_FableDeleteFileW_0143FE34 =
-    FableWriteDeleteFileStub_00402130;
 
 int main()
 {
-    const bool redirected =
-        Run(true, kSuccess, true) &&
-        g_assignedKey == g_redirectedKey &&
-        g_createCalls == 0 &&
-        g_wideDestroyCalls == 1;
-    const bool success =
-        Run(false, kSuccess, false) &&
-        g_assignedKey == 0 &&
-        g_createCalls == 1 &&
-        g_closeHandleCalls == 1 &&
-        g_openCalls == 1 &&
-        g_closeFileCalls == 1 &&
-        g_deleteCalls == 1 &&
-        g_wideDestroyCalls == 2;
-    const bool createFailure =
-        Run(false, kCreateFailure, true) &&
-        g_assignedKey == g_restrictedKey &&
-        g_createCalls == 1 &&
-        g_closeHandleCalls == 0 &&
-        g_openCalls == 0 &&
-        g_deleteCalls == 0;
-    const bool openFailure =
-        Run(false, kOpenFailure, true) &&
-        g_closeHandleCalls == 1 &&
-        g_openCalls == 1 &&
-        g_closeFileCalls == 0 &&
-        g_deleteCalls == 0;
-    const bool deleteFailure =
-        Run(false, kDeleteFailure, true) &&
-        g_closeFileCalls == 1 &&
-        g_deleteCalls == 1;
+    wchar_t folder[MAX_PATH];
+    wchar_t probe[MAX_PATH * 2];
+    const char* failure = 0;
 
-    if (!(
-        redirected &&
-        success &&
-        createFailure &&
-        openFailure &&
-        deleteFailure))
+    GetTempPathW(MAX_PATH, folder);
+    wcscat(folder, L"fabletlc_write_probe\\");
+    CreateDirectoryW(folder, 0);
+    wcscpy(probe, folder);
+    wcscat(probe, kProbeSuffix);
+    DeleteFileW(probe);
+
+    // A writable local folder: the probe file is created, reopened, deleted.
+    Reset(kReal);
+    fable_u32 result = Check(folder);
+    if (result != 0 || g_createCalls != 1 || g_deleteCalls != 1 ||
+        wcscmp(g_probePath, probe) != 0 || FileExists(probe) ||
+        g_subStringCalls != 1 || g_charDestructs != 1 ||
+        g_wideDestructs != 3)
+        failure = "writable";
+
+    // A redirected (UNC) folder is rejected before touching the disk.
+    Reset(kReal);
+    result = Check(L"\\\\server\\share\\My Documents\\");
+    if (!failure &&
+        (result != 0xC0DE0000u + sizeof(kRedirected) - 1 ||
+         g_crcText == 0 || strcmp(g_crcText, kRedirected) != 0 ||
+         g_createCalls != 0 || g_charDestructs != 1 || g_wideDestructs != 2))
+        failure = "redirected";
+
+    // A missing folder: CreateFileW fails.
+    Reset(kReal);
+    result = Check(L"Z:\\fabletlc\\definitely\\missing\\");
+    if (!failure &&
+        (result != 0xC0DE0000u + sizeof(kRestricted) - 1 ||
+         strcmp(g_crcText, kRestricted) != 0 ||
+         g_createCalls != 1 || g_deleteCalls != 0 || g_wideDestructs != 3))
+        failure = "create";
+
+    // CreateFileW succeeds but the CRT cannot open the probe path.
+    Reset(kCreateSucceedsOnDevice);
+    result = Check(L"Z:\\fabletlc\\definitely\\missing\\");
+    if (!failure &&
+        (result != 0xC0DE0000u + sizeof(kRestricted) - 1 ||
+         strcmp(g_crcText, kRestricted) != 0 ||
+         g_createCalls != 1 || g_deleteCalls != 0))
+        failure = "open";
+
+    // The probe cannot be deleted.
+    Reset(kDeleteFails);
+    result = Check(folder);
+    if (!failure &&
+        (result != 0xC0DE0000u + sizeof(kRestricted) - 1 ||
+         strcmp(g_crcText, kRestricted) != 0 ||
+         g_deleteCalls != 1))
+        failure = "delete";
+
+    DeleteFileW(probe);
+    RemoveDirectoryW(folder);
+
+    if (failure != 0)
     {
-        printf(
-            "FABLETLC_MY_DOCUMENTS_WRITE_PERMISSIONS FAIL "
-            "redirected=%d success=%d create=%d open=%d delete=%d\n",
-            redirected,
-            success,
-            createFailure,
-            openFailure,
-            deleteFailure);
+        printf("FABLETLC_MY_DOCUMENTS_WRITE_PERMISSIONS FAIL %s\n", failure);
         return 1;
     }
 

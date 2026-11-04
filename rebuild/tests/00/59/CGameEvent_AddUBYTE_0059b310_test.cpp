@@ -1,45 +1,7 @@
 #include <stdio.h>
-
-struct CGameEvent
-{
-    void Helper(void* p, int n);
-    CGameEvent* AddUBYTE();
-    int marker;
-};
-
-static void* g_seenPtr = 0;
-static int   g_seenN   = -1;
-static int   g_calls   = 0;
-
-void CGameEvent::Helper(void* p, int n)
-{
-    g_seenPtr = p;
-    g_seenN   = n;
-    g_calls  += 1;
-}
-
-CGameEvent* CGameEvent::AddUBYTE()
-{
-    unsigned char buf;
-    Helper(&buf, 0);
-    return this;
-}
-
-int main()
-{
-    CGameEvent ev;
-    ev.marker = 0x1234;
-
-    CGameEvent* r = ev.AddUBYTE();
-
-    int ok = 1;
-    if (r != &ev)        ok = 0;   // returns this
-    if (g_calls != 1)    ok = 0;   // Helper called exactly once
-    if (g_seenN != 0)    ok = 0;   // n == 0
-    if (g_seenPtr == 0)  ok = 0;   // a real buffer pointer was passed
-
-    if (ok) printf("ADDUBYTE_OK marker=%x\n", ev.marker);
-    else    printf("ADDUBYTE_FAIL calls=%d n=%d ptr=%p ret=%p this=%p\n",
-                   g_calls, g_seenN, g_seenPtr, (void*)r, (void*)&ev);
-    return ok ? 0 : 1;
-}
+#include <string.h>
+#include <new>
+#include "fable_nui_manager.h"
+static int calls;static void* receiver;static size_t amount=99;
+namespace _STL {template<class T,class A> _Deque_base<T,A>::_Deque_base(const A&,size_t n){++calls;receiver=this;amount=n;memset(this,0x72,sizeof(*this));}template _Deque_base<NUISystem::CComponent*>::_Deque_base(const allocator<NUISystem::CComponent*>&,size_t);}
+int main(){typedef _STL::stack<NUISystem::CComponent*> S;union{double align;unsigned char b[48];}u;memset(u.b,0xa5,48);S* p=new(u.b+4)S;if(calls!=1||receiver!=p||amount!=0||sizeof(*p)!=40)return 1;for(int i=0;i<40;++i)if(u.b[4+i]!=0x72)return 2;for(int j=0;j<4;++j)if(u.b[j]!=0xa5||u.b[j+44]!=0xa5)return 3;puts("SCREEN_STACK_CTOR_PASS");return 0;}

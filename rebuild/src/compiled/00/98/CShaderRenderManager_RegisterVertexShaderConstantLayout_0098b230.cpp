@@ -1,46 +1,11 @@
-#include "rebuild_abi.h"
+#include "fable_shader_render_manager.h"
 
-struct CVertexShaderConstantLayout;
-
-struct CVertexShaderConstantLayoutVectorView
+void CShaderRenderManager::RegisterVertexShaderConstantLayout(long index,const CVertexShaderConstantLayout* layout)
 {
-    CVertexShaderConstantLayout** begin00;
-    CVertexShaderConstantLayout** end04;
-    CVertexShaderConstantLayout** capacity08;
-
-    fable_u32 size() const
+    if(static_cast<unsigned long>(index)>=ConstantLayouts().size())
     {
-        return static_cast<fable_u32>(end04 - begin00);
+        const CVertexShaderConstantLayout* empty=0;
+        ConstantLayouts().resize(static_cast<unsigned long>(index+1),empty);
     }
-
-    void resize(
-        fable_u32 count,
-        CVertexShaderConstantLayout* const& value);
-};
-
-struct CShaderRenderManagerRegisterLayoutView
-{
-    fable_u8 unknown00[0x0C];
-    CVertexShaderConstantLayoutVectorView constantLayouts0C;
-
-    void RegisterVertexShaderConstantLayout(
-        fable_i32 index,
-        CVertexShaderConstantLayout* layout);
-};
-
-void CShaderRenderManagerRegisterLayoutView::
-RegisterVertexShaderConstantLayout(
-    fable_i32 index,
-    CVertexShaderConstantLayout* layout)
-{
-    if (
-        static_cast<fable_u32>(index) >=
-        constantLayouts0C.size())
-    {
-        CVertexShaderConstantLayout* empty = 0;
-        constantLayouts0C.resize(
-            static_cast<fable_u32>(index + 1),
-            empty);
-    }
-    constantLayouts0C.begin00[index] = layout;
+    ConstantLayouts()[index]=layout;
 }

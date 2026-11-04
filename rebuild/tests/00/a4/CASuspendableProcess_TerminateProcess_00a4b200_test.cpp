@@ -1,62 +1,40 @@
-#include <cstdio>
+// Behaviour fixture for CASuspendableProcess::TerminateProcess 0x00A4B200 (provider object): it requests a stop,
+// then runs slices until the process reports it is no longer running. The provider is only TerminateProcess, so
+// the base constructor and SuspendableProcess are defined here.
+#include "fable_suspendable_process.h"
+#include <stdio.h>
 
-struct CASuspendableProcess;
+static int g_fail;
+#define CHECK(x) do { if (!(x)) { printf("FAIL line %d: %s\n", __LINE__, #x); ++g_fail; } } while (0)
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
+CASuspendableProcess::CASuspendableProcess(bool e, long, float t)
+    : Running(false), StopRunning(false), TerminateUsingExceptions(e), TimesliceLength(t) {}
+void CASuspendableProcess::SuspendableProcess() {}
 
-struct CASuspendableProcessVtbl {
-    void (__fastcall *slot0)(CASuspendableProcess* self);
-    void (__fastcall *Pump)(CASuspendableProcess* self);
-};
-
-#pragma pack(push,1)
-struct CASuspendableProcess {
-    CASuspendableProcessVtbl* vtbl;
-    unsigned char active;
-    unsigned char terminateRequested;
-};
-#pragma pack(pop)
-
-void __fastcall TerminateProcess(CASuspendableProcess* self)
+struct CTestProcess : CASuspendableProcess
 {
-    self->terminateRequested = 1;
-    while (self->active) {
-        self->vtbl->Pump(self);
-    }
-}
-
-static int g_pumps = 0;
-
-// Pump decrements a countdown; when it hits 0, clears active.
-void __fastcall TestPump(CASuspendableProcess* self)
-{
-    g_pumps++;
-    if (g_pumps >= 3) self->active = 0;
-}
+    int Slices, Remaining;
+    CTestProcess() : CASuspendableProcess(false, 0, 1.0f), Slices(0), Remaining(0) {}
+    virtual void RunSuspendableProcess() { ++Slices; if (--Remaining <= 0) Running = false; }
+    virtual bool SuspendSuspendableProcess() { return false; }
+    virtual void Restart() {}
+    bool IsRunning() const { return Running; }
+    bool IsStopping() const { return StopRunning; }
+    void Start(int slices) { Running = true; Remaining = slices; }
+};
 
 int main()
 {
-    CASuspendableProcessVtbl vt;
-    vt.slot0 = 0;
-    vt.Pump = TestPump;
-
-    // Case 1: active from the start -> pumps until cleared.
-    CASuspendableProcess p;
-    p.vtbl = &vt;
-    p.active = 1;
-    p.terminateRequested = 0;
-    g_pumps = 0;
-    TerminateProcess(&p);
-    int ok1 = (p.terminateRequested == 1) && (p.active == 0) && (g_pumps == 3);
-
-    // Case 2: already inactive -> sets flag, no pump.
-    CASuspendableProcess q;
-    q.vtbl = &vt;
-    q.active = 0;
-    q.terminateRequested = 0;
-    g_pumps = 0;
-    TerminateProcess(&q);
-    int ok2 = (q.terminateRequested == 1) && (q.active == 0) && (g_pumps == 0);
-
-    if (ok1 && ok2) printf("PARITY_OK\n");
-    else printf("PARITY_FAIL %d %d\n", ok1, ok2);
-    return 0;
+    CTestProcess p;
+    p.Start(3);
+    p.TerminateProcess();
+    CHECK(p.IsStopping() && !p.IsRunning() && p.Slices == 3);
+    CTestProcess idle;
+    idle.TerminateProcess();
+    CHECK(idle.IsStopping() && idle.Slices == 0);
+    printf(g_fail ? "FAIL\n" : "PARITY_OK\n");
+    return g_fail != 0;
 }

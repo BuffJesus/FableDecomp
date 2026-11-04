@@ -7,8 +7,10 @@ fable_i32 g_CWideStringInstanceCount_013BCA20 = 0;
 
 namespace
 {
-    CWideStringData g_leftStorage;
-    CWideStringData g_rightStorage;
+    unsigned long g_leftStorageRaw_[4];
+    CWideStringData& g_leftStorage = *reinterpret_cast<CWideStringData*>(g_leftStorageRaw_);
+    unsigned long g_rightStorageRaw_[4];
+    CWideStringData& g_rightStorage = *reinterpret_cast<CWideStringData*>(g_rightStorageRaw_);
 
     CWideStringData*& Storage(CWideString& value)
     {

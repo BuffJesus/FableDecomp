@@ -1,8 +1,8 @@
-#include "engine/CPixelFormat.h"  // retyped onto the PDB layout; byte parity re-verified
-struct PixFmtEntry { int bits; int pad[8]; };
-extern PixFmtEntry g_pixFmtTable[];
-unsigned long __fastcall GetByteColourDepth(CPixelFormat* self)
+#include "fable_surface_types.h"
+#include "fable_d3d_format_info.h"
+
+unsigned long CPixelFormat::GetByteColourDepth() const
 {
-    int bits = g_pixFmtTable[self->FormatIndex].bits;
-    return (unsigned long)(bits / 8);
+    return GD3DFormats[FormatIndex].BitDepth / 8;
 }
+

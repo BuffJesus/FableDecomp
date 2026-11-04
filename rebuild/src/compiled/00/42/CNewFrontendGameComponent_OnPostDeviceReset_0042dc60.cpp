@@ -1,3 +1,4 @@
-// Constant-true predicate: `mov al,1; ret`. __fastcall this=ecx, no args.
-struct T { bool OnPostDeviceReset(); };
-bool T::OnPostDeviceReset() { return true; }
+#include "fable_game.h"
+
+// Retail 0042dc60; uses the shared primary/secondary dispatch layout.
+bool CNewFrontendGameComponent::OnPostDeviceReset() { return true; }

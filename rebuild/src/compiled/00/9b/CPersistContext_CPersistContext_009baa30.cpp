@@ -1,26 +1,14 @@
-// CPersistContext::CPersistContext(CDataInputStream*, bool) @ 0x009BAA30.
-//
-// LoadGameStateInternal constructs this binary-read context immediately after
-// binding the decompressed save buffer.  Retail selects read mode 2, records
-// the input stream, clears the output stream/current section, and resets the
-// context flag at +0x15.  The boolean argument does not alter this constructor.
+// CPersistContext::Init(CMemoryDataInputStream&, bool) @ 0x009BAA30 (FableWin
+// ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z): a binary load
+// from the stream, with no definition manager and no CRC check
+// (CDefinitionManager::LoadDef 0x009AD6E0). The format flag is not stored.
+#include "fable_persist_context.h"
 
-extern "C" __declspec(naked) void* __fastcall
-CPersistContext_CPersistContext_009baa30(
-    void*,
-    void*,
-    void*,
-    bool)
+void CPersistContext::Init(CMemoryDataInputStream& stream, bool safeBinaryFormat)
 {
-    __asm
-    {
-        mov eax, dword ptr [esp + 4]
-        mov dword ptr [ecx + 24h], eax
-        xor eax, eax
-        mov dword ptr [ecx + 18h], 2
-        mov dword ptr [ecx + 28h], eax
-        mov dword ptr [ecx], eax
-        mov byte ptr [ecx + 15h], al
-        ret 8
-    }
+    PLoadStream = &stream;
+    Mode = MODE_BINARY_LOAD;
+    PSaveStream = 0;
+    PDefinitionManager = 0;
+    UseCRCCheck = false;
 }

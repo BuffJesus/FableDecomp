@@ -1,39 +1,32 @@
+// Behaviour fixture for CCompressorZlib::SetStreamInput 0x00A3AB90, linked against the provider object (it does not
+// define the member): the stream gets the new input, the output buffer is cleared, nothing else is touched.
+#include "engine/CCompressorZlib.h"
 #include <stdio.h>
 #include <string.h>
 
-struct CCompressorZlib {
-    char pad[0x1c];
-    void* streamInput;   // +0x1c
-    unsigned long size;  // +0x20
-    int field24;         // +0x24
-    int field28;         // +0x28
-    int field2c;         // +0x2c
-    void SetStreamInput(void* input, unsigned long size);
-};
-
-void CCompressorZlib::SetStreamInput(void* input, unsigned long sz)
-{
-    this->streamInput = input;
-    this->field28 = 0;
-    this->size = sz;
-    this->field2c = 0;
-}
-
 int main()
 {
-    CCompressorZlib c;
-    memset(&c, 0xAB, sizeof(c));
-    char buf[16];
-    c.SetStreamInput(buf, 12345u);
+    static unsigned char storage[sizeof(CCompressorZlib)];
+    memset(storage, 0xAB, sizeof(storage));
+    CCompressorZlib* zlib = reinterpret_cast<CCompressorZlib*>(storage);
+    const char input[16] = "fable";
 
-    int ok = 1;
-    if (c.streamInput != (void*)buf) ok = 0;
-    if (c.size != 12345u) ok = 0;
-    if (c.field28 != 0) ok = 0;
-    if (c.field2c != 0) ok = 0;
-    if (c.field24 != (int)0xABABABAB) ok = 0; // untouched
+    zlib->SetStreamInput(input, 12345);
 
-    if (ok) printf("SETSTREAMINPUT_OK\n");
-    else printf("FAIL\n");
-    return ok ? 0 : 1;
+    const z_stream_s& s = zlib->Stream;
+    bool ok = s.next_in == (const unsigned char*)input && s.avail_in == 12345 && s.next_out == 0 && s.avail_out == 0;
+    // total_in (+0x08) and everything outside the four fields keep their bytes.
+    const size_t base = offsetof(CCompressorZlib, Stream);
+    for (size_t i = 0; i < sizeof(storage); ++i)
+    {
+        const bool written = (i >= base && i < base + 8) || (i >= base + 12 && i < base + 20);
+        if (!written && storage[i] != 0xAB) ok = false;
+    }
+    if (ok)
+    {
+        printf("SETSTREAMINPUT_OK\n");
+        return 0;
+    }
+    printf("FAIL\n");
+    return 1;
 }

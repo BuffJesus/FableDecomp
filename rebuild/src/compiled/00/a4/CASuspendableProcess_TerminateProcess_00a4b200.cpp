@@ -1,16 +1,10 @@
-#include "engine/CASuspendableProcess.h"  // retyped onto the PDB layout; byte parity re-verified
+// CASuspendableProcess::TerminateProcess @ 0x00A4B200: ask the process to stop, then keep running it until it
+// reports that it has finished.
+#include "fable_suspendable_process.h"
 
-struct CASuspendableProcessVTable {
-    void (__fastcall *Slot0)(CASuspendableProcess* self);
-    void (__fastcall *Pump)(CASuspendableProcess* self);
-};
-
-void __fastcall TerminateProcess(CASuspendableProcess* self)
+void CASuspendableProcess::TerminateProcess()
 {
-    self->StopRunning = true;
-    while (self->Running) {
-        CASuspendableProcessVTable* vtable =
-            (CASuspendableProcessVTable*)self->__vftable;
-        vtable->Pump(self);
-    }
+    StopRunning = true;
+    while (Running)
+        RunSuspendableProcess();
 }

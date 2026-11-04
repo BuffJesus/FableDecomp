@@ -5,47 +5,28 @@
 #include "fable_persist_context.h"
 #include "fable_string.h"
 
-extern "C" signed char g_FableImeSymbolHeight_013B7CF0;
-extern "C" signed char g_FableImeSymbolTranslucence_013B7CF1;
-extern "C" signed char g_FableImeSymbolPlacement_013B7CF2;
-extern "C" signed char g_FableImeCompositionTranslucence_013B7D18;
-extern "C" signed char g_FableImeCaretWidth_013B7D20;
-extern "C" signed char g_FableImeCaretYMargin_013B7D21;
-extern "C" signed char g_FableImeCancelOnOkClick_013B7D28;
-extern "C" signed char g_FableImeEnabled_013B7CD8;
+NUISystem::CIME g_FableIME_013B7CD8;
+// Fixture aliases inspect the original retail offsets in the actual singleton.
+#define g_FableImeEnabled_013B7CD8 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x0))
+#define g_FableImeSymbolHeight_013B7CF0 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x18))
+#define g_FableImeSymbolTranslucence_013B7CF1 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x19))
+#define g_FableImeSymbolPlacement_013B7CF2 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x1a))
+#define g_FableImeCompositionTranslucence_013B7D18 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x40))
+#define g_FableImeCaretWidth_013B7D20 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x48))
+#define g_FableImeCaretYMargin_013B7D21 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x49))
+#define g_FableImeCancelOnOkClick_013B7D28 (*reinterpret_cast<signed char*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x50))
+#define g_FableImeSymbolColour_013B7CE4 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0xc))
+#define g_FableImeSymbolColourOff_013B7CE8 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x10))
+#define g_FableImeSymbolColourText_013B7CEC (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x14))
+#define g_FableImeCandidateColourBase_013B7CF8 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x20))
+#define g_FableImeCandidateColourBorder_013B7CFC (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x24))
+#define g_FableImeCandidateColourText_013B7D00 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x28))
+#define g_FableImeCandidateColourInput_013B7D04 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x2c))
+#define g_FableImeCandidateColourTargetConverted_013B7D08 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x30))
+#define g_FableImeCandidateColourConverted_013B7D0C (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x34))
+#define g_FableImeCandidateColourTargetNotConverted_013B7D10 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x38))
+#define g_FableImeCandidateColourInputError_013B7D14 (*reinterpret_cast<fable_u32*>(reinterpret_cast<unsigned char*>(&g_FableIME_013B7CD8)+0x3c))
 
-extern "C" fable_u32 g_FableImeSymbolColour_013B7CE4;
-extern "C" fable_u32 g_FableImeSymbolColourOff_013B7CE8;
-extern "C" fable_u32 g_FableImeSymbolColourText_013B7CEC;
-extern "C" fable_u32 g_FableImeCandidateColourBase_013B7CF8;
-extern "C" fable_u32 g_FableImeCandidateColourBorder_013B7CFC;
-extern "C" fable_u32 g_FableImeCandidateColourText_013B7D00;
-extern "C" fable_u32 g_FableImeCandidateColourInput_013B7D04;
-extern "C" fable_u32 g_FableImeCandidateColourTargetConverted_013B7D08;
-extern "C" fable_u32 g_FableImeCandidateColourConverted_013B7D0C;
-extern "C" fable_u32 g_FableImeCandidateColourTargetNotConverted_013B7D10;
-extern "C" fable_u32 g_FableImeCandidateColourInputError_013B7D14;
-
-extern "C" signed char g_FableImeSymbolHeight_013B7CF0 = 0;
-extern "C" signed char g_FableImeSymbolTranslucence_013B7CF1 = 0;
-extern "C" signed char g_FableImeSymbolPlacement_013B7CF2 = 0;
-extern "C" signed char g_FableImeCompositionTranslucence_013B7D18 = 0;
-extern "C" signed char g_FableImeCaretWidth_013B7D20 = 0;
-extern "C" signed char g_FableImeCaretYMargin_013B7D21 = 0;
-extern "C" signed char g_FableImeCancelOnOkClick_013B7D28 = 0;
-extern "C" signed char g_FableImeEnabled_013B7CD8 = 0;
-
-extern "C" fable_u32 g_FableImeSymbolColour_013B7CE4 = 0;
-extern "C" fable_u32 g_FableImeSymbolColourOff_013B7CE8 = 0;
-extern "C" fable_u32 g_FableImeSymbolColourText_013B7CEC = 0;
-extern "C" fable_u32 g_FableImeCandidateColourBase_013B7CF8 = 0;
-extern "C" fable_u32 g_FableImeCandidateColourBorder_013B7CFC = 0;
-extern "C" fable_u32 g_FableImeCandidateColourText_013B7D00 = 0;
-extern "C" fable_u32 g_FableImeCandidateColourInput_013B7D04 = 0;
-extern "C" fable_u32 g_FableImeCandidateColourTargetConverted_013B7D08 = 0;
-extern "C" fable_u32 g_FableImeCandidateColourConverted_013B7D0C = 0;
-extern "C" fable_u32 g_FableImeCandidateColourTargetNotConverted_013B7D10 = 0;
-extern "C" fable_u32 g_FableImeCandidateColourInputError_013B7D14 = 0;
 
 namespace
 {
@@ -65,6 +46,7 @@ namespace
     ByteTransfer g_byteTransfers[8];
     ColourTransfer g_colourTransfers[12];
     unsigned int g_byteTransferCount;
+    unsigned int g_boolTransferCount;
     unsigned int g_colourTransferCount;
     unsigned int g_constructorCount;
     unsigned int g_destructorCount;
@@ -98,7 +80,7 @@ namespace
             &g_FableImeEnabled_013B7CD8
         };
 
-        if (g_byteTransferCount != 8)
+        if (g_byteTransferCount != 8 || g_boolTransferCount != 2)
         {
             return false;
         }
@@ -109,7 +91,7 @@ namespace
                 g_byteTransfers[index].destination != destinations[index] ||
                 g_byteTransfers[index].fallback != fallbacks[index] ||
                 *destinations[index] !=
-                    static_cast<signed char>(fallbacks[index] + 1))
+                    static_cast<signed char>(index < 6 ? fallbacks[index] + 1 : !fallbacks[index]))
             {
                 return false;
             }
@@ -215,6 +197,20 @@ void CPersistContext::TransferSignedChar(
     value = static_cast<signed char>(defaultValue + 1);
 }
 
+template<> void CPersistContext::Transfer<bool>(
+    const char* name, bool& value, const bool& defaultValue)
+{
+    const unsigned int index = g_byteTransferCount++;
+    ++g_boolTransferCount;
+    if (index < 8)
+    {
+        g_byteTransfers[index].name = name;
+        g_byteTransfers[index].destination = reinterpret_cast<signed char*>(&value);
+        g_byteTransfers[index].fallback = defaultValue;
+    }
+    value = !defaultValue;
+}
+
 fable_u32 FABLE_FASTCALL TransferIMEColour(
     CPersistContext&,
     const CCharString& token,
@@ -233,7 +229,10 @@ fable_u32 FABLE_FASTCALL TransferIMEColour(
 
 int main()
 {
-    CPersistContext context;
+    // CPersistContext has only its real (argument-taking) constructors.
+    unsigned char contextStorage[sizeof(CPersistContext)] = {0};
+    CPersistContext& context =
+        *reinterpret_cast<CPersistContext*>(contextStorage);
     NUISystem::CIME::LoadIMESettings(context);
 
     const bool passed =

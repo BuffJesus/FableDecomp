@@ -1,6 +1,6 @@
-// Constant-return member: returns false. __fastcall this=ecx.
-#include "engine/CKeyboard.h"  // retyped onto the PDB layout; byte parity re-verified
-struct CKeyboard_Methods : CKeyboard {
-    bool Get(int a0, int a1);
-};
-bool CKeyboard_Methods::Get(int a0, int a1) { return false; }
+#include "fable_input_devices.h"
+// The base keyboard has no key names.
+bool CKeyboard::GetKeyName(EInputKey, CWideString&) const
+{
+    return false;
+}

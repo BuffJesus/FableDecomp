@@ -1,0 +1,7 @@
+#include "../../integration/NativeSurfaceCopy_test.cpp"
+#include "../../../src/compiled/00/9e/CPixelFormat_IsEquivalentTyped_009e37f0.cpp"
+#include "../../../src/compiled/00/9f/CSurface_CanDoProperSignedConversion_009f35d0.cpp"
+#include "../../../src/compiled/00/9e/CPixelFormat_IsSigned_009e3970.cpp"
+#include "../../../src/compiled/00/9e/CPixelFormat_GetByteColourDepth_009e3800.cpp"
+#include "../../../src/compiled/00/9e/CPixelFormat_Initialise_009e3830.cpp"
+#include "../../../src/compiled/01/29/CPixelFormat_Table_0129ba40.cpp"

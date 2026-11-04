@@ -1,77 +1,42 @@
+// Behaviour fixture for CMemoryDataOutputStream::ReserveSize (0x00996BC0): the
+// data vector's reserve gets the size.
 #include <stdio.h>
+#include <string.h>
 
-enum EHeroMorphType { HMT_NONE };
+#include "fable_data_output_stream.h"
 
-struct CEntry {
-    int a;
-    int b;
-    int c;
-};
-
-struct Pair {
-    EHeroMorphType first;
-    CEntry second;
-};
-
-struct InnerAlloc {
-    void Cons_val(Pair* p, const Pair* v);
-};
-
-struct OuterAlloc {
-    int pad0;
-    int pad4;
-    InnerAlloc inner;   // at +8
-
-    void Cons_val(Pair* p, const Pair* v);
-};
-
-// --- captured effect for the standalone test ---
-static InnerAlloc* g_seen_self = 0;
-static Pair*       g_seen_p    = 0;
-static const Pair* g_seen_v    = 0;
-
-void InnerAlloc::Cons_val(Pair* p, const Pair* v)
+namespace
 {
-    g_seen_self = this;
-    g_seen_p = p;
-    g_seen_v = v;
-    // copy-construct semantics stand-in
-    p->first = v->first;
-    p->second = v->second;
+    int g_reserves;
+    const void* g_reserveThis;
+    size_t g_reserveSize;
 }
 
-void OuterAlloc::Cons_val(Pair* p, const Pair* v)
+namespace _STL
 {
-    inner.Cons_val(p, v);
+    template <>
+    void vector<char>::reserve(size_t n)
+    {
+        ++g_reserves;
+        g_reserveThis = this;
+        g_reserveSize = n;
+    }
 }
 
 int main()
 {
-    OuterAlloc outer;
-    outer.pad0 = 0x11111111;
-    outer.pad4 = 0x22222222;
-
-    Pair dst;
-    Pair src;
-    src.first = HMT_NONE;
-    src.second.a = 7;
-    src.second.b = 8;
-    src.second.c = 9;
-
-    dst.second.a = 0;
-
-    outer.Cons_val(&dst, &src);
-
-    bool ok = true;
-    // forwarder must have shifted `this` to inner subobject (outer + 8 bytes)
-    if (g_seen_self != &outer.inner) ok = false;
-    if ((char*)g_seen_self != (char*)&outer + 8) ok = false;
-    if (g_seen_p != &dst) ok = false;
-    if (g_seen_v != &src) ok = false;
-    if (dst.second.a != 7 || dst.second.b != 8 || dst.second.c != 9) ok = false;
-
-    if (ok) printf("CONS_VAL_FWD_OK\n");
-    else    printf("CONS_VAL_FWD_FAIL self=%p p=%p v=%p\n",
-                   (void*)g_seen_self, (void*)g_seen_p, (void*)g_seen_v);
-    return ok ? 0 : 1;
+    fable_u8 raw[sizeof(CMemoryDataOutputStream)];
+    memset(raw, 0xA5, sizeof(raw));
+    CMemoryDataOutputStream& stream = *reinterpret_cast<CMemoryDataOutputStream*>(raw);
+    stream.ReserveSize(0x1234);
+    stream.ReserveSize(0);
+    const bool passed = g_reserves == 2 && g_reserveThis == &stream.Data && g_reserveSize == 0 &&
+                        raw[0x14] == 0xA5;
+    if (!passed)
+    {
+        printf("FABLETLC_CMEMORYDATAOUTPUTSTREAM_RESERVESIZE_00996BC0 FAIL\n");
+        return 1;
+    }
+    printf("FABLETLC_CMEMORYDATAOUTPUTSTREAM_RESERVESIZE_00996BC0_PASS\n");
+    return 0;
 }

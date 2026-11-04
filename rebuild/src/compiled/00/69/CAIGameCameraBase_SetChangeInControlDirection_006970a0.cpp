@@ -1,1 +1,0 @@
-void __fastcall CAIGameCameraBase_SetChangeInControlDirection() {}

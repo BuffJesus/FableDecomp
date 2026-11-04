@@ -1,40 +1,17 @@
-#include "rebuild_abi.h"
+#include "fable_shader_render_manager.h"
+#include "fable_pixel_shader_data.h"
+#include "fable_shader_constant_layout.h"
+#include "fable_d3d9.h"
+#include "fable_4d_vector.h"
 
-struct FableShaderDevice;
-typedef long (__stdcall *FableSetVSConstantsCall)(
-    FableShaderDevice* device,
-    fable_i32 startRegister,
-    const void* data,
-    fable_u32 vectorCount);
+typedef HRESULT (__stdcall *SetPixelShaderCall)(IDirect3DDevice9*,IDirect3DPixelShader9*);
+typedef HRESULT (__stdcall *SetConstantsCall)(IDirect3DDevice9*,long,const void*,unsigned long);
 
-struct FableShaderDevice
+void CShaderRenderManager::SetVSConstants(long startRegister,const void* data,unsigned long vectorCount)
 {
-    void** vtable;
-};
-
-struct CShaderRenderManagerSetVSConstantsView
-{
-    fable_u8 unknown000[0x1D4];
-    FableShaderDevice* displayDevice1D4;
-
-    void SetVSConstants(
-        fable_i32 startRegister,
-        const void* data,
-        fable_u32 vectorCount);
-};
-
-void CShaderRenderManagerSetVSConstantsView::SetVSConstants(
-    fable_i32 startRegister,
-    const void* data,
-    fable_u32 vectorCount)
-{
-    if (vectorCount != 0)
+    if(vectorCount)
     {
-        reinterpret_cast<FableSetVSConstantsCall>(
-            displayDevice1D4->vtable[0x5E])(
-                displayDevice1D4,
-                startRegister,
-                data,
-                vectorCount);
+        void** methods=*reinterpret_cast<void***>(D3DDevice);
+        reinterpret_cast<SetConstantsCall>(methods[94])(D3DDevice,startRegister,data,vectorCount);
     }
 }

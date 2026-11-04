@@ -1,6 +1,6 @@
-#include <stdio.h>
-int main()
-{
-    puts("batch10_part4_004498c0_pass");
-    return 0;
-}
+#include "../tests/integration/PlayerLookup_test.cpp"
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/44/CPlayerManager_PeekPlayer_00449910.cpp"
+#include "../src/compiled/00/44/CPlayerManager_PeekMainPlayer_00449960.cpp"
+#include "../src/compiled/00/44/CPlayerManager_GetMainPlayer_00449970.cpp"
+#include "../src/compiled/00/44/CPlayerManager_GetMainPlayerNumber_00449700.cpp"

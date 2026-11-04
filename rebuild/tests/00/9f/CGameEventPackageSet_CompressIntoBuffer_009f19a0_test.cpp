@@ -1,47 +1,67 @@
-#include <cstdio>
-#include <cstring>
+#include "fable_game.h"
+#include <stdio.h>
+#include <string.h>
 
-struct Event { unsigned long type; unsigned char player, data[32], endPos, valid, replacement; };
-struct Package { unsigned long sequence, count; Event events[40]; };
-struct Set { unsigned long count; Package packages[50]; };
+static unsigned long storage[(sizeof(CGameEventPackageSet) + 3) / 4];
+static unsigned char snapshot[sizeof(CGameEventPackageSet)];
+static unsigned char output[100000];
+static unsigned char expected[100000];
 
-static long Compress(const Set& set, unsigned char* out)
+static void Write32(unsigned char* place, unsigned long value)
 {
-    unsigned char* start = out;
-    *out++ = static_cast<unsigned char>(set.count);
-    for (unsigned long p = 0; p < set.count; ++p)
-    {
-        const Package& package = set.packages[p];
-        *out++ = static_cast<unsigned char>(package.count);
-        std::memcpy(out, &package.sequence, 4); out += 4;
-        for (unsigned long e = 0; e < package.count; ++e)
-        {
-            const Event& event = package.events[e];
-            unsigned short type = static_cast<unsigned short>(event.type);
-            if (event.replacement) type |= 0x8000;
-            std::memcpy(out, &type, 2); out[2] = event.player; out[3] = event.endPos;
-            std::memcpy(out + 4, event.data, event.endPos);
-            out += 4 + event.endPos;
-        }
-    }
-    return static_cast<long>(out - start);
+    memcpy(place, &value, 4);
 }
 
 int main()
 {
-    Set set; std::memset(&set, 0, sizeof(set)); unsigned char out[128];
-    if (Compress(set, out) != 1 || out[0] != 0) return 1;
-    set.count = 2; set.packages[0].sequence = 0x44332211; set.packages[0].count = 2;
-    Event& a = set.packages[0].events[0]; a.type = 0x1234; a.player = 7; a.endPos = 5;
-    for (int i=0;i<5;++i) a.data[i] = static_cast<unsigned char>(0xA0+i);
-    Event& b = set.packages[0].events[1]; b.type = 0x2345; b.player = 9; b.replacement = 1;
-    set.packages[1].sequence = 0x88776655; set.packages[1].count = 0;
-    long size = Compress(set, out);
-    if (size != 24 || out[0] != 2 || out[1] != 2) return 2;
-    if (out[2] != 0x11 || out[5] != 0x44) return 3;
-    if (out[6] != 0x34 || out[7] != 0x12 || out[8] != 7 || out[9] != 5) return 4;
-    for (int i=0;i<5;++i) if (out[10+i] != static_cast<unsigned char>(0xA0+i)) return 5;
-    if (out[15] != 0x45 || out[16] != 0xA3 || out[17] != 9 || out[18] != 0) return 6;
-    if (out[19] != 0 || out[20] != 0x55 || out[23] != 0x88) return 7;
-    std::puts("PACKAGE_SET_COMPRESS_PASS"); return 0;
+    const unsigned int packages[] = {0, 1, 2, 5, 50};
+    const unsigned int events[] = {0, 1, 3, 40};
+    int cases = 0;
+    for (unsigned int pi = 0; pi < 5; ++pi)
+    for (unsigned int ei = 0; ei < 4; ++ei)
+    {
+        memset(storage, 0xa5, sizeof(storage));
+        memset(output, 0xcc, sizeof(output));
+        memset(expected, 0xcc, sizeof(expected));
+        Write32(reinterpret_cast<unsigned char*>(storage), packages[pi]);
+        unsigned int pos = 0;
+        expected[pos++] = static_cast<unsigned char>(packages[pi]);
+        for (unsigned int p = 0; p < packages[pi]; ++p)
+        {
+            unsigned char* package = reinterpret_cast<unsigned char*>(storage) + 4 + p * 0x648;
+            unsigned long stamp = 0x11223344UL + p * 0x10001UL;
+            Write32(package, stamp);
+            Write32(package + 4, events[ei]);
+            expected[pos++] = static_cast<unsigned char>(events[ei]);
+            Write32(expected + pos, stamp);
+            pos += 4;
+            for (unsigned int e = 0; e < events[ei]; ++e)
+            {
+                unsigned char* event = package + 8 + e * 0x28;
+                unsigned long type = 0x12340000UL | ((p * 53 + e * 7 + 0x111) & 0x7fff);
+                Write32(event, type);
+                event[4] = static_cast<unsigned char>(p * 17 + e * 3 + 0x80);
+                event[0x25] = static_cast<unsigned char>((p + e) % 33);
+                event[0x27] = static_cast<unsigned char>((p + e) & 1);
+                for (unsigned int j = 0; j < 32; ++j)
+                    event[5 + j] = static_cast<unsigned char>(p * 23 + e * 11 + j * 5);
+                unsigned short wireType = static_cast<unsigned short>(type);
+                if (event[0x27]) wireType |= 0x8000;
+                memcpy(expected + pos, &wireType, 2);
+                pos += 2;
+                expected[pos++] = event[4];
+                expected[pos++] = event[0x25];
+                memcpy(expected + pos, event + 5, event[0x25]);
+                pos += event[0x25];
+            }
+        }
+        memcpy(snapshot, storage, sizeof(snapshot));
+        const CGameEventPackageSet* set = reinterpret_cast<const CGameEventPackageSet*>(storage);
+        if (set->CompressIntoBuffer(output) != static_cast<long>(pos)) return 1;
+        if (memcmp(output, expected, sizeof(output))) return 2;
+        if (memcmp(storage, snapshot, sizeof(snapshot))) return 3;
+        ++cases;
+    }
+    printf("PACKAGE_SET_COMPRESS_PASS cases=%d\n", cases);
+    return 0;
 }

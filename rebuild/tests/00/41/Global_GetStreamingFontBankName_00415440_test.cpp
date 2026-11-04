@@ -13,7 +13,7 @@ namespace
     long g_observedLength = 0;
 }
 
-fable_i32 FableGetCurrentLanguage_00415070()
+unsigned long FABLE_FASTCALL NLocalisation::GetLanguage()
 {
     return g_language;
 }
@@ -63,8 +63,8 @@ int main()
         {4, "STREAMING_FONT_CHINESE_PC"},
         {7, "STREAMING_FONT_GERMAN_PC"},
         {10, "STREAMING_FONT_SPANISH_PC"},
-        {12, "STREAMING_FONT_ITALIAN_PC"},
-        {16, "STREAMING_FONT_FRENCH_PC"},
+        {16, "STREAMING_FONT_ITALIAN_PC"},
+        {12, "STREAMING_FONT_FRENCH_PC"},
         {17, "STREAMING_FONT_JAPANESE_PC"},
         {18, "STREAMING_FONT_KOREAN_PC"},
         {0, "STREAMING_FONT_ENGLISH_PC"},

@@ -3,11 +3,11 @@
 unsigned long CMemoryAllocatorFixedSize::GetTotalMemoryAllocated()
 {
     unsigned long total = 0;
-    CFixedSizeAllocatorNode* current = ControlledAreas;
+    CFixedSizeAllocatorNode* current = PFirstChunk;
     while (current != 0)
     {
-        total += current->AreaCount * AllocationSizeIncludingHeader + HeaderSize;
-        current = current->Next;
+        total += current->NoAllocatedAreas * StatAreaSize + ChunkHeaderSize;
+        current = current->PNextChunk;
     }
     return total;
 }

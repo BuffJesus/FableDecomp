@@ -1,64 +1,34 @@
-#include <cstdio>
+// Behaviour fixture for CDefStringTable::GetStringCRC (0x009D4A20).
+#include <stdio.h>
+#include <string.h>
 
-struct CStringTableArray
+#include "fable_def_string.h"
+
+namespace
 {
-    unsigned long m_count;
-    unsigned long m_capacity;
-    char *m_data;
-
-    char *GetData();
-};
-
-struct CDefStringTable
-{
-    void *m_vtbl;
-    unsigned long m_field4;
-    unsigned long m_field8;
-    CStringTableArray m_strings;
-
-    unsigned long GetStringCRC(long index);
-};
-
-unsigned long CDefStringTable::GetStringCRC(long index)
-{
-    if (index == -1)
-        return 0;
-    char *p = m_strings.GetData();
-    p += index;
-    return *(unsigned long *)p;
+    unsigned long g_data[4] = { 0x11111111, 0xCAFEBABE, 0x22222222, 0x33333333 };
+    const void* g_peekThis;
 }
 
-char *CStringTableArray::GetData()
+const void* CMemoryDataOutputStream::PeekData() const
 {
-    return m_data;
+    g_peekThis = this;
+    return g_data;
 }
 
 int main()
 {
-    unsigned char buf[64];
-    for (int i = 0; i < 64; i++) buf[i] = (unsigned char)(i * 7 + 3);
-
-    CDefStringTable table;
-    table.m_vtbl = 0;
-    table.m_field4 = 0;
-    table.m_field8 = 0;
-    table.m_strings.m_count = 16;
-    table.m_strings.m_capacity = 16;
-    table.m_strings.m_data = (char *)buf;
-
-    unsigned long r0 = table.GetStringCRC(-1);
-    unsigned long r1 = table.GetStringCRC(4);
-
-    unsigned long expect1 = *(unsigned long *)(buf + 4);
-
-    if (r0 == 0 && r1 == expect1)
+    fable_u8 raw[sizeof(CDefStringTable)];
+    memset(raw, 0, sizeof(raw));
+    const CDefStringTable& table = *reinterpret_cast<const CDefStringTable*>(raw);
+    const bool passed = table.GetStringCRC(-1) == 0 && g_peekThis == 0 &&
+                        table.GetStringCRC(4) == 0xCAFEBABE && g_peekThis == &table.StringStream &&
+                        table.GetStringCRC(12) == 0x33333333;
+    if (!passed)
     {
-        printf("GETSTRINGCRC_OK\n");
+        printf("FABLETLC_CDEFSTRINGTABLE_GETSTRINGCRC_009D4A20 FAIL\n");
+        return 1;
     }
-    else
-    {
-        printf("FAIL r0=%lu r1=%lu expect1=%lu\n", r0, r1, expect1);
-    }
-
+    printf("FABLETLC_CDEFSTRINGTABLE_GETSTRINGCRC_009D4A20_PASS\n");
     return 0;
 }

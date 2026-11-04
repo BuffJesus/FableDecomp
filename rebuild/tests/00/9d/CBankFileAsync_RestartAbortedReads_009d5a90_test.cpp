@@ -1,0 +1,5 @@
+#include "fable_threaded_file.h"
+#include "../src/compiled/00/9d/CBankFileAsync_AsyncUpdatePending_009d68b0.cpp"
+#include "../src/compiled/00/9d/STLAsyncBankTree_erase_009d7430.cpp"
+#include "../src/compiled/00/9d/CBankFileAsync_ProcessDisposalList_009d6730.cpp"
+#include "../tests/integration/BankRestart_test.cpp"

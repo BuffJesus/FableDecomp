@@ -1,38 +1,25 @@
-#include <cstdio>
+// CSurface::GetRefCount (0x009F2DA0): AddRef, then return Release's count; 0 without a surface.
+// Drives the landed member through a fake COM vtable (slot 1 AddRef, slot 2 Release).
+#include "fable_surface.h"
+#include <stdio.h>
+#include <string.h>
 
-struct IRefObj;
-typedef long (__stdcall *PFN)(IRefObj*);
-struct IRefVtbl { PFN slot0; PFN slot1; PFN slot2; };
-struct IRefObj { IRefVtbl* vtbl; };
-struct CSurface { void* pad0; IRefObj* obj; };
-
-static int g_slot1_calls = 0;
-static long __stdcall impl_slot1(IRefObj*) { g_slot1_calls++; return 999; }
-static long __stdcall impl_slot2(IRefObj*) { return 42; }
-
-long __fastcall GetRefCount(CSurface* self)
-{
-    IRefObj* p = self->obj;
-    if (p) {
-        p->vtbl->slot1(p);
-        IRefObj* q = self->obj;
-        return q->vtbl->slot2(q);
-    }
-    return 0;
-}
+static int addRefs;
+static unsigned long __stdcall FakeAddRef(void*) { ++addRefs; return 7; }
+static unsigned long __stdcall FakeRelease(void*) { return 42; }
 
 int main()
 {
-    IRefVtbl vt = { 0, impl_slot1, impl_slot2 };
-    IRefObj o = { &vt };
-    CSurface s1 = { 0, &o };
-    CSurface s0 = { 0, 0 };
-
-    long r1 = GetRefCount(&s1);
-    long r0 = GetRefCount(&s0);
-
-    bool ok = (r1 == 42) && (r0 == 0) && (g_slot1_calls == 1);
-    if (ok) printf("PARITY_OK\n");
-    else printf("FAIL r1=%ld r0=%ld c=%d\n", r1, r0, g_slot1_calls);
+    void* table[32] = {0};
+    table[1] = (void*)FakeAddRef;
+    table[2] = (void*)FakeRelease;
+    struct { void** vtbl; } com = { table };
+    union { double align; unsigned char bytes[sizeof(CSurface)]; } storage;
+    memset(&storage, 0, sizeof(storage));
+    CSurface* surface = reinterpret_cast<CSurface*>(storage.bytes);
+    if (surface->GetRefCount() != 0 || addRefs != 0) { printf("FAIL null\n"); return 1; }
+    surface->PD3DSurface = reinterpret_cast<IDirect3DSurface9*>(&com);
+    if (surface->GetRefCount() != 42 || addRefs != 1) { printf("FAIL count\n"); return 1; }
+    printf("PARITY_OK\n");
     return 0;
 }

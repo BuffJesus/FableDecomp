@@ -1,1 +1,4 @@
-void __fastcall CJoystick_Update() {}
+#include "fable_input_devices.h"
+void CJoystick::Update()
+{
+}

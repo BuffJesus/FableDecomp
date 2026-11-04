@@ -1,1 +1,0 @@
-void __stdcall CWADFile_Write(int arg0, int arg1, int arg2) {}

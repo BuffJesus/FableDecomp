@@ -1,114 +1,100 @@
-#include "rebuild_abi.h"
-
 #include <stdio.h>
-#include <string.h>
 
-struct FableWideString_0099AD80
+#include "fable_disk_file.h"
+#include "test_support/base_class_stubs.h"
+
+class CFileInformation
 {
-    void* storage;
 };
-
-#pragma pack(push, 1)
-struct FableDiskFileWin32_0099AD80
-{
-    void** vtable;
-    fable_u32 accessType;
-    fable_i32 position;
-    fable_i32 length;
-    void* winFileHandle;
-    fable_u8 opened;
-    fable_u8 padding15[3];
-    FableWideString_0099AD80 pathname;
-};
-#pragma pack(pop)
-
-extern "C" FableDiskFileWin32_0099AD80* FABLE_FASTCALL
-FableConstructDiskFileWin32_0099AD80(
-    FableDiskFileWin32_0099AD80* self,
-    void*,
-    const FableWideString_0099AD80* pathname,
-    fable_u32 accessType,
-    fable_u32 flags);
 
 namespace
 {
-    unsigned int g_baseConstructCalls;
-    unsigned int g_wideConstructCalls;
-    unsigned int g_openCalls;
-    FableDiskFileWin32_0099AD80* g_openSelf;
-    const FableWideString_0099AD80* g_openPathname;
-    fable_u32 g_openAccessType;
-    fable_u32 g_openFlags;
+    // Every recorded event gets the next sequence number.
+    int g_sequence;
+    int g_baseConstructedAt;
+    int g_pathnameConstructedAt;
+    int g_openedAt;
+    int g_closedAt;
+    int g_pathnameDestroyedAt;
+    int g_baseDestroyedAt;
+    const CDiskFileWin32* g_openSelf;
+    const CWideString* g_openPathname;
+    FileAccessType g_openAccessType;
+    unsigned long g_openFlags;
+    long g_positionCalls;
 }
 
-extern "C" void* g_CDiskFileWin32VTable_0122D06C[1] = {
-    reinterpret_cast<void*>(0x122D06C)};
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() { g_baseDestroyedAt = ++g_sequence; }
+CAFile::CAFile() { g_baseConstructedAt = ++g_sequence; }
 
-extern "C" void FABLE_FASTCALL
-FableCAFileConstruct_0099A2F0(
-    FableDiskFileWin32_0099AD80* self,
-    void*)
+CFileInformation CAFile::GetFileInformation() { return CFileInformation(); }
+
+CWideString::CWideString() : storage_(0)
 {
-    ++g_baseConstructCalls;
-    memset(self, 0xA5, sizeof(*self));
+    g_pathnameConstructedAt = ++g_sequence;
 }
+CWideString::CWideString(const CWideString& other) : storage_(other.storage_) {}
+CWideString::~CWideString() { g_pathnameDestroyedAt = ++g_sequence; }
 
-extern "C" void FABLE_FASTCALL
-FableWideStringConstructForDisk_0099AED0(
-    FableWideString_0099AD80* self,
-    void*)
+void CDiskFileWin32::Open(
+    const CWideString& pathname,
+    FileAccessType accessType,
+    unsigned long flags)
 {
-    ++g_wideConstructCalls;
-    self->storage = 0;
-}
-
-extern "C" void FABLE_FASTCALL
-FableDiskFileOpen_0099A6A0(
-    FableDiskFileWin32_0099AD80* self,
-    void*,
-    const FableWideString_0099AD80* pathname,
-    fable_u32 accessType,
-    fable_u32 flags)
-{
-    ++g_openCalls;
-    g_openSelf = self;
-    g_openPathname = pathname;
+    g_openedAt = ++g_sequence;
+    g_openSelf = this;
+    g_openPathname = &pathname;
     g_openAccessType = accessType;
     g_openFlags = flags;
-    self->accessType = accessType;
-    self->opened = 1;
+    AccessType = accessType;
+    Opened = true;
+}
+
+void CDiskFileWin32::Close()
+{
+    g_closedAt = ++g_sequence;
+    Opened = false;
+}
+
+void CDiskFileWin32::Read(void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::Write(const void*, long, CASuspendableProcess*) {}
+void CDiskFileWin32::SetPosition(long) {}
+void CDiskFileWin32::MovePosition(long) {}
+long CDiskFileWin32::GetPosition() const { return ++g_positionCalls; }
+void CDiskFileWin32::SetLength(long) {}
+CAFile* CDiskFileWin32::Clone() const { return 0; }
+CFileInformation CDiskFileWin32::GetFileInformation()
+{
+    return CFileInformation();
 }
 
 int main()
 {
-    FableWideString_0099AD80 pathname;
-    pathname.storage = reinterpret_cast<void*>(0x13572468);
+    CWideString pathname;
+    g_sequence = 0;
 
-    FableDiskFileWin32_0099AD80 file;
-    FableDiskFileWin32_0099AD80* result =
-        FableConstructDiskFileWin32_0099AD80(
-            &file,
-            0,
-            &pathname,
-            3,
-            0x240);
-
+    CAFile* file = new CDiskFileWin32(
+        pathname, static_cast<FileAccessType>(3), 0x240);
     if (
-        result != &file ||
-        file.vtable != g_CDiskFileWin32VTable_0122D06C ||
-        file.pathname.storage != 0 ||
-        file.accessType != 3 ||
-        file.opened != 1 ||
-        g_baseConstructCalls != 1 ||
-        g_wideConstructCalls != 1 ||
-        g_openCalls != 1 ||
-        g_openSelf != &file ||
+        g_baseConstructedAt != 1 ||
+        g_pathnameConstructedAt != 2 ||
+        g_openedAt != 3 ||
+        g_openSelf != file ||
         g_openPathname != &pathname ||
         g_openAccessType != 3 ||
         g_openFlags != 0x240)
     {
         return 1;
     }
+
+    // The object dispatches through the CDiskFileWin32 vtable.
+    if (!file->IsOpen() || file->GetPosition() != 1 || file->GetAlignment() != 1)
+        return 2;
+
+    delete file;
+    if (g_closedAt != 4 || g_pathnameDestroyedAt != 5 || g_baseDestroyedAt != 6)
+        return 3;
 
     printf("FABLETLC_DISK_FILE_CTOR_0099AD80 PASS\n");
     return 0;

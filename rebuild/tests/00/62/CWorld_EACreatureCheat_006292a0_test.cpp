@@ -1,0 +1,5 @@
+#include "../tests/integration/WorldCreatureCheat_test.cpp"
+#include "../src/compiled/00/44/CPlayerManager_GetMainPlayer_00449970.cpp"
+#include "../src/compiled/00/44/CPlayerManager_GetPlayer_004498c0.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/a0/CBaseIntelligentPointer_Operations_00a01b20.cpp"

@@ -1,0 +1,2 @@
+#include "fable_symbol_map.h"
+long CSymbolMap::GetSymbolSLONG(const CCharString& name)const{const _STL::pair<CCharString,CSymbolInfo>* it=SLONGMap.Find(name);if(it!=SLONGMap.end())return it->second.Val;return 0;}

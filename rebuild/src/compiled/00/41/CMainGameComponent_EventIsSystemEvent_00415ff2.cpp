@@ -1,11 +1,18 @@
-#pragma optimize("s",on)
-// `switch` form of "is this the system event kind": VC7.1 lowers the single case to
-// `dec eax; dec eax; je`. __fastcall this=ecx, event=stack (ret 4).
-struct Event { int type; };
-struct T { bool IsSystemEvent(const Event* e); };
-bool T::IsSystemEvent(const Event* e) {
-    switch (e->type) {
-    case 2:
+// CMainGameComponent::EventIsSystemEvent @ 0x00415FF2 (19 bytes).
+// FableWin ?EventIsSystemEvent@CMainGameComponent@@IAE_NPBVCGameEvent@@@Z.
+// GAME_EVENT_QUIT is the one event type the component treats as a system
+// event (ProcessEvent handles it; AddGameEvent forwards it to the client).
+// MainGameComponent.cpp is size-optimised in retail.
+#pragma optimize("s", on)
+
+#include "fable_game.h"
+#include "fable_game_event.h"
+
+bool CMainGameComponent::EventIsSystemEvent(const CGameEvent* event)
+{
+    switch (event->GetType())
+    {
+    case GAME_EVENT_QUIT:
         return true;
     }
     return false;

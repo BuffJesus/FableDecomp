@@ -1,11 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
 
 #include "fable_string.h"
 
 namespace
 {
-    CWideStringData g_newStorage;
+    unsigned long g_newStorageRaw_[4];
+    CWideStringData& g_newStorage = *reinterpret_cast<CWideStringData*>(g_newStorageRaw_);
     unsigned int g_allocateCalls;
     unsigned int g_freeCalls;
     unsigned int g_deleteCalls;
@@ -42,7 +45,8 @@ namespace
     {
         ResetObservations();
         wchar_t oldText[] = L"old";
-        CWideStringData oldStorage = {oldText, 0, 0, 2};
+        unsigned long oldStorageRaw_[4] = {reinterpret_cast<unsigned long>(oldText), 0, 0, 2};
+        CWideStringData& oldStorage = *reinterpret_cast<CWideStringData*>(oldStorageRaw_);
         fable_u8 valueBytes[sizeof(CWideString)] = {0};
         CWideString& value =
             *reinterpret_cast<CWideString*>(valueBytes);
@@ -64,7 +68,8 @@ namespace
     {
         ResetObservations();
         wchar_t oldText[] = L"old";
-        CWideStringData oldStorage = {oldText, 0, 0, 1};
+        unsigned long oldStorageRaw_[4] = {reinterpret_cast<unsigned long>(oldText), 0, 0, 1};
+        CWideStringData& oldStorage = *reinterpret_cast<CWideStringData*>(oldStorageRaw_);
         fable_u8 valueBytes[sizeof(CWideString)] = {0};
         CWideString& value =
             *reinterpret_cast<CWideString*>(valueBytes);
@@ -96,24 +101,20 @@ namespace
     }
 }
 
-extern "C" void FABLE_CDECL
-FableWideLiteralFree_0099B800(void* memory)
+// The fixture owns every buffer, so the CRT release routines only record.
+extern "C" void __cdecl free(void* memory)
 {
     ++g_freeCalls;
     g_freedMemory = memory;
 }
 
-extern "C" void FABLE_CDECL
-FableWideLiteralDelete_0099B800(void* memory)
+void operator delete(void* memory)
 {
     ++g_deleteCalls;
     g_deletedMemory = memory;
 }
 
-extern "C" void* FABLE_FASTCALL
-FableWideLiteralAllocateData_0099B800(
-    void*,
-    void*,
+CWideStringData* CWideString::AllocStringData(
     const wchar_t* text,
     long length)
 {

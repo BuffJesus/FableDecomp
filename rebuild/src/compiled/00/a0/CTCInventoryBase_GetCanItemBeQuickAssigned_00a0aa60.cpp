@@ -1,14 +1,9 @@
-#include "rebuild_abi.h"
+#include "fable_render_state_manager.h"
 
-struct CTCInventoryBaseQuickAssignView
+// Retail 0x00A0AA60 reads CRenderManagerCore::Rendering (+0x3A54). The
+// propagated manifest label (NInventory::CTCInventoryBase::GetCanItemBeQuickAssigned)
+// cannot own this body: CTCInventoryBase is 0x148 bytes with that flag at +0x3C.
+bool CRenderManagerCore::IsRendering()
 {
-    fable_u8 unknown0000[0x3A54];
-    bool canItemBeQuickAssigned3A54;
-};
-
-bool FABLE_FASTCALL
-FableGetCanItemBeQuickAssigned_00A0AA60(
-    const CTCInventoryBaseQuickAssignView* inventory)
-{
-    return inventory->canItemBeQuickAssigned3A54;
+    return Rendering;
 }

@@ -1,0 +1,6 @@
+#include "../src/compiled/00/49/CWorld_GetPlayer_0049d850.cpp"
+#include "../src/compiled/00/48/CPlayer_GetPControlledCreature_00487dc0.cpp"
+#include "../src/compiled/00/40/CVectorMapThingComponents_LowerBound_0040f020.cpp"
+#include "../src/compiled/00/9f/CGameEvent_GetDataPackage_009f17a0.cpp"
+#include "../src/compiled/00/9f/CGameEventDataPackage_GetData_009f18f0.cpp"
+#include "../tests/integration/RemoveCurrentMode_test.cpp"

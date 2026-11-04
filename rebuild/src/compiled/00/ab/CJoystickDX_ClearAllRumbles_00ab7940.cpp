@@ -1,1 +1,0 @@
-void __fastcall CJoystickDX_ClearAllRumbles() {}

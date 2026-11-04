@@ -1,8 +1,10 @@
 #include <stdio.h>
 
-struct CMatrix3x4 { float m[12]; };
+class CMatrix3x4 {
+public: float m[12]; };
 
-struct CEngineInternalPrimitive2DStaticMesh {
+class CEngineInternalPrimitive2DStaticMesh {
+public:
     char pad[0x70];
     CMatrix3x4 transform;
 };

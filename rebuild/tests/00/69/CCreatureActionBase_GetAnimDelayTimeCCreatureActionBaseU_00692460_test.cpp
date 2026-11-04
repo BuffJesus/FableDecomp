@@ -1,6 +1,7 @@
 #include <cstdio>
 
-struct CCreatureActionBase {
+class CCreatureActionBase {
+public:
     void* vtbl;
 };
 

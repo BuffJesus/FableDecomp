@@ -1,17 +1,18 @@
+#include "test_support/async_bank_lifetime_stubs.h"
 #include <new>
 #include <stdio.h>
 #include <string.h>
 
 #include "fable_game_text_bank.h"
-
-extern "C" fable_u8 g_FableGameTextDataBankVTable_0129B4D4 = 0;
-extern "C" fable_u8 g_FableGameTextResourceBankVTable_0129B528 = 0;
+#include "test_support/bank_file_member_stubs.h"
+#include "test_support/resource_list_stubs.h"
+#include "test_support/game_text_unused_virtual_stubs.h"
 
 namespace
 {
     enum Event
     {
-        kBankFileConstruct,
+        kAsyncBankFileConstruct,
         kResourceBankConstruct,
         kSetMaximumMemory
     };
@@ -21,6 +22,8 @@ namespace
     unsigned int g_eventCount;
     bool g_argumentsValid;
     bool g_initializationVisible;
+    void* g_bankFileVTable;
+    void* g_resourceBankVTable;
 
     void Record(Event event)
     {
@@ -37,48 +40,72 @@ namespace
     }
 }
 
-extern "C" void FABLE_FASTCALL
-FableGameTextBankFileConstruct_009C85A0(
-    void* bank,
-    void*)
+void CIVCountedPointeeBase::DeleteCIVCountedPointeeBase() const
 {
-    Record(kBankFileConstruct);
-    g_argumentsValid =
-        g_argumentsValid &&
-        bank == g_object;
 }
 
-extern "C" void FABLE_FASTCALL
-FableGameTextResourceBankConstruct_009C85A0(
-    void* bank,
-    void*)
+CResourceBank::CResourceBank()
 {
     Record(kResourceBankConstruct);
     g_argumentsValid =
         g_argumentsValid &&
-        bank == g_object + 0x164;
-    memset(bank, 0x5A, 0x7C);
+        reinterpret_cast<fable_u8*>(this) == g_object + 0x164;
+    memset(&ResourceList.Head, 0x5A, sizeof(ResourceList.Head));
+    ResourceList.UnloadDelay = 0x5A5A5A5A;
+    g_resourceBankVTable = *reinterpret_cast<void**>(this);
 }
 
-extern "C" void FABLE_FASTCALL
-FableGameTextSetMaximumMemory_009C85A0(
-    void* resourceList,
-    void*,
-    fable_u32 maximumMemory)
+CResourceBank::~CResourceBank()
+{
+}
+
+CBankFile::CBankFile()
+{
+}
+
+CBankFileAsync::CBankFileAsync()
+{
+    Record(kAsyncBankFileConstruct);
+    g_argumentsValid =
+        g_argumentsValid &&
+        reinterpret_cast<fable_u8*>(this) == g_object;
+    g_bankFileVTable = *reinterpret_cast<void**>(this);
+}
+
+CBankFile::~CBankFile()
+{
+}
+
+template<> _STL::list<CCountedPointer<CBankFileAsyncData> >::~list()
+{
+}
+
+CBankFileAsync::~CBankFileAsync()
+{
+}
+
+bool CBankFile::OpenReadOnly(const CCharString&, unsigned long)
+{
+    return false;
+}
+
+NGameText::CDataBank::~CDataBank()
+{
+}
+
+void CResourceList::SetMaximumMemory(long maximumMemory)
 {
     Record(kSetMaximumMemory);
     g_argumentsValid =
         g_argumentsValid &&
-        resourceList == g_object + 0x168 &&
+        reinterpret_cast<fable_u8*>(this) == g_object + 0x168 &&
         maximumMemory == 0x10000;
 
+    // The derived vtables and zeroed members must be in place before the call.
     g_initializationVisible =
-        ReadU32(0x000) ==
-            reinterpret_cast<fable_u32>(
-                &g_FableGameTextDataBankVTable_0129B4D4) &&
-        ReadU32(0x164) ==
-            reinterpret_cast<fable_u32>(
-                &g_FableGameTextResourceBankVTable_0129B528) &&
+        ReadU32(0x000) != 0xA5A5A5A5 &&
+        ReadU32(0x000) != reinterpret_cast<fable_u32>(g_bankFileVTable) &&
+        ReadU32(0x164) != reinterpret_cast<fable_u32>(g_resourceBankVTable) &&
         ReadU32(0x210) == 0;
     for (unsigned int offset = 0x1E0; offset <= 0x20C; offset += 4)
     {
@@ -87,7 +114,8 @@ FableGameTextSetMaximumMemory_009C85A0(
             ReadU32(offset) == 0;
     }
 
-    *reinterpret_cast<fable_u32*>(g_object + 0x19C) = 0xDEADBEEF;
+    MaximumMemory = maximumMemory;
+    UnloadDelay = 0xDEADBEEF;
 }
 
 int main()
@@ -104,17 +132,20 @@ int main()
 
     static const Event expected[3] =
     {
-        kBankFileConstruct,
+        kAsyncBankFileConstruct,
         kResourceBankConstruct,
         kSetMaximumMemory
     };
     const bool passed =
         sizeof(NGameText::CDataBank) == 0x214 &&
         bank == reinterpret_cast<NGameText::CDataBank*>(storage) &&
+        static_cast<CResourceBank*>(bank) ==
+            reinterpret_cast<CResourceBank*>(storage + 0x164) &&
         g_eventCount == 3 &&
         memcmp(g_events, expected, sizeof(expected)) == 0 &&
         g_argumentsValid &&
         g_initializationVisible &&
+        ReadU32(0x168 + 0x28) == 0x10000 &&
         ReadU32(0x19C) == 0;
 
     if (!passed)
@@ -126,3 +157,6 @@ int main()
     printf("FABLETLC_GAME_TEXT_DATA_BANK_CONSTRUCTOR PASS\n");
     return 0;
 }
+
+// Unopened bank boundary for this isolated fixture.
+void NGameText::CDataBank::Close() { CBankFile::Close(); }

@@ -50,7 +50,7 @@ static void ResetFixture()
 static int VerifyNullAndEmptyStringsStayUnallocated()
 {
     ResetFixture();
-    CCharString nullValue(0, -1);
+    CCharString nullValue(static_cast<const char*>(0), -1);
     CCharString emptyValue("", -1);
 
     if (ReadStorage(nullValue) != 0 || ReadStorage(emptyValue) != 0)

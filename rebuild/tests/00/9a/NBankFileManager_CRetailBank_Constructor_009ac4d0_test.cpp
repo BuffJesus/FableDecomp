@@ -1,51 +1,55 @@
 #include <new>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "fable_retail_banks.h"
-
-extern "C" fable_u8 g_FableRetailBankVTable_0129B010 = 0;
+#include "test_support/base_class_stubs.h"
 
 namespace
 {
-    fable_u8 g_node[0x28];
-    void* g_bank;
-    bool g_baseCalled;
-    bool g_pathCalled;
+    fable_u8* g_bank;
+    int g_step;
+    int g_baseStep;
+    int g_pathStep;
+    int g_bankDestroyStep;
+    int g_baseDestroyStep;
+    void* g_headAtPath;
     bool g_argumentsValid;
 }
 
-extern "C" void FABLE_FASTCALL
-FableRetailBankBaseConstruct_009AC4D0(
-    void* bank,
-    void*)
+CBaseClassNonCopyable::CBaseClassNonCopyable()
 {
-    g_baseCalled = true;
+    g_baseStep = ++g_step;
     g_argumentsValid =
         g_argumentsValid &&
-        bank == g_bank;
+        reinterpret_cast<fable_u8*>(this) == g_bank;
 }
 
-extern "C" void* FABLE_CDECL
-FableRetailBankAllocateNode_009AC4D0(fable_u32 size)
+CBaseClassNonCopyable::~CBaseClassNonCopyable()
 {
-    g_argumentsValid =
-        g_argumentsValid &&
-        size == 0x28;
-    memset(g_node, 0xA5, sizeof(g_node));
-    return g_node;
+    g_baseDestroyStep = ++g_step;
 }
 
-extern "C" void FABLE_FASTCALL
-FableRetailBankPathConstruct_009AC4D0(
-    void* path,
-    void*)
+NBankFileManager::CRetailBank::~CRetailBank()
 {
-    g_pathCalled = true;
+    g_bankDestroyStep = ++g_step;
+}
+
+void NBankFileManager::CContainedBankMap::Erase(CNode*) {}
+
+CCharString::CCharString()
+{
+    g_pathStep = ++g_step;
     g_argumentsValid =
         g_argumentsValid &&
-        path == reinterpret_cast<fable_u8*>(g_bank) + 0x24;
-    *reinterpret_cast<fable_u32*>(path) = 0x13572468;
+        reinterpret_cast<fable_u8*>(this) == g_bank + 0x24;
+    g_headAtPath = *reinterpret_cast<void**>(g_bank + 0x18);
+    storage_ = 0;
+}
+
+CCharString::~CCharString()
+{
 }
 
 int main()
@@ -53,35 +57,43 @@ int main()
     fable_u8 storage[sizeof(NBankFileManager::CRetailBank)];
     memset(storage, 0xA5, sizeof(storage));
     g_bank = storage;
-    g_baseCalled = false;
-    g_pathCalled = false;
+    g_step = 0;
     g_argumentsValid = true;
 
     NBankFileManager::CRetailBank* bank =
         new (storage) NBankFileManager::CRetailBank;
+    NBankFileManager::CContainedBankMap::CNode* head =
+        bank->containedBanks_.head_;
 
-    const bool passed =
+    const bool constructed =
         bank ==
             reinterpret_cast<NBankFileManager::CRetailBank*>(storage) &&
-        g_baseCalled &&
-        g_pathCalled &&
         g_argumentsValid &&
-        bank->vtable_ ==
-            reinterpret_cast<fable_u32>(
-                &g_FableRetailBankVTable_0129B010) &&
-        bank->diskFile_ == 0 &&
-        bank->diskFileControl_ == 0 &&
-        bank->threadedFile_ == 0 &&
-        bank->threadedFileControl_ == 0 &&
+        g_baseStep == 1 &&
+        g_pathStep == 2 &&
+        bank->diskFile_.Data == 0 &&
+        bank->diskFile_.Info == 0 &&
+        bank->threadedFile_.data_ == 0 &&
+        bank->threadedFile_.control_ == 0 &&
         !bank->useDma_ &&
-        bank->containedBanksHead_ == g_node &&
-        bank->containedBankCount_ == 0 &&
-        g_node[0] == 0 &&
-        *reinterpret_cast<fable_u32*>(g_node + 4) == 0 &&
-        *reinterpret_cast<void**>(g_node + 8) == g_node &&
-        *reinterpret_cast<void**>(g_node + 0x0C) == g_node;
+        head != 0 &&
+        g_headAtPath == head &&
+        bank->containedBanks_.size_ == 0 &&
+        !head->color_ &&
+        head->parent_ == 0 &&
+        head->left_ == head &&
+        head->right_ == head;
 
-    if (!passed)
+    // The derived vtable is installed: destroying through the base reaches
+    // the bank's own destructor first.
+    static_cast<CBaseClass*>(bank)->~CBaseClass();
+    const bool destroyed =
+        g_bankDestroyStep == 3 &&
+        g_baseDestroyStep == 4;
+
+    free(head);
+
+    if (!constructed || !destroyed)
     {
         printf("FABLETLC_RETAIL_BANK_CONSTRUCTOR FAIL\n");
         return 1;

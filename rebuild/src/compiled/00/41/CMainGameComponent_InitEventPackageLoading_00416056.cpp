@@ -1,86 +1,13 @@
-extern "C" __declspec(naked) void F_00416056(void)
+// CMainGameComponent::InitEventPackageLoading @ 0x00416056: open the replay file and read its header.
+#pragma optimize("s", on)
+#include "fable_game.h"
+bool CMainGameComponent::InitEventPackageLoading(const wchar_t* fileName)
 {
-    __asm
     {
-        _emit 0x55
-        _emit 0x8b
-        _emit 0xec
-        _emit 0x56
-        _emit 0x57
-        _emit 0xff
-        _emit 0x75
-        _emit 0x08
-        _emit 0x8b
-        _emit 0xf9
-        _emit 0x8d
-        _emit 0x4d
-        _emit 0x08
-        _emit 0xe8
-        _emit 0x48
-        _emit 0x56
-        _emit 0x58
-        _emit 0x00
-        _emit 0x6a
-        _emit 0x02
-        _emit 0x6a
-        _emit 0x01
-        _emit 0x8d
-        _emit 0x4d
-        _emit 0x08
-        _emit 0x8d
-        _emit 0xb7
-        _emit 0x54
-        _emit 0x61
-        _emit 0x01
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x06
-        _emit 0x51
-        _emit 0x8b
-        _emit 0xce
-        _emit 0xff
-        _emit 0x50
-        _emit 0x04
-        _emit 0x8d
-        _emit 0x4d
-        _emit 0x08
-        _emit 0xe8
-        _emit 0x8b
-        _emit 0x54
-        _emit 0x58
-        _emit 0x00
-        _emit 0x8b
-        _emit 0x06
-        _emit 0x6a
-        _emit 0x00
-        _emit 0x6a
-        _emit 0x04
-        _emit 0x8d
-        _emit 0x8f
-        _emit 0x74
-        _emit 0x61
-        _emit 0x01
-        _emit 0x00
-        _emit 0x51
-        _emit 0x8b
-        _emit 0xce
-        _emit 0xff
-        _emit 0x50
-        _emit 0x0c
-        _emit 0xc6
-        _emit 0x87
-        _emit 0x70
-        _emit 0x61
-        _emit 0x01
-        _emit 0x00
-        _emit 0x01
-        _emit 0x5f
-        _emit 0xb0
-        _emit 0x01
-        _emit 0x5e
-        _emit 0x5d
-        _emit 0xc2
-        _emit 0x04
-        _emit 0x00
+        const CWideString name(fileName);
+        static_cast<CAFile&>(EventPackageFile).Open(name, FILE_ACCESS_READ, 2);
     }
+    static_cast<CAFile&>(EventPackageFile).Read(&EventPackageFileHeader, sizeof(EventPackageFileHeader), 0);
+    LoadingEventPackages = true;
+    return true;
 }

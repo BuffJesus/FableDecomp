@@ -1,52 +1,48 @@
-#include <cstdio>
+#include <stdio.h>
+#include <string.h>
 
-struct CDataOutputStream
+#include "fable_data_output_stream.h"
+
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CBaseClassNonCopyable::CBaseClassNonCopyable() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
+CCharString::CCharString(const char*, long) : storage_(0) {}
+CCharString::~CCharString() {}
+
+struct TestOutput : CDataOutputStream
 {
-    virtual void v0() = 0;
-    virtual void v1() = 0;
-    virtual void v2() = 0;
-    virtual void v3() = 0;
-    virtual void Write(void* data, int size) = 0;
-    void WriteEBOOL(bool value);
-};
+    unsigned char captured[4];
+    long sizes[4];
+    int calls;
 
-void CDataOutputStream::WriteEBOOL(bool value)
-{
-    unsigned char b = value ? 1 : 0;
-    this->Write(&b, 1);
-}
-
-static unsigned char g_captured = 0xAA;
-static int g_size = -1;
-static int g_calls = 0;
-
-struct TestStream : CDataOutputStream
-{
-    void v0() {} void v1() {} void v2() {} void v3() {}
-    void Write(void* data, int size)
+    TestOutput() : calls(0) { memset(captured, 0xff, sizeof(captured)); }
+    virtual void SetPosition(unsigned long) {}
+    virtual unsigned long GetPosition() const { return 0; }
+    virtual void Close() {}
+    virtual void Write(const void* data, long size)
     {
-        g_captured = *(unsigned char*)data;
-        g_size = size;
-        g_calls++;
+        if (calls < 4)
+        {
+            captured[calls] = *(const unsigned char*)data;
+            sizes[calls] = size;
+        }
+        ++calls;
     }
 };
 
 int main()
 {
-    TestStream s;
-    CDataOutputStream* p = &s;
-
-    p->WriteEBOOL(true);
-    if (g_captured != 1 || g_size != 1 || g_calls != 1) { printf("FAIL a\n"); return 1; }
-
-    p->WriteEBOOL(false);
-    if (g_captured != 0 || g_size != 1 || g_calls != 2) { printf("FAIL b\n"); return 1; }
-
-    // any nonzero normalizes to 1
-    bool weird; *(unsigned char*)&weird = 0x7F;
-    p->WriteEBOOL(weird);
-    if (g_captured != 1 || g_size != 1 || g_calls != 3) { printf("FAIL c\n"); return 1; }
-
-    printf("WriteEBOOL_OK\n");
+    TestOutput output;
+    output.WriteEBOOL(true);
+    output.WriteEBOOL(false);
+    bool noncanonical;
+    *(unsigned char*)&noncanonical = 0x7f;
+    output.WriteEBOOL(noncanonical);
+    if (output.calls != 3 || output.captured[0] != 1 ||
+        output.captured[1] != 0 || output.captured[2] != 1 ||
+        output.sizes[0] != 1 || output.sizes[1] != 1 || output.sizes[2] != 1)
+        return 1;
+    puts("WriteEBOOL_OK");
     return 0;
 }

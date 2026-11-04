@@ -1,34 +1,7 @@
-#pragma optimize("s",on)
+// _STL::_Rb_global<bool>::_Rotate_right(_Rb_tree_node_base*, _Rb_tree_node_base*&)
+// @ 0x0042955B (STLport 4.6, cdecl static; /Os unit, see 0x004294E2).
+#pragma optimize("s", on)
+#include "fable_stlport_tree.h"
 
-struct CMemoryArea
-{
-    int unused0;
-    CMemoryArea* parent;
-    CMemoryArea* right;
-    CMemoryArea* left;
-};
-
-void RotateLeft(CMemoryArea* x, CMemoryArea** root)
-{
-    CMemoryArea* y = x->right;
-    x->right = y->left;
-    if (y->left)
-    {
-        y->left->parent = x;
-    }
-    y->parent = x->parent;
-    if (x == *root)
-    {
-        *root = y;
-    }
-    else if (x == x->parent->left)
-    {
-        x->parent->left = y;
-    }
-    else
-    {
-        x->parent->right = y;
-    }
-    y->left = x;
-    x->parent = y;
-}
+template void __cdecl _STL::_Rb_global<bool>::_Rotate_right(_STL::_Rb_tree_node_base* __x,
+                                                            _STL::_Rb_tree_node_base*& __root);

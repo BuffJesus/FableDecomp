@@ -1,1 +1,0 @@
-void __stdcall CClass_Save(int arg0) {}

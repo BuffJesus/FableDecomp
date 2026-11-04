@@ -1,62 +1,80 @@
-#include <cstdio>
+// Fixture: CDisplayManager::IsSupportingCompressedTextures (0x009BE800)
+#include <stdio.h>
+#include <string.h>
+#include "fable_surface.h"
+#include "fable_d3d_format_info.h"
 
-typedef int (__stdcall *PFN)(int obj, int f60, int f5c, int f1c4, int z, int three, int fourcc);
+static int g_fail;
+#define EXPECT(c) do { if (!(c)) { printf("FAIL %d: %s\n", __LINE__, #c); ++g_fail; } } while (0)
 
-struct CDisplayManager {
-    char pad0[0x54];
-    void*** obj54;
-    char pad1[0x5c-0x58];
-    int f5c;
-    int f60;
-    char pad2[0x1c4-0x64];
-    int f1c4;
+extern const CD3DFormatInfo GD3DFormats[] = {
+    {(D3DFORMAT)20, PF_TYPE_RGBA, 24, 0, 8, 8, 8, 0, false},
+    {(D3DFORMAT)21, PF_TYPE_RGBA, 32, 8, 8, 8, 8, 0, false},
+    {(D3DFORMAT)22, PF_TYPE_RGBA, 32, 0, 8, 8, 8, 0, false},
+    {(D3DFORMAT)23, PF_TYPE_RGBA, 16, 0, 5, 6, 5, 0, false},
+    {(D3DFORMAT)25, PF_TYPE_RGBA, 16, 1, 5, 5, 5, 0, false},
+    {(D3DFORMAT)26, PF_TYPE_RGBA, 16, 4, 4, 4, 4, 0, false},
+    {(D3DFORMAT)60, PF_TYPE_BUMP, 16, 0, 8, 8, 0, 0, false},
+    {(D3DFORMAT)61, PF_TYPE_BUMP, 16, 0, 5, 5, 6, 0, false},
+    {(D3DFORMAT)64, PF_TYPE_BUMP, 32, 0, 16, 16, 0, 0, false},
+    {(D3DFORMAT)75, PF_TYPE_DEPTH, 16, 0, 0, 0, 0, 8, false},
+    {(D3DFORMAT)28, PF_TYPE_RGBA, 16, 8, 0, 0, 0, 0, false},
+    {(D3DFORMAT)102, PF_TYPE_UNKNOWN, -1, 0, 0, 0, 0, 0, false},
 };
 
-char __fastcall CDisplayManager_IsSupportingCompressedTextures(CDisplayManager* self)
+// Fake IDirect3D9: slot 10 = CheckDeviceFormat.
+struct FakeD3D { void** vt; };
+static void* g_vt[32];
+static FakeD3D g_d3d = { g_vt };
+static int g_checks; static long g_supported[8]; static int g_nSupported;
+static D3DFORMAT g_checked[32]; static DWORD g_usage[32];
+static bool g_argsOk = true;
+static HRESULT __stdcall FakeCheck(void* self, UINT adapter, D3DDEVTYPE type, D3DFORMAT adapterFormat,
+                                   DWORD usage, D3DRESOURCETYPE rtype, D3DFORMAT fmt)
 {
-    void*** o = self->obj54;
-    return ((PFN)(*o)[10])((int)o, self->f60, self->f5c, self->f1c4, 0, 3, 0x31545844) >= 0;
+    if (self != &g_d3d || adapter != 7 || type != D3DDEVTYPE_REF || adapterFormat != (D3DFORMAT)22 || rtype != D3DRTYPE_TEXTURE)
+        g_argsOk = false;
+    g_checked[g_checks] = fmt; g_usage[g_checks] = usage; ++g_checks;
+    for (int i = 0; i < g_nSupported; ++i) if (g_supported[i] == (long)fmt) return 0;
+    return (HRESULT)0x8876086Al;
 }
 
-static int g_ret;
-static int g_seen[7];
+static int g_inits; static CPixelFormat* g_initThis; static D3DFORMAT g_initFmt;
 
-static int __stdcall stub(int obj, int f60, int f5c, int f1c4, int z, int three, int fourcc)
+static unsigned char g_storage[sizeof(CDisplayManager) + 16];
+static CDisplayManager* Setup(int n, const long* supported)
 {
-    g_seen[0]=obj; g_seen[1]=f60; g_seen[2]=f5c; g_seen[3]=f1c4;
-    g_seen[4]=z; g_seen[5]=three; g_seen[6]=fourcc;
-    return g_ret;
+    memset(g_storage, 0xCD, sizeof(g_storage));
+    CDisplayManager* dm = reinterpret_cast<CDisplayManager*>(g_storage);
+    g_vt[10] = (void*)&FakeCheck;
+    dm->D3D = reinterpret_cast<IDirect3D9*>(&g_d3d);
+    dm->D3DDeviceCaps.AdapterOrdinal = 7;
+    dm->D3DDeviceCaps.DeviceType = D3DDEVTYPE_REF;
+    dm->CurrentMode.Format = (D3DFORMAT)22;
+    g_nSupported = n; for (int i = 0; i < n; ++i) g_supported[i] = supported[i];
+    g_checks = 0; g_inits = 0; g_initThis = 0; g_initFmt = (D3DFORMAT)0; g_argsOk = true;
+    return dm;
+}
+static void Neighbour() { EXPECT(g_storage[sizeof(CDisplayManager)] == 0xCD); EXPECT(g_argsOk); }
+
+static void Body()
+{
+    long dxt1[] = { D3DFMT_DXT1 };
+    CDisplayManager* dm = Setup(1, dxt1);
+    EXPECT(dm->IsSupportingCompressedTextures() == true);
+    EXPECT(g_checks == 1 && g_checked[0] == D3DFMT_DXT1 && g_usage[0] == 0);
+    Neighbour();
+    long dxt3[] = { D3DFMT_DXT3 };
+    dm = Setup(1, dxt3);
+    EXPECT(dm->IsSupportingCompressedTextures() == false);
+    EXPECT(g_checks == 1);
+    Neighbour();
 }
 
 int main()
 {
-    static void* vtbl[16];
-    vtbl[10] = (void*)&stub;
-    void** vtp = vtbl;
-
-    CDisplayManager dm;
-    dm.obj54 = &vtp;   /* *(*obj54) == vtbl */
-    dm.f5c  = 0xAAAA;
-    dm.f60  = 0xBBBB;
-    dm.f1c4 = 0xCCCC;
-
-    g_ret = 0;
-    if (!CDisplayManager_IsSupportingCompressedTextures(&dm)) { std::printf("FAIL: 0 should be true\n"); return 1; }
-
-    g_ret = -1;
-    if (CDisplayManager_IsSupportingCompressedTextures(&dm)) { std::printf("FAIL: -1 should be false\n"); return 1; }
-
-    g_ret = 7;
-    if (!CDisplayManager_IsSupportingCompressedTextures(&dm)) { std::printf("FAIL: 7 should be true\n"); return 1; }
-
-    if (g_seen[0] != (int)dm.obj54) { std::printf("FAIL: arg0 obj\n"); return 1; }
-    if (g_seen[1] != 0xBBBB) { std::printf("FAIL: arg1 f60\n"); return 1; }
-    if (g_seen[2] != 0xAAAA) { std::printf("FAIL: arg2 f5c\n"); return 1; }
-    if (g_seen[3] != 0xCCCC) { std::printf("FAIL: arg3 f1c4\n"); return 1; }
-    if (g_seen[4] != 0) { std::printf("FAIL: arg4\n"); return 1; }
-    if (g_seen[5] != 3) { std::printf("FAIL: arg5\n"); return 1; }
-    if (g_seen[6] != 0x31545844) { std::printf("FAIL: arg6 fourcc\n"); return 1; }
-
-    std::printf("CDisplayManager_009be800_TEST PASS\n");
+    Body();
+    if (g_fail) { printf("FAILED %d\n", g_fail); return 1; }
+    printf("CDisplayManager_009be800_TEST PASS\n");
     return 0;
 }

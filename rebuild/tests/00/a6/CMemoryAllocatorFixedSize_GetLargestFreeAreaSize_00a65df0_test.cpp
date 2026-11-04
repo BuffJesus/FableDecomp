@@ -4,20 +4,20 @@
 
 int main()
 {
-    fable_u8 storage[0xC48];
+    fable_u8 storage[0xC4C];
     CFixedSizeAllocatorNode nodes[2];
     memset(storage, 0, sizeof(storage));
     memset(nodes, 0, sizeof(nodes));
     CMemoryAllocatorFixedSize* allocator = reinterpret_cast<CMemoryAllocatorFixedSize*>(storage);
-    allocator->AllocationSize = 64;
-    allocator->AreaCapacity = 8;
-    nodes[0].AreaCount = 8;
-    nodes[0].Next = &nodes[1];
-    nodes[1].AreaCount = 7;
-    allocator->ControlledAreas = &nodes[0];
-    if (allocator->GetLargestFreeAreaSize() != 64) return 1;
-    nodes[1].AreaCount = 8;
-    if (allocator->GetLargestFreeAreaSize() != 0) return 2;
+    allocator->AreaSize = 64;
+    allocator->NoAreasPerChunk = 8;
+    nodes[0].NoAllocatedAreas = 8;
+    nodes[0].PNextChunk = &nodes[1];
+    nodes[1].NoAllocatedAreas = 7;
+    allocator->PFirstChunk = &nodes[0];
+    if (allocator->CMemoryAllocatorFixedSize::GetLargestFreeAreaSize() != 64) return 1;
+    nodes[1].NoAllocatedAreas = 8;
+    if (allocator->CMemoryAllocatorFixedSize::GetLargestFreeAreaSize() != 0) return 2;
     printf("FIXED_ALLOCATOR_LARGEST_FREE_TEST PASS\n");
     return 0;
 }
