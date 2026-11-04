@@ -4,11 +4,31 @@ This dashboard tracks the shortest honest path from independently verified
 functions to a reconstructed executable. It does not count a diagnostic
 bootstrap as a running game.
 
+## Native reconstruction checkpoint — 2026-09-30
+
+- Native `GFMain @ 00402510` is promoted: 3,952 bytes, 261 direct calls,
+  all 391 relocation targets checked, and 58 comparative execution scenarios.
+  Grade: **NEAR_MATCH**; two bytes select an equivalent temporary register.
+- Five startup callbacks are recovered and checked. The IME pair passes
+  220 behavior cases; the system-error classifier passes 131,168 inputs.
+- Startup now uses the full native definition-string table and the confirmed
+  `CDefStringTable::SetTableFilename` identity. Its 150-entry header audit and
+  the subsequent visual-bootstrap build pass.
+- **The executable still uses the authored GFMain coordinator.** Native GFMain
+  dependency closure and executable integration remain open.
+- Work stopped at the user's bedtime request. The unpromoted window-message
+  loop draft has the correct 141-byte size but does not yet match retail bytes.
+
+Resume details and verification caveats are in the
+[native reconstruction journal](../docs/journal/2026-09/NATIVE_RECONSTRUCTION_2026-09-30.md#shutdown-checkpoint-and-resume).
+The main function and callback report is
+[`gfmain-native.json`](compile-gate/gfmain-native.json).
+
 ## Boot-path progress
 
 | Measure | Proven | Scope |
 |---|---:|---|
-| GFMain direct-call sites | 257/257 (100.00%) | All ten call clusters; repeated call sites count separately |
+| Authored phase-ledger direct-call sites | 257/257 (100.00%) | Historical ten-cluster ledger; native GFMain above has 261 direct calls |
 | Callable authored GFMain phases | 10/10 (100.00%) | Integration checkpoints, not retail GFMain byte parity |
 | Current Phase 10 direct calls | 21/21 (100.00%) | GFInitialise, launch, error handling, and cleanup |
 
@@ -273,7 +293,7 @@ graph, load archives at runtime, play video, or enter the game loop.
 | 2 | `0x00403480` | WinMain wrapper | 141 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_WinMain_00403480.cpp) | VC7.1 source matches all 141 non-relocation retail bytes and passes first-instance/duplicate-instance behavior; Stage 3 now carries its GFMain handoff through all ten authored phases, whose 257 direct calls are proven. |
 | 3 | `0x00402510` | GFMain | 3952 | `INTEGRATION_COMPLETE` | [source](../rebuild/integration/gfmain_complete.cpp) | The 3,952-byte coordinator is represented by one behavior-gated parent seam over ten callable clusters, and all 257 observed direct-call sites are proven. Success plus every phase-specific early return and WinMain input propagation are covered. Complete Stage 3 now executes exact Phase 6 definition-table path/load and write-permission ownership, Phase 7 window-title ownership, Phase 8 EULA/configuration/release, CSystemManager::Initialise, CIME::Initialise, optional LUG-to-MET generation, GFInitialise, and GFUninitialise coordinators; remaining gaps are subordinate ownership boundaries rather than missing control-flow edges. |
 | 4 | `0x004022B0` | GFInitialise | 311 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp) | The full 311-byte zero-parameter coordinator matches retail outside relocations, passes focused behavior, and now executes before the authored visual checkpoint through an explicit engine boundary. |
-| 5 | `0x00413120` | GFInitialise_SetupProgressDisplay | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GFInitialiseSetupProgressDisplay_00413120.cpp) | The 128-byte leaf and ownership behavior are proven and now execute as part of the verified full GFInitialise coordinator on the visual path. |
+| 5 | `0x00413120` | CGame::Initialise | 128 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/CGame_Initialise_00413120.cpp) | The 128-byte leaf and ownership behavior are proven and now execute as part of the verified full GFInitialise coordinator on the visual path. |
 | 6 | `0x00499CE0` | CProgressDisplay constructor | 163 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/49/CProgressDisplay_Constructor_00499ce0.cpp) | The real 0x88-byte progress object is constructed on the visual path with its recovered string and state layout. |
 | 7 | `0x009E9FD0` | SetProgressDisplay retained owner | 133 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_SetProgressDisplay_009e9fd0.cpp) | The retail counted owner keeps the progress object alive across the visual window and releases it on shutdown. |
 | 8 | `0x009EA060` | GetProgressDisplay counted query | 28 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9e/Global_GetProgressDisplay_009ea060.cpp) | The visual handoff now acquires the retained owner through the exact retail getter and balances the temporary reference after the window closes. |
@@ -287,7 +307,7 @@ graph, load archives at runtime, play video, or enter the game loop.
 2. **WinMain wrapper (`0x00403480`):** Consolidate the authored GFMain parent and replace execution-boundary ownership shims.
 3. **GFMain (`0x00402510`):** Replace the remaining execution-boundary ownership shims with recovered objects before the C++23 modernization pass.
 4. **GFInitialise (`0x004022B0`):** Replace its boundary-owned root, display, and registration test doubles with recovered startup objects.
-5. **GFInitialise_SetupProgressDisplay (`0x00413120`):** Replace the instrumented progress-object ownership boundary with recovered engine ownership.
+5. **CGame::Initialise (`0x00413120`):** Replace the instrumented progress-object ownership boundary with recovered engine ownership.
 6. **CProgressDisplay constructor (`0x00499CE0`):** Recover the display and texture consumers that render the retained object.
 7. **SetProgressDisplay retained owner (`0x009E9FD0`):** Replace the boundary display/resource graph with recovered engine ownership.
 8. **GetProgressDisplay counted query (`0x009EA060`):** Connect the returned object to recovered texture and drawing consumers.
@@ -304,7 +324,7 @@ These are integration units, not invented retail functions.
 |---:|---|---|---:|---:|---:|---|
 | 1 | `0x00402510`-`0x004025A6` | runtime and project bootstrap | 9 | 9 | 9 | CSystemManagerInit; GetProjectPath; SetCurrentPath; InitialiseConsoleVariables |
 | 2 | `0x004025A6`-`0x00402668` | basic-install and failure-policy bootstrap | 7 | 7 | 7 | CFileInstallerSingleton::Get; startup latch; SetEnableFailureHandling |
-| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 34 | FableGetDefaultLanguageName_00415530; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
+| 3 | `0x00402668`-`0x0040284E` | settings, persistence, and IME | 34 | 23 | 34 | NLocalisation::GetLanguageFolder; PathExists; LoadFromFile; CPersistContext; LoadIMESettings |
 | 4 | `0x0040284E`-`0x004029DC` | basic retail-bank alias map | 29 | 5 | 29 | CBasicRetailBankManager::SetNavigatorEnabled; CBasicRetailBankManager::AddBankAlias |
 | 5 | `0x004029DC`-`0x00402CE6` | retail banks and INI files | 65 | 15 | 65 | OpenRetailBank; OpenIniFile; resource-directory factories |
 | 6 | `0x00402CE6`-`0x00403082` | save paths, fonts, and display resources | 61 | 24 | 61 | LoadTable; MyDocuments_CheckWritePermissions; GetFontBankName; GFGetSystemManager |
@@ -337,7 +357,7 @@ These are integration units, not invented retail functions.
 | 3 | `0x00402678` | `0x0099EBF0` | CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp) |
 | 3 | `0x00402683` | `0x009D8240` | NProfileTimer::StartProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp) |
 | 3 | `0x0040268C` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
-| 3 | `0x0040269F` | `0x00415530` | FableGetDefaultLanguageName_00415530 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GetDefaultLanguageName_00415530.cpp) |
+| 3 | `0x0040269F` | `0x00415530` | NLocalisation::GetLanguageFolder | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/NLocalisation_GetLanguageFolder_00415530.cpp) |
 | 3 | `0x004026A6` | `0x0099E480` | CCharString::ToWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_ToWideString_0099e480.cpp) |
 | 3 | `0x004026B5` | `0x0099BFF0` | operator+(wchar_t const *,CWideString const &) | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_AddLiteralAndWideString_0099bff0.cpp) |
 | 3 | `0x004026C0` | `0x0099BF30` | operator+(CWideString const &,wchar_t const *) | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp) |
@@ -352,18 +372,18 @@ These are integration units, not invented retail functions.
 | 3 | `0x00402745` | `0x00404720` | CStringParser | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CStringParser_Constructor_00404720.cpp) |
 | 3 | `0x0040274E` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x00402765` | `0x009BADD0` | CPersistContext | `MATCH` | [source](../rebuild/src/compiled/00/9b/CPersistContext_TextConstructor_009badd0.cpp) |
-| 3 | `0x00402785` | `0x004045C0` | Transfer<signed_char> | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp) |
-| 3 | `0x004027A5` | `0x004045C0` | Transfer<signed_char> | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp) |
-| 3 | `0x004027C5` | `0x004045C0` | Transfer<signed_char> | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp) |
+| 3 | `0x00402785` | `0x004045C0` | Transfer<bool> | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CPersistContext_Transferbool_004045c0.cpp) |
+| 3 | `0x004027A5` | `0x004045C0` | Transfer<bool> | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CPersistContext_Transferbool_004045c0.cpp) |
+| 3 | `0x004027C5` | `0x004045C0` | Transfer<bool> | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CPersistContext_Transferbool_004045c0.cpp) |
 | 3 | `0x004027D1` | `0x00405350` | NUISystem::CIME::LoadIMESettings | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CIME_LoadIMESettings_00405350.cpp) |
 | 3 | `0x004027DA` | `0x004046B0` | std::list<CStringParserCommentBoundaries>::~list | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CStringParserCommentList_Destructor_004046b0.cpp) |
 | 3 | `0x004027E3` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x004027EC` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
-| 3 | `0x004027F5` | `0x0099A2E0` | FableRestoreCBaseVTable_0099A2E0 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp) |
+| 3 | `0x004027F5` | `0x0099A2E0` | CBaseClass::~CBaseClass | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CBaseClass_CBaseClass_0099a2d0.cpp) |
 | 3 | `0x004027FE` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 3 | `0x0040280F` | `0x0099A920` | CDiskFileWin32::Close | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CDiskFileWin32_Close_0099A920.cpp) |
 | 3 | `0x00402818` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
-| 3 | `0x00402821` | `0x0099A300` | FableRestoreCBaseVTable_0099A300 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a300.cpp) |
+| 3 | `0x00402821` | `0x0099A300` | CBaseClassNonCopyable::~CBaseClassNonCopyable | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CBaseClass_CBaseClass_0099a2d0.cpp) |
 | 3 | `0x0040282C` | `0x009BC890` | NTextLayoutConfig::SetPrimaryLeftAlignment | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9b/TextLayout_SetPrimaryLeftAlignment_009bc890.cpp) |
 | 3 | `0x00402837` | `0x009BC8A0` | NTextLayoutConfig::SetSecondaryLeftAlignment | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9b/TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp) |
 | 3 | `0x0040283E` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
@@ -467,7 +487,7 @@ These are integration units, not invented retail functions.
 | 6 | `0x00402D0A` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 6 | `0x00402D19` | `0x0099B7D0` | CWideString::operator= | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp) |
 | 6 | `0x00402D2B` | `0x0099BF30` | operator+(CWideString const &,wchar_t const *) | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp) |
-| 6 | `0x00402D36` | `0x009D4A40` | CDefStringTableRecovered::SetTablePath | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/CDefStringTable_SetTablePath_009d4a40.cpp) |
+| 6 | `0x00402D36` | `0x009D4A40` | CDefStringTable::SetTableFilename | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/CDefStringTable_SetTableFilename_009d4a40.cpp) |
 | 6 | `0x00402D3F` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 | 6 | `0x00402D63` | `0x009D4C30` | CDefStringTable::LoadTable | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/CDefStringTable_LoadTable_009d4c30.cpp) |
 | 6 | `0x00402D6A` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
@@ -491,20 +511,20 @@ These are integration units, not invented retail functions.
 | 6 | `0x00402E70` | `0x00402130` | FableCheckMyDocumentsWritePermissions_00402130 | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_MyDocuments_CheckWritePermissions_00402130.cpp) |
 | 6 | `0x00402E7B` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 | 6 | `0x00402E89` | `0x00403E40` | CCountedPointer<CIPhysicsFacesSegmentBase_const>::Reset | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CCountedPointer_PhysicsFacesSegment_Reset_00403e40.cpp) |
-| 6 | `0x00402E9D` | `0x00415260` | GetFontBankName | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/Global_GetFontBankName_00415260.cpp) |
+| 6 | `0x00402E9D` | `0x00415260` | NLocalisation::GetTextBankName | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/NLocalisation_GetTextBankName_00415260.cpp) |
 | 6 | `0x00402EAC` | `0x0099EAE0` | ~CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp) |
 | 6 | `0x00402EB5` | `0x0099AED0` | CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp) |
-| 6 | `0x00402EBD` | `0x009CC410` | CVectorMap::LookupValue | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/FableVectorMap_LookupValue_009cc410.cpp) |
-| 6 | `0x00402ED0` | `0x009C9070` | NGameText::CDataBank::GetPGroupEntry | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPGroupEntry_009c9070.cpp) |
-| 6 | `0x00402EE2` | `0x009C7A40` | CBankFile::GetBankHandle | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/CBankFile_GetBankHandle_009c7a40.cpp) |
+| 6 | `0x00402EBD` | `0x009CC410` | CBankFile::FindIndexBySymbolCRC | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/CBankFile_FindIndexBySymbolCRC_009cc410.cpp) |
+| 6 | `0x00402ED0` | `0x009C9070` | NGameText::CDataBank::GetPTextEntry | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPTextEntry_009c9070.cpp) |
+| 6 | `0x00402EE2` | `0x009C7A40` | NGameText::CTextEntry::GetText | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/NGameText_CTextEntry_GetText_009c7a40.cpp) |
 | 6 | `0x00402EEC` | `0x0099B7D0` | CWideString::operator= | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp) |
 | 6 | `0x00402EF5` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 | 6 | `0x00402F1C` | `0x0099AED0` | CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp) |
 | 6 | `0x00402F2C` | `0x0099EBF0` | CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp) |
 | 6 | `0x00402F4A` | `0x004014A0` | CCRC::Calc | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/Global_CCRC_Calc_004014a0.cpp) |
-| 6 | `0x00402F52` | `0x009CC410` | CVectorMap::LookupValue | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/FableVectorMap_LookupValue_009cc410.cpp) |
-| 6 | `0x00402F65` | `0x009C9070` | NGameText::CDataBank::GetPGroupEntry | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPGroupEntry_009c9070.cpp) |
-| 6 | `0x00402F77` | `0x009C7A40` | CBankFile::GetBankHandle | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/CBankFile_GetBankHandle_009c7a40.cpp) |
+| 6 | `0x00402F52` | `0x009CC410` | CBankFile::FindIndexBySymbolCRC | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/CBankFile_FindIndexBySymbolCRC_009cc410.cpp) |
+| 6 | `0x00402F65` | `0x009C9070` | NGameText::CDataBank::GetPTextEntry | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPTextEntry_009c9070.cpp) |
+| 6 | `0x00402F77` | `0x009C7A40` | NGameText::CTextEntry::GetText | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9c/NGameText_CTextEntry_GetText_009c7a40.cpp) |
 | 6 | `0x00402F81` | `0x0099B7D0` | CWideString::operator= | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp) |
 | 6 | `0x00402F8A` | `0x0099B510` | ~CWideString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp) |
 | 6 | `0x00402FAD` | `0x009A4EC0` | GFGetSystemManager | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp) |
@@ -547,7 +567,7 @@ These are integration units, not invented retail functions.
 | 9 | `0x0040332C` | `0x009A6610` | Initialise | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9a/CSystemManager_Initialise_009a6610.cpp) |
 | 9 | `0x00403335` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
 | 9 | `0x0040333A` | `0x009A4EC0` | GFGetSystemManager | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp) |
-| 9 | `0x00403346` | `0x00404A80` | AddChildPrimitive | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CEngineInternalPrimitiveBase_AddChildPrimitive_00404a80.cpp) |
+| 9 | `0x00403346` | `0x00404A80` | NUISystem::CIME::Get | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CIME_Get_00404a80.cpp) |
 | 9 | `0x0040334D` | `0x00405650` | Initialise | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CIME_Initialise_00405650.cpp) |
 | 9 | `0x0040335D` | `0x0099EBF0` | CCharString::CCharString | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp) |
 | 9 | `0x00403368` | `0x009D8240` | NProfileTimer::StartProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp) |
@@ -555,7 +575,7 @@ These are integration units, not invented retail functions.
 | 9 | `0x0040337F` | `0x00418C3B` | CMainGameComponent::GenerateMetFilesFromLugFiles | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b.cpp) |
 | 10 | `0x00403389` | `0x004022B0` | GFInitialise | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp) |
 | 10 | `0x0040339B` | `0x0099B150` | CWideString::operator!= | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/99/CWideString_NotEqualWide_0099b150.cpp) |
-| 10 | `0x004033AA` | `0x0040D2A0` | CTBaseSingleton<CUserProfileManager>::Get | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CUserProfileManagerSingleton_Get_0040d2a0.cpp) |
+| 10 | `0x004033AA` | `0x0040D2A0` | CUserProfileManager::Get | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CUserProfileManager_Get_0040d2a0.cpp) |
 | 10 | `0x004033B1` | `0x0040D400` | CUserProfileManager::SetProfileName | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/40/CUserProfileManager_SetProfileName_0040d400.cpp) |
 | 10 | `0x004033B8` | `0x009D8250` | NProfileTimer::EndProfile | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp) |
 | 10 | `0x004033C2` | `0x00412F90` | Play | `RELOCATION_MATCH` | [source](../rebuild/src/compiled/00/41/CGame_Play_00412f90.cpp) |
@@ -581,8 +601,8 @@ Phase closure order:
 3. **settings, persistence, and IME:** Callable in Stage 3 with all 34 direct calls proven; the exact signed-char persistence modes, full CIME settings loader, corrected CStringParser comment-list destructor, and existing string/profile/alignment ownership leaves are independently behavior-gated.
 4. **basic retail-bank alias map:** Callable in Stage 3 with all 29 direct calls proven; five PC-to-generic aliases and the persisted navigator flag are behavior-gated.
 5. **retail banks and INI files:** All 65 direct calls proven. Exact OpenRetailBank and OpenIniFile bodies now cover retail BIGB loading, development INI parsing, directory/header selection, bank-map population, and disk/retail/threaded ownership beneath every GFMain branch.
-6. **save paths, fonts, and display resources:** Callable in Stage 3 with all 61 direct calls proven. Complete Stage 3 and visual runtimes now execute the exact 8-byte definition-table pathname setter and exact 164-byte loader through pathname ownership, file open, 16 KiB input-stream construction, read, loaded/read-only flag publication, and balanced stream/file/string cleanup. They also execute the exact 372-byte My Documents write-permission coordinator through its successful create/open/delete route with no host filesystem effects. Runtime assertions prove both full in-memory routes; focused exact fixtures retain missing-path/read-only table variants plus redirected-folder and create/open/delete permission failures. Exact save-directory ownership, the game-text data-bank constructor and group-entry acquisition, and the physics-faces counted reset independently gate the remaining checkpoint/save/font/text/group/display chain.
-7. **command line and window configuration:** Callable in Stage 3 with all 15 direct calls proven. Complete Stage 3 and visual runtimes execute the exact 274-byte GetWindowTitle coordinator through bank allocation/open, CRC lookup, fallback-title assignment, and bank teardown; runtime assertions prove the full live route and normally owned CWideString handoff. The focused exact fixture retains localized group acquisition, bank-handle assignment, counted group release, and fallback coverage. Recovered 0xC8 CSystemManagerInit offsets, alternate display defaults, region selection, cache/shader/window/font strings, and static-map Phase 8 bypass remain behavior-gated.
+6. **save paths, fonts, and display resources:** Callable in Stage 3 with all 61 direct calls proven. Complete Stage 3 and visual runtimes now execute the exact 8-byte definition-table pathname setter and exact 164-byte loader through pathname ownership, file open, 16 KiB input-stream construction, read, loaded/read-only flag publication, and balanced stream/file/string cleanup. They also execute the exact 372-byte My Documents write-permission coordinator through its successful create/open/delete route with no host filesystem effects. Runtime assertions prove both full in-memory routes; focused exact fixtures retain missing-path/read-only table variants plus redirected-folder and create/open/delete permission failures. Exact save-directory ownership, the game-text data-bank constructor and text-entry acquisition, and the physics-faces counted reset independently gate the remaining checkpoint/save/font/text/group/display chain.
+7. **command line and window configuration:** Callable in Stage 3 with all 15 direct calls proven. Complete Stage 3 and visual runtimes execute the exact 274-byte GetWindowTitle coordinator through bank allocation/open, CRC lookup, fallback-title assignment, and bank teardown; runtime assertions prove the full live route and normally owned CWideString handoff. The focused exact fixture retains localized text acquisition, text retrieval, counted text release, and fallback coverage. Recovered 0xC8 CSystemManagerInit offsets, alternate display defaults, region selection, cache/shader/window/font strings, and static-map Phase 8 bypass remain behavior-gated.
 8. **EULA and hardware configuration:** Callable in Stage 3 with all 5 direct calls proven. Complete Stage 3 and visual runtimes execute the exact 136-byte EULA coordinator, exact 875-byte hardware-detection coordinator, and exact 49-byte configuration-release coordinator through their normal-success route with runtime assertions from export acceptance through release. Focused fixtures retain load/export/video failures, both exit-on-failure branches, config skip, and Phase 7's static-map bypass; process exit remains injectable.
 9. **engine primitive assembly:** Callable in Stage 3 with all 11 direct calls proven. One recovered 0xC8 CSystemManagerInit owner now spans Phase 1 construction, Phase 7 population, and Phase 9 consumption. Complete Stage 3 and visual runtimes execute the exact 998-byte CSystemManager coordinator through its recovered default-flags pre-initialization route, including process/scratch setup plus display, input, drive, text, mesh, and colour ownership across six allocations and the display/mesh component handoff; they also execute the exact 206-byte CIME body through a correctly sized 0x54 global owner and the exact 399-byte optional LUG-to-MET coordinator through its safe no-files route. Runtime assertions prove all three exact paths; focused fixtures retain system window/drive failures, the full eight-allocation route, IME failures, and one-file metadata generation/cleanup.
 10. **GFInitialise, launch, error handling, and cleanup:** Callable in Stage 3 with all 21 direct calls proven; four scenarios gate GFInitialise success with and without startup text, GFInitialise failure, system-initialization error handling, launch cleanup, final profiles, registry persistence, and cross-phase string cleanup cardinality. The exact counted profile-manager pair, CGame ownership coordinator, GFUninitialise, full initialization-error dispatcher, wide comparison, and three-leaf registry closure are independently parity- and behavior-gated with memory-only registry imports.

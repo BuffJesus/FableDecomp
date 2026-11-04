@@ -21,7 +21,7 @@ long FABLE_FASTCALL FableRunGFMainPhase3(GFMainPhase3State& state)
     }
 
     CCharString defaultLanguage =
-        FableGetDefaultLanguageName_00415530();
+        NLocalisation::GetLanguageFolder();
     CWideString language = defaultLanguage.ToWideString();
     CWideString languageDirectory = kLanguageDirectory + language;
     CWideString settingsPath =

@@ -1,182 +1,147 @@
+#include "fable_crc.h"
 #include "fable_gfmain.h"
+#include "fable_game_text_bank.h"
 #include "fable_window_title.h"
+#include "test_support/bank_file_virtual_stubs.h"
+#include "test_support/bank_extended_virtual_boundaries.h"
+#include "test_support/async_bank_lifetime_stubs.h"
 
-#include <stdlib.h>
-#include <string.h>
+// Stand-ins for the text-bank members GetWindowTitle (0x004023F0) reaches.
+// The linked NGameText::CDataBank ctor (0x009C85A0) is the reconstructed one;
+// the bank itself is never opened here, so the TEXT_GUI_WINDOW_TITLE lookup
+// misses and the title stays the built-in "Fable - The Lost Chapters".
 
-void FABLE_FASTCALL FableConstructWideString(CWideString* value);
+// The shared empty narrow text (0x0129AAF4) CCharString hands out for null data.
+char g_FableEmptyNarrowString_0129AAF4[1] = {0};
 
-extern "C" fable_u8 g_FableEmptyCharString_0129AAF4 = 0;
-extern "C" fable_u8 g_FableWindowTitleValue_0122D820 = 0;
+// The CRC-32 table FableCRC_Calc_004014A0 reads (retail static data at
+// 0x0129A168: the reflected table for polynomial 0xEDB88320), built at startup.
+fable_u32 g_FableCRCTable_0129A168[256];
 
 namespace
 {
-    const wchar_t kBoundaryWindowTitle[] =
-        L"Fable - The Lost Chapters";
-    const char kBoundaryWindowTitleTag[] =
-        "TEXT_GUI_WINDOW_TITLE";
-    const char kBoundaryFontBankName[] = "TEXT_ENGLISH_MAIN";
-
-    CCharStringData g_WindowTitleTagData = {
-        const_cast<char*>(kBoundaryWindowTitleTag),
-        sizeof(kBoundaryWindowTitleTag) - 1,
-        0,
-        0,
-        1
-    };
-    CCharStringData g_FontBankNameData = {
-        const_cast<char*>(kBoundaryFontBankName),
-        sizeof(kBoundaryFontBankName) - 1,
-        0,
-        0,
-        1
-    };
-
-    struct FableWindowTitleBank
-    {
-        void** vtable;
-    };
-
-    void* g_WindowTitleBankVTable[2];
     GFMainPhase7State* g_ActivePhase7State;
 
-    void __fastcall DeleteWindowTitleBank(
-        void* bank,
-        void*,
-        fable_u32 flags)
+    struct CRCTableBuilder
     {
-        if (g_ActivePhase7State != 0)
-            ++g_ActivePhase7State->exactWindowTitleBankDeleteCalls;
-        if ((flags & 1) != 0)
-            free(bank);
-    }
+        CRCTableBuilder()
+        {
+            for (fable_u32 index = 0; index != 256; ++index)
+            {
+                fable_u32 value = index;
+                for (fable_u32 bit = 0; bit != 8; ++bit)
+                {
+                    value = (value & 1)
+                        ? ((value >> 1) ^ 0xEDB88320)
+                        : (value >> 1);
+                }
+                g_FableCRCTable_0129A168[index] = value;
+            }
+        }
+    };
 
-    void __fastcall OpenWindowTitleBank(
-        void*,
-        void*,
-        const CCharString*,
-        fable_u32)
-    {
-        if (g_ActivePhase7State != 0)
-            ++g_ActivePhase7State->exactWindowTitleBankOpenCalls;
-    }
+    CRCTableBuilder g_CRCTableBuilder;
 }
 
-extern "C" void __fastcall
-FableWindowTitleWideLiteralCtor_004023f0(
-    void* destination,
-    void*,
-    const wchar_t*)
+// CIVCountedPointeeBase slot 1 deletes the pointee once its last reference
+// goes (its ctor/dtor are inline).
+void CIVCountedPointeeBase::DeleteCIVCountedPointeeBase() const
 {
-    *static_cast<void**>(destination) = 0;
+    delete const_cast<CIVCountedPointeeBase*>(this);
 }
 
-extern "C" void __fastcall
-FableWindowTitleCharLiteralCtor_004023f0(
-    void* destination,
-    void*,
-    const char*,
-    long)
-{
-    *static_cast<CCharStringData**>(destination) =
-        &g_WindowTitleTagData;
-}
+// CResourceList's lifetime is the reconstructed one (ctor 0x009FC570, dtor
+// 0x009FC5C0, HandleFailedAllocation 0x009FC540). The bank never loads a
+// resource here, so the list's deeper members stay stand-ins.
+#include "../src/compiled/00/9f/CResourceList_CResourceList_009fc570.cpp"
+#include "../src/compiled/00/9f/CResourceList_Destructor_009fc5c0.cpp"
+#include "../src/compiled/00/9f/CResourceList_HandleFailedAllocation_009fc540.cpp"
 
-extern "C" void* __cdecl
-FableWindowTitleOperatorNew_004023f0(fable_u32 size)
-{
-    return malloc(size);
-}
-
-extern "C" void* __fastcall
-FableWindowTitleBankCtor_004023f0(void* destination, void*)
-{
-    g_WindowTitleBankVTable[0] =
-        reinterpret_cast<void*>(&DeleteWindowTitleBank);
-    g_WindowTitleBankVTable[1] =
-        reinterpret_cast<void*>(&OpenWindowTitleBank);
-    static_cast<FableWindowTitleBank*>(destination)->vtable =
-        g_WindowTitleBankVTable;
-    return destination;
-}
-
-extern "C" void* __fastcall
-FableWindowTitleGetFontBankName_004023f0(
-    void* destination,
-    void*)
-{
-    *static_cast<CCharStringData**>(destination) =
-        &g_FontBankNameData;
-    return destination;
-}
-
-extern "C" void __fastcall
-FableWindowTitleCharDtor_004023f0(void*, void*)
+void CResourceList::RemoveResource(CResource&)
 {
 }
 
-extern "C" fable_u32 __fastcall
-FableWindowTitleCrc_004023f0(
-    fable_u32,
-    const void*,
-    fable_u32)
+bool CResourceList::UnloadNextResource(unsigned long)
 {
-    return 0x12345678;
+    return false;
 }
 
-extern "C" fable_u32 __fastcall
-FableWindowTitleLookup_004023f0(void*, void*, fable_u32)
+// CResourceBank / CBankFile lifetime (the CDataBank bases).
+
+// CResourceList::SetMaximumMemory: the stand-in list holds nothing.
+void CResourceList::SetMaximumMemory(long maximumMemory)
+{
+    MaximumMemory = maximumMemory;
+}
+
+CResourceBank::CResourceBank()
+{
+}
+
+CResourceBank::~CResourceBank()
+{
+}
+
+CBankFile::CBankFile()
+{
+}
+
+// The text bank's unopened stand-in still constructs CBankFile's packed
+// members, so keep this constructor on the recovered catalog implementation.
+#include "../src/compiled/00/a6/CPackedUIntArray_CPackedUIntArray_00a629c0.cpp"
+#include "test_support/bank_file_cleanup_stubs.h"
+
+CBankFile::~CBankFile()
+{
+}
+
+template<> _STL::list<CCountedPointer<CBankFileAsyncData> >::~list()
+{
+}
+
+CBankFileAsync::CBankFileAsync()
+{
+}
+
+CBankFileAsync::~CBankFileAsync()
+{
+}
+
+// CBankFile::OpenReadOnly (vtable slot 1): records the open, reads nothing.
+bool CBankFile::OpenReadOnly(const CCharString&, unsigned long)
+{
+    if (g_ActivePhase7State != 0)
+        ++g_ActivePhase7State->exactWindowTitleBankOpenCalls;
+    return true;
+}
+
+// CBankFile::FindIndexBySymbolCRC @ 0x009CC410: the unopened bank has no
+// symbols.
+unsigned long CBankFile::FindIndexBySymbolCRC(unsigned long) const
 {
     if (g_ActivePhase7State != 0)
         ++g_ActivePhase7State->exactWindowTitleLookupCalls;
     return 0;
 }
 
-extern "C" void __fastcall
-FableWindowTitleGetGroupEntry_004023f0(
-    void*,
-    void*,
-    void* destination,
-    fable_u32,
-    bool)
+// NGameText::CDataBank::~CDataBank (reached through the deleting destructor).
+NGameText::CDataBank::~CDataBank()
 {
-    *static_cast<void**>(destination) = 0;
+    if (g_ActivePhase7State != 0)
+        ++g_ActivePhase7State->exactWindowTitleBankDeleteCalls;
 }
 
-extern "C" void* __fastcall
-FableWindowTitleGetBankHandle_004023f0(
-    void*,
-    void* output,
-    void*)
+// Text-entry lookup boundary (not reached: no index).
+CIVCountedPointer<const NGameText::CTextEntry>
+NGameText::CDataBank::GetPTextEntry(unsigned long, bool) const
 {
-    *static_cast<void**>(output) = 0;
-    return output;
+    return CIVCountedPointer<const NGameText::CTextEntry>();
 }
 
-extern "C" void* __fastcall
-FableWindowTitleWideAssign_004023f0(
-    void* destination,
-    void*,
-    const void*)
+// NGameText::CTextEntry::GetText @ 0x009C7A40 (not reached).
+CWideString NGameText::CTextEntry::GetText() const
 {
-    return destination;
-}
-
-extern "C" void __fastcall
-FableWindowTitleWideDtor_004023f0(void*, void*)
-{
-}
-
-extern "C" void* __fastcall
-FableWindowTitleAssignResult_004023f0(
-    void* destination,
-    const void*,
-    const void*)
-{
-    CWideString* result = static_cast<CWideString*>(destination);
-    FableConstructWideString(result);
-    *result = kBoundaryWindowTitle;
-    return destination;
+    return CWideString();
 }
 
 CWideString FABLE_FASTCALL FableRunExactWindowTitleBoundary(
@@ -188,3 +153,6 @@ CWideString FABLE_FASTCALL FableRunExactWindowTitleBoundary(
     g_ActivePhase7State = 0;
     return title;
 }
+
+// Unopened bank boundary for this isolated fixture.
+void NGameText::CDataBank::Close() { CBankFile::Close(); }

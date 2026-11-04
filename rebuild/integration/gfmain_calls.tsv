@@ -19,7 +19,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	00402678	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
 3	00402683	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
 3	0040268c	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
-3	0040269f	00415530	FableGetDefaultLanguageName_00415530	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetDefaultLanguageName_00415530.cpp
+3	0040269f	00415530	NLocalisation::GetLanguageFolder	RELOCATION_MATCH	rebuild/src/compiled/00/41/NLocalisation_GetLanguageFolder_00415530.cpp
 3	004026a6	0099e480	CCharString::ToWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_ToWideString_0099e480.cpp
 3	004026b5	0099bff0	operator+(wchar_t const *,CWideString const &)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddLiteralAndWideString_0099bff0.cpp
 3	004026c0	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
@@ -34,18 +34,18 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 3	00402745	00404720	CStringParser	RELOCATION_MATCH	rebuild/src/compiled/00/40/CStringParser_Constructor_00404720.cpp
 3	0040274e	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	00402765	009badd0	CPersistContext	MATCH	rebuild/src/compiled/00/9b/CPersistContext_TextConstructor_009badd0.cpp
-3	00402785	004045c0	Transfer<signed_char>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp
-3	004027a5	004045c0	Transfer<signed_char>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp
-3	004027c5	004045c0	Transfer<signed_char>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_TransferSignedChar_004045c0.cpp
+3	00402785	004045c0	Transfer<bool>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_Transferbool_004045c0.cpp
+3	004027a5	004045c0	Transfer<bool>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_Transferbool_004045c0.cpp
+3	004027c5	004045c0	Transfer<bool>	RELOCATION_MATCH	rebuild/src/compiled/00/40/CPersistContext_Transferbool_004045c0.cpp
 3	004027d1	00405350	NUISystem::CIME::LoadIMESettings	RELOCATION_MATCH	rebuild/src/compiled/00/40/CIME_LoadIMESettings_00405350.cpp
 3	004027da	004046b0	std::list<CStringParserCommentBoundaries>::~list	RELOCATION_MATCH	rebuild/src/compiled/00/40/CStringParserCommentList_Destructor_004046b0.cpp
 3	004027e3	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	004027ec	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
-3	004027f5	0099a2e0	FableRestoreCBaseVTable_0099A2E0	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a2e0.cpp
+3	004027f5	0099a2e0	CBaseClass::~CBaseClass	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBaseClass_CBaseClass_0099a2d0.cpp
 3	004027fe	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 3	0040280f	0099a920	CDiskFileWin32::Close	RELOCATION_MATCH	rebuild/src/compiled/00/99/CDiskFileWin32_Close_0099A920.cpp
 3	00402818	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
-3	00402821	0099a300	FableRestoreCBaseVTable_0099A300	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBase_RestoreVTable_0099a300.cpp
+3	00402821	0099a300	CBaseClassNonCopyable::~CBaseClassNonCopyable	RELOCATION_MATCH	rebuild/src/compiled/00/99/CBaseClass_CBaseClass_0099a2d0.cpp
 3	0040282c	009bc890	NTextLayoutConfig::SetPrimaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetPrimaryLeftAlignment_009bc890.cpp
 3	00402837	009bc8a0	NTextLayoutConfig::SetSecondaryLeftAlignment	RELOCATION_MATCH	rebuild/src/compiled/00/9b/TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp
 3	0040283e	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
@@ -149,7 +149,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 6	00402d0a	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 6	00402d19	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
 6	00402d2b	0099bf30	operator+(CWideString const &,wchar_t const *)	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_AddWideStringAndLiteral_0099bf30.cpp
-6	00402d36	009d4a40	CDefStringTableRecovered::SetTablePath	RELOCATION_MATCH	rebuild/src/compiled/00/9d/CDefStringTable_SetTablePath_009d4a40.cpp
+6	00402d36	009d4a40	CDefStringTable::SetTableFilename	RELOCATION_MATCH	rebuild/src/compiled/00/9d/CDefStringTable_SetTableFilename_009d4a40.cpp
 6	00402d3f	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 6	00402d63	009d4c30	CDefStringTable::LoadTable	RELOCATION_MATCH	rebuild/src/compiled/00/9d/CDefStringTable_LoadTable_009d4c30.cpp
 6	00402d6a	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
@@ -173,20 +173,20 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 6	00402e70	00402130	FableCheckMyDocumentsWritePermissions_00402130	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_MyDocuments_CheckWritePermissions_00402130.cpp
 6	00402e7b	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 6	00402e89	00403e40	CCountedPointer<CIPhysicsFacesSegmentBase_const>::Reset	RELOCATION_MATCH	rebuild/src/compiled/00/40/CCountedPointer_PhysicsFacesSegment_Reset_00403e40.cpp
-6	00402e9d	00415260	GetFontBankName	RELOCATION_MATCH	rebuild/src/compiled/00/41/Global_GetFontBankName_00415260.cpp
+6	00402e9d	00415260	NLocalisation::GetTextBankName	RELOCATION_MATCH	rebuild/src/compiled/00/41/NLocalisation_GetTextBankName_00415260.cpp
 6	00402eac	0099eae0	~CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Destructor_0099eae0.cpp
 6	00402eb5	0099aed0	CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp
-6	00402ebd	009cc410	CVectorMap::LookupValue	RELOCATION_MATCH	rebuild/src/compiled/00/9c/FableVectorMap_LookupValue_009cc410.cpp
-6	00402ed0	009c9070	NGameText::CDataBank::GetPGroupEntry	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPGroupEntry_009c9070.cpp
-6	00402ee2	009c7a40	CBankFile::GetBankHandle	RELOCATION_MATCH	rebuild/src/compiled/00/9c/CBankFile_GetBankHandle_009c7a40.cpp
+6	00402ebd	009cc410	CBankFile::FindIndexBySymbolCRC	RELOCATION_MATCH	rebuild/src/compiled/00/9c/CBankFile_FindIndexBySymbolCRC_009cc410.cpp
+6	00402ed0	009c9070	NGameText::CDataBank::GetPTextEntry	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPTextEntry_009c9070.cpp
+6	00402ee2	009c7a40	NGameText::CTextEntry::GetText	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CTextEntry_GetText_009c7a40.cpp
 6	00402eec	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
 6	00402ef5	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 6	00402f1c	0099aed0	CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Constructor_0099aed0.cpp
 6	00402f2c	0099ebf0	CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
 6	00402f4a	004014a0	CCRC::Calc	RELOCATION_MATCH	rebuild/src/compiled/00/40/Global_CCRC_Calc_004014a0.cpp
-6	00402f52	009cc410	CVectorMap::LookupValue	RELOCATION_MATCH	rebuild/src/compiled/00/9c/FableVectorMap_LookupValue_009cc410.cpp
-6	00402f65	009c9070	NGameText::CDataBank::GetPGroupEntry	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPGroupEntry_009c9070.cpp
-6	00402f77	009c7a40	CBankFile::GetBankHandle	RELOCATION_MATCH	rebuild/src/compiled/00/9c/CBankFile_GetBankHandle_009c7a40.cpp
+6	00402f52	009cc410	CBankFile::FindIndexBySymbolCRC	RELOCATION_MATCH	rebuild/src/compiled/00/9c/CBankFile_FindIndexBySymbolCRC_009cc410.cpp
+6	00402f65	009c9070	NGameText::CDataBank::GetPTextEntry	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CDataBank_GetPTextEntry_009c9070.cpp
+6	00402f77	009c7a40	NGameText::CTextEntry::GetText	RELOCATION_MATCH	rebuild/src/compiled/00/9c/NGameText_CTextEntry_GetText_009c7a40.cpp
 6	00402f81	0099b7d0	CWideString::operator=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_CopyAssignment_0099b7d0.cpp
 6	00402f8a	0099b510	~CWideString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_Destructor_0099b510.cpp
 6	00402fad	009a4ec0	GFGetSystemManager	RELOCATION_MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp
@@ -229,7 +229,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 9	0040332c	009a6610	Initialise	RELOCATION_MATCH	rebuild/src/compiled/00/9a/CSystemManager_Initialise_009a6610.cpp
 9	00403335	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 9	0040333a	009a4ec0	GFGetSystemManager	RELOCATION_MATCH	rebuild/src/compiled/00/9a/Global_GFGetSystemManager_009a4ec0.cpp
-9	00403346	00404a80	AddChildPrimitive	RELOCATION_MATCH	rebuild/src/compiled/00/40/CEngineInternalPrimitiveBase_AddChildPrimitive_00404a80.cpp
+9	00403346	00404a80	NUISystem::CIME::Get	RELOCATION_MATCH	rebuild/src/compiled/00/40/CIME_Get_00404a80.cpp
 9	0040334d	00405650	Initialise	RELOCATION_MATCH	rebuild/src/compiled/00/40/CIME_Initialise_00405650.cpp
 9	0040335d	0099ebf0	CCharString::CCharString	RELOCATION_MATCH	rebuild/src/compiled/00/99/CCharString_Constructor_0099ebf0.cpp
 9	00403368	009d8240	NProfileTimer::StartProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_StartProfile_009d8240.cpp
@@ -237,7 +237,7 @@ phase	call_site	target	analysis_name	validated_grade	validated_source
 9	0040337f	00418c3b	CMainGameComponent::GenerateMetFilesFromLugFiles	RELOCATION_MATCH	rebuild/src/compiled/00/41/CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b.cpp
 10	00403389	004022b0	GFInitialise	RELOCATION_MATCH	rebuild/src/compiled/00/40/global_GFInitialise_004022b0.cpp
 10	0040339b	0099b150	CWideString::operator!=	RELOCATION_MATCH	rebuild/src/compiled/00/99/CWideString_NotEqualWide_0099b150.cpp
-10	004033aa	0040d2a0	CTBaseSingleton<CUserProfileManager>::Get	RELOCATION_MATCH	rebuild/src/compiled/00/40/CUserProfileManagerSingleton_Get_0040d2a0.cpp
+10	004033aa	0040d2a0	CUserProfileManager::Get	RELOCATION_MATCH	rebuild/src/compiled/00/40/CUserProfileManager_Get_0040d2a0.cpp
 10	004033b1	0040d400	CUserProfileManager::SetProfileName	RELOCATION_MATCH	rebuild/src/compiled/00/40/CUserProfileManager_SetProfileName_0040d400.cpp
 10	004033b8	009d8250	NProfileTimer::EndProfile	RELOCATION_MATCH	rebuild/src/compiled/00/9d/NProfileTimer_EndProfile_009d8250.cpp
 10	004033c2	00412f90	Play	RELOCATION_MATCH	rebuild/src/compiled/00/41/CGame_Play_00412f90.cpp

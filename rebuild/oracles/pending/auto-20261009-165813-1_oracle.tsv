@@ -1,0 +1,4 @@
+address	name	length	bytes
+00a67e20	CVolumeTexture::IsBusy	3	32c0c3
+00a67e30	CVolumeTexture::Compress	3	32c0c3
+00a67f20	CVolumeTexture::GenerateMipmaps	3	c20800

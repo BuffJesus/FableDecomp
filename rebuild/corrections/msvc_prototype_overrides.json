@@ -1,7 +1,7 @@
 {
-  "decorated_unknown_candidates": 4629,
-  "undecorated": 4629,
-  "accepted": 4629,
+  "decorated_unknown_candidates": 4491,
+  "undecorated": 4491,
+  "accepted": 4491,
   "rejected": 0,
   "output": "D:\\Documents\\FableTLC\\rebuild\\corrections\\msvc_prototype_overrides.tsv",
   "rejected_examples": []

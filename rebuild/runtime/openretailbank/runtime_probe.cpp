@@ -72,10 +72,10 @@ static bool CompareContainedBankMap(
     const fable_bank::Bank* oracle,
     const NBankFileManager::CRetailBank* bank)
 {
-    bool match = bank->containedBankCount_ == oracle->subCount;
+    bool match = bank->containedBanks_.size_ == oracle->subCount;
     unsigned long mapCount = 0;
     ContainedBankMapNode* mapHead =
-        reinterpret_cast<ContainedBankMapNode*>(bank->containedBanksHead_);
+        reinterpret_cast<ContainedBankMapNode*>(bank->containedBanks_.head_);
     for (ContainedBankMapNode* node = mapHead ? mapHead->next : 0;
          mapHead && node && node != mapHead && mapCount <= oracle->subCount;
          node = node->next)
@@ -114,7 +114,7 @@ static bool CompareThreadedPayloads(
     const NBankFileManager::CRetailBank* bank)
 {
     RawThreadedFile* threaded =
-        bank ? reinterpret_cast<RawThreadedFile*>(bank->threadedFile_) : 0;
+        bank ? reinterpret_cast<RawThreadedFile*>(bank->threadedFile_.data_) : 0;
     bool match = threaded && threaded->fileHandle && threaded->openFlag &&
         threaded->length == oracle->size;
     unsigned long totalBytes = 0;
@@ -235,7 +235,8 @@ int main(int argc, char** argv)
     sentinel.prev = &sentinel;
     *reinterpret_cast<BankListNode**>(managerBytes + 0x10) = &sentinel;
 
-    CWideStringData pathStorage;
+    unsigned long pathStorageRaw_[4];
+    CWideStringData& pathStorage = *reinterpret_cast<CWideStringData*>(pathStorageRaw_);
     wchar_t widePath[512];
     unsigned char pathnameBytes[sizeof(CWideString)];
     CWideString* pathname =
@@ -273,7 +274,7 @@ int main(int argc, char** argv)
 
     printf("PROBE raw-open OK oracle-subbanks=%u raw-subbanks=%lu\n",
            oracle.subCount,
-           (unsigned long)bank->containedBankCount_);
+           (unsigned long)bank->containedBanks_.size_);
     fflush(stdout);
     const bool mapMatch = CompareContainedBankMap(&oracle, bank);
     const bool threadedMatch = CompareThreadedPayloads(&oracle, bank);

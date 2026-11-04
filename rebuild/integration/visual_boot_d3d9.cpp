@@ -329,7 +329,9 @@ namespace
     fable_u32 g_DisplayManagerWindowStorage[0x214 / 4] = {};
     fable_u8 g_RenderStateManagerStorage[0x3A3C] = {};
     fable_u8 g_RenderSystemStorage[0x0C] = {};
-    fable_u8 g_SystemManagerStorage[0x64] = {};
+    // Sized as the retail CSystemManager (0x180): GFInitialise reads its
+    // manager slots up to +0x88 through GFGetSystemManager.
+    fable_u8 g_SystemManagerStorage[0x180] = {};
     fable_i32 g_ArtworkWidth = 0;
     fable_i32 g_ArtworkHeight = 0;
     fable_i32 g_TitleWidth = 0;
@@ -3693,8 +3695,12 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
         g_MenuTexture != 0 &&
         g_MenuWidth == 1280)
     {
-        for (fable_u32 row = 0; row != 7; ++row)
+        // Draw the same offline children used by selection and hit-testing.
+        // The optional LIVE child remains in the retail atlas but is hidden.
+        for (fable_u32 visibleRow = 0;
+             visibleRow != FableFrontendMainMenuVisibleRows; ++visibleRow)
         {
+            const fable_u32 row = MainMenuRetailChild(visibleRow);
             const FableUiRuntimeListChild& rowChild =
                 g_MainMenuRowChildren[row];
             const float rowOffsetX =
@@ -4716,12 +4722,12 @@ bool FABLE_FASTCALL FableRenderVisualD3D9(
 
     Render2DAdapterInput adapterInput;
     memset(&adapterInput, 0, sizeof(adapterInput));
-    C2DBoxF fullWindow = {
+    C2DBoxF fullWindow(
         0.0f,
         0.0f,
         static_cast<float>(clientWidth),
         static_cast<float>(clientHeight)
-    };
+    );
     adapterInput.entryVertexShadersEnabled = true;
     adapterInput.worldTransformNeedsReset = true;
     g_CShaderRenderManager_013BC470.updateFlags3D8 |= 1;

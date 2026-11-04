@@ -1,22 +1,24 @@
 # FableTLC source reconstruction
 
 This is the build-oriented counterpart to the Ghidra database. It is generated from authoritative
-exports and contains only source that has crossed an explicit grade.
+exports and records source at several explicit grades, including unverified candidates.
 
 ## Regenerate
 
 ```powershell
-python tools/bootstrap_rebuild_tree.py
-python tools/gate_re_agent_candidates.py
-python tools/audit_candidate_signatures.py
-python tools/build_reconstruction_backlog.py
-python tools/build_promotion_queue.py
-python tools/write_decomp_dashboard.py
+powershell -ExecutionPolicy Bypass -File tools/ProbeVc71Sdk.ps1
 powershell -ExecutionPolicy Bypass -File rebuild/build_tier0.ps1
+python tools/gate_re_agent_candidates.py
 powershell -ExecutionPolicy Bypass -File rebuild/build_candidates.ps1
 powershell -ExecutionPolicy Bypass -File tools/ExportCandidateOracles.ps1
 python tools/compare_candidate_objects.py
-powershell -ExecutionPolicy Bypass -File tools/ProbeVc71Sdk.ps1
+python tools/bootstrap_rebuild_tree.py
+python tools/audit_candidate_signatures.py
+python tools/build_reconstruction_backlog.py
+python tools/build_promotion_queue.py
+python tools/decomp_pipeline/header_metrics.py
+python tools/write_decomp_dashboard.py
+python tools/update_readme_progress.py
 ```
 
 For a focused compile/behavior iteration without rewriting the catalog report
@@ -29,13 +31,13 @@ powershell -ExecutionPolicy Bypass -File rebuild/build_candidates.ps1 -Address 0
 Selected results are merged into the existing full `vc71-compiled.tsv`;
 omitting `-Address` retains the complete catalog gate.
 
-`FableTLC Rebuild Refresh` is a hidden 15-minute Scheduled Task installed by
+The optional hidden 15-minute Scheduled Task `FableTLC Rebuild Refresh` can be installed by
 `tools/InstallRebuildRefreshTask.ps1`. It fingerprints candidate/manifests inputs, defers while the
 auto-RE or naming/Ghidra pipeline owns the workspace, and performs no work when inputs are unchanged.
 
 The bootstrap writes `manifest/functions.tsv`, `manifest/modules.tsv`, and `manifest/status.json`;
 materializes the three proven Tier-0 modules under `src/tier0`; and copies their retail byte oracles.
-`COVERAGE.md` is the honest project dashboard.
+`COVERAGE.md` is a generated ledger. Historical aggregate totals include unresolved purity/deduplication and behavioral-evidence limitations; they do not certify an integrated engine.
 
 Generated auto-RE code remains a candidate until it compiles. The manifest records candidate paths
 and checker verdicts without silently promoting them to reconstructed source.
@@ -64,8 +66,12 @@ unknown-pragmas are warnings, not ABI errors.
 - `candidate`: generated source exists.
 - `checker-pass`: structural auto-RE review passed.
 - `compiled`: emits a VC7.1 object, but has not yet crossed a behavioral oracle.
-- `functional`: compiles under VC7.1 and passes behavioral/parity review.
-- `matching`: compiles under VC7.1 to byte-identical retail `.text`.
+- `functional`: compiles and passes the tested behavior contract; insufficient byte similarity for reconstruction credit.
+- `near_match`: genuine C++, candidate-bound behavior fixture passes, instruction count within 10% and normalized similarity at least 90%.
+- `matching`: exact or relocation-masked retail `.text` match with a behavior fixture.
+- `asm_bake`: byte oracle only; not genuine C++ reconstruction.
+
+See `../CONTRIBUTING.md` for the intended contract and the known limitations of historical acceptance records.
 
 The ultimate target is a functional rebuilt executable. Matching grade is pursued where practical.
 

@@ -1,0 +1,1060 @@
+{
+  "body_sha256": "fc0dbd088352dd320c07e8d98a112f417bc31e1c110b0d55c6ce0dbe1d4991fd",
+  "helpers": [
+    {
+      "address": "00402510",
+      "name": "Native_00402510_GFMain",
+      "ret": "int",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "instance",
+          "type": "void *"
+        },
+        {
+          "name": "commandLine",
+          "type": "char *"
+        },
+        {
+          "name": "show",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "address": "00403b10",
+      "name": "Native_00403b10_CSystemManagerInit",
+      "ret": "NativeSystemInit *",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeSystemInit *"
+    },
+    {
+      "address": "0099ebf0",
+      "name": "Native_0099ebf0_CCharString_CCharString",
+      "ret": "NativeCharString *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "text",
+          "type": "char *"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "this": "NativeCharString *"
+    },
+    {
+      "address": "0099e4b0",
+      "name": "Native_0099e4b0_CCharString_CCharString",
+      "ret": "NativeCharString *",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeCharString *"
+    },
+    {
+      "address": "0099eae0",
+      "name": "Native_0099eae0_CCharString_CCharString",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeCharString *"
+    },
+    {
+      "address": "0099efb0",
+      "name": "Native_0099efb0_CCharString_operator",
+      "ret": "NativeCharString *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "other",
+          "type": "NativeCharString *"
+        }
+      ],
+      "this": "NativeCharString *"
+    },
+    {
+      "address": "0099e480",
+      "name": "Native_0099e480_CCharString_ToWideString",
+      "ret": "NativeWideString *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ],
+      "this": "NativeCharString *"
+    },
+    {
+      "address": "0099aed0",
+      "name": "Native_0099aed0_CWideString",
+      "ret": "NativeWideString *",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeWideString *"
+    },
+    {
+      "address": "0099b510",
+      "name": "Native_0099b510_CWideString_CWideString",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeWideString *"
+    },
+    {
+      "address": "0099b6b0",
+      "name": "Native_0099b6b0_CWideString_CWideString_const_wchar_t",
+      "ret": "NativeWideString *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "text",
+          "type": "ushort *"
+        }
+      ],
+      "this": "NativeWideString *"
+    },
+    {
+      "address": "0099b7d0",
+      "name": "Native_0099b7d0_CWideString_operator",
+      "ret": "NativeWideString *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "other",
+          "type": "NativeWideString *"
+        }
+      ],
+      "this": "NativeWideString *"
+    },
+    {
+      "address": "0099b800",
+      "name": "Native_0099b800_CWideString_operator_wchar_t_const",
+      "ret": "NativeWideString *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "text",
+          "type": "ushort *"
+        }
+      ],
+      "this": "NativeWideString *"
+    },
+    {
+      "address": "0099af10",
+      "name": "Native_0099af10_CWideString_operator_const_wchar_t",
+      "ret": "ushort *",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeWideString *"
+    },
+    {
+      "address": "0099b150",
+      "name": "Native_0099b150_CWideString_operator",
+      "ret": "bool",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "text",
+          "type": "ushort *"
+        }
+      ],
+      "this": "NativeWideString *"
+    },
+    {
+      "address": "0099be70",
+      "name": "Native_0099be70_operator_CWideString_const_CWideString_const",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "left",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "right",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0099bf30",
+      "name": "Native_0099bf30_operator_CWideString_const_wchar_t_const",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "left",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "right",
+          "type": "ushort *"
+        }
+      ]
+    },
+    {
+      "address": "0099bff0",
+      "name": "Native_0099bff0_operator_wchar_t_const_CWideString_const",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "left",
+          "type": "ushort *"
+        },
+        {
+          "name": "right",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "009d8240",
+      "name": "Native_009d8240_NProfileTimer_StartProfile",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "label",
+          "type": "NativeCharString *"
+        },
+        {
+          "name": "profileId",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "address": "009d8250",
+      "name": "Native_009d8250_NProfileTimer_EndProfile",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "profileId",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "address": "009974f0",
+      "name": "Native_009974f0_SetCurrentPath",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "00999230",
+      "name": "Native_00999230_PathExists",
+      "ret": "bool",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "009a76c0",
+      "name": "Native_009a76c0_NBankFileManager_SetHeaderDir",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "00415260",
+      "name": "Native_00415260_NLocalisation_GetTextBankName",
+      "ret": "NativeCharString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeCharString *"
+        }
+      ]
+    },
+    {
+      "address": "00415440",
+      "name": "Native_00415440_FableGetStreamingFontBankName_00415440",
+      "ret": "NativeCharString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeCharString *"
+        }
+      ]
+    },
+    {
+      "address": "00415530",
+      "name": "Native_00415530_NLocalisation_GetLanguageFolder",
+      "ret": "NativeCharString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeCharString *"
+        }
+      ]
+    },
+    {
+      "address": "00997510",
+      "name": "Native_00997510_GetProjectPath",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "004023f0",
+      "name": "Native_004023f0_GetWindowTitle",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a0a0",
+      "name": "Native_0041a0a0_FableGetMiscDirectoryA_0041A0A0",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a0c0",
+      "name": "Native_0041a0c0_FableGetMiscDirectoryB_0041A0C0",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a100",
+      "name": "Native_0041a100_FableGetGraphicsDirectory_0041A100",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a120",
+      "name": "Native_0041a120_FableGetLanguageDirectoryA_0041A120",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a180",
+      "name": "Native_0041a180_FableGetCacheDirectory_0041A180",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a1e0",
+      "name": "Native_0041a1e0_FableGetShadersDirectory_0041A1E0",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a330",
+      "name": "Native_0041a330_FableGetLanguageDirectoryB_0041A330",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a430",
+      "name": "Native_0041a430_NResourceDirectoryNames_GetMyDocumentsDir",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a4c0",
+      "name": "Native_0041a4c0_FableGetAutoSaveCheckpointDirectory_0041A4C0",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "0041a540",
+      "name": "Native_0041a540_NResourceDirectoryNames_GetSaveDir",
+      "ret": "NativeWideString *",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "009c85a0",
+      "name": "Native_009c85a0_NGameText_CDataBank_CDataBank",
+      "ret": "NativeTextBank *",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeTextBank *"
+    },
+    {
+      "address": "009cc410",
+      "name": "Native_009cc410_CBankFile_FindIndexBySymbolCRC",
+      "ret": "uint",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "crc",
+          "type": "uint"
+        }
+      ],
+      "this": "NativeTextBank *"
+    },
+    {
+      "address": "009c9070",
+      "name": "Native_009c9070_NGameText_CDataBank_GetPTextEntry",
+      "ret": "NativeTextPointer *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeTextPointer *"
+        },
+        {
+          "name": "index",
+          "type": "uint"
+        },
+        {
+          "name": "load",
+          "type": "bool"
+        }
+      ],
+      "this": "NativeTextBank *"
+    },
+    {
+      "address": "009c7a40",
+      "name": "Native_009c7a40_NGameText_CTextEntry_GetText",
+      "ret": "NativeWideString *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "result",
+          "type": "NativeWideString *"
+        }
+      ],
+      "this": "NativeTextEntry *"
+    },
+    {
+      "address": "00403e40",
+      "name": "Native_00403e40_CCountedPointer_CIPhysicsFacesSegmentBase_const_Reset",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "data",
+          "type": "NativeTextBank *"
+        }
+      ],
+      "this": "NativeCountedPointer *"
+    },
+    {
+      "address": "004014a0",
+      "name": "Native_004014a0_CCRC_Calc",
+      "ret": "uint",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "seed",
+          "type": "uint"
+        },
+        {
+          "name": "data",
+          "type": "void *"
+        },
+        {
+          "name": "count",
+          "type": "uint"
+        }
+      ]
+    },
+    {
+      "address": "0040d2a0",
+      "name": "Native_0040d2a0_CUserProfileManager_Get",
+      "ret": "void *",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "00404440",
+      "name": "Native_00404440_CFileInstallerSingleton_Get",
+      "ret": "void *",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "00413c50",
+      "name": "Native_00413c50_InitialiseConsoleVariables",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "009d81e0",
+      "name": "Native_009d81e0_FableClearStartupLatch_013964A8",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "00418c3b",
+      "name": "Native_00418c3b_CMainGameComponent_GenerateMetFilesFromLugFiles",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "009d5240",
+      "name": "Native_009d5240_CBankFileAsync_SetEnableFailureHandling",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "address": "009bc890",
+      "name": "Native_009bc890_NTextLayoutConfig_SetPrimaryLeftAlignment",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "address": "009bc8a0",
+      "name": "Native_009bc8a0_NTextLayoutConfig_SetSecondaryLeftAlignment",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "address": "009a0ef0",
+      "name": "Native_009a0ef0_CXMVPlayer_SetLeftAlignText",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "address": "0099ad80",
+      "name": "Native_0099ad80_CDiskFileWin32",
+      "ret": "NativeDiskFile *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "access",
+          "type": "int"
+        },
+        {
+          "name": "flags",
+          "type": "int"
+        }
+      ],
+      "this": "NativeDiskFile *"
+    },
+    {
+      "address": "0099f2e0",
+      "name": "Native_0099f2e0_LoadFromFile",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "file",
+          "type": "NativeDiskFile *"
+        },
+        {
+          "name": "process",
+          "type": "void *"
+        },
+        {
+          "name": "length",
+          "type": "int"
+        }
+      ],
+      "this": "NativeCharString *"
+    },
+    {
+      "address": "00404720",
+      "name": "Native_00404720_CStringParser",
+      "ret": "NativeStringParser *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "text",
+          "type": "NativeCharString *"
+        },
+        {
+          "name": "errorCallback",
+          "type": "void *"
+        },
+        {
+          "name": "filename",
+          "type": "NativeCharString *"
+        },
+        {
+          "name": "lineOffset",
+          "type": "int"
+        }
+      ],
+      "this": "NativeStringParser *"
+    },
+    {
+      "address": "009badd0",
+      "name": "Native_009badd0_CPersistContext",
+      "ret": "NativePersistContext *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "parser",
+          "type": "NativeStringParser *"
+        },
+        {
+          "name": "errorCallback",
+          "type": "void *"
+        },
+        {
+          "name": "defaults",
+          "type": "bool"
+        },
+        {
+          "name": "definitions",
+          "type": "void *"
+        },
+        {
+          "name": "symbols",
+          "type": "void *"
+        },
+        {
+          "name": "cleanup",
+          "type": "NativeCharString *"
+        }
+      ],
+      "this": "NativePersistContext *"
+    },
+    {
+      "address": "004045c0",
+      "name": "Native_004045c0_Transfer_bool",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "name",
+          "type": "char *"
+        },
+        {
+          "name": "value",
+          "type": "char *"
+        },
+        {
+          "name": "defaultValue",
+          "type": "char *"
+        }
+      ],
+      "this": "NativePersistContext *"
+    },
+    {
+      "address": "00405350",
+      "name": "Native_00405350_NUISystem_CIME_LoadIMESettings",
+      "ret": "void",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "context",
+          "type": "NativePersistContext *"
+        }
+      ]
+    },
+    {
+      "address": "004046b0",
+      "name": "Native_004046b0_std_list_CStringParserCommentBoundaries_list",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "void *"
+    },
+    {
+      "address": "0099a2e0",
+      "name": "Native_0099a2e0_CBaseClass_CBaseClass",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "void *"
+    },
+    {
+      "address": "0099a300",
+      "name": "Native_0099a300_CBaseClassNonCopyable_CBaseClassNonCopyable",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "void *"
+    },
+    {
+      "address": "0099a920",
+      "name": "Native_0099a920_CDiskFileWin32_Close",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeDiskFile *"
+    },
+    {
+      "address": "009a76d0",
+      "name": "Native_009a76d0_CBasicRetailBankManager_SetNavigatorEnabled",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "009a8150",
+      "name": "Native_009a8150_CBasicRetailBankManager_AddBankAlias",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "alias",
+          "type": "NativeCharString *"
+        },
+        {
+          "name": "bank",
+          "type": "NativeCharString *"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "009a8840",
+      "name": "Native_009a8840_OpenRetailBank",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "readOnly",
+          "type": "bool"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "009a8170",
+      "name": "Native_009a8170_OpenIniFile",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "009d4a40",
+      "name": "Native_009d4a40_CDefStringTable_SetTableFilename",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "009d4c30",
+      "name": "Native_009d4c30_CDefStringTable_LoadTable",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "readOnly",
+          "type": "bool"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "00402130",
+      "name": "Native_00402130_FableCheckMyDocumentsWritePermissions_00402130",
+      "ret": "uint",
+      "cc": "__fastcall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        }
+      ]
+    },
+    {
+      "address": "009a4ec0",
+      "name": "Native_009a4ec0_GFGetSystemManager",
+      "ret": "void *",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "00401fe0",
+      "name": "Native_00401fe0_DoEULAThings",
+      "ret": "int",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "004017b0",
+      "name": "Native_004017b0_GFConfigDetection",
+      "ret": "bool",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "00401b20",
+      "name": "Native_00401b20_GFFreeConfigDetection",
+      "ret": "bool",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "004022b0",
+      "name": "Native_004022b0_GFInitialise",
+      "ret": "bool",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "009a6610",
+      "name": "Native_009a6610_Initialise",
+      "ret": "int",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "init",
+          "type": "NativeSystemInit *"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "00404a80",
+      "name": "Native_00404a80_NUISystem_CIME_Get",
+      "ret": "void *",
+      "cc": "__fastcall",
+      "params": []
+    },
+    {
+      "address": "00405650",
+      "name": "Native_00405650_Initialise",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "window",
+          "type": "void *"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "0040d400",
+      "name": "Native_0040d400_CUserProfileManager_SetProfileName",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "name",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "flag",
+          "type": "bool"
+        }
+      ],
+      "this": "void *"
+    },
+    {
+      "address": "00412f90",
+      "name": "Native_00412f90_Play",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "void *"
+    },
+    {
+      "address": "00401b80",
+      "name": "Native_00401b80_GFUninitialise",
+      "ret": "void",
+      "cc": "__cdecl",
+      "params": []
+    },
+    {
+      "address": "00401c00",
+      "name": "Native_00401c00_GFHandleSystemInitError",
+      "ret": "void",
+      "cc": "__stdcall",
+      "params": [
+        {
+          "name": "code",
+          "type": "uint"
+        }
+      ]
+    },
+    {
+      "address": "0099cf10",
+      "name": "Native_0099cf10_CSystemRegistry_CSystemRegistry",
+      "ret": "NativeRegistry *",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "path",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "flags",
+          "type": "int"
+        }
+      ],
+      "this": "NativeRegistry *"
+    },
+    {
+      "address": "0099d100",
+      "name": "Native_0099d100_CSystemRegistry_WriteBOOL",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [
+        {
+          "name": "name",
+          "type": "NativeWideString *"
+        },
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ],
+      "this": "NativeRegistry *"
+    },
+    {
+      "address": "0099cf70",
+      "name": "Native_0099cf70_CSystemRegistry_CSystemRegistry",
+      "ret": "void",
+      "cc": "__thiscall",
+      "params": [],
+      "this": "NativeRegistry *"
+    }
+  ]
+}

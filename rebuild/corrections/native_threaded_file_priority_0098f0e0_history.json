@@ -1,0 +1,31 @@
+{
+  "history": {
+    "manifest_old_row": "0098f0e0\t_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\t_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs\t__fastcall\tvoid\t3\tallocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *\t1\tyes\taccepted\t\t\t\t\t\tPASS\tPASS\tRELOCATION_MATCH\tD:\\Documents\\FableTLC\\rebuild\\src\\compiled\\00\\98\\global_GlobalMethodTailThunk0098f0e0_0098f0e0.cpp",
+    "artifact_old_row": "0098f0e0\t_global\t\trebuild/src/compiled/00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0.cpp\trebuild/tests/00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0_test.cpp\t\trebuild/build/candidates-Release/00/98/0098f0e0",
+    "catalog_old_block": "    [pscustomobject]@{\n        Address = '0098f0e0'\n        Module = '_global'\n        Source = '00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0.cpp'\n        TestSource = '00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0_test.cpp'\n        PassPattern = 'AUTO_TINY_0098f0e0_TEST PASS'\n    }",
+    "rebuild/src/compiled/00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0.cpp": {
+      "sha256": "f01127f82d516d3f077cf3f23b24776de751ac4af9c3a46e2de5c63e555a6c5f",
+      "raw_hex": "737472756374204175746f54696e795468756e6b5461726765740a7b0a20202020766f696420496e766f6b6528293b0a7d3b0a65787465726e204175746f54696e795468756e6b54617267657420675f4175746f54696e795468756e6b4f626a6563743b0a766f6964205f5f6661737463616c6c20476c6f62616c4d6574686f645461696c5468756e6b5f303039386630653028290a7b0a20202020675f4175746f54696e795468756e6b4f626a6563742e496e766f6b6528293b0a7d"
+    },
+    "rebuild/tests/00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0_test.cpp": {
+      "sha256": "5e45e9ec9681b2afc936f88b2832196098c1126e5c1fffd2bf322f953996e039",
+      "raw_hex": "23696e636c756465203c63737464696f3e0a73746174696320696e7420675f4175746f54696e795468756e6b43616c6c73203d20303b0a737472756374204175746f54696e795468756e6b5461726765740a7b0a20202020766f696420496e766f6b6528293b0a7d3b0a4175746f54696e795468756e6b54617267657420675f4175746f54696e795468756e6b4f626a6563743b0a766f6964204175746f54696e795468756e6b5461726765743a3a496e766f6b6528290a7b0a202020202b2b675f4175746f54696e795468756e6b43616c6c733b0a7d0a766f6964205f5f6661737463616c6c20476c6f62616c4d6574686f645461696c5468756e6b5f303039386630653028290a7b0a20202020675f4175746f54696e795468756e6b4f626a6563742e496e766f6b6528293b0a7d0a696e74206d61696e28290a7b0a20202020476c6f62616c4d6574686f645461696c5468756e6b5f303039386630653028293b0a2020202069662028675f4175746f54696e795468756e6b43616c6c73203d3d203129207b207374643a3a7072696e746628224155544f5f54494e595f30303938663065305f5445535420504153535c6e22293b2072657475726e20303b207d0a202020207374643a3a7072696e746628224155544f5f54494e595f30303938663065305f54455354204641494c5c6e22293b0a2020202072657475726e20313b0a7d"
+    },
+    "old_index_rows": [
+      "?GlobalMethodTailThunk_0098f0e0@@YIXXZ\t0098f0e0\t00/98/global_GlobalMethodTailThunk0098f0e0_0098f0e0.cpp\tstrong"
+    ]
+  },
+  "input_sha256": {
+    "rebuild/manifest/functions.tsv": "c933531743b4b0cb36deed8c42d6b31101c1b1cbcd279c4f3f0201babac13e36",
+    "rebuild/ARTIFACT_INDEX.tsv": "bf755561eca8538f48058a9b79a540a6592de70960df6a0d49559b9bff419e71",
+    "rebuild/build_candidates.ps1": "f4f87ca0d908b8c56c7dbc20aa3943ed3e51be3fcd737e71ee94689d5bcb16b0",
+    "rebuild/corrections/function_overrides.tsv": "3749a9beb63949b6a2db55f373c55c96b7dcbef53313312c04518706a3871c7f",
+    "tools/decomp_pipeline/symbol_index.py": "987506761cbdfb1e55afc727ac1e11b86a07d6668b37eb306d19286a79ac656c",
+    "tools/organize_decomp_artifacts.py": "705666b4df905916c2fec9339332c33657dd1517669b2b5ba1e2df50c40441fc",
+    "tools/decomp_pipeline/gate_all.py": "f299a8fe65b7f7cc9573aef9aac77e5ecf74479332c0135bd704497389caafab"
+  },
+  "scope": "Proposed7file metadata patch only; root fullreview and freshgatePASS prerequisites. No apply/index/closure/counts.",
+  "address": "0098f0e0",
+  "kind": "IDENTITY_CORRECTION_PRE_APPLICATION_HISTORY",
+  "boundary": "Historical facade bytes and prior metadata only. First scratch probe FAILED bank-first specialization order; separate current canonical/overlay A/B both failed identically. First failure unchanged; fresh permanent supported-file-first gate independently passed. No new recovery or manager provider, no all-header-order waiver."
+}

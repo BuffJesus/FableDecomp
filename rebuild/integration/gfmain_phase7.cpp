@@ -142,30 +142,26 @@ long FABLE_FASTCALL FableRunGFMainPhase7(
 
     CSystemManagerInit* systemInit =
         FableGetSystemManagerInitBoundary();
-    *reinterpret_cast<fable_u32*>(&systemInit->unknown00[0]) =
+    *reinterpret_cast<fable_u32*>(&systemInit->InstanceHandle) =
         state.configuredInstanceHandleToken;
-    systemInit->unknown14 = state.startupFlags;
-    systemInit->unknown19 =
-        state.configuredRegionFlag19 ? 1 : 0;
-    systemInit->unknown20 =
-        state.configuredRegionFlag10 ? 1 : 0;
-    systemInit->unknown21 =
-        state.configuredExclusiveMode ? 1 : 0;
-    systemInit->useDefaultDisplay =
-        state.configuredPreferPrimaryDisplayDevice ? 1 : 0;
-    systemInit->displayDepth = state.displayDepth;
-    systemInit->nearPlane = state.nearPlane;
-    systemInit->scale = state.displayScale;
-    systemInit->unknown4C = state.displayUnknown4C;
-    systemInit->memoryBudget = state.memoryBudget;
-    systemInit->unknown58 =
-        state.configuredUnknown58 ? 1 : 0;
-    systemInit->unknown59 =
-        state.configuredUnknown59 ? 1 : 0;
-    systemInit->unknown5A =
-        state.configuredUnknown5A ? 1 : 0;
-    systemInit->unknownC0 = state.configuredRegionWord20;
-    systemInit->unknownC4 = state.configuredRegionWord24;
+    systemInit->Flags = state.startupFlags;
+    systemInit->AttachToExternalWindow = state.configuredRegionFlag19;
+    systemInit->PreventExclusiveModeChanges = state.configuredRegionFlag10;
+    systemInit->UseAccurateTimer = state.configuredExclusiveMode;
+    systemInit->WaitWhileInactive =
+        state.configuredPreferPrimaryDisplayDevice;
+    systemInit->SoundManagerInit.unknown08 = state.displayDepth;
+    systemInit->SoundManagerInit.unknown0C = state.nearPlane;
+    systemInit->SoundManagerInit.unknown10 = state.displayScale;
+    systemInit->SoundManagerInit.unknown14 = state.displayUnknown4C;
+    systemInit->SoundManagerInit.unknown1C = state.memoryBudget;
+    systemInit->InputManagerInit.UseMouse = state.configuredUnknown58;
+    systemInit->InputManagerInit.UseJoystick = state.configuredUnknown59;
+    systemInit->InputManagerInit.UseKeyboard = state.configuredUnknown5A;
+    systemInit->IMEMessageFunc =
+        reinterpret_cast<FableIMEMessageFunction>(state.configuredRegionWord20);
+    systemInit->MessageFilter =
+        reinterpret_cast<FableWindowMessageFilter>(state.configuredRegionWord24);
 
     return 0;
 }

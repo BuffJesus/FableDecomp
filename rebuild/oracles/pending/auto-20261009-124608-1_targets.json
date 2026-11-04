@@ -1,0 +1,1 @@
+[{"address": "0121a360", "name": "dynamic initializer for CPlayerGui::PGuiDef", "module": "CPlayerGui", "cc": "__cdecl", "ret": "void", "pc": "0"}, {"address": "01228b70", "name": "dynamic atexit destructor for CPlayerGui::PGuiDef", "module": "CPlayerGui", "cc": "__cdecl", "ret": "void", "pc": "0"}]

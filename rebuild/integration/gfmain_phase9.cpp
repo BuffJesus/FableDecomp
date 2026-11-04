@@ -1,9 +1,8 @@
 #include "fable_gfmain.h"
+#include "fable_ime.h"
 #include "fable_movie.h"
 #include "fable_profile.h"
 #include "fable_string.h"
-
-unsigned long CEngineInternalPrimitiveBase_AddChildPrimitive();
 
 long FABLE_FASTCALL FableRunGFMainPhase9(
     GFMainPhase9State& state)
@@ -40,7 +39,7 @@ long FABLE_FASTCALL FableRunGFMainPhase9(
             reinterpret_cast<size_t>(systemManager));
     state.imePrimitiveToken =
         static_cast<fable_u32>(
-            CEngineInternalPrimitiveBase_AddChildPrimitive());
+            reinterpret_cast<size_t>(&NUISystem::CIME::Get()));
     FableGFMainPhase9InitialiseImeBoundary(
         reinterpret_cast<void*>(
             static_cast<size_t>(state.imePrimitiveToken)),

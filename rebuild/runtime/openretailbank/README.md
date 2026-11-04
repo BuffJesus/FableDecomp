@@ -1,3 +1,5 @@
+> Current native status (2026-10-22): `CBankFileManager_OpenRetailBank_009a8840.cpp` is genuine C++, not a machine-code anchor. The canonical `gate_native_retail_bank_open.py` proves MATCH for all 1,565 bytes, 528 instructions and 44 independently audited relocations, six controlled behavior scenarios and three negative controls. The root now exposes the empty novtable CAFile constructor so its call targets the original base constructor. Historical root credit is unchanged. The runtime/thunk descriptions below document the earlier adapter; they do not establish the current native dependency closure.
+
 # OpenRetailBank runtime module
 
 Goal: link Fable.exe's **own** `CBankFileManager::OpenRetailBank` reconstruction and

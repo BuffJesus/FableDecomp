@@ -1,0 +1,2 @@
+address	name	module	calling_convention	return_type	parameter_count	parameter_types	prototype_complete	clean_decompile	naming_quality	agent_verdict	agent_source	lift_grade	lift_source	agent_source_path	compiled_status	behavior_test	retail_parity	compiled_source
+00caa6e0	Uninitialise	CTexture	__thiscall	void	1	CTexture *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CTexture_Uninitialise_00caa6e0.cpp

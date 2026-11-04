@@ -1,0 +1,5 @@
+address	name	length	bytes
+00a696c0	CPreallocTexturePool::GetTextureCount	4	8b413cc3
+00a69700	CTextureManager::GetPoolTextureSize	11	8b4424048b44810cc20400
+00a69710	CTextureManager::GetPoolTextureCount	17	8b4424046bc0548b840888000000c20400
+00a69f50	CTextureManager::GetPoolTexturesInUse	24	8b5424048b4424086bd254508d4c0a4ce86bffffffc20800

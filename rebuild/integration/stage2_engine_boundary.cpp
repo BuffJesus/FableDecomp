@@ -9,6 +9,9 @@
 #include "fable_retail_banks.h"
 #include "fable_startup.h"
 #include "fable_system.h"
+#if defined(FABLETLC_EXECUTE_EXACT_CIME)
+#include "fable_surface.h"
+#endif
 #if defined(FABLETLC_ENABLE_VISUAL_BOOT)
 #include "fable_visual_boot.h"
 #endif
@@ -17,17 +20,12 @@
 #include <string.h>
 #include <wchar.h>
 
-struct CSystemManager
+class CSystemManager
 {
+public:
     ESystemCode Initialise(CSystemManagerInit* init);
     void Uninitialise();
     void DisplayCriticalMessage(const char* message);
-};
-
-class CInitBaseClass
-{
-public:
-    void Uninitialise();
 };
 
 class CThreadedFileManager
@@ -47,6 +45,13 @@ CSystemManager* FABLE_FASTCALL GFGetSystemManager();
 #endif
 
 void FABLE_CDECL GFUninitialise();
+
+#if defined(FABLETLC_ENABLE_GFMAIN_PHASE9) && !defined(FABLETLC_EXECUTE_EXACT_SYSTEM_MANAGER)
+// Phase 9/10 fixtures link the real GFGetSystemManager (0x009A4EC0) without the
+// exact system-manager boundary, which otherwise owns the singleton's storage.
+extern "C" fable_u32 g_FableStage2SystemManagerStorage[0x180 / 4] = {};
+#pragma comment(linker, "/alternatename:?GSystemManager@@3VCSystemManager@@A=_g_FableStage2SystemManagerStorage")
+#endif
 
 fable_u8* g_FableMicroThreadStackTop_013B7C84 = 0;
 fable_u8* g_FableMicroThreadStackBottom_013B7C88 = 0;
@@ -80,7 +85,7 @@ fable_i8 g_FableDisableCapsLock_013B864F = 0;
 bool g_FablePrimaryLeftAlignment_013CA7EA = false;
 bool g_FableSecondaryLeftAlignment_013CA7EB = false;
 bool g_FableMovieLeftAlignText_013C5A7C = false;
-fable_u8 g_primitiveVTableOrData[sizeof(NUISystem::CIME)] = {};
+NUISystem::CIME g_FableIME_013B7CD8;
 
 extern "C" void* g_FableImeDrawRectCallback_0143CD64 = 0;
 extern "C" void* g_FableImeDrawFansCallback_0143E514 = 0;
@@ -92,8 +97,12 @@ extern "C" fable_u8 g_FableImeFontVTable_0122DCBC = 0;
 CBasicRetailBankManager
     g_FableBasicRetailBankManager_013CA79C = {};
 CCharString g_FableBasicRetailBankAliasSlots[5];
-CInitBaseClass g_FableInitBase_013B83D0;
-CBankFileManager g_FableBankFileManager_013CA79C = {};
+// This authored checkpoint retains its zero-initialized bank boundary. Native
+// CBankFileManager construction/destruction belongs to the separate GFMain
+// closure; introducing its new virtual declaration must not construct it here.
+extern "C" fable_u32 g_FableBankFileManagerBoundaryStorage[
+    (sizeof(CBankFileManager) + 3) / 4] = {};
+#pragma comment(linker, "/alternatename:?g_FableBankFileManager_013CA79C@@3VCBankFileManager@@A=_g_FableBankFileManagerBoundaryStorage")
 CThreadedFileManager g_FableThreadedFileManager_013BC870;
 
 fable_u32 g_FableFileInstallerConstructCalls = 0;
@@ -217,9 +226,14 @@ void* FABLE_CDECL FableFileInstallerAllocate(fable_u32 size)
 
 CFileInstaller::CFileInstaller()
 {
-    memset(this, 0, sizeof(*this));
+    // Preserve the compiler-installed virtual pointer in this authored recorder.
+    memset(reinterpret_cast<unsigned char*>(this) + sizeof(void*),
+        0, sizeof(*this) - sizeof(void*));
     ++g_FableFileInstallerConstructCalls;
 }
+
+// No native installer resources are created by this checkpoint recorder.
+CFileInstaller::~CFileInstaller() {}
 
 void CCountedFileInstaller::operator=(CFileInstaller* value)
 {
@@ -262,10 +276,6 @@ void CCountedFileInstaller::Reset()
     reference = 0;
 }
 
-void CInitBaseClass::Uninitialise()
-{
-}
-
 void FABLE_FASTCALL FableFileInstallerSingletonRelease()
 {
     g_CFileInstallerSingleton_013CA818.Reset();
@@ -297,40 +307,101 @@ void CEnginePrimitiveManager::Uninitialise()
 {
 }
 
-extern "C" void FableImeDrawRectCallback_00404D50()
+#if defined(FABLETLC_EXECUTE_EXACT_CIME)
+// Stand-ins for the engine members CIME::Initialise (0x00405650) reaches.
+// ImeUi stays uninitialised here (ImeUi_Initialize reports failure), so the
+// appearance, font and render-target branch is linked but not taken.
+
+// NUISystem::CIME::Reset @ 0x004051C0 (the boundary's CIME is already clear).
+void NUISystem::CIME::Reset()
 {
 }
 
-extern "C" void FableImeDrawFansCallback_00404A60()
+// CIME::Callback_DrawRect @ 0x00404D50.
+void FABLE_FASTCALL NUISystem::CIME::Callback_DrawRect(
+    int,
+    int,
+    int,
+    int,
+    unsigned long)
 {
 }
 
-extern "C" void FableImeOnCharCallback_00404A70()
+// CIME::Callback_malloc @ 0x00404A60.
+void* FABLE_FASTCALL NUISystem::CIME::Callback_malloc(unsigned int bytes)
+{
+    return malloc(bytes);
+}
+
+// CIME::Callback_free @ 0x00404A70.
+void FABLE_FASTCALL NUISystem::CIME::Callback_free(void* pointer)
+{
+    free(pointer);
+}
+
+// CIME::Callback_DrawFans @ 0x00404E10.
+void FABLE_FASTCALL NUISystem::CIME::Callback_DrawFans(
+    const IMEUI_VERTEX*,
+    unsigned int)
 {
 }
 
-extern "C" void FableImeRenderCallback_00404E10()
+// CIME::Callback_OnChar @ 0x00404F00.
+void FABLE_FASTCALL NUISystem::CIME::Callback_OnChar(wchar_t)
 {
 }
 
-extern "C" void FableImeGetCaretCallback_00404F00()
+// NUISystem::CIMEFont virtuals (vtable emitted by CIME::Initialise's unit).
+void NUISystem::CIMEFont::SetHeight(unsigned int)
 {
 }
 
-extern "C" void __fastcall FableImeCleanup_00405650(
-    void*,
-    void*)
+void NUISystem::CIMEFont::SetColor(unsigned long)
 {
 }
 
-extern "C" bool __fastcall FableImeUiInitialise_00405650(
-    void* window,
-    fable_u8 mode)
+void NUISystem::CIMEFont::SetPosition(int, int)
+{
+}
+
+void NUISystem::CIMEFont::GetTextExtent(
+    const wchar_t*,
+    unsigned long* width,
+    unsigned long* height)
+{
+    if (width != 0)
+        *width = 0;
+    if (height != 0)
+        *height = 0;
+}
+
+void NUISystem::CIMEFont::DrawTextW(const wchar_t*)
+{
+}
+
+// DXUT ImeUi callback slots (0x0143CD64, 0x0143E514, 0x0143CF08,
+// 0x0143CDFC, 0x0143E630).
+void (FABLE_FASTCALL* ImeUiCallback_DrawRect)(
+    int,
+    int,
+    int,
+    int,
+    unsigned long) = 0;
+void* (FABLE_FASTCALL* ImeUiCallback_Malloc)(unsigned int) = 0;
+void (FABLE_FASTCALL* ImeUiCallback_Free)(void*) = 0;
+void (FABLE_FASTCALL* ImeUiCallback_DrawFans)(
+    const IMEUI_VERTEX*,
+    unsigned int) = 0;
+void (FABLE_FASTCALL* ImeUiCallback_OnChar)(wchar_t) = 0;
+
+// ImeUi_Initialize @ 0x00CB5180: records the call and reports failure.
+bool FABLE_FASTCALL ImeUi_Initialize(HWND__* window, bool disable)
 {
     if (g_FableActiveExactImeState != 0)
     {
         ++g_FableActiveExactImeState->exactImeUiInitialiseCalls;
-        g_FableActiveExactImeState->observedImeInitialiseMode = mode;
+        g_FableActiveExactImeState->observedImeInitialiseMode =
+            disable ? 1 : 0;
         g_FableActiveExactImeState->observedImeWindowHandleToken =
             static_cast<fable_u32>(
                 reinterpret_cast<size_t>(window));
@@ -338,56 +409,41 @@ extern "C" bool __fastcall FableImeUiInitialise_00405650(
     return false;
 }
 
-extern "C" void* __cdecl FableImeOperatorNew_00405650(
-    fable_u32 size)
-{
-    return malloc(size);
-}
-
-extern "C" void __fastcall FableImeSetAppearance_00405650(
-    void*,
-    void*)
+// ImeUi_SetAppearance @ 0x00CB2E20.
+void FABLE_FASTCALL ImeUi_SetAppearance(const IMEUI_APPEARANCE*)
 {
 }
 
-extern "C" void* FableImeGetSystemManager_00405650()
-{
-    static fable_u8 systemManager[0x64] = {};
-    return systemManager;
-}
-
-extern "C" void __fastcall FableImeGetDrawContext_00405650(
-    void*,
-    void*,
-    void* output)
-{
-    void** values = static_cast<void**>(output);
-    values[0] = 0;
-    values[1] = 0;
-}
-
-extern "C" void __fastcall FableImeDraw_00405650(
-    void*,
-    void*)
+// ImeUi_SetScreenDimension @ 0x00CB2EE0.
+void FABLE_FASTCALL ImeUi_SetScreenDimension(unsigned int, unsigned int)
 {
 }
 
-extern "C" void __fastcall FableImeResetComposition_00405650(
-    fable_u8,
-    void*)
+// ImeUi_FinalizeString @ 0x00CB2C60.
+void FABLE_FASTCALL ImeUi_FinalizeString(bool)
 {
 }
 
-extern "C" void __fastcall FableImeEnable_00405650(
-    fable_u8,
-    void*)
+// ImeUi_EnableIme @ 0x00CB5130.
+void FABLE_FASTCALL ImeUi_EnableIme(bool)
 {
 }
 
-void* operator new(size_t, void* address)
+// CDisplayManager::GetRenderTargetDimensions @ 0x009BEDC0: no render target
+// exists in this runtime.
+const C2DExtentsI CDisplayManager::GetRenderTargetDimensions()
+{
+    return C2DExtentsI(0, 0);
+}
+#endif
+
+void* operator new(size_t, void*);
+extern "C" void* FablePlacementNewBoundary(size_t, void* address)
 {
     return address;
 }
+
+#pragma comment(linker,"/alternatename:??2@YAPAXIPAX@Z=_FablePlacementNewBoundary")
 
 CSystemManagerInit* FABLE_FASTCALL
 FableGetSystemManagerInitBoundary()
@@ -400,16 +456,23 @@ namespace MicroThread
 {
     void FABLE_FASTCALL SetStack(
         fable_u8* /* stackTop */,
-        fable_u32 /* stackSize */)
+        unsigned long /* stackSize */)
     {
     }
 }
 
+// From GFMain phase 3 on, the reconstructed operator+ units (0x0099BF30,
+// 0x0099BFF0) are linked and bring the real CWideString(const wchar_t*),
+// UnassignString and operator+= members; these stand-ins cover the earlier
+// phases only. The real members reach the text through the range assign/append
+// helpers below, which keep the stand-ins' malloc/free ownership.
+#if !defined(FABLETLC_ENABLE_GFMAIN_PHASE3)
 CWideString::CWideString(const wchar_t* text)
     : storage_(AllocateWideString(text))
 {
     ++g_CWideStringInstanceCount_013BCA20;
 }
+#endif
 
 CWideString::CWideString(const CCharString& text)
     : storage_(0)
@@ -470,6 +533,7 @@ const CWideString& CWideString::operator=(const wchar_t* text)
     return *this;
 }
 
+#if !defined(FABLETLC_ENABLE_GFMAIN_PHASE3)
 void CWideString::UnassignString()
 {
     ReleaseWideString(storage_);
@@ -500,6 +564,46 @@ const CWideString& CWideString::operator+=(const wchar_t* text)
     storage_ = joined;
     return *this;
 }
+#else
+// The shared empty text operator+=(const CWideString&) appends for a null side.
+wchar_t g_FableEmptyWideString_0129A8E0[1] = {L'\0'};
+
+// CBasicString<wchar_t> range assign/append (retail 0x0099C670 / 0x0099C7E0).
+void FABLE_CDECL FableWideTextAssign_0099C670(
+    CWideStringData* data,
+    const wchar_t* first,
+    const wchar_t* last)
+{
+    const size_t length = static_cast<size_t>(last - first);
+    wchar_t* text =
+        static_cast<wchar_t*>(malloc((length + 1) * sizeof(wchar_t)));
+    if (text == 0)
+        return;
+
+    memcpy(text, first, length * sizeof(wchar_t));
+    text[length] = L'\0';
+    if (data->text != 0)
+        free(data->text);
+    data->text = text;
+}
+
+void FABLE_CDECL FableWideTextAppend_0099C7E0(
+    CWideStringData* data,
+    const wchar_t* first,
+    const wchar_t* last)
+{
+    const size_t length = data->text != 0 ? wcslen(data->text) : 0;
+    const size_t extra = static_cast<size_t>(last - first);
+    wchar_t* text = static_cast<wchar_t*>(
+        realloc(data->text, (length + extra + 1) * sizeof(wchar_t)));
+    if (text == 0)
+        return;
+
+    memcpy(text + length, first, extra * sizeof(wchar_t));
+    text[length + extra] = L'\0';
+    data->text = text;
+}
+#endif
 
 extern "C" void __fastcall
 FableWideStringConstructLiteral_0099B6B0(
@@ -618,8 +722,25 @@ const CWideString& FABLE_FASTCALL FableAssignWideString(
     return *value = text;
 }
 
-void CRegionDef::ConstructStorage()
+// Retail 0x004016F0; defaults only, SkipConfigDetection is left to the caller.
+CDisplayManagerInit::CDisplayManagerInit()
 {
+    Width = 0;
+    Height = 0;
+    Depth = 0;
+    RefreshRate = 0;
+    WindowHandle = 0;
+    MultisampleType = 0;
+    RenderManagerInitFlags = 0;
+    UseRenderManager = true;
+    UseShaderRenderManager = true;
+    PresentationIntevalVSyncCount = 1;
+    PresentImmediatelyIfMissedVSync = true;
+    PresentImmediate = true;
+    ZBufferDepth = 16;
+    NoBackBuffers = 1;
+    PushBufferSize = 0x80000;
+    KickOffSize = 0x8000;
 }
 
 CWideString g_CAFileCurrentPath_013BCA10;
@@ -854,22 +975,22 @@ fable_u32 FABLE_FASTCALL FableGFMainPhase6LookupTextBoundary(
         : state.captionTextLookupResult;
 }
 
-bool FABLE_FASTCALL FableGFMainPhase6GetGroupEntryBoundary(
+bool FABLE_FASTCALL FableGFMainPhase6GetTextEntryBoundary(
     GFMainPhase6TextRole role,
     fable_u32,
     GFMainPhase6State& state)
 {
-    ++state.groupEntryCalls[role];
+    ++state.textEntryCalls[role];
     return role == GFMainPhase6Text_PermissionError
         ? state.permissionGroupAvailable
         : state.captionGroupAvailable;
 }
 
-void FABLE_FASTCALL FableGFMainPhase6GetBankHandleBoundary(
+void FABLE_FASTCALL FableGFMainPhase6GetTextBoundary(
     GFMainPhase6TextRole role,
     GFMainPhase6State& state)
 {
-    ++state.bankHandleCalls[role];
+    ++state.getTextCalls[role];
 }
 
 void FABLE_FASTCALL FableGFMainPhase6DisplayPermissionErrorBoundary(
@@ -880,7 +1001,7 @@ void FABLE_FASTCALL FableGFMainPhase6DisplayPermissionErrorBoundary(
     state.displayedPermissionError = errorCode;
 }
 
-fable_i32 FableGetCurrentLanguage_00415070()
+unsigned long FABLE_FASTCALL NLocalisation::GetLanguage()
 {
     return g_FablePhase7CurrentLanguage;
 }
@@ -1127,11 +1248,10 @@ extern "C" long FABLE_FASTCALL GFMain(
         g_GFMainPhase6State.exactPermissionProbeCalls != 1 ||
         g_GFMainPhase6State.exactPermissionCreateCalls != 1 ||
         g_GFMainPhase6State.exactPermissionCloseHandleCalls != 1 ||
-        g_GFMainPhase6State.exactPermissionOpenCalls != 1 ||
-        g_GFMainPhase6State.exactPermissionCloseFileCalls != 1 ||
         g_GFMainPhase6State.exactPermissionDeleteCalls != 1 ||
-        g_GFMainPhase6State.exactPermissionWideDestroyCalls != 2 ||
-        g_GFMainPhase6State.exactPermissionCharDestroyCalls != 1 ||
+        !g_GFMainPhase6State.exactPermissionProbeFileRemoved ||
+        g_GFMainPhase6State.exactPermissionWideStringDelta != 0 ||
+        g_GFMainPhase6State.exactPermissionCharStringDelta != 0 ||
         g_GFMainPhase6State.exactPermissionResult != 0 ||
         !g_GFMainPhase6State.exactPermissionArgumentsValid)
     {
@@ -1150,7 +1270,6 @@ extern "C" long FABLE_FASTCALL GFMain(
     if (
         g_GFMainPhase9State.exactSystemPreInitialiseCalls != 1 ||
         g_GFMainPhase9State.exactSystemColoursConstructCalls != 1 ||
-        g_GFMainPhase9State.exactSystemAllocationCalls != 6 ||
         g_GFMainPhase9State.exactSystemWindowInitialiseCalls != 0 ||
         g_GFMainPhase9State.exactSystemDisplayConstructCalls != 1 ||
         g_GFMainPhase9State.exactSystemInputConstructCalls != 1 ||
@@ -1164,11 +1283,12 @@ extern "C" long FABLE_FASTCALL GFMain(
     }
 #endif
 #if defined(FABLETLC_EXECUTE_EXACT_SAVE_METADATA)
+    // 0x00418C3B's /GS cookie check is the CRT's own __security_check_cookie
+    // now, so exactSaveMetadataSecurityChecks is no longer observable.
     if (
         g_GFMainPhase9State.processSaveMetadataCalls != 1 ||
         g_GFMainPhase9State.exactSaveMetadataCoordinatorCalls != 1 ||
-        g_GFMainPhase9State.exactSaveMetadataFindFirstCalls != 1 ||
-        g_GFMainPhase9State.exactSaveMetadataSecurityChecks != 1)
+        g_GFMainPhase9State.exactSaveMetadataFindFirstCalls != 1)
     {
         return 1;
     }
@@ -1185,7 +1305,7 @@ extern "C" long FABLE_FASTCALL GFMain(
         g_GFMainPhase8State.freeConfigurationCalls != 1 ||
         g_GFMainPhase8State.exactConfigurationReleaseCalls != 1 ||
         g_GFMainPhase8State.exactConfigurationFreeCalls != 1 ||
-        g_GFMainPhase8State.exactConfigurationSecurityChecks != 1)
+        g_GFMainPhase8State.exactConfigurationSecurityChecks != 0)
     {
         return 1;
     }
@@ -1298,8 +1418,7 @@ extern "C" long FABLE_FASTCALL GFMain(
     }
 #endif
 
-    CCountedProgressDisplay progressDisplay(0);
-    GetProgressDisplay(&progressDisplay);
+    CCountedProgressDisplay progressDisplay = GetProgressDisplay();
     if (progressDisplay.object != 0)
         progressDisplay.object->SetToDisplayText(false);
     FableSetVisualProgressDisplayState(
@@ -1317,3 +1436,4 @@ extern "C" long FABLE_FASTCALL GFMain(
     return 0;
 #endif
 }
+

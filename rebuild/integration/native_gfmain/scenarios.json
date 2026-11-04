@@ -1,0 +1,779 @@
+[
+  {
+    "name": "normal launch",
+    "scenario": {},
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "boundary supplies startup profile",
+    "scenario": {
+      "startup_profile": "Profile argument check"
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "game init failure",
+    "scenario": {
+      "game_init": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "system init failure",
+    "scenario": {
+      "system_code": 4
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "eula rejection",
+    "scenario": {
+      "eula": false
+    },
+    "return": 0,
+    "exit": 1
+  },
+  {
+    "name": "config failure",
+    "scenario": {
+      "config": false
+    },
+    "return": 0,
+    "exit": 1
+  },
+  {
+    "name": "config skipped",
+    "scenario": {
+      "settings": {
+        "20678173": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "static map bypass",
+    "scenario": {
+      "settings": {
+        "20678216": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "settings missing",
+    "scenario": {},
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "settings open failure",
+    "scenario": {
+      "settings_exist": true,
+      "settings_open": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "settings parsed",
+    "scenario": {
+      "settings_exist": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "initial owner final release",
+    "scenario": {
+      "initial_owner_refs": 1
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "initial owner shared release",
+    "scenario": {
+      "initial_owner_refs": 2
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permission text entries missing",
+    "scenario": {
+      "permissions": [
+        1,
+        1
+      ],
+      "entry": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permission text and bank shared",
+    "scenario": {
+      "permissions": [
+        1,
+        1
+      ],
+      "entry_refs": 2,
+      "bank_refs": 2
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "installer disabled after configuration",
+    "scenario": {
+      "settings": {
+        "20678165": 1,
+        "20403271": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "render overrides",
+    "scenario": {
+      "settings": {
+        "20402340": 1,
+        "20402346": 0,
+        "20402347": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 0/0/0",
+    "scenario": {
+      "settings": {
+        "20678166": 0,
+        "20678149": 0,
+        "20678165": 0
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 0/0/1",
+    "scenario": {
+      "settings": {
+        "20678166": 0,
+        "20678149": 0,
+        "20678165": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 0/1/0",
+    "scenario": {
+      "settings": {
+        "20678166": 0,
+        "20678149": 1,
+        "20678165": 0
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 0/1/1",
+    "scenario": {
+      "settings": {
+        "20678166": 0,
+        "20678149": 1,
+        "20678165": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 1/0/0",
+    "scenario": {
+      "settings": {
+        "20678166": 1,
+        "20678149": 0,
+        "20678165": 0
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 1/0/1",
+    "scenario": {
+      "settings": {
+        "20678166": 1,
+        "20678149": 0,
+        "20678165": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 1/1/0",
+    "scenario": {
+      "settings": {
+        "20678166": 1,
+        "20678149": 1,
+        "20678165": 0
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "banks 1/1/1",
+    "scenario": {
+      "settings": {
+        "20678166": 1,
+        "20678149": 1,
+        "20678165": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/False/False/False",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/False/False/True",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/False/True/False",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/False/True/True",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/True/False/False",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/True/False/True",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/True/True/False",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions False/False/True/True/True",
+    "scenario": {
+      "file_open": [
+        false,
+        false
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/False/False/False",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/False/False/True",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/False/True/False",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/False/True/True",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/True/False/False",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/True/False/True",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/True/True/False",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions False/True/True/True/True",
+    "scenario": {
+      "file_open": [
+        false,
+        true
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/False/False/False",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/False/False/True",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/False/True/False",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/False/True/True",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/True/False/False",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/True/False/True",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/True/True/False",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/False/True/True/True",
+    "scenario": {
+      "file_open": [
+        true,
+        false
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/False/False/False",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/False/False/True",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        0,
+        0
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/False/True/False",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/False/True/True",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        0,
+        13124
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/True/False/False",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": false
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/True/False/True",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        4386,
+        0
+      ],
+      "text": true
+    },
+    "return": 0,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/True/True/False",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": false
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "permissions True/True/True/True/True",
+    "scenario": {
+      "file_open": [
+        true,
+        true
+      ],
+      "permissions": [
+        4386,
+        13124
+      ],
+      "text": true
+    },
+    "return": 1,
+    "exit": null
+  },
+  {
+    "name": "alternate display and init flags",
+    "scenario": {
+      "settings": {
+        "20403273": 1,
+        "20678151": 1,
+        "20678152": 1,
+        "20403343": 1,
+        "20678196": 1,
+        "20678167": 1,
+        "20403289": 1
+      }
+    },
+    "return": 0,
+    "exit": null
+  }
+]

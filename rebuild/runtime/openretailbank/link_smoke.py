@@ -12,6 +12,7 @@ srcs=[ROOT/'rebuild/src/compiled/00/9a/CBankFileManager_OpenRetailBank_009a8840.
 srcs += [ROOT/'rebuild/runtime/openretailbank/ring_thunks.cpp',
          ROOT/'rebuild/runtime/openretailbank/runtime_globals.cpp',
          ROOT/'rebuild/runtime/openretailbank/runtime_helpers.cpp',
+         ROOT/'rebuild/runtime/openretailbank/runtime_real_names.cpp',
          ROOT/'rebuild/runtime/openretailbank/link_only_main.cpp']
 man=open(ROOT/'rebuild/runtime/openretailbank/link_manifest.tsv',encoding='utf-8').read().splitlines()[1:]
 for ln in man:

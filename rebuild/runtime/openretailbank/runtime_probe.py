@@ -18,6 +18,7 @@ srcs = [
     ROOT / 'rebuild/runtime/openretailbank/ring_thunks.cpp',
     ROOT / 'rebuild/runtime/openretailbank/runtime_globals.cpp',
     ROOT / 'rebuild/runtime/openretailbank/runtime_helpers.cpp',
+    ROOT / 'rebuild/runtime/openretailbank/runtime_real_names.cpp',
 ]
 manifest = (ROOT / 'rebuild/runtime/openretailbank/link_manifest.tsv').read_text(
     encoding='utf-8').splitlines()[1:]

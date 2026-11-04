@@ -5,7 +5,7 @@ fable_u8* g_FableMicroThreadStackBottom_013B7C88 = 0;
 
 namespace MicroThread
 {
-    void FABLE_FASTCALL SetStack(fable_u8* /* stackTop */, fable_u32 /* stackSize */)
+    void FABLE_FASTCALL SetStack(fable_u8* /* stackTop */, unsigned long /* stackSize */)
     {
     }
 }

@@ -28,6 +28,14 @@ $gfInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\40\global_GFInitia
 $gfInitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\global_GFInitialise_004022b0_test.cpp'
 $gfUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GFUninitialise_00401b80.cpp'
 $gfUninitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GFUninitialise_00401b80_test.cpp'
+$gameUninitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\41\CInitBaseClass_Uninitialise_00412f60.cpp'
+$gameUninitialiseBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\CInitBaseClass_Uninitialise_00412f60_test.cpp'
+$initBaseClassConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CInitBaseClass_0CInitBaseClass_0099a310.cpp'
+$initBaseClassConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CInitBaseClass_0CInitBaseClass_0099a310_test.cpp'
+$initBaseClassDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\99\CInitBaseClass_CInitBaseClass_0099a410.cpp'
+$initBaseClassDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CInitBaseClass_CInitBaseClass_0099a410_test.cpp'
+$initBaseClassValidateSource = Join-Path $rebuildRoot 'src\compiled\00\99\CInitBaseClass_Validate_0099a340.cpp'
+$initBaseClassValidateBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CInitBaseClass_Validate_0099a340_test.cpp'
 $gfHandleSystemInitErrorSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GFHandleSystemInitError_00401c00.cpp'
 $gfHandleSystemInitErrorBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GFHandleSystemInitError_00401c00_test.cpp'
 $gamePlaySource = Join-Path $rebuildRoot 'src\compiled\00\41\CGame_Play_00412f90.cpp'
@@ -50,8 +58,8 @@ $doEulaSource = Join-Path $rebuildRoot 'src\compiled\00\40\EULA_DoEULAThings_004
 $doEulaBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\EULA_DoEULAThings_00401fe0_test.cpp'
 $configDetectionSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_GFConfigDetection_004017b0.cpp'
 $configDetectionBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_GFConfigDetection_004017b0_test.cpp'
-$persistSignedCharSource = Join-Path $rebuildRoot 'src\compiled\00\40\CPersistContext_TransferSignedChar_004045c0.cpp'
-$persistSignedCharBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CPersistContext_TransferSignedChar_004045c0_test.cpp'
+$persistSignedCharSource = Join-Path $rebuildRoot 'src\compiled\00\40\CPersistContext_Transferbool_004045c0.cpp'
+$persistSignedCharBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CPersistContext_Transferbool_004045c0_test.cpp'
 $stringParserCommentListDestructorSource = Join-Path $rebuildRoot 'src\compiled\00\40\CStringParserCommentList_Destructor_004046b0.cpp'
 $stringParserCommentListDestructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CStringParserCommentList_Destructor_004046b0_test.cpp'
 $imeSettingsSource = Join-Path $rebuildRoot 'src\compiled\00\40\CIME_LoadIMESettings_00405350.cpp'
@@ -72,8 +80,8 @@ $defStringTableLoadSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CDefStrin
 $defStringTableLoadBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\CDefStringTable_LoadTable_009d4c30_test.cpp'
 $gameTextDataBankConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\9c\NGameText_CDataBank_Constructor_009c85a0.cpp'
 $gameTextDataBankConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\NGameText_CDataBank_Constructor_009c85a0_test.cpp'
-$gameTextGetGroupEntrySource = Join-Path $rebuildRoot 'src\compiled\00\9c\NGameText_CDataBank_GetPGroupEntry_009c9070.cpp'
-$gameTextGetGroupEntryBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\NGameText_CDataBank_GetPGroupEntry_009c9070_test.cpp'
+$gameTextGetTextEntrySource = Join-Path $rebuildRoot 'src\compiled\00\9c\NGameText_CDataBank_GetPTextEntry_009c9070.cpp'
+$gameTextGetTextEntryBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\NGameText_CDataBank_GetPTextEntry_009c9070_test.cpp'
 $myDocumentsWritePermissionsSource = Join-Path $rebuildRoot 'src\compiled\00\40\Global_MyDocuments_CheckWritePermissions_00402130.cpp'
 $myDocumentsWritePermissionsBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\Global_MyDocuments_CheckWritePermissions_00402130_test.cpp'
 $retailBankConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\9a\NBankFileManager_CRetailBank_Constructor_009ac4d0.cpp'
@@ -124,13 +132,13 @@ $frontEndHistoryMapDeallocateSource = Join-Path $rebuildRoot 'src\compiled\00\59
 $frontEndHistoryMapDeallocateBehaviorSource = Join-Path $rebuildRoot 'tests\00\59\FrontEndHistoryDequeMapAllocator_Deallocate_0059a9f9_test.cpp'
 $openIniFileSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CBankFileManager_OpenIniFile_009a8170.cpp'
 $openIniFileBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CBankFileManager_OpenIniFile_009a8170_test.cpp'
-$userProfileSingletonGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CUserProfileManagerSingleton_Get_0040d2a0.cpp'
-$userProfileSingletonGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CUserProfileManagerSingleton_Get_0040d2a0_test.cpp'
+$userProfileSingletonGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CUserProfileManager_Get_0040d2a0.cpp'
+$userProfileSingletonGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CUserProfileManager_Get_0040d2a0_test.cpp'
 $userProfileSetProfileNameSource = Join-Path $rebuildRoot 'src\compiled\00\40\CUserProfileManager_SetProfileName_0040d400.cpp'
 $userProfileSetProfileNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CUserProfileManager_SetProfileName_0040d400_test.cpp'
 $stage1BoundarySource = Join-Path $rebuildRoot 'integration\stage1_engine_boundary.cpp'
-$progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GFInitialiseSetupProgressDisplay_00413120.cpp'
-$progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GFInitialiseSetupProgressDisplay_00413120_test.cpp'
+$progressSetupSource = Join-Path $rebuildRoot 'src\compiled\00\41\CGame_Initialise_00413120.cpp'
+$progressSetupBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\CGame_Initialise_00413120_test.cpp'
 $progressDisplayConstructorSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_Constructor_00499ce0.cpp'
 $progressDisplayConstructorBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_Constructor_00499ce0_test.cpp'
 $progressDisplayTextBankSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_GetPTextBank_00497b30.cpp'
@@ -139,6 +147,7 @@ $progressDisplayTextModeSource = Join-Path $rebuildRoot 'src\compiled\00\49\CPro
 $progressDisplayTextModeBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_SetToDisplayText_00499a70_test.cpp'
 $progressDisplayIsActiveSource = Join-Path $rebuildRoot 'src\compiled\00\49\CProgressDisplay_IsActive_0049b460.cpp'
 $progressDisplayIsActiveBehaviorSource = Join-Path $rebuildRoot 'tests\00\49\CProgressDisplay_IsActive_0049b460_test.cpp'
+$progressDisplayGlobalSource = Join-Path $rebuildRoot 'src\compiled\01\22\Global_ProgressDisplay_012241b0.cpp'
 $setProgressDisplaySource = Join-Path $rebuildRoot 'src\compiled\00\9e\Global_SetProgressDisplay_009e9fd0.cpp'
 $setProgressDisplayBehaviorSource = Join-Path $rebuildRoot 'tests\00\9e\Global_SetProgressDisplay_009e9fd0_test.cpp'
 $getProgressDisplaySource = Join-Path $rebuildRoot 'src\compiled\00\9e\Global_GetProgressDisplay_009ea060.cpp'
@@ -179,8 +188,8 @@ $getSystemManagerSource = Join-Path $rebuildRoot 'src\compiled\00\9a\Global_GFGe
 $getSystemManagerBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\Global_GFGetSystemManager_009a4ec0_test.cpp'
 $movieLeftAlignSource = Join-Path $rebuildRoot 'src\compiled\00\9a\CXMVPlayer_SetLeftAlignText_009a0ef0.cpp'
 $movieLeftAlignBehaviorSource = Join-Path $rebuildRoot 'tests\00\9a\CXMVPlayer_SetLeftAlignText_009a0ef0_test.cpp'
-$imePrimitiveSource = Join-Path $rebuildRoot 'src\compiled\00\40\CEngineInternalPrimitiveBase_AddChildPrimitive_00404a80.cpp'
-$imePrimitiveBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CEngineInternalPrimitiveBase_AddChildPrimitive_00404a80_test.cpp'
+$imePrimitiveSource = Join-Path $rebuildRoot 'src\compiled\00\40\CIME_Get_00404a80.cpp'
+$imePrimitiveBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CIME_Get_00404a80_test.cpp'
 $profileStartSource = Join-Path $rebuildRoot 'src\compiled\00\9d\NProfileTimer_StartProfile_009d8240.cpp'
 $profileStartBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\NProfileTimer_StartProfile_009d8240_test.cpp'
 $profileEndSource = Join-Path $rebuildRoot 'src\compiled\00\9d\NProfileTimer_EndProfile_009d8250.cpp'
@@ -191,10 +200,10 @@ $startupLatchSource = Join-Path $rebuildRoot 'src\compiled\00\9d\Global_ClearSta
 $startupLatchBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\Global_ClearStartupLatch_009d81e0_test.cpp'
 $fileInstallerGetSource = Join-Path $rebuildRoot 'src\compiled\00\40\CFileInstallerSingleton_Get_00404440.cpp'
 $fileInstallerGetBehaviorSource = Join-Path $rebuildRoot 'tests\00\40\CFileInstallerSingleton_Get_00404440_test.cpp'
-$defaultLanguageNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetDefaultLanguageName_00415530.cpp'
-$defaultLanguageNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetDefaultLanguageName_00415530_test.cpp'
-$fontBankNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetFontBankName_00415260.cpp'
-$fontBankNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetFontBankName_00415260_test.cpp'
+$defaultLanguageNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\NLocalisation_GetLanguageFolder_00415530.cpp'
+$defaultLanguageNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\NLocalisation_GetLanguageFolder_00415530_test.cpp'
+$fontBankNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\NLocalisation_GetTextBankName_00415260.cpp'
+$fontBankNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\NLocalisation_GetTextBankName_00415260_test.cpp'
 $streamingFontBankNameSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetStreamingFontBankName_00415440.cpp'
 $streamingFontBankNameBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetStreamingFontBankName_00415440_test.cpp'
 $miscDirectoryASource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetMiscDirectoryA_0041a0a0.cpp'
@@ -213,12 +222,12 @@ $languageDirectoryBSource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_Ge
 $languageDirectoryBBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetLanguageDirectoryB_0041a330_test.cpp'
 $checkpointDirectorySource = Join-Path $rebuildRoot 'src\compiled\00\41\Global_GetAutoSaveCheckpointDirectory_0041a4c0.cpp'
 $checkpointDirectoryBehaviorSource = Join-Path $rebuildRoot 'tests\00\41\Global_GetAutoSaveCheckpointDirectory_0041a4c0_test.cpp'
-$defTablePathSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CDefStringTable_SetTablePath_009d4a40.cpp'
-$defTablePathBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\CDefStringTable_SetTablePath_009d4a40_test.cpp'
-$bankHandleSource = Join-Path $rebuildRoot 'src\compiled\00\9c\CBankFile_GetBankHandle_009c7a40.cpp'
-$bankHandleBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\CBankFile_GetBankHandle_009c7a40_test.cpp'
-$vectorMapLookupSource = Join-Path $rebuildRoot 'src\compiled\00\9c\FableVectorMap_LookupValue_009cc410.cpp'
-$vectorMapLookupBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\FableVectorMap_LookupValue_009cc410_test.cpp'
+$defTablePathSource = Join-Path $rebuildRoot 'src\compiled\00\9d\CDefStringTable_SetTableFilename_009d4a40.cpp'
+$defTablePathBehaviorSource = Join-Path $rebuildRoot 'tests\00\9d\CDefStringTable_SetTableFilename_009d4a40_test.cpp'
+$textEntryGetTextSource = Join-Path $rebuildRoot 'src\compiled\00\9c\NGameText_CTextEntry_GetText_009c7a40.cpp'
+$textEntryGetTextBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\NGameText_CTextEntry_GetText_009c7a40_test.cpp'
+$bankSymbolLookupSource = Join-Path $rebuildRoot 'src\compiled\00\9c\CBankFile_FindIndexBySymbolCRC_009cc410.cpp'
+$bankSymbolLookupBehaviorSource = Join-Path $rebuildRoot 'tests\00\9c\CBankFile_FindIndexBySymbolCRC_009cc410_test.cpp'
 $wideStringFromCharSource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CreateFromCharString_0099b6a0.cpp'
 $wideStringFromCharBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CWideString_CreateFromCharString_0099b6a0_test.cpp'
 $wideStringCopySource = Join-Path $rebuildRoot 'src\compiled\00\99\CWideString_CopyConstructor_0099b720.cpp'
@@ -245,10 +254,10 @@ $primaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLay
 $primaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetPrimaryLeftAlignment_009bc890_test.cpp'
 $secondaryLeftAlignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0.cpp'
 $secondaryLeftAlignmentBehaviorSource = Join-Path $rebuildRoot 'tests\00\9b\TextLayout_SetSecondaryLeftAlignment_009bc8a0_test.cpp'
-$cbaseRestoreASource = Join-Path $rebuildRoot 'src\compiled\00\99\CBase_RestoreVTable_0099a2e0.cpp'
-$cbaseRestoreABehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBase_RestoreVTable_0099a2e0_test.cpp'
-$cbaseRestoreBSource = Join-Path $rebuildRoot 'src\compiled\00\99\CBase_RestoreVTable_0099a300.cpp'
-$cbaseRestoreBBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBase_RestoreVTable_0099a300_test.cpp'
+$cbaseRestoreASource = Join-Path $rebuildRoot 'src\compiled\00\99\CBaseClass_CBaseClass_0099a2d0.cpp'
+$cbaseRestoreABehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBaseClass_1CBaseClass_0099a2e0_test.cpp'
+$cbaseRestoreBSource = Join-Path $rebuildRoot 'src\compiled\00\99\CBaseClass_CBaseClass_0099a2d0.cpp'
+$cbaseRestoreBBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\CBaseClassNonCopyable_1CBaseClassNonCopyable_0099a300_test.cpp'
 $cmovieIsPlayingSource = Join-Path $rebuildRoot 'src\compiled\00\54\CMovie_IsPlaying_00548520.cpp'
 $cmovieIsPlayingBehaviorSource = Join-Path $rebuildRoot 'tests\00\54\CMovie_IsPlaying_00548520_test.cpp'
 $cmovieSetMovieSource = Join-Path $rebuildRoot 'src\compiled\00\54\CMovie_SetMovie_00548510.cpp'
@@ -284,6 +293,8 @@ $phase6RuntimeBoundarySource =
     Join-Path $rebuildRoot 'integration\phase6_runtime_boundary.cpp'
 $systemManagerRuntimeBoundarySource =
     Join-Path $rebuildRoot 'integration\system_manager_runtime_boundary.cpp'
+$gameSingletonRuntimeBoundarySource =
+    Join-Path $rebuildRoot 'integration\game_singleton_runtime_boundary.cpp'
 $saveMetadataRuntimeBoundarySource =
     Join-Path $rebuildRoot 'integration\save_metadata_runtime_boundary.cpp'
 $frontendSaveRowsSource =
@@ -337,7 +348,7 @@ $clearRender2DVertexQueueSource = Join-Path $rebuildRoot 'src\compiled\00\9e\Ren
 $restoreRenderStateCaptureSource = Join-Path $rebuildRoot 'src\compiled\00\a0\CRenderStateManager_RestoreCaptureBlock_00a05840.cpp'
 $textureCalcByteLengthSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_CalcByteLength_009f9ee0.cpp'
 $pixelFormatGetColourDepthSource = Join-Path $rebuildRoot 'src\compiled\00\9e\CPixelFormat_GetColourDepth_009e3820.cpp'
-$pixelFormatInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9e\CPixelFormat_InitialiseD3DFormat_009e3830.cpp'
+$pixelFormatInitialiseSource = Join-Path $rebuildRoot 'src\compiled\00\9e\CPixelFormat_Initialise_009e3830.cpp'
 $pixelFormatTableSource = Join-Path $rebuildRoot 'src\compiled\01\29\CPixelFormat_Table_0129ba40.cpp'
 $textureInitialisePreallocatedSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_InitialiseFromPreallocatedTexture_009fa230.cpp'
 $textureAssignmentSource = Join-Path $rebuildRoot 'src\compiled\00\9f\CTexture_Assignment_009fa1c0.cpp'
@@ -369,6 +380,11 @@ $winMainObject = Join-Path $outDir 'retail_winmain.obj'
 $winMainBehaviorObject = Join-Path $outDir 'winmain_behavior.obj'
 $gfInitialiseObject = Join-Path $outDir 'gfinitialise.obj'
 $gfUninitialiseObject = Join-Path $outDir 'gf-uninitialise.obj'
+$gameUninitialiseObject = Join-Path $outDir 'game-uninitialise.obj'
+$initBaseClassConstructorObject = Join-Path $outDir 'init-base-class-constructor.obj'
+$initBaseClassDestructorObject = Join-Path $outDir 'init-base-class-destructor.obj'
+$initBaseClassValidateObject = Join-Path $outDir 'init-base-class-validate.obj'
+$gameSingletonRuntimeBoundaryObject = Join-Path $outDir 'game_singleton_runtime_boundary.obj'
 $imeInitialiseObject = Join-Path $outDir 'cime-initialise.obj'
 $systemManagerInitialiseObject =
     Join-Path $outDir 'system-manager-initialise.obj'
@@ -378,6 +394,7 @@ $progressSetupBehaviorObject = Join-Path $outDir 'gfinitialise_setup_progress_be
 $progressDisplayConstructorObject = Join-Path $outDir 'progress-display-constructor.obj'
 $progressDisplayTextModeObject = Join-Path $outDir 'progress-display-text-mode.obj'
 $progressDisplayIsActiveObject = Join-Path $outDir 'progress-display-is-active.obj'
+$progressDisplayGlobalObject = Join-Path $outDir 'progress-display-global.obj'
 $setProgressDisplayObject = Join-Path $outDir 'set-progress-display.obj'
 $getProgressDisplayObject = Join-Path $outDir 'get-progress-display.obj'
 $progressDisplayStringBoundaryObject = Join-Path $outDir 'progress-display-string-boundary.obj'
@@ -403,6 +420,9 @@ $getSystemManagerObject = Join-Path $outDir 'get-system-manager.obj'
 $movieLeftAlignObject = Join-Path $outDir 'movie-left-align.obj'
 $imePrimitiveObject = Join-Path $outDir 'ime-primitive.obj'
 $crcCalcObject = Join-Path $outDir 'crc-calc.obj'
+$gameTextDataBankConstructorObject =
+    Join-Path $outDir 'game-text-data-bank-constructor.obj'
+$wideStringAddWideObject = Join-Path $outDir 'wide-string-add-wide.obj'
 $profileStartObject = Join-Path $outDir 'profile_start.obj'
 $profileStartBehaviorObject = Join-Path $outDir 'profile_start_behavior.obj'
 $defaultLanguageNameObject = Join-Path $outDir 'default-language-name.obj'
@@ -419,15 +439,20 @@ $checkpointDirectoryObject = Join-Path $outDir 'checkpoint-directory.obj'
 $defTablePathObject = Join-Path $outDir 'def-table-path.obj'
 $defStringTableLoadObject =
     Join-Path $outDir 'definition-string-table-load.obj'
+$diskFileCloseObject = Join-Path $outDir 'disk-file-close.obj'
 $myDocumentsWritePermissionsObject =
     Join-Path $outDir 'my-documents-write-permissions.obj'
-$bankHandleObject = Join-Path $outDir 'bank-handle.obj'
-$vectorMapLookupObject = Join-Path $outDir 'vector-map-lookup.obj'
+$textEntryGetTextObject = Join-Path $outDir 'text-entry-get-text.obj'
+$bankSymbolLookupObject = Join-Path $outDir 'bank-symbol-lookup.obj'
 $wideStringFromCharObject = Join-Path $outDir 'wide-string-from-char.obj'
 $wideStringCopyObject = Join-Path $outDir 'wide-string-copy.obj'
 $charToWideStringObject = Join-Path $outDir 'char-to-wide-string.obj'
 $wideStringAddRightObject = Join-Path $outDir 'wide-string-add-right.obj'
 $wideStringAddLeftObject = Join-Path $outDir 'wide-string-add-left.obj'
+$stlThrowLengthErrorObject = Join-Path $outDir 'stl-throw-length-error.obj'
+$stlThrowLengthErrorSource = Join-Path $rebuildRoot 'src\compiled\00\99\STL_Mthrowlengtherror_0099c550.cpp'
+$stlThrowLengthErrorBehaviorSource = Join-Path $rebuildRoot 'tests\00\99\STL_Mthrowlengtherror_0099c550_test.cpp'
+$stlThrowLengthErrorPassPattern = 'FABLETLC_STL_THROW_LENGTH_ERROR PASS'
 $primaryLeftAlignmentObject = Join-Path $outDir 'primary-left-alignment.obj'
 $secondaryLeftAlignmentObject = Join-Path $outDir 'secondary-left-alignment.obj'
 $charStringDefaultObject = Join-Path $outDir 'char-string-default-constructor.obj'
@@ -644,6 +669,10 @@ $passPattern = 'FABLETLC_BOOTSTRAP_STAGE0 PASS'
 $winMainPassPattern = 'FABLETLC_WINMAIN_BEHAVIOR PASS'
 $gfInitialisePassPattern = 'FABLETLC_GFINITIALISE_BEHAVIOR PASS'
 $gfUninitialisePassPattern = 'FABLETLC_GF_UNINITIALISE_BEHAVIOR PASS'
+$gameUninitialisePassPattern = 'PASS_00412f60'
+$initBaseClassConstructorPassPattern = 'FABLETLC_INITBASE_CTOR PASS'
+$initBaseClassDestructorPassPattern = 'PASS_INITBASE_DTOR'
+$initBaseClassValidatePassPattern = 'AUTO_TINY_0099a340_TEST PASS'
 $gfHandleSystemInitErrorPassPattern = 'FABLETLC_GF_HANDLE_SYSTEM_INIT_ERROR_BEHAVIOR PASS'
 $gamePlayPassPattern = 'FABLETLC_CGAME_PLAY_BEHAVIOR PASS'
 $initialiseConsoleVariablesPassPattern = 'FABLETLC_INITIALISE_CONSOLE_VARIABLES PASS'
@@ -655,7 +684,7 @@ $systemManagerInitialisePassPattern = 'FABLETLC_SYSTEM_MANAGER_INITIALISE_BEHAVI
 $exitThunkPassPattern = 'FABLETLC_EXIT_THUNK_BEHAVIOR PASS'
 $doEulaPassPattern = 'FABLETLC_EULA_BEHAVIOR PASS'
 $configDetectionPassPattern = 'FABLETLC_CONFIG_DETECTION_BEHAVIOR PASS'
-$persistSignedCharPassPattern = 'FABLETLC_PERSIST_SIGNED_CHAR_BEHAVIOR PASS'
+$persistSignedCharPassPattern = 'FABLETLC_PERSIST_TRANSFER_BOOL_BEHAVIOR PASS'
 $stringParserCommentListDestructorPassPattern = 'FABLETLC_STRING_PARSER_COMMENT_LIST_DTOR PASS'
 $imeSettingsPassPattern = 'FABLETLC_IME_SETTINGS_BEHAVIOR PASS'
 $bankHeaderDirectoryPassPattern = 'FABLETLC_BANK_HEADER_DIRECTORY_BEHAVIOR PASS'
@@ -666,7 +695,7 @@ $wideStringAssignLiteralPassPattern = 'FABLETLC_WIDE_STRING_ASSIGN_LITERAL PASS'
 $wideStringAddWidePassPattern = 'FABLETLC_WIDE_STRING_ADD_WIDE PASS'
 $defStringTableLoadPassPattern = 'FABLETLC_DEF_STRING_TABLE_LOAD_BEHAVIOR PASS'
 $gameTextDataBankConstructorPassPattern = 'FABLETLC_GAME_TEXT_DATA_BANK_CONSTRUCTOR PASS'
-$gameTextGetGroupEntryPassPattern = 'FABLETLC_GAME_TEXT_GET_GROUP_ENTRY PASS'
+$gameTextGetTextEntryPassPattern = 'FABLETLC_GAME_TEXT_GET_TEXT_ENTRY PASS'
 $myDocumentsWritePermissionsPassPattern = 'FABLETLC_MY_DOCUMENTS_WRITE_PERMISSIONS PASS'
 $retailBankConstructorPassPattern = 'FABLETLC_RETAIL_BANK_CONSTRUCTOR PASS'
 $threadedFileConstructorPassPattern = 'FABLETLC_THREADED_FILE_CONSTRUCTOR PASS'
@@ -715,7 +744,7 @@ $wideStringCopyAssignmentPassPattern = 'FABLETLC_WIDE_STRING_COPY_ASSIGNMENT_BEH
 $charStringConstructorPassPattern = 'FABLETLC_CHAR_STRING_CONSTRUCTOR_BEHAVIOR PASS'
 $charStringDestructorPassPattern = 'FABLETLC_CHAR_STRING_DESTRUCTOR_BEHAVIOR PASS'
 $profileStartPassPattern = 'FABLETLC_PROFILE_START_BEHAVIOR PASS'
-$charStringDefaultPassPattern = 'FABLETLC_CHAR_STRING_DEFAULT_CONSTRUCTOR_BEHAVIOR PASS'
+$charStringDefaultPassPattern = 'CHAR_STRING_DEFAULT_0099e4b0_PASS'
 $systemManagerInitPassPattern = 'FABLETLC_SYSTEM_MANAGER_INIT_BEHAVIOR PASS'
 $gfmainPhase1PassPattern = 'FABLETLC_GFMAIN_PHASE1_BEHAVIOR PASS'
 $gfmainPhase2PassPattern = 'FABLETLC_GFMAIN_PHASE2_BEHAVIOR PASS'
@@ -764,7 +793,7 @@ $retailBankNavigatorPassPattern = 'FABLETLC_RETAIL_BANK_NAVIGATOR_BEHAVIOR PASS'
 $retailBankAliasPassPattern = 'FABLETLC_RETAIL_BANK_ALIAS_BEHAVIOR PASS'
 $getSystemManagerPassPattern = 'FABLETLC_GET_SYSTEM_MANAGER_BEHAVIOR PASS'
 $movieLeftAlignPassPattern = 'FABLETLC_MOVIE_LEFT_ALIGN_BEHAVIOR PASS'
-$imePrimitivePassPattern = 'CEngineInternalPrimitiveBase_00404a80_TEST PASS'
+$imePrimitivePassPattern = 'CIME_GET_00404a80_PASS'
 $crcCalcPassPattern = 'FABLETLC_CRC_CALC_BEHAVIOR PASS'
 $miscDirectoryAPassPattern = 'FABLETLC_MISC_DIRECTORY_A_BEHAVIOR PASS'
 $miscDirectoryBPassPattern = 'FABLETLC_MISC_DIRECTORY_B_BEHAVIOR PASS'
@@ -775,8 +804,8 @@ $cacheDirectoryPassPattern = 'FABLETLC_CACHE_DIRECTORY_BEHAVIOR PASS'
 $languageDirectoryBPassPattern = 'FABLETLC_LANGUAGE_DIRECTORY_B_BEHAVIOR PASS'
 $checkpointDirectoryPassPattern = 'FABLETLC_CHECKPOINT_DIRECTORY_BEHAVIOR PASS'
 $defTablePathPassPattern = 'FABLETLC_DEF_TABLE_PATH_BEHAVIOR PASS'
-$bankHandlePassPattern = 'FABLETLC_BANK_HANDLE_BEHAVIOR PASS'
-$vectorMapLookupPassPattern = 'FABLETLC_VECTOR_MAP_LOOKUP_BEHAVIOR PASS'
+$textEntryGetTextPassPattern = 'TEXT_ENTRY_GET_TEXT PASS'
+$bankSymbolLookupPassPattern = 'BANK_SYMBOL_LOOKUP_PASS'
 $cbaseRestoreAPassPattern = 'FABLETLC_CBASE_RESTORE_A_BEHAVIOR PASS'
 $cbaseRestoreBPassPattern = 'FABLETLC_CBASE_RESTORE_B_BEHAVIOR PASS'
 $cmovieIsPlayingPassPattern = 'FABLETLC_CMOVIE_IS_PLAYING PASS'
@@ -837,6 +866,7 @@ $required = @(
     $progressDisplayTextModeBehaviorSource,
     $progressDisplayIsActiveSource,
     $progressDisplayIsActiveBehaviorSource,
+    $progressDisplayGlobalSource,
     $setProgressDisplaySource,
     $setProgressDisplayBehaviorSource,
     $getProgressDisplaySource,
@@ -915,10 +945,10 @@ $required = @(
     $checkpointDirectoryBehaviorSource,
     $defTablePathSource,
     $defTablePathBehaviorSource,
-    $bankHandleSource,
-    $bankHandleBehaviorSource,
-    $vectorMapLookupSource,
-    $vectorMapLookupBehaviorSource,
+    $textEntryGetTextSource,
+    $textEntryGetTextBehaviorSource,
+    $bankSymbolLookupSource,
+    $bankSymbolLookupBehaviorSource,
     $wideStringFromCharSource,
     $wideStringFromCharBehaviorSource,
     $wideStringCopySource,
@@ -983,6 +1013,7 @@ $required = @(
     $phase6RuntimeBoundarySource,
     $systemManagerRuntimeBoundarySource,
     $saveMetadataRuntimeBoundarySource,
+    $gameSingletonRuntimeBoundarySource,
     $frontendSaveRowsSource,
     $fableInflateSource,
     $phase8RuntimeBoundarySource,
@@ -1564,6 +1595,12 @@ try {
         }
     }
 
+    # Text parity masks relocations; also prove component vtable ownership/slots.
+    & python (Join-Path $workspaceRoot 'tools\decomp_pipeline\gate_game_component_abi.py')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Game component vtable ABI check failed.'
+    }
+
     Invoke-VerifiedLeaf `
         -Address '0099e4b0' `
         -Description 'CCharString default constructor' `
@@ -1603,6 +1640,46 @@ try {
         -BehaviorSource $gfUninitialiseBehaviorSource `
         -OutputStem 'gf-uninitialise' `
         -PassPattern $gfUninitialisePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099c550' `
+        -Description 'STLport wide _String_base::_M_throw_length_error (puts + abort)' `
+        -Source $stlThrowLengthErrorSource `
+        -BehaviorSource $stlThrowLengthErrorBehaviorSource `
+        -OutputStem 'stl-throw-length-error' `
+        -PassPattern $stlThrowLengthErrorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '00412f60' `
+        -Description 'CGame::Uninitialise base-class forward' `
+        -Source $gameUninitialiseSource `
+        -BehaviorSource $gameUninitialiseBehaviorSource `
+        -OutputStem 'game-uninitialise' `
+        -PassPattern $gameUninitialisePassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099a310' `
+        -Description 'CInitBaseClass constructor with the inlined CBase constructor' `
+        -Source $initBaseClassConstructorSource `
+        -BehaviorSource $initBaseClassConstructorBehaviorSource `
+        -OutputStem 'init-base-class-constructor' `
+        -PassPattern $initBaseClassConstructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099a410' `
+        -Description 'CInitBaseClass destructor with the inlined Uninitialise and CBase destructor' `
+        -Source $initBaseClassDestructorSource `
+        -BehaviorSource $initBaseClassDestructorBehaviorSource `
+        -OutputStem 'init-base-class-destructor' `
+        -PassPattern $initBaseClassDestructorPassPattern
+
+    Invoke-VerifiedLeaf `
+        -Address '0099a340' `
+        -Description 'CInitBaseClass::Validate empty virtual' `
+        -Source $initBaseClassValidateSource `
+        -BehaviorSource $initBaseClassValidateBehaviorSource `
+        -OutputStem 'init-base-class-validate' `
+        -PassPattern $initBaseClassValidatePassPattern
 
     Invoke-VerifiedLeaf `
         -Address '00401c00' `
@@ -1694,32 +1771,11 @@ try {
 
     Invoke-VerifiedLeaf `
         -Address '004045c0' `
-        -Description 'CPersistContext signed-char transfer dispatcher' `
+        -Description 'CPersistContext::Transfer<bool> dispatcher' `
         -Source $persistSignedCharSource `
         -BehaviorSource $persistSignedCharBehaviorSource `
-        -OutputStem 'persist-signed-char' `
+        -OutputStem 'persist-transfer-bool' `
         -PassPattern $persistSignedCharPassPattern
-
-    $persistSignedCharObject =
-        Join-Path $outDir 'persist-signed-char.obj'
-    foreach ($persistCaseAddress in @(
-        '004045db',
-        '004045ef',
-        '00404608',
-        '00404622',
-        '00404647'
-    )) {
-        & python $bootObjectChecker `
-            --root $workspaceRoot `
-            --object $persistSignedCharObject `
-            --address $persistCaseAddress
-        if ($LASTEXITCODE -ne 0) {
-            throw (
-                'CPersistContext signed-char transfer case ' +
-                "$persistCaseAddress failed retail parity."
-            )
-        }
-    }
 
     Invoke-VerifiedLeaf `
         -Address '004046b0' `
@@ -1803,11 +1859,11 @@ try {
 
     Invoke-VerifiedLeaf `
         -Address '009c9070' `
-        -Description 'game-text group-entry acquisition' `
-        -Source $gameTextGetGroupEntrySource `
-        -BehaviorSource $gameTextGetGroupEntryBehaviorSource `
-        -OutputStem 'game-text-get-group-entry' `
-        -PassPattern $gameTextGetGroupEntryPassPattern
+        -Description 'game-text text-entry acquisition' `
+        -Source $gameTextGetTextEntrySource `
+        -BehaviorSource $gameTextGetTextEntryBehaviorSource `
+        -OutputStem 'game-text-get-text-entry' `
+        -PassPattern $gameTextGetTextEntryPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '00402130' `
@@ -2145,6 +2201,10 @@ try {
         -OutputStem 'progress-display-text-mode' `
         -PassPattern $progressDisplayTextModePassPattern
 
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$progressDisplayGlobalObject" $progressDisplayGlobalSource
+    if ($LASTEXITCODE -ne 0) { throw 'Failed to compile native progress-display global.' }
+
     Invoke-VerifiedLeaf `
         -Address '009e9fd0' `
         -Description 'retained progress-display owner assignment' `
@@ -2302,19 +2362,19 @@ try {
 
     Invoke-VerifiedLeaf `
         -Address '009c7a40' `
-        -Description 'bank-handle wide-string accessor' `
-        -Source $bankHandleSource `
-        -BehaviorSource $bankHandleBehaviorSource `
-        -OutputStem 'bank-handle' `
-        -PassPattern $bankHandlePassPattern
+        -Description 'text-entry wide-string accessor' `
+        -Source $textEntryGetTextSource `
+        -BehaviorSource $textEntryGetTextBehaviorSource `
+        -OutputStem 'text-entry-get-text' `
+        -PassPattern $textEntryGetTextPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '009cc410' `
-        -Description 'vector-map exact-key lookup' `
-        -Source $vectorMapLookupSource `
-        -BehaviorSource $vectorMapLookupBehaviorSource `
-        -OutputStem 'vector-map-lookup' `
-        -PassPattern $vectorMapLookupPassPattern
+        -Description 'bank symbol CRC index lookup' `
+        -Source $bankSymbolLookupSource `
+        -BehaviorSource $bankSymbolLookupBehaviorSource `
+        -OutputStem 'bank-symbol-lookup' `
+        -PassPattern $bankSymbolLookupPassPattern
 
     Invoke-VerifiedLeaf `
         -Address '0099b6a0' `
@@ -3097,6 +3157,16 @@ try {
         -not (Test-Path -LiteralPath $systemManagerRuntimeBoundaryObject)
     ) {
         throw 'Failed to compile the exact system-manager runtime boundary.'
+    }
+
+    & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
+        "/Fo$gameSingletonRuntimeBoundaryObject" `
+        $gameSingletonRuntimeBoundarySource
+    if (
+        $LASTEXITCODE -ne 0 -or
+        -not (Test-Path -LiteralPath $gameSingletonRuntimeBoundaryObject)
+    ) {
+        throw 'Failed to compile the CGame singleton runtime boundary.'
     }
 
     & (Join-Path $vcRoot 'bin\cl.exe') @compileOptions `
@@ -4313,6 +4383,7 @@ try {
         $wideStringFromCharObject,
         $wideStringAddRightObject,
         $wideStringAddLeftObject,
+        $stlThrowLengthErrorObject,
         $charStringConstructorObject,
         $charStringDefaultObject,
         $charStringDestructorObject,
@@ -4342,6 +4413,7 @@ try {
         $wideStringFromCharObject,
         $wideStringAddRightObject,
         $wideStringAddLeftObject,
+        $stlThrowLengthErrorObject,
         $charStringConstructorObject,
         $charStringDefaultObject,
         $charStringDestructorObject,
@@ -4375,6 +4447,7 @@ try {
         $wideStringFromCharObject,
         $wideStringAddRightObject,
         $wideStringAddLeftObject,
+        $stlThrowLengthErrorObject,
         $charStringConstructorObject,
         $charStringDefaultObject,
         $charStringDestructorObject,
@@ -4458,10 +4531,16 @@ try {
         $stage3CompleteBoundaryObject,
         $defTablePathObject,
         $defStringTableLoadObject,
+        $diskFileCloseObject,
         $myDocumentsWritePermissionsObject,
         $phase6RuntimeBoundaryObject,
         $gfInitialiseObject,
         $gfUninitialiseObject,
+        $gameUninitialiseObject,
+        $initBaseClassConstructorObject,
+        $initBaseClassDestructorObject,
+        $initBaseClassValidateObject,
+        $gameSingletonRuntimeBoundaryObject,
         $imeInitialiseObject,
         $systemManagerInitialiseObject,
         $systemManagerRuntimeBoundaryObject,
@@ -4473,11 +4552,17 @@ try {
         $phase8RuntimeBoundaryObject,
         $getWindowTitleObject,
         $phase7WindowTitleRuntimeBoundaryObject,
+        $gameTextDataBankConstructorObject,
+        $fontBankNameObject,
+        $crcCalcObject,
+        $retailObject,
+        $wideStringAddWideObject,
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
         $progressDisplayConstructorObject,
         $progressDisplayTextModeObject,
         $progressDisplayIsActiveObject,
+        $progressDisplayGlobalObject,
         $setProgressDisplayObject,
         $getProgressDisplayObject
     )
@@ -4496,10 +4581,16 @@ try {
         $gfmainCompleteObject,
         $defTablePathObject,
         $defStringTableLoadObject,
+        $diskFileCloseObject,
         $myDocumentsWritePermissionsObject,
         $phase6RuntimeBoundaryObject,
         $gfInitialiseObject,
         $gfUninitialiseObject,
+        $gameUninitialiseObject,
+        $initBaseClassConstructorObject,
+        $initBaseClassDestructorObject,
+        $initBaseClassValidateObject,
+        $gameSingletonRuntimeBoundaryObject,
         $imeInitialiseObject,
         $systemManagerInitialiseObject,
         $systemManagerRuntimeBoundaryObject,
@@ -4511,11 +4602,17 @@ try {
         $phase8RuntimeBoundaryObject,
         $getWindowTitleObject,
         $phase7WindowTitleRuntimeBoundaryObject,
+        $gameTextDataBankConstructorObject,
+        $fontBankNameObject,
+        $crcCalcObject,
+        $retailObject,
+        $wideStringAddWideObject,
         $gfInitialiseEngineBoundaryObject,
         $progressSetupObject,
         $progressDisplayConstructorObject,
         $progressDisplayTextModeObject,
         $progressDisplayIsActiveObject,
+        $progressDisplayGlobalObject,
         $setProgressDisplayObject,
         $getProgressDisplayObject,
         $visualBoundaryObject,
@@ -4556,6 +4653,7 @@ try {
         $wideStringFromCharObject,
         $wideStringAddRightObject,
         $wideStringAddLeftObject,
+        $stlThrowLengthErrorObject,
         $charStringConstructorObject,
         $charStringDefaultObject,
         $charStringDestructorObject,
@@ -4808,9 +4906,11 @@ try {
         "/out:$gfInitialiseProgressPhaseBehaviorExecutable" `
         $gfInitialiseProgressPhaseObject `
         $gfInitialiseEngineBoundaryObject `
+        $getSystemManagerObject `
         $progressSetupObject `
         $progressDisplayConstructorObject `
         $progressDisplayIsActiveObject `
+        $progressDisplayGlobalObject `
         $setProgressDisplayObject `
         $getProgressDisplayObject `
         $progressDisplayStringBoundaryObject `

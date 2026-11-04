@@ -1,329 +1,230 @@
+#include <new>
 #include "fable_gfmain.h"
-#include "fable_gfuninitialise.h"
-
+#include "fable_system_manager.h"
+#include "test_support/bank_manager_member_stubs.h"
+#include "test_support/profile_manager_member_stubs.h"
 #include <string.h>
 
-extern "C" fable_u8 g_FableDriveManagerVTable_0129AFF4 = 0;
-extern "C" void* g_FableDriveManagerPointer_013CAA28 = 0;
-extern "C" fable_u8 g_FableScratchBuffer_013CB498 = 0;
-extern "C" fable_u8 g_FableSystemInitialiseCount_013CA608 = 0;
-
-namespace
-{
-    fable_u8 g_SystemManagerStorage[0x180];
-    fable_u8 g_Allocations[8][0x2C8];
-    fable_u32 g_AllocationCount;
+// Host recorders for CSystemManager::Initialise's subordinate engine services.
+// The coordinator itself is reconstructed; these services remain boundaries.
+extern "C" __declspec(dllimport) int FABLE_STDCALL VirtualProtect(void*, unsigned long, unsigned long, unsigned long*);
+extern "C" char __ImageBase;
+fable_u8 CSystemManager::NoInstances = 0;
+#include "test_support/scratch_buffer_storage.h"
+// Storage behind the retail CSystemManager singleton (0x013CA618): the exact
+// Initialise probe runs on it, and GFGetSystemManager (0x009A4EC0) returns it.
+extern "C" fable_u32 g_FableSystemManagerStorage[0x180 / 4] = {};
+#pragma comment(linker, "/alternatename:?GSystemManager@@3VCSystemManager@@A=_g_FableSystemManagerStorage")
+namespace {
     GFMainPhase9State* g_ActiveState;
-
-    void StoreObject(void* slot, void* object)
+    void** FindImportSlot(const char* name)
     {
-        *static_cast<void**>(slot) = object;
-    }
-}
-
-extern "C" void* FABLE_STDCALL
-FableBoundaryConvertThreadToFiber(void*)
-{
-    return 0;
-}
-
-extern "C" long FABLE_STDCALL
-FableBoundaryCoInitialize(void*)
-{
-    return 0;
-}
-
-extern "C" void FABLE_STDCALL
-FableBoundaryInitializeCriticalSection(void*)
-{
-}
-
-extern "C" void* FABLE_STDCALL
-FableBoundaryGetCurrentProcess()
-{
-    return 0;
-}
-
-extern "C" void* (FABLE_STDCALL*
-    g_FableConvertThreadToFiber_009a6610)(void*) =
-        &FableBoundaryConvertThreadToFiber;
-extern "C" long (FABLE_STDCALL*
-    g_FableCoInitialize_009a6610)(void*) =
-        &FableBoundaryCoInitialize;
-extern "C" void (FABLE_STDCALL*
-    g_FableInitializeCriticalSection_009a6610)(void*) =
-        &FableBoundaryInitializeCriticalSection;
-extern "C" void* (FABLE_STDCALL*
-    g_FableGetCurrentProcess_009a6610)() =
-        &FableBoundaryGetCurrentProcess;
-
-extern "C" bool __fastcall
-FableSystemPreInitialise_009a6610(void*, void*)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemPreInitialiseCalls;
-    return true;
-}
-
-extern "C" void __fastcall
-FableSystemWideAssign_009a6610(void*, void*, const void*)
-{
-}
-
-extern "C" void __fastcall
-FableSystemInitGuid_009a6610(void*, void*, const void*)
-{
-}
-
-extern "C" void FableSystemDefaultErrorCallback_009a6610()
-{
-}
-
-extern "C" bool __fastcall FableSystemInitWindow_009a6610(
-    void*,
-    void*,
-    fable_u32,
-    fable_u32)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemWindowInitialiseCalls;
-    return true;
-}
-
-extern "C" void __fastcall
-FableSystemUninitialise_009a6610(void*, void*)
-{
-}
-
-extern "C" void __fastcall
-FableSystemScratchInitialise_009a6610(
-    void*,
-    void*,
-    fable_u32)
-{
-}
-
-extern "C" void __fastcall
-FableSystemDisplayInitCopy_009a6610(
-    void*,
-    void*,
-    const void*)
-{
-}
-
-extern "C" void* __cdecl
-FableSystemOperatorNew_009a6610(fable_u32)
-{
-    if (g_AllocationCount >= 8)
+        char* base = &__ImageBase;
+        char* nt = base + *reinterpret_cast<fable_u32*>(base + 0x3C);
+        const fable_u32 rva = *reinterpret_cast<fable_u32*>(nt + 0x80);
+        if (rva == 0)
+            return 0;
+        for (fable_u32* entry = reinterpret_cast<fable_u32*>(base + rva);
+             entry[3] != 0;
+             entry += 5)
+        {
+            fable_u32* names = reinterpret_cast<fable_u32*>(
+                base + (entry[0] ? entry[0] : entry[4]));
+            void** slots = reinterpret_cast<void**>(base + entry[4]);
+            for (int i = 0; names[i] != 0; ++i)
+            {
+                if ((names[i] & 0x80000000u) == 0 &&
+                    strcmp(base + names[i] + 2, name) == 0)
+                {
+                    return &slots[i];
+                }
+            }
+        }
         return 0;
-    return g_Allocations[g_AllocationCount++];
-}
+    }
 
-extern "C" void* __fastcall
-FableSystemDisplayConstruct_009a6610(
-    void* object,
-    void*,
-    void*)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemDisplayConstructCalls;
-    return object;
-}
+    bool SwapImport(const char* name, void* replacement, void** previous)
+    {
+        void** slot = FindImportSlot(name);
+        unsigned long oldProtect = 0;
+        if (slot == 0 ||
+            !VirtualProtect(slot, sizeof(void*), 0x04, &oldProtect))
+        {
+            return false;
+        }
+        if (previous != 0)
+            *previous = *slot;
+        *slot = replacement;
+        VirtualProtect(slot, sizeof(void*), oldProtect, &oldProtect);
+        return true;
+    }
 
-extern "C" void __fastcall
-FableSystemDisplayReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
-}
 
-extern "C" void __fastcall
-FableSystemDisplayInitialise_009a6610(
-    void*,
-    void*,
-    void*,
-    fable_u32)
-{
+    void* FABLE_STDCALL NoFiber(void*) { return 0; }
+    long FABLE_STDCALL NoCOM(void*) { return 0; }
+    void FABLE_STDCALL NoCriticalSection(void*) {}
+    void* FABLE_STDCALL NoProcess() { return 0; }
 }
+extern "C" long (FABLE_STDCALL* FableSystemCoInitializeImport)(void*) = &NoCOM;
+#pragma comment(linker, "/alternatename:__imp__CoInitialize@4=_FableSystemCoInitializeImport")
 
-extern "C" void __fastcall
-FableSystemCharStringDestroy_009a6610(void*, void*)
-{
+bool CInitBaseClass::Initialise() {
+    if (g_ActiveState) ++g_ActiveState->exactSystemPreInitialiseCalls;
+    return true;
 }
-
-extern "C" void* __fastcall
-FableSystemInputConstruct_009a6610(
-    void* object,
-    void*,
-    const void*,
-    fable_u32)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemInputConstructCalls;
-    return object;
+void CSystemManager::InitGUIDFromName(const char*) {}
+bool CSystemManager::InitWindow(long, long) {
+    if (g_ActiveState) ++g_ActiveState->exactSystemWindowInitialiseCalls;
+    return true;
 }
+bool FABLE_FASTCALL CSystemManager::DefaultErrorFunc(ESystemCode) { return false; }
+void CSystemManager::InitSystemColours() { EverBeenActive = true; }
+void CSystemManager::InitApplicationName() {}
+bool CScratchBuffer::Initialise(long) { return true; }
+void FABLE_FASTCALL GFInitMaths() {}
+void NVectorMath::GFInitVectorMath() {}
 
-extern "C" void __fastcall
-FableSystemInputReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
-}
-
-extern "C" void __fastcall
-FableSystemDriveReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
-}
-
-extern "C" ESystemCode __fastcall
-FableSystemDriveInitialise_009a6610(void*, void*, void*)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemDriveInitialiseCalls;
+template<typename T> void CCountedPointer<T>::Reset(T* data) { Data = data; }
+template void CCountedPointer<CDisplayManager>::Reset(CDisplayManager*);
+template void CCountedPointer<CInputManager>::Reset(CInputManager*);
+template void CCountedPointer<CDriveManager>::Reset(CDriveManager*);
+template void CCountedPointer<CASoundManager>::Reset(CASoundManager*);
+template void CCountedPointer<CFontManager>::Reset(CFontManager*);
+template void CCountedPointer<CGraphicBankManager>::Reset(CGraphicBankManager*);
+template void CCountedPointer<CMeshBankManager>::Reset(CMeshBankManager*);
+template void CCountedPointer<CProfileManager>::Reset(CProfileManager*);
+template<typename T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+CDriveManager::~CDriveManager() {}
+ESystemCode CDriveManager::Initialise(CSystemManager*) {
+    if (g_ActiveState) ++g_ActiveState->exactSystemDriveInitialiseCalls;
     return kSystemCodeSuccess;
 }
+// Authored display boundary; native device-creation defaults remain unrecovered.
 
-extern "C" void* __fastcall
-FableSystemProfileConstruct_009a6610(
-    void* object,
-    void*,
-    const void*,
-    fable_u32)
-{
-    return object;
+CDisplayManager::CDisplayManager(CSystemManager&) {
+    if (g_ActiveState) ++g_ActiveState->exactSystemDisplayConstructCalls;
 }
-
-extern "C" void __fastcall
-FableSystemProfileReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
+void CDisplayManager::Init(const CDisplayManagerInit&, bool) {}
+void CDisplayManager::AddDeviceResetCallback(CDeviceResetCallback*) {
+    if (g_ActiveState) ++g_ActiveState->exactSystemComponentAddCalls;
 }
-
-extern "C" void* __fastcall
-FableSystemFontConstruct_009a6610(
-    void* object,
-    void*,
-    const void*,
-    const void*)
-{
-    return object;
+// The coordinator probe owns empty input containers, not a live input service.
+CInputManager::CInputManager(const CInputManagerInit&, bool) : Checksum(0, 0, 0) {}
+CInputManager::~CInputManager() {}
+CInputEvent::~CInputEvent() { abort(); }
+CInputManagerDX::CInputManagerDX(const CInputManagerInit& init, bool exclusiveMode)
+    : CInputManager(init, exclusiveMode) {
+    if (g_ActiveState) ++g_ActiveState->exactSystemInputConstructCalls;
 }
-
-extern "C" void __fastcall
-FableSystemFontReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
+CSoundManagerLH::CSoundManagerLH(const CSoundManagerInit&, bool) {}
+CFontManager::CFontManager(const CCharString&, const CCharString&) {}
+CFontManager::~CFontManager() {}
+CGraphicBankManager::CGraphicBankManager() {
+    if (g_ActiveState) ++g_ActiveState->exactSystemTextConstructCalls;
 }
-
-extern "C" void* __fastcall
-FableSystemTextConstruct_009a6610(void* object, void*)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemTextConstructCalls;
-    return object;
+CMeshBankManager::CMeshBankManager() {
+    if (g_ActiveState) ++g_ActiveState->exactSystemMeshConstructCalls;
 }
-
-extern "C" void __fastcall
-FableSystemTextReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
+CProfileManager::CProfileManager() {
+    if (g_ActiveState) ++g_ActiveState->exactSystemColoursConstructCalls;
 }
+void CDeviceResetCallback::OnPreDeviceReset() {}
+bool CDeviceResetCallback::OnPostDeviceReset() { return true; }
+void CMeshBankManager::OnPreDeviceReset() {}
+bool CMeshBankManager::OnPostDeviceReset() { return true; }
+void CASoundManager::UnknownSlot01() {}
+void CASoundManager::UnknownSlot02() {}
+void CASoundManager::UnknownSlot03() {}
+void CASoundManager::UnknownSlot04() {}
+void CASoundManager::UnknownSlot05() {}
+void CASoundManager::UnknownSlot06() {}
+void CASoundManager::UnknownSlot07() {}
+void CASoundManager::UnknownSlot08() {}
+void CASoundManager::UnknownSlot09() {}
+void CASoundManager::UnknownSlot10() {}
+void CASoundManager::UnknownSlot11() {}
+void CASoundManager::UnknownSlot12() {}
+void CASoundManager::UnknownSlot13() {}
+void CASoundManager::UnknownSlot14() {}
+void CASoundManager::UnknownSlot15() {}
+void CASoundManager::UnknownSlot16() {}
+void CASoundManager::UnknownSlot17() {}
+void CASoundManager::UnknownSlot18(long) {}
+bool CInputManager::SetExclusiveMode(bool) { return false; }
+void CInputManager::Update() {}
+void CASoundManager::UnknownSlot19() {}
+void CASoundManager::UnknownSlot20() {}
+void CASoundManager::UnknownSlot21() {}
+void CASoundManager::UnknownSlot22() {}
+void CASoundManager::UnknownSlot23() {}
+void CASoundManager::UnknownSlot24() {}
+void CASoundManager::UnknownSlot25() {}
+void CASoundManager::UnknownSlot26() {}
+void CASoundManager::UnknownSlot27() {}
+void CASoundManager::UnknownSlot28() {}
+void CASoundManager::UnknownSlot29() {}
+void CASoundManager::UnknownSlot30() {}
+void CASoundManager::UnknownSlot31() {}
+void CASoundManager::UnknownSlot32() {}
+void CASoundManager::UnknownSlot33() {}
+void CASoundManager::UnknownSlot34() {}
+void CASoundManager::UnknownSlot35() {}
+void CASoundManager::UnknownSlot36() {}
+void CASoundManager::UnknownSlot37() {}
+void CASoundManager::UnknownSlot38() {}
+void CASoundManager::UnknownSlot39() {}
+void CASoundManager::UnknownSlot40() {}
+void CASoundManager::UnknownSlot41() {}
+void CASoundManager::UnknownSlot42() {}
+void CASoundManager::UnknownSlot43() {}
+void CASoundManager::UnknownSlot44() {}
+void CASoundManager::UnknownSlot45() {}
+void CASoundManager::UnknownSlot46(unsigned long, float, float) {}
+float CASoundManager::UnknownSlot47(unsigned long) { return 0.0f; }
+void CASoundManager::UnknownSlot48() {}
+bool CASoundManager::UnknownSlot49(float&) { return false; }
+void CASoundManager::UnknownSlot50() {}
+void CASoundManager::GenerateLipSyncData(const CWideString&, LHA::CBinaryDataWriter&) {}
 
-extern "C" void* __fastcall
-FableSystemMeshConstruct_009a6610(void* object, void*)
+fable_i32 FABLE_FASTCALL FableRunExactSystemManagerInitialiseBoundary(
+    CSystemManagerInit* init, GFMainPhase9State& state)
 {
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemMeshConstructCalls;
-    return object;
-}
-
-extern "C" void __fastcall
-FableSystemMeshReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
-}
-
-extern "C" void __fastcall
-FableSystemAddComponent_009a6610(void*, void*, void*)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemComponentAddCalls;
-}
-
-extern "C" void* __fastcall
-FableSystemColoursConstruct_009a6610(void* object, void*)
-{
-    if (g_ActiveState != 0)
-        ++g_ActiveState->exactSystemColoursConstructCalls;
-    return object;
-}
-
-extern "C" void __fastcall
-FableSystemColoursReset_009a6610(
-    void* slot,
-    void*,
-    void* object)
-{
-    StoreObject(slot, object);
-}
-
-extern "C" void FableSystemInitialiseCosine_009a6610()
-{
-}
-
-extern "C" void FableSystemInitialiseVectorMath_009a6610()
-{
-}
-
-extern "C" void __fastcall
-FableSystemInitColours_009a6610(void* manager, void*)
-{
-    static_cast<fable_u8*>(manager)[0xDC] = 1;
-}
-
-extern "C" void __fastcall
-FableSystemInitApplicationName_009a6610(void*, void*)
-{
-}
-
-fable_i32 FABLE_FASTCALL
-FableRunExactSystemManagerInitialiseBoundary(
-    CSystemManagerInit* init,
-    GFMainPhase9State& state)
-{
-    memset(g_SystemManagerStorage, 0, sizeof(g_SystemManagerStorage));
-    memset(g_Allocations, 0, sizeof(g_Allocations));
-    g_AllocationCount = 0;
-    g_FableSystemInitialiseCount_013CA608 = 0;
+    memset(g_FableSystemManagerStorage, 0, sizeof(g_FableSystemManagerStorage));
+    CSystemManager::NoInstances = 0;
+    void* fiber = 0;
+    void* critical = 0;
+    void* process = 0;
+    const bool redirected =
+        SwapImport("ConvertThreadToFiber", reinterpret_cast<void*>(&NoFiber), &fiber) &&
+        SwapImport("InitializeCriticalSection", reinterpret_cast<void*>(&NoCriticalSection), &critical) &&
+        SwapImport("GetCurrentProcess", reinterpret_cast<void*>(&NoProcess), &process);
     g_ActiveState = &state;
-
-    CSystemManager* manager =
-        reinterpret_cast<CSystemManager*>(g_SystemManagerStorage);
-    const ESystemCode result = manager->Initialise(init);
-
+    CSystemManager* manager = reinterpret_cast<CSystemManager*>(g_FableSystemManagerStorage);
+    const ESystemCode result = redirected ? manager->Initialise(init) : static_cast<ESystemCode>(0);
     g_ActiveState = 0;
-    state.exactSystemAllocationCalls = g_AllocationCount;
-    state.observedExactSystemInitialiseCount =
-        g_FableSystemInitialiseCount_013CA608;
+    if (process) SwapImport("GetCurrentProcess", process, 0);
+    if (critical) SwapImport("InitializeCriticalSection", critical, 0);
+    if (fiber) SwapImport("ConvertThreadToFiber", fiber, 0);
+    // operator new now belongs to the CRT, not the old counted arena.
+    state.exactSystemAllocationCalls = 0;
+    state.observedExactSystemInitialiseCount = CSystemManager::NoInstances;
+    // These boundary-only objects are not installed into the live engine.
+    // Release the CRT allocations before a later probe reuses the storage.
+    delete manager->PInputManager.Data;
+    delete manager->PDisplayManager.Data;
+    delete manager->PGraphicBankManager.Data;
+    delete manager->PMeshBankManager.Data;
+    delete manager->PSoundManager.Data;
+    delete manager->PFontManager.Data;
+    delete manager->ProfileManager.Data;
+    if (redirected) {
+        delete &CDriveManager::Get();
+        CDriveManager::Set(0);
+    }
+    manager->WinAppName.~CWideString();
+    manager->TempPath.~CWideString();
+    manager->ApplicationName.~CCharString();
     return result;
 }
+
+#include "test_support/display_ownership_boundary.h"

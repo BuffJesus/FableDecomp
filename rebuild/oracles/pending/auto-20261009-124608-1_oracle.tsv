@@ -1,0 +1,3 @@
+address	name	length	bytes
+0121a360	dynamic initializer for CPlayerGui::PGuiDef	12	68708b2201e8526f1eff59c3
+01228b70	dynamic atexit destructor for CPlayerGui::PGuiDef	40	a18c873b0185c0741e8b50048bc883c0044a85d2891075058b01ff5004c7058c873b0100000000c3

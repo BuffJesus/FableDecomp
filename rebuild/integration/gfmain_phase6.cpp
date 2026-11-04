@@ -67,12 +67,12 @@ namespace
             FableGFMainPhase6LookupTextBoundary(role, state);
         if (
             identifier != 0 &&
-            FableGFMainPhase6GetGroupEntryBoundary(
+            FableGFMainPhase6GetTextEntryBoundary(
                 role,
                 identifier,
                 state))
         {
-            FableGFMainPhase6GetBankHandleBoundary(role, state);
+            FableGFMainPhase6GetTextBoundary(role, state);
         }
     }
 }

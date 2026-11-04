@@ -1,5 +1,7 @@
 # OpenRetailBank link worklist
 
+> Historical link-worklist snapshot. The dated completion notes below qualify the original unresolved-work description; parsed token buckets are not a current authoritative unresolved-symbol list. See the [runtime README](README.md) for the current native checkpoint. Historical link results were not rerun in this audit.
+
 Authoritative unresolved-externals from the ring link smoke-test
 (`link_smoke.py`: anchor + 27 ring objects plus host closure, strict link).
 These three buckets are everything between "ring reconstructed" and "module runs".

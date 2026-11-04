@@ -29,9 +29,9 @@ parent_address	parent_name	address	name	retail_bytes	recovery_status	source	note
 00498490	CProgressDisplay::DrawRetailDisplay	009dd210	CRenderManager2D::Draw2DScaledGraphic	854	UNRECOVERED		Scaled graphic primitive construction.
 00498490	CProgressDisplay::DrawRetailDisplay	009de3f0	ConstructString	25	UNRECOVERED		Integer-to-wide-string helper.
 00498490	CProgressDisplay::DrawRetailDisplay	009e1bc0	GFGetTime	168	UNRECOVERED		Animation/progress timing.
-00498490	CProgressDisplay::DrawRetailDisplay	009e1d00	GFRoundVXToNearestPixel	76	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_GFRoundVXToNearestPixel_009e1d00.cpp	Virtual-X pixel snapping.
-00498490	CProgressDisplay::DrawRetailDisplay	009e1d50	GFRoundVYToNearestPixel	77	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_GFRoundVYToNearestPixel_009e1d50.cpp	Virtual-Y pixel snapping.
-00498490	CProgressDisplay::DrawRetailDisplay	009e1da0	GFAXToVX	40	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_GFAXToVX_009e1da0.cpp	Actual-X to virtual-X conversion.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1d00	GFRoundVXToNearestPixel	76	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_VirtualCoordinateHelpers_009e1d00.cpp	Virtual-X pixel snapping.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1d50	GFRoundVYToNearestPixel	77	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_VirtualCoordinateHelpers_009e1d00.cpp	Virtual-Y pixel snapping.
+00498490	CProgressDisplay::DrawRetailDisplay	009e1da0	GFAXToVX	40	RELOCATION_MATCH	rebuild/src/compiled/00/9e/Global_VirtualCoordinateHelpers_009e1d00.cpp	Actual-X to virtual-X conversion.
 00498490	CProgressDisplay::DrawRetailDisplay	009e1dd0	GFAYToVY	49	UNRECOVERED		One adjacent-instruction scheduling residue remains.
 00498490	CProgressDisplay::DrawRetailDisplay	009e2020	GFABoxToVBox	199	UNRECOVERED		Y halves retain the same scheduling residue.
 00498490	CProgressDisplay::DrawRetailDisplay	00a0fd90	WordWrap_SetCallback	21	RELOCATION_MATCH	rebuild/src/compiled/00/a0/Global_WordWrapSetCallback_00a0fd90.cpp	Word-wrap callback configuration.

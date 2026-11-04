@@ -1,5 +1,7 @@
 # Gamepad binding table — the redefine-screen value-column authority
 
+> Historical mapping reference (2026-08-09). The native controller integration was subsequently shelved; see [INPUT](../../docs/engine/INPUT.md) for status. References below to the visual boot implementation describe that historical implementation, not a current integration guarantee.
+
 All three columns proven (2026-08-09): `EXboxControllerButton` values from
 `debug_build/FableWin.pdb` (see `ghidra_out/controller_enums_proven.md`), names
 confirmed by the FableControllerSupport mod's `controls.def`. UE labels are the

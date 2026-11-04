@@ -1,0 +1,31 @@
+{
+  "address": "0098f370",
+  "kind": "IDENTITY_CORRECTION_PRE_APPLICATION_HISTORY",
+  "boundary": "Raw historical facade bytes only. First Wait probe finalpinFAIL/full-before provenancegap preserved; no historical PASS reconstruction. Fresh permanent gate independently passed before this metadata proposal. No new recovery or manager provider.",
+  "archived_files": {
+    "rebuild/src/compiled/00/98/global_GlobalMethodTailThunk0098f370_0098f370.cpp": {
+      "bytes": 189,
+      "sha256": "92ec78b0364ba62034900ccd2feeb49de5ac41bad8712a9db124470d9f9b22ff",
+      "raw_hex": "737472756374204175746f54696e795468756e6b5461726765740a7b0a20202020766f696420496e766f6b6528293b0a7d3b0a65787465726e204175746f54696e795468756e6b54617267657420675f4175746f54696e795468756e6b4f626a6563743b0a766f6964205f5f6661737463616c6c20476c6f62616c4d6574686f645461696c5468756e6b5f303039386633373028290a7b0a20202020675f4175746f54696e795468756e6b4f626a6563742e496e766f6b6528293b0a7d"
+    },
+    "rebuild/tests/00/98/global_GlobalMethodTailThunk0098f370_0098f370_test.cpp": {
+      "bytes": 518,
+      "sha256": "9f4028403f3b29a6607763b7131f006c7d90543dbce66a4bcecf2312b51cf619",
+      "raw_hex": "23696e636c756465203c63737464696f3e0a73746174696320696e7420675f4175746f54696e795468756e6b43616c6c73203d20303b0a737472756374204175746f54696e795468756e6b5461726765740a7b0a20202020766f696420496e766f6b6528293b0a7d3b0a4175746f54696e795468756e6b54617267657420675f4175746f54696e795468756e6b4f626a6563743b0a766f6964204175746f54696e795468756e6b5461726765743a3a496e766f6b6528290a7b0a202020202b2b675f4175746f54696e795468756e6b43616c6c733b0a7d0a766f6964205f5f6661737463616c6c20476c6f62616c4d6574686f645461696c5468756e6b5f303039386633373028290a7b0a20202020675f4175746f54696e795468756e6b4f626a6563742e496e766f6b6528293b0a7d0a696e74206d61696e28290a7b0a20202020476c6f62616c4d6574686f645461696c5468756e6b5f303039386633373028293b0a2020202069662028675f4175746f54696e795468756e6b43616c6c73203d3d203129207b207374643a3a7072696e746628224155544f5f54494e595f30303938663337305f5445535420504153535c6e22293b2072657475726e20303b207d0a202020207374643a3a7072696e746628224155544f5f54494e595f30303938663337305f54455354204641494c5c6e22293b0a2020202072657475726e20313b0a7d"
+    }
+  },
+  "catalog_block": "    [pscustomobject]@{\n        Address = '0098f370'\n        Module = '_global'\n        Source = '00/98/global_GlobalMethodTailThunk0098f370_0098f370.cpp'\n        TestSource = '00/98/global_GlobalMethodTailThunk0098f370_0098f370_test.cpp'\n        PassPattern = 'AUTO_TINY_0098f370_TEST PASS'\n    }",
+  "old_manifest_row": "0098f370\t_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>\t_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs\t__fastcall\tvoid\t3\tallocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *\t1\tyes\taccepted\t\t\t\t\t\tPASS\tPASS\tRELOCATION_MATCH\tD:\\Documents\\FableTLC\\rebuild\\src\\compiled\\00\\98\\global_GlobalMethodTailThunk0098f370_0098f370.cpp",
+  "old_artifact_row": "0098f370\t_global\t\trebuild/src/compiled/00/98/global_GlobalMethodTailThunk0098f370_0098f370.cpp\trebuild/tests/00/98/global_GlobalMethodTailThunk0098f370_0098f370_test.cpp\t\trebuild/build/candidates-Release/00/98/0098f370",
+  "target_sha256_before": {
+    "rebuild/manifest/functions.tsv": "0d97119cca29bdd8de2ce2c8329cbf5fb9e46545e0f9d13ee89d2908f06297cc",
+    "rebuild/build_candidates.ps1": "abdc13a476281cfcc9b59d137a29e96eecdbedf3904b51c06a0dd46761d93320",
+    "rebuild/corrections/function_overrides.tsv": "792ca7816d2c971bc1d20f09387e4e887a30e6620d2b45e054010559cf0ebae0",
+    "rebuild/ARTIFACT_INDEX.tsv": "567970aef7f7cf480b2623500a2b61b8aa36d84dc6f3a7d43bdd90deaa0d76ae",
+    "tools/decomp_pipeline/gate_all.py": "c8d52e7b060d61385209212e82ba27be73f5150d1f935fbfe94e3007a755c964",
+    "tools/decomp_pipeline/symbol_index.py": "3e343b240a79c6ee2b85f6dc3f5a53d689a516bd4626b0e49b9c30c0cf952213",
+    "tools/organize_decomp_artifacts.py": "3a6b61493a028b38bc1dcbc12fbe8e0db370c96373dbddfe3ad99e743e23a21b"
+  },
+  "generated_index_policy": "No generatedindex patch. Root normal symbol_index.py --only CThreadedFile_WaitForObjectToFinish_0098f370 after apply; retires oldsource merge/catalog routes; expected identity replacement rowcount unchanged, must verify actual.",
+  "capture_scope": "Historical raw facade source/test and old metadata captured before proposed correction. This snapshot does not assert application or compiler proof."
+}

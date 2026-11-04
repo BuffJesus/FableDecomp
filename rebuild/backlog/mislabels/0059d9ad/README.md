@@ -1,0 +1,3 @@
+# Retired allocator misidentification
+
+Retail 0059D9AD calls CTCInventoryTrade::RemoveAllItemsFromCategory at 0059CF49 for SELL (12) then BUY (11). Ego_r 0060C1A9 has the identical normalized 21-byte body, and its DIA/PDB identity is CTCInventoryTrade::ResetInventoryTradeItems. The former allocator source introduced an invented CMemoryAllocator::Clear dependency; its test redefined the function instead of calling the provider. The native replacement uses the shared class and donor enum, with four linked cases and provider omission proof. The genuine allocator ClearPerformanceStats is retail 009F26B0.

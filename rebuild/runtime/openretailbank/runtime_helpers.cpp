@@ -127,9 +127,7 @@ CDataInputStream::CDataInputStream()
 {
 }
 
-CDataInputStream::~CDataInputStream()
-{
-}
+// The reconstructed 0x00993B10 now emits the genuine input-stream destructors.
 
 class CBasicStringCharShim
 {
