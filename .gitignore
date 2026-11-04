@@ -88,3 +88,18 @@ imgui.ini
 /imgui.ini
 /out_dat.txt
 /[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*
+
+# root scratch from playtest / capture sessions (hygiene 2026-11-04)
+/.scratch_tmp/
+/scratchpad/
+/build/
+/tmp_anniversary_frames/
+/tmp_*
+/0x*
+/*.log
+/work_*.txt
+/*_main_native.txt
+/capture.py
+
+# script-recovery fixtures carry retail code bytes (never commit retail bytes)
+/tools/script_recovery/fixtures/**/native_function.bin
