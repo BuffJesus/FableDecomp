@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CScriptConversationManager;
+class CScriptConversationManager;
 
 #pragma pack(push, 1)
-struct CScriptConversation {
+class CScriptConversation {
+public:
     CScriptConversationManager* Manager;                     // +0x00
     long                        ConversationIndex;           // +0x04
     unsigned char               PeopleInConversation[0x10];  // +0x08 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>

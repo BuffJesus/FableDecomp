@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CInputTypeKeyboardKeyEvent {
+class CInputTypeKeyboardKeyEvent {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char KeyboardKey[0x4];                          // +0x04 EInputKey
     float         ControlDirection_X;                        // +0x08 C2DVector::X

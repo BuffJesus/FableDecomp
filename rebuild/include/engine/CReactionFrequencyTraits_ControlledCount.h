@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThingAICreature;
+class CThingAICreature;
 
 #pragma pack(push, 1)
-struct CReactionFrequencyTraits_ControlledCount {
+class CReactionFrequencyTraits_ControlledCount {
+public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     bool              AllowIndividualRepeats;                // +0x04
     unsigned char     _pad_0x05[0x3];                        // +0x05

@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
-struct CIEngine;
+class CCharStringData;
+class CIEngine;
 struct CParticleEmitter;
 
 #pragma pack(push, 1)

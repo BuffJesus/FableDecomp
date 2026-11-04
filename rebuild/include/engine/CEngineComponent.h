@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CEngineComponent {
+class CEngineComponent {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     void*         GlobalPointerAddress;                      // +0x04 void * *
     bool          RenderEnabled;                             // +0x08

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CVertexShaderConstantLayout {
+class CVertexShaderConstantLayout {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char Reserved[0xc];                             // +0x04 CShaderConstantRange
     unsigned char User[0xc];                                 // +0x10 CShaderConstantRange

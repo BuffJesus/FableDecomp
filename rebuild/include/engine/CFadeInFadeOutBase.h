@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CFadeInFadeOutBase {
+class CFadeInFadeOutBase {
+public:
     bool          Active;                                    // +0x00
     unsigned char _pad_0x01[0x3];                            // +0x01
     float         FadeInTime;                                // +0x04

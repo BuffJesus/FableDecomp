@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCreatureActionHeroJump {
+class CCreatureActionHeroJump {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     int           m04;                                       // +0x04 retail-only int (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)
     int           m08;                                       // +0x08 retail-only int (CCreatureActionHeroJump_FrameUpdateCCreatureActionHeroJumpUAEXXZ_0085bad0.cpp)

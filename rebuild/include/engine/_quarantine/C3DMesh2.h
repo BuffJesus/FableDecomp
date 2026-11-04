@@ -8,14 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DBone2;
-struct C3DKeyframe;
-struct C3DMeshMaterial;
-struct C3DPrimitive2;
-struct CMatrix4x4;
+class C3DBone2;
+class C3DKeyframe;
+class C3DMeshMaterial;
+class C3DPrimitive2;
+class CMatrix4x4;
 
 #pragma pack(push, 1)
-struct C3DMesh2 {
+class C3DMesh2 {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08

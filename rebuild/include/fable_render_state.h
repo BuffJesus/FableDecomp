@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rebuild_abi.h"
+#include "fable_render_state_manager.h"
 
 struct FableRenderStateDevice;
 
@@ -23,10 +24,18 @@ struct FableRenderStateDeviceVTable
 {
     void* methods000[57];
     FableD3DSetRenderState SetRenderState;
-    void* methods0E8[9];
+    void* methods0E8[7];
+    fable_i32 (__stdcall *SetTexture)(FableRenderStateDevice*,unsigned long,IDirect3DBaseTexture9*); // slot65
+    void* method108;
     FableD3DSetTextureStageState SetTextureStageState;
     void* method110;
     FableD3DSetSamplerState SetSamplerState;
+    void* methods118[30];
+    // IDirect3DDevice9::SetStreamSource, SDK slot100 / +0x190.
+    fable_i32 (__stdcall *SetStreamSource)(FableRenderStateDevice*,
+        unsigned int, IDirect3DVertexBuffer9*, unsigned int, unsigned int);
+    void* methods194[3];
+    fable_i32 (__stdcall *SetIndices)(FableRenderStateDevice*,IDirect3DIndexBuffer9*); // slot104
 };
 
 struct FableRenderStateDevice
@@ -56,7 +65,8 @@ struct CRenderStateManagerRealiseView
     fable_i32 StateStackSize2808;
     fable_i32 StateUpdateListSize280C;
 
-    void RealiseRenderState();
+    // Bootstrap storage adapter; native member is owned by the shared manager.
+    void RealiseRenderState(){reinterpret_cast<CRenderStateManager*>(this)->RealiseRenderState();}
 };
 
 FABLE_STATIC_ASSERT(sizeof(CRenderStateInfo) == 0x14);

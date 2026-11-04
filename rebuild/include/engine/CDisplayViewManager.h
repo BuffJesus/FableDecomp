@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CViewBase;
 
 #pragma pack(push, 1)
-struct CDisplayViewManager {
+class CDisplayViewManager {
+public:
     CViewBase*      PCurrentView_Data;                       // +0x00 CCountedPointer<NDisplayView::CViewBase>::Data
     CCPPointerInfo* PCurrentView_Info;                       // +0x04 CCountedPointer<NDisplayView::CViewBase>::Info
 };

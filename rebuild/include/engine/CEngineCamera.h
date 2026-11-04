@@ -7,18 +7,33 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#include "fable_engine_camera_desc.h"
+#include "fable_bounding_volumes.h"
 
-struct C2DBoxF;
-struct CCamera;
+class C2DBoxF;
+class CCamera;
+struct CEngineCameraDesc;
 
 #pragma pack(push, 1)
-struct CEngineCamera {
+class CEngineCamera {
+public:
+    // Donor signatures and retail leaf bodies 00B2FBF0 / 00B2FC00.
+    void SetGameCamera(const CCamera* camera);
+    void SetGameWindow(const C2DBoxF* window);
+    void Process(bool force);
+    void SetCameraState(const CEngineCameraDesc&,bool,bool);
+    void RefreshD3DTransforms();
+    bool ClipBox(const CMatrix3x4&) const;
+private:
+    void ProcessDebugScript();
+    void SetupGamut();
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08
     CCamera*      GameCamera;                                // +0x0c
     C2DBoxF*      GameWindow;                                // +0x10
-    unsigned char CameraDesc[0x6c];                          // +0x14 CEngineCameraDesc
+    CEngineCameraDesc CameraDesc;                            // +0x14
     unsigned char ViewTransform[0x30];                       // +0x80 CMatrix3x4
     float         WindowWidth;                               // +0xb0
     float         WindowHeight;                              // +0xb4
@@ -40,13 +55,15 @@ struct CEngineCamera {
     float         LookVector_X;                              // +0x1b4 C3DVector::X
     float         LookVector_Y;                              // +0x1b8 C3DVector::Y
     float         LookVector_Z;                              // +0x1bc C3DVector::Z
-    unsigned char FrustrumPlanes[0x40];                      // +0x1c0 CPlane[4]
+    CPlane FrustrumPlanes[4];                                // +0x1c0
     long          ConsoleOverrideViewPortWidth;              // +0x200
     long          ConsoleOverrideViewPortHeight;             // +0x204
-    unsigned char DebugScript[0x10];                         // +0x208 CArray<CEngineCamera::CDebugScriptElement>
-    long          CurrentDebugScriptElement;                 // +0x218
-    bool          DebugScriptRunning;                        // +0x21c
-    unsigned char _pad_0x21d[0x3];                           // +0x21d
+    // Retail vector is12bytes (donor16). Process/ProcessDebugScript verify
+    // +214/+218; the eight-byte-aligned timestamp remains at+220.
+    unsigned char DebugScript[0xc];                          // +0x208
+    long          CurrentDebugScriptElement;                 // +0x214
+    bool          DebugScriptRunning;                        // +0x218
+    unsigned char _pad_0x219[0x7];                           // +0x219
     double        DebugScriptElementStartTime;               // +0x220
 };
 #pragma pack(pop)
@@ -81,8 +98,8 @@ FABLE_STATIC_ASSERT(offsetof(CEngineCamera, FrustrumPlanes) == 0x1c0);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ConsoleOverrideViewPortWidth) == 0x200);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, ConsoleOverrideViewPortHeight) == 0x204);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScript) == 0x208);
-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, CurrentDebugScriptElement) == 0x218);
-FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptRunning) == 0x21c);
+FABLE_STATIC_ASSERT(offsetof(CEngineCamera, CurrentDebugScriptElement) == 0x214);
+FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptRunning) == 0x218);
 FABLE_STATIC_ASSERT(offsetof(CEngineCamera, DebugScriptElementStartTime) == 0x220);
 
 #endif // FABLE_ENGINE_CENGINECAMERA_H

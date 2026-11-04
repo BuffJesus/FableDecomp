@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CPerItemData;
 
 #pragma pack(push, 1)

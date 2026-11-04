@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundSubNodeSplitBranch {
+class CLandscapeBackgroundSubNodeSplitBranch {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char LeftBranch[0xf0];                          // +0x04 CLandscapeBackgroundTreeNode
     unsigned char RightBranch[0xf0];                         // +0xf4 CLandscapeBackgroundTreeNode

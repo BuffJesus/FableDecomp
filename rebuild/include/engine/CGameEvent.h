@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CGameEvent {
+class CGameEvent {
+public:
     long          Type;                                      // +0x00
     signed char   Player;                                    // +0x04
     unsigned char Data[32];                                  // +0x05

@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CScriptedMapBrush {
+class CScriptedMapBrush {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    Cells[0x10];                            // +0x08 vector<CScriptedMapBrush::CScriptedMapCell,std::allocator<CScriptedMapBrush::CScriptedMapCell>_>

@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThingManager;
-struct CWorld;
-struct CWorldMap;
+class CThingManager;
+class CWorld;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CLevelLoader {
+class CLevelLoader {
+public:
     void*          __vftable;                                // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char  _pad_0x04[0x4];                           // +0x04
     unsigned char  _pad_0x08[0x4];                           // +0x08

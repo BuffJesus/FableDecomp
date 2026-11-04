@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEngineInternalPrimitiveBase;
+class CEngineInternalPrimitiveBase;
 
 #pragma pack(push, 1)
-struct CEngineSceneGridCell {
+class CEngineSceneGridCell {
+public:
     CEngineSceneGridCell*         Parent;                    // +0x00
     CEngineInternalPrimitiveBase* FirstPrimitive;            // +0x04
     unsigned char                 BoundingBox[0x18];         // +0x08 C3DBoundingBox

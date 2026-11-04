@@ -8,14 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CBankFileAsyncData;
-struct CCPPointerInfo;
-struct CEngineLandscapeMap;
-struct CLandscapeLayerMesh;
-struct CWaterPatchMesh;
+class CBankFileAsyncData;
+class CCPPointerInfo;
+class CEngineLandscapeMap;
+class CLandscapeLayerMesh;
+class CWaterPatchMesh;
 
 #pragma pack(push, 1)
-struct CEngineLandscapePatch {
+class CEngineLandscapePatch {
+public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     CEngineLandscapeMap* Map;                                // +0x04
     CLandscapeLayerMesh* LayerMeshList;                      // +0x08

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CInputEvent {
+class CInputEvent {
+public:
     unsigned char Data[0x20];                                // +0x00 UInputEventData
     unsigned char DeviceType[0x4];                           // +0x20 EInputDeviceType
     long          DeviceNumber;                              // +0x24

@@ -9,7 +9,7 @@
 #include "rebuild_abi.h"
 
 struct CDataBank;
-struct CTexture;
+class CTexture;
 struct CTextureRenderer;
 struct IBaseFilter;
 struct IBasicAudio;
@@ -22,7 +22,8 @@ struct IMediaSeeking;
 struct _RTL_CRITICAL_SECTION_DEBUG;
 
 #pragma pack(push, 1)
-struct CVideoSys {
+class CVideoSys {
+public:
     IGraphBuilder*               GBuilder;                   // +0x00
     IMediaControl*               MControl;                   // +0x04
     IMediaPosition*              MPosition;                  // +0x08

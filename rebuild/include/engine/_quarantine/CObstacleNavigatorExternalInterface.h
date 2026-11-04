@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
-struct CObstacleNavigatorExternalInterface {
+class CObstacleNavigatorExternalInterface {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CThing*       Obstacle;                                  // +0x04
     unsigned char DummyAgentList[0x10];                      // +0x08 vector<CSteeringAgent_const_*,std::allocator<CSteeringAgent_const_*>_>

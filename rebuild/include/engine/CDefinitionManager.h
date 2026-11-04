@@ -8,14 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CSymbolMap;
-struct CWideStringData;
+class CCPPointerInfo;
+class CCharStringData;
+class CSymbolMap;
+class CWideStringData;
 struct _func___cdecl_void_CCharString_ptr;
 
 #pragma pack(push, 1)
-struct CDefinitionManager {
+class CDefinitionManager {
+public:
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                       _pad_0x04[0x4];      // +0x04
     unsigned char                       _pad_0x08[0x4];      // +0x08

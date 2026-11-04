@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCombatSequenceWhisperAttackBigCombo {
+class CCombatSequenceWhisperAttackBigCombo {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x1c];                           // +0x04
     long          f20;                                       // +0x20 retail-only long (previous header)

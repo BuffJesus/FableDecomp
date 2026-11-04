@@ -4,8 +4,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CObjectFamilyEntry
+class CObjectFamilyEntry
 {
+public:
     long Object;
     long Probability;
 };

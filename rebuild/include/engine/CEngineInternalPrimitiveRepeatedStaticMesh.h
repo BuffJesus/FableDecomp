@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DMeshInfo;
-struct C4DVector;
+class C3DMeshInfo;
+class C4DVector;
 struct CSubsectionElement;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveRepeatedStaticMesh {
+class CEngineInternalPrimitiveRepeatedStaticMesh {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08

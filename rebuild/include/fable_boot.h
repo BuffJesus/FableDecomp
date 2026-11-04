@@ -19,40 +19,38 @@ extern "C" int FABLE_STDCALL WinMain(
     char* commandLine,
     int showCommand);
 
-#pragma pack(push, 1)
-struct GFInitialiseState
-{
-    fable_u8 unknown00[0x08];
-    fable_u32 startupValue08;
-    fable_u8 unknown0C[0x200];
-    fable_u8 startupFlag20C;
-};
-#pragma pack(pop)
-
-FABLE_STATIC_ASSERT(sizeof(GFInitialiseState) == 0x20D);
+// The retail CGame singleton (0x013B83D0); fable_game.h has the class.
+class CGame;
 
 void* FABLE_CDECL FableOperatorNew(fable_u32 size);
 void FABLE_CDECL FableOperatorDelete(void* allocation);
 
-struct CProgressDisplay
+// Retail std::vector is three pointers (0xC bytes); its default ctor nulls them.
+template <class T>
+struct FableVector
 {
+    T* first;
+    T* last;
+    T* end;
+
+    FableVector() : first(0), last(0), end(0)
+    {
+    }
+};
+
+class CTexture;
+
+// Retail RTTI .?AVCProgressDisplay@@: a class.
+class CProgressDisplay
+{
+public:
     void* vftable00;
-    fable_u32 value04;
-    fable_u32 value08;
-    fable_u32 value0C;
-    fable_u32 value10;
-    fable_u32 value14;
-    fable_u32 value18;
-    fable_u32 value1C;
-    fable_u32 value20;
-    fable_u32 value24;
-    fable_u32 value28;
-    fable_u32 value2C;
-    fable_u32 value30;
-    fable_u32 value34;
-    fable_u32 value38;
-    fable_u32 value3C;
-    fable_u32 value40;
+    FableVector<CTexture> ProgressTextures;
+    FableVector<CTexture> GuildSealTextures;
+    FableVector<CTexture> LoadingScreenTextures;
+    fable_i32 LoadingScreenIndex;
+    FableVector<CCharString> TextTags;
+    FableVector<CCharString> TextTagsPC;
     fable_u32 value44;
     CWideString wideText48;
     CCharString primaryText4C;
@@ -81,7 +79,7 @@ struct CProgressDisplay
     void CalculateNextTextTag();
     CDataBank* GetPTextBank() const;
 
-    __forceinline static void* operator new(unsigned int size)
+    __forceinline static void* operator new(size_t size)
     {
         return FableOperatorNew(size);
     }
@@ -115,8 +113,6 @@ extern FableProgressTextBankSlot*
     g_FableProgressTextBankSlot_013B86A0;
 extern FableGameTextBankSlot*
     g_FableGameTextBankSlot_013B871C;
-extern CProgressDisplay* g_FableProgressDisplayObject_013CAA38;
-extern FableReferenceCount* g_FableProgressDisplayReference_013CAA3C;
 void FABLE_FASTCALL FableConstructWideString(CWideString* value);
 void FABLE_FASTCALL FableConstructCharString(CCharString* value);
 
@@ -129,12 +125,27 @@ struct FableReferenceCount
     void* object;
 };
 
+void FABLE_FASTCALL FableDestroyProgressDisplay_00403600(void* object);
+
 struct CCountedProgressDisplay
 {
     CProgressDisplay* object;
     FableReferenceCount* reference;
 
+    __forceinline CCountedProgressDisplay() : object(0), reference(0)
+    {
+    }
+
     CCountedProgressDisplay(CProgressDisplay* value);
+
+    __forceinline CCountedProgressDisplay(
+        const CCountedProgressDisplay& other)
+        : object(other.object),
+          reference(other.reference)
+    {
+        if (reference != 0)
+            ++reference->owners;
+    }
 
     __forceinline ~CCountedProgressDisplay()
     {
@@ -150,14 +161,15 @@ struct CCountedProgressDisplay
     }
 };
 
-fable_u8 FABLE_FASTCALL GFInitialiseState_Begin(GFInitialiseState* state);
-void FABLE_FASTCALL SetProgressDisplay(CCountedProgressDisplay* display);
-CCountedProgressDisplay* FABLE_FASTCALL GetProgressDisplay(
-    CCountedProgressDisplay* result);
-void FABLE_FASTCALL FableReleaseProgressDisplayBoundary();
+// Legacy boot ABI view of NProgressDisplay::PProgressDisplay at013CAA38.
+// Both views are two pointers; this linker alias keeps one actual CRT owner.
+// The installed concrete display has CAProgressDisplay at offset zero.
+extern CCountedProgressDisplay g_FableProgressDisplay_013CAA38;
+#pragma comment(linker,"/alternatename:?g_FableProgressDisplay_013CAA38@@3UCCountedProgressDisplay@@A=?PProgressDisplay@NProgressDisplay@@3V?$CCountedPointer@VCAProgressDisplay@@@@A")
 
-fable_u8 FABLE_FASTCALL GFInitialise_SetupProgressDisplay(
-    GFInitialiseState* state);
+void FABLE_FASTCALL SetProgressDisplay(CCountedProgressDisplay* display);
+CCountedProgressDisplay FABLE_FASTCALL GetProgressDisplay();
+void FABLE_FASTCALL FableReleaseProgressDisplayBoundary();
 
 bool FABLE_FASTCALL GFInitialise();
 
@@ -167,7 +179,7 @@ void FABLE_FASTCALL FablePrepareGFInitialiseBoundary();
 
 struct GFInitialiseProgressPhaseState
 {
-    GFInitialiseState progressDisplay;
+    CGame* game;
     fable_i32 displayWidth;
     fable_i32 halfDisplayWidth;
 };

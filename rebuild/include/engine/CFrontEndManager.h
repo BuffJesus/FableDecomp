@@ -9,9 +9,9 @@
 #include "rebuild_abi.h"
 
 struct CComponent;
-struct CNewFrontendGameComponent;
+class CNewFrontendGameComponent;
 struct CVirtualKeyboard;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
 struct CFrontEndManager {

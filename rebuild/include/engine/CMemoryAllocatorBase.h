@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CMemoryAllocatorBase {
+class CMemoryAllocatorBase {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char PerformanceStats[0xc10];                   // +0x04 CPerformanceStats
     unsigned long Alignment;                                 // +0xc14

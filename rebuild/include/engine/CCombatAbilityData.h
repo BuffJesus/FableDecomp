@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCombatAbilityData {
+class CCombatAbilityData {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          PercentageChance;                          // +0x04
     float         SecondsDuration;                           // +0x08

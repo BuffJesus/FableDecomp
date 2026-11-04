@@ -9,15 +9,16 @@
 #include "rebuild_abi.h"
 
 struct CExclusiveAssert;
-struct CSystemManager;
-struct CWideStringData;
+class CSystemManager;
+class CWideStringData;
 struct HINSTANCE__;
 struct HWND__;
 struct _RTL_CRITICAL_SECTION_DEBUG;
 struct _iobuf;
 
 #pragma pack(push, 1)
-struct CDebugManager {
+class CDebugManager {
+public:
     CSystemManager*              SystemManager;              // +0x00
     bool                         Valid;                      // +0x04
     bool                         Exclusive;                  // +0x05

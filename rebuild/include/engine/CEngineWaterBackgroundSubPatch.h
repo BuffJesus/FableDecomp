@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEngineLandscapeMap;
-struct CIndexBuffer;
-struct CVertexBufferWin32;
+class CEngineLandscapeMap;
+class CIndexBuffer;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CEngineWaterBackgroundSubPatch {
+class CEngineWaterBackgroundSubPatch {
+public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     CEngineLandscapeMap* Map;                                // +0x04
     CIndexBuffer*        IndexBuffer;                        // +0x08

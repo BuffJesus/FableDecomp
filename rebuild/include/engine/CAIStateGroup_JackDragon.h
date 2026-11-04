@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CAIStateGroup_JackDragon {
+class CAIStateGroup_JackDragon {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x10];                          // +0x04 flattened base-class subobject(s)
     unsigned char PEnemy[0x8];                               // +0x14 CIntelligentPointer<CThingCreatureBase>

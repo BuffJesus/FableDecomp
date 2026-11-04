@@ -7,14 +7,20 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#include "fable_engine_component.h"
+class CEngineVideoOptionsDef;
 
-struct CTexture;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectGlowRenderer {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
+class CEngineScreenEffectGlowRenderer : public CEngineComponent {
+public:
+    // Donor slot13; retail SmartRestoreComponentVideoMemory calls +34.
+    virtual bool SetEffectQuality(const CEngineVideoOptionsDef&);
+    virtual void OnReleaseDefaultPoolResources();
+private:
+    bool InitialiseTextures();
+public:
     bool          UseEnvironmentTheme;                       // +0x0c
     unsigned char _pad_0x0d[0x3];                            // +0x0d
     CTexture*     GlowTexture256;                            // +0x10
@@ -55,7 +61,6 @@ struct CEngineScreenEffectGlowRenderer {
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEngineScreenEffectGlowRenderer) == 0x280);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, UseEnvironmentTheme) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture256) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectGlowRenderer, GlowTexture64) == 0x14);

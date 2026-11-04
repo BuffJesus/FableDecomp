@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThingObject;
+class CThingObject;
 
 #pragma pack(push, 1)
-struct CCard {
+class CCard {
+public:
     CThingObject* Thing;                                     // +0x00
     long          Name;                                      // +0x04
     long          Value;                                     // +0x08

@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCombatManager;
-struct CDefPointeeBase;
-struct CThingCreatureBase;
+class CCombatManager;
+class CDefPointeeBase;
+class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CTCCombat {
+class CTCCombat {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     long                obj;                                 // +0x04 retail-only long (previous header)
     unsigned char       _pad_0x08[0x4];                      // +0x08

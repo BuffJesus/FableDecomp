@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCreatureAction_GenericAimProjectileWeapon {
+class CCreatureAction_GenericAimProjectileWeapon {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0xc];                            // +0x04
     long          f10;                                       // +0x10 retail-only long (previous header)

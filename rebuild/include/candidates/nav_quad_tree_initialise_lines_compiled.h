@@ -6,8 +6,9 @@
 
 #include "rebuild_abi.h"
 
-struct C2DVector
+class C2DVector
 {
+public:
     union { float X; float x; };
     union { float Y; float y; };
 };

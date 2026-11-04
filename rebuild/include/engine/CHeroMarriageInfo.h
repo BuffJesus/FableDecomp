@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CHeroMarriageInfo {
+class CHeroMarriageInfo {
+public:
     unsigned __int64 WifeUID;                                // +0x00
     unsigned __int64 MaritalHomeUID;                         // +0x08
     unsigned char    State[0x4];                             // +0x10 EMarriageState

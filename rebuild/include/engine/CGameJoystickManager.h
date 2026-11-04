@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CGameJoystickManager {
+class CGameJoystickManager {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          MainPlayerJoystickDeviceNumber;            // +0x04
     bool          MainPlayerJoystickDeviceNumberSet;         // +0x08

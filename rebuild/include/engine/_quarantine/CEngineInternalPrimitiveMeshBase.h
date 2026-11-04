@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DMeshInfo;
-struct CIVCountedPointeeBase;
+class C3DMeshInfo;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveMeshBase {
+class CEngineInternalPrimitiveMeshBase {
+public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     unsigned char          _pad_0x08[0x4];                   // +0x08

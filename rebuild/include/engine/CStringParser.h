@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
+class CCharStringData;
 struct _func___cdecl_void_CCharString_ptr;
 
 #pragma pack(push, 1)
-struct CStringParser {
+class CStringParser {
+public:
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     void*                               String;              // +0x04 char *
     unsigned long                       BaseLineOffset;      // +0x08

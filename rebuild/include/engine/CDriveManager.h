@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CSystemManager;
+class CSystemManager;
 
 #pragma pack(push, 1)
-struct CDriveManager {
+class CDriveManager {
+public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CSystemManager* SystemManager;                           // +0x04
 };

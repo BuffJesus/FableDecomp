@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DMesh2;
-struct CEngineLocalLightArray;
+class C3DMesh2;
+class CEngineLocalLightArray;
 
 #pragma pack(push, 1)
-struct CEngineInternalPrimitiveParticleMesh {
+class CEngineInternalPrimitiveParticleMesh {
+public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     unsigned char           _pad_0x08[0x4];                  // +0x08

@@ -9,7 +9,7 @@
 #include "rebuild_abi.h"
 
 struct CAction;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CComponent;
 
 #pragma pack(push, 1)

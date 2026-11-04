@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCPerceiveThing {
+class CTCPerceiveThing {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     int              field4;                                 // +0x04 retail-only int (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08

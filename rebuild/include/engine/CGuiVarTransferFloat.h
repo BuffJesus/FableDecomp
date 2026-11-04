@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CGuiControlNumber;
+class CGuiControlNumber;
 
 #pragma pack(push, 1)
-struct CGuiVarTransferFloat {
+class CGuiVarTransferFloat {
+public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     long               f4;                                   // +0x04 retail-only long (previous header)
     long               f8;                                   // +0x08 retail-only long (previous header)

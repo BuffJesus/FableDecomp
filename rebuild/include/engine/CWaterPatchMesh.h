@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEngineLandscapeMap;
-struct CVertexBufferWin32;
+class CEngineLandscapeMap;
+class CVertexBufferWin32;
 struct CVertexHeightData;
 
 #pragma pack(push, 1)
-struct CWaterPatchMesh {
+class CWaterPatchMesh {
+public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     CEngineLandscapeMap* Map;                                // +0x04
     long                 Offset_X;                           // +0x08 C2DCoordI::X

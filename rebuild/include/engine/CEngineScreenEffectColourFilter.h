@@ -7,16 +7,27 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#include "engine/CEngineColourFilterSettings.h"
+class CEngineVideoOptionsDef;
+class C4DVector;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectColourFilter {
+class CEngineScreenEffectColourFilter {
+public:
+    void RenderColorFilteredQuad(float,float,const C4DVector&,float,float,CTexture*);
+    void SetEffectQuality(const CEngineVideoOptionsDef&);
+    void SetFilterSettings(const CEngineColourFilterSettings& settings)
+    {
+        if (!ForceColourFilter) Settings=settings;
+    }
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char enabled;                                   // +0x08 retail-only unsigned char (previous header)
     unsigned char _pad_0x09[0x3];                            // +0x09
     bool          ForceColourFilter;                         // +0x0c
     unsigned char _pad_0x0d[0x3];                            // +0x0d
-    unsigned char Settings[0x20];                            // +0x10 CEngineColourFilterSettings
+    CEngineColourFilterSettings Settings;                    // +0x10
     float         GrayRGBWeights_R;                          // +0x30 CRGBFloatColour::R
     float         GrayRGBWeights_G;                          // +0x34 CRGBFloatColour::G
     float         GrayRGBWeights_B;                          // +0x38 CRGBFloatColour::B

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CFontBankStateBlock {
+class CFontBankStateBlock {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char State[0xc];                                // +0x04 CStateBlock
 };

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CReactionFrequencyTraits_PeriodicFrequency {
+class CReactionFrequencyTraits_PeriodicFrequency {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     float         LowFreqPerMin;                             // +0x04
     float         HighLowFreqInterval;                       // +0x08

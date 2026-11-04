@@ -3,12 +3,14 @@
 
 #include "rebuild_abi.h"
 
-struct C2DCoordI {
+class C2DCoordI {
+public:
     long X;
     long Y;
 };
 
-struct C2DBoxI {
+class C2DBoxI {
+public:
     long TLX;
     long TLY;
     long BRX;

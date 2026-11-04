@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTCAnimationBase;
+class CTCAnimationBase;
 
 #pragma pack(push, 1)
 struct CTCGraphicAppearance {

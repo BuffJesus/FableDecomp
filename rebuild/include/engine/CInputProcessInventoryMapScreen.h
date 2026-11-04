@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTCInventoryMap;
+class CTCInventoryMap;
 
 #pragma pack(push, 1)
-struct CInputProcessInventoryMapScreen {
+class CInputProcessInventoryMapScreen {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08

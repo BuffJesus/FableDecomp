@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CCombatSequenceBase {
+class CCombatSequenceBase {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     bool                Running;                             // +0x04
     unsigned char       _pad_0x05[0x3];                      // +0x05

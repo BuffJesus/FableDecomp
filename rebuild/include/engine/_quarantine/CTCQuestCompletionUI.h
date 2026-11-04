@@ -8,14 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
+class CCharStringData;
 struct CComponent;
-struct CDefPointeeBase;
+class CDefPointeeBase;
 struct CText;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CTCQuestCompletionUI {
+class CTCQuestCompletionUI {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _pad_0x04[0x4];                         // +0x04
     unsigned char    _pad_0x08[0x4];                         // +0x08

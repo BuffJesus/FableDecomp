@@ -12,7 +12,8 @@ struct CStateInfo;
 struct IDirect3DDevice9;
 
 #pragma pack(push, 1)
-struct CRenderStateManager {
+class CRenderStateManager {
+public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     IDirect3DDevice9* PD3DDevice;                            // +0x04
     unsigned char     StateStack[0x2000];                    // +0x08 CStateStackElement[1024]

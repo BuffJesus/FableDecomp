@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEnvironmentSpellEffectInterface;
-struct CEnvironmentSpellEffectInterpolator;
-struct CGameDefinitionManager;
+class CEnvironmentSpellEffectInterface;
+class CEnvironmentSpellEffectInterpolator;
+class CGameDefinitionManager;
 
 #pragma pack(push, 1)
-struct CEnvironment {
+class CEnvironment {
+public:
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
     CGameDefinitionManager*              DefinitionManager;  // +0x04
     float                                SunlightAttenuatorAngleFadeStart; // +0x08

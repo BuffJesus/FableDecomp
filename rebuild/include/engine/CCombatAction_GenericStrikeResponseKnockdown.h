@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
-struct CCombatAction_GenericStrikeResponseKnockdown {
+class CCombatAction_GenericStrikeResponseKnockdown {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _base_0x04[0x128];                      // +0x04 flattened base-class subobject(s)
     CCharStringData* AnimName_PStringData;                   // +0x12c CCharString::PStringData

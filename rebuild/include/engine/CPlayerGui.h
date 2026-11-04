@@ -9,7 +9,7 @@
 #include "rebuild_abi.h"
 
 struct CAutoPickupBar;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CCrimeStatBar;
 struct CDraw2DText;
 struct CDrawAbilityButtons;
@@ -45,19 +45,20 @@ struct CDrawStamina;
 struct CDrawStatUpdates;
 struct CDrawTargetInfo;
 struct CDrawWorldTime;
-struct CFontBank;
-struct CGamePlayerInterface;
-struct CGraphicDataBank;
-struct CMainGameComponent;
+class CFontBank;
+class CGamePlayerInterface;
+class CGraphicDataBank;
+class CMainGameComponent;
 struct CManager;
 struct CMultiStatBar;
-struct CPlayerManager;
+class CPlayerManager;
 struct CStatBar;
-struct CWorld;
+class CWorld;
 struct IDirect3DTexture9;
 
 #pragma pack(push, 1)
-struct CPlayerGui {
+class CPlayerGui {
+public:
     void*                             __vftable;             // +0x00 vptr, or first dword of a flattened base subobject
     CWorld*                           World;                 // +0x04
     CPlayerManager*                   PlayerManager;         // +0x08

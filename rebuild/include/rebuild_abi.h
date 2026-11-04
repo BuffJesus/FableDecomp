@@ -14,6 +14,17 @@
 #  define FABLE_THISCALL
 #endif
 
+// Per-unit inline policy. Some retail objects expand small inline helpers on
+// paths where VC7.1 keeps them out of line (conditional calls under /O2, and
+// most inline calls under /Os): the map<CCharString, long> insert unit
+// (insert_unique 0x00431606, _M_insert 0x004316CF, _M_create_node 0x00431773)
+// and vector<CWideString>::operator= 0x00433DF0. Only __forceinline
+// reproduces that, so those landings define FABLE_UNIT_INLINE as
+// __forceinline before their first include; everywhere else it is inline.
+#ifndef FABLE_UNIT_INLINE
+#  define FABLE_UNIT_INLINE inline
+#endif
+
 typedef signed char fable_i8;
 typedef unsigned char fable_u8;
 typedef signed short fable_i16;

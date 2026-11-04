@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CReactionFrequencyTraits_LinearTime {
+class CReactionFrequencyTraits_LinearTime {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     float         MinWait;                                   // +0x04
     float         WaitRange;                                 // +0x08

@@ -7,14 +7,20 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#include "fable_engine_component.h"
+class CEngineVideoOptionsDef;
 
-struct CTexture;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectRadialBlurRenderer {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
+class CEngineScreenEffectRadialBlurRenderer : public CEngineComponent {
+public:
+    // Donor slot13; retail SmartRestoreComponentVideoMemory calls +34.
+    virtual bool SetEffectQuality(const CEngineVideoOptionsDef&);
+    virtual void OnReleaseDefaultPoolResources();
+private:
+    bool InitialiseTextures();
+public:
     CTexture*     BlurTexture256_1;                          // +0x0c
     CTexture*     BlurTexture256_2;                          // +0x10
     long          BlurTextureHandle256_1;                    // +0x14
@@ -61,7 +67,6 @@ struct CEngineScreenEffectRadialBlurRenderer {
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEngineScreenEffectRadialBlurRenderer) == 0x22c);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectRadialBlurRenderer, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectRadialBlurRenderer, BlurTexture256_1) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectRadialBlurRenderer, BlurTexture256_2) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectRadialBlurRenderer, BlurTextureHandle256_1) == 0x14);

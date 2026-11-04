@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-class CEngineStaticMapFileBlockManager {};
+#include "engine/CEngineStaticMapFileBlockManager.h"
 
 class CDataInputStream
 {
@@ -20,30 +20,7 @@ public:
     static void ReadWithSrcChunkOverflow(CDataInputStream* stream, unsigned char* output, unsigned long bytes);
 };
 
-class CQuadTreeElement
-{
-public:
-    fable_u8 storage[0x58];
-    void LoadHeader(CDataInputStream& stream);
-};
-
-class CObjectTypeCollectionPalette
-{
-public:
-    void Load(CDataInputStream& stream);
-};
-
-class CLocalDetailCacheMap
-{
-public:
-    fable_u8 pad_00[4];
-    CEngineStaticMapFileBlockManager* StaticMapFileBlockManager;
-    fable_u8 pad_08[4];
-    CQuadTreeElement QuadTreeElement;
-    CObjectTypeCollectionPalette ObjectTypeCollectionPalette;
-
-    void OpenStaticMap(CEngineStaticMapFileBlockManager* manager, CDataInputStream& stream);
-};
+#include "engine/CLocalDetailCacheMap.h"
 
 FABLE_STATIC_ASSERT(offsetof(CDataInputStream, ReadPosition) == 0x04);
 FABLE_STATIC_ASSERT(offsetof(CDataInputStream, SrcCursor32) == 0x0C);

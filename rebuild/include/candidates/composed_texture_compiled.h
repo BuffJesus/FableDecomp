@@ -14,8 +14,9 @@ struct CSurfaceSpan
     long* End;
 };
 
-struct CCompositeSurfaceInfo
+class CCompositeSurfaceInfo
 {
+public:
     fable_u8 pad_00[4];
     CSurfaceSpan* SurfaceSpan;
 };

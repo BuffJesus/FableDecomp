@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CChunkedFileSuperChunk;
+class CChunkedFileSuperChunk;
 
 #pragma pack(push, 1)
-struct CChunkedFileChunk {
+class CChunkedFileChunk {
+public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     char                    ChunkType[5];                    // +0x04
     unsigned char           _pad_0x09[0x3];                  // +0x09

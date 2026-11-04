@@ -8,17 +8,18 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CAIStateGroupBase;
-struct CBrainUpdateZone;
-struct CDefPointeeBase;
-struct CMainGameComponent;
-struct CPlayerManager;
-struct CThingAICreature;
-struct CThingManager;
-struct CWorld;
+class CAIStateGroupBase;
+class CBrainUpdateZone;
+class CDefPointeeBase;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingAICreature;
+class CThingManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CAIBrain {
+class CAIBrain {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08

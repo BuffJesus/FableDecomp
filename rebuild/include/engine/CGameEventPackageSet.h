@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CGameEventPackageSet {
+class CGameEventPackageSet {
+public:
     unsigned long NoPackages;                                // +0x00
     unsigned char Packages[0x13a10];                         // +0x04 CGameEventPackage[50]
 };

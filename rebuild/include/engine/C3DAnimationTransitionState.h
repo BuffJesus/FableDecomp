@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CIVCountedPointeeBase;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct C3DAnimationTransitionState {
+class C3DAnimationTransitionState {
+public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     CIVCountedPointeeBase* StartState_Object;                // +0x08 CIVCountedPointer<C3DAnimationStateBase>::Object

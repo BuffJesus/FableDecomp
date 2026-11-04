@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCreatureAction_TrollAngryGroundPound {
+class CCreatureAction_TrollAngryGroundPound {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     long          sub;                                       // +0x08 retail-only long (previous header)

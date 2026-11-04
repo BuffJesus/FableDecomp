@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CClassFactory {
+class CClassFactory {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char ClassTypeInfo[0x10];                       // +0x04 vector<CClassTypeInfo,std::allocator<CClassTypeInfo>_>
     unsigned long MaxClassTypeID;                            // +0x14

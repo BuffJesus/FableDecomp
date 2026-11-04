@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CEngineWeatherSettings {
+class CEngineWeatherSettings {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     bool          Enable;                                    // +0x04
     bool          ForceWeatherEffects;                       // +0x05

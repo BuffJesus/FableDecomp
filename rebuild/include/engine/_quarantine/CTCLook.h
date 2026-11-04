@@ -9,14 +9,15 @@
 #include "rebuild_abi.h"
 
 struct CAnimEntryLite;
-struct CAnimationEntry;
-struct CCPPointerInfo;
-struct CDefPointeeBase;
+class CAnimationEntry;
+class CCPPointerInfo;
+class CDefPointeeBase;
 struct CPrimitive;
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CTCLook {
+class CTCLook {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _base_0x04[0xc];                     // +0x04 flattened base-class subobject(s)
     CThingCreatureBase* PParentCreature;                     // +0x10

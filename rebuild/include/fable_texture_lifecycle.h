@@ -19,14 +19,6 @@ struct FableLifecycleTexture
     FableLifecycleTextureVTable* vtable;
 };
 
-struct CPixelFormatByteLengthView
-{
-    fable_u32 value00;
-
-    fable_u32 GetColourDepth() const;
-    void Initialise(fable_u32 format);
-};
-
 struct CTextureAssignmentView
 {
     FableLifecycleTexture* PD3DTexture;

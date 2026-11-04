@@ -2,13 +2,14 @@
 
 #include "fable_string.h"
 
-// TLC's stripped 0x00415530 leaf was misidentified from a donor virtual
-// GetActionName. Its retail ABI is a no-argument fastcall value factory: the
-// hidden CCharString return slot arrives in ECX and the leaf fills it with the
-// default language name.
-CCharString FABLE_FASTCALL FableGetDefaultLanguageName_00415530();
+namespace NLocalisation
+{
+    // Retail 0x00415070: detect once from registered text-bank handles.
+    unsigned long FABLE_FASTCALL GetLanguage();
+    // Retail 0x00415530: hidden value-return slot in ECX.
+    CCharString FABLE_FASTCALL GetLanguageFolder();
+    // Retail 0x00415260: TEXT_*_MAIN handle for the detected language.
+    CCharString FABLE_FASTCALL GetTextBankName();
+}
 
-// Retail language selector used by the startup font-bank lookup.
-fable_i32 FableGetCurrentLanguage_00415070();
-CCharString FABLE_FASTCALL FableGetFontBankName_00415260();
 CCharString FABLE_FASTCALL FableGetStreamingFontBankName_00415440();

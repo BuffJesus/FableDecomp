@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CEnginePrimitiveManagerSpriteTrails;
+class CCPPointerInfo;
+class CEnginePrimitiveManagerSpriteTrails;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveManagerParticleSpriteTrailGroup {
+class CEnginePrimitiveManagerParticleSpriteTrailGroup {
+public:
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                        _pad_0x04[0x4];     // +0x04
     unsigned char                        _pad_0x08[0x4];     // +0x08

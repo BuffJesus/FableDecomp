@@ -8,27 +8,57 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CPlayerManager;
-struct CWorld;
+class CPlayerManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CBulletTimeManager {
-    unsigned char   BulletTimeInfoMap[0x10];                 // +0x00 map<void_*,CBulletTimeManager::CBulletTimeInfo,std::less<void_*>,std::allocator<std::pair<void_*_const,CBulletTimeManager::CBulletTimeInfo>_>_>
-    bool            Override;                                // +0x10
-    bool            UseDefaultMultiplier;                    // +0x11
-    unsigned char   _pad_0x12[0x2];                          // +0x12
-    long            LastStrikeActionTick;                    // +0x14
-    CWorld*         World;                                   // +0x18
-    CPlayerManager* PlayerManager;                           // +0x1c
+// RETAIL LAYOUT (hand-corrected; Ego_r.pdb's is 0x20 with Dinkumware's 0x10-byte
+// map). Retail links STLport, whose map is 0x0C bytes (header, node count,
+// comparator), so every later member sits 4 bytes lower than in Ego_r:
+//   IsBulletTimeActive 0x00419680 tests [+0x0C] (Override) and [+0x04] (the
+//   map's node count); GetBulletTimeSlowdownMultiplier 0x004C5FA0 tests [+0x0D]
+//   (UseDefaultMultiplier) and walks the tree from [+0x00]; GetPlayerManager
+//   0x004C5E50 returns [+0x18].
+// The storage of STLport's map<void*, CBulletTimeManager::CBulletTimeInfo>
+// (_Rb_tree: header node pointer, node count, empty comparator); only what
+// retail's inline size()/empty() read is given a name.
+struct CBulletTimeInfoMap {
+    void*           _M_header;                               // +0x00
+    unsigned long   _M_node_count;                           // +0x04
+    unsigned char   _M_key_compare[0x4];                     // +0x08 less<void*> (empty, padded)
+
+    unsigned long size() const { return _M_node_count; }
+    bool empty() const { return _M_node_count == 0; }
+};
+
+class CBulletTimeManager {
+public:
+    CBulletTimeInfoMap BulletTimeInfoMap;                    // +0x00 map<void*,CBulletTimeManager::CBulletTimeInfo> (STLport, 0x0c)
+    bool            Override;                                // +0x0c
+    bool            UseDefaultMultiplier;                    // +0x0d
+    unsigned char   _pad_0x0e[0x2];                          // +0x0e
+    long            LastStrikeActionTick;                    // +0x10
+    CWorld*         World;                                   // +0x14
+    CPlayerManager* PlayerManager;                           // +0x18
+
+    // Hand-added (non-virtual, layout unchanged): callees of
+    // CMainGameComponent::Render 0x00417001.
+    bool IsBulletTimeActive() const;                         // 0x00419680
+    float ConvertInterpolateToBulletTimeInterpolate(float interpolate) const;   // 0x004C6010
+    // FableWin ?GetBulletTimeSlowdownMultiplier@CBulletTimeManager@@QBEMXZ (retail 0x004C5FA0).
+    float GetBulletTimeSlowdownMultiplier() const;
+    // Ego_r ?FrameUpdate@CBulletTimeManager@@QAEXXZ (retail 0x004C5E90, a lone ret in both builds): CWorld::UpdateFrame
+    // calls it every world frame; the bullet-time state is driven elsewhere.
+    void FrameUpdate();
 };
 #pragma pack(pop)
 
-FABLE_STATIC_ASSERT(sizeof(CBulletTimeManager) == 0x20);
+FABLE_STATIC_ASSERT(sizeof(CBulletTimeManager) == 0x1c);
 FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, BulletTimeInfoMap) == 0x0);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, Override) == 0x10);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, UseDefaultMultiplier) == 0x11);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, LastStrikeActionTick) == 0x14);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, World) == 0x18);
-FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, PlayerManager) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, Override) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, UseDefaultMultiplier) == 0xd);
+FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, LastStrikeActionTick) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, World) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CBulletTimeManager, PlayerManager) == 0x18);
 
 #endif // FABLE_ENGINE_CBULLETTIMEMANAGER_H

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CStreamingFontBankStateBlock {
+class CStreamingFontBankStateBlock {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char State[0x10];                               // +0x04 CStateBlock
 };

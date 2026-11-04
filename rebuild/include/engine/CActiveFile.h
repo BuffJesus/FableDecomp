@@ -9,7 +9,7 @@
 #include "rebuild_abi.h"
 
 struct CBufferChunk;
-struct CCPPointerInfo;
+class CCPPointerInfo;
 struct CFileInfo;
 
 #pragma pack(push, 1)

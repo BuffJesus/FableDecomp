@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CAnimateThing;
+class CAnimateThing;
 
 #pragma pack(push, 1)
-struct CAnimSet {
+class CAnimSet {
+public:
     unsigned char  UpdateMode[0x4];                          // +0x00 EAnimUpdateMode
     unsigned char  Anims[0x10];                              // +0x04 vector<short,std::allocator<short>_>
     unsigned char  InternalAlphas[0x10];                     // +0x14 vector<CTransitionBlendAlpha,std::allocator<CTransitionBlendAlpha>_>

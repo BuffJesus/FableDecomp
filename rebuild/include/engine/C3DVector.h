@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct C3DVector {
+class C3DVector {
+public:
     float X;                                                 // +0x00
     float Y;                                                 // +0x04
     float Z;                                                 // +0x08

@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CRegion;
-struct CTexture;
+class CRegion;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CMiniMapDisplay {
+class CMiniMapDisplay {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char MapPrimitiveHandles[0x10];                 // +0x04 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
     unsigned char MarkerPrimitiveHandles[0x10];              // +0x14 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>

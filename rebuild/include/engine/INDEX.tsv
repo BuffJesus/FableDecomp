@@ -12,7 +12,7 @@ C3DAnimFileTimingEventChunk	C3DAnimFileTimingEventChunk.h	24	2	OK	2 retail files
 C3DAnimFileXAllocationSizeChunk	C3DAnimFileXAllocationSizeChunk.h	20	1	OK	1 retail files
 C3DAnimFileXSequenceChunk	C3DAnimFileXSequenceChunk.h	32	1	OK	0 retail files
 C3DAnimation2	C3DAnimation2.h	136	20	OK	2 retail files
-C3DAnimationInfo	C3DAnimationInfo.h	40	7	OK	1 retail files
+C3DAnimationInfo	C3DAnimationInfo.h	40	7	HAND_OWNED	Retail layout and ABI: fable_mesh_data_bank.h
 C3DAnimationState	C3DAnimationState.h	16	2	OK	0 retail files
 C3DAnimationStateAlpha	C3DAnimationStateAlpha.h	20	1	OK	0 retail files
 C3DAnimationTransitionState	C3DAnimationTransitionState.h	20	3	OK	0 retail files
@@ -47,10 +47,10 @@ C3DMeshFileXTextureIndexChunk	C3DMeshFileXTextureIndexChunk.h	20	1	OK	1 retail f
 C3DMeshFileXTriangleStripChunk	C3DMeshFileXTriangleStripChunk.h	32	1	OK	0 retail files
 C3DMeshFileXUVTangentChunk	C3DMeshFileXUVTangentChunk.h	48	2	OK	0 retail files
 C3DMeshFileXVertexDataChunk	C3DMeshFileXVertexDataChunk.h	80	13	OK	1 retail files
-C3DMeshInfo	C3DMeshInfo.h	96	8	OK	1 retail files
-C3DMeshLODInfo	_quarantine/C3DMeshLODInfo.h	52	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
+C3DMeshInfo	C3DMeshInfo.h	96	8	HAND_OWNED	Retail layout and ABI: fable_mesh_data_bank.h
+C3DMeshLODInfo		52	7	HAND_OWNED	Retail layout and ABI: fable_mesh_data_bank.h
 C3DVector	C3DVector.h	12	3	OK	0 retail files
-CACompressor	CACompressor.h	32	4	OK	0 retail files
+CACompressor	CACompressor.h	28	4	HAND_OWNED	Retail STLport base layout
 CAFile		0	0	HAND_OWNED	
 CAIBrain	CAIBrain.h	176	18	OK	1 retail files
 CAICreatureWillPowerIndicatorDef	CAICreatureWillPowerIndicatorDef.h	44	1	OK	0 retail files
@@ -198,7 +198,7 @@ CAIStateGroup_WorkSawingWood	CAIStateGroup_WorkSawingWood.h	72	7	OK	0 retail fil
 CAInputProcess	CAInputProcess.h	20	4	OK	1 retail files
 CANavQuadTreeNode	CANavQuadTreeNode.h	16	6	OK	0 retail files
 CAProgressDisplay	CAProgressDisplay.h	4	0	OK	0 retail files
-CASuspendableProcess	CASuspendableProcess.h	16	5	OK	0 retail files
+CASuspendableProcess	CASuspendableProcess.h	16	5	HAND_OWNED	Retail layout and ABI: fable_suspendable_process.h
 CAbilityButtonGuiDef	_quarantine/CAbilityButtonGuiDef.h	96	8	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CAbilityDef	_quarantine/CAbilityDef.h	44	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CAbilityTrackDef	_quarantine/CAbilityTrackDef.h	88	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
@@ -375,7 +375,9 @@ CCombatSequence_WillPhysicalShieldNonMelee	CCombatSequence_WillPhysicalShieldNon
 CCombatTypeDef	CCombatTypeDef.h	192	21	OK	0 retail files
 CComponent	_quarantine/CComponent.h	348	61	QUARANTINED	3 conflict(s) in 1 file(s) vs 0 agreeing
 CCompressedMemoryDataInputStream	CCompressedMemoryDataInputStream.h	36	3	OK	0 retail files
-CCompressorZlib	CCompressorZlib.h	92	17	OK	0 retail files
+CCompressionInfo	CCompressionInfo.h	12	3	OK	0 retail files
+CCompressorZlib	CCompressorZlib.h	88	4	HAND_OWNED	Retail stream at 0x1C, flags at 0x54
+CConfigOptions	CConfigOptions.h	64	22	OK	0 retail files
 CConfigOptionsDefaultsDef	_quarantine/CConfigOptionsDefaultsDef.h	120	14	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CConsoleCommandBase	CConsoleCommandBase.h	24	2	OK	0 retail files
 CConsoleCommandLine	CConsoleCommandLine.h	16	3	OK	1 retail files
@@ -834,10 +836,10 @@ CFishDef	CFishDef.h	88	12	OK	0 retail files
 CFishingDef	_quarantine/CFishingDef.h	128	19	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CFishingRodDef	_quarantine/CFishingRodDef.h	60	5	QUARANTINED	5 conflict(s) in 1 file(s) vs 0 agreeing
 CFlammableDef	_quarantine/CFlammableDef.h	80	5	QUARANTINED	4 conflict(s) in 2 file(s) vs 0 agreeing
-CFontBank	CFontBank.h	16	3	OK	0 retail files
+CFontBank	CFontBank.h	16	3	HAND_OWNED	Retail layout and ABI: fable_font_bank.h
 CFontBankStateBlock	CFontBankStateBlock.h	16	1	OK	2 retail files
-CFontDataBank	CFontDataBank.h	408	3	OK	1 retail files
-CFontDataBankEntry	CFontDataBankEntry.h	24	5	OK	1 retail files
+CFontDataBank	CFontDataBank.h	304	3	HAND_OWNED	Retail layout and ABI: fable_font_data_banks.h
+CFontDataBankEntry	CFontDataBankEntry.h	24	5	HAND_OWNED	Retail layout and ABI: fable_font_data_banks.h
 CFrontEndDef	_quarantine/CFrontEndDef.h	92	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CFrontEndList	CFrontEndList.h	576	0	OK	0 retail files
 CFrontEndManager	CFrontEndManager.h	248	27	OK	0 retail files
@@ -868,7 +870,7 @@ CGuardDef	CGuardDef.h	80	10	OK	0 retail files
 CGuiVarTransferFloat	CGuiVarTransferFloat.h	32	7	OK	1 retail files
 CGuildMasterDef	_quarantine/CGuildMasterDef.h	48	2	QUARANTINED	3 conflict(s) in 2 file(s) vs 0 agreeing
 CHairCardDef	CHairCardDef.h	44	1	OK	0 retail files
-CHandleBasedMemoryPool	CHandleBasedMemoryPool.h	1128	26	OK	1 retail files
+CHandleBasedMemoryPool	CHandleBasedMemoryPool.h	1124	0	HAND_OWNED	Retail 0x464 layout in fable_handle_memory_pool.h
 CHasNameDef	CHasNameDef.h	52	3	OK	0 retail files
 CHeightMapCell	CHeightMapCell.h	12	4	OK	0 retail files
 CHeroAbilityDef	_quarantine/CHeroAbilityDef.h	172	18	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
@@ -894,7 +896,7 @@ CIEngine	CIEngine.h	12	1	OK	3 retail files
 CIME		0	0	HAND_OWNED	
 CIVCountedPointeeBase	CIVCountedPointeeBase.h	8	1	OK	0 retail files
 CIdleSchedulerDef	_quarantine/CIdleSchedulerDef.h	80	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
-CIndexBuffer	CIndexBuffer.h	20	4	OK	0 retail files
+CIndexBuffer	CIndexBuffer.h	20	4	HAND_OWNED	Retail layout and ABI: fable_index_buffer.h
 CInitBaseClass		0	0	HAND_OWNED	
 CInputEvent	CInputEvent.h	52	6	OK	9 retail files
 CInputProcessBetting	CInputProcessBetting.h	40	0	OK	0 retail files
@@ -953,10 +955,10 @@ CInventoryItemDef	CInventoryItemDef.h	112	20	OK	0 retail files
 CItem	CItem.h	20	5	OK	0 retail files
 CJackDragonDef	CJackDragonDef.h	120	20	OK	0 retail files
 CJackOfBladesBattleDef	_quarantine/CJackOfBladesBattleDef.h	132	17	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
-CJoystick	CJoystick.h	3360	6	OK	2 retail files
-CJoystickDX	CJoystickDX.h	3404	13	OK	1 retail files
-CKeyboard	CKeyboard.h	13340	5	OK	0 retail files
-CKeyboardDX	_quarantine/CKeyboardDX.h	13852	5	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
+CJoystick	CJoystick.h	0	0	HAND_OWNED	Retail layout and slot order in fable_input_devices.h
+CJoystickDX	CJoystickDX.h	3404	13	HAND_OWNED	Retail layout and ABI: fable_joystick_dx.h
+CKeyboard	CKeyboard.h	0	0	HAND_OWNED	Retail layout and slot order in fable_input_devices.h
+CKeyboardDX	_quarantine/CKeyboardDX.h	13852	5	HAND_OWNED	Retail layout and ABI: fable_keyboard_dx.h
 CKickableDef	CKickableDef.h	84	11	OK	0 retail files
 CKrakenDef	_quarantine/CKrakenDef.h	128	19	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CKrakenTentacleDef	CKrakenTentacleDef.h	96	14	OK	0 retail files
@@ -971,7 +973,7 @@ CLevelLoader	CLevelLoader.h	44	4	OK	0 retail files
 CLightDef	CLightDef.h	92	15	OK	0 retail files
 CLightningDef	_quarantine/CLightningDef.h	92	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CLightningOrbDef	_quarantine/CLightningOrbDef.h	60	5	QUARANTINED	3 conflict(s) in 1 file(s) vs 0 agreeing
-CLipSyncDataBank	CLipSyncDataBank.h	512	9	OK	1 retail files
+CLipSyncDataBank	CLipSyncDataBank.h	512	9	HAND_OWNED	Retail layout and ABI: fable_lipsync_data_bank.h
 CList	CList.h	576	32	OK	0 retail files
 CLocalDetailCacheMap	CLocalDetailCacheMap.h	120	6	OK	0 retail files
 CLookDef	CLookDef.h	88	15	OK	0 retail files
@@ -985,31 +987,31 @@ CMazeBattleDef	_quarantine/CMazeBattleDef.h	100	9	QUARANTINED	1 conflict(s) in 1
 CMeleeCombatAbilityDef	_quarantine/CMeleeCombatAbilityDef.h	136	14	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CMeleeCombatKnockdownEffects	_quarantine/CMeleeCombatKnockdownEffects.h	96	11	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CMemoryAllocatorBase	CMemoryAllocatorBase.h	3100	3	OK	0 retail files
-CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize.h	3148	12	OK	0 retail files
+CMemoryAllocatorFixedSize	CMemoryAllocatorFixedSize.h	3148	12	HAND_OWNED	Retail layout and ABI: fable_memory_allocator_fixed_size.h
 CMemoryDataInputStream	CMemoryDataInputStream.h	28	6	OK	1 retail files
 CMemoryDataOutputStream	CMemoryDataOutputStream.h	28	2	OK	0 retail files
 CMemoryFile	CMemoryFile.h	40	6	OK	2 retail files; suspect=CMemoryFile_GetPathnameCMemoryFileUBEAVCWideStri_00412070.cpp
 CMeshBankManager	CMeshBankManager.h	20	1	OK	0 retail files
-CMeshDataBank	CMeshDataBank.h	1272	42	OK	1 retail files
-CMeshDataBankEntry	CMeshDataBankEntry.h	12	2	OK	0 retail files
+CMeshDataBank	CMeshDataBank.h	1272	42	HAND_OWNED	Retail layout and ABI: fable_mesh_data_bank.h
+CMeshDataBankEntry	CMeshDataBankEntry.h	12	2	HAND_OWNED	Retail layout and ABI: fable_mesh_data_bank.h
 CMessageEventDef	_quarantine/CMessageEventDef.h	84	6	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
 CMiniMapDisplay	CMiniMapDisplay.h	220	14	OK	5 retail files
 CMirroredTextureHighlightsChunk	CMirroredTextureHighlightsChunk.h	32	1	OK	0 retail files
 CModeDragonBase	CModeDragonBase.h	48	4	OK	2 retail files
 CModeStandBase	CModeStandBase.h	104	19	OK	0 retail files
 CMorphingSprite	CMorphingSprite.h	472	4	OK	0 retail files
-CMouse	CMouse.h	13340	5	OK	0 retail files
-CMouseDX	_quarantine/CMouseDX.h	18536	31	QUARANTINED	3 conflict(s) in 1 file(s) vs 0 agreeing
+CMouse	CMouse.h	0	0	HAND_OWNED	Retail layout and slot order in fable_input_devices.h
+CMouseDX	_quarantine/CMouseDX.h	18536	31	HAND_OWNED	Retail layout and ABI: fable_mouse_dx.h
 CMovableResource	CMovableResource.h	4	0	OK	1 retail files
-CMovableResourceMemoryPool	CMovableResourceMemoryPool.h	1128	0	OK	0 retail files
+CMovableResourceMemoryPool	CMovableResourceMemoryPool.h	1124	0	HAND_OWNED	Retail 0x464 layout in fable_handle_memory_pool.h
 CMovie	CMovie.h	456	9	OK	1 retail files
 CMultiStaticMeshDef	_quarantine/CMultiStaticMeshDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
 CMultiStaticMeshEntryDef	CMultiStaticMeshEntryDef.h	56	5	OK	0 retail files
-CNavBlockedQuadTreeNode	CNavBlockedQuadTreeNode.h	16	0	OK	1 retail files
-CNavNavigableLeafNode	CNavNavigableLeafNode.h	32	3	OK	1 retail files
+CNavBlockedQuadTreeNode	CNavBlockedQuadTreeNode.h	16	0	HAND_OWNED	Retail layout and ABI: fable_nav_quad_tree_nodes.h
+CNavNavigableLeafNode	CNavNavigableLeafNode.h	32	3	HAND_OWNED	Retail layout and ABI: fable_nav_quad_tree_nodes.h
 CNavQuadTree	CNavQuadTree.h	176	16	OK	0 retail files
-CNavQuadTreeNode	CNavQuadTreeNode.h	32	4	OK	0 retail files
-CNavSwitchableLeafNode	CNavSwitchableLeafNode.h	52	4	OK	0 retail files
+CNavQuadTreeNode	CNavQuadTreeNode.h	32	4	HAND_OWNED	Retail layout and ABI: fable_nav_quad_tree_nodes.h
+CNavSwitchableLeafNode	CNavSwitchableLeafNode.h	52	4	HAND_OWNED	Retail layout and ABI: fable_nav_quad_tree_nodes.h
 CNavigatorAStar	_quarantine/CNavigatorAStar.h	212	36	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
 CNavigatorBase	CNavigatorBase.h	36	5	OK	0 retail files
 CNavigatorFlyer	CNavigatorFlyer.h	48	3	OK	1 retail files; suspect=CNavigatorFlyer_GetCurrentDestination_00a19b00.cpp
@@ -1030,7 +1032,7 @@ COpinionPersonalityDef	_quarantine/COpinionPersonalityDef.h	92	4	QUARANTINED	1 c
 COpinionReactionManagerDef	_quarantine/COpinionReactionManagerDef.h	860	13	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 COpinionReactionMaskDef	_quarantine/COpinionReactionMaskDef.h	80	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 COpinionSourceDef	_quarantine/COpinionSourceDef.h	216	16	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
-COptimisedFace	COptimisedFace.h	72	12	OK	1 retail files
+COptimisedFace	COptimisedFace.h	72	12	HAND_OWNED	Retail QuadricOptimiserInternals::COptimisedFace model and methods: fable_quadric_optimiser.h
 COptimisedPrimitive	COptimisedPrimitive.h	160	19	OK	0 retail files
 COracleMinigameDef	COracleMinigameDef.h	92	13	OK	0 retail files
 COverheadDisplayDef	COverheadDisplayDef.h	40	3	OK	0 retail files
@@ -1038,14 +1040,14 @@ CPackedUIntArray	CPackedUIntArray.h	16	5	OK	1 retail files
 CParentDefClassBase	CParentDefClassBase.h	61	2	OK	1 retail files
 CParticleAttacherDef	_quarantine/CParticleAttacherDef.h	56	1	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CParticleEmitter	CParticleEmitter.h	376	25	OK	1 retail files
-CParticleProgram	CParticleProgram.h	368	19	OK	1 retail files
+CParticleProgram	CParticleProgram.h	368	19	HAND_OWNED	Retail ABI (base, methods): fable_particle_program.h; members not modelled
 CParticleSimulationRenderData	CParticleSimulationRenderData.h	4	0	OK	0 retail files
 CParticleSystem	_quarantine/CParticleSystem.h	140	16	QUARANTINED	2 conflict(s) in 1 file(s) vs 0 agreeing
 CPerceivedThingDef	CPerceivedThingDef.h	80	10	OK	0 retail files
 CPersistContext		0	0	HAND_OWNED	
 CPhysicsDef	_quarantine/CPhysicsDef.h	68	7	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
-CPhysicsFacesSegmentBranch	CPhysicsFacesSegmentBranch.h	28	3	OK	0 retail files
-CPhysicsFacesSegmentLeaf	CPhysicsFacesSegmentLeaf.h	20	1	OK	1 retail files
+CPhysicsFacesSegmentBranch	CPhysicsFacesSegmentBranch.h	28	3	HAND_OWNED	Retail layout and ABI: fable_physics_faces_segment.h
+CPhysicsFacesSegmentLeaf	CPhysicsFacesSegmentLeaf.h	20	1	HAND_OWNED	Retail layout and ABI: fable_physics_faces_segment.h
 CPixelFormat	CPixelFormat.h	4	1	OK	0 retail files
 CPlayer	CPlayer.h	564	106	OK	3 retail files; suspect=CPlayer_IsMainPlayer_00487520.cpp
 CPlayerDef	_quarantine/CPlayerDef.h	72	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 2 agreeing
@@ -1082,12 +1084,12 @@ CResource	CResource.h	28	5	OK	0 retail files
 CResourceList	CResourceList.h	60	8	OK	1 retail files
 CResurrectionItemDef	CResurrectionItemDef.h	44	1	OK	0 retail files
 CRumbleDef	_quarantine/CRumbleDef.h	72	2	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
-CSB	CSB.h	12	1	OK	0 retail files
+CSB	CSB.h	12	1	HAND_OWNED	Retail layout and ABI: fable_steering_behaviour.h
 CSBAgents	CSBAgents.h	16	1	OK	0 retail files
-CSBCAgents	CSBCAgents.h	28	1	OK	0 retail files
-CSBCCorridor	CSBCCorridor.h	52	5	OK	0 retail files
-CSBGoal	CSBGoal.h	36	6	OK	0 retail files
-CSBIAgents	CSBIAgents.h	24	1	OK	0 retail files
+CSBCAgents	CSBCAgents.h	28	1	HAND_OWNED	Retail layout and ABI: fable_steering_behaviour.h
+CSBCCorridor	CSBCCorridor.h	52	5	HAND_OWNED	Retail layout and ABI: fable_steering_behaviour.h
+CSBGoal	CSBGoal.h	36	6	HAND_OWNED	Retail layout and ABI: fable_steering_behaviour.h
+CSBIAgents	CSBIAgents.h	24	1	HAND_OWNED	Retail layout and ABI: fable_steering_behaviour.h
 CScorpionKingBattleDef	_quarantine/CScorpionKingBattleDef.h	100	9	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CScriptConversation	CScriptConversation.h	52	9	OK	1 retail files; dup_donor
 CScriptGameResourceObjectScriptedThing	CScriptGameResourceObjectScriptedThing.h	40	5	OK	0 retail files
@@ -1144,15 +1146,15 @@ CSpotLightDef	CSpotLightDef.h	68	7	OK	0 retail files
 CSprite	CSprite.h	436	9	OK	0 retail files
 CStartupDefinitionManager	CStartupDefinitionManager.h	240	0	OK	0 retail files
 CStateBlockFunctionSold	CStateBlockFunctionSold.h	4	0	OK	0 retail files
-CStaticFontBank	CStaticFontBank.h	8244	11	OK	0 retail files
+CStaticFontBank	CStaticFontBank.h	8244	11	HAND_OWNED	Retail layout and ABI: fable_font_instances.h
 CStaticMapBankFile	CStaticMapBankFile.h	472	0	OK	0 retail files
 CStaticMapBankStateBlock	CStaticMapBankStateBlock.h	8	1	OK	0 retail files
 CStealthDef	CStealthDef.h	72	8	OK	0 retail files
 CStockItemDef	CStockItemDef.h	64	7	OK	0 retail files
-CStreamingFontBank	CStreamingFontBank.h	12340	12	OK	0 retail files
+CStreamingFontBank	CStreamingFontBank.h	12340	12	HAND_OWNED	Retail layout and ABI: fable_font_instances.h
 CStreamingFontBankStateBlock	CStreamingFontBankStateBlock.h	20	1	OK	2 retail files
-CStreamingFontDataBank	CStreamingFontDataBank.h	520	5	OK	1 retail files
-CStreamingFontDataBankEntry	CStreamingFontDataBankEntry.h	24	5	OK	1 retail files
+CStreamingFontDataBank	CStreamingFontDataBank.h	400	5	HAND_OWNED	Retail layout and ABI: fable_font_data_banks.h
+CStreamingFontDataBankEntry	CStreamingFontDataBankEntry.h	24	5	HAND_OWNED	Retail layout and ABI: fable_font_data_banks.h
 CStringParser	CStringParser.h	48	7	OK	0 retail files
 CSubtitleRenderer	CSubtitleRenderer.h	296	48	OK	0 retail files
 CSummonDef	CSummonDef.h	76	9	OK	0 retail files
@@ -1291,9 +1293,9 @@ CVillageTaskSecuritySweep	CVillageTaskSecuritySweep.h	52	10	OK	3 retail files
 CVillageTaskTorch	CVillageTaskTorch.h	24	2	OK	1 retail files
 CVillagerInteractionsDef	_quarantine/CVillagerInteractionsDef.h	76	4	QUARANTINED	1 conflict(s) in 1 file(s) vs 1 agreeing
 CVirtualKeyboard	CVirtualKeyboard.h	16	5	OK	0 retail files
-CWADBank	CWADBank.h	472	0	OK	0 retail files
-CWADBankStateBlock	CWADBankStateBlock.h	8	1	OK	0 retail files
-CWADFile	CWADFile.h	16	3	OK	0 retail files
+CWADBank	CWADBank.h	472	0	HAND_OWNED	Retail layout and ABI: fable_wad_file.h
+CWADBankStateBlock	CWADBankStateBlock.h	8	1	HAND_OWNED	Retail layout and ABI: fable_wad_file.h
+CWADFile	CWADFile.h	16	3	HAND_OWNED	Retail layout and ABI: fable_wad_file.h
 CWallMountEffectsDef	_quarantine/CWallMountEffectsDef.h	52	3	QUARANTINED	1 conflict(s) in 1 file(s) vs 0 agreeing
 CWaspQueenBattleDef	_quarantine/CWaspQueenBattleDef.h	68	2	QUARANTINED	2 conflict(s) in 2 file(s) vs 0 agreeing
 CWaterPatchMesh	CWaterPatchMesh.h	32	7	OK	0 retail files
@@ -1307,6 +1309,7 @@ CWomanToAttract	_quarantine/CWomanToAttract.h	52	6	QUARANTINED	1 conflict(s) in 
 CWorld	CWorld.h	440	106	OK	3 retail files
 CWorldMap	CWorldMap.h	252	34	OK	9 retail files; suspect=CWorldMap_GetDimensions_0051cde0.cpp
 CXMVPlayer		0	0	HAND_OWNED	
+ConfigDetection	ConfigDetection.h	11324	73	OK	0 retail files
 EULA		0	0	NO_DONOR	
 LHHttp2	LHHttp2.h	4356	27	OK	1 retail files
 LHHttpHeaderStatus	LHHttpHeaderStatus.h	140	7	OK	1 retail files

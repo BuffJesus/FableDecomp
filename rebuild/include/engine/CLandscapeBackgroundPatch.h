@@ -8,15 +8,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEngineWaterBackgroundSubPatch;
-struct CIndexBuffer;
-struct CLandscapeBackgroundTreeNode;
-struct CSubPatchTreeLODLockElement;
-struct CTexture;
-struct CVertexBufferWin32;
+class CEngineWaterBackgroundSubPatch;
+class CIndexBuffer;
+class CLandscapeBackgroundTreeNode;
+class CSubPatchTreeLODLockElement;
+class CTexture;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CLandscapeBackgroundPatch {
+class CLandscapeBackgroundPatch {
+public:
     void*                           __vftable;               // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*   Parent;                  // +0x04
     unsigned char                   EdgeStrips[0xb0];        // +0x08 CPatchTesselationEdgeStrip[4]

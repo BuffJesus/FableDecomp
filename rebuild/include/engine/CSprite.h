@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CTexture;
+class CCPPointerInfo;
+class CTexture;
 
 #pragma pack(push, 1)
 struct CSprite {

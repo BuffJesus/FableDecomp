@@ -8,13 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CVolumeTexture;
+class CVolumeTexture;
+class CEngineVideoOptionsDef;
 
 #pragma pack(push, 1)
-struct CEngineWeatherRenderer {
+class CEngineWeatherRenderer {
+public:
+    void SetEffectQuality(const CEngineVideoOptionsDef&);
+    void OverrideRain(float strength);
+    void OverrideSnow(float strength);
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char   _pad_0x04[0x4];                          // +0x04
-    unsigned char   _pad_0x08[0x4];                          // +0x08
+    bool            RenderEnabled;                           // +0x08 CEngineComponent
+    unsigned char   _pad_0x09[0x3];                          // +0x09
     unsigned char   RainVertexBuffer[0x34];                  // +0x0c CVertexBufferWin32
     unsigned char   RainIndexBuffer[0x14];                   // +0x40 CIndexBuffer
     unsigned char   SnowVertexBuffer[0x34];                  // +0x54 CVertexBufferWin32

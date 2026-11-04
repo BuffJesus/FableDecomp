@@ -8,10 +8,10 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CDefPointeeBase;
-struct CGraphicDataBank;
-struct CThing;
+class CCPPointerInfo;
+class CDefPointeeBase;
+class CGraphicDataBank;
+class CThing;
 
 #pragma pack(push, 1)
 struct CTCInventoryBase {

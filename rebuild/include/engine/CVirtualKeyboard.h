@@ -10,7 +10,7 @@
 
 struct CComponent;
 struct CEditBox;
-struct CWideStringData;
+class CWideStringData;
 
 #pragma pack(push, 1)
 struct CVirtualKeyboard {

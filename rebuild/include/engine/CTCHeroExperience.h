@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CTCHeroExperience {
+class CTCHeroExperience {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    _base_0x04[0x8];                        // +0x04 flattened base-class subobject(s)
     long             FishingLevel;                           // +0x0c

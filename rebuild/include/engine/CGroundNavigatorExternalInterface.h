@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThingCreatureBase;
+class CThingCreatureBase;
 
 #pragma pack(push, 1)
-struct CGroundNavigatorExternalInterface {
+class CGroundNavigatorExternalInterface {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     CThingCreatureBase* Creature;                            // +0x04
     float               Radius;                              // +0x08

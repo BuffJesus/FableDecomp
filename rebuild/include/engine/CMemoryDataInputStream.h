@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CMemoryDataInputStream {
+class CMemoryDataInputStream {
+public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
     long  position;                                          // +0x04 retail-only long (previous header)
     long  sourceLength;                                      // +0x08 retail-only long (previous header)

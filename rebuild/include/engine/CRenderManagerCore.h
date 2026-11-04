@@ -8,13 +8,14 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CDisplayManager;
-struct CIndexBuffer;
+class CDisplayManager;
+class CIndexBuffer;
 struct IDirect3DBaseTexture9;
 struct IDirect3DDevice9;
 
 #pragma pack(push, 1)
-struct CRenderManagerCore {
+class CRenderManagerCore {
+public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char          _pad_0x04[0x4];                   // +0x04
     unsigned char          _pad_0x08[0x4];                   // +0x08

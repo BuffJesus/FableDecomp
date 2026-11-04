@@ -183,13 +183,20 @@ struct GFMainPhase6State
     fable_u32 exactPermissionCharDestroyCalls;
     fable_u32 exactPermissionResult;
     bool exactPermissionArgumentsValid;
+    // Since 0x00402130 calls the CRT's _wfopen/fclose and the real string
+    // destructors directly, the open/close/destroy counters above stay 0; the
+    // boundary checks the probe file was removed and the string lifetimes
+    // balance instead.
+    bool exactPermissionProbeFileRemoved;
+    fable_i32 exactPermissionWideStringDelta;
+    fable_i32 exactPermissionCharStringDelta;
 
     fable_u32 compressedStreamConstructCalls;
     fable_u32 countedPointerResetCalls;
     fable_u32 openFontBankCalls;
     fable_u32 textLookupCalls[2];
-    fable_u32 groupEntryCalls[2];
-    fable_u32 bankHandleCalls[2];
+    fable_u32 textEntryCalls[2];
+    fable_u32 getTextCalls[2];
     fable_u32 displayPermissionErrorCalls;
     fable_u32 displayedPermissionError;
 };
@@ -461,11 +468,11 @@ void FABLE_FASTCALL FableGFMainPhase6OpenFontBankBoundary(
 fable_u32 FABLE_FASTCALL FableGFMainPhase6LookupTextBoundary(
     GFMainPhase6TextRole role,
     GFMainPhase6State& state);
-bool FABLE_FASTCALL FableGFMainPhase6GetGroupEntryBoundary(
+bool FABLE_FASTCALL FableGFMainPhase6GetTextEntryBoundary(
     GFMainPhase6TextRole role,
     fable_u32 identifier,
     GFMainPhase6State& state);
-void FABLE_FASTCALL FableGFMainPhase6GetBankHandleBoundary(
+void FABLE_FASTCALL FableGFMainPhase6GetTextBoundary(
     GFMainPhase6TextRole role,
     GFMainPhase6State& state);
 void FABLE_FASTCALL FableGFMainPhase6DisplayPermissionErrorBoundary(

@@ -30,7 +30,7 @@ struct CStateBlockFunctionSoldView
 // Compact integrations provide this object-graph root and the eight retail
 // D3D value globals. Apply queues 17 states in the manager's capture/update
 // arrays; RealiseRenderState remains the later device-dispatch step.
-struct CSystemManager;
+class CSystemManager;
 extern CSystemManager* FABLE_FASTCALL GFGetSystemManager();
 
 extern fable_u32 DAT_01396f6c;

@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CDefPointeeBase;
+class CDefPointeeBase;
 struct CTCInventoryBase;
 
 #pragma pack(push, 1)
-struct CTCInventoryItem {
+class CTCInventoryItem {
+public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     long              slot;                                  // +0x04 retail-only long (previous header)
     long              field8;                                // +0x08 retail-only long (previous header)

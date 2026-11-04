@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
+class CCharStringData;
 
 #pragma pack(push, 1)
 struct CParticleEmitter {

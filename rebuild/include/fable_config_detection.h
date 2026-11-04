@@ -2,6 +2,9 @@
 
 #include "rebuild_abi.h"
 
+class ConfigDetection;
+struct CConfigOptions;
+
 typedef void (FABLE_STDCALL *FableConfigReleaseFunction)();
 typedef void* (FABLE_STDCALL *FableGetProcAddressFunction)(
     void* module,
@@ -22,3 +25,13 @@ extern FableMessageBoxAFunction g_FableMessageBoxA_014402C4;
 
 bool FABLE_FASTCALL GFConfigDetection();
 bool FABLE_FASTCALL GFFreeConfigDetection();
+
+// fablelib/main.cpp globals (FableWin.pdb names): the DLL's detection result
+// (0x013BD6E8) and the engine options it seeds (0x01375070).
+extern ConfigDetection* pConfig;
+extern CConfigOptions GConfigOptions;
+
+// bbblibrary/errordialog.cpp: DisplayErrorDialog @ 0x0099DCB0 (Error points
+// at {code, extra}), InitExternalStrings @ 0x0099E260.
+extern "C" int FABLE_STDCALL DisplayErrorDialog(int* Error, int ForceExit);
+extern "C" void FABLE_FASTCALL InitExternalStrings();

@@ -8,15 +8,16 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C3DAnimationSequence;
-struct C3DAnimationSequenceData;
-struct C3DVector;
-struct CCPPointerInfo;
-struct CMovableResourceMemoryPool;
-struct CSimpleMemoryPool;
+class C3DAnimationSequence;
+class C3DAnimationSequenceData;
+class C3DVector;
+class CCPPointerInfo;
+class CMovableResourceMemoryPool;
+class CSimpleMemoryPool;
 
 #pragma pack(push, 1)
-struct C3DAnimation2 {
+class C3DAnimation2 {
+public:
     void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char               _pad_0x04[0x4];              // +0x04
     unsigned char               _pad_0x08[0x4];              // +0x08

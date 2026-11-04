@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CBaseClass;
-struct CInputProcessManager;
-struct CLinkedListPosition;
+class CBaseClass;
+class CInputProcessManager;
+class CLinkedListPosition;
 
 #pragma pack(push, 1)
-struct CAInputProcess {
+class CAInputProcess {
+public:
     void*                 __vftable;                         // +0x00 vptr, or first dword of a flattened base subobject
     CInputProcessManager* PPlayerInterface;                  // +0x04
     CBaseClass*           InputProcessListPos_Data;          // +0x08 CLinkedListPosition::Data

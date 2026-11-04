@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEditControlCentre;
+class CEditControlCentre;
 
 #pragma pack(push, 1)
 struct CBrushLibraryDialog {

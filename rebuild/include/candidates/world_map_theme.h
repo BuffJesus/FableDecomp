@@ -4,8 +4,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct C2DCoordI
+class C2DCoordI
 {
+public:
     long x;
     long y;
 };

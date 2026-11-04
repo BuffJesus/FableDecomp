@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCombatAbility {
+class CCombatAbility {
+public:
     long RepeatTimer;                                        // +0x00
     long ActiveTimer;                                        // +0x04
 };

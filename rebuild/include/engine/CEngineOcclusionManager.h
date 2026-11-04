@@ -11,7 +11,8 @@
 struct COccluderEntry;
 
 #pragma pack(push, 1)
-struct CEngineOcclusionManager {
+class CEngineOcclusionManager {
+public:
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char   _pad_0x04[0x4];                          // +0x04
     unsigned char   _pad_0x08[0x4];                          // +0x08

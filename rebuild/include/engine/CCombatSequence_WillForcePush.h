@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCombatSequence_WillForcePush {
+class CCombatSequence_WillForcePush {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x28];                          // +0x04 flattened base-class subobject(s)
 };

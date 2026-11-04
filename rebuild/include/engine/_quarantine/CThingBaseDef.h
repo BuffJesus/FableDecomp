@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CThingBaseDef {
+class CThingBaseDef {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x39];                          // +0x04 flattened base-class subobject(s)
     unsigned char Components[0x8];                           // +0x3d CThingComponentSet

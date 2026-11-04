@@ -9,11 +9,12 @@
 #include "rebuild_abi.h"
 
 struct CComponent;
-struct CDefPointeeBase;
+class CDefPointeeBase;
 struct CYesNo;
 
 #pragma pack(push, 1)
-struct CTCInGameMenu {
+class CTCInGameMenu {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             field4;                                 // +0x04 retail-only long (previous header)
     unsigned char    _pad_0x08[0x4];                         // +0x08

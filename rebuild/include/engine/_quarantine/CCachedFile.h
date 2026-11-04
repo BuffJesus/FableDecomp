@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CAFile;
-struct CCPPointerInfo;
-struct CWideStringData;
+class CAFile;
+class CCPPointerInfo;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CCachedFile {
+class CCachedFile {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     long             Position;                               // +0x04
     long             BufferStartPosition;                    // +0x08

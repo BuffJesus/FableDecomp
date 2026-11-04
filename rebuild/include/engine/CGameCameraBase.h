@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameCameraBase {
+class CGameCameraBase {
+public:
     void*            __vftable;                              // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char    InternalCam[0x38];                      // +0x04 CCamera
     unsigned char    LastInternalCam[0x38];                  // +0x3c CCamera

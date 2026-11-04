@@ -12,7 +12,8 @@ struct CArea;
 struct CMemoryBlock;
 
 #pragma pack(push, 1)
-struct CSimpleMemoryPool {
+class CSimpleMemoryPool {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CMemoryBlock* FirstMemoryBlock;                          // +0x04
     unsigned long Capacity;                                  // +0x08

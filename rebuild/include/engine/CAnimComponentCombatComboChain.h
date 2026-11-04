@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CAnimComponentCombatComboChain {
+class CAnimComponentCombatComboChain {
+public:
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
     long  f4;                                                // +0x04 retail-only long (previous header)
     long  ComboStage;                                        // +0x08

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CAnimComponentCombatHandedness {
+class CAnimComponentCombatHandedness {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          f4;                                        // +0x04 retail-only long (previous header)
     unsigned char StartHandedness[0x4];                      // +0x08 ECombatAnimationHandedness

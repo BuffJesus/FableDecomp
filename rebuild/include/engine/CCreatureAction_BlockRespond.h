@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCreatureAction_BlockRespond {
+class CCreatureAction_BlockRespond {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x12d];                          // +0x04
     unsigned char f;                                         // +0x131 retail-only unsigned char (previous header)

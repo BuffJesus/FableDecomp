@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CWorld;
+class CWorld;
 
 #pragma pack(push, 1)
 struct CThingMapManager {

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct C3DMeshFileMaterialListChunk {
+class C3DMeshFileMaterialListChunk {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _base_0x04[0x30];                          // +0x04 flattened base-class subobject(s)
 };

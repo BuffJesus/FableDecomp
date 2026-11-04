@@ -1,0 +1,31 @@
+#pragma once
+#include "rebuild_abi.h"
+// Descriptive names for native lookup-table entries read by default setup.
+extern unsigned long FableRenderDefaultValue_01396dd0;
+extern unsigned long FableRenderDefaultValue_01396ddc;
+extern unsigned long FableRenderDefaultValue_01396de8;
+extern unsigned long FableRenderDefaultValue_01396e04;
+extern unsigned long FableRenderDefaultValue_01396e14;
+extern unsigned long FableRenderDefaultValue_01396e34;
+extern unsigned long FableRenderDefaultValue_01396e58;
+extern unsigned long FableRenderDefaultValue_01396e5c;
+extern unsigned long FableRenderDefaultValue_01396e70;
+extern unsigned long FableRenderDefaultValue_01396e74;
+extern unsigned long FableRenderDefaultValue_01396e7c;
+extern unsigned long FableRenderDefaultValue_01396ed0;
+extern unsigned long FableRenderDefaultValue_01396ee8;
+extern unsigned long FableRenderDefaultValue_01396eec;
+extern unsigned long FableRenderDefaultValue_01396ef0;
+extern unsigned long FableRenderDefaultValue_01396f38;
+extern unsigned long FableRenderDefaultValue_01396f40;
+extern unsigned long FableRenderDefaultValue_01396f58;
+extern unsigned long FableRenderDefaultValue_01396f68;
+extern unsigned long FableRenderDefaultValue_01396f6c;
+extern unsigned long FableRenderDefaultValue_01396f78;
+extern unsigned long FableRenderDefaultValue_01396f7c;
+extern unsigned long FableRenderDefaultValue_01396fa0;
+extern unsigned long FableRenderDefaultValue_01396fa4;
+extern unsigned long FableRenderDefaultValue_01396fb0;
+extern unsigned long FableRenderDefaultValue_01396fbc;
+extern unsigned long FableRenderDefaultValue_01396fcc;
+extern unsigned long FableRenderDefaultValue_01396ff4;

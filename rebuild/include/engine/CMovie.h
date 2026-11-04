@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTexture;
-struct CWideStringData;
+class CTexture;
+class CWideStringData;
 struct XMVDecoder;
 
 #pragma pack(push, 1)

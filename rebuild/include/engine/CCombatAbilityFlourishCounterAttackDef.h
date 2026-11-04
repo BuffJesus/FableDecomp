@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCombatAbilityFlourishCounterAttackDef {
+class CCombatAbilityFlourishCounterAttackDef {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x24];                           // +0x04
     long          m_member;                                  // +0x28 retail-only long (previous header)

@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct C2DLineF {
+class C2DLineF {
+public:
     float Point1_X;                                          // +0x00 C2DVector::X
     float Point1_Y;                                          // +0x04 C2DVector::Y
     float Point2_X;                                          // +0x08 C2DVector::X

@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CMainGameComponent;
-struct CWorld;
+class CMainGameComponent;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CGameTimeManager {
+class CGameTimeManager {
+public:
     CWorld*             World;                               // +0x00
     CMainGameComponent* GameComponent;                       // +0x04
     float               Time;                                // +0x08

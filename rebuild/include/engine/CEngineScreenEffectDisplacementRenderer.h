@@ -7,14 +7,24 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#include "fable_engine_component.h"
+class CEngineVideoOptionsDef;
 
-struct CTexture;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectDisplacementRenderer {
-    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
-    unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
+class CEngineScreenEffectDisplacementRenderer : public CEngineComponent {
+public:
+    bool BeginDisplacementRendering();
+    void FinishDisplacementRendering();
+    void BeginDisplacementStencilRendering();
+    void FinishDisplacementStencilRendering();
+    // Donor slot13; retail SmartRestoreComponentVideoMemory calls +34.
+    virtual bool SetEffectQuality(const CEngineVideoOptionsDef&);
+    virtual void OnReleaseDefaultPoolResources();
+private:
+    bool InitialiseTextures();
+public:
     CTexture*     BackBufferCopyTexture;                     // +0x0c
     CTexture*     DisplacementTexture;                       // +0x10
     long          DisplacementTextureHandle;                 // +0x14
@@ -49,7 +59,6 @@ struct CEngineScreenEffectDisplacementRenderer {
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CEngineScreenEffectDisplacementRenderer) == 0x1ac);
-FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectDisplacementRenderer, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectDisplacementRenderer, BackBufferCopyTexture) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectDisplacementRenderer, DisplacementTexture) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CEngineScreenEffectDisplacementRenderer, DisplacementTextureHandle) == 0x14);

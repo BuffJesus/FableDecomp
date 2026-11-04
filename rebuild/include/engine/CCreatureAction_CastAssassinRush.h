@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
+class CCPPointerInfo;
+class CCreatureActionBase;
 
 #pragma pack(push, 1)
-struct CCreatureAction_CastAssassinRush {
+class CCreatureAction_CastAssassinRush {
+public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _base_0x04[0x128];                  // +0x04 flattened base-class subobject(s)
     bool                 Override;                           // +0x12c

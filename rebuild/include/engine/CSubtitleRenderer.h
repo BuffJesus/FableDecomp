@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CFontBank;
-struct CGraphicDataBank;
-struct CWideStringData;
+class CFontBank;
+class CGraphicDataBank;
+class CWideStringData;
 
 #pragma pack(push, 1)
-struct CSubtitleRenderer {
+class CSubtitleRenderer {
+public:
     void*             __vftable;                             // +0x00 vptr, or first dword of a flattened base subobject
     float             VWindow_TLX;                           // +0x04 C2DBoxF::TLX
     float             VWindow_TLY;                           // +0x08 C2DBoxF::TLY

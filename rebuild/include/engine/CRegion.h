@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCharStringData;
-struct CDefPointeeBase;
+class CCharStringData;
+class CDefPointeeBase;
 
 #pragma pack(push, 1)
-struct CRegion {
+class CRegion {
+public:
     unsigned char    Maps[0x10];                             // +0x00 vector<long,std::allocator<long>_>
     unsigned char    VisMaps[0x10];                          // +0x10 vector<long,std::allocator<long>_>
     CCharStringData* Name_PStringData;                       // +0x20 CCharString::PStringData

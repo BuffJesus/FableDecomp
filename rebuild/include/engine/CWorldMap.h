@@ -8,16 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CLevelLoader;
-struct CMainGameComponent;
-struct CRegionConnectionGraph;
+class CCPPointerInfo;
+class CLevelLoader;
+class CMainGameComponent;
+class CRegionConnectionGraph;
 struct CThingMapManager;
-struct CWADBank;
-struct CWorld;
+class CWADBank;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CWorldMap {
+class CWorldMap {
+public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     long                    f4;                              // +0x04 retail-only long (previous header)
     CWorld*                 World;                           // +0x08

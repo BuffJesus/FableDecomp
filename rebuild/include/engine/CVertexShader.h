@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CVertexShaderData;
+class CVertexShaderData;
 
 #pragma pack(push, 1)
-struct CVertexShader {
+class CVertexShader {
+public:
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     CVertexShaderData* Data;                                 // +0x04
 };

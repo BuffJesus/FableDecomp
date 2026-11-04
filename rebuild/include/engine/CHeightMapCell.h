@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CHeightMapCell {
+class CHeightMapCell {
+public:
     float         Height;                                    // +0x00
     unsigned char EngineThemePaletteIndex[3];                // +0x04
     unsigned char EngineBlend[2];                            // +0x07

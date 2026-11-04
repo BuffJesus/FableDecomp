@@ -4,11 +4,7 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-class CVertexShader
-{
-public:
-    fable_u32 words[2];
-};
+#include "fable_vertex_shader.h"
 
 struct CVertexShaderArray
 {

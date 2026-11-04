@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CMainGameComponent;
+class CMainGameComponent;
 struct CNetworkPlayer;
 
 #pragma pack(push, 1)
-struct CNetworkClient {
+class CNetworkClient {
+public:
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       Server[0x8];                         // +0x08 CNetworkServer

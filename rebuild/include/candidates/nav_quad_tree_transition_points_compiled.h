@@ -22,14 +22,16 @@ public:
 
 class CNavigatorManager;
 
-struct C2DVector
+class C2DVector
 {
+public:
     float X;
     float Y;
 };
 
-struct CNavigationTransitionPoint
+class CNavigationTransitionPoint
 {
+public:
     C2DVector Position;
     long LayerIndex0;
     long LayerIndex1;

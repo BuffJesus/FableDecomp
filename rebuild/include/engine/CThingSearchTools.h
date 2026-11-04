@@ -8,12 +8,13 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThingManager;
+class CThingManager;
 struct CThingMapManager;
-struct CWorldMap;
+class CWorldMap;
 
 #pragma pack(push, 1)
-struct CThingSearchTools {
+class CThingSearchTools {
+public:
     CWorldMap*        WorldMap;                              // +0x00
     CThingMapManager* PThingMapManager;                      // +0x04
     CThingManager*    ThingManager;                          // +0x08

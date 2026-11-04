@@ -7,9 +7,16 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+class CEnginePrimitiveHandle;
+class CEnginePrimitive;
+class CEnginePrimitiveAttachmentInfo;
 
 #pragma pack(push, 1)
-struct CEnginePrimitiveAttachmentManager {
+class CEnginePrimitiveAttachmentManager {
+public:
+    // Donor signature and retail tail target 00B3A180. Layout below remains
+    // the existing donor view; this forwarding declaration makes no retail size claim.
+    void SetAttachedPrimitive(CEnginePrimitiveHandle&,const CEnginePrimitive&,const CEnginePrimitiveAttachmentInfo&,const CEnginePrimitiveHandle&,long,unsigned long);
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char _pad_0x08[0x4];                            // +0x08

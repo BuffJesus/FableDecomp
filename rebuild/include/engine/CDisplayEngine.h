@@ -8,18 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CDisplayViewManager;
-struct CGameDefinitionManager;
-struct CGraphicDataBank;
-struct CIEngine;
-struct CMainGameComponent;
-struct CMeshDataBank;
-struct CPlayerManager;
-struct CWorld;
+class CCPPointerInfo;
+class CDisplayViewManager;
+class CGameDefinitionManager;
+class CGraphicDataBank;
+class CIEngine;
+class CMainGameComponent;
+class CMeshDataBank;
+class CPlayerManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CDisplayEngine {
+class CDisplayEngine {
+public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08
@@ -60,6 +61,10 @@ struct CDisplayEngine {
     float                   TimeSinceFadeStarted;            // +0xf4
     CWorld*                 World;                           // +0xf8
     unsigned char           _pad_0xfc[0x4];                  // +0xfc
+
+    // Hand-added (non-virtual, layout unchanged): ?Render@CDisplayEngine@@QAEXPBVCInterpolationInfo@@_N1@Z,
+    // retail 0x00435F70 (`jmp DoRender 0x00435530`; the manifest labels 0x435F70 DoRender).
+    void Render(const class CInterpolationInfo* info, bool worldUpdateTurn, bool present);
 };
 #pragma pack(pop)
 

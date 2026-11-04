@@ -8,20 +8,21 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CBankFileAsyncData;
-struct CBankFileAsyncEntry;
-struct CCPPointerInfo;
-struct CEngineLandscapeLODMap;
-struct CEngineLandscapePatch;
-struct CEngineMap;
-struct CEngineStaticMapFileBlockManager;
-struct CGraphicDataBank;
-struct CLandscapeBackgroundDynamicBuildTemplate;
-struct CLandscapeBackgroundTreeNode;
-struct CRGBColour;
+class CBankFileAsyncData;
+class CBankFileAsyncEntry;
+class CCPPointerInfo;
+class CEngineLandscapeLODMap;
+class CEngineLandscapePatch;
+class CEngineMap;
+class CEngineStaticMapFileBlockManager;
+class CGraphicDataBank;
+class CLandscapeBackgroundDynamicBuildTemplate;
+class CLandscapeBackgroundTreeNode;
+class CRGBColour;
 
 #pragma pack(push, 1)
-struct CEngineLandscapeMap {
+class CEngineLandscapeMap {
+public:
     void*                                     __vftable;     // +0x00 vptr, or first dword of a flattened base subobject
     CLandscapeBackgroundTreeNode*             PatchTree;     // +0x04
     CEngineLandscapePatch*                    Patches;       // +0x08

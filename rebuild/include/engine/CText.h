@@ -8,9 +8,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CFontBank;
-struct CWideStringData;
+class CCPPointerInfo;
+class CFontBank;
+class CWideStringData;
 
 #pragma pack(push, 1)
 struct CText {

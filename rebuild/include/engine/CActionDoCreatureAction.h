@@ -8,8 +8,8 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCPPointerInfo;
-struct CCreatureActionBase;
+class CCPPointerInfo;
+class CCreatureActionBase;
 
 #pragma pack(push, 1)
 struct CActionDoCreatureAction {

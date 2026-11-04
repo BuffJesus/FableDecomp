@@ -8,13 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CTexture;
+class CTexture;
 
 #pragma pack(push, 1)
-struct CEngineScreenEffectOutlineGlow {
+class CEngineScreenEffectOutlineGlow {
+public:
+    void BeginOutlineRendering();
+    void FinishOutlineRendering();
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
-    unsigned char _pad_0x08[0x4];                            // +0x08
+    bool RenderEnabled;
+    unsigned char _pad_0x09[3];
     CTexture*     OutlineTexture;                            // +0x0c
     CTexture*     Blur1Texture;                              // +0x10
     CTexture*     Blur2Texture;                              // +0x14

@@ -8,10 +8,11 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CThing;
+class CThing;
 
 #pragma pack(push, 1)
-struct CTCBase {
+class CTCBase {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     CThing*       ParentThing;                               // +0x04
     bool          ToBeRemoved;                               // +0x08

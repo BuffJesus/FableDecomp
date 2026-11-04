@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CWeatherMask {
+class CWeatherMask {
+public:
     unsigned char BSphere[0x10];                             // +0x00 C3DBoundingSphere
     unsigned char BBox[0x18];                                // +0x10 C3DBoundingBox
     unsigned char InvTransform[0x30];                        // +0x28 CMatrix3x4

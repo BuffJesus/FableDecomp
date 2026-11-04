@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CAIStateGroup_ServeFoodAtHome {
+class CAIStateGroup_ServeFoodAtHome {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     void*         m_pOwner;                                  // +0x04 retail-only CStateGroupOwner* (previous header)
     unsigned char _pad_0x08[0x44];                           // +0x08

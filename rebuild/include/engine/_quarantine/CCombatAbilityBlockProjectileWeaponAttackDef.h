@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CCombatAbilityBlockProjectileWeaponAttackDef {
+class CCombatAbilityBlockProjectileWeaponAttackDef {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     long          sub28;                                     // +0x04 retail-only Member28 (CCombatAbilityBlockProjectileWeaponAttackDef_Copy_00461d2c.cpp)
     unsigned char _pad_0x08[0x54];                           // +0x08

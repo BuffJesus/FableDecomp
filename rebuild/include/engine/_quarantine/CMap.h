@@ -8,14 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CCachedVolumes;
-struct CGameDefinitionManager;
-struct CGameMap;
-struct CHeightMap;
-struct CWorld;
+class CCachedVolumes;
+class CGameDefinitionManager;
+class CGameMap;
+class CHeightMap;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CMap {
+class CMap {
+public:
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char           _pad_0x04[0x4];                  // +0x04
     CCachedVolumes*         CachedVolumes_ptr;               // +0x08 scoped_ptr<CCachedVolumes>::ptr

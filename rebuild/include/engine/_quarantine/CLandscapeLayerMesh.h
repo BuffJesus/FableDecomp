@@ -8,14 +8,15 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEngineLandscapeMap;
-struct CGraphicInfoFrame;
-struct CIndexBuffer;
+class CEngineLandscapeMap;
+class CGraphicInfoFrame;
+class CIndexBuffer;
 struct CVertex;
-struct CVertexBufferWin32;
+class CVertexBufferWin32;
 
 #pragma pack(push, 1)
-struct CLandscapeLayerMesh {
+class CLandscapeLayerMesh {
+public:
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     long                 ForegroundTextureIndex;             // +0x04
     long                 BackgroundTextureIndex;             // +0x08

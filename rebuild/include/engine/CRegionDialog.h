@@ -8,9 +8,9 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CEditControlCentre;
-struct CGuiControlButton;
-struct CGuiWindowBox;
+class CEditControlCentre;
+class CGuiControlButton;
+class CGuiWindowBox;
 
 #pragma pack(push, 1)
 struct CRegionDialog {

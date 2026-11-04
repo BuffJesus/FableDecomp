@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CNavQuadTree {
+class CNavQuadTree {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     bool          Initialised;                               // +0x04
     bool          Activated;                                 // +0x05

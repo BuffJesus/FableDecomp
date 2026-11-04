@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CStaticMapBankStateBlock {
+class CStaticMapBankStateBlock {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char State[0x4];                                // +0x04 CStateBlock
 };

@@ -8,11 +8,12 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
-struct CGraphicInfo;
-struct CIVCountedPointeeBase;
+class CGraphicInfo;
+class CIVCountedPointeeBase;
 
 #pragma pack(push, 1)
-struct CGraphicInfoFrame {
+class CGraphicInfoFrame {
+public:
     void*                  __vftable;                        // +0x00 vptr, or first dword of a flattened base subobject
     unsigned short         FrameNum;                         // +0x04
     signed char            SmallMipmapLevel;                 // +0x06

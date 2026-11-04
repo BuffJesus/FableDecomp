@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CPixelFormat {
+class CPixelFormat {
+public:
     long FormatIndex;                                        // +0x00
 };
 #pragma pack(pop)

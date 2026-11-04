@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CANavQuadTreeNode {
+class CANavQuadTreeNode {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     float         Position_X;                                // +0x04 C2DVector::X
     float         Position_Y;                                // +0x08 C2DVector::Y

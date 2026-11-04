@@ -9,7 +9,8 @@
 #include "rebuild_abi.h"
 
 #pragma pack(push, 1)
-struct CEngineSceneEnumeratorResetVisibilityRatio {
+class CEngineSceneEnumeratorResetVisibilityRatio {
+public:
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char OcclusionLayer[0x4];                       // +0x04 EEngineOcclusionLayer
 };

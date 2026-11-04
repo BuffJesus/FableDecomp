@@ -9,15 +9,16 @@
 #include "rebuild_abi.h"
 
 struct CActiveQuest;
-struct CCPPointerInfo;
-struct CCharStringData;
-struct CGameScriptInterface;
-struct CGameScriptThingManager;
-struct CScriptInfoManager;
-struct CWorld;
+class CCPPointerInfo;
+class CCharStringData;
+class CGameScriptInterface;
+class CGameScriptThingManager;
+class CScriptInfoManager;
+class CWorld;
 
 #pragma pack(push, 1)
-struct CQuestManager {
+class CQuestManager {
+public:
     void*                    __vftable;                      // +0x00 vptr, or first dword of a flattened base subobject
     CGameScriptThingManager* PGameScriptThingManager_Data;   // +0x04 CCountedPointer<CGameScriptThingManager>::Data
     CCPPointerInfo*          PGameScriptThingManager_Info;   // +0x08 CCountedPointer<CGameScriptThingManager>::Info
