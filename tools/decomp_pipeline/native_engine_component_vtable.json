@@ -1,0 +1,98 @@
+{
+  "symbol": "??_7CEngineComponent@@6B@",
+  "retail_address": "012a2544",
+  "donor_rva": "00cb109c",
+  "entries": [
+    {
+      "slot": 0,
+      "symbol": "??_ECEngineComponent@@UAEPAXI@Z",
+      "retail_address": "00b59780",
+      "donor_rva": "005c5ad0",
+      "donor_signature": "public: virtual void * __thiscall CEngineComponent::`scalar deleting destructor'(unsigned int)"
+    },
+    {
+      "slot": 1,
+      "symbol": "?FrameStart@CEngineComponent@@UAEXABVCEngineComponentParams@@@Z",
+      "retail_address": "00b28c20",
+      "donor_rva": "000927a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::FrameStart(class CEngineComponentParams const &)"
+    },
+    {
+      "slot": 2,
+      "symbol": "?FrameEnd@CEngineComponent@@UAEXABVCEngineComponentParams@@@Z",
+      "retail_address": "00b28c30",
+      "donor_rva": "000927a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::FrameEnd(class CEngineComponentParams const &)"
+    },
+    {
+      "slot": 3,
+      "symbol": "?LoadNewScene@CEngineComponent@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z",
+      "retail_address": "00b28c40",
+      "donor_rva": "002bdf20",
+      "donor_signature": "public: virtual bool __thiscall CEngineComponent::LoadNewScene(class CEngineComponentLoadNewSceneParams const &)"
+    },
+    {
+      "slot": 4,
+      "symbol": "?Render@CEngineComponent@@UAEXABVCEngineComponentRenderParams@@@Z",
+      "retail_address": "00b28c50",
+      "donor_rva": "000927a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::Render(class CEngineComponentRenderParams const &)"
+    },
+    {
+      "slot": 5,
+      "symbol": "?PreLayerRender@CEngineComponent@@UAEXABVCEngineComponentRenderParams@@@Z",
+      "retail_address": "00b28c60",
+      "donor_rva": "000927a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::PreLayerRender(class CEngineComponentRenderParams const &)"
+    },
+    {
+      "slot": 6,
+      "symbol": "?PostLayerRender@CEngineComponent@@UAEXABVCEngineComponentRenderParams@@@Z",
+      "retail_address": "00b28c70",
+      "donor_rva": "000927a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::PostLayerRender(class CEngineComponentRenderParams const &)"
+    },
+    {
+      "slot": 7,
+      "symbol": "?WorldFrameUpdate@CEngineComponent@@UAEX_N@Z",
+      "retail_address": "00b28c80",
+      "donor_rva": "000927a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::WorldFrameUpdate(bool)"
+    },
+    {
+      "slot": 8,
+      "symbol": "?PausedWorldFrameUpdate@CEngineComponent@@UAEXXZ",
+      "retail_address": "00b28c90",
+      "donor_rva": "005060a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::PausedWorldFrameUpdate(void)"
+    },
+    {
+      "slot": 9,
+      "symbol": "?GetConsoleEnableFunctionName@CEngineComponent@@UAE?AVCCharString@@XZ",
+      "retail_address": "00b28ca0",
+      "donor_rva": "005b3c40",
+      "donor_signature": "public: virtual class CCharString __thiscall CEngineComponent::GetConsoleEnableFunctionName(void)"
+    },
+    {
+      "slot": 10,
+      "symbol": "__purecall",
+      "retail_address": "00bfea08",
+      "donor_rva": "00896020",
+      "donor_signature": "_purecall"
+    },
+    {
+      "slot": 11,
+      "symbol": "?OnReleaseDefaultPoolResources@CEngineComponent@@UAEXXZ",
+      "retail_address": "00b28cc0",
+      "donor_rva": "005060a0",
+      "donor_signature": "public: virtual void __thiscall CEngineComponent::OnReleaseDefaultPoolResources(void)"
+    },
+    {
+      "slot": 12,
+      "symbol": "?OnRestoreDefaultPoolResources@CEngineComponent@@UAE_NXZ",
+      "retail_address": "00b28cd0",
+      "donor_rva": "00133860",
+      "donor_signature": "public: virtual bool __thiscall CEngineComponent::OnRestoreDefaultPoolResources(void)"
+    }
+  ]
+}

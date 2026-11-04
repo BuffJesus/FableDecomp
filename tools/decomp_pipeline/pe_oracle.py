@@ -38,6 +38,26 @@ def va_to_off(secs, va):
             return rawptr + (rva - sva)
     return None
 
+
+def read_virtual_data(data, va, size):
+    """Read loader-visible section data, including its zero-filled virtual tail.
+
+    va_to_off is a code/file-offset helper: using its result for BSS can read
+    unrelated bytes from a later file section instead of the loader's zeros.
+    """
+    if size < 0:
+        raise ValueError("negative virtual data size")
+    rva = va - IMAGE_BASE
+    for name, start, virtual_size, raw_offset, raw_size in pe_sections(data):
+        if start <= rva and rva + size <= start + max(virtual_size, raw_size):
+            relative = rva - start
+            stored = min(size, max(0, raw_size - relative))
+            value = data[raw_offset + relative:raw_offset + relative + stored]
+            if len(value) != stored:
+                raise ValueError("truncated raw section: " + name)
+            return value + bytes(size - stored)
+    raise ValueError("virtual data outside one section: %08x + %d" % (va, size))
+
 def main():
     data = EXE.read_bytes()
     secs = pe_sections(data)

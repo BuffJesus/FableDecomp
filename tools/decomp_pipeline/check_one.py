@@ -23,7 +23,8 @@ def vc71(s):
     return "\n".join(l for l in s.splitlines() if "static_assert" not in l)
 
 def obj_text(path, leaf):
-    pr = subprocess.run([OBJDUMP,"-d",str(path)],capture_output=True,text=True,check=True)
+    # Preserve zero-filled switch-table relocation slots in the byte stream.
+    pr = subprocess.run([OBJDUMP,"-d","-z",str(path)],capture_output=True,text=True,check=True)
     fns,sec,cur=[],-1,None
     for line in pr.stdout.splitlines():
         if line.startswith("Disassembly of section .text:"): sec+=1;cur=None;continue

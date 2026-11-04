@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify authored candidates (byte-match + behaviour) and auto-land the wins.
+"""Verify authored candidates (byte-close + behaviour) and auto-land the wins.
 Usage: python verify_and_land.py <workflow_output.json> <oracle.tsv>
        [--land] [--prune-outside-manifest]
        python verify_and_land.py --prune-fragment-report <report.md>
@@ -24,6 +24,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from artifact_layout import shard_directory
 from crawl import purity
+from near_match import compare as instruction_similarity, retail_relocations
+
+ACCEPTED_PARITY = ("MATCH", "RELOCATION_MATCH", "NEAR_MATCH")
 GENERIC_STRUCT_NAMES = {"T", "Sub", "Owner", "Slot", "Info", "Obj", "S", "Self", "This", "Inner",
                         "Foo", "Holder", "Mid", "MidObj"}
 
@@ -42,7 +45,9 @@ def vc71(s):
     return "\n".join(l for l in s.splitlines() if "static_assert" not in l)
 
 def obj_text(path, leaf):
-    pr = subprocess.run([OBJDUMP,"-d",str(path)],capture_output=True,text=True,check=True)
+    # Switch tables contain zero-filled relocation slots. Without -z, objdump
+    # elides these bytes and reports a shorter body than the object contains.
+    pr = subprocess.run([OBJDUMP,"-d","-z",str(path)],capture_output=True,text=True,check=True)
     fns,sec,cur=[],-1,None
     for line in pr.stdout.splitlines():
         if line.startswith("Disassembly of section .text:"): sec+=1;cur=None;continue
@@ -275,24 +280,35 @@ EXTRA_FLAGSETS=[[], ["/GS"], ["/Oa"], ["/GS","/Oa"]]
 def parity_of(srctext, addr, leaf, retail, work, e, extra=(), base_flags=None, text_extractor=None):
     """Compile one TU and grade its .text against the retail oracle bytes.
 
-    Returns (status, built_bytes, section). Status is MATCH / RELOCATION_MATCH /
+    Returns (status, built_bytes, section). Status is MATCH / RELOCATION_MATCH / NEAR_MATCH /
     DIFFER(NvM) / SRC_FAIL / OBJDUMP_ERR. Module-level so retype_landed.py and the
     jump-table lander can reuse it; `text_extractor` swaps obj_text for the raw-COFF
     reader when a function embeds a jump table."""
     flags = list(BASE_FLAGS if base_flags is None else base_flags)
     extract = text_extractor or obj_text
     sp=work/f"{addr}.cpp"; sp.write_text(srctext,encoding="utf-8")
+    (work/f"{addr}.similarity.json").unlink(missing_ok=True)
     obj=work/f"{addr}.obj"; obj.unlink(missing_ok=True)
     cp=cl(["/nologo","/c"]+flags+list(extra)+[f"/Fo{obj}",str(sp)],e)
     if cp.returncode or not obj.exists(): return "SRC_FAIL",None,None
-    try: built,sec,_=extract(obj,leaf)
+    try: built,sec,symbol=extract(obj,leaf)
     except Exception: return "OBJDUMP_ERR",None,None
     rel=obj_relocs(obj,sec)
     if retail==built: return "MATCH",built,sec
     if mask(retail,rel)==mask(built,rel): return "RELOCATION_MATCH",built,sec
+    score = instruction_similarity(built, retail, rel, retail_relocations(addr, len(retail)))
+    report = score.to_dict()
+    report['symbol'] = symbol
+    report['symbol_selected_by_name'] = bool(leaf and leaf in symbol)
+    report['code_boundary_supported'] = text_extractor is None
+    (work/f"{addr}.similarity.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    # The legacy extractor can fall back to the longest unrelated COMDAT.
+    # That fallback must never qualify a new near-match reconstruction.
+    if score.near_match and report['symbol_selected_by_name'] and report['code_boundary_supported']:
+        return "NEAR_MATCH",built,sec
     return f"DIFFER({len(built)}v{len(retail)})",built,sec
 
-def behaviour_of(test_text, addr, patt, work, e, sobj=None):
+def behaviour_of(test_text, addr, patt, work, e, sobj=None, require_candidate=False):
     """Compile+link+run the behaviour test. PASS / FAIL / TCC_FAIL / LINK_FAIL.
 
     Tries a self-contained test link first, then falls back to linking the source
@@ -307,6 +323,8 @@ def behaviour_of(test_text, addr, patt, work, e, sobj=None):
         return "PASS" if (rn.returncode==0 and re.search(re.escape(patt),rn.stdout or "")) else "FAIL"
     lk=subprocess.run([str(VC/"bin"/"link.exe"),"/nologo",f"/out:{exe}",str(tobj)],capture_output=True,text=True,env=e)
     if lk.returncode==0 and exe.exists():
+        if require_candidate:
+            return "SELF_CONTAINED_TEST"
         return _run_exe()
     if sobj is not None and Path(sobj).exists():
         exe.unlink(missing_ok=True)
@@ -331,7 +349,8 @@ def main():
     if qfe:
         use_qfe(); print(f"[toolset] QFE-4035 compiler: {CL_EXE}")
     data=json.loads(outf.read_text(encoding="utf-8"))["result"]["authored"]
-    oracle_rows=list(csv.DictReader(open(oraclef,encoding="utf-8-sig"),delimiter="\t"))
+    with oraclef.open(encoding="utf-8-sig", newline="") as oracle_stream:
+        oracle_rows=list(csv.DictReader(oracle_stream,delimiter="\t"))
     required_oracle_fields={"address", "name", "length", "bytes"}
     missing_fields=required_oracle_fields-set(oracle_rows[0] if oracle_rows else ())
     if missing_fields:
@@ -370,7 +389,7 @@ def main():
     print(f"{'addr':10} {'parity':16} {'behav':6} name")
     for c in data:
         addr=c["address"].lower().replace("0x","")
-        name=c.get("name") or (orc.get(addr,{}).get("name")) or f"sub_{addr}"; leaf=name.rsplit("::",1)[-1]
+        name=c.get("name") or (orc.get(addr,{}).get("name")) or f"sub_{addr}"; leaf=c.get("symbol_leaf") or name.rsplit("::",1)[-1]
         if addr in outside_manifest:
             print(f"{addr:10} {'OUTSIDE_MANIFEST':16} {'-':6} {name}")
             continue
@@ -382,6 +401,9 @@ def main():
         # Purity gate: hand-written machine code is an oracle, not a reconstruction (CONTRIBUTING.md).
         if not purity.is_genuine(src0):
             print(f"{addr:10} {'NOT_GENUINE':16} {'-':6} {name}"); continue
+        # ...including asm hidden in an included header (only sanctioned helpers pass).
+        if purity.unsanctioned_header_asm(src0):
+            print(f"{addr:10} {'HEADER_ASM':16} {'-':6} {name} {purity.unsanctioned_header_asm(src0)}"); continue
         # Shared-header policy: warn when a candidate redeclares a class that already has an
         # engine header, or models `this` with a throwaway struct name. LANDVERIFY_STRICT_HEADERS=1
         # turns the warnings into rejections.
@@ -398,26 +420,30 @@ def main():
         retail=bytes.fromhex(o["bytes"])
         # try base source/flags, then a pragma x extra-flag sweep (permuter integrated).
         src=src0; winflags=[]; st,_,_=parity_of(src, addr, leaf, retail, work, e)
-        if not st.startswith(("MATCH","RELOCATION")):
+        if not st.startswith(ACCEPTED_PARITY):
             done=False
             for xf in EXTRA_FLAGSETS:
                 for P in PRAGMAS:
                     if not xf and not P: continue  # already tried base above
                     cand=(P+"\n"+src0) if P else src0
                     st2,_,_=parity_of(cand, addr, leaf, retail, work, e, extra=xf)
-                    if st2.startswith(("MATCH","RELOCATION")):
+                    if st2.startswith(ACCEPTED_PARITY):
                         src=cand; winflags=xf
                         tag=(P.split('(')[1].split(',')[0] if P else "")
                         if xf: tag=(tag+" "+" ".join(xf)).strip()
                         st=st2+(f"[{tag}]" if tag else ""); done=True; break
                 if done: break
         # recompile the winning (src, winflags) last so sobj holds the winning object
-        if st.startswith(("MATCH","RELOCATION")):
-            parity_of(src, addr, leaf, retail, work, e, extra=winflags)
+        # Also restore the base object on a miss: otherwise behavior was tested
+        # against the last rejected pragma, not the reported source.
+        parity_of(src, addr, leaf, retail, work, e, extra=winflags)
         sobj=work/f"{addr}.obj"  # source object from the last parity_of(src) compile
-        beh=behaviour_of(tst, addr, patt, work, e, sobj)
+        beh=behaviour_of(tst, addr, patt, work, e, sobj, require_candidate=st.startswith("NEAR_MATCH"))
         print(f"{addr:10} {st:16} {beh:6} {name}")
-        if st.startswith(("MATCH","RELOCATION_MATCH")) and beh=="PASS":
+        score_path=work/f"{addr}.similarity.json"
+        if score_path.exists() and not st.startswith(("MATCH", "RELOCATION_MATCH")):
+            print("  similarity " + score_path.read_text(encoding="utf-8").replace('\n', ''))
+        if st.startswith(ACCEPTED_PARITY) and beh=="PASS":
             base=make_base(mod, leaf, addr)
             wins.append({"addr":addr,"name":name,"leaf":leaf,"module":mod,"status":st,"pass":patt,"base":base,
                          "src":src,"test":tst,"oracle_row":o,"flags":list(winflags)})
@@ -439,10 +465,11 @@ def main():
             # Record the toolset so the real build recompiles QFE wins with 13.10.4035
             # (RTM cannot reproduce their bytes). See docs/pipeline/QFE4035_COMPILER_GATE.md.
             compilerline="        Compiler = 'qfe4035'\n" if qfe else ""
+            gradeline="        Grade = 'near_match'\n" if w['status'].startswith('NEAR_MATCH') else ""
             entries.append("    [pscustomobject]@{\n"
                 f"        Address = '{w['addr']}'\n        Module = '{w['module']}'\n"
                 f"        Source = '{source_rel}'\n        TestSource = '{test_rel}'\n"
-                f"{flagline}{compilerline}        PassPattern = '{w['pass']}'\n    }}")
+                f"{flagline}{compilerline}{gradeline}        PassPattern = '{w['pass']}'\n    }}")
         # Insert into the $catalog array itself.  The build driver declares
         # other arrays after the catalog, so searching backwards from a later
         # marker can accidentally splice entries into $requestedAddresses.
@@ -451,10 +478,11 @@ def main():
         catp.write_text(text,encoding="utf-8")
         # append oracle rows
         oracle_catalog = ROOT/"rebuild"/"oracles"/"auto-re-candidates.tsv"
-        existing_oracle_addresses = {
-            row["address"].lower().replace("0x", "")
-            for row in csv.DictReader(open(oracle_catalog, encoding="utf-8-sig"), delimiter="\t")
-        }
+        with oracle_catalog.open(encoding="utf-8-sig", newline="") as oracle_stream:
+            existing_oracle_addresses = {
+                row["address"].lower().replace("0x", "")
+                for row in csv.DictReader(oracle_stream, delimiter="\t")
+            }
         with open(oracle_catalog,"a",encoding="utf-8",newline="") as f:
             for w in wins:
                 if w["addr"] not in existing_oracle_addresses:

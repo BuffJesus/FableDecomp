@@ -1,0 +1,122 @@
+[
+  {
+    "name": "FrameStart",
+    "address": 11701280,
+    "size": 3,
+    "ret": "void",
+    "param": "const CEngineComponentParams&",
+    "symbol": "?FrameStart@CEngineComponent@@UAEXABVCEngineComponentParams@@@Z",
+    "relocations": 0
+  },
+  {
+    "name": "FrameEnd",
+    "address": 11701296,
+    "size": 3,
+    "ret": "void",
+    "param": "const CEngineComponentParams&",
+    "symbol": "?FrameEnd@CEngineComponent@@UAEXABVCEngineComponentParams@@@Z",
+    "relocations": 0
+  },
+  {
+    "name": "LoadNewScene",
+    "address": 11701312,
+    "size": 5,
+    "ret": "bool",
+    "param": "const CEngineComponentLoadNewSceneParams&",
+    "symbol": "?LoadNewScene@CEngineComponent@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z",
+    "relocations": 0
+  },
+  {
+    "name": "Render",
+    "address": 11701328,
+    "size": 3,
+    "ret": "void",
+    "param": "const CEngineComponentRenderParams&",
+    "symbol": "?Render@CEngineComponent@@UAEXABVCEngineComponentRenderParams@@@Z",
+    "relocations": 0
+  },
+  {
+    "name": "PreLayerRender",
+    "address": 11701344,
+    "size": 3,
+    "ret": "void",
+    "param": "const CEngineComponentRenderParams&",
+    "symbol": "?PreLayerRender@CEngineComponent@@UAEXABVCEngineComponentRenderParams@@@Z",
+    "relocations": 0
+  },
+  {
+    "name": "PostLayerRender",
+    "address": 11701360,
+    "size": 3,
+    "ret": "void",
+    "param": "const CEngineComponentRenderParams&",
+    "symbol": "?PostLayerRender@CEngineComponent@@UAEXABVCEngineComponentRenderParams@@@Z",
+    "relocations": 0
+  },
+  {
+    "name": "WorldFrameUpdate",
+    "address": 11701376,
+    "size": 3,
+    "ret": "void",
+    "param": "bool",
+    "symbol": "?WorldFrameUpdate@CEngineComponent@@UAEX_N@Z",
+    "relocations": 0
+  },
+  {
+    "name": "PausedWorldFrameUpdate",
+    "address": 11701392,
+    "size": 1,
+    "ret": "void",
+    "param": "",
+    "symbol": "?PausedWorldFrameUpdate@CEngineComponent@@UAEXXZ",
+    "relocations": 0
+  },
+  {
+    "name": "OnReleaseDefaultPoolResources",
+    "address": 11701440,
+    "size": 1,
+    "ret": "void",
+    "param": "",
+    "symbol": "?OnReleaseDefaultPoolResources@CEngineComponent@@UAEXXZ",
+    "relocations": 0
+  },
+  {
+    "name": "OnRestoreDefaultPoolResources",
+    "address": 11701456,
+    "size": 3,
+    "ret": "bool",
+    "param": "",
+    "symbol": "?OnRestoreDefaultPoolResources@CEngineComponent@@UAE_NXZ",
+    "relocations": 0
+  },
+  {
+    "symbol": "??0CEngineComponent@@QAE@XZ",
+    "address": 11900688,
+    "size": 21,
+    "relocations": 1
+  },
+  {
+    "symbol": "??1CEngineComponent@@UAE@XZ",
+    "address": 11900720,
+    "size": 20,
+    "relocations": 1
+  },
+  {
+    "symbol": "??_GCEngineComponent@@UAEPAXI@Z",
+    "address": 11900800,
+    "size": 44,
+    "relocations": 2
+  },
+  {
+    "symbol": "?SetGlobalComponentPointer@CEngineComponent@@QAEXPAPAX@Z",
+    "address": 11900752,
+    "size": 10,
+    "relocations": 0
+  },
+  {
+    "symbol": "?GetConsoleEnableFunctionName@CEngineComponent@@UAE?AVCCharString@@XZ",
+    "address": 11701408,
+    "size": 25,
+    "relocations": 2
+  }
+]

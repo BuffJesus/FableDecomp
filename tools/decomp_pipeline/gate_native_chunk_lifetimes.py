@@ -1,0 +1,108 @@
+"""Fresh VC71 parity gate: Mesh/anim-file chunk constructors, destructors and accessors already in their TUs (out-of-line retail copies)."""
+import sys
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'tools/decomp_pipeline'))
+import native_exact_roots
+ADDRESS={
+ '?resize@?$vector@JV?$allocator@J@_STL@@@_STL@@QAEXIABJ@Z':0x4428f0,
+ '??1CBaseClassNonCopyable@@UAE@XZ':0x99a300,
+ '??0CCharString@@QAE@XZ':0x99e4b0,
+ '??1CCharString@@QAE@XZ':0x99eae0,
+ '??0CCharString@@QAE@ABV0@@Z':0x99ec30,
+ '??0CChunkedFileChunk@@QAE@PBD@Z':0xaa7590,
+ '??1CChunkedFileChunk@@UAE@XZ':0xaa75c0,
+ '??0CChunkedFileSuperChunk@@QAE@PBD@Z':0xaa8360,
+ '??1CChunkedFileSuperChunk@@UAE@XZ':0xaa8490,
+ '?ResetParams@C3DMeshFileMaterialChunk@@AAEXXZ':0xac0250,
+ '??3@YAXPAX@Z':0xbfe9bc,
+ '_free':0xbfea14,
+ '??_C@_04OGKGDHNF@XBDS?$AA@':0x129cef0,
+ '??_C@_04CPJDFACK@BONE?$AA@':0x129dedc,
+ '??_C@_04FKFGIHAH@PRIM?$AA@':0x129dee4,
+ '??_C@_04HLJHBOBI@TRIS?$AA@':0x129df28,
+ '??_C@_04KEFJIOJP@CLTH?$AA@':0x129df30,
+ '??_C@_04DINDAPDJ@XVBD?$AA@':0x129df40,
+ '??_C@_04PGCHKCNG@XAPR?$AA@':0x129df50,
+ '??_C@_04OGLBMPFB@AOBJ?$AA@':0x129dfc4,
+ '??_C@_04IMHECKIP@SUBM?$AA@':0x129e06c,
+ '??_7C3DMeshFileXAnimatedPrimitiveChunk@@6B@':0x129e278,
+ '??_7C3DMeshFileXBoundingSphereChunk@@6B@':0x129e2bc,
+ '??_7C3DMeshFileXVertexDataChunk@@6B@':0x129e33c,
+ '??_7CChunkedFile@@6B@':0x129e4e8,
+ '??_C@_04DOIACMFC@HPNT?$AA@':0x129e51c,
+ '??_C@_04OMACLOLC@HCVL?$AA@':0x129e52c,
+ '??_7C3DMeshFileHelperPointChunk@@6B@':0x129e5b4,
+ '??_7C3DMeshFileConvexVolumeChunk@@6B@':0x129e634,
+ '??_C@_04HIAFEPA@TMEV?$AA@':0x129e7ac,
+ '??_C@_04FAAHPKGJ@ASEQ?$AA@':0x129e7b4,
+ '??_7C3DAnimFileTimingEventChunk@@6B@':0x129e7f0,
+ '??_7C3DAnimFileSequenceChunk@@6B@':0x129e8b8,
+ '??_7C3DAnimFileObjectChunk@@6B@':0x129e904,
+ '??_C@_04KEIKGGPK@TRFM?$AA@':0x129eaec,
+ '??_C@_04FNMOPFIH@VGRP?$AA@':0x129eaf4,
+ '??_7C3DMeshFileSubMeshChunk@@6B@':0x129eb18,
+ '??_7C3DMeshFileTransformationChunk@@6B@':0x129eb54,
+ '??_7C3DMeshFileBoneChunk@@6B@':0x129eb9c,
+ '??_7C3DMeshFileGroupChunk@@6B@':0x129ecb8,
+ '??_7C3DMeshFileTrianglesChunk@@6B@':0x129ed34,
+ '??_7C3DMeshFilePrimitiveChunk@@6B@':0x129ed74,
+ '??_C@_04OOCFPGDI@MTRL?$AA@':0x129edc4,
+ '??_7C3DMeshFileMaterialChunk@@6B@':0x129eee0,
+ '??_C@_04ODFMPJDG@MPRT?$AA@':0x129ef40,
+ '??_7C3DMeshFilePartitionChunk@@6B@':0x129ef4c,
+ '??_7C3DMeshFileClothChunk@@6B@':0x129f008,
+}
+F0=R/'rebuild/src/compiled/00/ac/C3DMeshFileClothChunk_Methods_00ac6600.cpp'
+F1=R/'rebuild/src/compiled/00/aa/C3DMeshFileConvexVolumeChunk_Methods_00aa9ad0.cpp'
+F2=R/'rebuild/src/compiled/00/aa/C3DMeshFileXChunks_00aa4b50.cpp'
+F3=R/'rebuild/src/compiled/00/aa/C3DMeshFileXChunks_00aa4b50.cpp'
+F4=R/'rebuild/src/compiled/00/aa/C3DMeshFileXChunks_00aa4b50.cpp'
+F5=R/'rebuild/src/compiled/00/aa/CChunkedFileChunk_Base_00aa75d0.cpp'
+F6=R/'rebuild/src/compiled/00/aa/C3DMeshFileHelperPointChunk_Methods_00aa96b0.cpp'
+F7=R/'rebuild/src/compiled/00/aa/C3DMeshFileDummyObjectChunk_Methods_00aa9910.cpp'
+F8=R/'rebuild/src/compiled/00/aa/C3DAnimFileTimingEventChunk_Methods_00aae190.cpp'
+F9=R/'rebuild/src/compiled/00/aa/C3DAnimFileSequenceChunk_Methods_00aaf5b0.cpp'
+F10=R/'rebuild/src/compiled/00/ab/C3DAnimFileObjectChunk_Methods_00ab0090.cpp'
+F11=R/'rebuild/src/compiled/00/ab/C3DMeshFileSubMeshChunk_Methods_00ab9af0.cpp'
+F12=R/'rebuild/src/compiled/00/ab/C3DMeshFileTransformationChunk_Methods_00ab9c30.cpp'
+F13=R/'rebuild/src/compiled/00/ab/C3DMeshFileBoneChunk_Methods_00ab9ea0.cpp'
+F14=R/'rebuild/src/compiled/00/ab/C3DMeshFileGroupChunk_Methods_00abae50.cpp'
+F15=R/'rebuild/src/compiled/00/ab/C3DMeshFileTrianglesChunk_Methods_00abbe90.cpp'
+F16=R/'rebuild/src/compiled/00/ab/C3DMeshFilePrimitiveChunk_Methods_00abc390.cpp'
+F17=R/'rebuild/src/compiled/00/ab/C3DMeshFileMaterialChunk_Methods_00abfbf0.cpp'
+F18=R/'rebuild/src/compiled/00/ab/C3DMeshFileMapChunk_Methods_00abfe80.cpp'
+F19=R/'rebuild/src/compiled/00/ac/C3DMeshFilePartitionChunk_Create_00ac29c0.cpp'
+ROOTS=[
+ dict(name='cloth_dtor',source=F0,symbol='??1C3DMeshFileClothChunk@@UAE@XZ',address=0xa9d3c0,size=43,instructions=15,relocations=4),
+ dict(name='cloth_ctor',source=F0,symbol='??0C3DMeshFileClothChunk@@QAE@XZ',address=0xac66a0,size=50,instructions=16,relocations=5),
+ dict(name='convex_volume_dtor',source=F1,symbol='??1C3DMeshFileConvexVolumeChunk@@UAE@XZ',address=0xa9d3f0,size=35,instructions=13,relocations=3),
+ dict(name='convex_volume_ctor',source=F1,symbol='??0C3DMeshFileConvexVolumeChunk@@QAE@XZ',address=0xaaaa10,size=42,instructions=14,relocations=4),
+ dict(name='xanimated_primitive_ctor',source=F2,symbol='??0C3DMeshFileXAnimatedPrimitiveChunk@@QAE@XZ',address=0xaa4c80,size=31,instructions=11,relocations=3),
+ dict(name='xbounding_sphere_ctor',source=F2,symbol='??0C3DMeshFileXBoundingSphereChunk@@QAE@XZ',address=0xaa4e10,size=37,instructions=13,relocations=3),
+ dict(name='xvertex_data_ctor',source=F3,symbol='??0C3DMeshFileXVertexDataChunk@@QAE@XZ',address=0xaa5980,size=63,instructions=21,relocations=3),
+ dict(name='xuv_tangent_dtor',source=F4,symbol='??1C3DMeshFileXUVTangentChunk@@UAE@XZ',address=0xaa7320,size=43,instructions=17,relocations=3),
+ dict(name='set_parent',source=F5,symbol='?SetParent@CChunkedFileChunk@@AAEXPAVCChunkedFileSuperChunk@@@Z',address=0xaa7680,size=10,instructions=3,relocations=0),
+ dict(name='chunked_file_deleting_dtor',source=F5,symbol='??_GCChunkedFile@@UAEPAXI@Z',address=0xaa9190,size=95,instructions=30,relocations=5),
+ dict(name='helper_point_ctor',source=F6,symbol='??0C3DMeshFileHelperPointChunk@@QAE@XZ',address=0xaa9b20,size=51,instructions=17,relocations=4),
+ dict(name='helper_point_typed_ctor',source=F7,symbol='??0C3DMeshFileHelperPointChunk@@QAE@PBD@Z',address=0xaa9b60,size=53,instructions=18,relocations=3),
+ dict(name='timing_event_ctor',source=F8,symbol='??0C3DAnimFileTimingEventChunk@@QAE@XZ',address=0xaae170,size=31,instructions=10,relocations=4),
+ dict(name='anim_sequence_ctor',source=F9,symbol='??0C3DAnimFileSequenceChunk@@QAE@XZ',address=0xaaf730,size=52,instructions=16,relocations=4),
+ dict(name='anim_object_ctor',source=F10,symbol='??0C3DAnimFileObjectChunk@@QAE@XZ',address=0xab0020,size=31,instructions=10,relocations=4),
+ dict(name='submesh_ctor',source=F11,symbol='??0C3DMeshFileSubMeshChunk@@QAE@XZ',address=0xab9a70,size=46,instructions=15,relocations=4),
+ dict(name='transformation_ctor',source=F12,symbol='??0C3DMeshFileTransformationChunk@@QAE@XZ',address=0xab9be0,size=66,instructions=22,relocations=3),
+ dict(name='bone_ctor',source=F13,symbol='??0C3DMeshFileBoneChunk@@QAE@XZ',address=0xab9da0,size=48,instructions=17,relocations=4),
+ dict(name='group_ctor',source=F14,symbol='??0C3DMeshFileGroupChunk@@QAE@XZ',address=0xabc650,size=41,instructions=13,relocations=3),
+ dict(name='group_dtor',source=F14,symbol='??1C3DMeshFileGroupChunk@@UAE@XZ',address=0xabc680,size=33,instructions=12,relocations=3),
+ dict(name='triangles_ctor',source=F15,symbol='??0C3DMeshFileTrianglesChunk@@QAE@XZ',address=0xabc860,size=34,instructions=12,relocations=3),
+ dict(name='primitive_set_material_index',source=F16,symbol='?SetMaterialIndex@C3DMeshFilePrimitiveChunk@@QAEXJ@Z',address=0xabcf10,size=40,instructions=15,relocations=1),
+ dict(name='primitive_ctor',source=F16,symbol='??0C3DMeshFilePrimitiveChunk@@QAE@XZ',address=0xabd080,size=66,instructions=25,relocations=4),
+ dict(name='material_get_name',source=F17,symbol='?GetName@C3DMeshFileMaterialChunk@@QBE?BVCCharString@@XZ',address=0xabfb20,size=22,instructions=9,relocations=1),
+ dict(name='material_ctor',source=F17,symbol='??0C3DMeshFileMaterialChunk@@QAE@XZ',address=0xac0ab0,size=45,instructions=13,relocations=5),
+ dict(name='map_get_filename',source=F18,symbol='?GetFilename@C3DMeshFileMapChunk@@QBE?BVCCharString@@XZ',address=0xabfb70,size=22,instructions=9,relocations=1),
+ dict(name='partition_ctor',source=F19,symbol='??0C3DMeshFilePartitionChunk@@QAE@XZ',address=0xac3940,size=31,instructions=11,relocations=3),
+]
+def main():
+ results=native_exact_roots.run(__file__,ROOTS,ADDRESS,'native-chunk-lifetimes.json',[],
+  'Mesh/anim-file chunk constructors, destructors and accessors already in their TUs (out-of-line retail copies)')
+ print('NATIVE_CHUNK_LIFETIMES_PASS',' '.join(r['name']+'='+r['grade'] for r in results))
+if __name__=='__main__':main()

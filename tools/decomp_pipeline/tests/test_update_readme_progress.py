@@ -35,6 +35,11 @@ class VerifiedPublicCountsTests(unittest.TestCase):
             verified_public_counts(
                 self.status, self.parity, self.coverage)
 
+    def test_near_matches_count_only_toward_reconstructed_total(self):
+        self.coverage['candidate_near_matches'] = 3
+        self.coverage['verified_lifted'] += 3
+        self.assertEqual(verified_public_counts(self.status, self.parity, self.coverage), (4739, 2705))
+
     def test_rejects_stale_candidate_exact_total(self):
         self.coverage["candidate_retail_matches"] = 2688
         with self.assertRaisesRegex(

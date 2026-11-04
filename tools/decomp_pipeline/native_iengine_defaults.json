@@ -1,0 +1,262 @@
+[
+  {
+    "slot": 14,
+    "symbol": "?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z",
+    "retail_address": "00b23330",
+    "donor_rva": "002bdf20",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CIEngine::SetVideoOptions(class CEngineVideoOptions const &)"
+    ],
+    "name": "SetVideoOptions",
+    "size": 5,
+    "words": 1,
+    "kind": "byte"
+  },
+  {
+    "slot": 18,
+    "symbol": "?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z",
+    "retail_address": "00b23350",
+    "donor_rva": "005be610",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CIEngine::CheckPrimitiveVisibility(unsigned __int64)"
+    ],
+    "name": "CheckPrimitiveVisibility",
+    "size": 5,
+    "words": 2,
+    "kind": "byte"
+  },
+  {
+    "slot": 19,
+    "symbol": "?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ",
+    "retail_address": "00b23360",
+    "donor_rva": "002e12f0",
+    "donor_signatures": [
+      "public: virtual float __thiscall CIEngine::GetPrimitiveDrawDistanceFactor(void)const "
+    ],
+    "name": "GetPrimitiveDrawDistanceFactor",
+    "size": 7,
+    "words": 0,
+    "kind": "float"
+  },
+  {
+    "slot": 21,
+    "symbol": "?ClipSphere@CIEngine@@UBE_NABVC3DBoundingSphere@@@Z",
+    "retail_address": "00b23380",
+    "donor_rva": "002e1300",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CIEngine::ClipSphere(class C3DBoundingSphere const &)const "
+    ],
+    "name": "ClipSphere",
+    "size": 5,
+    "words": 1,
+    "kind": "byte"
+  },
+  {
+    "slot": 22,
+    "symbol": "?ClipBox@CIEngine@@UBE_NABVC3DBoundingBox@@@Z",
+    "retail_address": "00b23390",
+    "donor_rva": "002e1300",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CIEngine::ClipBox(class C3DBoundingBox const &)const "
+    ],
+    "name": "ClipBox",
+    "size": 5,
+    "words": 1,
+    "kind": "byte"
+  },
+  {
+    "slot": 26,
+    "symbol": "?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+    "retail_address": "00b233c0",
+    "donor_rva": "00279410",
+    "donor_signatures": [
+      "public: virtual unsigned long __thiscall CIEngine::AddChildPrimitive(class CEnginePrimitiveHandle &,class CEnginePrimitive const &,unsigned long)"
+    ],
+    "name": "AddChildPrimitive",
+    "size": 5,
+    "words": 3,
+    "kind": "word"
+  },
+  {
+    "slot": 33,
+    "symbol": "?CollectPrimitiveStatsForArea@CIEngine@@UBEXAAVCIEnginePrimitiveStatMap@@ABVC2DBoxF@@JK@Z",
+    "retail_address": "00b23430",
+    "donor_rva": "002e1310",
+    "donor_signatures": [
+      "public: virtual void __thiscall CIEngine::CollectPrimitiveStatsForArea(class std::map<unsigned long,unsigned long,struct std::less<unsigned long>,class std::allocator<struct std::pair<unsigned long const ,unsigned long> > > &,class C2DBoxF const &,enum EEnginePrimitiveStatIndex,unsigned long)const "
+    ],
+    "name": "CollectPrimitiveStatsForArea",
+    "size": 3,
+    "words": 4,
+    "kind": "void"
+  },
+  {
+    "slot": 34,
+    "symbol": "?ProcessPrimitiveStats@CIEngine@@UBEXABVCIEnginePrimitiveStatMap@@JAAKAAV?$CArray@VCCharString@@@@@Z",
+    "retail_address": "00b23440",
+    "donor_rva": "002e1310",
+    "donor_signatures": [
+      "public: virtual void __thiscall CIEngine::ProcessPrimitiveStats(class std::map<unsigned long,unsigned long,struct std::less<unsigned long>,class std::allocator<struct std::pair<unsigned long const ,unsigned long> > > const &,enum EEnginePrimitiveStatIndex,unsigned long &,class CArray<class CCharString> &)const "
+    ],
+    "name": "ProcessPrimitiveStats",
+    "size": 3,
+    "words": 4,
+    "kind": "void"
+  },
+  {
+    "slot": 35,
+    "symbol": "?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z",
+    "retail_address": "00b23450",
+    "donor_rva": "0003cb90",
+    "donor_signatures": [
+      "public: virtual class C3DAnimationInfo const * __thiscall CIEngine::GetEditorAnimation(class CWideString const &)const "
+    ],
+    "name": "GetEditorAnimation",
+    "size": 5,
+    "words": 1,
+    "kind": "word"
+  },
+  {
+    "slot": 36,
+    "symbol": "?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z",
+    "retail_address": "00b23460",
+    "donor_rva": "002e1320",
+    "donor_signatures": [
+      "public: virtual unsigned long __thiscall CIEngine::AddCustomMorphTexture(class CTexture &,class CCharString const &)const "
+    ],
+    "name": "AddCustomMorphTexture",
+    "size": 5,
+    "words": 2,
+    "kind": "word"
+  },
+  {
+    "slot": 39,
+    "symbol": "?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z",
+    "retail_address": "00b23490",
+    "donor_rva": "00279420",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CIEngine::IsStaticMapNeedingUpdate(long,class CCharString const &,unsigned long)const "
+    ],
+    "name": "IsStaticMapNeedingUpdate",
+    "size": 5,
+    "words": 3,
+    "kind": "byte"
+  },
+  {
+    "slot": 49,
+    "symbol": "?OnActivate@CIEngine@@UAEXXZ",
+    "retail_address": "00b23530",
+    "donor_rva": "002e1330",
+    "donor_signatures": [
+      "public: virtual void __thiscall CIEngine::OnActivate(void)"
+    ],
+    "name": "OnActivate",
+    "size": 5,
+    "words": 0,
+    "kind": "void"
+  },
+  {
+    "slot": 50,
+    "symbol": "?OnDeactivate@CIEngine@@UAEXXZ",
+    "retail_address": "00b23540",
+    "donor_rva": "002e1340",
+    "donor_signatures": [
+      "public: virtual void __thiscall CIEngine::OnDeactivate(void)"
+    ],
+    "name": "OnDeactivate",
+    "size": 5,
+    "words": 0,
+    "kind": "void"
+  },
+  {
+    "slot": 51,
+    "symbol": "?IsActive@CIEngine@@UBE_NXZ",
+    "retail_address": "00b23550",
+    "donor_rva": "002e1350",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CIEngine::IsActive(void)const "
+    ],
+    "name": "IsActive",
+    "size": 4,
+    "words": 0,
+    "kind": "byte"
+  },
+  {
+    "slot": 53,
+    "symbol": "?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z",
+    "retail_address": "00b23570",
+    "donor_rva": "002e1360",
+    "donor_signatures": [
+      "public: virtual void __thiscall CIEngine::SetLandscapeDebugTintColour(long,class CRGBColour)"
+    ],
+    "name": "SetLandscapeDebugTintColour",
+    "size": 3,
+    "words": 2,
+    "kind": "void"
+  },
+  {
+    "slot": 60,
+    "symbol": "?UpdateTextureMorphCache@CIEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBVCIEngineLongSet@@@Z",
+    "retail_address": "00b235e0",
+    "donor_rva": "002e1310",
+    "donor_signatures": [
+      "public: virtual void __thiscall CIEngine::UpdateTextureMorphCache(class CArray<class CEngineTextureMorph> const &,bool,float,class std::set<long,struct std::less<long>,class std::allocator<long> > const *)"
+    ],
+    "name": "UpdateTextureMorphCache",
+    "size": 3,
+    "words": 4,
+    "kind": "void"
+  },
+  {
+    "slot": 69,
+    "symbol": "?AllocateTextureFromEngineResourcePools@CIEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z",
+    "retail_address": "00b23670",
+    "donor_rva": "002e1370",
+    "donor_signatures": [
+      "public: virtual class CTexture * __thiscall CIEngine::AllocateTextureFromEngineResourcePools(unsigned long,class C2DExtentsI const &,long,class CPixelFormat const &)"
+    ],
+    "name": "AllocateTextureFromEngineResourcePools",
+    "size": 5,
+    "words": 4,
+    "kind": "word"
+  },
+  {
+    "slot": 74,
+    "symbol": "?DeallocateShadowBuffer@CIEngine@@UAE_NXZ",
+    "retail_address": "00b236c0",
+    "donor_rva": "002c35e0",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CIEngine::DeallocateShadowBuffer(void)"
+    ],
+    "name": "DeallocateShadowBuffer",
+    "size": 3,
+    "words": 0,
+    "kind": "byte"
+  },
+  {
+    "slot": 83,
+    "symbol": "?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+    "retail_address": "00b28b40",
+    "donor_rva": "002e51f0",
+    "donor_signatures": [
+      "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalDiffuseColour(void)const "
+    ],
+    "name": "PeekGlobalDiffuseColour",
+    "size": 23,
+    "words": 1,
+    "kind": "colour"
+  },
+  {
+    "slot": 84,
+    "symbol": "?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+    "retail_address": "00b28b60",
+    "donor_rva": "002e51f0",
+    "donor_signatures": [
+      "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalAmbientColour(void)const "
+    ],
+    "name": "PeekGlobalAmbientColour",
+    "size": 23,
+    "words": 1,
+    "kind": "colour"
+  }
+]

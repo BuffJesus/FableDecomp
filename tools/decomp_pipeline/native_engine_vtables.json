@@ -1,0 +1,1580 @@
+[
+  {
+    "symbol": "??_7CEngine@@6BCIEngine@@@",
+    "retail_address": "012a0f3c",
+    "donor_rva": "00cb0654",
+    "entries": [
+      {
+        "slot": 0,
+        "symbol": "??_ECEngine@@UAEPAXI@Z",
+        "retail_address": "00b2ab10",
+        "donor_rva": "005b45e0",
+        "donor_signatures": [
+          "public: virtual void * __thiscall CEngine::`scalar deleting destructor'(unsigned int)"
+        ]
+      },
+      {
+        "slot": 1,
+        "symbol": "?Validate@CInitBaseClass@@UBEXXZ",
+        "retail_address": "0099a340",
+        "donor_rva": "00701f90",
+        "donor_signatures": [
+          "public: virtual void __thiscall CInitBaseClass::Validate(void)const "
+        ]
+      },
+      {
+        "slot": 2,
+        "symbol": "?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z",
+        "retail_address": "00b26360",
+        "donor_rva": "005b0b60",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::Initialise(class CEngineInit const &)"
+        ]
+      },
+      {
+        "slot": 3,
+        "symbol": "?Release@CEngine@@UAEXXZ",
+        "retail_address": "00b23990",
+        "donor_rva": "005add90",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::Release(void)"
+        ]
+      },
+      {
+        "slot": 4,
+        "symbol": "?SetCamera@CEngine@@UAEXPBVCCamera@@@Z",
+        "retail_address": "00b23b50",
+        "donor_rva": "005adf70",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetCamera(class CCamera const *)"
+        ]
+      },
+      {
+        "slot": 5,
+        "symbol": "?SetWindow@CEngine@@UAEXPBVC2DBoxF@@@Z",
+        "retail_address": "00b23b80",
+        "donor_rva": "005adfa0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetWindow(class C2DBoxF const *)"
+        ]
+      },
+      {
+        "slot": 6,
+        "symbol": "?SetEnvironmentalEffectsAlwaysUpdate@CEngine@@UAEX_N@Z",
+        "retail_address": "00b23b90",
+        "donor_rva": "005adfb0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetEnvironmentalEffectsAlwaysUpdate(bool)"
+        ]
+      },
+      {
+        "slot": 7,
+        "symbol": "?SetWorld@CEngine@@UAEXPBVCIDrawWorld@@@Z",
+        "retail_address": "00b23e00",
+        "donor_rva": "005ae200",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetWorld(class CIDrawWorld const *)"
+        ]
+      },
+      {
+        "slot": 8,
+        "symbol": "?Render@CEngine@@UAEXABVCEngineInterpolationInfo@@K@Z",
+        "retail_address": "00b27d90",
+        "donor_rva": "005b39a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::Render(class CEngineInterpolationInfo const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 9,
+        "symbol": "?WorldFrameUpdate@CEngine@@UAEX_N@Z",
+        "retail_address": "00b24030",
+        "donor_rva": "005b01a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::WorldFrameUpdate(bool)"
+        ]
+      },
+      {
+        "slot": 10,
+        "symbol": "?PausedWorldFrameUpdate@CEngine@@UAEXXZ",
+        "retail_address": "00b240c0",
+        "donor_rva": "005b0230",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::PausedWorldFrameUpdate(void)"
+        ]
+      },
+      {
+        "slot": 11,
+        "symbol": "?ConvertScreenPosToWorldPos@CEngine@@UBE_NABVC2DVector@@AAVC3DVector@@@Z",
+        "retail_address": "00b23cf0",
+        "donor_rva": "005ae850",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::ConvertScreenPosToWorldPos(class C2DVector const &,class C3DVector &)const "
+        ]
+      },
+      {
+        "slot": 12,
+        "symbol": "?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z",
+        "retail_address": "00b24400",
+        "donor_rva": "005ae730",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::ConvertScreenPosToWorldPosAtViewDistance(float,class C2DVector const &,class C3DVector &)const "
+        ]
+      },
+      {
+        "slot": 13,
+        "symbol": "?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z",
+        "retail_address": "00b242d0",
+        "donor_rva": "005ae5f0",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::ConvertWorldPosToScreenPos(class C3DVector const &,class C2DVector &)const "
+        ]
+      },
+      {
+        "slot": 14,
+        "symbol": "?SetVideoOptions@CEngine@@UAE_NABVCEngineVideoOptions@@@Z",
+        "retail_address": "00b24690",
+        "donor_rva": "005aee20",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::SetVideoOptions(class CEngineVideoOptions const &)"
+        ]
+      },
+      {
+        "slot": 15,
+        "symbol": "?PreChangeResolution@CEngine@@UAE_NXZ",
+        "retail_address": "00b2aa20",
+        "donor_rva": "00133860",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::PreChangeResolution(void)"
+        ]
+      },
+      {
+        "slot": 16,
+        "symbol": "?PostChangeResolution@CEngine@@UAE_NKKK@Z",
+        "retail_address": "00b2aa30",
+        "donor_rva": "005b4550",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::PostChangeResolution(unsigned long,unsigned long,unsigned long)"
+        ]
+      },
+      {
+        "slot": 17,
+        "symbol": "?Refresh@CIEngine@@UAEXXZ",
+        "retail_address": "00b23340",
+        "donor_rva": "005060a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::Refresh(void)"
+        ]
+      },
+      {
+        "slot": 18,
+        "symbol": "?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z",
+        "retail_address": "00b23350",
+        "donor_rva": "005be610",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::CheckPrimitiveVisibility(unsigned __int64)"
+        ]
+      },
+      {
+        "slot": 19,
+        "symbol": "?GetPrimitiveDrawDistanceFactor@CEngine@@UBEMXZ",
+        "retail_address": "00b23d00",
+        "donor_rva": "005ae110",
+        "donor_signatures": [
+          "public: virtual float __thiscall CEngine::GetPrimitiveDrawDistanceFactor(void)const "
+        ]
+      },
+      {
+        "slot": 20,
+        "symbol": "?AddPrimitive@CEngine@@UAEXABVCEnginePrimitive@@@Z",
+        "retail_address": "00b23bb0",
+        "donor_rva": "005adfd0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::AddPrimitive(class CEnginePrimitive const &)"
+        ]
+      },
+      {
+        "slot": 21,
+        "symbol": "?ClipSphere@CEngine@@UBE_NABVC3DBoundingSphere@@@Z",
+        "retail_address": "00b24150",
+        "donor_rva": "005ae420",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::ClipSphere(class C3DBoundingSphere const &)const "
+        ]
+      },
+      {
+        "slot": 22,
+        "symbol": "?ClipBox@CEngine@@UBE_NABVC3DBoundingBox@@@Z",
+        "retail_address": "00b242a0",
+        "donor_rva": "005ae5c0",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::ClipBox(class C3DBoundingBox const &)const "
+        ]
+      },
+      {
+        "slot": 23,
+        "symbol": "?SetPersistentPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "retail_address": "00b23bc0",
+        "donor_rva": "005adfe0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetPersistentPrimitive(class CEnginePrimitiveHandle &,class CEnginePrimitive const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 24,
+        "symbol": "?SetPrimitiveAnimation@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z",
+        "retail_address": "00b23be0",
+        "donor_rva": "005ae000",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetPrimitiveAnimation(class CEnginePrimitiveHandle &,class CEnginePrimitiveAnimation const &)"
+        ]
+      },
+      {
+        "slot": 25,
+        "symbol": "?SetPrimitivePosition@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z",
+        "retail_address": "00b23bf0",
+        "donor_rva": "005ae010",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetPrimitivePosition(class CEnginePrimitiveHandle &,class CEnginePrimitivePosition const &)"
+        ]
+      },
+      {
+        "slot": 26,
+        "symbol": "?AddChildPrimitive@CEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "retail_address": "00b23c20",
+        "donor_rva": "005ae040",
+        "donor_signatures": [
+          "public: virtual unsigned long __thiscall CEngine::AddChildPrimitive(class CEnginePrimitiveHandle &,class CEnginePrimitive const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 27,
+        "symbol": "?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z",
+        "retail_address": "00b23c30",
+        "donor_rva": "005ae050",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetChildPrimitive(class CEnginePrimitiveHandle &,unsigned long,class CEnginePrimitiveHandle &,class CEnginePrimitive const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 28,
+        "symbol": "?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z",
+        "retail_address": "00b23c50",
+        "donor_rva": "005ae070",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetChildPrimitive(class CEnginePrimitiveHandle &,unsigned long,class CEnginePrimitive const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 29,
+        "symbol": "?GetChildPrimitiveHandle@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z",
+        "retail_address": "00b23c40",
+        "donor_rva": "005ae060",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::GetChildPrimitiveHandle(class CEnginePrimitiveHandle &,unsigned long,class CEnginePrimitiveHandle &)"
+        ]
+      },
+      {
+        "slot": 30,
+        "symbol": "?ClearChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z",
+        "retail_address": "00b23c60",
+        "donor_rva": "005ae080",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::ClearChildPrimitive(class CEnginePrimitiveHandle &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 31,
+        "symbol": "?ClearAllChildPrimitives@CEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z",
+        "retail_address": "00b23c70",
+        "donor_rva": "005ae090",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::ClearAllChildPrimitives(class CEnginePrimitiveHandle &)"
+        ]
+      },
+      {
+        "slot": 32,
+        "symbol": "?SetAttachedPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z",
+        "retail_address": "00b23c80",
+        "donor_rva": "005ae0a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetAttachedPrimitive(class CEnginePrimitiveHandle &,class CEnginePrimitive const &,class CEnginePrimitiveAttachmentInfo const &,class CEnginePrimitiveHandle const &,long,unsigned long)"
+        ]
+      },
+      {
+        "slot": 33,
+        "symbol": "?CollectPrimitiveStatsForArea@CEngine@@UBEXAAVCIEnginePrimitiveStatMap@@ABVC2DBoxF@@JK@Z",
+        "retail_address": "00b23c90",
+        "donor_rva": "005ae0b0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::CollectPrimitiveStatsForArea(class std::map<unsigned long,unsigned long,struct std::less<unsigned long>,class std::allocator<struct std::pair<unsigned long const ,unsigned long> > > &,class C2DBoxF const &,enum EEnginePrimitiveStatIndex,unsigned long)const "
+        ]
+      },
+      {
+        "slot": 34,
+        "symbol": "?ProcessPrimitiveStats@CEngine@@UBEXABVCIEnginePrimitiveStatMap@@JAAKAAV?$CArray@VCCharString@@@@@Z",
+        "retail_address": "00b23ca0",
+        "donor_rva": "005ae0c0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::ProcessPrimitiveStats(class std::map<unsigned long,unsigned long,struct std::less<unsigned long>,class std::allocator<struct std::pair<unsigned long const ,unsigned long> > > const &,enum EEnginePrimitiveStatIndex,unsigned long &,class CArray<class CCharString> &)const "
+        ]
+      },
+      {
+        "slot": 35,
+        "symbol": "?GetEditorAnimation@CEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z",
+        "retail_address": "00b23cb0",
+        "donor_rva": "005ae0d0",
+        "donor_signatures": [
+          "public: virtual class C3DAnimationInfo const * __thiscall CEngine::GetEditorAnimation(class CWideString const &)const "
+        ]
+      },
+      {
+        "slot": 36,
+        "symbol": "?AddCustomMorphTexture@CEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z",
+        "retail_address": "00b23ce0",
+        "donor_rva": "005ae100",
+        "donor_signatures": [
+          "public: virtual unsigned long __thiscall CEngine::AddCustomMorphTexture(class CTexture &,class CCharString const &)const "
+        ]
+      },
+      {
+        "slot": 37,
+        "symbol": "?GetStaticMapUpdatePassCount@CEngine@@UAEJXZ",
+        "retail_address": "00b2aa40",
+        "donor_rva": "004ecb30",
+        "donor_signatures": [
+          "public: virtual long __thiscall CEngine::GetStaticMapUpdatePassCount(void)"
+        ]
+      },
+      {
+        "slot": 38,
+        "symbol": "?StartStaticMapUpdatePass@CEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "retail_address": "00b23d80",
+        "donor_rva": "005ae190",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::StartStaticMapUpdatePass(class CWideString const &,long,class CStaticMapGenerationVisibiilityInfo const &,class CArray<class CCharString> const &)"
+        ]
+      },
+      {
+        "slot": 39,
+        "symbol": "?IsStaticMapNeedingUpdate@CEngine@@UBE_NJABVCCharString@@K@Z",
+        "retail_address": "00b23d90",
+        "donor_rva": "005ae1a0",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::IsStaticMapNeedingUpdate(long,class CCharString const &,unsigned long)const "
+        ]
+      },
+      {
+        "slot": 40,
+        "symbol": "?UpdateStaticMap@CEngine@@UAEXJABVCCharString@@KJ@Z",
+        "retail_address": "00b23da0",
+        "donor_rva": "005b02c0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::UpdateStaticMap(long,class CCharString const &,unsigned long,long)"
+        ]
+      },
+      {
+        "slot": 41,
+        "symbol": "?CloseStaticMapFile@CEngine@@UAEXXZ",
+        "retail_address": "00b23db0",
+        "donor_rva": "005ae1b0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::CloseStaticMapFile(void)"
+        ]
+      },
+      {
+        "slot": 42,
+        "symbol": "?AddMap@CEngine@@UAEXJJ@Z",
+        "retail_address": "00b23e10",
+        "donor_rva": "005ae210",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::AddMap(long,long)"
+        ]
+      },
+      {
+        "slot": 43,
+        "symbol": "?RemoveMap@CEngine@@UAEXJ@Z",
+        "retail_address": "00b23e20",
+        "donor_rva": "005ae220",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::RemoveMap(long)"
+        ]
+      },
+      {
+        "slot": 44,
+        "symbol": "?SetMapAsLoaded@CEngine@@UAEXJ@Z",
+        "retail_address": "00b23e30",
+        "donor_rva": "005ae230",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetMapAsLoaded(long)"
+        ]
+      },
+      {
+        "slot": 45,
+        "symbol": "?SetMapAsUnloaded@CEngine@@UAEXJ@Z",
+        "retail_address": "00b23e60",
+        "donor_rva": "005ae260",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetMapAsUnloaded(long)"
+        ]
+      },
+      {
+        "slot": 46,
+        "symbol": "?SetMapVisibilityAllMaps@CEngine@@UAEX_N@Z",
+        "retail_address": "00b23e50",
+        "donor_rva": "005ae250",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetMapVisibilityAllMaps(bool)"
+        ]
+      },
+      {
+        "slot": 47,
+        "symbol": "?SetMapVisibility@CEngine@@UAEXJ_N@Z",
+        "retail_address": "00b23e40",
+        "donor_rva": "005ae240",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetMapVisibility(long,bool)"
+        ]
+      },
+      {
+        "slot": 48,
+        "symbol": "?AreaChanged@CEngine@@UAEXABVC2DBoxI@@@Z",
+        "retail_address": "00b23dd0",
+        "donor_rva": "005ae1d0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::AreaChanged(class C2DBoxI const &)"
+        ]
+      },
+      {
+        "slot": 49,
+        "symbol": "?OnActivate@CEngine@@UAEXXZ",
+        "retail_address": "00b23de0",
+        "donor_rva": "005ae1e0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::OnActivate(void)"
+        ]
+      },
+      {
+        "slot": 50,
+        "symbol": "?OnDeactivate@CIEngine@@UAEXXZ",
+        "retail_address": "00b23540",
+        "donor_rva": "002e1340",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::OnDeactivate(void)"
+        ]
+      },
+      {
+        "slot": 51,
+        "symbol": "?IsActive@CIEngine@@UBE_NXZ",
+        "retail_address": "00b23550",
+        "donor_rva": "002e1350",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::IsActive(void)const "
+        ]
+      },
+      {
+        "slot": 52,
+        "symbol": "?SetStaticMapFileForUse@CEngine@@UAEXABVCWideString@@@Z",
+        "retail_address": "00b23dc0",
+        "donor_rva": "005ae1c0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetStaticMapFileForUse(class CWideString const &)"
+        ]
+      },
+      {
+        "slot": 53,
+        "symbol": "?SetLandscapeDebugTintColour@CEngine@@UAEXJVCRGBColour@@@Z",
+        "retail_address": "00b23df0",
+        "donor_rva": "005aeb50",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetLandscapeDebugTintColour(long,class CRGBColour)"
+        ]
+      },
+      {
+        "slot": 54,
+        "symbol": "?ReloadLocalDetailDefs@CEngine@@UAEXXZ",
+        "retail_address": "00b23e70",
+        "donor_rva": "005ae270",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::ReloadLocalDetailDefs(void)"
+        ]
+      },
+      {
+        "slot": 55,
+        "symbol": "?StartNewScene@CEngine@@UAEXKM@Z",
+        "retail_address": "00b239a0",
+        "donor_rva": "005adda0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::StartNewScene(unsigned long,float)"
+        ]
+      },
+      {
+        "slot": 56,
+        "symbol": "?CutscenePreload@CEngine@@UAEX_N0@Z",
+        "retail_address": "00b23a10",
+        "donor_rva": "005ade30",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::CutscenePreload(bool,bool)"
+        ]
+      },
+      {
+        "slot": 57,
+        "symbol": "?CutsceneAddCameraAngle@CEngine@@UAEXABVCCamera@@@Z",
+        "retail_address": "00b27d50",
+        "donor_rva": "005b32d0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::CutsceneAddCameraAngle(class CCamera const &)"
+        ]
+      },
+      {
+        "slot": 58,
+        "symbol": "?ChangeCameraAngle@CEngine@@UAEXXZ",
+        "retail_address": "00b23a50",
+        "donor_rva": "005ade70",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::ChangeCameraAngle(void)"
+        ]
+      },
+      {
+        "slot": 59,
+        "symbol": "?IsPreloaded@CEngine@@UBE_NXZ",
+        "retail_address": "00b23a70",
+        "donor_rva": "005ade90",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::IsPreloaded(void)const "
+        ]
+      },
+      {
+        "slot": 60,
+        "symbol": "?UpdateTextureMorphCache@CEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBVCIEngineLongSet@@@Z",
+        "retail_address": "00b239c0",
+        "donor_rva": "005addc0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::UpdateTextureMorphCache(class CArray<class CEngineTextureMorph> const &,bool,float,class std::set<long,struct std::less<long>,class std::allocator<long> > const *)"
+        ]
+      },
+      {
+        "slot": 61,
+        "symbol": "?SetScreenColourFilter@CEngine@@UAEXABVCEngineColourFilterSettings@@@Z",
+        "retail_address": "00b23ec0",
+        "donor_rva": "005ae2c0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetScreenColourFilter(class CEngineColourFilterSettings const &)"
+        ]
+      },
+      {
+        "slot": 62,
+        "symbol": "?SetSpotlightShadowMode@CEngine@@UAEX_N@Z",
+        "retail_address": "00b23c00",
+        "donor_rva": "005ae020",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetSpotlightShadowMode(bool)"
+        ]
+      },
+      {
+        "slot": 63,
+        "symbol": "?SetSeaBodyToRender@CEngine@@UAEXVCCharString@@@Z",
+        "retail_address": "00b23f00",
+        "donor_rva": "005ae2f0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetSeaBodyToRender(class CCharString)"
+        ]
+      },
+      {
+        "slot": 64,
+        "symbol": "?UpdateDebugOverlay@CEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z",
+        "retail_address": "00b23e80",
+        "donor_rva": "005ae280",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::UpdateDebugOverlay(long,class CRGBColour const *,class C2DBoxI const &)"
+        ]
+      },
+      {
+        "slot": 65,
+        "symbol": "?EnableDebugOverlay@CEngine@@UAEXJ_N0@Z",
+        "retail_address": "00b23e90",
+        "donor_rva": "005ae290",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::EnableDebugOverlay(long,bool,bool)"
+        ]
+      },
+      {
+        "slot": 66,
+        "symbol": "?SetGlobalLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "retail_address": "00b23ea0",
+        "donor_rva": "005ae2a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetGlobalLightingParameters(class C3DVector const &,class CRGBFloatColour const &,class CRGBFloatColour const &,class CRGBFloatColour const &)"
+        ]
+      },
+      {
+        "slot": 67,
+        "symbol": "?Set2DPrimitiveLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "retail_address": "00b23eb0",
+        "donor_rva": "005ae2b0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::Set2DPrimitiveLightingParameters(class C3DVector const &,class CRGBFloatColour const &,class CRGBFloatColour const &,class CRGBFloatColour const &)"
+        ]
+      },
+      {
+        "slot": 68,
+        "symbol": "?SetRenderTargetTexture@CEngine@@UAEXPBVCTexture@@@Z",
+        "retail_address": "00b23ef0",
+        "donor_rva": "005ae2e0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::SetRenderTargetTexture(class CTexture const *)"
+        ]
+      },
+      {
+        "slot": 69,
+        "symbol": "?AllocateTextureFromEngineResourcePools@CEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z",
+        "retail_address": "00b23f40",
+        "donor_rva": "005ae330",
+        "donor_signatures": [
+          "public: virtual class CTexture * __thiscall CEngine::AllocateTextureFromEngineResourcePools(unsigned long,class C2DExtentsI const &,long,class CPixelFormat const &)"
+        ]
+      },
+      {
+        "slot": 70,
+        "symbol": "?FreeTextureFromEngineResourcePools@CEngine@@UAEXPAVCTexture@@@Z",
+        "retail_address": "00b23f50",
+        "donor_rva": "005ae340",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::FreeTextureFromEngineResourcePools(class CTexture *)"
+        ]
+      },
+      {
+        "slot": 71,
+        "symbol": "?GetLoadingMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "retail_address": "00b25c80",
+        "donor_rva": "005aec00",
+        "donor_signatures": [
+          "public: virtual class CMovableResourceMemoryPool * __thiscall CEngine::GetLoadingMemoryPool(void)"
+        ]
+      },
+      {
+        "slot": 72,
+        "symbol": "?GetAnimationMemoryPool@CEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "retail_address": "00b25cc0",
+        "donor_rva": "005aec40",
+        "donor_signatures": [
+          "public: virtual class CMovableResourceMemoryPool * __thiscall CEngine::GetAnimationMemoryPool(void)"
+        ]
+      },
+      {
+        "slot": 73,
+        "symbol": "?GetScratchBufferTextureManager@CEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+        "retail_address": "00b23f60",
+        "donor_rva": "005ae350",
+        "donor_signatures": [
+          "public: virtual class CGPUScratchBufferTextureManager * __thiscall CEngine::GetScratchBufferTextureManager(void)"
+        ]
+      },
+      {
+        "slot": 74,
+        "symbol": "?DeallocateShadowBuffer@CEngine@@UAE_NXZ",
+        "retail_address": "00b23f70",
+        "donor_rva": "005ae360",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::DeallocateShadowBuffer(void)"
+        ]
+      },
+      {
+        "slot": 75,
+        "symbol": "?ReallocateShadowBuffer@CEngine@@UAEXXZ",
+        "retail_address": "00b23f80",
+        "donor_rva": "005ae370",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::ReallocateShadowBuffer(void)"
+        ]
+      },
+      {
+        "slot": 76,
+        "symbol": "?Enable3DSceneRendering@CEngine@@UAEX_N@Z",
+        "retail_address": "00b23f90",
+        "donor_rva": "005ae380",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::Enable3DSceneRendering(bool)"
+        ]
+      },
+      {
+        "slot": 77,
+        "symbol": "?Is3DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+        "retail_address": "00b23fc0",
+        "donor_rva": "005ae3a0",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::Is3DSceneRenderingEnabled(void)"
+        ]
+      },
+      {
+        "slot": 78,
+        "symbol": "?Enable2DSceneRendering@CEngine@@UAEX_N@Z",
+        "retail_address": "00b23fd0",
+        "donor_rva": "005ae3b0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::Enable2DSceneRendering(bool)"
+        ]
+      },
+      {
+        "slot": 79,
+        "symbol": "?Is2DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+        "retail_address": "00b24000",
+        "donor_rva": "005ae3d0",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CEngine::Is2DSceneRenderingEnabled(void)"
+        ]
+      },
+      {
+        "slot": 80,
+        "symbol": "?OverrideRain@CEngine@@UAEXM@Z",
+        "retail_address": "00b24010",
+        "donor_rva": "005ae3e0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::OverrideRain(float)"
+        ]
+      },
+      {
+        "slot": 81,
+        "symbol": "?OverrideSnow@CEngine@@UAEXM@Z",
+        "retail_address": "00b24020",
+        "donor_rva": "005ae400",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::OverrideSnow(float)"
+        ]
+      },
+      {
+        "slot": 82,
+        "symbol": "?RenderColorFilteredQuad@CEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z",
+        "retail_address": "00b25c00",
+        "donor_rva": "005b02d0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::RenderColorFilteredQuad(float,float,class C4DVector const &,float,float,class CTexture *)"
+        ]
+      },
+      {
+        "slot": 83,
+        "symbol": "?PeekGlobalDiffuseColour@CEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "retail_address": "00b25d20",
+        "donor_rva": "005aeba0",
+        "donor_signatures": [
+          "public: virtual class CRGBFloatColour const __thiscall CEngine::PeekGlobalDiffuseColour(void)const "
+        ]
+      },
+      {
+        "slot": 84,
+        "symbol": "?PeekGlobalAmbientColour@CEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "retail_address": "00b25d50",
+        "donor_rva": "005aebd0",
+        "donor_signatures": [
+          "public: virtual class CRGBFloatColour const __thiscall CEngine::PeekGlobalAmbientColour(void)const "
+        ]
+      },
+      {
+        "slot": 85,
+        "symbol": "?Uninitialise@CEngine@@UAEXXZ",
+        "retail_address": "00b25d80",
+        "donor_rva": "005b0380",
+        "donor_signatures": [
+          "public: virtual void __thiscall CEngine::Uninitialise(void)"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "??_7CEngine@@6BCDeviceResetCallback@@@",
+    "retail_address": "012a0f30",
+    "donor_rva": "00cb0648",
+    "entries": [
+      {
+        "slot": 0,
+        "symbol": "?OnPreDeviceReset@CEngine@@UAEXXZ",
+        "retail_address": "00b26010",
+        "donor_rva": "005b0650",
+        "donor_signatures": [
+          "private: virtual void __thiscall CEngine::OnPreDeviceReset(void)"
+        ]
+      },
+      {
+        "slot": 1,
+        "symbol": "?OnPostDeviceReset@CEngine@@UAE_NXZ",
+        "retail_address": "00b25d00",
+        "donor_rva": "005b0360",
+        "donor_signatures": [
+          "private: virtual bool __thiscall CEngine::OnPostDeviceReset(void)"
+        ]
+      }
+    ]
+  },
+  {
+    "symbol": "??_7CIEngine@@6B@",
+    "retail_address": "012a0d24",
+    "donor_rva": "00c6eab4",
+    "entries": [
+      {
+        "slot": 0,
+        "symbol": "??_ECIEngine@@UAEPAXI@Z",
+        "retail_address": "00b23770",
+        "donor_rva": "002e1390",
+        "donor_signatures": [
+          "public: virtual void * __thiscall CIEngine::`scalar deleting destructor'(unsigned int)"
+        ]
+      },
+      {
+        "slot": 1,
+        "symbol": "?Validate@CInitBaseClass@@UBEXXZ",
+        "retail_address": "0099a340",
+        "donor_rva": "00701f90",
+        "donor_signatures": [
+          "public: virtual void __thiscall CInitBaseClass::Validate(void)const "
+        ]
+      },
+      {
+        "slot": 2,
+        "symbol": "?Initialise@CIEngine@@UAE_NABVCEngineInit@@@Z",
+        "retail_address": "00b232d0",
+        "donor_rva": "002e12e0",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::Initialise(class CEngineInit const &)"
+        ]
+      },
+      {
+        "slot": 3,
+        "symbol": "?Release@CIEngine@@UAEXXZ",
+        "retail_address": "00b232e0",
+        "donor_rva": "00755c90",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::Release(void)"
+        ]
+      },
+      {
+        "slot": 4,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 5,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 6,
+        "symbol": "?SetEnvironmentalEffectsAlwaysUpdate@CIEngine@@UAEX_N@Z",
+        "retail_address": "00b232f0",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetEnvironmentalEffectsAlwaysUpdate(bool)"
+        ]
+      },
+      {
+        "slot": 7,
+        "symbol": "?SetWorld@CIEngine@@UAEXPBVCIDrawWorld@@@Z",
+        "retail_address": "00b23300",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetWorld(class CIDrawWorld const *)"
+        ]
+      },
+      {
+        "slot": 8,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 9,
+        "symbol": "?WorldFrameUpdate@CIEngine@@UAEX_N@Z",
+        "retail_address": "00b23310",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::WorldFrameUpdate(bool)"
+        ]
+      },
+      {
+        "slot": 10,
+        "symbol": "?PausedWorldFrameUpdate@CIEngine@@UAEXXZ",
+        "retail_address": "00b23320",
+        "donor_rva": "005060a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::PausedWorldFrameUpdate(void)"
+        ]
+      },
+      {
+        "slot": 11,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 12,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 13,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 14,
+        "symbol": "?SetVideoOptions@CIEngine@@UAE_NABVCEngineVideoOptions@@@Z",
+        "retail_address": "00b23330",
+        "donor_rva": "002bdf20",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::SetVideoOptions(class CEngineVideoOptions const &)"
+        ]
+      },
+      {
+        "slot": 15,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 16,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 17,
+        "symbol": "?Refresh@CIEngine@@UAEXXZ",
+        "retail_address": "00b23340",
+        "donor_rva": "005060a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::Refresh(void)"
+        ]
+      },
+      {
+        "slot": 18,
+        "symbol": "?CheckPrimitiveVisibility@CIEngine@@UAE_N_K@Z",
+        "retail_address": "00b23350",
+        "donor_rva": "005be610",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::CheckPrimitiveVisibility(unsigned __int64)"
+        ]
+      },
+      {
+        "slot": 19,
+        "symbol": "?GetPrimitiveDrawDistanceFactor@CIEngine@@UBEMXZ",
+        "retail_address": "00b23360",
+        "donor_rva": "002e12f0",
+        "donor_signatures": [
+          "public: virtual float __thiscall CIEngine::GetPrimitiveDrawDistanceFactor(void)const "
+        ]
+      },
+      {
+        "slot": 20,
+        "symbol": "?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z",
+        "retail_address": "00b23370",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::AddPrimitive(class CEnginePrimitive const &)"
+        ]
+      },
+      {
+        "slot": 21,
+        "symbol": "?ClipSphere@CIEngine@@UBE_NABVC3DBoundingSphere@@@Z",
+        "retail_address": "00b23380",
+        "donor_rva": "002e1300",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::ClipSphere(class C3DBoundingSphere const &)const "
+        ]
+      },
+      {
+        "slot": 22,
+        "symbol": "?ClipBox@CIEngine@@UBE_NABVC3DBoundingBox@@@Z",
+        "retail_address": "00b23390",
+        "donor_rva": "002e1300",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::ClipBox(class C3DBoundingBox const &)const "
+        ]
+      },
+      {
+        "slot": 23,
+        "symbol": "__purecall",
+        "retail_address": "00bfea08",
+        "donor_rva": "00896020",
+        "donor_signatures": [
+          "_purecall"
+        ]
+      },
+      {
+        "slot": 24,
+        "symbol": "?SetPrimitiveAnimation@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z",
+        "retail_address": "00b233a0",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetPrimitiveAnimation(class CEnginePrimitiveHandle &,class CEnginePrimitiveAnimation const &)"
+        ]
+      },
+      {
+        "slot": 25,
+        "symbol": "?SetPrimitivePosition@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z",
+        "retail_address": "00b233b0",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetPrimitivePosition(class CEnginePrimitiveHandle &,class CEnginePrimitivePosition const &)"
+        ]
+      },
+      {
+        "slot": 26,
+        "symbol": "?AddChildPrimitive@CIEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z",
+        "retail_address": "00b233c0",
+        "donor_rva": "00279410",
+        "donor_signatures": [
+          "public: virtual unsigned long __thiscall CIEngine::AddChildPrimitive(class CEnginePrimitiveHandle &,class CEnginePrimitive const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 27,
+        "symbol": "?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z",
+        "retail_address": "00b233e0",
+        "donor_rva": "002bdf40",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetChildPrimitive(class CEnginePrimitiveHandle &,unsigned long,class CEnginePrimitiveHandle &,class CEnginePrimitive const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 28,
+        "symbol": "?SetChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z",
+        "retail_address": "00b233d0",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetChildPrimitive(class CEnginePrimitiveHandle &,unsigned long,class CEnginePrimitive const &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 29,
+        "symbol": "?GetChildPrimitiveHandle@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z",
+        "retail_address": "00b233f0",
+        "donor_rva": "002bdf30",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::GetChildPrimitiveHandle(class CEnginePrimitiveHandle &,unsigned long,class CEnginePrimitiveHandle &)"
+        ]
+      },
+      {
+        "slot": 30,
+        "symbol": "?ClearChildPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z",
+        "retail_address": "00b23400",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::ClearChildPrimitive(class CEnginePrimitiveHandle &,unsigned long)"
+        ]
+      },
+      {
+        "slot": 31,
+        "symbol": "?ClearAllChildPrimitives@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z",
+        "retail_address": "00b23410",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::ClearAllChildPrimitives(class CEnginePrimitiveHandle &)"
+        ]
+      },
+      {
+        "slot": 32,
+        "symbol": "?SetAttachedPrimitive@CIEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z",
+        "retail_address": "00b23420",
+        "donor_rva": "002e1380",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetAttachedPrimitive(class CEnginePrimitiveHandle &,class CEnginePrimitive const &,class CEnginePrimitiveAttachmentInfo const &,class CEnginePrimitiveHandle const &,long,unsigned long)"
+        ]
+      },
+      {
+        "slot": 33,
+        "symbol": "?CollectPrimitiveStatsForArea@CIEngine@@UBEXAAVCIEnginePrimitiveStatMap@@ABVC2DBoxF@@JK@Z",
+        "retail_address": "00b23430",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::CollectPrimitiveStatsForArea(class std::map<unsigned long,unsigned long,struct std::less<unsigned long>,class std::allocator<struct std::pair<unsigned long const ,unsigned long> > > &,class C2DBoxF const &,enum EEnginePrimitiveStatIndex,unsigned long)const "
+        ]
+      },
+      {
+        "slot": 34,
+        "symbol": "?ProcessPrimitiveStats@CIEngine@@UBEXABVCIEnginePrimitiveStatMap@@JAAKAAV?$CArray@VCCharString@@@@@Z",
+        "retail_address": "00b23440",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::ProcessPrimitiveStats(class std::map<unsigned long,unsigned long,struct std::less<unsigned long>,class std::allocator<struct std::pair<unsigned long const ,unsigned long> > > const &,enum EEnginePrimitiveStatIndex,unsigned long &,class CArray<class CCharString> &)const "
+        ]
+      },
+      {
+        "slot": 35,
+        "symbol": "?GetEditorAnimation@CIEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z",
+        "retail_address": "00b23450",
+        "donor_rva": "0003cb90",
+        "donor_signatures": [
+          "public: virtual class C3DAnimationInfo const * __thiscall CIEngine::GetEditorAnimation(class CWideString const &)const "
+        ]
+      },
+      {
+        "slot": 36,
+        "symbol": "?AddCustomMorphTexture@CIEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z",
+        "retail_address": "00b23460",
+        "donor_rva": "002e1320",
+        "donor_signatures": [
+          "public: virtual unsigned long __thiscall CIEngine::AddCustomMorphTexture(class CTexture &,class CCharString const &)const "
+        ]
+      },
+      {
+        "slot": 37,
+        "symbol": "?GetStaticMapUpdatePassCount@CIEngine@@UAEJXZ",
+        "retail_address": "00b23470",
+        "donor_rva": "007c9e50",
+        "donor_signatures": [
+          "public: virtual long __thiscall CIEngine::GetStaticMapUpdatePassCount(void)"
+        ]
+      },
+      {
+        "slot": 38,
+        "symbol": "?StartStaticMapUpdatePass@CIEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+        "retail_address": "00b23480",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::StartStaticMapUpdatePass(class CWideString const &,long,class CStaticMapGenerationVisibiilityInfo const &,class CArray<class CCharString> const &)"
+        ]
+      },
+      {
+        "slot": 39,
+        "symbol": "?IsStaticMapNeedingUpdate@CIEngine@@UBE_NJABVCCharString@@K@Z",
+        "retail_address": "00b23490",
+        "donor_rva": "00279420",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::IsStaticMapNeedingUpdate(long,class CCharString const &,unsigned long)const "
+        ]
+      },
+      {
+        "slot": 40,
+        "symbol": "?UpdateStaticMap@CIEngine@@UAEXJABVCCharString@@KJ@Z",
+        "retail_address": "00b234a0",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::UpdateStaticMap(long,class CCharString const &,unsigned long,long)"
+        ]
+      },
+      {
+        "slot": 41,
+        "symbol": "?CloseStaticMapFile@CIEngine@@UAEXXZ",
+        "retail_address": "00b234b0",
+        "donor_rva": "005060a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::CloseStaticMapFile(void)"
+        ]
+      },
+      {
+        "slot": 42,
+        "symbol": "?AddMap@CIEngine@@UAEXJJ@Z",
+        "retail_address": "00b234c0",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::AddMap(long,long)"
+        ]
+      },
+      {
+        "slot": 43,
+        "symbol": "?RemoveMap@CIEngine@@UAEXJ@Z",
+        "retail_address": "00b234d0",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::RemoveMap(long)"
+        ]
+      },
+      {
+        "slot": 44,
+        "symbol": "?SetMapAsLoaded@CIEngine@@UAEXJ@Z",
+        "retail_address": "00b234e0",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetMapAsLoaded(long)"
+        ]
+      },
+      {
+        "slot": 45,
+        "symbol": "?SetMapAsUnloaded@CIEngine@@UAEXJ@Z",
+        "retail_address": "00b234f0",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetMapAsUnloaded(long)"
+        ]
+      },
+      {
+        "slot": 46,
+        "symbol": "?SetMapVisibilityAllMaps@CIEngine@@UAEX_N@Z",
+        "retail_address": "00b23500",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetMapVisibilityAllMaps(bool)"
+        ]
+      },
+      {
+        "slot": 47,
+        "symbol": "?SetMapVisibility@CIEngine@@UAEXJ_N@Z",
+        "retail_address": "00b23510",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetMapVisibility(long,bool)"
+        ]
+      },
+      {
+        "slot": 48,
+        "symbol": "?AreaChanged@CIEngine@@UAEXABVC2DBoxI@@@Z",
+        "retail_address": "00b23520",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::AreaChanged(class C2DBoxI const &)"
+        ]
+      },
+      {
+        "slot": 49,
+        "symbol": "?OnActivate@CIEngine@@UAEXXZ",
+        "retail_address": "00b23530",
+        "donor_rva": "002e1330",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::OnActivate(void)"
+        ]
+      },
+      {
+        "slot": 50,
+        "symbol": "?OnDeactivate@CIEngine@@UAEXXZ",
+        "retail_address": "00b23540",
+        "donor_rva": "002e1340",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::OnDeactivate(void)"
+        ]
+      },
+      {
+        "slot": 51,
+        "symbol": "?IsActive@CIEngine@@UBE_NXZ",
+        "retail_address": "00b23550",
+        "donor_rva": "002e1350",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::IsActive(void)const "
+        ]
+      },
+      {
+        "slot": 52,
+        "symbol": "?SetStaticMapFileForUse@CIEngine@@UAEXABVCWideString@@@Z",
+        "retail_address": "00b23560",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetStaticMapFileForUse(class CWideString const &)"
+        ]
+      },
+      {
+        "slot": 53,
+        "symbol": "?SetLandscapeDebugTintColour@CIEngine@@UAEXJVCRGBColour@@@Z",
+        "retail_address": "00b23570",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetLandscapeDebugTintColour(long,class CRGBColour)"
+        ]
+      },
+      {
+        "slot": 54,
+        "symbol": "?ReloadLocalDetailDefs@CIEngine@@UAEXXZ",
+        "retail_address": "00b23580",
+        "donor_rva": "005060a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::ReloadLocalDetailDefs(void)"
+        ]
+      },
+      {
+        "slot": 55,
+        "symbol": "?StartNewScene@CIEngine@@UAEXKM@Z",
+        "retail_address": "00b23590",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::StartNewScene(unsigned long,float)"
+        ]
+      },
+      {
+        "slot": 56,
+        "symbol": "?CutscenePreload@CIEngine@@UAEX_N0@Z",
+        "retail_address": "00b235a0",
+        "donor_rva": "002e1360",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::CutscenePreload(bool,bool)"
+        ]
+      },
+      {
+        "slot": 57,
+        "symbol": "?CutsceneAddCameraAngle@CIEngine@@UAEXABVCCamera@@@Z",
+        "retail_address": "00b235b0",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::CutsceneAddCameraAngle(class CCamera const &)"
+        ]
+      },
+      {
+        "slot": 58,
+        "symbol": "?ChangeCameraAngle@CIEngine@@UAEXXZ",
+        "retail_address": "00b235c0",
+        "donor_rva": "005060a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::ChangeCameraAngle(void)"
+        ]
+      },
+      {
+        "slot": 59,
+        "symbol": "?IsPreloaded@CIEngine@@UBE_NXZ",
+        "retail_address": "00b235d0",
+        "donor_rva": "00133860",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::IsPreloaded(void)const "
+        ]
+      },
+      {
+        "slot": 60,
+        "symbol": "?UpdateTextureMorphCache@CIEngine@@UAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBVCIEngineLongSet@@@Z",
+        "retail_address": "00b235e0",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::UpdateTextureMorphCache(class CArray<class CEngineTextureMorph> const &,bool,float,class std::set<long,struct std::less<long>,class std::allocator<long> > const *)"
+        ]
+      },
+      {
+        "slot": 61,
+        "symbol": "?SetScreenColourFilter@CIEngine@@UAEXABVCEngineColourFilterSettings@@@Z",
+        "retail_address": "00b235f0",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetScreenColourFilter(class CEngineColourFilterSettings const &)"
+        ]
+      },
+      {
+        "slot": 62,
+        "symbol": "?SetSpotlightShadowMode@CIEngine@@UAEX_N@Z",
+        "retail_address": "00b23600",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetSpotlightShadowMode(bool)"
+        ]
+      },
+      {
+        "slot": 63,
+        "symbol": "?SetSeaBodyToRender@CIEngine@@UAEXVCCharString@@@Z",
+        "retail_address": "00b23610",
+        "donor_rva": "00468b30",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetSeaBodyToRender(class CCharString)"
+        ]
+      },
+      {
+        "slot": 64,
+        "symbol": "?UpdateDebugOverlay@CIEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z",
+        "retail_address": "00b23620",
+        "donor_rva": "002bdf30",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::UpdateDebugOverlay(long,class CRGBColour const *,class C2DBoxI const &)"
+        ]
+      },
+      {
+        "slot": 65,
+        "symbol": "?EnableDebugOverlay@CIEngine@@UAEXJ_N0@Z",
+        "retail_address": "00b23630",
+        "donor_rva": "002bdf30",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::EnableDebugOverlay(long,bool,bool)"
+        ]
+      },
+      {
+        "slot": 66,
+        "symbol": "?SetGlobalLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "retail_address": "00b23640",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetGlobalLightingParameters(class C3DVector const &,class CRGBFloatColour const &,class CRGBFloatColour const &,class CRGBFloatColour const &)"
+        ]
+      },
+      {
+        "slot": 67,
+        "symbol": "?Set2DPrimitiveLightingParameters@CIEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z",
+        "retail_address": "00b23650",
+        "donor_rva": "002e1310",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::Set2DPrimitiveLightingParameters(class C3DVector const &,class CRGBFloatColour const &,class CRGBFloatColour const &,class CRGBFloatColour const &)"
+        ]
+      },
+      {
+        "slot": 68,
+        "symbol": "?SetRenderTargetTexture@CIEngine@@UAEXPBVCTexture@@@Z",
+        "retail_address": "00b23660",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::SetRenderTargetTexture(class CTexture const *)"
+        ]
+      },
+      {
+        "slot": 69,
+        "symbol": "?AllocateTextureFromEngineResourcePools@CIEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z",
+        "retail_address": "00b23670",
+        "donor_rva": "002e1370",
+        "donor_signatures": [
+          "public: virtual class CTexture * __thiscall CIEngine::AllocateTextureFromEngineResourcePools(unsigned long,class C2DExtentsI const &,long,class CPixelFormat const &)"
+        ]
+      },
+      {
+        "slot": 70,
+        "symbol": "?FreeTextureFromEngineResourcePools@CIEngine@@UAEXPAVCTexture@@@Z",
+        "retail_address": "00b23680",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::FreeTextureFromEngineResourcePools(class CTexture *)"
+        ]
+      },
+      {
+        "slot": 71,
+        "symbol": "?GetLoadingMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "retail_address": "00b23690",
+        "donor_rva": "007c9e50",
+        "donor_signatures": [
+          "public: virtual class CMovableResourceMemoryPool * __thiscall CIEngine::GetLoadingMemoryPool(void)"
+        ]
+      },
+      {
+        "slot": 72,
+        "symbol": "?GetAnimationMemoryPool@CIEngine@@UAEPAVCMovableResourceMemoryPool@@XZ",
+        "retail_address": "00b236a0",
+        "donor_rva": "007c9e50",
+        "donor_signatures": [
+          "public: virtual class CMovableResourceMemoryPool * __thiscall CIEngine::GetAnimationMemoryPool(void)"
+        ]
+      },
+      {
+        "slot": 73,
+        "symbol": "?GetScratchBufferTextureManager@CIEngine@@UAEPAVCGPUScratchBufferTextureManager@@XZ",
+        "retail_address": "00b236b0",
+        "donor_rva": "007c9e50",
+        "donor_signatures": [
+          "public: virtual class CGPUScratchBufferTextureManager * __thiscall CIEngine::GetScratchBufferTextureManager(void)"
+        ]
+      },
+      {
+        "slot": 74,
+        "symbol": "?DeallocateShadowBuffer@CIEngine@@UAE_NXZ",
+        "retail_address": "00b236c0",
+        "donor_rva": "002c35e0",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::DeallocateShadowBuffer(void)"
+        ]
+      },
+      {
+        "slot": 75,
+        "symbol": "?ReallocateShadowBuffer@CIEngine@@UAEXXZ",
+        "retail_address": "00b236d0",
+        "donor_rva": "005060a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::ReallocateShadowBuffer(void)"
+        ]
+      },
+      {
+        "slot": 76,
+        "symbol": "?Enable3DSceneRendering@CIEngine@@UAEX_N@Z",
+        "retail_address": "00b236e0",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::Enable3DSceneRendering(bool)"
+        ]
+      },
+      {
+        "slot": 77,
+        "symbol": "?Is3DSceneRenderingEnabled@CIEngine@@UAE_NXZ",
+        "retail_address": "00b236f0",
+        "donor_rva": "00133860",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::Is3DSceneRenderingEnabled(void)"
+        ]
+      },
+      {
+        "slot": 78,
+        "symbol": "?Enable2DSceneRendering@CIEngine@@UAEX_N@Z",
+        "retail_address": "00b23700",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::Enable2DSceneRendering(bool)"
+        ]
+      },
+      {
+        "slot": 79,
+        "symbol": "?Is2DSceneRenderingEnabled@CIEngine@@UAE_NXZ",
+        "retail_address": "00b23710",
+        "donor_rva": "00133860",
+        "donor_signatures": [
+          "public: virtual bool __thiscall CIEngine::Is2DSceneRenderingEnabled(void)"
+        ]
+      },
+      {
+        "slot": 80,
+        "symbol": "?OverrideRain@CIEngine@@UAEXM@Z",
+        "retail_address": "00b23720",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::OverrideRain(float)"
+        ]
+      },
+      {
+        "slot": 81,
+        "symbol": "?OverrideSnow@CIEngine@@UAEXM@Z",
+        "retail_address": "00b23730",
+        "donor_rva": "000927a0",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::OverrideSnow(float)"
+        ]
+      },
+      {
+        "slot": 82,
+        "symbol": "?RenderColorFilteredQuad@CIEngine@@UAEXMMABVC4DVector@@MMPAVCTexture@@@Z",
+        "retail_address": "00b23740",
+        "donor_rva": "002e1380",
+        "donor_signatures": [
+          "public: virtual void __thiscall CIEngine::RenderColorFilteredQuad(float,float,class C4DVector const &,float,float,class CTexture *)"
+        ]
+      },
+      {
+        "slot": 83,
+        "symbol": "?PeekGlobalDiffuseColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "retail_address": "00b28b40",
+        "donor_rva": "002e51f0",
+        "donor_signatures": [
+          "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalDiffuseColour(void)const "
+        ]
+      },
+      {
+        "slot": 84,
+        "symbol": "?PeekGlobalAmbientColour@CIEngine@@UBE?BVCRGBFloatColour@@XZ",
+        "retail_address": "00b28b60",
+        "donor_rva": "002e51f0",
+        "donor_signatures": [
+          "public: virtual class CRGBFloatColour const __thiscall CIEngine::PeekGlobalAmbientColour(void)const "
+        ]
+      }
+    ]
+  }
+]

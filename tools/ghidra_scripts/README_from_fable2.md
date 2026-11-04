@@ -1,5 +1,7 @@
 # Self-contained headless function labeler (Fable2_TU1)
 
+> Imported Fable II reference. Project names, binaries and example paths below refer to the donor project; they are not current FableTLC setup instructions. Preserve this context when adapting the scripts.
+
 Batch-label `sub_`/`Function_` functions in the Ghidra project with no external
 services or API key. The "LLM" step is a human/Claude reading a worklist and
 writing back names — the same loop `auto-re-agent` runs, using only the Ghidra

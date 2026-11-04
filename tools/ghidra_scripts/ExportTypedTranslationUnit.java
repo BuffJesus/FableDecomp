@@ -290,7 +290,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 if (mn.equals("PUSH") && prologueSaves.contains(off)) depth += 4;   // a callee-saved register, not an argument
                 else if (mn.equals("PUSH")) { if (!pushing) { before = depth; pushing = true; } depth += 4; }
                 else if (mn.equals("POP")) depth -= 4;
-                else if ((mn.equals("SUB") || mn.equals("ADD")) && n == 2 && x.getOpObjects(0).length >= 1 && "ESP".equals(regName(x.getOpObjects(0)[0])) && x.getOpObjects(1).length >= 1 && x.getOpObjects(1)[0] instanceof Scalar) {
+                else if ((mn.equals("SUB") || mn.equals("ADD")) && n == 2 && isRegOperand(x, 0) && x.getOpObjects(0).length >= 1 && "ESP".equals(regName(x.getOpObjects(0)[0])) && x.getOpObjects(1).length >= 1 && x.getOpObjects(1)[0] instanceof Scalar) {
                     long v = ((Scalar) x.getOpObjects(1)[0]).getSignedValue();
                     depth += mn.equals("SUB") ? v : -v;
                     if (mn.equals("ADD")) pushing = false;
@@ -408,7 +408,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
                 continue;
             }
             if (mn.equals("RET")) { espDelta = bodyDelta; pushing = false; argStart = -1; blockBoundary = true; continue; }
-            boolean epilogueOp = mn.equals("POP") || ((mn.equals("ADD")) && n == 2 && i.getOpObjects(0).length >= 1 && "ESP".equals(regName(i.getOpObjects(0)[0])));
+            boolean epilogueOp = mn.equals("POP") || ((mn.equals("ADD")) && n == 2 && isRegOperand(i, 0) && i.getOpObjects(0).length >= 1 && "ESP".equals(regName(i.getOpObjects(0)[0])));
             if (!epilogueOp) bodyDelta = espDelta;
             if (mn.equals("PUSH")) {
                 Object[] pops = i.getOpObjects(0);
@@ -439,7 +439,7 @@ public class ExportTypedTranslationUnit extends GhidraScript {
             }
             if ((mn.equals("SUB") || mn.equals("ADD")) && n == 2) {
                 Object[] d0 = i.getOpObjects(0), s1 = i.getOpObjects(1);
-                if (d0.length >= 1 && "ESP".equals(regName(d0[0])) && s1.length >= 1 && s1[0] instanceof Scalar) {
+                if (isRegOperand(i, 0) && d0.length >= 1 && "ESP".equals(regName(d0[0])) && s1.length >= 1 && s1[0] instanceof Scalar) {
                     long v = ((Scalar) s1[0]).getSignedValue();
                     // `sub esp, N` immediately followed by `mov ecx, esp` reserves a by-value argument slot
                     Instruction nx = i.getNext();

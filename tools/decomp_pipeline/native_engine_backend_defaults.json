@@ -1,0 +1,184 @@
+[
+  {
+    "slot": 11,
+    "symbol": "?ConvertScreenPosToWorldPos@CEngine@@UBE_NABVC2DVector@@AAVC3DVector@@@Z",
+    "retail_address": "00b23cf0",
+    "donor_rva": "005ae850",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CEngine::ConvertScreenPosToWorldPos(class C2DVector const &,class C3DVector &)const "
+    ],
+    "name": "ConvertScreenPosToWorldPos",
+    "size": 5,
+    "words": 2,
+    "kind": "byte"
+  },
+  {
+    "slot": 15,
+    "symbol": "?PreChangeResolution@CEngine@@UAE_NXZ",
+    "retail_address": "00b2aa20",
+    "donor_rva": "00133860",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CEngine::PreChangeResolution(void)"
+    ],
+    "name": "PreChangeResolution",
+    "size": 3,
+    "words": 0,
+    "kind": "byte"
+  },
+  {
+    "slot": 16,
+    "symbol": "?PostChangeResolution@CEngine@@UAE_NKKK@Z",
+    "retail_address": "00b2aa30",
+    "donor_rva": "005b4550",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CEngine::PostChangeResolution(unsigned long,unsigned long,unsigned long)"
+    ],
+    "name": "PostChangeResolution",
+    "size": 5,
+    "words": 3,
+    "kind": "byte"
+  },
+  {
+    "slot": 37,
+    "symbol": "?GetStaticMapUpdatePassCount@CEngine@@UAEJXZ",
+    "retail_address": "00b2aa40",
+    "donor_rva": "004ecb30",
+    "donor_signatures": [
+      "public: virtual long __thiscall CEngine::GetStaticMapUpdatePassCount(void)"
+    ],
+    "name": "GetStaticMapUpdatePassCount",
+    "size": 6,
+    "words": 0,
+    "kind": "word"
+  },
+  {
+    "slot": 38,
+    "symbol": "?StartStaticMapUpdatePass@CEngine@@UAEXABVCWideString@@JABVCStaticMapGenerationVisibiilityInfo@@ABV?$CArray@VCCharString@@@@@Z",
+    "retail_address": "00b23d80",
+    "donor_rva": "005ae190",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::StartStaticMapUpdatePass(class CWideString const &,long,class CStaticMapGenerationVisibiilityInfo const &,class CArray<class CCharString> const &)"
+    ],
+    "name": "StartStaticMapUpdatePass",
+    "size": 3,
+    "words": 4,
+    "kind": "void"
+  },
+  {
+    "slot": 39,
+    "symbol": "?IsStaticMapNeedingUpdate@CEngine@@UBE_NJABVCCharString@@K@Z",
+    "retail_address": "00b23d90",
+    "donor_rva": "005ae1a0",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CEngine::IsStaticMapNeedingUpdate(long,class CCharString const &,unsigned long)const "
+    ],
+    "name": "IsStaticMapNeedingUpdate",
+    "size": 5,
+    "words": 3,
+    "kind": "byte"
+  },
+  {
+    "slot": 40,
+    "symbol": "?UpdateStaticMap@CEngine@@UAEXJABVCCharString@@KJ@Z",
+    "retail_address": "00b23da0",
+    "donor_rva": "005b02c0",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::UpdateStaticMap(long,class CCharString const &,unsigned long,long)"
+    ],
+    "name": "UpdateStaticMap",
+    "size": 3,
+    "words": 4,
+    "kind": "void"
+  },
+  {
+    "slot": 48,
+    "symbol": "?AreaChanged@CEngine@@UAEXABVC2DBoxI@@@Z",
+    "retail_address": "00b23dd0",
+    "donor_rva": "005ae1d0",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::AreaChanged(class C2DBoxI const &)"
+    ],
+    "name": "AreaChanged",
+    "size": 3,
+    "words": 1,
+    "kind": "void"
+  },
+  {
+    "slot": 49,
+    "symbol": "?OnActivate@CEngine@@UAEXXZ",
+    "retail_address": "00b23de0",
+    "donor_rva": "005ae1e0",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::OnActivate(void)"
+    ],
+    "name": "OnActivate",
+    "size": 5,
+    "words": 0,
+    "kind": "void"
+  },
+  {
+    "slot": 53,
+    "symbol": "?SetLandscapeDebugTintColour@CEngine@@UAEXJVCRGBColour@@@Z",
+    "retail_address": "00b23df0",
+    "donor_rva": "005aeb50",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::SetLandscapeDebugTintColour(long,class CRGBColour)"
+    ],
+    "name": "SetLandscapeDebugTintColour",
+    "size": 3,
+    "words": 2,
+    "kind": "void"
+  },
+  {
+    "slot": 54,
+    "symbol": "?ReloadLocalDetailDefs@CEngine@@UAEXXZ",
+    "retail_address": "00b23e70",
+    "donor_rva": "005ae270",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::ReloadLocalDetailDefs(void)"
+    ],
+    "name": "ReloadLocalDetailDefs",
+    "size": 1,
+    "words": 0,
+    "kind": "void"
+  },
+  {
+    "slot": 64,
+    "symbol": "?UpdateDebugOverlay@CEngine@@UAEXJPBVCRGBColour@@ABVC2DBoxI@@@Z",
+    "retail_address": "00b23e80",
+    "donor_rva": "005ae280",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::UpdateDebugOverlay(long,class CRGBColour const *,class C2DBoxI const &)"
+    ],
+    "name": "UpdateDebugOverlay",
+    "size": 3,
+    "words": 3,
+    "kind": "void"
+  },
+  {
+    "slot": 65,
+    "symbol": "?EnableDebugOverlay@CEngine@@UAEXJ_N0@Z",
+    "retail_address": "00b23e90",
+    "donor_rva": "005ae290",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::EnableDebugOverlay(long,bool,bool)"
+    ],
+    "name": "EnableDebugOverlay",
+    "size": 3,
+    "words": 3,
+    "kind": "void"
+  },
+  {
+    "slot": 68,
+    "symbol": "?SetRenderTargetTexture@CEngine@@UAEXPBVCTexture@@@Z",
+    "retail_address": "00b23ef0",
+    "donor_rva": "005ae2e0",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::SetRenderTargetTexture(class CTexture const *)"
+    ],
+    "name": "SetRenderTargetTexture",
+    "size": 3,
+    "words": 1,
+    "kind": "void"
+  }
+]

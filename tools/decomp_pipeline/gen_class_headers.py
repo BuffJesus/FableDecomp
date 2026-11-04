@@ -38,6 +38,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 DONOR = ROOT / "ghidra_out" / "struct_layouts_egor.tsv"
 INCLUDE = ROOT / "rebuild" / "include"
+sys.path.insert(0, str(HERE))
+import class_keys
+CLASS_KEYS = class_keys.load()
 OUT = INCLUDE / "engine"
 QUAR = OUT / "_quarantine"
 sys.path.insert(0, str(HERE))
@@ -416,11 +419,16 @@ def emit_header(cls: str, donor: DonorStruct, emitted: list[Emitted], fwd: set[s
              "// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque",
              "// `unsigned char X[N]` members carry their real (composite/template) type in a comment.",
              "#include <stddef.h>", '#include "rebuild_abi.h"', ""]
+    # The class key is part of every decoration naming the type; use the
+    # engine's own (FableWin.pdb publics, class_keys.py), struct without evidence.
     for f in sorted(fwd - {cls}):
-        lines.append(f"struct {f};")
+        lines.append(f"{CLASS_KEYS.get(f, 'struct')} {f};")
     if fwd - {cls}:
         lines.append("")
-    lines += ["#pragma pack(push, 1)", f"struct {cls} {{"]
+    if CLASS_KEYS.get(cls) == "class":
+        lines += ["#pragma pack(push, 1)", f"class {cls} {{", "public:"]
+    else:
+        lines += ["#pragma pack(push, 1)", f"struct {cls} {{"]
     w = max((len(e.ctype) for e in emitted), default=10)
     for e in emitted:
         decl = f"    {e.ctype:<{w}} {e.name}{e.suffix};"

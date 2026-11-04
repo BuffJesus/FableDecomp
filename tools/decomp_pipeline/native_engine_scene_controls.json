@@ -1,0 +1,72 @@
+[
+  {
+    "slot": 55,
+    "symbol": "?StartNewScene@CEngine@@UAEXKM@Z",
+    "retail_address": "00b239a0",
+    "donor_rva": "005adda0",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::StartNewScene(unsigned long,float)"
+    ],
+    "size": 21
+  },
+  {
+    "slot": 56,
+    "symbol": "?CutscenePreload@CEngine@@UAEX_N0@Z",
+    "retail_address": "00b23a10",
+    "donor_rva": "005ade30",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::CutscenePreload(bool,bool)"
+    ],
+    "size": 51
+  },
+  {
+    "slot": 59,
+    "symbol": "?IsPreloaded@CEngine@@UBE_NXZ",
+    "retail_address": "00b23a70",
+    "donor_rva": "005ade90",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CEngine::IsPreloaded(void)const "
+    ],
+    "size": 20
+  },
+  {
+    "slot": 76,
+    "symbol": "?Enable3DSceneRendering@CEngine@@UAEX_N@Z",
+    "retail_address": "00b23f90",
+    "donor_rva": "005ae380",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::Enable3DSceneRendering(bool)"
+    ],
+    "size": 35
+  },
+  {
+    "slot": 77,
+    "symbol": "?Is3DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+    "retail_address": "00b23fc0",
+    "donor_rva": "005ae3a0",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CEngine::Is3DSceneRenderingEnabled(void)"
+    ],
+    "size": 10
+  },
+  {
+    "slot": 78,
+    "symbol": "?Enable2DSceneRendering@CEngine@@UAEX_N@Z",
+    "retail_address": "00b23fd0",
+    "donor_rva": "005ae3b0",
+    "donor_signatures": [
+      "public: virtual void __thiscall CEngine::Enable2DSceneRendering(bool)"
+    ],
+    "size": 35
+  },
+  {
+    "slot": 79,
+    "symbol": "?Is2DSceneRenderingEnabled@CEngine@@UAE_NXZ",
+    "retail_address": "00b24000",
+    "donor_rva": "005ae3d0",
+    "donor_signatures": [
+      "public: virtual bool __thiscall CEngine::Is2DSceneRenderingEnabled(void)"
+    ],
+    "size": 12
+  }
+]

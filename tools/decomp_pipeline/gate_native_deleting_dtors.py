@@ -1,0 +1,113 @@
+"""Fresh VC71 parity gate: Scalar deleting destructors located through each class's vtable slot 0 (and the dtors they call)."""
+import sys
+from pathlib import Path
+R=Path(__file__).resolve().parents[2];sys.path.insert(0,str(R/'tools/decomp_pipeline'))
+import native_exact_roots
+ADDRESS={
+ '??1CFrameRateSmoother@@UAE@XZ':0x419764,
+ '??1CBufferedFileDataOutputStream@@UAE@XZ':0x9947a0,
+ '??1CBaseClassNonCopyable@@UAE@XZ':0x99a300,
+ '?Close@CDiskFileWin32@@UAEXXZ':0x99a920,
+ '??1CWideString@@QAE@XZ':0x99b510,
+ '??1CCharString@@QAE@XZ':0x99eae0,
+ '??1CBankFileManager@@UAE@XZ':0x9a7b70,
+ '??1CDefinitionManager@@UAE@XZ':0x9b02e0,
+ '??1CConsole@@UAE@XZ':0x9ecf30,
+ '??1CCodeSectionManager@@UAE@XZ':0x9f1560,
+ '?Uninitialise@CSurface@@QAEXXZ':0x9f2e20,
+ '??1CGraphicBankManager@@UAE@XZ':0x9f86c0,
+ '??1CMeshBankManager@@UAE@XZ':0xa0a150,
+ '??1C3DAnimFileSequenceChunk@@UAE@XZ':0xa55420,
+ '??1?$CCountedPointer@VC3DMeshPartitionElement@@@@QAE@XZ':0xa94c70,
+ '??1C3DAnimFileBoneMaskChunk@@UAE@XZ':0xa9a7c0,
+ '??1C3DMeshFileHelperPointChunk@@UAE@XZ':0xa9c980,
+ '??1C3DMeshFilePrimitiveChunk@@UAE@XZ':0xa9d3a0,
+ '??1C3DMeshFileConvexVolumeChunk@@UAE@XZ':0xa9d3f0,
+ '??1CChunkedFileChunk@@UAE@XZ':0xaa75c0,
+ '??1CChunkedFileSuperChunk@@UAE@XZ':0xaa8490,
+ '??3@YAXPAX@Z':0xbfe9bc,
+ '_free':0xbfea14,
+ '??_7CDiskFileWin32@@6B@':0x122d06c,
+ '??_7CSurface@@6B@':0x122f84c,
+ '??_7C3DMeshFileVerticesChunk@@6B@':0x129ecf8,
+ '??_7C3DMeshFileTrianglesChunk@@6B@':0x129ed34,
+}
+F0=R/'rebuild/src/compiled/00/99/CDiskFileWin32_Constructor_0099AD80.cpp'
+F1=R/'rebuild/src/compiled/00/41/CFrameRateSmoother_0CFrameRateSmoother_00419747.cpp'
+F2=R/'rebuild/src/compiled/00/9f/CSurface_CopyConstructor_009f2d60.cpp'
+F3=R/'rebuild/src/compiled/00/43/CStartupDefinitionManager_CStartupDefinitionManager_00433693.cpp'
+F4=R/'rebuild/src/compiled/00/99/CBufferedFileDataOutputStream_00994520.cpp'
+F5=R/'rebuild/src/compiled/00/9a/CBankFileManager_Constructor_009a7ac0.cpp'
+F6=R/'rebuild/src/compiled/00/9b/CDefinitionManager_CDefinitionManager_009b0470.cpp'
+F7=R/'rebuild/src/compiled/00/9e/CConsole_CConsole_009ecd80.cpp'
+F8=R/'rebuild/src/compiled/00/9f/CCodeSectionManager_CCodeSectionManager_009f0320.cpp'
+F9=R/'rebuild/src/compiled/00/9f/CGraphicBankManager_CGraphicBankManager_009f8690.cpp'
+F10=R/'rebuild/src/compiled/00/a0/CMeshBankManager_CMeshBankManager_00a0a110.cpp'
+F11=R/'rebuild/src/compiled/00/a9/C3DAnimFileChunks_00a98a70.cpp'
+F12=R/'rebuild/src/compiled/00/a9/C3DMeshFileLoader_Register_00a9ad00.cpp'
+F13=R/'rebuild/src/compiled/00/aa/C3DMeshFileXChunks_00aa4b50.cpp'
+F14=R/'rebuild/src/compiled/00/aa/C3DFileContainerChunks_00aa9670.cpp'
+F15=R/'rebuild/src/compiled/00/aa/C3DMeshFileDummyObjectChunk_Methods_00aa9910.cpp'
+F16=R/'rebuild/src/compiled/00/aa/C3DMeshFileConvexVolumeChunk_Methods_00aa9ad0.cpp'
+F17=R/'rebuild/src/compiled/00/aa/C3DAnimFileMovementVectorChunk_Methods_00aae0f0.cpp'
+F18=R/'rebuild/src/compiled/00/aa/C3DAnimFileTimingEventChunk_Methods_00aae190.cpp'
+F19=R/'rebuild/src/compiled/00/aa/C3DAnimFileSequenceChunk_Methods_00aaf5b0.cpp'
+F20=R/'rebuild/src/compiled/00/ab/C3DAnimFileObjectChunk_Methods_00ab0090.cpp'
+F21=R/'rebuild/src/compiled/00/ab/C3DAnimFileBoneMaskChunk_Methods_00ab0110.cpp'
+F22=R/'rebuild/src/compiled/00/ab/C3DMeshFileSubMeshChunk_Methods_00ab9af0.cpp'
+F23=R/'rebuild/src/compiled/00/ab/C3DMeshFileTransformationChunk_Methods_00ab9c30.cpp'
+F24=R/'rebuild/src/compiled/00/ab/C3DMeshFileBoneChunk_Methods_00ab9ea0.cpp'
+F25=R/'rebuild/src/compiled/00/ab/C3DMeshFileVerticesChunk_Methods_00abbd70.cpp'
+F26=R/'rebuild/src/compiled/00/ab/C3DMeshFileTrianglesChunk_Methods_00abbe90.cpp'
+F27=R/'rebuild/src/compiled/00/ab/C3DMeshFilePrimitiveChunk_Methods_00abc390.cpp'
+F28=R/'rebuild/src/compiled/00/ab/C3DMeshFileMaterialExtChunk_Methods_00abfd70.cpp'
+F29=R/'rebuild/src/compiled/00/ab/C3DMeshFileMapChunk_Methods_00abfe80.cpp'
+F30=R/'rebuild/src/compiled/00/ab/C3DMeshFileMaterialChunk_Methods_00abfbf0.cpp'
+F31=R/'rebuild/src/compiled/00/ac/C3DMeshFilePartitionChunk_Create_00ac29c0.cpp'
+ROOTS=[
+ dict(name='disk_file_win32_deleting_dtor',source=F0,symbol='??_GCDiskFileWin32@@UAEPAXI@Z',address=0x4016b0,size=51,instructions=16,relocations=5),
+ dict(name='frame_rate_smoother_deleting_dtor',source=F1,symbol='??_GCFrameRateSmoother@@UAEPAXI@Z',address=0x41977d,size=28,instructions=11,relocations=2),
+ dict(name='surface_deleting_dtor',source=F2,symbol='??_GCSurface@@UAEPAXI@Z',address=0x41c9c0,size=36,instructions=12,relocations=3),
+ dict(name='startup_definition_manager_deleting_dtor',source=F3,symbol='??_GCStartupDefinitionManager@@UAEPAXI@Z',address=0x433d19,size=28,instructions=11,relocations=2),
+ dict(name='buffered_file_data_output_stream_deleting_dtor',source=F4,symbol='??_GCBufferedFileDataOutputStream@@UAEPAXI@Z',address=0x9971e0,size=30,instructions=11,relocations=2),
+ dict(name='bank_file_manager_deleting_dtor',source=F5,symbol='??_GCBankFileManager@@UAEPAXI@Z',address=0x9ac870,size=30,instructions=11,relocations=2),
+ dict(name='definition_manager_deleting_dtor',source=F6,symbol='??_GCDefinitionManager@@UAEPAXI@Z',address=0x9b9270,size=30,instructions=11,relocations=2),
+ dict(name='console_deleting_dtor',source=F7,symbol='??_GCConsole@@UAEPAXI@Z',address=0x9f0040,size=30,instructions=11,relocations=2),
+ dict(name='code_section_manager_deleting_dtor',source=F8,symbol='??_GCCodeSectionManager@@UAEPAXI@Z',address=0x9f1540,size=30,instructions=11,relocations=2),
+ dict(name='graphic_bank_manager_deleting_dtor',source=F9,symbol='??_GCGraphicBankManager@@UAEPAXI@Z',address=0x9f8af0,size=30,instructions=11,relocations=2),
+ dict(name='mesh_bank_manager_deleting_dtor',source=F10,symbol='??_GCMeshBankManager@@UAEPAXI@Z',address=0xa0a8a0,size=30,instructions=11,relocations=2),
+ dict(name='3danim_file_root_chunk_deleting_dtor',source=F11,symbol='??_GC3DAnimFileRootChunk@@UAEPAXI@Z',address=0xa9a2e0,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_root_chunk_deleting_dtor',source=F12,symbol='??_GC3DMeshFileRootChunk@@UAEPAXI@Z',address=0xa9ce20,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_xtexture_index_chunk_deleting_dtor',source=F13,symbol='??_GC3DMeshFileXTextureIndexChunk@@UAEPAXI@Z',address=0xaa7030,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_xmapping_info_chunk_deleting_dtor',source=F13,symbol='??_GC3DMeshFileXMappingInfoChunk@@UAEPAXI@Z',address=0xaa7070,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_xanimated_primitive_chunk_deleting_dtor',source=F13,symbol='??_GC3DMeshFileXAnimatedPrimitiveChunk@@UAEPAXI@Z',address=0xaa70b0,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_xbounding_sphere_chunk_deleting_dtor',source=F13,symbol='??_GC3DMeshFileXBoundingSphereChunk@@UAEPAXI@Z',address=0xaa7120,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_xbounding_box_chunk_deleting_dtor',source=F13,symbol='??_GC3DMeshFileXBoundingBoxChunk@@UAEPAXI@Z',address=0xaa7160,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_helpers_chunk_deleting_dtor',source=F14,symbol='??_GC3DMeshFileHelpersChunk@@UAEPAXI@Z',address=0xaab110,size=30,instructions=11,relocations=2),
+ dict(name='3danim_file_helpers_chunk_deleting_dtor',source=F14,symbol='??_GC3DAnimFileHelpersChunk@@UAEPAXI@Z',address=0xaaee70,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_material_list_chunk_deleting_dtor',source=F14,symbol='??_GC3DMeshFileMaterialListChunk@@UAEPAXI@Z',address=0xac1900,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_helper_point_chunk_deleting_dtor',source=F15,symbol='??_GC3DMeshFileHelperPointChunk@@UAEPAXI@Z',address=0xaab150,size=40,instructions=14,relocations=3),
+ dict(name='3dmesh_file_dummy_object_chunk_deleting_dtor',source=F15,symbol='??_GC3DMeshFileDummyObjectChunk@@UAEPAXI@Z',address=0xaab1a0,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_convex_volume_chunk_deleting_dtor',source=F16,symbol='??_GC3DMeshFileConvexVolumeChunk@@UAEPAXI@Z',address=0xaab6e0,size=30,instructions=11,relocations=2),
+ dict(name='3danim_file_movement_vector_chunk_deleting_dtor',source=F17,symbol='??_GC3DAnimFileMovementVectorChunk@@UAEPAXI@Z',address=0xaaeeb0,size=30,instructions=11,relocations=2),
+ dict(name='3danim_file_timing_event_chunk_deleting_dtor',source=F18,symbol='??_GC3DAnimFileTimingEventChunk@@UAEPAXI@Z',address=0xaaeed0,size=40,instructions=14,relocations=3),
+ dict(name='3danim_file_sequence_chunk_deleting_dtor',source=F19,symbol='??_GC3DAnimFileSequenceChunk@@UAEPAXI@Z',address=0xaafff0,size=30,instructions=11,relocations=2),
+ dict(name='3danim_file_object_chunk_deleting_dtor',source=F20,symbol='??_GC3DAnimFileObjectChunk@@UAEPAXI@Z',address=0xab0a10,size=40,instructions=14,relocations=3),
+ dict(name='3danim_file_bone_mask_chunk_deleting_dtor',source=F21,symbol='??_GC3DAnimFileBoneMaskChunk@@UAEPAXI@Z',address=0xab0b50,size=30,instructions=11,relocations=2),
+ dict(name='3danim_file_bone_mask_chunk_dtor',source=F21,symbol='??1C3DAnimFileBoneMaskChunk@@UAE@XZ',address=0xa9a7c0,size=27,instructions=11,relocations=2),
+ dict(name='3dmesh_file_sub_mesh_chunk_deleting_dtor',source=F22,symbol='??_GC3DMeshFileSubMeshChunk@@UAEPAXI@Z',address=0xabe080,size=40,instructions=14,relocations=3),
+ dict(name='3dmesh_file_transformation_chunk_deleting_dtor',source=F23,symbol='??_GC3DMeshFileTransformationChunk@@UAEPAXI@Z',address=0xabe0b0,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_bone_chunk_deleting_dtor',source=F24,symbol='??_GC3DMeshFileBoneChunk@@UAEPAXI@Z',address=0xabe0d0,size=40,instructions=14,relocations=3),
+ dict(name='3dmesh_file_vertices_chunk_deleting_dtor',source=F25,symbol='??_GC3DMeshFileVerticesChunk@@UAEPAXI@Z',address=0xabee10,size=54,instructions=19,relocations=4),
+ dict(name='3dmesh_file_triangles_chunk_deleting_dtor',source=F26,symbol='??_GC3DMeshFileTrianglesChunk@@UAEPAXI@Z',address=0xabee50,size=54,instructions=19,relocations=4),
+ dict(name='3dmesh_file_primitive_chunk_deleting_dtor',source=F27,symbol='??_GC3DMeshFilePrimitiveChunk@@UAEPAXI@Z',address=0xabeeb0,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_material_ext_chunk_deleting_dtor',source=F28,symbol='??_GC3DMeshFileMaterialExtChunk@@UAEPAXI@Z',address=0xac1940,size=30,instructions=11,relocations=2),
+ dict(name='3dmesh_file_map_chunk_deleting_dtor',source=F29,symbol='??_GC3DMeshFileMapChunk@@UAEPAXI@Z',address=0xac1960,size=48,instructions=16,relocations=4),
+ dict(name='3dmesh_file_material_chunk_deleting_dtor',source=F30,symbol='??_GC3DMeshFileMaterialChunk@@UAEPAXI@Z',address=0xac1e90,size=40,instructions=14,relocations=3),
+ dict(name='3dmesh_file_partition_chunk_deleting_dtor',source=F31,symbol='??_GC3DMeshFilePartitionChunk@@UAEPAXI@Z',address=0xac3960,size=40,instructions=14,relocations=3),
+]
+def main():
+ results=native_exact_roots.run(__file__,ROOTS,ADDRESS,'native-deleting-dtors.json',[],
+  "Scalar deleting destructors located through each class's vtable slot 0 (and the dtors they call)")
+ print('NATIVE_DELETING_DTORS_PASS',' '.join(r['name']+'='+r['grade'] for r in results))
+if __name__=='__main__':main()
